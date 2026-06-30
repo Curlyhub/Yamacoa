@@ -1,0 +1,621 @@
+{
+  "meta": {
+    "tema": "represion",
+    "titulo": "La maquinaria de la represión",
+    "subtitulo": "Observatorio de la represión en Cuba · foco abril–mayo 2026",
+    "fuentePrimaria": "Observatorio Cubano de Derechos Humanos (OCDH)",
+    "ventana": "ene–may 2026",
+    "actualizado": "2026-06-27",
+    "nota": "Cifras 'al menos'. El OCDH reconoce que sus datos son un subregistro: no es posible documentar todos los actos represivos."
+  },
+  "kpis": [
+    {
+      "id": "totalVentana",
+      "valor": 1596,
+      "etiqueta": "acciones represivas ene–may 2026",
+      "estado": "observado"
+    },
+    {
+      "id": "mayo",
+      "valor": 332,
+      "etiqueta": "en mayo (55 detenciones)",
+      "estado": "observado"
+    },
+    {
+      "id": "presosMay",
+      "valor": 1281,
+      "etiqueta": "presos políticos · récord, cierre de mayo",
+      "estado": "observado"
+    },
+    {
+      "id": "acum11J",
+      "valor": 2076,
+      "etiqueta": "presos políticos acumulados desde el 11J",
+      "estado": "observado"
+    }
+  ],
+  "serieMensual": [
+    {
+      "periodo": "2026-01",
+      "mes": "Ene",
+      "total": 390,
+      "detenciones": 42,
+      "otrosAbusos": 348,
+      "estado": "observado",
+      "fuente": "OCDH"
+    },
+    {
+      "periodo": "2026-02",
+      "mes": "Feb",
+      "total": 231,
+      "detenciones": 31,
+      "otrosAbusos": 200,
+      "estado": "observado",
+      "fuente": "OCDH"
+    },
+    {
+      "periodo": "2026-03",
+      "mes": "Mar",
+      "total": 277,
+      "detenciones": null,
+      "otrosAbusos": null,
+      "estado": "observado",
+      "fuente": "OCDH",
+      "nota": "Sin desglose público de detenciones."
+    },
+    {
+      "periodo": "2026-04",
+      "mes": "Abr",
+      "total": 366,
+      "detenciones": 27,
+      "otrosAbusos": 339,
+      "estado": "observado",
+      "fuente": "OCDH"
+    },
+    {
+      "periodo": "2026-05",
+      "mes": "May",
+      "total": 332,
+      "detenciones": 55,
+      "otrosAbusos": 277,
+      "estado": "observado",
+      "fuente": "OCDH"
+    }
+  ],
+  "serieAnual": [
+    {
+      "anio": "2023",
+      "total": 3830,
+      "detenciones": 936,
+      "estado": "observado",
+      "nota": null
+    },
+    {
+      "anio": "2024",
+      "total": 3921,
+      "detenciones": 818,
+      "estado": "observado",
+      "nota": null
+    },
+    {
+      "anio": "2025",
+      "total": 3179,
+      "detenciones": 529,
+      "estado": "observado",
+      "nota": "La baja frente a 2024 se atribuye al vaciamiento del país y la emigración, no a menos represión."
+    }
+  ],
+  "acumuladoDesde2021": 26200,
+  "composicion": {
+    "periodo": "2026-05",
+    "total": 332,
+    "tipos": [
+      {
+        "tipo": "Sitio policial a viviendas",
+        "n": 79,
+        "estado": "observado"
+      },
+      {
+        "tipo": "Abusos contra presos (políticos y comunes)",
+        "n": 58,
+        "estado": "observado"
+      },
+      {
+        "tipo": "Detenciones arbitrarias",
+        "n": 55,
+        "estado": "observado"
+      },
+      {
+        "tipo": "Interrupción de comunicaciones",
+        "n": 43,
+        "estado": "observado"
+      },
+      {
+        "tipo": "Hostigamientos, amenazas y citaciones",
+        "n": 97,
+        "estado": "estimado",
+        "nota": "Cifra derivada: residual del total tras restar las categorías con dato propio del OCDH."
+      }
+    ]
+  },
+  "provincias": [
+    {
+      "id": "pinar",
+      "nombre": "Pinar del Río",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    },
+    {
+      "id": "artemisa",
+      "nombre": "Artemisa",
+      "senal": {
+        "2026-04": "alta",
+        "2026-05": null
+      }
+    },
+    {
+      "id": "habana",
+      "nombre": "La Habana",
+      "senal": {
+        "2026-04": "alta",
+        "2026-05": "alta"
+      }
+    },
+    {
+      "id": "mayabeque",
+      "nombre": "Mayabeque",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    },
+    {
+      "id": "matanzas",
+      "nombre": "Matanzas",
+      "senal": {
+        "2026-04": "media",
+        "2026-05": "media"
+      }
+    },
+    {
+      "id": "cienfuegos",
+      "nombre": "Cienfuegos",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    },
+    {
+      "id": "villaclara",
+      "nombre": "Villa Clara",
+      "senal": {
+        "2026-04": "alta",
+        "2026-05": "media"
+      }
+    },
+    {
+      "id": "sancti",
+      "nombre": "Sancti Spíritus",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    },
+    {
+      "id": "ciego",
+      "nombre": "Ciego de Ávila",
+      "senal": {
+        "2026-04": "media",
+        "2026-05": "media"
+      }
+    },
+    {
+      "id": "camaguey",
+      "nombre": "Camagüey",
+      "senal": {
+        "2026-04": "alta",
+        "2026-05": "alta"
+      }
+    },
+    {
+      "id": "tunas",
+      "nombre": "Las Tunas",
+      "senal": {
+        "2026-04": null,
+        "2026-05": "alta"
+      }
+    },
+    {
+      "id": "holguin",
+      "nombre": "Holguín",
+      "senal": {
+        "2026-04": null,
+        "2026-05": "alta"
+      }
+    },
+    {
+      "id": "granma",
+      "nombre": "Granma",
+      "senal": {
+        "2026-04": null,
+        "2026-05": "media"
+      }
+    },
+    {
+      "id": "santiago",
+      "nombre": "Santiago de Cuba",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    },
+    {
+      "id": "guantanamo",
+      "nombre": "Guantánamo",
+      "senal": {
+        "2026-04": null,
+        "2026-05": null
+      }
+    }
+  ],
+  "presos": {
+    "fuente": "Prisoners Defenders",
+    "serie": [
+      {
+        "ref": "Ene 26",
+        "periodo": "2026-01",
+        "n": 1207
+      },
+      {
+        "ref": "Feb 26",
+        "periodo": "2026-02",
+        "n": 1214
+      },
+      {
+        "ref": "Abr 26",
+        "periodo": "2026-04",
+        "n": 1260
+      },
+      {
+        "ref": "May 26",
+        "periodo": "2026-05",
+        "n": 1281
+      }
+    ],
+    "acumuladoDesde11J": 2076,
+    "desglose": [
+      {
+        "etiqueta": "presos políticos al cierre de mayo (+28 en el mes)",
+        "n": 1281
+      },
+      {
+        "etiqueta": "personas presas por política desde el 11J de 2021",
+        "n": 2076
+      },
+      {
+        "etiqueta": "mujeres encarceladas por motivos políticos",
+        "n": 147
+      },
+      {
+        "etiqueta": "con patologías médicas graves",
+        "n": 449
+      },
+      {
+        "etiqueta": "con trastornos graves de salud mental sin tratamiento",
+        "n": 52
+      },
+      {
+        "etiqueta": "encarcelados siendo menores de edad",
+        "n": 34
+      }
+    ]
+  },
+  "casos": [
+    {
+      "id": "muir",
+      "nombre": "Jonathan David Muir Burgos",
+      "rol": "Adolescente · Morón, Ciego de Ávila",
+      "estado": "Excarcelado",
+      "fecha": "2026-06-24",
+      "destacado": true,
+      "resumen": "Detenido el 16 de marzo con 16 años tras las protestas de Morón y acusado de «sabotaje», fue recluido en Canaleta, una cárcel de adultos, donde cumplió 17 años. La CIDH le otorgó medidas cautelares; Amnistía, Freedom House, EEUU y la UE pidieron su salida. Excarcelado el 24 de junio con la condición de no denunciar en redes; su causa penal sigue sin aclararse.",
+      "fuentes": [
+        "CubaNet",
+        "Diario de Cuba",
+        "14ymedio",
+        "Amnistía Internacional",
+        "Telemundo"
+      ]
+    },
+    {
+      "id": "crespo",
+      "nombre": "Christian de Jesús Crespo Álvarez",
+      "rol": "Adolescente · 16 años",
+      "estado": "Prisión provisional",
+      "fecha": "2026-03",
+      "destacado": false,
+      "resumen": "Menor detenido tras las protestas del 13 de marzo en Morón, recluido en Canaleta —cárcel de adultos— y acusado de «sabotaje». En mayo le confiscaron sus pertenencias y lo golpearon al reclamarlas; fue amenazado con celda de castigo. Contrajo hepatitis y desde entonces su familia no tiene contacto directo con él.",
+      "fuentes": [
+        "14ymedio",
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "soler",
+      "nombre": "Berta Soler Fernández",
+      "rol": "Líder de las Damas de Blanco",
+      "estado": "Detención",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Detenida a inicios de mayo junto a su esposo por la Seguridad del Estado al salir de la sede de la organización, en el municipio 10 de Octubre de La Habana.",
+      "fuentes": [
+        "OCDH",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "moya",
+      "nombre": "Ángel Juan Moya Acosta",
+      "rol": "Expreso político",
+      "estado": "Detención",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Esposo de Berta Soler, arrestado en la misma operación de inicios de mayo.",
+      "fuentes": [
+        "OCDH",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "delacruz",
+      "nombre": "Yoan de la Cruz",
+      "rol": "Joven del 11J",
+      "estado": "Detención",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Conocido por grabar una de las primeras manifestaciones del 11 de julio de 2021. Detenido de nuevo en mayo.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "ballester",
+      "nombre": "Sordey Ballester Horta",
+      "rol": "Dermatóloga · Matanzas",
+      "estado": "Detención",
+      "fecha": "2026-05-15",
+      "destacado": false,
+      "resumen": "Detenida el 15 de mayo presuntamente por fotografiar un cartel con consignas críticas contra el gobierno.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "holguin",
+      "nombre": "Ola represiva de Holguín",
+      "rol": "19–22 de mayo · 10 personas",
+      "estado": "Protesta",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Eusebio Martínez Matos, Braulio Cuenca, Jenny Moré, Jaime Bosch, José A. Linnet, Yaquelín Thope, Yamilka Mora, Israel Espinosa Thope, Léstor O. Martínez y Rafael Batista, vinculados a las protestas en la provincia.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "farinas",
+      "nombre": "Guillermo «Coco» Fariñas",
+      "rol": "Opositor · FANTU",
+      "estado": "Detención",
+      "fecha": "2026-05-21",
+      "destacado": false,
+      "resumen": "Miembro del Foro Antitotalitario Unido, detenido durante el mes de mayo.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "chang",
+      "nombre": "Erick Alain Chang Padrón",
+      "rol": "Activista",
+      "estado": "Prisión provisional",
+      "fecha": "2026-05-21",
+      "destacado": false,
+      "resumen": "Nueva detención el 21 de mayo; habría sido trasladado al centro de procesamiento penal de Villa Marista.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "saez",
+      "nombre": "Pedro Sáez",
+      "rol": "Villa Clara",
+      "estado": "Protesta",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Detenido en el contexto de una manifestación en el municipio de Corralillo.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "maldonado",
+      "nombre": "Daniel Maldonado",
+      "rol": "Periodista colombiano",
+      "estado": "Detención",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Periodista colombiano retenido unas cuatro horas en mayo, luego declarado persona non grata y expulsado de Cuba con prohibición de reingreso.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "alina",
+      "nombre": "Alina Bárbara López Hernández",
+      "rol": "Académica · co-dir. Sección Cuba de LASA",
+      "estado": "Impedimento de salida",
+      "fecha": "2026-05",
+      "destacado": false,
+      "resumen": "Impedimento de salida del país: tenía invitación al congreso anual de la asociación.",
+      "fuentes": [
+        "OCDH"
+      ]
+    },
+    {
+      "id": "ferrer",
+      "nombre": "José Daniel Ferrer García",
+      "rol": "Líder de UNPACU",
+      "estado": "Excarcelado",
+      "fecha": "2026-01-16",
+      "destacado": false,
+      "resumen": "Excarcelado el 16 de enero; se negó a aceptar las condiciones impuestas a los liberados y a comparecer ante el Tribunal de Ejecución. Sigue reclamando la liberación de Félix Navarro, Sayli Navarro, Maykel Osorbo y Luis Manuel Otero Alcántara.",
+      "fuentes": [
+        "Prisoners Defenders",
+        "Infobae",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "osorbo",
+      "nombre": "Maykel «Osorbo» Castillo",
+      "rol": "Movimiento San Isidro",
+      "estado": "Condena",
+      "fecha": "2021",
+      "destacado": false,
+      "resumen": "Cumple 9 años de prisión desde 2021. Coautor de «Patria y Vida», ganó dos Grammy Latino que nunca pudo recoger.",
+      "fuentes": [
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "onaikel",
+      "nombre": "Onaikel Infante Abreu",
+      "rol": "Activista · La Habana",
+      "estado": "Condena",
+      "fecha": "2023",
+      "destacado": false,
+      "resumen": "Cumple 8 años por una protesta pacífica desde la azotea de su vivienda con consignas como «Patria y Vida». Denuncia un diagnóstico de cáncer de garganta sin tratamiento médico adecuado.",
+      "fuentes": [
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "alfaro",
+      "nombre": "Daniel Alfaro Frías",
+      "rol": "Coordinador del MONR · 71 años",
+      "estado": "Condena",
+      "fecha": "2024-03",
+      "destacado": false,
+      "resumen": "Cumple 9 años en la prisión de Guanajay (Artemisa). Denuncia maltratos, cinco enfermedades crónicas y negación de asistencia médica.",
+      "fuentes": [
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "garcia-rios",
+      "nombre": "Lázaro García Ríos",
+      "rol": "Preso político",
+      "estado": "Fallecido bajo custodia",
+      "fecha": "2026-01-22",
+      "destacado": false,
+      "resumen": "Falleció bajo custodia del Estado el 22 de enero mientras cumplía una condena de 20 años, tras reiteradas denuncias por negación de atención médica.",
+      "fuentes": [
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "brieva",
+      "nombre": "Ernesto Brieva Sempé",
+      "rol": "Preso del 11J · 52 años",
+      "estado": "Fallecido bajo custodia",
+      "fecha": "2026-05-13",
+      "destacado": false,
+      "resumen": "Falleció el 13 de mayo en el Combinado del Este a los 52 años. Padecía insuficiencia renal crónica y desnutrición severa; las autoridades le negaron la hemodiálisis necesaria. Es la sexta muerte documentada de un preso del 11J desde 2023.",
+      "fuentes": [
+        "Prisoners Defenders"
+      ]
+    },
+    {
+      "id": "reyes-amanda",
+      "nombre": "Amanda Reyes Moreno",
+      "rol": "Vecina · San Miguel del Padrón, La Habana",
+      "estado": "Detención",
+      "fecha": "2026-05-15",
+      "destacado": false,
+      "resumen": "Detenida el 15 de mayo junto a Lusmari Reyes Moreno durante protestas en San Miguel del Padrón desencadenadas por más de 30 horas consecutivas de apagón.",
+      "fuentes": [
+        "OCDH",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "reyes-lusmari",
+      "nombre": "Lusmari Reyes Moreno",
+      "rol": "Vecina · San Miguel del Padrón, La Habana",
+      "estado": "Detención",
+      "fecha": "2026-05-15",
+      "destacado": false,
+      "resumen": "Detenida el 15 de mayo junto a Amanda Reyes Moreno durante protestas en San Miguel del Padrón por más de 30 horas de apagón.",
+      "fuentes": [
+        "OCDH",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "hernandez-leyva",
+      "nombre": "Mario Alberto Hernández Leyva",
+      "rol": "Vicepresidente del MONR · promotor de Cuba Decide",
+      "estado": "Detención",
+      "fecha": "2026-05-20",
+      "destacado": false,
+      "resumen": "Expreso político redetenido el 20 de mayo. Vicepresidente del Movimiento de Oposición para una Nueva República y promotor de la campaña Cuba Decide. Ha sido encarcelado en nueve ocasiones por el régimen.",
+      "fuentes": [
+        "OCDH",
+        "CiberCuba"
+      ]
+    },
+    {
+      "id": "mojena",
+      "nombre": "Fidel Mojena",
+      "rol": "Activista",
+      "estado": "Detención",
+      "fecha": "2026-05-20",
+      "destacado": false,
+      "resumen": "Activista detenido el 20 de mayo, la misma jornada que Mario Alberto Hernández Leyva.",
+      "fuentes": [
+        "OCDH"
+      ]
+    }
+  ],
+  "metodologia": {
+    "fuentes": [
+      {
+        "nombre": "OCDH",
+        "tipo": "informe mensual",
+        "url": "https://observacuba.org"
+      },
+      {
+        "nombre": "Prisoners Defenders",
+        "tipo": "base de datos de presos políticos",
+        "url": "https://www.prisionersdefenders.org"
+      },
+      {
+        "nombre": "Prensa independiente cubana",
+        "tipo": "cobertura periodística",
+        "url": ""
+      }
+    ],
+    "periodo": "enero–mayo 2026",
+    "cadencia": "ciclo-8h",
+    "extraccion": "Gemini Flash con responseSchema constreñido; SearXNG self-hosted",
+    "validacion": "ajv contra represion.schema.json · esbuild · bracket-balance string-aware",
+    "limitaciones": [
+      "Subregistro reconocido por el OCDH: no es posible documentar todos los actos represivos",
+      "Concentración de cobertura en zonas con prensa activa (La Habana, Santiago de Cuba)"
+    ],
+    "cambios_metodologicos": []
+  }
+}

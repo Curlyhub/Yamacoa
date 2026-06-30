@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa/themes/represion.schema.json",
+  "title": "Dataset · tema represión (Cuba)",
+  "description": "Contrato de datos que produce el agente de búsqueda y consume el renderizador represion_cuba.jsx. El renderizador está congelado; sólo este fichero cambia en el ciclo rápido.",
+  "type": "object",
+  "required": ["meta", "serieMensual", "casos"],
+  "additionalProperties": false,
+  "$defs": {
+    "estado": {
+      "description": "Procedencia del valor: observado (dato directo de la fuente), estimado (derivado/calculado) o supuesto (hipótesis del agente).",
+      "type": "string",
+      "enum": ["observado", "estimado", "supuesto"]
+    },
+    "senalNivel": {
+      "description": "Intensidad con que el OCDH señala una provincia ese mes. null = no señalada.",
+      "type": ["string", "null"],
+      "enum": ["alta", "media", "baja", null]
+    },
+    "fuentes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Medios u organizaciones que respaldan el dato (procedencia)."
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["tema", "titulo", "fuentePrimaria", "actualizado", "ventana"],
+      "additionalProperties": false,
+      "properties": {
+        "tema": { "type": "string", "const": "represion" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "fuentePrimaria": { "type": "string" },
+        "ventana": { "type": "string", "description": "Periodo cubierto, p.ej. 'ene–may 2026'." },
+        "actualizado": { "type": "string" },
+        "nota": { "type": "string" }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "description": "Cifras de cabecera. El agente puede recalcular 'valor' a partir de las series.",
+      "items": {
+        "type": "object",
+        "required": ["id", "valor", "etiqueta", "estado"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "valor": { "type": "number" },
+          "etiqueta": { "type": "string" },
+          "estado": { "$ref": "#/$defs/estado" }
+        }
+      }
+    },
+    "serieMensual": {
+      "type": "array",
+      "description": "Una entrada por mes informado por el OCDH.",
+      "items": {
+        "type": "object",
+        "required": ["periodo", "mes", "total", "estado"],
+        "additionalProperties": false,
+        "properties": {
+          "periodo": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+          "mes": { "type": "string", "description": "Etiqueta corta para el eje, p.ej. 'May'." },
+          "total": { "type": "integer", "minimum": 0 },
+          "detenciones": { "type": ["integer", "null"], "minimum": 0 },
+          "otrosAbusos": { "type": ["integer", "null"], "minimum": 0 },
+          "estado": { "$ref": "#/$defs/estado" },
+          "fuente": { "type": "string" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "serieAnual": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["anio", "total", "estado"],
+        "additionalProperties": false,
+        "properties": {
+          "anio": { "type": "string", "pattern": "^[0-9]{4}$" },
+          "total": { "type": "integer", "minimum": 0 },
+          "detenciones": { "type": ["integer", "null"], "minimum": 0 },
+          "estado": { "$ref": "#/$defs/estado" },
+          "nota": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "acumuladoDesde2021": {
+      "type": ["integer", "null"],
+      "description": "Total acumulado de acciones represivas desde 2021 según el OCDH."
+    },
+    "composicion": {
+      "type": "object",
+      "description": "Desglose por tipo de abuso del mes de referencia.",
+      "required": ["periodo", "total", "tipos"],
+      "additionalProperties": false,
+      "properties": {
+        "periodo": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+        "total": { "type": "integer", "minimum": 0 },
+        "tipos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["tipo", "n", "estado"],
+            "additionalProperties": false,
+            "properties": {
+              "tipo": { "type": "string" },
+              "n": { "type": "integer", "minimum": 0 },
+              "estado": { "$ref": "#/$defs/estado" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "provincias": {
+      "type": "array",
+      "description": "Las 15 provincias + Isla de la Juventud. 'senal' indica si el OCDH la nombró como más afectada cada mes; la geometría del mapa vive en el renderizador y se une por 'id'.",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "senal"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "senal": {
+            "type": "object",
+            "description": "Mapa periodo->nivel. Claves con formato AAAA-MM.",
+            "patternProperties": { "^[0-9]{4}-[0-9]{2}$": { "$ref": "#/$defs/senalNivel" } },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "presos": {
+      "type": "object",
+      "required": ["fuente", "serie"],
+      "additionalProperties": false,
+      "properties": {
+        "fuente": { "type": "string" },
+        "serie": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["ref", "n"],
+            "additionalProperties": false,
+            "properties": {
+              "ref": { "type": "string" },
+              "periodo": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" },
+              "n": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "acumuladoDesde11J": { "type": ["integer", "null"], "minimum": 0 },
+        "desglose": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["etiqueta", "n"],
+            "additionalProperties": false,
+            "properties": {
+              "etiqueta": { "type": "string" },
+              "n": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "casos": {
+      "type": "array",
+      "description": "Casos individuales documentados. El agente añade los nuevos y conserva los anteriores salvo que cambie su estado.",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "estado", "resumen", "fuentes"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "description": "Identificador estable en minúsculas, sin espacios." },
+          "nombre": { "type": "string" },
+          "rol": { "type": "string" },
+          "estado": {
+            "type": "string",
+            "enum": [
+              "Detención",
+              "Prisión provisional",
+              "Condena",
+              "Protesta",
+              "Excarcelado",
+              "Impedimento de salida",
+              "Fallecido bajo custodia"
+            ]
+          },
+          "fecha": { "type": "string", "description": "AAAA, AAAA-MM o AAAA-MM-DD." },
+          "destacado": { "type": "boolean", "description": "Si true, se muestra como caso principal en cabecera de la pestaña." },
+          "resumen": { "type": "string", "maxLength": 600, "description": "Texto parafraseado, nunca citas largas de las fuentes." },
+          "fuentes": { "$ref": "#/$defs/fuentes" }
+        }
+      }
+    },
+    "metodologia": { "type": "object" }
+  }
+}

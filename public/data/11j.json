@@ -1,0 +1,458 @@
+{
+  "meta": {
+    "tema": "anatomia-11j",
+    "titulo": "La anatomía de la represión del 11J",
+    "subtitulo": "Quién pagó el precio de salir a la calle el 11 de julio de 2021",
+    "actualizado": "2026-06-27",
+    "fuente": "Justicia 11J / Cubalex"
+  },
+  "total": 1130,
+  "stats": [
+    {
+      "n": "83,6 %",
+      "l": "hombres",
+      "s": "entre los casos documentados",
+      "color": "petrol"
+    },
+    {
+      "n": "16,4 %",
+      "l": "mujeres",
+      "s": "hasta 26 % entre los más jóvenes",
+      "color": "marigold"
+    },
+    {
+      "n": "30",
+      "l": "edad mediana",
+      "s": "32 menores; el más joven, 14",
+      "color": "paper"
+    },
+    {
+      "n": "50,5 %",
+      "l": "seguía en detención",
+      "s": "último reporte",
+      "color": "clay"
+    }
+  ],
+  "prov": [
+    {
+      "p": "La Habana",
+      "c": 353
+    },
+    {
+      "p": "Santiago de Cuba",
+      "c": 176
+    },
+    {
+      "p": "Mayabeque",
+      "c": 87
+    },
+    {
+      "p": "Matanzas",
+      "c": 87
+    },
+    {
+      "p": "Villa Clara",
+      "c": 85
+    },
+    {
+      "p": "Artemisa",
+      "c": 85
+    },
+    {
+      "p": "Holguín",
+      "c": 85
+    },
+    {
+      "p": "Camagüey",
+      "c": 49
+    },
+    {
+      "p": "Cienfuegos",
+      "c": 29
+    },
+    {
+      "p": "Guantánamo",
+      "c": 18
+    },
+    {
+      "p": "Las Tunas",
+      "c": 17
+    },
+    {
+      "p": "Sancti Spíritus",
+      "c": 17
+    },
+    {
+      "p": "Isla de la Juventud",
+      "c": 15
+    },
+    {
+      "p": "Granma",
+      "c": 11
+    },
+    {
+      "p": "Ciego de Ávila",
+      "c": 7
+    },
+    {
+      "p": "Pinar del Río",
+      "c": 4
+    }
+  ],
+  "comp": [
+    {
+      "band": "Todas",
+      "nEdad": 626,
+      "sexo": {
+        "m": 16.4
+      },
+      "raza": {
+        "nm": 39.8,
+        "nK": 658
+      }
+    },
+    {
+      "band": "14–17",
+      "nEdad": 32,
+      "sexo": {
+        "m": 25.0
+      },
+      "raza": {
+        "nm": 40.9,
+        "nK": 22
+      }
+    },
+    {
+      "band": "18–24",
+      "nEdad": 151,
+      "sexo": {
+        "m": 26.0
+      },
+      "raza": {
+        "nm": 38.0,
+        "nK": 108
+      }
+    },
+    {
+      "band": "25–34",
+      "nEdad": 213,
+      "sexo": {
+        "m": 16.0
+      },
+      "raza": {
+        "nm": 37.9,
+        "nK": 153
+      }
+    },
+    {
+      "band": "35–44",
+      "nEdad": 131,
+      "sexo": {
+        "m": 19.8
+      },
+      "raza": {
+        "nm": 39.1,
+        "nK": 92
+      }
+    },
+    {
+      "band": "45–54",
+      "nEdad": 73,
+      "sexo": {
+        "m": 17.8
+      },
+      "raza": {
+        "nm": 35.9,
+        "nK": 39
+      }
+    },
+    {
+      "band": "55+",
+      "nEdad": 26,
+      "sexo": {
+        "m": 11.5
+      },
+      "raza": {
+        "nm": 33.3,
+        "nK": 21
+      }
+    }
+  ],
+  "edad": {
+    "grid": [
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46,
+      48,
+      50,
+      52,
+      54,
+      56,
+      58,
+      60,
+      62,
+      64,
+      66,
+      68,
+      70,
+      72,
+      74
+    ],
+    "grupos": [
+      {
+        "g": "En detención",
+        "col": "marigold",
+        "med": 31,
+        "q1": 25,
+        "q3": 40,
+        "whlo": 15,
+        "whhi": 62.5,
+        "dens": [
+          0.167,
+          0.32,
+          0.51,
+          0.701,
+          0.853,
+          0.951,
+          0.997,
+          1,
+          0.97,
+          0.918,
+          0.843,
+          0.751,
+          0.655,
+          0.574,
+          0.514,
+          0.472,
+          0.44,
+          0.403,
+          0.35,
+          0.28,
+          0.207,
+          0.148,
+          0.108,
+          0.083,
+          0.065,
+          0.053,
+          0.045,
+          0.035,
+          0.022,
+          0.011,
+          0.004
+        ]
+      },
+      {
+        "g": "En excarcelación",
+        "col": "petrol",
+        "med": 29,
+        "q1": 22,
+        "q3": 38,
+        "whlo": 14,
+        "whhi": 62,
+        "dens": [
+          0.345,
+          0.553,
+          0.753,
+          0.903,
+          0.983,
+          1,
+          0.972,
+          0.917,
+          0.843,
+          0.761,
+          0.687,
+          0.63,
+          0.579,
+          0.52,
+          0.448,
+          0.376,
+          0.315,
+          0.269,
+          0.234,
+          0.201,
+          0.168,
+          0.136,
+          0.111,
+          0.094,
+          0.081,
+          0.065,
+          0.047,
+          0.029,
+          0.017,
+          0.012,
+          0.011
+        ]
+      }
+    ]
+  },
+  "radar": {
+    "labels": [
+      "Desórdenes públicos",
+      "Desacato",
+      "Atentado",
+      "Sedición",
+      "Instigación a delinquir",
+      "Sabotaje",
+      "Daños",
+      "Propagación de epidemias"
+    ],
+    "abbr": [
+      "D. púb.",
+      "Desac.",
+      "Atent.",
+      "Sedic.",
+      "Instig.",
+      "Sabot.",
+      "Daños",
+      "Epid."
+    ],
+    "base": [
+      69.7,
+      40.8,
+      37.3,
+      21.9,
+      12.2,
+      7.5,
+      7.1,
+      6.6
+    ],
+    "cond": {
+      "Desórdenes públicos": [
+        100,
+        55.7,
+        49.8,
+        0.3,
+        15.4,
+        8.3,
+        9.9,
+        8.3
+      ],
+      "Desacato": [
+        95.3,
+        100,
+        54.4,
+        0,
+        14.8,
+        2.6,
+        4.2,
+        13.2
+      ],
+      "Atentado": [
+        93.1,
+        59.4,
+        100,
+        0.6,
+        21,
+        0.9,
+        17.9,
+        12.1
+      ],
+      "Sedición": [
+        1,
+        0,
+        1,
+        100,
+        0.5,
+        0,
+        0,
+        0
+      ],
+      "Instigación a delinquir": [
+        88.5,
+        49.6,
+        64.6,
+        0.9,
+        100,
+        0,
+        38.9,
+        12.4
+      ],
+      "Sabotaje": [
+        77.1,
+        14.3,
+        4.3,
+        0,
+        0,
+        100,
+        1.4,
+        2.9
+      ],
+      "Daños": [
+        97,
+        24.2,
+        93.9,
+        0,
+        66.7,
+        1.5,
+        100,
+        0
+      ],
+      "Propagación de epidemias": [
+        88.5,
+        82,
+        68.9,
+        0,
+        23,
+        3.3,
+        0,
+        100
+      ]
+    },
+    "years": [
+      6.9,
+      6.9,
+      7.6,
+      10.0,
+      8.4,
+      9.6,
+      8.7,
+      8.0
+    ],
+    "condenaMediana": 7
+  },
+  "contexto": {
+    "stats": [
+      {
+        "n": "~90.000",
+        "l": "personas presas en Cuba",
+        "s": "World Prison Brief",
+        "color": "paper"
+      },
+      {
+        "n": "794",
+        "l": "presos por 100.000 hab.",
+        "s": "2º del mundo, tras El Salvador",
+        "color": "clay"
+      },
+      {
+        "n": "1 de 126",
+        "l": "cubanos tras las rejas",
+        "s": "tasa de encarcelamiento",
+        "color": "marigold"
+      },
+      {
+        "n": "7 años",
+        "l": "condena mediana del 11J",
+        "s": "por protestar",
+        "color": "clay"
+      }
+    ],
+    "mujeresPenalPct": 7.4,
+    "mujeres11jPct": 16.4,
+    "fuente": "World Prison Brief / ICPR · Justicia 11J"
+  }
+}

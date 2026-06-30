@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "metodologias",
+  "description": "Agregado de metodologías de todos los expedientes de Yamacoa.",
+  "type": "object",
+  "required": ["generado_at", "pipeline_global", "temas"],
+  "additionalProperties": false,
+  "properties": {
+    "generado_at": { "type": "string" },
+    "pipeline_global": {
+      "type": "object",
+      "required": ["ciclo", "herramientas", "publicacion", "fuentes_recurrentes"],
+      "additionalProperties": false,
+      "properties": {
+        "ciclo":              { "type": "string" },
+        "herramientas":       { "type": "array", "items": { "type": "string" } },
+        "publicacion":        { "type": "string" },
+        "fuentes_recurrentes":{ "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "temas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo", "metodologia"],
+        "additionalProperties": false,
+        "properties": {
+          "id":     { "type": "string" },
+          "titulo": { "type": "string" },
+          "metodologia": {
+            "type": "object",
+            "required": ["fuentes", "periodo", "cadencia", "extraccion", "validacion", "limitaciones", "cambios_metodologicos"],
+            "additionalProperties": false,
+            "properties": {
+              "fuentes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["nombre", "tipo", "url"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "nombre": { "type": "string" },
+                    "tipo":   { "type": "string" },
+                    "url":    { "type": "string" }
+                  }
+                }
+              },
+              "periodo":   { "type": "string" },
+              "cadencia":  { "type": "string", "enum": ["ciclo-8h", "estatica"] },
+              "extraccion":{ "type": "string" },
+              "validacion":{ "type": "string" },
+              "limitaciones":          { "type": "array", "items": { "type": "string" } },
+              "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

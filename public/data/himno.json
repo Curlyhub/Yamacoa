@@ -1,0 +1,470 @@
+{
+  "meta": {
+    "tema": "himno-narciso-lopez",
+    "titulo": "Himno Patriótico Cubano",
+    "subtitulo": "El himno de Narciso López · 1850",
+    "actualizado": "2026-06-27",
+    "fuentePrincipal": "https://movimientoc40.com/himno-de-narciso-lopez-himno-patriotico-cubano/"
+  },
+  "ficha": {
+    "anio": "1850",
+    "tipo": "Marcha patriótica",
+    "musica": "Narciso López Frías — hijo del General Narciso López de Urriola",
+    "letra": "José María Heredia y otros poetas populares (tres estrofas del «Himno del desterrado», 1825). Algunas fuentes atribuyen versos a Plácido Gener.",
+    "documento": "Partitura impresa, 1898 — Gallica / Bibliothèque nationale de France (dominio público)",
+    "estatus": "Pieza histórica. El historiador Enrique Gay-Calbó (1945) la consideró un antecedente del Himno Nacional.",
+    "partituraUrl": "https://gallica.bnf.fr/ark:/12148/bpt6k855033c/f1.double",
+    "videoUrl": "https://www.youtube.com/watch?v=TwVwz3PV9tU"
+  },
+  "intro": "En mayo de 1850, mientras la bandera de la estrella solitaria se izaba por primera vez en suelo cubano, circulaba con las expediciones de Narciso López una marcha de guerra. No es el Himno Nacional —ese llegaría en 1868 con La Bayamesa— pero es uno de sus antecedentes: el primer canto patriótico ligado a los símbolos que hoy identifican a Cuba.",
+  "versoDestacado": {
+    "texto": "Ya en las playas de Cuba tremola\nLa bandera del azul y el punzó\nCon la estrella…",
+    "nota": "Verso de una versión que circuló (atribuida a Plácido Gener); no figura en la partitura de la BNF. El texto documentado y completo está en la pestaña «El Himno»."
+  },
+  "timeline": [
+    {
+      "anio": "1825",
+      "fecha": "Septiembre",
+      "hito": "Heredia escribe el «Himno del desterrado»",
+      "detalle": "Desde el exilio, el santiaguero José María Heredia escribe el poema del que más tarde se tomarán tres estrofas para la marcha.",
+      "tono": "origen"
+    },
+    {
+      "anio": "1849",
+      "fecha": "",
+      "hito": "Se diseña la bandera de la estrella solitaria",
+      "detalle": "Miguel Teurbe Tolón la diseña a partir de una idea de Narciso López; Emilia Teurbe Tolón la cose a mano por primera vez.",
+      "tono": "simbolo"
+    },
+    {
+      "anio": "1850",
+      "fecha": "19 de mayo",
+      "hito": "Desembarco en Cárdenas",
+      "detalle": "López desembarca con unos 600 hombres del vapor Creole e iza por primera vez «la bandera del azul y el punzó». La marcha circula como canto de la expedición.",
+      "tono": "pico"
+    },
+    {
+      "anio": "1851",
+      "fecha": "1 de septiembre",
+      "hito": "Ejecución de Narciso López",
+      "detalle": "Tras una última expedición fallida es capturado y ejecutado a garrote vil en La Habana, acusado de alta traición.",
+      "tono": "caida"
+    },
+    {
+      "anio": "1868",
+      "fecha": "20 de octubre",
+      "hito": "Nace La Bayamesa",
+      "detalle": "Perucho Figueredo da a conocer el futuro Himno Nacional en la toma de Bayamo.",
+      "tono": "origen"
+    },
+    {
+      "anio": "1869",
+      "fecha": "11 de abril",
+      "hito": "Guáimaro adopta la bandera",
+      "detalle": "La Asamblea Constituyente adopta como emblema nacional la bandera de López.",
+      "tono": "simbolo"
+    },
+    {
+      "anio": "1945",
+      "fecha": "",
+      "hito": "Reconocida como antecedente",
+      "detalle": "El historiador Enrique Gay-Calbó cataloga la marcha de 1850 entre los antecedentes del himno nacional.",
+      "tono": "cierre"
+    }
+  ],
+  "letra": {
+    "nota": "El escaneo de la partitura original (BNF / Gallica, imp. Paul Dupont) confirma el texto: letra de Heredia y otros, música de Narciso López y Frías. Aquí va completo, junto a su raíz literaria.",
+    "noEs": "No es «La Bayamesa» (1868, Perucho Figueredo), que es el Himno Nacional —pieza posterior y distinta—. Esta marcha es uno de sus antecedentes.",
+    "completo": {
+      "titulo": "Himno Patriótico Cubano",
+      "atrib": "Letra de Heredia y otros poetas populares · Música de Narciso López y Frías",
+      "fuente": "Partitura impresa (París, Imp. Paul Dupont). Bibliothèque nationale de France — Gallica. Dominio público.",
+      "movimientos": [
+        {
+          "n": "I",
+          "bloques": [
+            {
+              "rol": "Coro de hombres",
+              "versos": [
+                "Ya retumba el cañón en la sierra,",
+                "Ya nos llama el clarín á lidiar;",
+                "Entonemos el canto de guerra",
+                "Y corramos la Patria á salvar.",
+                "¡Guerra! ¡guerra! repite en el valle",
+                "Atronando la voz del cañón;",
+                "¡Libertad! ya tus hijos levantan",
+                "De la estrella de Cuba el pendón."
+              ]
+            },
+            {
+              "rol": "Estrofa · Dúo",
+              "versos": [
+                "¡Á las armas, cubanos, nos llama",
+                "El clamor de la Patria infelice,",
+                "El honor del deber, que nos dice:",
+                "¡Por la Patria vencer ó morir!",
+                "Tras de siglos y siglos de yugo",
+                "En que gime la triste aherrojada,",
+                "Luce al fin la brillante alborada",
+                "Precursora de un gran porvenir."
+              ]
+            },
+            {
+              "rol": "Coro de mujeres",
+              "versos": [
+                "¡Cuba! al fin te verás libre y pura",
+                "Como el aire, la luz que respiras,",
+                "Cual las ondas hirvientes que miras",
+                "De tus playas la arena besar."
+              ]
+            },
+            {
+              "rol": "Todos",
+              "versos": [
+                "Aunque viles traidores le sirvan,",
+                "Del tirano es inútil la saña,",
+                "Que no en vano entre Cuba y España",
+                "Tiende inmenso sus olas el mar."
+              ]
+            }
+          ]
+        },
+        {
+          "n": "II",
+          "bloques": [
+            {
+              "rol": "Coro de hombres · Estrofa (Dúo)",
+              "versos": [
+                "Cuando brille la aurora bendita",
+                "Victoriosa en el cielo cubano,",
+                "Y sucumba de España el tirano",
+                "Á los golpes del hierro fatal;",
+                "Coronada de palmas y flores,",
+                "Con asombro del godo insolente",
+                "Alzará Cuba Libre la frente",
+                "Á los rayos del sol tropical."
+              ]
+            }
+          ],
+          "refran": "Se repiten el Coro de mujeres y el Todos."
+        },
+        {
+          "n": "III",
+          "bloques": [
+            {
+              "rol": "Coro de hombres · Estrofa (Dúo)",
+              "versos": [
+                "Al poder el aliento se oponga,",
+                "Y á la muerte contraste la muerte:",
+                "La constancia encadena la suerte;",
+                "Siempre vence quien sabe morir.",
+                "Enlacemos un nombre glorioso",
+                "De los siglos al rápido vuelo:",
+                "Elevemos los ojos al cielo,",
+                "Y á los años que están por venir."
+              ]
+            }
+          ],
+          "refran": "Se repiten el Coro de mujeres y el Todos."
+        },
+        {
+          "n": "IV",
+          "bloques": [
+            {
+              "rol": "Coro de hombres · Estrofa (Dúo)",
+              "versos": [
+                "Vale más á la espada enemiga",
+                "Presentar el impávido pecho,",
+                "Que yacer de dolor en un lecho,",
+                "Y mil muertes muriendo sufrir.",
+                "Que la gloria en las lides anima",
+                "El ardor del patriota constante,",
+                "Y circunda con halo brillante",
+                "De su muerte el momento feliz."
+              ]
+            }
+          ],
+          "refran": "Se repiten el Coro de mujeres y el Todos."
+        }
+      ]
+    },
+    "otraVersion": {
+      "titulo": "Otra versión que circuló",
+      "atrib": "Fragmento atribuido a Plácido Gener (recogido por La Jiribilla). No figura en la partitura de la BNF.",
+      "versos": [
+        "Ya en las playas de Cuba tremola",
+        "la bandera del azul y el punzó",
+        "con la estrella…"
+      ]
+    },
+    "raiz": {
+      "titulo": "La raíz literaria",
+      "atrib": "José María Heredia, «Himno del desterrado» (septiembre de 1825). Tres de sus estrofas se adaptaron a la marcha de López (Gay-Calbó, 1945).",
+      "fragmentos": [
+        {
+          "sub": "Apertura",
+          "versos": [
+            "Reina el sol, y las olas serenas",
+            "corta en torno la prora triunfante,",
+            "y hondo rastro de espuma brillante",
+            "va dejando la nave en el mar."
+          ]
+        },
+        {
+          "sub": "El giro combativo",
+          "versos": [
+            "Aun habrá corazones en Cuba",
+            "que me envidien de mártir la suerte,",
+            "y prefieran espléndida muerte",
+            "a su amargo, azaroso vivir."
+          ]
+        }
+      ]
+    }
+  },
+  "encuesta": {
+    "intro": "Sin respuestas correctas: es tu opinión. Los resultados se guardan en tu dispositivo.",
+    "preguntas": [
+      {
+        "id": "conocia",
+        "texto": "¿Conocías la existencia de este himno antes de hoy?",
+        "opciones": [
+          {
+            "id": "si",
+            "label": "Sí, lo conocía",
+            "seed": 14
+          },
+          {
+            "id": "oido",
+            "label": "Había oído de él",
+            "seed": 22
+          },
+          {
+            "id": "no",
+            "label": "No, es nuevo para mí",
+            "seed": 61
+          }
+        ]
+      },
+      {
+        "id": "reconocimiento",
+        "texto": "¿Merece más reconocimiento dentro de la memoria de los símbolos patrios?",
+        "opciones": [
+          {
+            "id": "si",
+            "label": "Sí, claramente",
+            "seed": 58
+          },
+          {
+            "id": "parte",
+            "label": "En parte",
+            "seed": 31
+          },
+          {
+            "id": "no",
+            "label": "No especialmente",
+            "seed": 9
+          }
+        ]
+      },
+      {
+        "id": "lopez",
+        "texto": "Narciso López une el impulso independentista con el anexionismo. ¿Cómo lo valoras?",
+        "opciones": [
+          {
+            "id": "simbolos",
+            "label": "Pesa más su aporte a los símbolos",
+            "seed": 37
+          },
+          {
+            "id": "anexion",
+            "label": "Pesa más su anexionismo",
+            "seed": 24
+          },
+          {
+            "id": "ambivalente",
+            "label": "Es una figura ambivalente",
+            "seed": 49
+          }
+        ]
+      },
+      {
+        "id": "heredia",
+        "texto": "¿Qué te parece que la letra provenga en buena medida de Heredia?",
+        "opciones": [
+          {
+            "id": "valor",
+            "label": "Le da más valor literario",
+            "seed": 52
+          },
+          {
+            "id": "igual",
+            "label": "No cambia mucho",
+            "seed": 18
+          },
+          {
+            "id": "nuevo",
+            "label": "No lo sabía",
+            "seed": 40
+          }
+        ]
+      }
+    ]
+  },
+  "evaluacion": {
+    "intro": "Siete preguntas sobre lo que acabas de leer. Al terminar verás tu puntaje y tu desglose por área.",
+    "categorias": [
+      "Cronología",
+      "Autoría",
+      "Símbolos",
+      "Contexto"
+    ],
+    "preguntas": [
+      {
+        "id": "q1",
+        "cat": "Cronología",
+        "texto": "¿En qué año se sitúa esta marcha patriótica?",
+        "opciones": [
+          "1825",
+          "1850",
+          "1868",
+          "1898"
+        ],
+        "correcta": 1,
+        "exp": "Circula en 1850, con las expediciones de Narciso López."
+      },
+      {
+        "id": "q2",
+        "cat": "Autoría",
+        "texto": "¿Quién compuso la música?",
+        "opciones": [
+          "Perucho Figueredo",
+          "Narciso López Frías",
+          "José María Heredia",
+          "José White"
+        ],
+        "correcta": 1,
+        "exp": "Narciso López Frías, hijo del General, musicalizó la pieza."
+      },
+      {
+        "id": "q3",
+        "cat": "Autoría",
+        "texto": "La letra toma estrofas de un poema de…",
+        "opciones": [
+          "Plácido Gener, en exclusiva",
+          "José María Heredia («Himno del desterrado»)",
+          "Miguel Teurbe Tolón",
+          "Cirilo Villaverde"
+        ],
+        "correcta": 1,
+        "exp": "Tres estrofas provienen del «Himno del desterrado» de Heredia (1825)."
+      },
+      {
+        "id": "q4",
+        "cat": "Símbolos",
+        "texto": "¿Quién diseñó la bandera, a partir de una idea de López?",
+        "opciones": [
+          "Emilia Teurbe Tolón",
+          "Miguel Teurbe Tolón",
+          "Carlos M. de Céspedes",
+          "Narciso López en persona"
+        ],
+        "correcta": 1,
+        "exp": "Miguel Teurbe Tolón la diseñó; Emilia, su esposa, la cosió."
+      },
+      {
+        "id": "q5",
+        "cat": "Símbolos",
+        "texto": "¿Dónde se izó por primera vez «la bandera del azul y el punzó»?",
+        "opciones": [
+          "Bayamo",
+          "Cárdenas, Matanzas",
+          "Guáimaro",
+          "La Habana"
+        ],
+        "correcta": 1,
+        "exp": "El 19 de mayo de 1850, en el desembarco de Cárdenas."
+      },
+      {
+        "id": "q6",
+        "cat": "Contexto",
+        "texto": "¿Cuál fue el destino de Narciso López en 1851?",
+        "opciones": [
+          "Murió en combate en Cárdenas",
+          "Ejecutado a garrote vil en La Habana",
+          "Exiliado de por vida en EE.UU.",
+          "Capturado y luego liberado"
+        ],
+        "correcta": 1,
+        "exp": "Fue ejecutado a garrote vil en La Habana el 1 de septiembre de 1851."
+      },
+      {
+        "id": "q7",
+        "cat": "Contexto",
+        "texto": "El historiador Gay-Calbó (1945) consideró esta marcha como…",
+        "opciones": [
+          "El himno nacional oficial",
+          "Un antecedente del Himno Nacional",
+          "Una canción española",
+          "Una obra perdida"
+        ],
+        "correcta": 1,
+        "exp": "La situó entre los antecedentes del himno nacional cubano."
+      }
+    ],
+    "veredictos": [
+      {
+        "min": 0,
+        "max": 39,
+        "titulo": "Primer contacto",
+        "texto": "Acabas de conocer la pieza. Vuelve a la Historia y al Himno y reintenta."
+      },
+      {
+        "min": 40,
+        "max": 69,
+        "titulo": "Vas tomando el hilo",
+        "texto": "Tienes la cronología; afina la autoría y el contexto."
+      },
+      {
+        "min": 70,
+        "max": 99,
+        "titulo": "Buen dominio",
+        "texto": "Manejas la historia del himno con soltura."
+      },
+      {
+        "min": 100,
+        "max": 100,
+        "titulo": "Partitura completa",
+        "texto": "Dominas la historia del himno de punta a cabo."
+      }
+    ]
+  },
+  "metodologia": {
+    "fuentes": [
+      {
+        "nombre": "BNF/Gallica",
+        "tipo": "partitura original (dominio público)",
+        "url": "https://gallica.bnf.fr/ark:/12148/bpt6k855033c/f1.double"
+      },
+      {
+        "nombre": "Enrique Gay-Calbó",
+        "tipo": "ensayo historiográfico (1945)",
+        "url": ""
+      },
+      {
+        "nombre": "José María Heredia",
+        "tipo": "fuente literaria primaria · Himno del desterrado (1825)",
+        "url": ""
+      }
+    ],
+    "periodo": "pieza histórica · 1850",
+    "cadencia": "estatica",
+    "extraccion": "Verificación manual directa contra la partitura original impresa (BNF/Gallica, imp. Paul Dupont); contraste con fuentes secundarias",
+    "validacion": "ajv contra himno.schema.json · esbuild · bracket-balance string-aware",
+    "limitaciones": [
+      "Autoría de la letra debatida: la partitura de la BNF atribuye a Heredia y otros poetas populares; parte de la prensa cubana cita a Plácido Gener",
+      "La versión 'del azul y el punzó' (atribuida a Gener) no figura en la partitura primaria; se documenta por separado"
+    ],
+    "cambios_metodologicos": []
+  }
+}

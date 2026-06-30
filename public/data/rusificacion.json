@@ -1,0 +1,1598 @@
+{
+  "generado_at": "2026-06-25T06:29:37.736479726Z",
+  "links": [
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:37.653841Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.653841Z",
+      "rel": "DIRIGIÓ",
+      "s": "luis-alberto-rodriguez-lopez-calleja",
+      "sources": [],
+      "status": "estructura",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:37.578322Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.578322Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "raul-guillermo-rodriguez-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:53.238217Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:29:37.537235Z",
+      "rel": "FACILITA_FONDOS_A",
+      "s": "fincimex",
+      "sources": [],
+      "status": "presunto",
+      "t": "gran-azul-llc"
+    },
+    {
+      "confidence": 0.550000011920929,
+      "first_seen": "2026-06-24T19:29:45.583256Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.500192Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "fincimex"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:29:37.423615Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:29:37.423615Z",
+      "rel": "RECIBE_FONDOS_DE_REMESAS_SUPERVISADAS_POR",
+      "s": "gran-azul-llc",
+      "sources": [],
+      "status": "presunto",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:29:37.347977Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:29:37.347977Z",
+      "rel": "VINCULADA_A_ENTORNO_DE",
+      "s": "gran-azul-llc",
+      "sources": [],
+      "status": "presunto",
+      "t": "raul-guillermo-rodriguez-castro"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:43.884372Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.275946Z",
+      "rel": "DIRIGIÓ",
+      "s": "luis-alberto-rodriguez-lopez-calleja",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:37.197812Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.197812Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "raul-guillermo-rodriguez-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "luis-alberto-rodriguez-lopez-calleja"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:37.125178Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.125178Z",
+      "rel": "INFLUENCIA_FUERTE",
+      "s": "raul-guillermo-rodriguez-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:37.043005Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:37.043005Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "raul-guillermo-rodriguez-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "raul-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:36.879413Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.879413Z",
+      "rel": "DIRIGE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "miguel-diaz-canel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:36.765620Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.765620Z",
+      "rel": "DIRIGE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "gobierno-cubano"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:52.731374Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.698549Z",
+      "rel": "MIEMBRO_COMITE_CENTRAL",
+      "s": "ania-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "pcc"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:52.644592Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.571728Z",
+      "rel": "PRESIDENTA_EJECUTIVA",
+      "s": "ania-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:36.440274Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.440274Z",
+      "rel": "SUBORDINADO_A",
+      "s": "minfar",
+      "sources": [],
+      "status": "estructura",
+      "t": "pcc"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:36.293941Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:36.293941Z",
+      "rel": "RINDE_CUENTAS_A",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "minfar"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.992683Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.992683Z",
+      "rel": "CONTROLA_A_TRAVES_DE_CARGO",
+      "s": "miguel-diaz-canel",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.837913Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.837913Z",
+      "rel": "EJERCE_CONTROL_DIRECTO",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-25T06:29:35.763106Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-25T06:29:35.763106Z",
+      "rel": "INSTRUYE",
+      "s": "ania-lastre-morera",
+      "sources": [],
+      "status": "confirmado",
+      "t": "adys-lastre-morera"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-25T06:29:35.683836Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-25T06:29:35.683836Z",
+      "rel": "DIRIGE_OPERATIVAMENTE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "confirmado",
+      "t": "santa-lena-investment-lc"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-25T06:29:35.612972Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-25T06:29:35.612972Z",
+      "rel": "DIRIGE_OPERATIVAMENTE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "confirmado",
+      "t": "remas-remas-investment-llc"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:45.268959Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-25T06:29:35.539296Z",
+      "rel": "RECIBE_CAPITAL_DESVIADO_DE",
+      "s": "santa-lena-investment-lc",
+      "sources": [],
+      "status": "confirmado",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:45.195937Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-25T06:29:35.466895Z",
+      "rel": "RECIBE_CAPITAL_DESVIADO_DE",
+      "s": "remas-remas-investment-llc",
+      "sources": [],
+      "status": "confirmado",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.388844Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.388844Z",
+      "rel": "GERENTE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "santa-lena-investment-lc"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.316262Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.316262Z",
+      "rel": "GERENTE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "remas-remas-investment-llc"
+    },
+    {
+      "confidence": 0.550000011920929,
+      "first_seen": "2026-06-24T19:29:44.816664Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.267511Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.186552Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.186552Z",
+      "rel": "ARBITRO_FINAL_FUSION",
+      "s": "min-economia-finanzas-planificacion",
+      "sources": [],
+      "status": "estructura",
+      "t": "sociedades-mercantiles-mixtas"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.115054Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.115054Z",
+      "rel": "APRUEBA_SMM",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "sociedades-mercantiles-mixtas"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:35.040202Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:35.040202Z",
+      "rel": "CREA_MARCO_LEGAL_PARA",
+      "s": "min-economia-finanzas-planificacion",
+      "sources": [],
+      "status": "estructura",
+      "t": "sociedades-mercantiles-mixtas"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.957535Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.957535Z",
+      "rel": "COORDINA_ASIGNACION_CONCESIONES",
+      "s": "min-comercio-inversion-extranjera",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.881609Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.881609Z",
+      "rel": "COORDINA_ASIGNACION_CONCESIONES",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.807458Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.807458Z",
+      "rel": "SUPERVISA",
+      "s": "min-economia-finanzas-planificacion",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.738753Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.738753Z",
+      "rel": "SUPERVISA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:44.592020Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:29:34.663157Z",
+      "rel": "RECIBE_PAGOS_IRREGULARES_DE",
+      "s": "enrique-perez-fumero",
+      "sources": [],
+      "status": "presunto",
+      "t": "copmar"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.555296Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.555296Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "anisa-fumero-lopez",
+      "sources": [],
+      "status": "estructura",
+      "t": "enrique-perez-fumero"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.485780Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.485780Z",
+      "rel": "DIRECTIVA_PRINCIPAL",
+      "s": "anisa-fumero-lopez",
+      "sources": [],
+      "status": "estructura",
+      "t": "coral-maritima-sa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.322758Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.322758Z",
+      "rel": "APRUEBA_COMO_SMM",
+      "s": "min-economia-finanzas-planificacion",
+      "sources": [],
+      "status": "estructura",
+      "t": "coral-maritima-sa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.248293Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.248293Z",
+      "rel": "ASIGNA_CONCESIÓN",
+      "s": "zed-mariel",
+      "sources": [],
+      "status": "estructura",
+      "t": "coral-maritima-sa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.079750Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.079750Z",
+      "rel": "ASIGNA_LICENCIAS",
+      "s": "min-comercio-inversion-extranjera",
+      "sources": [],
+      "status": "estructura",
+      "t": "holding-lisa-titolo-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:34.005145Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:34.005145Z",
+      "rel": "RECIBE_ACTIVOS_Y_LICENCIAS",
+      "s": "holding-lisa-titolo-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "min-agroalimentacion"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.930590Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.930590Z",
+      "rel": "DISTRIBUIDORA_DE",
+      "s": "caribe-import",
+      "sources": [],
+      "status": "estructura",
+      "t": "cupet"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.853730Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.853730Z",
+      "rel": "IMPORTA_A_TRAVES_DE",
+      "s": "gaia-srl",
+      "sources": [],
+      "status": "estructura",
+      "t": "caribe-import"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.697355Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.697355Z",
+      "rel": "CONTROLA",
+      "s": "lisa-titolo-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "holding-lisa-titolo-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.528684Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.528684Z",
+      "rel": "IMPORTA_DE",
+      "s": "gaia-srl",
+      "sources": [],
+      "status": "estructura",
+      "t": "cupet"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.372438Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.372438Z",
+      "rel": "RECIBE_LICENCIA",
+      "s": "gaia-srl",
+      "sources": [],
+      "status": "estructura",
+      "t": "min-comercio-inversion-extranjera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.297342Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.297342Z",
+      "rel": "PROPIETARIA",
+      "s": "lisa-titolo-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaia-srl"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.138102Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.138102Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "mariela-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "raul-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:33.057674Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:33.057674Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "lisa-titolo-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "mariela-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.897749Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.897749Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "lisa-titolo-castro",
+      "sources": [],
+      "status": "estructura",
+      "t": "raul-castro"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.654907Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.654907Z",
+      "rel": "OTORGA_LICENCIAS",
+      "s": "min-comercio-inversion-extranjera",
+      "sources": [],
+      "status": "estructura",
+      "t": "sociedades-mercantiles-mixtas"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.579040Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.579040Z",
+      "rel": "APRUEBA_CREACION",
+      "s": "min-economia-finanzas-planificacion",
+      "sources": [],
+      "status": "estructura",
+      "t": "sociedades-mercantiles-mixtas"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.437091Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.437091Z",
+      "rel": "GESTIONA",
+      "s": "manuel-marrero-cruz",
+      "sources": [],
+      "status": "estructura",
+      "t": "min-comercio-inversion-extranjera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.298833Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.298833Z",
+      "rel": "GESTIONA",
+      "s": "manuel-marrero-cruz",
+      "sources": [],
+      "status": "estructura",
+      "t": "min-agroalimentacion"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:32.132469Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:32.132469Z",
+      "rel": "GESTIONA",
+      "s": "manuel-marrero-cruz",
+      "sources": [],
+      "status": "estructura",
+      "t": "min-economia-finanzas-planificacion"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:31.963569Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.963569Z",
+      "rel": "SUBORDINADO_A",
+      "s": "manuel-marrero-cruz",
+      "sources": [],
+      "status": "estructura",
+      "t": "miguel-diaz-canel"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T23:16:06.309387Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.849181Z",
+      "rel": "CONTROLA_ESTRATEGICAMENTE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T23:16:06.233609Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.807437Z",
+      "rel": "CONTROLA_ESTRATEGICAMENTE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T23:16:06.125696Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.738421Z",
+      "rel": "CONTROLA_ESTRATEGICAMENTE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "far"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:51.609472Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.694839Z",
+      "rel": "DIRIGE",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "estado-cubano"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:31.610897Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.610897Z",
+      "rel": "OCUPA_CARGO",
+      "s": "miguel-diaz-canel",
+      "sources": [],
+      "status": "estructura",
+      "t": "estado-cubano"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:29:31.514619Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:29:31.514619Z",
+      "rel": "OCUPA_CARGO",
+      "s": "miguel-diaz-canel",
+      "sources": [],
+      "status": "estructura",
+      "t": "pcc"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:53.446581Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:53.446581Z",
+      "rel": "DIRIGIO",
+      "s": "luis-alberto-rodriguez-lopez-calleja",
+      "sources": [],
+      "status": "estructura",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:53.367350Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:53.367350Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "el-cangrejo",
+      "sources": [],
+      "status": "estructura",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:53.089837Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:25:53.089837Z",
+      "rel": "RECIBE_FONDOS_DE",
+      "s": "gran-azul-llc",
+      "sources": [],
+      "status": "presunto",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:53.020758Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:25:53.020758Z",
+      "rel": "VINCULADA_A",
+      "s": "gran-azul-llc",
+      "sources": [],
+      "status": "presunto",
+      "t": "el-cangrejo"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:52.941313Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:52.941313Z",
+      "rel": "DIRIGIO",
+      "s": "luis-alberto-rodriguez-lopez-calleja",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:52.863220Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:52.863220Z",
+      "rel": "INFLUENCIA_FUERTE",
+      "s": "el-cangrejo",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:52.549565Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:25:52.549565Z",
+      "rel": "DIRIGE_BAJO_INSTRUCCION",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "presunto",
+      "t": "ania-lastre-morera"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:52.343535Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:52.343535Z",
+      "rel": "COORDINA_CONCESIONES",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:52.239561Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:52.239561Z",
+      "rel": "BAJO_SUPERVISION",
+      "s": "zed-mariel",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-25T06:25:52.156383Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-25T06:25:52.156383Z",
+      "rel": "RECIBIO_PAGOS_IRREGULARES",
+      "s": "enrique-perez-fumero",
+      "sources": [],
+      "status": "presunto",
+      "t": "copmar"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-25T06:25:51.938730Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-25T06:25:51.938730Z",
+      "rel": "CONTROLA_DIRECTO",
+      "s": "pcc",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:45.677166Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:45.677166Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "zed-mariel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:45.424498Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:45.424498Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaviota"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:45.126492Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:45.126492Z",
+      "rel": "GERENTE_DE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "santa-lena-investment-lc"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:44.976143Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:44.976143Z",
+      "rel": "GERENTE_DE",
+      "s": "adys-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "remas-remas-investment-llc"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:44.442116Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-24T19:29:44.442116Z",
+      "rel": "DESVÍA_COMBUSTIBLE_PARA",
+      "s": "copmar",
+      "sources": [],
+      "status": "presunto",
+      "t": "mipymes-elite"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:44.299791Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:44.299791Z",
+      "rel": "OPERA_BAJO",
+      "s": "copmar",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-24T19:29:44.126829Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-24T19:29:44.126829Z",
+      "rel": "ASOCIADA_A",
+      "s": "gran-azul-llc",
+      "sources": [],
+      "status": "presunto",
+      "t": "el-cangrejo"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:43.948546Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:43.948546Z",
+      "rel": "CARGO_OFICIAL",
+      "s": "el-cangrejo",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:43.756755Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:43.756755Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "el-cangrejo",
+      "sources": [],
+      "status": "estructura",
+      "t": "luis-alberto-rodriguez-lopez-calleja"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:43.550581Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:43.550581Z",
+      "rel": "VÍNCULO_FAMILIAR",
+      "s": "annalie-rueda-cardero",
+      "sources": [],
+      "status": "estructura",
+      "t": "alejandro-castro-espin"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:43.399765Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:43.399765Z",
+      "rel": "CARGO_OFICIAL",
+      "s": "alejandro-castro-espin",
+      "sources": [],
+      "status": "estructura",
+      "t": "inteligencia-contrainteligencia"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:43.250979Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:43.250979Z",
+      "rel": "CARGO_OFICIAL",
+      "s": "alejandro-castro-espin",
+      "sources": [],
+      "status": "estructura",
+      "t": "minint"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:42.942577Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:42.942577Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "rafin"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:42.747836Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:42.747836Z",
+      "rel": "FUENTE_DE_RECURSOS_PARA",
+      "s": "almacenes-universales",
+      "sources": [],
+      "status": "estructura",
+      "t": "estado-cubano"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:42.583390Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:42.583390Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "almacenes-universales"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:42.425584Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:42.425584Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "moa-nickel"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:42.270894Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:42.270894Z",
+      "rel": "DIRIGE",
+      "s": "ania-lastre-morera",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-24T19:29:41.843467Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-24T19:29:41.843467Z",
+      "rel": "PROPIEDAD_DE",
+      "s": "gaesa",
+      "sources": [],
+      "status": "estructura",
+      "t": "far"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:20:45.567625Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.567625Z",
+      "rel": "OPERA_EN",
+      "s": "cupet-(cuba-petroleo)",
+      "sources": [],
+      "status": "confirmado",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-22T11:13:38.668348Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-22T11:20:45.350420Z",
+      "rel": "CONTROLA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "presunto",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-22T11:13:13.333912Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.311650Z",
+      "rel": "TIENE_DEUDA_CON",
+      "s": "cuba",
+      "sources": [],
+      "status": "confirmado",
+      "t": "rusia"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:20:45.236210Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.236210Z",
+      "rel": "REPRESENTA",
+      "s": "gaesa",
+      "sources": [],
+      "status": "confirmado",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-22T11:13:13.006926Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.195186Z",
+      "rel": "SUMINISTRA_PETROLEO",
+      "s": "rosneft",
+      "sources": [],
+      "status": "confirmado",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:20:45.088290Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.088290Z",
+      "rel": "FIRMA_ACUERDO",
+      "s": "rusia",
+      "sources": [],
+      "status": "confirmado",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-22T11:13:38.228811Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:20:45.038369Z",
+      "rel": "FIRMA_ACUERDO",
+      "s": "cuba",
+      "sources": [],
+      "status": "confirmado",
+      "t": "rusia"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-22T11:13:38.478733Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-22T11:13:38.478733Z",
+      "rel": "CONTROLA",
+      "s": "far",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:13:38.339907Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:13:38.339907Z",
+      "rel": "PARTICIPA_EN_CONTRATO",
+      "s": "gaesa",
+      "sources": [],
+      "status": "confirmado",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.4000000059604645,
+      "first_seen": "2026-06-22T11:13:13.577443Z",
+      "kind": "presunto",
+      "last_seen": "2026-06-22T11:13:13.577443Z",
+      "rel": "CONTROLA_RECURSOS",
+      "s": "gaesa",
+      "sources": [],
+      "status": "presunto",
+      "t": "cuba"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-22T11:13:13.471337Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-22T11:13:13.471337Z",
+      "rel": "ES_JEFE_DE",
+      "s": "luis-alberto-rodriguez-lopez-calleja",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.20000000298023224,
+      "first_seen": "2026-06-22T11:13:13.235106Z",
+      "kind": "estructura",
+      "last_seen": "2026-06-22T11:13:13.235106Z",
+      "rel": "CONTROLA",
+      "s": "fuerzas-armadas-revolucionarias",
+      "sources": [],
+      "status": "estructura",
+      "t": "gaesa"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:13:12.789852Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:13:12.789852Z",
+      "rel": "FIRMA_ACUERDO",
+      "s": "rusia",
+      "sources": [],
+      "status": "confirmado",
+      "t": "gobierno-cubano"
+    },
+    {
+      "confidence": 0.800000011920929,
+      "first_seen": "2026-06-22T11:13:12.722989Z",
+      "kind": "confirmado",
+      "last_seen": "2026-06-22T11:13:12.722989Z",
+      "rel": "FIRMA_ACUERDO",
+      "s": "gobierno-cubano",
+      "sources": [],
+      "status": "confirmado",
+      "t": "rusia"
+    }
+  ],
+  "nodes": [
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "gobierno-cubano",
+      "label": "gobierno-cubano",
+      "short": "gobierno-cuban",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "rusia",
+      "label": "rusia",
+      "short": "rusia",
+      "sources": [],
+      "tier": "pais"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "rosneft",
+      "label": "rosneft",
+      "short": "rosneft",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "estado",
+      "id": "cuba",
+      "label": "cuba",
+      "short": "cuba",
+      "sources": [],
+      "tier": "pais"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "moa-nickel",
+      "label": "moa-nickel",
+      "short": "moa-nickel",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "militar",
+      "id": "fuerzas-armadas-revolucionarias",
+      "label": "fuerzas-armadas-revolucionarias",
+      "short": "fuerzas-armada",
+      "sources": [],
+      "tier": "militar"
+    },
+    {
+      "alleged": true,
+      "cls": "militar",
+      "id": "gaesa",
+      "label": "gaesa",
+      "short": "gaesa",
+      "sources": [],
+      "tier": "militar"
+    },
+    {
+      "alleged": false,
+      "cls": "testaferro",
+      "id": "luis-alberto-rodriguez-lopez-calleja",
+      "label": "luis-alberto-rodriguez-lopez-calleja",
+      "short": "luis-alberto-r",
+      "sources": [],
+      "tier": "persona"
+    },
+    {
+      "alleged": false,
+      "cls": "militar",
+      "id": "far",
+      "label": "FAR",
+      "short": "FAR",
+      "sources": [],
+      "tier": "militar"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "cupet-(cuba-petroleo)",
+      "label": "CUPET (Cuba Petroleo)",
+      "short": "CUPET (Cuba",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "militar",
+      "id": "ania-lastre-morera",
+      "label": "ania-lastre-morera",
+      "short": "ania-lastre-mo",
+      "sources": [],
+      "tier": "militar"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "almacenes-universales",
+      "label": "almacenes-universales",
+      "short": "almacenes-univ",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "estado-cubano",
+      "label": "estado-cubano",
+      "short": "estado-cubano",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "santa-lena-investment-lc",
+      "label": "santa-lena-investment-lc",
+      "short": "santa-lena-inv",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "rafin",
+      "label": "rafin",
+      "short": "rafin",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "minint",
+      "label": "minint",
+      "short": "minint",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "inteligencia-contrainteligencia",
+      "label": "inteligencia-contrainteligencia",
+      "short": "inteligencia-c",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "familia",
+      "id": "annalie-rueda-cardero",
+      "label": "annalie-rueda-cardero",
+      "short": "annalie-rueda-",
+      "sources": [],
+      "tier": "familia"
+    },
+    {
+      "alleged": true,
+      "cls": "empresa",
+      "id": "gran-azul-llc",
+      "label": "gran-azul-llc",
+      "short": "gran-azul-llc",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "familia",
+      "id": "el-cangrejo",
+      "label": "el-cangrejo",
+      "short": "el-cangrejo",
+      "sources": [],
+      "tier": "familia"
+    },
+    {
+      "alleged": true,
+      "cls": "empresa",
+      "id": "mipymes-elite",
+      "label": "mipymes-elite",
+      "short": "mipymes-elite",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "empresa",
+      "id": "fincimex",
+      "label": "fincimex",
+      "short": "fincimex",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "zed-mariel",
+      "label": "zed-mariel",
+      "short": "zed-mariel",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "remas-remas-investment-llc",
+      "label": "remas-remas-investment-llc",
+      "short": "remas-remas-in",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "testaferro",
+      "id": "adys-lastre-morera",
+      "label": "adys-lastre-morera",
+      "short": "adys-lastre-mo",
+      "sources": [],
+      "tier": "testaferro"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "gaviota",
+      "label": "gaviota",
+      "short": "gaviota",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "pcc",
+      "label": "pcc",
+      "short": "pcc",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": true,
+      "cls": "estado",
+      "id": "copmar",
+      "label": "copmar",
+      "short": "copmar",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": true,
+      "cls": "testaferro",
+      "id": "enrique-perez-fumero",
+      "label": "enrique-perez-fumero",
+      "short": "enrique-perez-",
+      "sources": [],
+      "tier": "testaferro"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "alejandro-castro-espin",
+      "label": "alejandro-castro-espin",
+      "short": "alejandro-cast",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "miguel-diaz-canel",
+      "label": "miguel-diaz-canel",
+      "short": "miguel-diaz-ca",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "manuel-marrero-cruz",
+      "label": "manuel-marrero-cruz",
+      "short": "manuel-marrero",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "min-economia-finanzas-planificacion",
+      "label": "min-economia-finanzas-planificacion",
+      "short": "min-economia-f",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "min-agroalimentacion",
+      "label": "min-agroalimentacion",
+      "short": "min-agroalimen",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "min-comercio-inversion-extranjera",
+      "label": "min-comercio-inversion-extranjera",
+      "short": "min-comercio-i",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "sociedades-mercantiles-mixtas",
+      "label": "sociedades-mercantiles-mixtas",
+      "short": "sociedades-mer",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "familia",
+      "id": "lisa-titolo-castro",
+      "label": "lisa-titolo-castro",
+      "short": "lisa-titolo-ca",
+      "sources": [],
+      "tier": "familia"
+    },
+    {
+      "alleged": false,
+      "cls": "regimen",
+      "id": "raul-castro",
+      "label": "raul-castro",
+      "short": "raul-castro",
+      "sources": [],
+      "tier": "regimen"
+    },
+    {
+      "alleged": false,
+      "cls": "familia",
+      "id": "mariela-castro",
+      "label": "mariela-castro",
+      "short": "mariela-castro",
+      "sources": [],
+      "tier": "familia"
+    },
+    {
+      "alleged": false,
+      "cls": "estado",
+      "id": "cupet",
+      "label": "cupet",
+      "short": "cupet",
+      "sources": [],
+      "tier": "estado"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "holding-lisa-titolo-castro",
+      "label": "holding-lisa-titolo-castro",
+      "short": "holding-lisa-t",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "gaia-srl",
+      "label": "gaia-srl",
+      "short": "gaia-srl",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "coral-maritima-sa",
+      "label": "coral-maritima-sa",
+      "short": "coral-maritima",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": false,
+      "cls": "testaferro",
+      "id": "anisa-fumero-lopez",
+      "label": "anisa-fumero-lopez",
+      "short": "anisa-fumero-l",
+      "sources": [],
+      "tier": "testaferro"
+    },
+    {
+      "alleged": false,
+      "cls": "militar",
+      "id": "minfar",
+      "label": "minfar",
+      "short": "minfar",
+      "sources": [],
+      "tier": "militar"
+    },
+    {
+      "alleged": false,
+      "cls": "empresa",
+      "id": "caribe-import",
+      "label": "caribe-import",
+      "short": "caribe-import",
+      "sources": [],
+      "tier": "empresa"
+    },
+    {
+      "alleged": true,
+      "cls": "familia",
+      "id": "raul-guillermo-rodriguez-castro",
+      "label": "raul-guillermo-rodriguez-castro",
+      "short": "raul-guillermo",
+      "sources": [],
+      "tier": "familia"
+    }
+  ],
+  "tema": "rusificacion",
+  "metodologia": {
+    "fuentes": [
+      {
+        "nombre": "Periodismo de investigación",
+        "tipo": "artículos verificados sobre la élite militar-empresarial cubana",
+        "url": ""
+      },
+      {
+        "nombre": "Documentos oficiales cubanos",
+        "tipo": "registros públicos y organigramas estatales",
+        "url": ""
+      }
+    ],
+    "periodo": "2026-06-25",
+    "cadencia": "ciclo-8h",
+    "extraccion": "Pipeline Rust + Gemma: extracción de grafo de relaciones con puntuación de confianza por enlace (0.0–1.0); responseSchema para tipado de vínculos",
+    "validacion": "ajv contra rusificacion.schema.json · esbuild · bracket-balance string-aware",
+    "limitaciones": [
+      "Confianza de los vínculos variable (0.2–1.0): los marcados 'estructura' son relaciones orgánicas, no necesariamente personales documentadas",
+      "Opacidad del Estado cubano limita la verificación cruzada de fuentes primarias"
+    ],
+    "cambios_metodologicos": []
+  }
+}

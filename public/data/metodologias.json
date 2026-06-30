@@ -1,0 +1,142 @@
+{
+  "generado_at": "2026-06-27",
+  "pipeline_global": {
+    "ciclo": "~8 horas",
+    "herramientas": [
+      "Gemini Flash (responseSchema)",
+      "SearXNG self-hosted",
+      "ajv",
+      "esbuild",
+      "bracket-balance string-aware"
+    ],
+    "publicacion": "git-driven · Cloudflare Pages · HashRouter SPA",
+    "fuentes_recurrentes": [
+      "OCDH",
+      "OCC",
+      "Prisoners Defenders",
+      "BNF/Gallica",
+      "CiberCuba",
+      "14ymedio",
+      "Diario de Cuba",
+      "elTOQUE",
+      "Amnesty International"
+    ]
+  },
+  "temas": [
+    {
+      "id": "conflictos",
+      "titulo": "La calle arde",
+      "metodologia": {
+        "fuentes": [
+          {
+            "nombre": "OCC",
+            "tipo": "informe trimestral PDF",
+            "url": "https://observatoriocubano.org"
+          }
+        ],
+        "periodo": "enero–marzo 2026",
+        "cadencia": "ciclo-8h",
+        "extraccion": "Gemini Flash con responseSchema constreñido; SearXNG self-hosted",
+        "validacion": "ajv contra conflictos.schema.json · esbuild · bracket-balance string-aware",
+        "limitaciones": [
+          "OCC cambió alcance metodológico en 2023: datos anteriores no son directamente comparables",
+          "Subregistro en provincias con menor conectividad y presencia de prensa independiente"
+        ],
+        "cambios_metodologicos": [
+          "OCC revisó la metodología de conteo en 2023; la serie 2021–2022 se reporta con ese caveat"
+        ]
+      }
+    },
+    {
+      "id": "represion",
+      "titulo": "La maquinaria de la represión",
+      "metodologia": {
+        "fuentes": [
+          {
+            "nombre": "OCDH",
+            "tipo": "informe mensual",
+            "url": "https://observacuba.org"
+          },
+          {
+            "nombre": "Prisoners Defenders",
+            "tipo": "base de datos de presos políticos",
+            "url": "https://www.prisionersdefenders.org"
+          },
+          {
+            "nombre": "Prensa independiente cubana",
+            "tipo": "cobertura periodística",
+            "url": ""
+          }
+        ],
+        "periodo": "enero–mayo 2026",
+        "cadencia": "ciclo-8h",
+        "extraccion": "Gemini Flash con responseSchema constreñido; SearXNG self-hosted",
+        "validacion": "ajv contra represion.schema.json · esbuild · bracket-balance string-aware",
+        "limitaciones": [
+          "Subregistro reconocido por el OCDH: no es posible documentar todos los actos represivos",
+          "Concentración de cobertura en zonas con prensa activa (La Habana, Santiago de Cuba)"
+        ],
+        "cambios_metodologicos": []
+      }
+    },
+    {
+      "id": "rusificacion",
+      "titulo": "La rusificación de Cuba",
+      "metodologia": {
+        "fuentes": [
+          {
+            "nombre": "Periodismo de investigación",
+            "tipo": "artículos verificados sobre la élite militar-empresarial cubana",
+            "url": ""
+          },
+          {
+            "nombre": "Documentos oficiales cubanos",
+            "tipo": "registros públicos y organigramas estatales",
+            "url": ""
+          }
+        ],
+        "periodo": "2026-06-25",
+        "cadencia": "ciclo-8h",
+        "extraccion": "Pipeline Rust + Gemma: extracción de grafo de relaciones con puntuación de confianza por enlace (0.0–1.0); responseSchema para tipado de vínculos",
+        "validacion": "ajv contra rusificacion.schema.json · esbuild · bracket-balance string-aware",
+        "limitaciones": [
+          "Confianza de los vínculos variable (0.2–1.0): los marcados 'estructura' son relaciones orgánicas, no necesariamente personales documentadas",
+          "Opacidad del Estado cubano limita la verificación cruzada de fuentes primarias"
+        ],
+        "cambios_metodologicos": []
+      }
+    },
+    {
+      "id": "himno",
+      "titulo": "Himno Patriótico Cubano",
+      "metodologia": {
+        "fuentes": [
+          {
+            "nombre": "BNF/Gallica",
+            "tipo": "partitura original (dominio público)",
+            "url": "https://gallica.bnf.fr/ark:/12148/bpt6k855033c/f1.double"
+          },
+          {
+            "nombre": "Enrique Gay-Calbó",
+            "tipo": "ensayo historiográfico (1945)",
+            "url": ""
+          },
+          {
+            "nombre": "José María Heredia",
+            "tipo": "fuente literaria primaria · Himno del desterrado (1825)",
+            "url": ""
+          }
+        ],
+        "periodo": "pieza histórica · 1850",
+        "cadencia": "estatica",
+        "extraccion": "Verificación manual directa contra la partitura original impresa (BNF/Gallica, imp. Paul Dupont); contraste con fuentes secundarias",
+        "validacion": "ajv contra himno.schema.json · esbuild · bracket-balance string-aware",
+        "limitaciones": [
+          "Autoría de la letra debatida: la partitura de la BNF atribuye a Heredia y otros poetas populares; parte de la prensa cubana cita a Plácido Gener",
+          "La versión 'del azul y el punzó' (atribuida a Gener) no figura en la partitura primaria; se documenta por separado"
+        ],
+        "cambios_metodologicos": []
+      }
+    }
+  ]
+}

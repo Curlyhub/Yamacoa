@@ -1,38 +1,13 @@
-.App {
-  text-align: center;
-}
+/* Shell de Yamacoa. La identidad de cada tema vive en su propio archivo y el
+   grueso del estilo de portada y cabecera se inyecta de forma encapsulada en
+   components/Layout.jsx y components/Landing.jsx. Aquí solo el mínimo común. */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ym-cargando {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  color: #8a93a8;
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.06em;
 }

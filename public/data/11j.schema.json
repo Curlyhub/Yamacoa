@@ -1,0 +1,265 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yamacoa · expediente 11J (anatomía de la represión)",
+  "type": "object",
+  "required": [
+    "meta",
+    "total",
+    "stats",
+    "prov",
+    "comp",
+    "edad",
+    "radar"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "actualizado",
+        "fuente"
+      ],
+      "properties": {
+        "tema": {
+          "type": "string"
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "subtitulo": {
+          "type": "string"
+        },
+        "actualizado": {
+          "type": "string"
+        },
+        "fuente": {
+          "type": "string"
+        }
+      }
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "stats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "n",
+          "l"
+        ],
+        "properties": {
+          "n": {
+            "type": "string"
+          },
+          "l": {
+            "type": "string"
+          },
+          "s": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "marigold",
+              "petrol",
+              "clay",
+              "paper"
+            ]
+          }
+        }
+      }
+    },
+    "prov": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "p",
+          "c"
+        ],
+        "properties": {
+          "p": {
+            "type": "string"
+          },
+          "c": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "comp": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "band",
+          "sexo",
+          "raza"
+        ],
+        "properties": {
+          "band": {
+            "type": "string"
+          },
+          "nEdad": {
+            "type": "integer"
+          },
+          "sexo": {
+            "type": "object",
+            "required": [
+              "m"
+            ],
+            "properties": {
+              "m": {
+                "type": "number"
+              }
+            }
+          },
+          "raza": {
+            "type": "object",
+            "required": [
+              "nm",
+              "nK"
+            ],
+            "properties": {
+              "nm": {
+                "type": "number"
+              },
+              "nK": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "edad": {
+      "type": "object",
+      "required": [
+        "grid",
+        "grupos"
+      ],
+      "properties": {
+        "grid": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "grupos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "g",
+              "col",
+              "med",
+              "q1",
+              "q3",
+              "whlo",
+              "whhi",
+              "dens"
+            ],
+            "properties": {
+              "g": {
+                "type": "string"
+              },
+              "col": {
+                "type": "string"
+              },
+              "med": {
+                "type": "number"
+              },
+              "q1": {
+                "type": "number"
+              },
+              "q3": {
+                "type": "number"
+              },
+              "whlo": {
+                "type": "number"
+              },
+              "whhi": {
+                "type": "number"
+              },
+              "dens": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "radar": {
+      "type": "object",
+      "required": [
+        "labels",
+        "abbr",
+        "base",
+        "cond",
+        "years"
+      ],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "abbr": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "base": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "cond": {
+          "type": "object"
+        },
+        "years": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "contexto": {
+      "type": "object",
+      "properties": {
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "n",
+              "l"
+            ]
+          }
+        },
+        "mujeresPenalPct": {
+          "type": "number"
+        },
+        "mujeres11jPct": {
+          "type": "number"
+        },
+        "fuente": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

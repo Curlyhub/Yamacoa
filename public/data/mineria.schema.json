@@ -1,0 +1,244 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "mineria",
+  "description": "Reservas minerales, producción y geopolítica minera de Cuba.",
+  "type": "object",
+  "required": ["meta", "kpis", "alertaGeopolitica", "yacimientos", "valoracion", "produccion", "proceso_ni_co", "encuesta", "metodologia"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["tema", "titulo", "subtitulo", "fuente", "periodo", "actualizado"],
+      "additionalProperties": false,
+      "properties": {
+        "tema":       { "type": "string" },
+        "titulo":     { "type": "string" },
+        "subtitulo":  { "type": "string" },
+        "fuente":     { "type": "string" },
+        "periodo":    { "type": "string" },
+        "actualizado":{ "type": "string" },
+        "nota":       { "type": "string" }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "valor", "sub", "confianza"],
+        "additionalProperties": false,
+        "properties": {
+          "id":         { "type": "string" },
+          "label":      { "type": "string" },
+          "valor":      { "type": "string" },
+          "sub":        { "type": "string" },
+          "confianza":  { "type": "string", "enum": ["alta", "media-alta", "media", "media-baja", "baja"] }
+        }
+      }
+    },
+    "alertaGeopolitica": {
+      "type": "object",
+      "required": ["activa", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "activa": { "type": "boolean" },
+        "items":  { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "yacimientos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "provincia", "mineralPrincipal", "tipo", "estado", "confianza", "lat", "lon"],
+        "additionalProperties": false,
+        "properties": {
+          "id":               { "type": "integer" },
+          "nombre":           { "type": "string" },
+          "provincia":        { "type": "string" },
+          "mineralPrincipal": { "type": "string" },
+          "tipo":             { "type": "string" },
+          "reservas":         { "type": ["string", "null"] },
+          "ley":              { "type": ["string", "null"] },
+          "estado":           { "type": "string", "enum": ["activo", "suspendido", "virgen", "histórico", "desarrollo", "construccion", "intermitente", "exploracion"] },
+          "operador":         { "type": ["string", "null"] },
+          "valorMillones":    { "type": ["number", "null"] },
+          "confianza":        { "type": "string", "enum": ["alta", "media-alta", "media", "media-baja", "baja"] },
+          "lat":              { "type": "number" },
+          "lon":              { "type": "number" }
+        }
+      }
+    },
+    "valoracion": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "mineral", "descripcion", "valorMillones", "tipo", "norma", "confianza"],
+        "additionalProperties": false,
+        "properties": {
+          "id":            { "type": "string" },
+          "mineral":       { "type": "string" },
+          "descripcion":   { "type": "string" },
+          "valorMillones": { "type": "number" },
+          "tipo":          { "type": "string", "enum": ["reserva_probable", "recurso_inferido", "in_situ_estimado", "flujo_anual"] },
+          "norma":         { "type": "string" },
+          "confianza":     { "type": "string", "enum": ["alta", "media-alta", "media", "media-baja", "baja"] }
+        }
+      }
+    },
+    "produccion": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["anio"],
+        "additionalProperties": false,
+        "properties": {
+          "anio":  { "type": "string" },
+          "ni_t":  { "type": ["number", "null"] },
+          "co_t":  { "type": ["number", "null"] },
+          "zn_t":  { "type": ["number", "null"] },
+          "pb_t":  { "type": ["number", "null"] },
+          "nota":  { "type": "string" }
+        }
+      }
+    },
+    "proceso_ni_co": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["paso", "nombre", "detalle", "tipo"],
+        "additionalProperties": false,
+        "properties": {
+          "paso":    { "type": "integer" },
+          "nombre":  { "type": "string" },
+          "detalle": { "type": "string" },
+          "tipo":    { "type": "string", "enum": ["extraccion", "preparacion", "proceso", "transporte", "refinado"] },
+          "alerta":  { "type": "boolean" }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "required": ["intro", "preguntas"],
+      "additionalProperties": false,
+      "properties": {
+        "intro": { "type": "string" },
+        "preguntas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "texto", "opciones"],
+            "additionalProperties": false,
+            "properties": {
+              "id":     { "type": "string" },
+              "texto":  { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "label", "seed"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id":    { "type": "string" },
+                    "label": { "type": "string" },
+                    "seed":  { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "required": ["fuentes", "periodo", "cadencia", "extraccion", "limitaciones"],
+      "additionalProperties": false,
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["nombre", "tipo"],
+            "additionalProperties": false,
+            "properties": {
+              "nombre": { "type": "string" },
+              "tipo":   { "type": "string" },
+              "url":    { "type": "string" }
+            }
+          }
+        },
+        "periodo":                { "type": "string" },
+        "cadencia":               { "type": "string", "enum": ["ciclo-8h", "estatica", "manual"] },
+        "extraccion":             { "type": "string" },
+        "validacion":             { "type": "string" },
+        "limitaciones":           { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos":  { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "fajaAurifera": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "titulo":      { "type": "string" },
+        "descripcion": { "type": "string" },
+        "longitud_km": { "type": "number" },
+        "desde":       { "type": "string" },
+        "hasta":       { "type": "string" }
+      }
+    },
+    "tipoMineralDistrib": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mineral", "valorMillones", "pct"],
+        "additionalProperties": false,
+        "properties": {
+          "mineral":       { "type": "string" },
+          "valorMillones": { "type": "number" },
+          "pct":           { "type": "number" }
+        }
+      }
+    },
+    "proyeccion5a": {
+      "type": "object",
+      "required": ["nota", "base2026", "serie", "escenarios"],
+      "additionalProperties": false,
+      "properties": {
+        "nota":     { "type": "string" },
+        "base2026": { "type": "number" },
+        "serie": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["anio"],
+            "additionalProperties": false,
+            "properties": {
+              "anio": { "type": "integer" },
+              "bear": { "type": "number" },
+              "base": { "type": "number" },
+              "bull": { "type": "number" }
+            }
+          }
+        },
+        "escenarios": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "color", "sup"],
+            "additionalProperties": false,
+            "properties": {
+              "id":    { "type": "string" },
+              "label": { "type": "string" },
+              "color": { "type": "string" },
+              "sup":   { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

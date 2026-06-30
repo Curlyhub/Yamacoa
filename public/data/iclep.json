@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "tema": "libertad-prensa",
+    "titulo": "El cerco a la palabra",
+    "subtitulo": "Violaciones a la libertad de expresión y de prensa en Cuba — enero de 2026.",
+    "periodo": "enero 2026",
+    "actualizado": "2026-06-30",
+    "fuente": "ICLEP · Instituto Cubano por la Libertad de Expresión y Prensa"
+  },
+  "stats": [
+    {
+      "n": "114",
+      "l": "agresiones en enero",
+      "s": "a la libertad de expresión y prensa",
+      "color": "salmon"
+    },
+    {
+      "n": "+64,3 %",
+      "l": "más agresiones a la expresión",
+      "s": "frente a enero de 2025: de 56 a 92",
+      "color": "amarillo"
+    },
+    {
+      "n": "60,5 %",
+      "l": "fueron detenciones arbitrarias",
+      "s": "69 casos, casi siempre sin orden judicial",
+      "color": "salmon"
+    },
+    {
+      "n": "160 / 180",
+      "l": "en libertad de prensa (RSF)",
+      "s": "el peor país de América Latina",
+      "color": "turquesa"
+    }
+  ],
+  "panorama": {
+    "total": 114,
+    "expresion": 92,
+    "prensa": 22,
+    "mensual": [
+      {
+        "k": "Diciembre 2025",
+        "v": 101
+      },
+      {
+        "k": "Enero 2026",
+        "v": 114
+      }
+    ],
+    "interanual": [
+      {
+        "k": "Expresión · ene 2025",
+        "v": 56
+      },
+      {
+        "k": "Expresión · ene 2026",
+        "v": 92
+      }
+    ],
+    "nota": "El total subió un 12,9 % respecto a diciembre; las violaciones a la libertad de expresión crecieron un 64,3 % interanual."
+  },
+  "tipos": [
+    {
+      "t": "Detenciones arbitrarias",
+      "n": 69,
+      "pct": 60.5,
+      "yoy": "13 → 69 (+430,8 %)"
+    },
+    {
+      "t": "Ataques, amenazas y agresiones psicológicas",
+      "n": 23,
+      "pct": 20.2,
+      "yoy": "25 → 23"
+    },
+    {
+      "t": "Uso abusivo del poder estatal",
+      "n": 15,
+      "pct": 13.2,
+      "yoy": ""
+    },
+    {
+      "t": "Restricciones en el espacio digital",
+      "n": 6,
+      "pct": 5.3,
+      "yoy": "4 → 6 (+50 %)"
+    },
+    {
+      "t": "Agresiones físicas",
+      "n": 1,
+      "pct": 0.9,
+      "yoy": "6 → 1"
+    },
+    {
+      "t": "Reclusión",
+      "n": 0,
+      "pct": 0.0,
+      "yoy": "3 → 0"
+    }
+  ],
+  "perpetradores": [
+    {
+      "a": "Seguridad del Estado",
+      "pct": 67.0,
+      "yoy": "30 → 71 (+136,7 %)"
+    },
+    {
+      "a": "Policía Nacional Revolucionaria (PNR)",
+      "pct": 34.3,
+      "yoy": "10 → 34 (+240 %)"
+    },
+    {
+      "a": "Sistema judicial",
+      "pct": 7.1,
+      "yoy": ""
+    },
+    {
+      "a": "ETECSA (telecom.)",
+      "pct": 6.1,
+      "yoy": ""
+    },
+    {
+      "a": "Sistema penitenciario",
+      "pct": 5.1,
+      "yoy": ""
+    },
+    {
+      "a": "MININT",
+      "pct": 2.0,
+      "yoy": ""
+    },
+    {
+      "a": "Civiles a nombre del Estado",
+      "pct": 1.0,
+      "yoy": ""
+    },
+    {
+      "a": "Instituto Superior de Arte (ISA)",
+      "pct": 1.0,
+      "yoy": ""
+    },
+    {
+      "a": "Grupos paramilitares",
+      "pct": 1.0,
+      "yoy": ""
+    }
+  ],
+  "perpNota": "La suma supera el 100 %: en muchos hechos actuaron varias entidades de forma coordinada.",
+  "perfiles": [
+    {
+      "g": "Activistas",
+      "n": 23
+    },
+    {
+      "g": "Periodistas",
+      "n": 10
+    },
+    {
+      "g": "Ciudadanos",
+      "n": 7
+    },
+    {
+      "g": "Directores de medios",
+      "n": 3
+    },
+    {
+      "g": "Religiosos",
+      "n": 2
+    },
+    {
+      "g": "Artistas/creadores",
+      "n": 2
+    }
+  ],
+  "perfilNota": "Además, un colectivo de ~1.200 estudiantes preuniversitarios en Santiago de Cuba, sin distribución por género determinada.",
+  "genero": {
+    "hombres": 65.8,
+    "mujeres": 34.2
+  },
+  "prov": [
+    {
+      "p": "La Habana",
+      "c": 52
+    },
+    {
+      "p": "Matanzas",
+      "c": 16
+    },
+    {
+      "p": "Camagüey",
+      "c": 12
+    },
+    {
+      "p": "Villa Clara",
+      "c": 11
+    },
+    {
+      "p": "Santiago de Cuba",
+      "c": 6
+    },
+    {
+      "p": "Holguín",
+      "c": 6
+    },
+    {
+      "p": "Pinar del Río",
+      "c": 4
+    },
+    {
+      "p": "Guantánamo",
+      "c": 3
+    },
+    {
+      "p": "Artemisa",
+      "c": 2
+    },
+    {
+      "p": "Granma",
+      "c": 2
+    },
+    {
+      "p": "Mayabeque",
+      "c": 0
+    },
+    {
+      "p": "Las Tunas",
+      "c": 0
+    },
+    {
+      "p": "Ciego de Ávila",
+      "c": 0
+    },
+    {
+      "p": "Sancti Spíritus",
+      "c": 0
+    },
+    {
+      "p": "Isla de la Juventud",
+      "c": 0
+    },
+    {
+      "p": "Cienfuegos",
+      "c": 0
+    }
+  ],
+  "provVirtual": 1,
+  "olas": [
+    {
+      "f": "3 de enero",
+      "t": "Tras la captura de Maduro",
+      "d": "Primera ola en varias provincias, coincidiendo con la operación de EE. UU. en Venezuela que culminó con la detención de Nicolás Maduro. Detenciones, vigilancia domiciliaria y cortes de internet contra la sociedad civil crítica."
+    },
+    {
+      "f": "5–6 de enero",
+      "t": "Hostigamiento en Villa Clara",
+      "d": "Cerco domiciliario extrajudicial contra Guillermo Bravo, José Elías González Agüero y Cecilio Félix Moreno; acciones similares contra Miguel Ángel Herrera en Guantánamo."
+    },
+    {
+      "f": "28 de enero",
+      "t": "Operativo contra periodistas",
+      "d": "Una de las olas más amplias del mes, para impedir la asistencia a una recepción de la Embajada de EE. UU. Interceptados Yoani Sánchez, Reinaldo Escobar, Camila Acosta, Berta Soler y Ángel Moya, con cortes de internet."
+    },
+    {
+      "f": "fin de mes",
+      "t": "Tensiones con Washington",
+      "d": "Interrogatorio a Ángel Moya con amenazas penales; traslado del preso político Maykel Osorbo a un penal de Pinar del Río con retirada de medicamentos; redadas contra jóvenes de la UNPACU en Santiago."
+    }
+  ],
+  "caso": {
+    "n": "Henry Constantín",
+    "rol": "director de La Hora de Cuba",
+    "d": "Al menos tres detenciones arbitrarias en un mismo mes, con incomunicación, vigilancia y restricciones digitales. En un periodo no figuró en los registros de detención, lo que hizo temer una desaparición forzada de corta duración."
+  },
+  "contexto": {
+    "rank": 160,
+    "total": 180,
+    "d": "Cuba es, año tras año, el peor país de América Latina para la libertad de prensa. La Constitución declara que los medios son propiedad del Estado, de modo que el periodismo independiente es, de facto, clandestino.",
+    "fuente": "Reporters Without Borders (RSF), Índice 2026"
+  }
+}

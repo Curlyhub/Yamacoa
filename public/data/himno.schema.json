@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yamacoa · píldora Himno de Narciso López",
+  "type": "object",
+  "required": ["meta", "ficha", "intro", "timeline", "letra", "encuesta", "evaluacion"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["tema", "titulo", "actualizado"],
+      "additionalProperties": true,
+      "properties": {
+        "tema": { "type": "string" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "actualizado": { "type": "string", "description": "ISO date YYYY-MM-DD" },
+        "fuentePrincipal": { "type": "string" }
+      }
+    },
+    "ficha": {
+      "type": "object",
+      "required": ["anio", "tipo", "musica", "letra", "documento", "estatus"],
+      "additionalProperties": true,
+      "properties": {
+        "anio": { "type": "string" },
+        "tipo": { "type": "string" },
+        "musica": { "type": "string" },
+        "letra": { "type": "string" },
+        "documento": { "type": "string" },
+        "estatus": { "type": "string" },
+        "partituraUrl": { "type": "string" },
+        "videoUrl": { "type": "string" }
+      }
+    },
+    "intro": { "type": "string", "maxLength": 700 },
+    "versoDestacado": {
+      "type": "object",
+      "required": ["texto"],
+      "properties": { "texto": { "type": "string" }, "nota": { "type": "string" } }
+    },
+    "timeline": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["anio", "hito", "detalle", "tono"],
+        "additionalProperties": false,
+        "properties": {
+          "anio": { "type": "string" },
+          "fecha": { "type": "string" },
+          "hito": { "type": "string" },
+          "detalle": { "type": "string", "maxLength": 400 },
+          "tono": { "type": "string", "enum": ["origen", "simbolo", "pico", "caida", "cierre"] }
+        }
+      }
+    },
+    "letra": {
+      "type": "object",
+      "required": ["nota", "completo"],
+      "additionalProperties": true,
+      "properties": {
+        "nota": { "type": "string" },
+        "noEs": { "type": "string" },
+        "completo": {
+          "type": "object",
+          "required": ["titulo", "atrib", "fuente", "movimientos"],
+          "additionalProperties": false,
+          "properties": {
+            "titulo": { "type": "string" },
+            "atrib": { "type": "string" },
+            "fuente": { "type": "string" },
+            "movimientos": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["n", "bloques"],
+                "additionalProperties": false,
+                "properties": {
+                  "n": { "type": "string" },
+                  "refran": { "type": "string" },
+                  "bloques": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["rol", "versos"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "rol": { "type": "string" },
+                        "versos": { "type": "array", "items": { "type": "string" } }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "otraVersion": {
+          "type": "object",
+          "required": ["titulo", "atrib", "versos"],
+          "additionalProperties": false,
+          "properties": {
+            "titulo": { "type": "string" },
+            "atrib": { "type": "string" },
+            "versos": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "raiz": {
+          "type": "object",
+          "required": ["titulo", "atrib", "fragmentos"],
+          "additionalProperties": false,
+          "properties": {
+            "titulo": { "type": "string" },
+            "atrib": { "type": "string" },
+            "fragmentos": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["sub", "versos"],
+                "additionalProperties": false,
+                "properties": {
+                  "sub": { "type": "string" },
+                  "versos": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "required": ["preguntas"],
+      "properties": {
+        "intro": { "type": "string" },
+        "preguntas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "texto", "opciones"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "texto": { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": ["id", "label", "seed"],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": { "type": "string" },
+                    "label": { "type": "string" },
+                    "seed": { "type": "integer", "minimum": 0 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "evaluacion": {
+      "type": "object",
+      "required": ["categorias", "preguntas", "veredictos"],
+      "properties": {
+        "intro": { "type": "string" },
+        "categorias": { "type": "array", "items": { "type": "string" } },
+        "preguntas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "cat", "texto", "opciones", "correcta", "exp"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "type": "string" },
+              "cat": { "type": "string" },
+              "texto": { "type": "string" },
+              "opciones": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+              "correcta": { "type": "integer", "minimum": 0 },
+              "exp": { "type": "string", "maxLength": 300 }
+            }
+          }
+        },
+        "veredictos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["min", "max", "titulo", "texto"],
+            "additionalProperties": false,
+            "properties": {
+              "min": { "type": "integer" },
+              "max": { "type": "integer" },
+              "titulo": { "type": "string" },
+              "texto": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "metodologia": { "type": "object" }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "meta": {
+    "tema": "racismo-estructural",
+    "titulo": "El racismo que el Estado niega",
+    "subtitulo": "Represión racializada de defensores afrodescendientes en Cuba — y sus ecos históricos.",
+    "actualizado": "2026-06-30",
+    "fuente": "Informe alternativo CERD 2026 (CRD · 4Métrica · Ciudadanía y Libertad · Cuido60 · Iniciativa AC · Museo V)"
+  },
+  "stats": [
+    {
+      "n": "57 %",
+      "l": "de la población penitenciaria",
+      "s": "afrodescendiente · dato testimonial",
+      "color": "ochre"
+    },
+    {
+      "n": "35 %",
+      "l": "de la población del país",
+      "s": "afrodescendiente · referencia censal",
+      "color": "plum"
+    },
+    {
+      "n": "×1,6",
+      "l": "sobrerrepresentación penal",
+      "s": "si el 57/35 se confirma",
+      "color": "garnet"
+    },
+    {
+      "n": "4",
+      "l": "mecanismos de represión racializada",
+      "s": "documentados en el informe",
+      "color": "paper"
+    }
+  ],
+  "comparacion": {
+    "titulo": "Sobrerrepresentación de afrodescendientes/negros en la cárcel",
+    "nota": "El factor compara el peso en la cárcel con el peso en la población. Funciona para minorías sobrerrepresentadas; no para una mayoría oprimida (ver Sudáfrica).",
+    "items": [
+      {
+        "pais": "Cuba",
+        "pop": 35,
+        "prison": 57,
+        "factor": "×1,6",
+        "tier": "testimonial",
+        "nota": "Testimonio en el informe CERD 2026. Cuba no publica datos raciales penales: cifra no verificable de forma independiente."
+      },
+      {
+        "pais": "EE. UU. (actual)",
+        "pop": 13,
+        "prison": 37,
+        "factor": "×2,8",
+        "tier": "documentado",
+        "nota": "BJS / Sentencing Project / Prison Policy. Los negros son encarcelados ~5× la tasa de los blancos."
+      }
+    ],
+    "sudafrica": {
+      "titulo": "¿Y el apartheid? El número engaña",
+      "d": "En la Sudáfrica del apartheid los negros eran ~79 % de la población: una mayoría oprimida por una minoría. El factor de sobrerrepresentación daría ≈1 pese a la brutalidad del sistema. Por eso, con Sudáfrica la comparación honesta no es el número, sino el mecanismo de control del movimiento.",
+      "passArrests": "17 millones",
+      "periodo": "1921–1986",
+      "pico": "~250.000 detenciones/año en los años 50"
+    }
+  },
+  "mecanismos": [
+    {
+      "id": 1,
+      "t": "Restricción del movimiento",
+      "d": "La llamada «regulación migratoria»: el Estado declara «regulada» a la persona y le impide salir del país, sin recurso legal ni respuesta administrativa. Aísla a los defensores del escrutinio internacional.",
+      "eco": "Pass laws del apartheid",
+      "ecoD": "Sudáfrica obligaba a la población negra a portar el «dompas» para circular; su violación produjo más de 17 millones de detenciones (1921–1986), con cerca de 250.000 al año en los años 50, y desató la masacre de Sharpeville en 1960.",
+      "cerd": "Art. 5(d)"
+    },
+    {
+      "id": 2,
+      "t": "Criminalización discursiva",
+      "d": "El Estado niega que exista racismo —sostiene que «se fue con la burguesía»— y tacha al activismo antirracista de «mercenario» o «contrarrevolucionario», con campañas de difamación digital.",
+      "eco": "Propaganda Jim Crow / «superpredador»",
+      "ecoD": "Recodificar la disidencia racial como criminalidad o deslealtad es viejo: de la prensa segregacionista estadounidense al mito del «superpredador» de los años 90, que criminalizó a una generación de jóvenes negros.",
+      "cerd": "Art. 4"
+    },
+    {
+      "id": 3,
+      "t": "Castigo diferenciado por perfil racial",
+      "d": "La dureza de la represión escala con el perfil racial e interseccional. Un testimonio describe «tres horas de castigo para un afrodescendiente frente a dos para un activista blanco».",
+      "eco": "Sentencia racializada (EE. UU.)",
+      "ecoD": "En EE. UU., a igualdad de población, los negros son encarcelados unas 5 veces más que los blancos: el mismo principio de un castigo escalado por raza, medido a escala nacional.",
+      "cerd": "Art. 5"
+    },
+    {
+      "id": 4,
+      "t": "Extensión a la familia y la comunidad",
+      "d": "El castigo se desborda hacia hijas, vecinos y redes de apoyo: asedio policial, represalias económicas, violencia vicaria contra las madres de presos políticos.",
+      "eco": "Castigo colectivo",
+      "ecoD": "La represalia sobre el entorno —el empleo, los beneficios sociales, la libertad de los hijos— como herramienta para romper el tejido comunitario y disuadir por contagio.",
+      "cerd": "Art. 6 y 7"
+    }
+  ],
+  "casos": [
+    {
+      "n": "Diubis Laurencio Tejeda",
+      "d": "Joven afrodescendiente, muerto a manos de fuerzas estatales durante las protestas del 11 de julio de 2021.",
+      "tag": "asesinado"
+    },
+    {
+      "n": "Duannis Dabel León Taboada",
+      "d": "Sentenciado a 14 años por sedición. Su madre, Yeni Taboada, sufre represión vicaria: asedio, amenazas y agresiones a sus hijas.",
+      "tag": "14 años"
+    }
+  ],
+  "testimonios": [
+    {
+      "quien": "Marthadela Tamayo",
+      "rol": "Comité Ciudadano por la Integración Racial",
+      "p": "Documenta la «regulación migratoria» y la vigilancia constante; refuta el relato oficial: el racismo no se fue con la burguesía, Cuba sigue siéndolo."
+    },
+    {
+      "quien": "Osvaldo Navarro",
+      "rol": "CIR · Di.Verso",
+      "p": "«Regulado» desde 2019, sin poder viajar ni sostener vínculos internacionales; aporta el dato de sobrerrepresentación penal afrodescendiente."
+    },
+    {
+      "quien": "Manuel Cuesta Morúa",
+      "rol": "activista antirracista",
+      "p": "Señala la duración racializada del castigo y cómo el totalitarismo patriarcal golpea con más fuerza el activismo basado en identidades."
+    },
+    {
+      "quien": "Yeni Taboada",
+      "rol": "madre de preso político",
+      "p": "Relata casa sitiada por patrullas, amenazas de muerte, agresiones a sus hijas y trato marginalizante por raza y clase."
+    },
+    {
+      "quien": "Aymara Nieto",
+      "rol": "UNPACU · Damas de Blanco",
+      "p": "Tras 7 años presa, describe maltrato físico, traslado encadenada a Las Tunas y dos años sin ver a su familia."
+    },
+    {
+      "quien": "Eliezet Sesma",
+      "rol": "preso político",
+      "p": "Detalla un régimen de máxima severidad y un ciclo de humillación intracarcelaria ligado a su origen y a la pobreza."
+    }
+  ],
+  "cerd": [
+    {
+      "art": "Art. 2",
+      "d": "Eliminar la discriminación racial y sancionar las prácticas discriminatorias."
+    },
+    {
+      "art": "Art. 4",
+      "d": "Prohibir la propaganda y la incitación a la discriminación racial."
+    },
+    {
+      "art": "Art. 5",
+      "d": "Igualdad ante la ley: seguridad, libre circulación, participación pública, acceso a la justicia."
+    },
+    {
+      "art": "Art. 6",
+      "d": "Protección y recursos efectivos ante los tribunales frente a la discriminación."
+    },
+    {
+      "art": "Art. 7",
+      "d": "Participación sin discriminación en la vida política, social, económica y cultural."
+    }
+  ],
+  "interseccional": "Según el informe, más del 50 % de las mujeres negras y mestizas son víctimas de violencia de género — donde el racismo y el sexismo se refuerzan."
+}

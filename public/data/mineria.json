@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "tema": "mineria",
+    "titulo": "El subsuelo y la crisis",
+    "subtitulo": "Reservas minerales de Cuba y la ruptura geopolítica de 2026",
+    "fuente": "USGS · Sherritt NI 43-101 · Antilles Gold JORC · GeoMinera · MINEM Cuba",
+    "periodo": "2019-2026",
+    "actualizado": "2026-06-28",
+    "nota": "Valor in-situ = metal contenido bruto a precio spot. No descuenta recuperación, costos, regalías ni tiempo. No es valor recuperable ni VAN."
+  },
+  "kpis": [
+    { "id": "valor_ni_co",  "label": "Valor in-situ Ni-Co",   "valor": "~121.500 M USD", "sub": "reservas nacionales · spot jun-2026",             "confianza": "media" },
+    { "id": "reservas_ni",  "label": "Reservas de níquel",    "valor": "~5,5 Mt",         "sub": "≈ 6 % de las reservas mundiales (USGS 2024)",       "confianza": "media" },
+    { "id": "rango_co",     "label": "Cobalto mundial",        "valor": "# 3 global",      "sub": "~500.000 t — empata con Indonesia (USGS)",           "confianza": "alta" },
+    { "id": "prod_2025",    "label": "Producción Ni en 2025",  "valor": "~25.240 t",       "sub": "caída del 48 % desde el pico de 2020 (49.700 t)",    "confianza": "alta" },
+    { "id": "oportunidad",  "label": "Coste de oportunidad",   "valor": "< 0,5 % / año",   "sub": "fracción de reservas que Cuba monetiza anualmente", "confianza": "media" }
+  ],
+  "alertaGeopolitica": {
+    "activa": true,
+    "items": [
+      "8 may 2026 — EE.UU. sanciona Moa Nickel S.A. (secretario de Estado Marco Rubio, Foreign Narcotics Kingpin Act)",
+      "22 jun 2026 — Sherritt inicia cierre de Fort Saskatchewan: única fuente de cobalto refinado de Canadá",
+      "mar-abr 2026 — Rusia anuncia paquete bilateral de inversión minera >1.000 M USD",
+      "2026 — Xinhai Mining (China) avanza en el proyecto La Demajagua (Isla de la Juventud)"
+    ]
+  },
+  "fajaAurifera": {
+    "titulo": "La faja aurífera de los ~400 km",
+    "descripcion": "La mineralización aurífera cubana se concentra en una franja de unos 400 km desde el sur de Santa Clara (Villa Clara) hasta el norte de Holguín, extendiéndose hacia Las Tunas y Camagüey. Dos familias geológicas dominan: las listvenitas (oro en zonas de alteración metasomática de rocas ofiolíticas ultrabásicas) en el centro de la isla, y los epitermales de baja sulfuración en vetas de cuarzo (tipo Loma de Jacinto) en el arco volcánico Cretácico. El Anuario Estadístico de Cuba no reporta la cifra de producción de oro.",
+    "longitud_km": 400,
+    "desde": "Sur de Santa Clara (Villa Clara)",
+    "hasta": "Norte de Holguín / Las Tunas"
+  },
+  "yacimientos": [
+    { "id":1,  "nombre":"Moa — Pedro Sotto Alba",            "provincia":"Holguín",           "mineralPrincipal":"Ni-Co",   "tipo":"Laterita (HPAL)",         "reservas":"~870 Mt (P+P NI 43-101 Sherritt)",                 "ley":"1,10 % Ni · 0,10 % Co",    "estado":"suspendido",  "operador":"Moa Nickel S.A. (Sherritt 50 % / CUPN 50 %)",  "valorMillones":27300, "confianza":"alta",       "lat":20.65, "lon":74.95 },
+    { "id":2,  "nombre":"Nicaro — Rolo Monterrey",           "provincia":"Holguín",           "mineralPrincipal":"Ni-Co",   "tipo":"Laterita (limonita)",     "reservas":"~600 Mt (estimación histórica GeoMinera)",         "ley":"0,90 % Ni",                 "estado":"suspendido",  "operador":"Empresa de Níquel de Cuba (estatal)",           "valorMillones":null,  "confianza":"media-baja", "lat":20.70, "lon":75.57 },
+    { "id":3,  "nombre":"Pinares de Mayarí",                 "provincia":"Holguín",           "mineralPrincipal":"Ni-Co",   "tipo":"Laterita (limonita)",     "reservas":"~2.200 Mt (estimación histórica soviética)",       "ley":"1,00 % Ni · 0,07 % Co",    "estado":"virgen",      "operador":"Sin explotar",                                  "valorMillones":null,  "confianza":"baja",       "lat":20.65, "lon":76.15 },
+    { "id":4,  "nombre":"San Felipe",                        "provincia":"Camagüey",          "mineralPrincipal":"Ni-Co",   "tipo":"Laterita (limonita)",     "reservas":"~3.000 Mt (recurso inferido, sin auditoría)",      "ley":"0,90 % Ni · 0,09 % Co",    "estado":"virgen",      "operador":"Sin explotar",                                  "valorMillones":60000, "confianza":"baja",       "lat":21.65, "lon":77.91 },
+    { "id":5,  "nombre":"Castellanos (Minas de Matahambre)", "provincia":"Pinar del Río",     "mineralPrincipal":"Pb-Zn",   "tipo":"SEDEX / skarn",           "reservas":"~3,6 Mt de mineral",                              "ley":"6,6 % Zn · 4,8 % Pb",      "estado":"activo",      "operador":"Geominera Pinar (estatal)",                     "valorMillones":null,  "confianza":"alta",       "lat":22.60, "lon":83.00 },
+    { "id":6,  "nombre":"La Demajagua — Delita",             "provincia":"Isla de la Juventud","mineralPrincipal":"Au-Ag",  "tipo":"Epitermal baja sulfur.",  "reservas":"7,7 Mt @ 2,9 g/t Au; 720.000 oz Au equiv. (JORC indicado+inferido)", "ley":"2,9 g/t Au equiv.", "estado":"desarrollo", "operador":"Minera La Victoria (Antilles Gold / GeoMinera JV)", "valorMillones":3450,"confianza":"media-alta",  "lat":21.70, "lon":82.85 },
+    { "id":7,  "nombre":"El Cobre",                          "provincia":"Santiago de Cuba",  "mineralPrincipal":"Cu",      "tipo":"Volcanogénico (VMS)",     "reservas":"Agotadas (histórico > 5 Mt Cu extraído ss. XVI-XX)","ley":"—",                        "estado":"histórico",   "operador":"Cerrada",                                       "valorMillones":null,  "confianza":"alta",       "lat":20.10, "lon":75.85 },
+    { "id":8,  "nombre":"El Chorrillo — Tasajeras",          "provincia":"Camagüey",          "mineralPrincipal":"Zeolita", "tipo":"Clinoptilolita sedim.",   "reservas":"Producción activa; sin reservas auditadas públicas","ley":"70-80 % clinoptilolita",   "estado":"activo",      "operador":"Empresa de Zeolita de Cuba (estatal)",          "valorMillones":null,  "confianza":"media",      "lat":21.80, "lon":79.80 },
+    { "id":9,  "nombre":"Nueva Sabana",                      "provincia":"Ciego de Ávila",    "mineralPrincipal":"Cu-Au",   "tipo":"Pórfido cuprífero",       "reservas":"En exploración avanzada",                          "ley":"~0,3 % Cu equiv. (est.)",   "estado":"construccion","operador":"Consorcio mixto (no divulgado)",                 "valorMillones":null,  "confianza":"baja",       "lat":22.05, "lon":78.75 },
+    { "id":10, "nombre":"Charco Redondo",                    "provincia":"Granma",            "mineralPrincipal":"Mn",      "tipo":"Sedimentario marino",     "reservas":"~2 Mt (estimación GeoMinera)",                     "ley":"~35 % Mn",                  "estado":"intermitente","operador":"Geominera Granma (estatal)",                    "valorMillones":null,  "confianza":"media-baja", "lat":20.10, "lon":76.50 },
+    { "id":11, "nombre":"Loma de Jacinto (El Limón Nuevo, Beatriz, Sur de Elena)", "provincia":"Camagüey (Guáimaro)", "mineralPrincipal":"Au-Ag", "tipo":"Epitermal baja sulfur., vetas de cuarzo", "reservas":"8 t Au rec. totales (7,6 t M+I); 10 vetas identificadas", "ley":"97,54 % pureza botón; 83,54 % Au · 14 % Ag", "estado":"desarrollo", "operador":"GeoMinera Camagüey (Geominsal)", "valorMillones":1029, "confianza":"alta", "lat":21.75, "lon":76.65 },
+    { "id":12, "nombre":"Golden Hill",                       "provincia":"Las Tunas",         "mineralPrincipal":"Au",      "tipo":"Alta sulfuración/vetas",  "reservas":"Activo desde 2011, ~60 kg Au/año exportados",      "ley":"n.d.",                      "estado":"activo",      "operador":"GeoMinera (inversión ALBA)",                    "valorMillones":null,  "confianza":"media",      "lat":20.80, "lon":76.50 },
+    { "id":13, "nombre":"Falcón (UEB Placetas)",             "provincia":"Villa Clara",       "mineralPrincipal":"Au",      "tipo":"Listvenita (vetas)",      "reservas":"Activo; producción no publicada",                  "ley":"n.d.",                      "estado":"activo",      "operador":"UEB Producciones Mineras Placetas (estatal)",   "valorMillones":null,  "confianza":"media",      "lat":22.31, "lon":79.65 },
+    { "id":14, "nombre":"Lote Grande (Jarahueca)",           "provincia":"Sancti Spíritus",   "mineralPrincipal":"Au",      "tipo":"Vetas cuarzo-auríferas",  "reservas":"~23-30 kg/año; procesa en molinos Placetas",       "ley":"80-88 % pureza (18-22 k)",  "estado":"activo",      "operador":"UEB Producciones Mineras Placetas (estatal)",   "valorMillones":null,  "confianza":"media",      "lat":22.05, "lon":79.52 },
+    { "id":15, "nombre":"Campo mineral Aguas Claras-Guajabales", "provincia":"Holguín",      "mineralPrincipal":"Au",      "tipo":"Vetas / placeres (hist.)", "reservas":"Histórico (cerró ~1939); minería artesanal activa","ley":"~0,5 g/t (est.)",           "estado":"intermitente","operador":"Minería artesanal / estatal",                   "valorMillones":null,  "confianza":"media",      "lat":21.05, "lon":76.10 },
+    { "id":16, "nombre":"La Holguinera (Sector 27)",         "provincia":"Holguín",           "mineralPrincipal":"Au",      "tipo":"Vetítica / diseminada",   "reservas":"1.062.000 t mena → ~1.494 kg Au (~1,5 t pronóstico)","ley":"~1,4 g/t Au",             "estado":"exploracion", "operador":"GeoMinera Oriente",                             "valorMillones":193,   "confianza":"media",      "lat":20.95, "lon":76.05 },
+    { "id":17, "nombre":"Distrito El Oro (cuenca río Bayamo)","provincia":"Granma / Santiago","mineralPrincipal":"Au",      "tipo":"Vetas / placeres",        "reservas":"130 km² · >100 concesiones (1930s)",               "ley":"histórico",                 "estado":"histórico",   "operador":"Cerrado desde la II GM",                        "valorMillones":null,  "confianza":"media",      "lat":20.35, "lon":76.70 },
+    { "id":18, "nombre":"Santa Rosa (AEI Los Pasos)",        "provincia":"Villa Clara",       "mineralPrincipal":"Au-Ag",   "tipo":"VMS / polimetal",         "reservas":"'Contenidos muy altos Au-Ag' (no cuantificado)",   "ley":"n.d.",                      "estado":"exploracion", "operador":"GeoMinera / Millbrook Minerals Inc. (Canadá)", "valorMillones":null,  "confianza":"media-baja", "lat":22.50, "lon":80.00 },
+    { "id":19, "nombre":"Mercedita-Caledonia (Cromita Moa)", "provincia":"Holguín",           "mineralPrincipal":"Cromita", "tipo":"Ofiolítico (podiforme)",  "reservas":"Histórico; 'el más importante de América' (ONRM)","ley":"45-52 % Cr₂O₃",            "estado":"histórico",   "operador":"Cerrada",                                       "valorMillones":null,  "confianza":"media",      "lat":20.40, "lon":74.80 }
+  ],
+  "valoracion": [
+    { "id":"ni_co_nac",   "mineral":"Ni-Co nacional",              "descripcion":"Estimación in-situ de las reservas nacionales de Ni-Co (USGS 2024 + spot jun-2026). No descontada.",               "valorMillones":121500, "tipo":"in_situ_estimado",  "norma":"USGS / spot",           "confianza":"media" },
+    { "id":"san_felipe",  "mineral":"Ni-Co San Felipe",            "descripcion":"Recurso inferido del yacimiento San Felipe (Camagüey). Sin auditoría NI 43-101 o JORC independiente.",              "valorMillones":60000,  "tipo":"recurso_inferido",  "norma":"estimación propia",     "confianza":"baja" },
+    { "id":"moa_pp",      "mineral":"Ni-Co Moa P+P",               "descripcion":"Reservas Probadas+Probables Moa según NI 43-101 Sherritt (último informe antes de la suspensión).",                 "valorMillones":27300,  "tipo":"reserva_probable",  "norma":"NI 43-101",             "confianza":"alta" },
+    { "id":"demajagua",   "mineral":"Au-Ag La Demajagua",          "descripcion":"Recurso JORC indicado+inferido: 7,7 Mt @ 2,9 g/t Au; 720.000 oz Au equiv. Antilles Gold / GeoMinera.",              "valorMillones":3450,   "tipo":"recurso_inferido",  "norma":"JORC 2012",             "confianza":"media-alta" },
+    { "id":"jacinto",     "mineral":"Au Loma de Jacinto",          "descripcion":"8 t Au (7,6 t M+I) MINEM/GeoMinera Camagüey 2021. Revalorizado a precio spot jun-2026 (~4.000 USD/oz).",            "valorMillones":1029,   "tipo":"recurso_inferido",  "norma":"MINEM/GeoMinera (2021)","confianza":"alta" },
+    { "id":"la_holguinera","mineral":"Au La Holguinera (pronóst.)", "descripcion":"Pronóstico GeoMinera Oriente: 1.062.000 t mena → ~1.494 kg Au. Estimación no auditada.",                          "valorMillones":193,    "tipo":"in_situ_estimado",  "norma":"estimación propia",     "confianza":"media" },
+    { "id":"castellanos", "mineral":"Pb-Zn Castellanos (anual)",   "descripcion":"Valor estimado de la producción anual de concentrado Pb-Zn (Castellanos, Pinar del Río). Flujo, no reserva.",      "valorMillones":265,    "tipo":"flujo_anual",       "norma":"estimación propia",     "confianza":"media" },
+    { "id":"zeolita",     "mineral":"Zeolita El Chorrillo (anual)","descripcion":"Exportaciones anuales estimadas de zeolita clinoptilolita (~80 USD/t). Flujo, no reserva.",                        "valorMillones":18,     "tipo":"flujo_anual",       "norma":"estimación propia",     "confianza":"media-baja" }
+  ],
+  "tipoMineralDistrib": [
+    { "mineral": "Níquel-Cobalto", "valorMillones": 121500, "pct": 96.1 },
+    { "mineral": "Oro-Plata (La Demajagua + Jacinto)", "valorMillones": 4479, "pct": 3.5 },
+    { "mineral": "Au potencial (La Holguinera)", "valorMillones": 193, "pct": 0.15 }
+  ],
+  "proyeccion5a": {
+    "nota": "Sensibilidad al precio spot de Ni, Co y Au. Base 2026 = Ni-Co nacional + Au recursos confirmados. No descuenta costos, recuperación metalúrgica ni VPN.",
+    "base2026": 126172,
+    "serie": [
+      { "anio": 2026, "bear": 126172, "base": 126172, "bull": 126172 },
+      { "anio": 2027, "bear": 120300, "base": 130700, "bull": 139600 },
+      { "anio": 2028, "bear": 114400, "base": 135200, "bull": 153100 },
+      { "anio": 2029, "bear": 108500, "base": 139700, "bull": 166500 },
+      { "anio": 2030, "bear": 102600, "base": 144200, "bull": 180000 },
+      { "anio": 2031, "bear":  96700, "base": 148700, "bull": 193400 }
+    ],
+    "escenarios": [
+      { "id": "bear", "label": "Bajista", "color": "#C4392B", "sup": "Ni 13k · Co 25k · Au 3.200 USD/oz (2031)" },
+      { "id": "base", "label": "Base",    "color": "#9EAAB8", "sup": "Ni 20k · Co 40k · Au 5.000 USD/oz (2031)" },
+      { "id": "bull", "label": "Alcista", "color": "#3BAE6A", "sup": "Ni 26k · Co 60k · Au 6.500 USD/oz (2031)" }
+    ]
+  },
+  "produccion": [
+    { "anio": "2019", "ni_t": 48900, "co_t": 3600, "zn_t": 60000, "pb_t": 35000 },
+    { "anio": "2020", "ni_t": 49700, "co_t": 3800, "zn_t": 60000, "pb_t": 34000 },
+    { "anio": "2021", "ni_t": 46800, "co_t": 3800, "zn_t": 45000, "pb_t": 29000 },
+    { "anio": "2022", "ni_t": 46200, "co_t": 3700, "zn_t": 52000, "pb_t": 33000 },
+    { "anio": "2023", "ni_t": 43000, "co_t": 3100, "zn_t": 58000, "pb_t": 35000 },
+    { "anio": "2024", "ni_t": null,  "co_t": null,  "zn_t": null,  "pb_t": null, "nota": "sin datos confirmados en fuentes públicas" },
+    { "anio": "2025", "ni_t": 25240, "co_t": 2728,  "zn_t": null,  "pb_t": null, "nota": "Sherritt Q4 2025 + impacto sanciones EE.UU." }
+  ],
+  "proceso_ni_co": [
+    { "paso":1, "nombre":"Mina a cielo abierto",          "detalle":"Extracción de lateritas (limonita y saprolita) con draglines y camiones de 180-200 t. Operación 24 h en Moa, Holguín.",            "tipo":"extraccion" },
+    { "paso":2, "nombre":"Trituración y clasificación",   "detalle":"Cribado húmedo: fracción <2 mm (limonita, alta Fe) y >2 mm (saprolita, alta Mg). El flujo principal es limonita.",                "tipo":"preparacion" },
+    { "paso":3, "nombre":"Lixiviación ácida — HPAL",     "detalle":"Autoclave a 250 °C y 50 bar con H₂SO₄ concentrado. Disolución selectiva de Ni y Co; el Fe precipita como hematita.",              "tipo":"proceso" },
+    { "paso":4, "nombre":"Separación sólido/líquido",    "detalle":"Lavado en contracorriente (CCD). Recuperación del licor cargado con Ni²⁺ y Co²⁺.",                                                 "tipo":"proceso" },
+    { "paso":5, "nombre":"Neutralización",               "detalle":"Coral (CaCO₃) eleva el pH y precipita impurezas residuales: Fe, Al, Cr.",                                                          "tipo":"proceso" },
+    { "paso":6, "nombre":"Precipitación — MSP",          "detalle":"H₂S gasoso precipita el sulfuro mixto de Ni-Co (Mixed Sulphide Precipitate). Producto final de la planta de Moa.",                  "tipo":"proceso" },
+    { "paso":7, "nombre":"Transporte a refinería",       "detalle":"El MSP se embarcaba hacia Fort Saskatchewan (Alberta, Canadá). Cadena interrumpida desde junio 2026.",                             "tipo":"transporte", "alerta":true },
+    { "paso":8, "nombre":"Refinería — Fort Saskatchewan","detalle":"Lixiviación amoniacal + electrólisis → Ni 99,9 % y Co 99,9 % grado LME. CERRADA jun 2026: primer cierre en 70 años.",             "tipo":"refinado",   "alerta":true }
+  ],
+  "encuesta": {
+    "intro": "Tres preguntas sobre los minerales cubanos y sus implicaciones geopolíticas.",
+    "preguntas": [
+      { "id":"q1", "texto":"¿Sabías que Cuba está entre los tres mayores poseedores de reservas de cobalto del mundo?",
+        "opciones":[ {"id":"q1a","label":"Sí, lo sabía","seed":340}, {"id":"q1b","label":"Lo sospechaba","seed":290}, {"id":"q1c","label":"No, me sorprende","seed":510} ] },
+      { "id":"q2", "texto":"¿Qué impacto crees que tendrán las sanciones de EE.UU. sobre el níquel cubano?",
+        "opciones":[ {"id":"q2a","label":"Bloqueo casi total de ventas","seed":620}, {"id":"q2b","label":"Redireccionamiento a China/Rusia","seed":480}, {"id":"q2c","label":"Efecto limitado a largo plazo","seed":185} ] },
+      { "id":"q3", "texto":"¿Cómo valoras la estrategia de atraer inversión rusa y china para la minería cubana?",
+        "opciones":[ {"id":"q3a","label":"Pragmática, no hay alternativa","seed":550}, {"id":"q3b","label":"Riesgosa: cambia una dependencia por otra","seed":700}, {"id":"q3c","label":"Negativa en cualquier contexto","seed":220} ] }
+    ]
+  },
+  "metodologia": {
+    "fuentes": [
+      { "nombre": "USGS Mineral Commodity Summaries 2024",                   "tipo": "institucional" },
+      { "nombre": "USGS Minerals Yearbook 2020-21 Cuba",                      "tipo": "institucional", "url": "https://pubs.usgs.gov/myb/vol3/2020-21/myb3-2020-21-cuba.pdf" },
+      { "nombre": "Sherritt International — NI 43-101 Technical Report (Moa)","tipo": "informe_empresa" },
+      { "nombre": "Sherritt International — Q4 2025 Production Report",       "tipo": "informe_empresa" },
+      { "nombre": "Antilles Gold — JORC Resource Estimate (La Demajagua)",    "tipo": "informe_empresa" },
+      { "nombre": "MINEM Cuba / GeoMinera Camagüey — Loma de Jacinto (2021)", "tipo": "institucional" },
+      { "nombre": "GeoMinera S.A. — publicaciones académicas",                "tipo": "academico" },
+      { "nombre": "López-Kramer et al. — Faja aurífera cubana (SciELO)",      "tipo": "academico" },
+      { "nombre": "Pérez 2022 — Rev. Geoinformativa (VMS Cuba)",              "tipo": "academico" },
+      { "nombre": "Reuters / BNN Bloomberg (sanciones EE.UU. · Sherritt cierre)", "tipo": "prensa" },
+      { "nombre": "Cubadebate / Granma (Golden Hill, Loma de Jacinto)",       "tipo": "prensa" }
+    ],
+    "periodo": "Reservas: datos históricos hasta 2024; Producción: 2019-2025; Geopolítica: 2026",
+    "cadencia": "estatica",
+    "extraccion": "Datos tabulados manualmente desde informes técnicos NI 43-101 y JORC, USGS Mineral Commodity Summaries y Minerals Yearbook, comunicados MINEM y Sherritt International.",
+    "validacion": "ajv contra mineria.schema.json · esbuild · bracket-balance string-aware",
+    "limitaciones": [
+      "Las cifras de reservas cubanas en el USGS no han sido auditadas con normas NI 43-101 o JORC para todos los yacimientos. Muchas son estimaciones históricas de la era soviética.",
+      "La producción de Ni y Co en 2024 no está disponible en fuentes públicas confirmadas.",
+      "El valor in-situ no descuenta recuperación metalúrgica (~90 %), costos operativos, regalías ni VPN.",
+      "Las coordenadas de los yacimientos son aproximaciones a nivel de provincia o distrito minero.",
+      "Los datos de Sherritt representan su 50 % de la JV de Moa; la producción total es el doble.",
+      "Los depósitos de oro artesanales (Aguas Claras) no tienen reservas cuantificadas auditadas.",
+      "Golden Hill (Las Tunas): producción ~60 kg/año citada en medios; sin informe técnico independiente.",
+      "El error 'Holguinera: 1.469 toneladas de oro' (UPM/Gómez Pardo) es un error de transcripción obvio y no se propaga. El valor correcto es 1.494 kg (~1,5 t)."
+    ],
+    "cambios_metodologicos": [
+      "2026-06-28: Se amplía el catálogo aurífero con 9 nuevos depósitos de la faja aurífera de ~400 km (GeoMinera, MINEM, fuentes académicas). Golden Hill se corrige a provincia Las Tunas (era Camagüey). Se añade USGS Minerals Yearbook 2020-21 como fuente."
+    ]
+  }
+}

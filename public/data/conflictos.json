@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "tema": "conflictos",
+    "titulo": "La calle arde",
+    "subtitulo": "Observatorio de la protesta cívica en Cuba · primer trimestre de 2026",
+    "fuente": "Observatorio Cubano de Conflictos (OCC)",
+    "periodo": "enero–marzo 2026",
+    "actualizado": "2026-03-30"
+  },
+  "trimestre": {
+    "total": 3383,
+    "desafios": 1383,
+    "represivos": 419,
+    "presenciales": 54,
+    "grafiti": 113,
+    "muertesViolencia": 70,
+    "deltaMarzoYoYPct": 80
+  },
+  "meses": [
+    {
+      "id": "ene",
+      "nombre": "Enero",
+      "total": 953,
+      "dcp": 542,
+      "des": 411,
+      "desafios": 395,
+      "represivos": 147,
+      "grafiti": 1,
+      "presenciales": null,
+      "muertesViolencia": 21,
+      "nota2025": 684,
+      "nota2025Estimado": false,
+      "categorias": [
+        {
+          "k": "Alimentación, inflación y agricultura",
+          "v": 97
+        },
+        {
+          "k": "Inseguridad ciudadana",
+          "v": 87
+        },
+        {
+          "k": "Servicios públicos",
+          "v": 86
+        },
+        {
+          "k": "Salud pública",
+          "v": 70
+        },
+        {
+          "k": "Otros problemas sociales",
+          "v": 62
+        },
+        {
+          "k": "Vivienda",
+          "v": 9
+        }
+      ],
+      "provincias": [
+        {
+          "p": "La Habana",
+          "v": 474
+        },
+        {
+          "p": "Matanzas",
+          "v": 80
+        },
+        {
+          "p": "Santiago de Cuba",
+          "v": 62
+        },
+        {
+          "p": "Granma",
+          "v": 24
+        },
+        {
+          "p": "Villa Clara",
+          "v": 21
+        }
+      ]
+    },
+    {
+      "id": "feb",
+      "nombre": "Febrero",
+      "total": 1185,
+      "dcp": 545,
+      "des": 640,
+      "desafios": 432,
+      "represivos": 113,
+      "grafiti": 42,
+      "presenciales": null,
+      "muertesViolencia": 22,
+      "nota2025": 609,
+      "nota2025Estimado": false,
+      "categorias": [
+        {
+          "k": "Servicios públicos",
+          "v": 229
+        },
+        {
+          "k": "Alimentación, inflación y agricultura",
+          "v": 201
+        },
+        {
+          "k": "Otros problemas sociales",
+          "v": 68
+        },
+        {
+          "k": "Salud pública",
+          "v": 67
+        },
+        {
+          "k": "Inseguridad ciudadana",
+          "v": 57
+        },
+        {
+          "k": "Vivienda",
+          "v": 18
+        }
+      ],
+      "provincias": [
+        {
+          "p": "La Habana",
+          "v": 461
+        },
+        {
+          "p": "Matanzas",
+          "v": 137
+        },
+        {
+          "p": "Holguín",
+          "v": 72
+        },
+        {
+          "p": "Santiago de Cuba",
+          "v": 69
+        },
+        {
+          "p": "Guantánamo",
+          "v": 41
+        },
+        {
+          "p": "Villa Clara",
+          "v": 34
+        }
+      ]
+    },
+    {
+      "id": "mar",
+      "nombre": "Marzo",
+      "total": 1245,
+      "dcp": 715,
+      "des": 530,
+      "desafios": 556,
+      "represivos": 159,
+      "grafiti": 70,
+      "presenciales": 54,
+      "muertesViolencia": 27,
+      "nota2025": 691,
+      "nota2025Estimado": true,
+      "categorias": [
+        {
+          "k": "Servicios públicos",
+          "v": 179
+        },
+        {
+          "k": "Alimentación, inflación y agricultura",
+          "v": 127
+        },
+        {
+          "k": "Otros problemas sociales",
+          "v": 91
+        },
+        {
+          "k": "Inseguridad ciudadana",
+          "v": 85
+        },
+        {
+          "k": "Salud pública",
+          "v": 29
+        },
+        {
+          "k": "Vivienda",
+          "v": 19
+        }
+      ],
+      "provincias": [
+        {
+          "p": "La Habana",
+          "v": 625
+        },
+        {
+          "p": "Matanzas",
+          "v": 84
+        },
+        {
+          "p": "Santiago de Cuba",
+          "v": 77
+        },
+        {
+          "p": "Holguín",
+          "v": 38
+        },
+        {
+          "p": "Ciego de Ávila",
+          "v": 35
+        },
+        {
+          "p": "Guantánamo",
+          "v": 31
+        }
+      ]
+    }
+  ],
+  "anual": [
+    {
+      "a": "2021",
+      "v": 3300,
+      "caveat": false
+    },
+    {
+      "a": "2022",
+      "v": 3923,
+      "caveat": false
+    },
+    {
+      "a": "2023",
+      "v": 5749,
+      "caveat": true
+    },
+    {
+      "a": "2024",
+      "v": 8443,
+      "caveat": false
+    },
+    {
+      "a": "2025",
+      "v": 11268,
+      "caveat": false
+    }
+  ],
+  "forecast": {
+    "metodo": "Proyección ilustrativa por inercia de la serie 2021–2025 (crecimiento medio ≈ 34 % anual). No es una predicción: es lo que la tendencia daría si nada la frena ni la dispara.",
+    "base": 11268,
+    "escenarios": {
+      "bajoPct": 12,
+      "centralPct": 30,
+      "altoPct": 50
+    },
+    "puntos": [
+      {
+        "anio": "2021",
+        "real": 3300
+      },
+      {
+        "anio": "2022",
+        "real": 3923
+      },
+      {
+        "anio": "2023",
+        "real": 5749
+      },
+      {
+        "anio": "2024",
+        "real": 8443
+      },
+      {
+        "anio": "2025",
+        "real": 11268,
+        "central": 11268,
+        "bajo": 11268,
+        "alto": 11268
+      },
+      {
+        "anio": "2026",
+        "central": 14648,
+        "bajo": 12620,
+        "alto": 16902
+      },
+      {
+        "anio": "2027",
+        "central": 19043,
+        "bajo": 14135,
+        "alto": 25353
+      },
+      {
+        "anio": "2028",
+        "central": 24756,
+        "bajo": 15831,
+        "alto": 38030
+      }
+    ]
+  },
+  "eventos": [
+    {
+      "mes": "mar",
+      "fecha": "13 mar",
+      "lugar": "Morón, Ciego de Ávila",
+      "tipo": "Calle",
+      "titulo": "La sede del Partido, una hoguera",
+      "texto": "Manifestantes entraron en la sede local del Partido Comunista, sacaron muebles, documentos y propaganda a la calle y los prendieron en una gran fogata: el clímax de tres semanas de cacerolazos nocturnos."
+    },
+    {
+      "mes": "mar",
+      "fecha": "4–5 mar",
+      "lugar": "Termoeléctrica Antonio Guiteras",
+      "tipo": "Energía",
+      "titulo": "Avería en cadena",
+      "texto": "Un fallo grave en la Guiteras provocó una desconexión en cadena. El viceministro Abad Vigoa admitió el 21 de marzo que el país llevaba tres meses sin recibir diésel ni fuel oil, con 10 de 16 unidades termoeléctricas fuera de servicio."
+    },
+    {
+      "mes": "mar",
+      "fecha": "16 y 21 mar",
+      "lugar": "Sistema Eléctrico Nacional",
+      "tipo": "Energía",
+      "titulo": "Dos colapsos en una semana",
+      "texto": "Apagones totales del SEN el 16 y el 21 de marzo: sexto y séptimo colapso nacional en 18 meses. En Colón, Mayarí y barrios de La Habana hubo cortes de hasta 84 horas seguidas."
+    },
+    {
+      "mes": "mar",
+      "fecha": "marzo",
+      "lugar": "Arroyo Naranjo, La Habana",
+      "tipo": "Escándalo",
+      "titulo": "Las donaciones de México, en dólares",
+      "texto": "Un equipo de TV Azteca documentó que parte de la ayuda humanitaria mexicana se vendía en dólares en tiendas de GAESA, mientras los módulos repartidos eran mínimos: a un niño de 4 años le tocaron galletas y dos latas de atún."
+    },
+    {
+      "mes": "mar",
+      "fecha": "marzo",
+      "lugar": "Hospital Pediátrico de Camagüey",
+      "tipo": "Salud",
+      "titulo": "Darwin Daniel, 10 meses",
+      "texto": "El bebé Darwin Daniel Sotolongo Cedres murió en cuidados intensivos tras cuatro meses con soporte vital, después de que su madre denunciara durante meses la falta de recursos y especialistas para operarlo."
+    },
+    {
+      "mes": "feb",
+      "fecha": "febrero",
+      "lugar": "Estrecho de la Florida",
+      "tipo": "Represión",
+      "titulo": "Ametrallamiento de un bote",
+      "texto": "Lanchas guardafronteras ametrallaron una embarcación procedente de Miami: cuatro tripulantes muertos y seis heridos. En el mes también se encarceló a los líderes del grupo audiovisual holguinero El4tico."
+    },
+    {
+      "mes": "feb",
+      "fecha": "febrero",
+      "lugar": "Canaleta, Ciego de Ávila",
+      "tipo": "Represión",
+      "titulo": "Motín en la prisión",
+      "texto": "Brutal represión contra reclusos de la prisión de Canaleta, amotinados por los maltratos y las pésimas condiciones de vida."
+    },
+    {
+      "mes": "feb",
+      "fecha": "febrero",
+      "lugar": "ETECSA · Min. de Comunicaciones",
+      "tipo": "Digital",
+      "titulo": "Hackeo a los servidores del Estado",
+      "texto": "Entre las protestas anónimas del mes destacó el hackeo de los servidores de ETECSA y del Ministerio de Comunicaciones, junto a incendios de campos de cultivo y propiedades del gobierno."
+    },
+    {
+      "mes": "ene",
+      "fecha": "enero",
+      "lugar": "Malecón, La Habana",
+      "tipo": "Calle",
+      "titulo": "“Viva Trump” en el muro",
+      "texto": "Las consignas ignoraron el llamado del gobierno al nacionalismo: aparecieron grafitis de agradecimiento al presidente estadounidense, incluido uno en pleno Malecón, y vallas propagandísticas incendiadas."
+    },
+    {
+      "mes": "ene",
+      "fecha": "enero",
+      "lugar": "La Habana (caso digital)",
+      "tipo": "Represión",
+      "titulo": "Cerco a Ana Sofía Benítez",
+      "texto": "La Seguridad del Estado tendió un cerco para sacar de las redes a la influencer Ana Sofía Benítez Silvente, de 21 años, en un caso que provocó un amplio clamor de rechazo."
+    }
+  ],
+  "encuesta": [
+    {
+      "id": "motor",
+      "pregunta": "¿Qué crees que más empuja hoy a los cubanos a la calle?",
+      "opciones": [
+        {
+          "id": "apagones",
+          "txt": "Los apagones y la falta de agua",
+          "seed": 612
+        },
+        {
+          "id": "comida",
+          "txt": "La comida y los precios imposibles",
+          "seed": 488
+        },
+        {
+          "id": "represion",
+          "txt": "El hartazgo con el régimen",
+          "seed": 731
+        },
+        {
+          "id": "esperanza",
+          "txt": "La esperanza de un cambio con ayuda externa",
+          "seed": 356
+        }
+      ]
+    },
+    {
+      "id": "trayectoria",
+      "pregunta": "¿Crees que la protesta seguirá creciendo en 2026?",
+      "opciones": [
+        {
+          "id": "sinfreno",
+          "txt": "Sí, sin freno",
+          "seed": 524
+        },
+        {
+          "id": "altibajos",
+          "txt": "Subirá, pero con altibajos",
+          "seed": 689
+        },
+        {
+          "id": "estable",
+          "txt": "Se estabilizará donde está",
+          "seed": 198
+        },
+        {
+          "id": "caera",
+          "txt": "Caerá por el peso de la represión",
+          "seed": 241
+        }
+      ]
+    }
+  ],
+  "metodologia": {
+    "fuentes": [
+      {
+        "nombre": "OCC",
+        "tipo": "informe trimestral PDF",
+        "url": "https://observatoriocubano.org"
+      }
+    ],
+    "periodo": "enero–marzo 2026",
+    "cadencia": "ciclo-8h",
+    "extraccion": "Gemini Flash con responseSchema constreñido; SearXNG self-hosted",
+    "validacion": "ajv contra conflictos.schema.json · esbuild · bracket-balance string-aware",
+    "limitaciones": [
+      "OCC cambió alcance metodológico en 2023: datos anteriores no son directamente comparables",
+      "Subregistro en provincias con menor conectividad y presencia de prensa independiente"
+    ],
+    "cambios_metodologicos": [
+      "OCC revisó la metodología de conteo en 2023; la serie 2021–2022 se reporta con ese caveat"
+    ]
+  }
+}

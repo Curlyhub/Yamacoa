@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "metodologia",
+  "description": "Texto del método estadístico-observacional de Yamacoa.",
+  "type": "object",
+  "required": ["intro", "metodo", "estadistica", "validacion"],
+  "additionalProperties": false,
+  "properties": {
+    "intro": { "type": "string" },
+    "metodo": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["etapa", "descripcion"],
+        "additionalProperties": false,
+        "properties": {
+          "etapa":       { "type": "string" },
+          "descripcion": { "type": "string" }
+        }
+      }
+    },
+    "estadistica": { "type": "string" },
+    "validacion": {
+      "type": "object",
+      "required": ["periodistico", "estadistico"],
+      "additionalProperties": false,
+      "properties": {
+        "periodistico": { "type": "array", "items": { "type": "string" } },
+        "estadistico":  { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "cambios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["temaId", "tema", "periodo", "cambio", "motivo"],
+        "additionalProperties": false,
+        "properties": {
+          "temaId":  { "type": "string" },
+          "tema":    { "type": "string" },
+          "periodo": { "type": "string" },
+          "cambio":  { "type": "string" },
+          "motivo":  { "type": "string" }
+        }
+      }
+    }
+  }
+}

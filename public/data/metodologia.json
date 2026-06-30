@@ -1,0 +1,49 @@
+{
+  "intro": "Yamacoa documenta eventos medibles sobre Cuba — detenciones, protestas, apagones, vínculos de poder — a partir de fuentes periodísticas y documentales públicas. Los presentamos como frecuencias y tendencias observadas, no como explicaciones causales.",
+  "metodo": [
+    {
+      "etapa": "EVENTO MEDIBLE",
+      "descripcion": "Identificación de un hecho contable: una detención, una protesta, un apagón, un vínculo documentado entre personas o instituciones."
+    },
+    {
+      "etapa": "FUENTE DOCUMENTAL",
+      "descripcion": "Localización de la fuente que lo registra: informe de derechos humanos, nota periodística verificada, documento oficial o registro público."
+    },
+    {
+      "etapa": "CODIFICACIÓN",
+      "descripcion": "Extracción estructurada asistida con esquema de datos constreñido que fuerza los tipos de campo y los valores admitidos. La disciplina la impone el esquema, no el motor: el método es agnóstico del sistema que lo ejecuta."
+    },
+    {
+      "etapa": "VERIFICACIÓN",
+      "descripcion": "Contraste periodístico y estadístico: corroboración con fuente primaria o bien contrastada, distinción entre reportado y documentado, paráfrasis — nunca cita literal — para evitar la transferencia de error de la fuente."
+    },
+    {
+      "etapa": "DATO CON INCERTIDUMBRE",
+      "descripcion": "El dato final lleva siempre su cota de incertidumbre: «como mínimo», subregistro reconocido, margen de estimación o control del cambio metodológico. La incertidumbre no se oculta; se comunica."
+    }
+  ],
+  "estadistica": "El método es observacional, no experimental: no existe grupo de control ni aleatorización. Observamos lo que ocurre, no lo que ocurriría bajo otras condiciones. La unidad de análisis es el evento o caso documentado — una detención, un conflicto, un apagón. Los totales son suelos, no techos: representan como mínimo lo que las fuentes pudieron documentar. El sesgo de reporte es estructural: los eventos en zonas con mayor presencia de prensa independiente están más documentados. Los cambios metodológicos en las fuentes se señalan explícitamente y se controlan en las series temporales. No afirmamos relaciones causales; describimos frecuencias y tendencias observadas.",
+  "validacion": {
+    "periodistico": [
+      "¿Hay una fuente primaria o bien contrastada que soporte el dato?",
+      "¿La incertidumbre es visible en la interfaz, no relegada a una nota al pie?",
+      "¿Se distingue «reportado» de «documentado»?",
+      "¿El texto es paráfrasis propia, nunca cita literal de la fuente?"
+    ],
+    "estadistico": [
+      "¿El total es un suelo («como mínimo») o una estimación con margen declarado?",
+      "¿El cambio en la tendencia es real o se explica por un cambio metodológico de la fuente?",
+      "¿El comparativo entre periodos es válido dado el alcance de cada uno?",
+      "¿El sesgo de reporte por zona geográfica está reconocido?"
+    ]
+  },
+  "cambios": [
+    {
+      "temaId": "conflictos",
+      "tema": "La calle arde",
+      "periodo": "2023 en adelante",
+      "cambio": "El OCC revisó su metodología de conteo a partir de 2023.",
+      "motivo": "Los datos de 2021-2022 no son directamente comparables con los de periodos posteriores a ese corte."
+    }
+  ]
+}

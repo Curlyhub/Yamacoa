@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Conflictos (OCC) dataset",
+  "type": "object",
+  "required": ["meta", "trimestre", "meses", "anual", "forecast", "eventos", "encuesta"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["tema", "titulo", "fuente", "periodo", "actualizado"],
+      "properties": {
+        "tema": { "type": "string" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "fuente": { "type": "string" },
+        "periodo": { "type": "string" },
+        "actualizado": { "type": "string", "description": "ISO date YYYY-MM-DD" }
+      }
+    },
+    "trimestre": {
+      "type": "object",
+      "required": ["total", "desafios", "represivos"],
+      "properties": {
+        "total": { "type": "integer" },
+        "desafios": { "type": "integer" },
+        "represivos": { "type": "integer" },
+        "presenciales": { "type": ["integer", "null"] },
+        "grafiti": { "type": "integer" },
+        "muertesViolencia": { "type": "integer" },
+        "deltaMarzoYoYPct": { "type": "number" }
+      }
+    },
+    "meses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "total", "dcp", "des", "desafios", "represivos", "categorias", "provincias"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "total": { "type": "integer" },
+          "dcp": { "type": "integer", "description": "Derechos Civiles y Políticos" },
+          "des": { "type": "integer", "description": "Derechos Económicos y Sociales" },
+          "desafios": { "type": "integer", "description": "Desafíos al Estado policial" },
+          "represivos": { "type": "integer" },
+          "grafiti": { "type": "integer" },
+          "presenciales": { "type": ["integer", "null"] },
+          "muertesViolencia": { "type": "integer" },
+          "nota2025": { "type": ["integer", "null"], "description": "Mismo mes del año anterior" },
+          "nota2025Estimado": { "type": "boolean" },
+          "categorias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["k", "v"],
+              "properties": { "k": { "type": "string" }, "v": { "type": "integer" } }
+            }
+          },
+          "provincias": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["p", "v"],
+              "properties": { "p": { "type": "string" }, "v": { "type": "integer" } }
+            }
+          }
+        }
+      }
+    },
+    "anual": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["a", "v"],
+        "properties": {
+          "a": { "type": "string" },
+          "v": { "type": "integer" },
+          "caveat": { "type": "boolean", "description": "Marca años con cambio de método" }
+        }
+      }
+    },
+    "forecast": {
+      "type": "object",
+      "required": ["metodo", "puntos"],
+      "properties": {
+        "metodo": { "type": "string" },
+        "base": { "type": "integer" },
+        "escenarios": {
+          "type": "object",
+          "properties": {
+            "bajoPct": { "type": "number" },
+            "centralPct": { "type": "number" },
+            "altoPct": { "type": "number" }
+          }
+        },
+        "puntos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["anio"],
+            "properties": {
+              "anio": { "type": "string" },
+              "real": { "type": ["integer", "null"] },
+              "central": { "type": ["integer", "null"] },
+              "bajo": { "type": ["integer", "null"] },
+              "alto": { "type": ["integer", "null"] }
+            }
+          }
+        }
+      }
+    },
+    "eventos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["mes", "fecha", "lugar", "tipo", "titulo", "texto"],
+        "properties": {
+          "mes": { "type": "string", "enum": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"] },
+          "fecha": { "type": "string" },
+          "lugar": { "type": "string" },
+          "tipo": { "type": "string", "enum": ["Calle", "Energía", "Salud", "Represión", "Escándalo", "Digital"] },
+          "titulo": { "type": "string" },
+          "texto": { "type": "string", "description": "Parafraseado, nunca citado textualmente" }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "pregunta", "opciones"],
+        "properties": {
+          "id": { "type": "string" },
+          "pregunta": { "type": "string" },
+          "opciones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "txt", "seed"],
+              "properties": {
+                "id": { "type": "string" },
+                "txt": { "type": "string" },
+                "seed": { "type": "integer", "description": "Voto inicial (semilla del agregado)" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metodologia": { "type": "object" }
+  }
+}
