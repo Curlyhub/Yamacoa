@@ -15,6 +15,7 @@
 
 # local tooling (no versionar)
 /mcp.json
+/.wrangler
 
 # PDFs fuente pesados de _inbox (provenance, no al historial de git)
 /ops/_inbox/servicio_militar/Cuba-Servicio-Militar.pdf
