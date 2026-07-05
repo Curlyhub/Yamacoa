@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yamacoa · Servir o morir (servicio militar obligatorio en Cuba)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "kpis", "resumen", "caidos", "sistema", "carneCanon", "encuesta", "metodologia"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "actualizado", "periodo", "fuentePrincipal"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "actualizado": { "type": "string" },
+        "periodo": { "type": "string" },
+        "fuentePrincipal": { "type": "string" },
+        "advertencia": { "type": "string" }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "valor", "etiqueta"],
+        "properties": {
+          "id": { "type": "string" },
+          "valor": { "type": "number" },
+          "etiqueta": { "type": "string" },
+          "sufijo": { "type": "string" }
+        }
+      }
+    },
+    "resumen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["totalDocumentado", "categorias"],
+      "properties": {
+        "totalDocumentado": { "type": "number" },
+        "menores": { "type": "number" },
+        "nota": { "type": "string" },
+        "categorias": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "etiqueta", "n"],
+            "properties": {
+              "id": { "type": "string" },
+              "etiqueta": { "type": "string" },
+              "n": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "caidos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nombre", "fecha", "cat"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "edad": { "type": ["number", "null"] },
+          "fecha": { "type": "string" },
+          "fechaAprox": { "type": "boolean" },
+          "cat": { "type": "string", "enum": ["fusilamiento", "desaparicion", "asesinato", "medica", "suicidio", "accidente", "mar", "sincausa"] },
+          "prov": { "type": ["string", "null"] },
+          "lugar": { "type": "string" },
+          "menor": { "type": "boolean" },
+          "detalle": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "sistema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "leyes"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "leyes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["anio", "titulo", "texto"],
+            "properties": {
+              "anio": { "type": "integer" },
+              "titulo": { "type": "string" },
+              "texto": { "type": "string" }
+            }
+          }
+        },
+        "cargas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "titulo", "texto"],
+            "properties": {
+              "id": { "type": "string" },
+              "titulo": { "type": "string" },
+              "texto": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "carneCanon": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "angola", "rusia"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "angola": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["periodo", "militares", "muertos"],
+          "properties": {
+            "periodo": { "type": "string" },
+            "anios": { "type": "number" },
+            "militares": { "type": "number" },
+            "civiles": { "type": "number" },
+            "muertos": { "type": "number" },
+            "civilesMuertos": { "type": "number" },
+            "pagoSoldadoMes": { "type": "number" },
+            "pagoAngolaSoldadoMes": { "type": "number" },
+            "ingresosMinAnual": { "type": "number" },
+            "ingresosMaxAnual": { "type": "number" },
+            "nota": { "type": "string" }
+          }
+        },
+        "rusia": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["anio", "listaIntercept"],
+          "properties": {
+            "anio": { "type": "integer" },
+            "listaIntercept": { "type": "number" },
+            "rastreados": { "type": "number" },
+            "avispasNegras": { "type": "number" },
+            "detenidos": { "type": "number" },
+            "procesados": { "type": "string" },
+            "salarioCubaAnual": { "type": "number" },
+            "salarioRusiaAnual": { "type": "number" },
+            "seguroMuerte": { "type": "number" },
+            "penaReclutar": { "type": "string" },
+            "penaMercenarismo": { "type": "string" },
+            "nota": { "type": "string" }
+          }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "q", "opts"],
+        "properties": {
+          "id": { "type": "string" },
+          "q": { "type": "string" },
+          "opts": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "t", "seed"],
+              "properties": {
+                "id": { "type": "string" },
+                "t": { "type": "string" },
+                "seed": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fuentes", "periodo", "extraccion", "limitaciones", "cambios_metodologicos"],
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tipo", "url"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "tipo": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

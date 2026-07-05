@@ -1,0 +1,346 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yamacoa · Asesinatos y masacres de Estado",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "kpis", "familias", "masacres", "proceso", "fusilamientos", "huelgas", "guantanamo", "penas", "memoria", "encuesta", "metodologia"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "actualizado", "periodo", "fuentePrincipal"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "actualizado": { "type": "string" },
+        "periodo": { "type": "string" },
+        "fuentePrincipal": { "type": "string" },
+        "advertencia": { "type": "string" }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "valor", "etiqueta"],
+        "properties": {
+          "id": { "type": "string" },
+          "valor": { "type": "number" },
+          "etiqueta": { "type": "string" },
+          "sufijo": { "type": "string" }
+        }
+      }
+    },
+    "familias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["categorias"],
+      "properties": {
+        "nota": { "type": "string" },
+        "categorias": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "familia", "etiqueta", "n"],
+            "properties": {
+              "id": { "type": "string" },
+              "familia": { "type": "string" },
+              "etiqueta": { "type": "string" },
+              "n": { "type": "number" },
+              "cierto": { "type": "boolean" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "masacres": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nombre", "anio", "fecha", "muertos", "provincia", "lugar", "lonlat", "detalle"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "anio": { "type": "integer" },
+          "fecha": { "type": "string" },
+          "fechaAprox": { "type": "boolean" },
+          "muertos": { "type": "number" },
+          "muertosCierto": { "type": "boolean" },
+          "muertosMin": { "type": "number" },
+          "muertosNota": { "type": "string" },
+          "menores": { "type": "number" },
+          "menoresNota": { "type": "string" },
+          "aBordo": { "type": "number" },
+          "supervivientesPresos": { "type": "number" },
+          "desaparecidos": { "type": "number" },
+          "desaparecidosNota": { "type": "string" },
+          "provincia": { "type": ["string", "null"] },
+          "lugar": { "type": "string" },
+          "lonlat": {
+            "type": ["array", "null"],
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "coordDesconocida": { "type": "boolean" },
+          "medio": { "type": "string" },
+          "delacion": { "type": "boolean" },
+          "destacado": { "type": "boolean" },
+          "detalle": { "type": "string" }
+        }
+      }
+    },
+    "proceso": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "etapas"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "etapas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "orden", "titulo", "texto"],
+            "properties": {
+              "id": { "type": "string" },
+              "orden": { "type": "integer" },
+              "titulo": { "type": "string" },
+              "rol": { "type": "string" },
+              "texto": { "type": "string" },
+              "casos": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "fusilamientos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "casos"],
+      "properties": {
+        "total": { "type": "number" },
+        "nota": { "type": "string" },
+        "casos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fecha", "anio", "n", "personas", "motivo"],
+            "properties": {
+              "fecha": { "type": "string" },
+              "anio": { "type": "integer" },
+              "n": { "type": "number" },
+              "personas": { "type": "string" },
+              "motivo": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "huelgas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "politicos", "comunes", "casos"],
+      "properties": {
+        "total": { "type": "number" },
+        "politicos": { "type": "number" },
+        "comunes": { "type": "number" },
+        "periodo": { "type": "string" },
+        "nota": { "type": "string" },
+        "casos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "fecha", "anio", "prision", "tipo"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "edad": { "type": ["number", "null"] },
+              "fecha": { "type": "string" },
+              "anio": { "type": "integer" },
+              "prision": { "type": "string" },
+              "dias": { "type": ["number", "null"] },
+              "tipo": { "type": "string", "enum": ["politico", "comun"] },
+              "fechaAprox": { "type": "boolean" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "guantanamo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "berlin", "cuba"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "berlin": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["muertos", "anios", "periodo", "etiqueta"],
+          "properties": {
+            "muertos": { "type": "number" },
+            "anios": { "type": "number" },
+            "periodo": { "type": "string" },
+            "etiqueta": { "type": "string" }
+          }
+        },
+        "cuba": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ejecuciones", "minas", "desapariciones", "etiqueta"],
+          "properties": {
+            "ejecuciones": { "type": "number" },
+            "minas": { "type": "number" },
+            "desapariciones": { "type": "number" },
+            "desde": { "type": "number" },
+            "anios": { "type": "number" },
+            "etiqueta": { "type": "string" }
+          }
+        },
+        "nota": { "type": "string" },
+        "casos": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fecha", "anio", "personas", "detalle"],
+            "properties": {
+              "fecha": { "type": "string" },
+              "anio": { "type": "integer" },
+              "personas": { "type": "string" },
+              "detalle": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "penas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "escalones"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "escalones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["art", "conducta", "min", "max"],
+            "properties": {
+              "art": { "type": "string" },
+              "conducta": { "type": "string" },
+              "min": { "type": "number" },
+              "max": { "type": "number" },
+              "perpetua": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "memoria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "grupos"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "grupos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "titulo", "personas"],
+            "properties": {
+              "id": { "type": "string" },
+              "titulo": { "type": "string" },
+              "muertos": { "type": "number" },
+              "muertosCierto": { "type": "boolean" },
+              "nota": { "type": "string" },
+              "personas": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["nombre"],
+                  "properties": {
+                    "nombre": { "type": "string" },
+                    "edad": { "type": ["number", "null"] },
+                    "edadTexto": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "q", "opts"],
+        "properties": {
+          "id": { "type": "string" },
+          "q": { "type": "string" },
+          "opts": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "t", "seed"],
+              "properties": {
+                "id": { "type": "string" },
+                "t": { "type": "string" },
+                "seed": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fuentes", "periodo", "extraccion", "limitaciones", "cambios_metodologicos"],
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tipo", "url"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "tipo": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "titulo": "Asesinatos y masacres de Estado",
+    "subtitulo": "Ejecuciones, hundimientos y muertes en huelga de hambre documentados por Archivo Cuba · 1959–2022",
+    "actualizado": "2026-07-01",
+    "periodo": "1959–2022",
+    "fuentePrincipal": "Archivo Cuba / Free Society Project · Proyecto de Verdad y Memoria",
+    "advertencia": "Todas las cifras son «al menos». Archivo Cuba sostiene que las víctimas reales son muchas veces más numerosas que las que ha podido documentar; posiblemente cientos, si no miles, más."
+  },
+  "kpis": [
+    { "id": "ejecMar", "valor": 169, "etiqueta": "ejecuciones extrajudiciales en intentos de salida por mar", "sufijo": "al menos" },
+    { "id": "fusilados", "valor": 29, "etiqueta": "fusilamientos por intentar huir o rescatar familiares", "sufijo": "documentados" },
+    { "id": "huelgas", "valor": 27, "etiqueta": "presos muertos en huelga de hambre de protesta", "sufijo": "1959–2022" },
+    { "id": "desap", "valor": 24, "etiqueta": "desapariciones forzadas en salidas «ilegales»", "sufijo": "al menos" }
+  ],
+  "familias": {
+    "nota": "Dos geografías de la misma política de control: el mar, para quien intenta irse; la celda, para quien protesta encerrado.",
+    "categorias": [
+      { "id": "ejec-mar", "familia": "El mar", "etiqueta": "Ejecuciones extrajudiciales en intentos de salida por mar", "n": 169, "cierto": false, "nota": "Cifra paraguas; las masacres nominadas son casos documentados dentro de este total." },
+      { "id": "fusilamiento", "familia": "El mar", "etiqueta": "Fusilamientos por pelotón por intentar huir o rescatar familiares", "n": 29, "cierto": true },
+      { "id": "desap-mar", "familia": "El mar", "etiqueta": "Desapariciones forzadas en salidas «ilegales»", "n": 24, "cierto": false },
+      { "id": "gtmo-ejec", "familia": "El muro de agua", "etiqueta": "Ejecuciones extrajudiciales en el cerco de Guantánamo", "n": 19, "cierto": true },
+      { "id": "gtmo-minas", "familia": "El muro de agua", "etiqueta": "Muertos por minas hacia la base de Guantánamo", "n": 6, "cierto": true },
+      { "id": "gtmo-desap", "familia": "El muro de agua", "etiqueta": "Desapariciones forzadas hacia Guantánamo", "n": 3, "cierto": true },
+      { "id": "embajadas", "familia": "El mar", "etiqueta": "Civiles asesinados buscando asilo en embajadas", "n": 5, "cierto": true, "nota": "Casos nominados; no es un total exhaustivo." },
+      { "id": "huelga", "familia": "La celda", "etiqueta": "Presos muertos en huelga de hambre", "n": 27, "cierto": true, "nota": "14 presos políticos y 13 con condenas no estrictamente políticas." }
+    ]
+  },
+  "masacres": [
+    {
+      "id": "barlovento", "nombre": "Masacre de Barlovento", "anio": 1962, "fecha": "1962-01-15",
+      "muertos": 5, "muertosCierto": true, "aBordo": 29, "supervivientesPresos": 14,
+      "provincia": "CU-03", "lugar": "Marina de Barlovento (hoy Hemingway), norte de La Habana", "lonlat": [-82.51, 23.08],
+      "medio": "Ametralladoras desde lancha patrullera de la Marina", "delacion": true,
+      "detalle": "Una lancha patrullera abrió fuego con ametralladoras contra el yate «Pretexto», delatado por un espía infiltrado. De los 29 a bordo, 5 murieron y 14 supervivientes fueron condenados a 20 años."
+    },
+    {
+      "id": "prendes", "nombre": "Masacre de la familia Prendes", "anio": 1964, "fecha": "1964-03-27",
+      "muertos": 4, "muertosCierto": true,
+      "provincia": "CU-03", "lugar": "A 5 millas de la costa, salida del Club Náutico de Miramar (La Habana)", "lonlat": [-82.44, 23.13],
+      "medio": "Ametralladoras de guardias fronterizos", "delacion": true,
+      "detalle": "Mercedes Prendes (29) y sus hijos Porfirio (3) y Marita (5), más un amigo, murieron acribillados a 5 millas de la costa. Buscaban reunirse con el padre exiliado. Sobrevivió una hija de 7 años."
+    },
+    {
+      "id": "banes", "nombre": "Masacre de Banes", "anio": 1964, "fecha": "1964-04-09",
+      "muertos": 6, "muertosCierto": true,
+      "provincia": "CU-11", "lugar": "Playa de Banes, Holguín", "lonlat": [-75.72, 20.96],
+      "medio": "Guardias fronterizos", "delacion": false,
+      "detalle": "Seis personas asesinadas al intentar salir por mar desde la playa de Banes, entre ellas Idalia Fernández (1 año), Carmen Amelia Batule (4) e Isaac Batule (5)."
+    },
+    {
+      "id": "lazo", "nombre": "Masacre de la familia Lazo", "anio": 1971, "fecha": "1971-01-01",
+      "muertos": 4, "muertosCierto": true, "fechaAprox": true, "coordDesconocida": true,
+      "provincia": null, "lugar": "Lugar no precisado por la fuente", "lonlat": null,
+      "medio": "Embestida y hundimiento por barco de la Guardia Costera", "delacion": false,
+      "detalle": "La balsa de una familia fue embestida y hundida pese a las súplicas de los padres. Murieron la madre (devorada por tiburones) y tres niños cuyos restos no se hallaron. El padre, Alberto Lazo Pastrana, sobrevivió, fue condenado a 18 años y murió preso en 1978."
+    },
+    {
+      "id": "canimar", "nombre": "Masacre del río Canímar", "anio": 1980, "fecha": "1980-07-06",
+      "muertos": 56, "muertosCierto": false, "muertosMin": 40, "muertosNota": "Cifra ocultada por el Estado. Un informe la declara «desconocida, decenas»; otro estima «al menos 56». Se usa la estimación superior como suelo aproximado.",
+      "provincia": "CU-04", "lugar": "Río Canímar, bahía de Matanzas", "lonlat": [-81.48, 23.02],
+      "medio": "Lanchas patrulleras + ataque aéreo + embestida de bote industrial", "delacion": false, "destacado": true,
+      "detalle": "Tres jóvenes secuestraron el barco turístico «XX Aniversario» para huir a EE. UU. El Estado respondió con dos lanchas patrulleras, un avión de la Fuerza Aérea que ametralló a los pasajeros —aunque los padres alzaban a los niños en el aire— y finalmente un bote industrial pesado que embistió y hundió la embarcación, disparando contra los sobrevivientes en el agua. Los cuerpos no se entregaron y se prohibieron los funerales comunales."
+    },
+    {
+      "id": "remolcador", "nombre": "Masacre del remolcador «13 de Marzo»", "anio": 1994, "fecha": "1994-07-13",
+      "muertos": 37, "muertosCierto": true, "menores": 8, "menoresNota": "El informe declara 8 menores; el listado nominal por edades contiene 11 personas menores de 18 años. Discrepancia interna de la fuente.",
+      "provincia": "CU-03", "lugar": "Frente al puerto de La Habana", "lonlat": [-82.34, 23.14],
+      "medio": "Chorros de agua a presión + embestida por remolcadores del Estado", "delacion": false, "destacado": true,
+      "detalle": "Unas 70 personas abordaron el remolcador «13 de Marzo» de madrugada. Tres remolcadores estatales los persiguieron, les lanzaron chorros de agua a presión que arrancaron niños de brazos de sus padres, y finalmente embistieron y hundieron la nave. Murieron 37 personas; ninguno de los cuerpos fue devuelto a las familias."
+    },
+    {
+      "id": "talia", "nombre": "Masacre de La Talía", "anio": 2011, "fecha": "2011-02-01",
+      "muertos": 1, "muertosCierto": true, "desaparecidos": 17, "desaparecidosNota": "17 desaparecidos forzosamente, presumiblemente muertos.",
+      "provincia": "CU-99", "lugar": "Salida de Playa Buenavista, Isla de la Juventud; interceptada frente a Pinar del Río", "lonlat": [-82.80, 21.68],
+      "medio": "Guardafronteras (cuerpo acribillado hallado 24 días después)", "delacion": false,
+      "detalle": "18 personas salieron a bordo de La Talía. El cuerpo acribillado de Wilfredo Peña Leyva apareció 24 días después; las otras 17 desaparecieron. Solo se conocen tres nombres."
+    },
+    {
+      "id": "bahiahonda", "nombre": "Masacre de Bahía Honda", "anio": 2022, "fecha": "2022-10-28",
+      "muertos": 7, "muertosCierto": true, "aBordo": 28,
+      "provincia": "CU-16", "lugar": "Frente a Bahía Honda, Artemisa", "lonlat": [-83.16, 22.95],
+      "medio": "Embestida y hundimiento deliberado por la Guardia Costera", "delacion": false, "destacado": true,
+      "detalle": "Un bote con 28 civiles desarmados fue embestido y hundido por la Guardia Costera. Murieron 7, incluida la niña Elizabeth Meizoso (2). Los sobrevivientes denunciaron que las autoridades hundieron la nave a propósito, demoraron el rescate y los amenazaron para que callaran."
+    }
+  ],
+  "proceso": {
+    "titulo": "Anatomía de una masacre marítima",
+    "intro": "Los casos no son accidentes aislados: repiten un mismo patrón de Estado. Cada etapa está documentada en varias masacres a la vez.",
+    "etapas": [
+      {
+        "id": "e1", "orden": 1, "titulo": "Restricción de salida", "rol": "Marco legal",
+        "texto": "Salir sin permiso es delito. El Código Penal castiga la salida no autorizada, ayudarla o promoverla; en las décadas de 1960–70 pedir un permiso obligaba a años de trabajo forzado.",
+        "casos": ["Código Penal, arts. 283–288 (act. 1 sep 2022)"]
+      },
+      {
+        "id": "e2", "orden": 2, "titulo": "Delación e infiltración", "rol": "Inteligencia",
+        "texto": "Espías y delatores infiltran los planes de fuga. Las autoridades esperan a los fugitivos en el punto y hora exactos.",
+        "casos": ["Barlovento 1962 (espía infiltrado)", "Familia Prendes 1964 (informante)"]
+      },
+      {
+        "id": "e3", "orden": 3, "titulo": "Intercepción armada", "rol": "Guardafronteras / Marina",
+        "texto": "Lanchas patrulleras y guardafronteras interceptan la embarcación con órdenes de impedir la fuga «y hundir de ser necesario».",
+        "casos": ["Canímar 1980 (dos lanchas patrulleras)", "Remolcador 1994 (tres remolcadores)"]
+      },
+      {
+        "id": "e4", "orden": 4, "titulo": "Fuerza letal", "rol": "Fuego / embestida",
+        "texto": "Ametralladoras, ataque aéreo, chorros de agua a presión y embestidas contra civiles desarmados, incluidos niños alzados en el aire.",
+        "casos": ["Banes 1964 (ametralladoras)", "Canímar 1980 (aviación)", "Remolcador 1994 (chorros de agua)"]
+      },
+      {
+        "id": "e5", "orden": 5, "titulo": "Hundimiento", "rol": "Eliminación",
+        "texto": "La nave se hunde por embestida deliberada; a los sobrevivientes se les dispara en el agua o se demora su rescate.",
+        "casos": ["Familia Lazo 1971", "Canímar 1980", "Remolcador 1994", "Bahía Honda 2022"]
+      },
+      {
+        "id": "e6", "orden": 6, "titulo": "Silenciamiento", "rol": "Encubrimiento",
+        "texto": "Cuerpos no entregados, funerales comunales prohibidos, sobrevivientes vigilados y amenazados con la cárcel si hablan; la cifra de víctimas se mantiene en secreto.",
+        "casos": ["Canímar 1980 (funerales prohibidos)", "Remolcador 1994 (vigilancia)", "Bahía Honda 2022 (amenazas)"]
+      }
+    ]
+  },
+  "fusilamientos": {
+    "total": 29,
+    "nota": "Sentencias de muerte dictadas por tribunales revolucionarios sin garantías procesales. La mayoría no cometió actos violentos. Se muestran casos seleccionados dentro de los 29 documentados.",
+    "casos": [
+      { "fecha": "1961-01-18", "anio": 1961, "n": 3, "personas": "Julio Casielles, William Le Santé (36), Luis Méndez (34)", "motivo": "Capturados intentando salir en barca; condenados a muerte en un juicio de un día por un sabotaje que se les atribuyó sin pruebas." },
+      { "fecha": "1963-08-13", "anio": 1963, "n": 3, "personas": "José Durado, Antonio González, Pablo Rodríguez", "motivo": "Tres ministros protestantes fusilados por salir «ilegalmente»; capturados en Bahamas y devueltos a La Habana." },
+      { "fecha": "1963-09-02", "anio": 1963, "n": 2, "personas": "Juan Lima Sotelo (28), Víctor Vargas", "motivo": "Se infiltraron para recoger a una novia; capturados en Cayo Sal y fusilados." },
+      { "fecha": "1964-11-02", "anio": 1964, "n": 3, "personas": "Sergio Armas, Miguel Conde Green, Abel Calante (22)", "motivo": "Intento de secuestrar la embarcación «Tres Hermanos» en Isla de Pinos; juicio con gran publicidad «para crear terror»." },
+      { "fecha": "1981-01-02", "anio": 1981, "n": 3, "personas": "Hermanos Ventura (19), Cipriano (21) y Eugenio García Marín (25)", "motivo": "Testigos de Jehová fusilados por pedir asilo en la Nunciatura; insistieron estar desarmados, lo que luego se confirmó." },
+      { "fecha": "2003-04-11", "anio": 2003, "n": 3, "personas": "Lorenzo Copello (33), Bárbaro Sevilla (22), Jorge Martínez (40)", "motivo": "Fusilados 9 días después de secuestrar el transbordador de Baraguá sin herir a nadie; ejecutados mientras esperaban apelación." }
+    ]
+  },
+  "huelgas": {
+    "total": 27, "politicos": 14, "comunes": 13,
+    "periodo": "1966–2022",
+    "nota": "Presos que murieron en huelga de hambre de protesta por torturas, trabajo forzado, malnutrición y falta de atención médica. Los días de huelga se muestran cuando la fuente los documenta.",
+    "casos": [
+      { "nombre": "Roberto López Chávez", "edad": 25, "fecha": "1966-12-11", "anio": 1966, "prision": "Isla de Pinos", "dias": 70, "tipo": "politico", "nota": "Se le negó agua; un guardia orinó en su boca. Murió sin atención médica." },
+      { "nombre": "Luis Álvarez Ríos", "edad": 31, "fecha": "1967-08-09", "anio": 1967, "prision": "Castillo del Príncipe, La Habana", "dias": null, "tipo": "politico", "nota": "Condenado a 20 años. Murió tras servírsele comida pesada al deponer la huelga." },
+      { "nombre": "Francisco Aguirre Vidarrueta", "edad": null, "fecha": "1967-09-01", "anio": 1967, "prision": "Castillo del Príncipe, La Habana", "dias": null, "tipo": "politico", "fechaAprox": true, "nota": "Exigía ser reconocido como preso político." },
+      { "nombre": "Carmelo Cuadra Hernández", "edad": null, "fecha": "1969-07-29", "anio": 1969, "prision": "La Habana", "dias": null, "tipo": "politico", "nota": "Murió en huelga sin atención médica." },
+      { "nombre": "Pedro Luis Boitel", "edad": 34, "fecha": "1972-05-25", "anio": 1972, "prision": "Castillo del Príncipe, La Habana", "dias": 53, "tipo": "politico", "nota": "Líder estudiantil antibatistiano; se le prolongó la condena. Murió maltratado por los guardias." },
+      { "nombre": "Olegario Charlot Spileta", "edad": null, "fecha": "1973-01-15", "anio": 1973, "prision": "Boniato, Santiago de Cuba", "dias": null, "tipo": "politico", "nota": "Murió en huelga sin atención médica." },
+      { "nombre": "Enrique García Cuevas", "edad": null, "fecha": "1973-05-23", "anio": 1973, "prision": "Pretensado, Las Villas", "dias": null, "tipo": "politico", "nota": "Protestaba el trabajo forzado y las condiciones inhumanas." },
+      { "nombre": "Reinaldo Cordero Izquierdo", "edad": null, "fecha": "1975-05-21", "anio": 1975, "prision": "Pinar del Río", "dias": null, "tipo": "politico", "nota": "Le aumentaron la condena arbitrariamente tras cumplirla. Murió en su celda." },
+      { "nombre": "José Barrios Pedré", "edad": null, "fecha": "1977-09-22", "anio": 1977, "prision": "Pretensado, Las Villas", "dias": null, "tipo": "politico", "nota": "Comenzó su huelga en una celda de castigo máximo." },
+      { "nombre": "Santiago Roche Valle", "edad": 45, "fecha": "1985-09-08", "anio": 1985, "prision": "Kilo 7, Camagüey", "dias": null, "tipo": "politico", "nota": "Murió de un paro cardíaco sin atención médica." },
+      { "nombre": "Nicolás González Regueiro", "edad": 42, "fecha": "1992-09-16", "anio": 1992, "prision": "Manacas, Las Villas", "dias": null, "tipo": "politico", "nota": "Los guardias lo mataron a golpes e informaron que se había suicidado." },
+      { "nombre": "Orlando Zapata Tamayo", "edad": 42, "fecha": "2010-02-23", "anio": 2010, "prision": "Cuba", "dias": 82, "tipo": "politico", "nota": "Se le negó agua 18 días. Su muerte tuvo repercusión internacional." },
+      { "nombre": "Wilman Villar Mendoza", "edad": 31, "fecha": "2012-01-19", "anio": 2012, "prision": "Santiago de Cuba", "dias": 52, "tipo": "politico", "nota": "Miembro de UNPACU, recluido desnudo en celda de castigo." },
+      { "nombre": "Yosvany Aróstegui Almenteros", "edad": null, "fecha": "2020-08-07", "anio": 2020, "prision": "Camagüey", "dias": 40, "tipo": "politico", "nota": "Activista de DD.HH. condenado por delitos que denunció como fabricados." },
+      { "nombre": "René Cobas Arzola", "edad": 46, "fecha": "2012-01-01", "anio": 2012, "prision": "Santiago de Cuba", "dias": null, "tipo": "comun" },
+      { "nombre": "Leonardo Brindis Villalón", "edad": 22, "fecha": "2012-02-03", "anio": 2012, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Andrés Menéndez Malagón", "edad": 45, "fecha": "2012-03-03", "anio": 2012, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Yordanis Ballagas Ramírez", "edad": 27, "fecha": "2013-01-25", "anio": 2013, "prision": "Camagüey", "dias": null, "tipo": "comun" },
+      { "nombre": "Roberto Ribalta Junco", "edad": 44, "fecha": "2013-02-16", "anio": 2013, "prision": "Villa Clara", "dias": null, "tipo": "comun" },
+      { "nombre": "Noel Roque Ruiz", "edad": 40, "fecha": "2013-08-04", "anio": 2013, "prision": "Sancti Spíritus", "dias": null, "tipo": "comun" },
+      { "nombre": "Vladimir Cuné Vélez", "edad": 31, "fecha": "2014-08-25", "anio": 2014, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Alexander Duarte Vidal", "edad": 40, "fecha": "2014-09-06", "anio": 2014, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Hugo Riverón Aguilera", "edad": 59, "fecha": "2017-07-08", "anio": 2017, "prision": "Holguín", "dias": null, "tipo": "comun" },
+      { "nombre": "Fernando Arsola Suárez", "edad": 42, "fecha": "2017-08-10", "anio": 2017, "prision": "Santiago de Cuba", "dias": null, "tipo": "comun" },
+      { "nombre": "Lázaro Abreu Godínez", "edad": 45, "fecha": "2019-12-02", "anio": 2019, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Maykel Acosta Sánchez", "edad": 35, "fecha": "2021-05-06", "anio": 2021, "prision": "La Habana", "dias": null, "tipo": "comun" },
+      { "nombre": "Andy Reyes Cruz", "edad": 27, "fecha": "2022-09-27", "anio": 2022, "prision": "Sancti Spíritus", "dias": null, "tipo": "comun" }
+    ]
+  },
+  "guantanamo": {
+    "titulo": "El muro de agua de Guantánamo",
+    "intro": "Archivo Cuba compara el cerco cubano a la base naval de EE. UU. con el Muro de Berlín: alambre de púas, campos minados y torres con francotiradores con órdenes de disparar a matar contra civiles desarmados.",
+    "berlin": { "muertos": 235, "anios": 28, "periodo": "1961–1989", "etiqueta": "Muro de Berlín" },
+    "cuba": { "ejecuciones": 19, "minas": 6, "desapariciones": 3, "desde": 1961, "anios": 61, "etiqueta": "Cerco de Guantánamo" },
+    "nota": "El cerco cubano lleva más de 60 años vigente. Archivo Cuba advierte que el número real de víctimas es muchas veces mayor que el documentado.",
+    "casos": [
+      { "fecha": "1959-01-07", "anio": 1959, "personas": "Remberto Brausen", "detalle": "Asesinado por la Armada 6 días después de la toma del poder, cuando nadaba hacia la base para pedir asilo. Primer caso documentado." },
+      { "fecha": "1993-09-11", "anio": 1993, "personas": "Otoniel (22) y Rubén Rey Terrero (25)", "detalle": "Desaparecieron tras partir hacia la base; la familia supo después que las autoridades los asesinaron." },
+      { "fecha": "1994-01-19", "anio": 1994, "personas": "Iskander Maleras (26), Luis Ángel Valverde (30)", "detalle": "Francotiradores les dispararon a 50 metros de la base. Los guardias fronterizos recibieron medallas." }
+    ]
+  },
+  "penas": {
+    "titulo": "La arquitectura legal de la fuga",
+    "intro": "El Código Penal cubano (arts. 283–288, actualizado el 1 de septiembre de 2022) convierte el acto de irse —o de ayudar a otro a hacerlo— en delito, con penas que llegan a la cadena perpetua.",
+    "escalones": [
+      { "art": "283–284", "conducta": "Prestar ayuda material o información para la salida", "min": 1, "max": 3 },
+      { "art": "283–284", "conducta": "Salir o realizar actos tendentes a salir sin autorización", "min": 1, "max": 3 },
+      { "art": "283–284", "conducta": "Organizar, promover o incitar la salida", "min": 2, "max": 5 },
+      { "art": "283–284", "conducta": "Salir con violencia o intimidación", "min": 3, "max": 8 },
+      { "art": "285–288", "conducta": "«Tráfico de personas»: facilitar la emigración con ánimo de lucro", "min": 7, "max": 10 },
+      { "art": "285–288", "conducta": "«Tráfico de personas» portando arma o con violencia", "min": 20, "max": 30, "perpetua": true }
+    ]
+  },
+  "memoria": {
+    "titulo": "Los nombres",
+    "intro": "Un fragmento de la contabilidad del silencio. Detrás de cada cifra hay personas; muchas, criaturas. Estas son algunas de las que se conoce el nombre.",
+    "grupos": [
+      {
+        "id": "remolcador", "titulo": "Remolcador «13 de Marzo» · 13 de julio de 1994", "muertos": 37,
+        "nota": "37 víctimas; el listado por edades contiene 11 personas menores de 18 años (el informe declara 8).",
+        "personas": [
+          { "nombre": "Ángel René Abreu Ruíz", "edad": 3 },
+          { "nombre": "Rosa María Alcalde Puig", "edad": 47 },
+          { "nombre": "Pilar Almanza Romero", "edad": 31 },
+          { "nombre": "Lissett María Álvarez Guerra", "edad": 24 },
+          { "nombre": "Yaltamira Anaya Carrasco", "edad": 22 },
+          { "nombre": "Jorge Gregorio Balmaseda Castillo", "edad": 24 },
+          { "nombre": "Giselle Borges Álvarez", "edad": 4 },
+          { "nombre": "Lázaro Enrique Borges Briel", "edad": 34 },
+          { "nombre": "Marta Mirilla Carrasco Sanabria", "edad": 45 },
+          { "nombre": "Manuel Cayol", "edad": 56 },
+          { "nombre": "Luliana Enríquez Carrazana", "edad": 22 },
+          { "nombre": "María Miralis Fernández Rodríguez", "edad": 27 },
+          { "nombre": "Rigoberto Feu González", "edad": 31 },
+          { "nombre": "Joel García Suárez", "edad": 20 },
+          { "nombre": "Leonardo Notario Góngora", "edad": 28 },
+          { "nombre": "Amado González Raíces", "edad": 50 },
+          { "nombre": "Augusto Guillermo Guerra Martínez", "edad": 45 },
+          { "nombre": "Juan Mario Gutiérrez García", "edad": 10 },
+          { "nombre": "Jorge Arquímides Levrígido Flores", "edad": 28 },
+          { "nombre": "Caridad Leyva Tacoronte", "edad": 5 },
+          { "nombre": "Ernesto Alfonso Loureiro", "edad": 25 },
+          { "nombre": "Reynaldo Joaquín Marrero Álamo", "edad": 48 },
+          { "nombre": "Hellen Martínez Enríquez", "edad": 0, "edadTexto": "5 meses" },
+          { "nombre": "Mayulis Méndez Tacoronte", "edad": 17 },
+          { "nombre": "Odalys Muñoz García", "edad": 21 },
+          { "nombre": "José Carlos Nicle Anaya", "edad": 3 },
+          { "nombre": "Yousell Eugenio Pérez Tacoronte", "edad": 11 },
+          { "nombre": "Yasser Perodín Almanza", "edad": 11 },
+          { "nombre": "Fidencio Ramel Prieto Hernández", "edad": 51 },
+          { "nombre": "Xicdy Rodríguez Fernández", "edad": 2 },
+          { "nombre": "Omar Rodríguez Suárez", "edad": 33 },
+          { "nombre": "Julia Caridad Ruíz Blanco", "edad": 36 },
+          { "nombre": "Miladys Sanabria Leal", "edad": 19 },
+          { "nombre": "Eduardo Suárez Esquivel", "edad": 38 },
+          { "nombre": "Estrella Suárez Esquivel", "edad": 48 },
+          { "nombre": "Eliecer Suárez Plasencia", "edad": 12 },
+          { "nombre": "Martha Caridad Tacoronte Vega", "edad": 35 }
+        ]
+      },
+      {
+        "id": "canimar", "titulo": "Río Canímar · 6 de julio de 1980", "muertos": 56, "muertosCierto": false,
+        "nota": "Solo se conocen algunos nombres; la cifra total (≈56) fue ocultada por el Estado.",
+        "personas": [
+          { "nombre": "Lilian González", "edad": 3 },
+          { "nombre": "Osmany Rosales", "edad": 9 },
+          { "nombre": "Marisel San Juan", "edad": 11 },
+          { "nombre": "Delio Gómez", "edad": 17 },
+          { "nombre": "Marisol Martínez", "edad": 17 },
+          { "nombre": "Luis Espinosa", "edad": 34 },
+          { "nombre": "Onelia Quintana", "edad": 50 },
+          { "nombre": "Vicente Fleitas", "edad": 56 },
+          { "nombre": "José Ramón San Juan", "edad": 60 },
+          { "nombre": "Mirta de Armas", "edad": null },
+          { "nombre": "Juan Domínguez", "edad": null },
+          { "nombre": "Primitivo Pulgarón", "edad": null }
+        ]
+      },
+      {
+        "id": "bahiahonda", "titulo": "Bahía Honda · 28 de octubre de 2022", "muertos": 7,
+        "nota": "Siete víctimas de la embestida de la Guardia Costera.",
+        "personas": [
+          { "nombre": "Elizabeth Meizoso", "edad": 2 },
+          { "nombre": "Indira Serrano Cala", "edad": 18 },
+          { "nombre": "Israel Gómez", "edad": 29 },
+          { "nombre": "Nathali Acosta Lemus", "edad": null },
+          { "nombre": "Aimara Meizoso León", "edad": null },
+          { "nombre": "Yerandy García Meizoso", "edad": null },
+          { "nombre": "Omar Reyes Valdés", "edad": null }
+        ]
+      }
+    ]
+  },
+  "encuesta": [
+    {
+      "id": "q1",
+      "q": "Archivo Cuba sostiene que estos hechos constituyen crímenes de lesa humanidad según el Estatuto de Roma. ¿Qué debería hacer la comunidad internacional?",
+      "opts": [
+        { "id": "a", "t": "Impulsar una investigación internacional independiente", "seed": 372 },
+        { "id": "b", "t": "Condicionar todo trato al esclarecimiento de estos casos", "seed": 214 },
+        { "id": "c", "t": "Exigir la apertura de los archivos de Guardafronteras y Seguridad del Estado", "seed": 301 },
+        { "id": "d", "t": "Mantener la presión diplomática sin más", "seed": 63 }
+      ]
+    },
+    {
+      "id": "q2",
+      "q": "Las cifras documentadas son «al menos»: la propia fuente cree que las víctimas reales son muchas más. ¿Qué explica mejor el subregistro?",
+      "opts": [
+        { "id": "a", "t": "El secreto de Estado: cuerpos ocultados y funerales prohibidos", "seed": 288 },
+        { "id": "b", "t": "El miedo de sobrevivientes y familiares vigilados", "seed": 197 },
+        { "id": "c", "t": "El paso del tiempo y la pérdida de testigos", "seed": 121 },
+        { "id": "d", "t": "La falta de acceso a los archivos oficiales", "seed": 176 }
+      ]
+    }
+  ],
+  "metodologia": {
+    "fuentes": [
+      { "nombre": "Archivo Cuba / Free Society Project — «Ejecuciones extrajudiciales y desapariciones forzadas de civiles intentando huir de Cuba»", "tipo": "informe (30 nov 2022)", "url": "https://cubaarchive.org/es/base-de-datos/" },
+      { "nombre": "Archivo Cuba — «Al menos 27 presos cubanos han muerto en huelgas de hambre: 1959–presente»", "tipo": "informe (12 oct 2022)", "url": "https://cubaarchive.org/es/base-de-datos/" },
+      { "nombre": "Archivo Cuba — «La Masacre del Río Canímar del 6 de julio de 1980»", "tipo": "informe (act. 25 ago 2019)", "url": "https://cubaarchive.org" }
+    ],
+    "periodo": "1959–2022",
+    "cadencia": "casi-estático (memoria histórica; fuera del ciclo de 8 h)",
+    "extraccion": "Extracción manual asistida sobre los informes originales de Archivo Cuba, con responseSchema constreñido.",
+    "validacion": "ajv contra asesinatos-masacres.schema.json · react-scripts build · bracket-balance string-aware",
+    "limitaciones": [
+      "Todas las cifras son «al menos»: la propia fuente estima que las víctimas reales son muchas veces más, posiblemente cientos o miles.",
+      "La cifra de Canímar fue ocultada por el Estado; un informe la declara «desconocida, decenas» y otro estima «al menos 56». Se marca como aproximada.",
+      "El remolcador «13 de Marzo» presenta una discrepancia interna: el texto declara 8 menores, el listado nominal contiene 11 menores de 18 años.",
+      "Los epígrafes de desapariciones de 2003 y 2004 dicen «3 desaparecidos» pero enumeran 5 y 4 nombres respectivamente (inconsistencia señalada en la fuente).",
+      "La geolocalización de algunas masacres es aproximada; la de la familia Lazo (1971) no se precisa en la fuente.",
+      "Archivo Cuba es una fuente del exilio cubano con una tesis explícita de sistematicidad; sus cifras no han sido contrastadas con registros estatales, que permanecen cerrados."
+    ],
+    "cambios_metodologicos": []
+  }
+}

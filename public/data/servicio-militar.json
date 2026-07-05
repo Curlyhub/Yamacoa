@@ -1,0 +1,924 @@
+{
+  "meta": {
+    "titulo": "Servir o morir",
+    "subtitulo": "El servicio militar obligatorio en Cuba: trata de personas con un costo letal",
+    "actualizado": "2026-07-01",
+    "periodo": "1963–2023",
+    "fuentePrincipal": "Maria C. Werlau · Archivo Cuba / Free Society Project (20 oct 2023)",
+    "advertencia": "El costo en vidas del servicio militar por seis décadas «podría llegar a cientos, quizás miles», adicional a Angola. Sin cifras oficiales, Archivo Cuba solo ha podido documentar 54 muertes; es un esfuerzo inicial, no un total."
+  },
+  "kpis": [
+    {
+      "id": "caidos",
+      "valor": 54,
+      "etiqueta": "muertes y desapariciones documentadas en el SMO",
+      "sufijo": "esfuerzo inicial"
+    },
+    {
+      "id": "reserva",
+      "valor": 1033123,
+      "etiqueta": "varones residentes de 15–29 años (2021)",
+      "sufijo": "reserva cautiva"
+    },
+    {
+      "id": "angola",
+      "valor": 2085,
+      "etiqueta": "muertos oficiales en la guerra de Angola",
+      "sufijo": "veteranos dicen que más"
+    },
+    {
+      "id": "mercenarios",
+      "valor": 198,
+      "etiqueta": "cubanos alistados en el ejército ruso (lista filtrada)",
+      "sufijo": "Ucrania, 2023"
+    }
+  ],
+  "resumen": {
+    "totalDocumentado": 54,
+    "menores": 4,
+    "nota": "Clasificación del propio Anexo de Archivo Cuba. El resumen del informe declara «13 ejecuciones extrajudiciales», pero el listado nominal contiene 14: se muestra la lista.",
+    "categorias": [
+      {
+        "id": "accidente",
+        "etiqueta": "Negligencia criminal / accidente",
+        "n": 19
+      },
+      {
+        "id": "asesinato",
+        "etiqueta": "Asesinato extrajudicial",
+        "n": 14
+      },
+      {
+        "id": "suicidio",
+        "etiqueta": "Suicidio",
+        "n": 14
+      },
+      {
+        "id": "medica",
+        "etiqueta": "Falta de atención médica",
+        "n": 2
+      },
+      {
+        "id": "fusilamiento",
+        "etiqueta": "Fusilamiento",
+        "n": 2
+      },
+      {
+        "id": "desaparicion",
+        "etiqueta": "Desaparición forzada",
+        "n": 1
+      },
+      {
+        "id": "mar",
+        "etiqueta": "Muerto en intento de salida por mar",
+        "n": 1
+      },
+      {
+        "id": "sincausa",
+        "etiqueta": "Causa de muerte no informada",
+        "n": 1
+      }
+    ]
+  },
+  "caidos": [
+    {
+      "id": "m01",
+      "nombre": "Francisco Fernández Galván",
+      "edad": 22,
+      "fecha": "1979-04-20",
+      "fechaAprox": false,
+      "cat": "fusilamiento",
+      "prov": "CU-03",
+      "lugar": "Castillo de Atarés, La Habana",
+      "menor": false,
+      "detalle": "Fusilado sin juicio por expresar su oposición a la ideología comunista. El certificado de defunción citó otras causas; al fiscal ofreció dinero a la familia por su silencio."
+    },
+    {
+      "id": "m02",
+      "nombre": "Juan Godoy",
+      "edad": null,
+      "fecha": "1964-07-01",
+      "fechaAprox": true,
+      "cat": "fusilamiento",
+      "prov": "CU-03",
+      "lugar": "Prisión La Cabaña, La Habana",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m03",
+      "nombre": "Alfredo Guerra Rivero",
+      "edad": 19,
+      "fecha": "2009-10-25",
+      "fechaAprox": false,
+      "cat": "desaparicion",
+      "prov": "CU-16",
+      "lugar": "Unidad Militar 2170 «Vaca Muerta», San Antonio de los Baños",
+      "menor": false,
+      "detalle": "Desapareció de su unidad; su familia nunca supo qué le ocurrió."
+    },
+    {
+      "id": "m04",
+      "nombre": "Jonathan Aldana Sánchez",
+      "edad": null,
+      "fecha": "2022-06-29",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-12",
+      "lugar": "Jiguaní, Granma",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m05",
+      "nombre": "Darío Andino León",
+      "edad": 18,
+      "fecha": "2014-11-18",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-06",
+      "lugar": "Unidad Militar «Boinas Rojas», Cienfuegos",
+      "menor": false,
+      "detalle": "Tras intentar huir por mar y ser devuelto por Guardacostas de EE.UU., fue apresado por deserción y aislado. Las autoridades dijeron que se ahorció con una sábana, pese a que en las celdas de castigo no se permite prenda alguna."
+    },
+    {
+      "id": "m06",
+      "nombre": "René Arrate Morales",
+      "edad": null,
+      "fecha": "1980-06-06",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-09",
+      "lugar": "Camagüey",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m07",
+      "nombre": "Reinaldo Chiu Padrón",
+      "edad": null,
+      "fecha": "2022-03-21",
+      "fechaAprox": true,
+      "cat": "asesinato",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m08",
+      "nombre": "Roberto Díaz Chávez",
+      "edad": null,
+      "fecha": "1998-07-22",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-15",
+      "lugar": "San José de las Lajas, Mayabeque",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m09",
+      "nombre": "Luis Frometa Piña",
+      "edad": null,
+      "fecha": "1985-09-15",
+      "fechaAprox": true,
+      "cat": "asesinato",
+      "prov": "CU-03",
+      "lugar": "La Habana",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m10",
+      "nombre": "Orlando Lago Vega",
+      "edad": 18,
+      "fecha": "2020-06-01",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-03",
+      "lugar": "unidad militar, La Habana",
+      "menor": false,
+      "detalle": "Asesinado de un tiro mientras dormía. La policía no investigó al sospechoso; en 2023 su padre fue condenado a 1 año y 6 meses de prisión por insistir en que se investigara la muerte de su hijo."
+    },
+    {
+      "id": "m11",
+      "nombre": "Antonio Llera Díaz",
+      "edad": null,
+      "fecha": "1966-04-16",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": null,
+      "lugar": "alta mar",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m12",
+      "nombre": "Reynaldo López",
+      "edad": 17,
+      "fecha": "1986-09-15",
+      "fechaAprox": true,
+      "cat": "asesinato",
+      "prov": "CU-03",
+      "lugar": "La Habana",
+      "menor": true,
+      "detalle": null
+    },
+    {
+      "id": "m13",
+      "nombre": "Elvis Martínez",
+      "edad": 18,
+      "fecha": "2022-06-12",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-09",
+      "lugar": "unidad de tanques, Nuevitas (Minas), Camagüey",
+      "menor": false,
+      "detalle": "La versión oficial fue suicidio con un rifle AKM, pero la familia la cuestiona con video en redes: el cadáver estaba lleno de golpes y tenía dos disparos, uno bajo la barbilla. Antes había discutido con un mayor de la unidad."
+    },
+    {
+      "id": "m14",
+      "nombre": "Ernesto Miranda",
+      "edad": 18,
+      "fecha": "2023-03-15",
+      "fechaAprox": true,
+      "cat": "asesinato",
+      "prov": "CU-03",
+      "lugar": "unidad de artillería, La Lisa, La Habana",
+      "menor": false,
+      "detalle": "Murió cumpliendo el SMO; su familia refutó el informe oficial de supuesto suicidio."
+    },
+    {
+      "id": "m15",
+      "nombre": "Maikel Morales",
+      "edad": null,
+      "fecha": "1997-10-11",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-15",
+      "lugar": "San José de las Lajas, Mayabeque",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m16",
+      "nombre": "Dayron Pupo Mastrapa",
+      "edad": 22,
+      "fecha": "2022-08-17",
+      "fechaAprox": false,
+      "cat": "asesinato",
+      "prov": "CU-03",
+      "lugar": "La Habana",
+      "menor": false,
+      "detalle": "Cumplía un castigo por haberse fugado a ver a su madre. Le reportaron a la familia un «infarto masivo», pero el cadáver no tenía dientes y mostraba señas de traumatismo."
+    },
+    {
+      "id": "m17",
+      "nombre": "William Viera",
+      "edad": 17,
+      "fecha": "1976-02-15",
+      "fechaAprox": true,
+      "cat": "asesinato",
+      "prov": "CU-05",
+      "lugar": "Villa Clara",
+      "menor": true,
+      "detalle": null
+    },
+    {
+      "id": "m18",
+      "nombre": "Dyron Carbonell Ramos",
+      "edad": 18,
+      "fecha": "2010-03-22",
+      "fechaAprox": false,
+      "cat": "medica",
+      "prov": "CU-03",
+      "lugar": "Unidad Militar 7577 «el silo», Managua, La Habana",
+      "menor": false,
+      "detalle": "Trabajaba moviendo equipos pesados en una instalación subterránea insalubre, descalzo por tener las botas rotas. Enfermó y murió sin diagnóstico; su madre fue acosada para que no pidiera la autopsia."
+    },
+    {
+      "id": "m19",
+      "nombre": "Ariel Díaz Cardero",
+      "edad": 18,
+      "fecha": "2018-07-21",
+      "fechaAprox": false,
+      "cat": "medica",
+      "prov": "CU-04",
+      "lugar": "Unidad Militar 6, Matanzas",
+      "menor": false,
+      "detalle": "Le dijeron «ataque al corazón repentino», pero el certificado decía «causa desconocida». Una investigación posterior dictaminó miocarditis; la familia sigue sin saber de qué murió."
+    },
+    {
+      "id": "m20",
+      "nombre": "Jorge Abad Puñes",
+      "edad": null,
+      "fecha": "1969-06-24",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m21",
+      "nombre": "Maikol Arcia Hernández",
+      "edad": null,
+      "fecha": "2023-05-28",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-15",
+      "lugar": "Unidad 6244, San José de las Lajas, Mayabeque",
+      "menor": false,
+      "detalle": "Reclutado pese a una placa de metal en el cerebro. Su abuelo pidió que no le entregaran armas y advirtió que amenazaba con suicidarse; igual se le asignó vigilar un depósito de armas, donde se disparó."
+    },
+    {
+      "id": "m22",
+      "nombre": "Liusbani Cámbara Cabrera",
+      "edad": null,
+      "fecha": "2023-01-15",
+      "fechaAprox": true,
+      "cat": "suicidio",
+      "prov": "CU-13",
+      "lugar": "Contramaestre, Santiago de Cuba",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m23",
+      "nombre": "Yoelvis Delgado Albelo",
+      "edad": null,
+      "fecha": "2011-04-21",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-09",
+      "lugar": "Camagüey",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m24",
+      "nombre": "Annier González",
+      "edad": 18,
+      "fecha": "2021-07-04",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-04",
+      "lugar": "prisión Combinado del Sur, Matanzas",
+      "menor": false,
+      "detalle": "Llevaba 13 días en el SMO y nunca había tenido un rifle. Se lo entregaron horas antes para hacer guardia solo en una torre de tres pisos de una cárcel; su padre cree que le dio pánico."
+    },
+    {
+      "id": "m25",
+      "nombre": "Juan Guerrero Silva",
+      "edad": 18,
+      "fecha": "2023-06-15",
+      "fechaAprox": true,
+      "cat": "suicidio",
+      "prov": "CU-11",
+      "lugar": "unidad de la Marina, Gibara, Holguín",
+      "menor": false,
+      "detalle": "Se ahorcó haciendo guardia. Reclutado pese a una placa de metal en el cerebro y problemas psiquiátricos; sus superiores ignoraron a sus médicos."
+    },
+    {
+      "id": "m26",
+      "nombre": "Gabriel López Ávila",
+      "edad": 20,
+      "fecha": "2023-08-08",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-11",
+      "lugar": "San Germán, Holguín",
+      "menor": false,
+      "detalle": "Se suicidó habiendo recién cumplido los 2 años del servicio militar obligatorio."
+    },
+    {
+      "id": "m27",
+      "nombre": "Jaison Martínez Rondón",
+      "edad": null,
+      "fecha": "2023-01-27",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-15",
+      "lugar": "Mayabeque",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m28",
+      "nombre": "Víctor Moya Yánez",
+      "edad": null,
+      "fecha": "2014-10-18",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-04",
+      "lugar": "Cárdenas, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m29",
+      "nombre": "Alexei Oyarzabal",
+      "edad": 16,
+      "fecha": "2022-10-14",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-07",
+      "lugar": "Unidad Militar «El Cacahual», Sancti Spíritus",
+      "menor": true,
+      "detalle": "Cansado «de estar de guardia y ser militar por obligación», se disparó en la boca con un rifle AKM. El Informe de Trata de Personas de EE.UU. recogió este caso de un recluta de 16 años."
+    },
+    {
+      "id": "m30",
+      "nombre": "Danilo Paz",
+      "edad": null,
+      "fecha": "2023-04-15",
+      "fechaAprox": true,
+      "cat": "suicidio",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m31",
+      "nombre": "Rubén Ponce Monteagudo",
+      "edad": null,
+      "fecha": "2020-05-05",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": "CU-03",
+      "lugar": "La Habana",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m32",
+      "nombre": "Alex Javier Rodríguez",
+      "edad": 19,
+      "fecha": "2023-07-07",
+      "fechaAprox": false,
+      "cat": "suicidio",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m33",
+      "nombre": "Brayan",
+      "edad": null,
+      "fecha": "2022-08-15",
+      "fechaAprox": true,
+      "cat": "suicidio",
+      "prov": null,
+      "lugar": "Cuba (apellido y lugar desconocidos)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m34",
+      "nombre": "Roberto Bacourt",
+      "edad": null,
+      "fecha": "1985-02-15",
+      "fechaAprox": true,
+      "cat": "accidente",
+      "prov": "CU-05",
+      "lugar": "Manicaragua, Villa Clara",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m35",
+      "nombre": "Dariel Cabrales Valdés",
+      "edad": 21,
+      "fecha": "2023-04-13",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-06",
+      "lugar": "ingenio de Aguada de Pasajeros, Cienfuegos",
+      "menor": false,
+      "detalle": "Recluta del Ejército Juvenil del Trabajo (EJT), sepultado accidentalmente bajo kilos de azúcar."
+    },
+    {
+      "id": "m36",
+      "nombre": "Antonio Díaz",
+      "edad": 17,
+      "fecha": "1973-11-21",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-03",
+      "lugar": "La Habana",
+      "menor": true,
+      "detalle": null
+    },
+    {
+      "id": "m37",
+      "nombre": "Leo Doval Pérez de Prado",
+      "edad": null,
+      "fecha": "2022-08-05",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "base de supertanqueros, Matanzas",
+      "menor": false,
+      "detalle": "Uno de cuatro reclutas ordenados a combatir el incendio petroquímico de Matanzas sin experiencia ni equipos, en violación de las reglas de seguridad; el depósito estaba destapado y en riesgo conocido de fuego."
+    },
+    {
+      "id": "m38",
+      "nombre": "Jesús Gómez Ruiz",
+      "edad": null,
+      "fecha": "2016-04-04",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m39",
+      "nombre": "Yelier González Muñoz",
+      "edad": null,
+      "fecha": "2022-02-27",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m40",
+      "nombre": "Eduardo González Vázquez",
+      "edad": null,
+      "fecha": "2005-02-28",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "San Miguel de los Baños, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m41",
+      "nombre": "Carel Gutiérrez",
+      "edad": null,
+      "fecha": "2021-11-20",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-16",
+      "lugar": "Artemisa",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m42",
+      "nombre": "Ennier Hechavarría Silva",
+      "edad": null,
+      "fecha": "2023-06-18",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-11",
+      "lugar": "unidad en Holguín",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m43",
+      "nombre": "Yosbel Hernández Clemente",
+      "edad": null,
+      "fecha": "2005-02-28",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "San Miguel de los Baños, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m44",
+      "nombre": "Reynaldo Machín",
+      "edad": null,
+      "fecha": "1985-02-15",
+      "fechaAprox": true,
+      "cat": "accidente",
+      "prov": "CU-05",
+      "lugar": "Manicaragua, Villa Clara",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m45",
+      "nombre": "Magdiel Mesa Ruíz",
+      "edad": null,
+      "fecha": "2005-02-28",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "San Miguel de los Baños, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m46",
+      "nombre": "Fabián Naranjo Núñez",
+      "edad": 20,
+      "fecha": "2022-08-05",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "base de supertanqueros, Matanzas",
+      "menor": false,
+      "detalle": "Recluta muerto en el incendio de la base de supertanqueros de Matanzas."
+    },
+    {
+      "id": "m47",
+      "nombre": "Ulises Reynosa",
+      "edad": null,
+      "fecha": "1978-07-01",
+      "fechaAprox": true,
+      "cat": "accidente",
+      "prov": "CU-09",
+      "lugar": "Camagüey",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m48",
+      "nombre": "Humberto Rodríguez",
+      "edad": null,
+      "fecha": "2023-06-15",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": null,
+      "lugar": "Cuba (lugar no precisado)",
+      "menor": false,
+      "detalle": "Muerto accidentalmente de un disparo por un compañero recluta."
+    },
+    {
+      "id": "m49",
+      "nombre": "Adriano Rodríguez Gutiérrez",
+      "edad": 19,
+      "fecha": "2022-08-05",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "base de supertanqueros, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m50",
+      "nombre": "Michel Rodríguez Román",
+      "edad": null,
+      "fecha": "2022-08-05",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-04",
+      "lugar": "base de supertanqueros, Matanzas",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m51",
+      "nombre": "Reynaldo (apellido desconocido)",
+      "edad": null,
+      "fecha": "1985-02-15",
+      "fechaAprox": true,
+      "cat": "accidente",
+      "prov": "CU-05",
+      "lugar": "Manicaragua, Villa Clara",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m52",
+      "nombre": "Manuel Sánchez Bencomo",
+      "edad": null,
+      "fecha": "2009-11-20",
+      "fechaAprox": false,
+      "cat": "accidente",
+      "prov": "CU-01",
+      "lugar": "Pinar del Río",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m53",
+      "nombre": "Genovevo Pérez",
+      "edad": null,
+      "fecha": "1966-07-01",
+      "fechaAprox": true,
+      "cat": "mar",
+      "prov": null,
+      "lugar": "en intento de salida por mar",
+      "menor": false,
+      "detalle": null
+    },
+    {
+      "id": "m54",
+      "nombre": "Reinier Franco Atencio",
+      "edad": null,
+      "fecha": "2021-07-01",
+      "fechaAprox": true,
+      "cat": "sincausa",
+      "prov": "CU-03",
+      "lugar": "Managua, La Habana",
+      "menor": false,
+      "detalle": null
+    }
+  ],
+  "sistema": {
+    "titulo": "La máquina: 60 años de servicio obligatorio",
+    "intro": "El SMO no es un accidente de la historia: es una institución construida por ley, ampliada década tras década y blindada contra la objeción de conciencia.",
+    "leyes": [
+      {
+        "anio": 1963,
+        "titulo": "Ley 1.129: se crea el SMO",
+        "texto": "Se establece el Servicio Militar Obligatorio y los comités militares. La inscripción se hacía a los 15 años; adolescentes de 15 y 16 debían servir."
+      },
+      {
+        "anio": 1964,
+        "titulo": "Primer llamado",
+        "texto": "Primer llamado al SMO, en abril. Ese mismo año la CIDH ya reportó denuncias de reclutamiento de menores «en lugares inhóspitos e inadecuados»."
+      },
+      {
+        "anio": 1965,
+        "titulo": "UMAP: campos de trabajo forzoso",
+        "texto": "Hasta 1968, unos 30.000 hombres —objetores, homosexuales, religiosos, «descarriados»— fueron enviados a las Unidades Militares de Ayuda a la Producción como mano de obra esclava para «reeducar»."
+      },
+      {
+        "anio": 1973,
+        "titulo": "Ley 1.255: tres años + EJT",
+        "texto": "Obliga a servir tres años (edades 16–27) y crea el Ejército Juvenil del Trabajo (EJT), fuerza laboral militarizada. Potencia el adoctrinamiento ideológico."
+      },
+      {
+        "anio": 1974,
+        "titulo": "Decreto 3.732: cárcel a los que se niegan",
+        "texto": "Se invoca para enviar a prisión a cientos de hombres por negarse a cumplir el servicio militar (los «negados»)."
+      },
+      {
+        "anio": 1991,
+        "titulo": "Reducción a dos años",
+        "texto": "Se reduce el servicio activo de tres a dos años."
+      },
+      {
+        "anio": 1994,
+        "titulo": "Ley 75 de la Defensa Nacional",
+        "texto": "Pilar del marco actual. SMA de dos años para varones de 17 a 28; reserva hasta los 45. Cumplirlo es requisito para ingresar a la universidad."
+      },
+      {
+        "anio": 2019,
+        "titulo": "Constitución: sin objeción de conciencia",
+        "texto": "La Constitución obliga al servicio militar «de acuerdo con la ley» y prohíbe invocar la objeción de conciencia para evadirlo."
+      },
+      {
+        "anio": 2023,
+        "titulo": "Nuevo Código Penal Militar",
+        "texto": "Cinco años de prisión por intentar evadir el servicio; de 6 meses a 2 años por autolesionarse o falsificar documentos médicos para evadirlo. La Fiscalía Militar trata el suicidio como intento de deserción, penado con más de 10 años."
+      }
+    ],
+    "cargas": [
+      {
+        "id": "trabajo",
+        "titulo": "Trabajo forzoso",
+        "texto": "Reclutas explotados 10–12 horas al sol cortando caña, chapeando marabú, cargando bloques en hoteles, fumigando. Paga histórica: 7 pesos al mes (unos $0,71). Es, según el informe, trata de personas perpetrada por el propio Estado."
+      },
+      {
+        "id": "sangre",
+        "titulo": "«Donación» de sangre forzada",
+        "texto": "Los reclutas son la principal fuente de sangre para la exportación biotecnológica del Estado. A los que se niegan se les retiene, ridiculiza, acusa de contrarrevolucionarios y traslada a un hospital militar para obligarlos a donar."
+      },
+      {
+        "id": "menores",
+        "titulo": "Reclutamiento de menores",
+        "texto": "Con Corea del Norte, Cuba es uno de solo dos países que obligan a servir a menores de 18. Viola la Convención sobre los Derechos del Niño, que ratificó en 1991."
+      },
+      {
+        "id": "salida",
+        "titulo": "Prohibición de salir del país",
+        "texto": "La Ley de Migración impide obtener pasaporte mientras se está sujeto al servicio militar. Históricamente los varones no podían salir entre los 15 y los 28 años."
+      }
+    ]
+  },
+  "carneCanon": {
+    "titulo": "Carne de cañón: de Angola a Ucrania",
+    "intro": "Exportar soldados jóvenes por dinero no es nuevo. Cambió el destino y el idioma del contrato; no el patrón.",
+    "angola": {
+      "periodo": "1975–1991",
+      "anios": 16,
+      "militares": 377033,
+      "civiles": 50000,
+      "muertos": 2085,
+      "civilesMuertos": 204,
+      "pagoSoldadoMes": 0.71,
+      "pagoAngolaSoldadoMes": 1000,
+      "ingresosMinAnual": 300,
+      "ingresosMaxAnual": 600,
+      "nota": "Angola pagaba a Cuba ~$1.000 al mes por soldado; a los soldados se les daban 7 pesos ($0,71). Cuba habría ingresado entre $300 y $600 millones al año: hasta $9.600 millones en 16 años. Los caídos se enterraban donde morían; solo al final, en la «Operación Tributo» (6 dic 1989), se hicieron entierros en los 169 municipios. Veteranos insisten en que los 2.085 muertos oficiales fueron más."
+    },
+    "rusia": {
+      "anio": 2023,
+      "listaIntercept": 198,
+      "rastreados": 746,
+      "avispasNegras": 62,
+      "detenidos": 17,
+      "procesados": "3 organizadores + 14 reclutados",
+      "salarioCubaAnual": 204,
+      "salarioRusiaAnual": 26000,
+      "seguroMuerte": 21000,
+      "penaReclutar": "4 a 10 años (art. 129)",
+      "penaMercenarismo": "10 a 30 años, privación perpetua o muerte (art. 135.1)",
+      "nota": "Rusia ofrecía ~$26.000 al año y residencia; el salario medio cubano en 2023 equivalía a unos $17 al mes ($204 al año). The Intercept publicó 198 pasaportes; la Fundación para los DD.HH. rastreó 746 reclutas, de los que ≥62 parecen ser fuerzas especiales «Avispas Negras». Varios denunciaron haber sido engañados, despojados del pasaporte y enviados al frente. El Código Penal castiga el mercenarismo hasta con la muerte, pero se desconoce si el propio Estado se beneficia."
+    }
+  },
+  "encuesta": [
+    {
+      "id": "q1",
+      "q": "El informe llama al servicio militar obligatorio cubano «trata de personas con un costo letal». De todo lo documentado, ¿qué te parece más grave?",
+      "opts": [
+        {
+          "id": "a",
+          "t": "Que se recluten y mueran menores de edad",
+          "seed": 268
+        },
+        {
+          "id": "b",
+          "t": "Los suicidios de reclutas desesperados, tratados como deserción",
+          "seed": 224
+        },
+        {
+          "id": "c",
+          "t": "El trabajo forzoso y la «donación» de sangre por coerción",
+          "seed": 187
+        },
+        {
+          "id": "d",
+          "t": "La exportación de jóvenes como soldados por dinero",
+          "seed": 241
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "q": "Ante una guerra, Cuba tiene una «reserva cautiva» de más de un millón de varones jóvenes. ¿Qué crees que pesará más en su decisión?",
+      "opts": [
+        {
+          "id": "a",
+          "t": "Huir del país antes que combatir por el régimen",
+          "seed": 312
+        },
+        {
+          "id": "b",
+          "t": "Aceptar contratos extranjeros por dinero, como en Ucrania",
+          "seed": 258
+        },
+        {
+          "id": "c",
+          "t": "Obedecer por miedo a la cárcel y las represalias",
+          "seed": 201
+        },
+        {
+          "id": "d",
+          "t": "Resistirse abiertamente al reclutamiento",
+          "seed": 96
+        }
+      ]
+    }
+  ],
+  "metodologia": {
+    "fuentes": [
+      {
+        "nombre": "Maria C. Werlau — «El servicio militar obligatorio en Cuba: trata de personas con un costo letal» (Archivo Cuba / Free Society Project)",
+        "tipo": "informe (20 oct 2023)",
+        "url": "https://cubaarchive.org/es/base-de-datos/"
+      },
+      {
+        "nombre": "Grupo de Facebook «No más muertes en el servicio militar en Cuba»",
+        "tipo": "reportes de familiares (>5.000 miembros)",
+        "url": "https://www.facebook.com/groups/1135958273970827"
+      },
+      {
+        "nombre": "The Intercept / FDHC / Politico / Time",
+        "tipo": "prensa sobre reclutas cubanos en Ucrania (2023)",
+        "url": "https://informnapalm.org/en/cuban-mercenaries/"
+      }
+    ],
+    "periodo": "1963–2023 (registro de caídos: 1964–2023)",
+    "cadencia": "esfuerzo inicial en progreso; actualizado por la fuente en tiempo real",
+    "extraccion": "Extracción manual asistida sobre el informe y su Anexo, con responseSchema constreñido; un caso por víctima.",
+    "validacion": "ajv contra servicio-militar.schema.json · react-scripts build · bracket-balance string-aware",
+    "limitaciones": [
+      "«Esfuerzo inicial»: la fuente cree que el costo real en vidas es de cientos o miles; solo documenta 54 casos con datos suficientes.",
+      "Discrepancia interna del informe: el resumen del Anexo declara 13 ejecuciones extrajudiciales, pero la lista nominal contiene 14. Se muestra la lista.",
+      "Muchas fechas constan solo por mes o año en el Anexo; se marcan como aproximadas y se ubican a mitad de periodo para la línea de tiempo.",
+      "Varias muertes clasificadas oficialmente como «suicidio» son cuestionadas por las familias (golpes, disparos múltiples); la clasificación mostrada es la de Archivo Cuba.",
+      "Las cifras de reclutas cubanos en Ucrania (198, 746, 62) provienen de filtraciones y ONG del exilio, no de registros oficiales; se desconoce el total real y el grado de implicación directa del Estado cubano.",
+      "Los muertos de Angola (2.085) son la cifra reportada; el gobierno no ha publicado la lista oficial y veteranos sostienen que fueron más.",
+      "Archivo Cuba es una fuente del exilio cubano con tesis explícita de responsabilidad estatal; sus cifras no se han contrastado con registros oficiales, cerrados."
+    ],
+    "cambios_metodologicos": []
+  }
+}

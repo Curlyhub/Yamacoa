@@ -1,0 +1,265 @@
+{
+  "meta": {
+    "slug": "vias_cambio",
+    "titulo": "Vías de cambio: invasión, ley y evidencia",
+    "actualizado": "2026-07-04",
+    "fuentes": [
+      "Chenoweth & Stephan, \"Why Civil Resistance Works\" (NAVCO, 1900-2006)",
+      "Carta de la ONU, art. 2(4) y 51",
+      "Res. AGNU 3314 (1974), definicion de agresion",
+      "CEPAL, Estudio Economico de America Latina y el Caribe 2025",
+      "ONEI (Cuba)",
+      "US Customs and Border Protection (CBP)",
+      "Horizonte Cubano, Columbia Law School",
+      "CNN, AS/COA, Havana Times, Cato Institute"
+    ]
+  },
+  "hero": {
+    "eyebrow": "Dossier analitico - Derecho internacional y transiciones politicas",
+    "titulo_pre": "Por que una invasion organizada desde el exterior",
+    "titulo_em": "casi nunca derriba",
+    "titulo_post": "una dictadura consolidada.",
+    "subtitulo": "El obstaculo no es solo juridico (el marco de agresion y terrorismo lo vuelve inviable y penalmente arriesgado): historicamente, las insurrecciones armadas montadas fuera del pais rara vez desplazan a regimenes con aparato de seguridad intacto. Los cambios reales llegan por presion interna, colapso economico, fractura de elites o transicion negociada. El caso cubano lo ilustra con datos.",
+    "stats": [
+      { "n": "53", "unit": "%", "label": "exito de campanas no violentas" },
+      { "n": "26", "unit": "%", "label": "exito de insurgencias armadas" },
+      { "n": "72", "unit": "h", "label": "duracion de Bahia de Cochinos" },
+      { "n": ">1", "unit": "M", "label": "emigrantes cubanos desde 2021" }
+    ]
+  },
+  "marco_legal": {
+    "lede": "La distincion entre agresion y terrorismo no es retorica: define quien queda del lado equivocado de la ley. Preparar, financiar o dirigir una accion armada contra la soberania de un Estado activa un regimen normativo muy restrictivo, tanto internacional como interno.",
+    "items": [
+      {
+        "icon": "gavel",
+        "titulo": "Art. 2(4), Carta de la ONU",
+        "texto": "Prohibe a los Estados recurrir a la amenaza o al uso de la fuerza contra la integridad territorial o la independencia politica de otro Estado."
+      },
+      {
+        "icon": "shield",
+        "titulo": "Res. 3314 (1974), definicion de agresion",
+        "texto": "El envio de bandas armadas, grupos irregulares o mercenarios que realicen actos de fuerza contra otro Estado se equipara a un acto de agresion (art. 3g)."
+      },
+      {
+        "icon": "scale",
+        "titulo": "Excepciones tasadas",
+        "texto": "Solo dos: legitima defensa ante un ataque armado (art. 51) y autorizacion expresa del Consejo de Seguridad (Cap. VII). Nada mas habilita el uso de la fuerza."
+      },
+      {
+        "icon": "landmark",
+        "titulo": "Leyes nacionales del pais de residencia",
+        "texto": "Organizar o financiar acciones armadas desde el exilio choca con normas antiterroristas internas (por ejemplo, en EE.UU., el Neutrality Act y la prohibicion de apoyo material a grupos armados)."
+      }
+    ],
+    "flujo": [
+      { "clave": "Accion", "texto": "Invasion o insurreccion armada desde el exterior" },
+      { "clave": "Calificacion", "texto": "Acto de agresion; mercenarismo; terrorismo" },
+      { "clave": "Consecuencia", "texto": "Persecucion penal, extradicion, sancion, aislamiento" }
+    ]
+  },
+  "evidencia_chenoweth": {
+    "lede": "Erica Chenoweth y Maria Stephan revisaron 323 campanas de cambio de regimen entre 1900 y 2006 (base de datos NAVCO). El hallazgo es contraintuitivo pero robusto: la resistencia civil no violenta supera a la via armada en casi todas las metricas que importan.",
+    "fuente_nota": "Chenoweth & Stephan, \"Why Civil Resistance Works\" (NAVCO, 1900-2006).",
+    "modos": {
+      "exito": {
+        "titulo": "Tasa de exito de las campanas",
+        "unidad": "%",
+        "nota": "Exito = objetivo logrado en el ano siguiente al pico de movilizacion.",
+        "data": [
+          { "k": "Campana no violenta", "v": 53, "tipo": "novional" },
+          { "k": "Insurgencia armada", "v": 26, "tipo": "armada" }
+        ]
+      },
+      "participacion": {
+        "titulo": "Participacion media (factor relativo)",
+        "unidad": "x",
+        "nota": "Las campanas no violentas movilizan, en promedio, cuatro veces mas participantes.",
+        "data": [
+          { "k": "No violenta", "v": 4, "tipo": "novional" },
+          { "k": "Armada", "v": 1, "tipo": "armada" }
+        ]
+      },
+      "democracia": {
+        "titulo": "Probabilidad de democracia a 5 anos",
+        "unidad": "x",
+        "nota": "Diez veces mas probable que emerja una democracia tras una campana no violenta.",
+        "data": [
+          { "k": "No violenta", "v": 10, "tipo": "novional" },
+          { "k": "Armada", "v": 1, "tipo": "armada" }
+        ]
+      }
+    },
+    "mini": [
+      { "n": "4x", "t": "mas participantes moviliza, en promedio, una campana no violenta" },
+      { "n": "20 / 25", "t": "de los mayores movimientos del siglo XX fueron no violentos" },
+      { "n": "3,5 %", "t": "de participacion activa: umbral tras el cual ninguna campana del conjunto fracaso" }
+    ]
+  },
+  "cochinos": {
+    "lede": "La Brigada 2506, unos 1.400 exiliados entrenados y financiados por la CIA, desembarco el 17 de abril de 1961. Sin apoyo interno masivo, con logistica deficiente y frente a una respuesta rapida del regimen, la operacion colapso en unas 72 horas. Es el arquetipo del fracaso: una fuerza externa no sustituye a la movilizacion interna que nunca llego.",
+    "why_titulo": "Por que fracaso",
+    "why_items": [
+      "Ausencia de un levantamiento popular que acompanara el desembarco.",
+      "Aparato de seguridad e inteligencia infiltrado y ya alertado.",
+      "Superioridad logistica y de mando del Estado en su propio terreno.",
+      "Apoyo exterior limitado y deliberadamente negable."
+    ],
+    "stats": [
+      { "n": "17-19 abr 1961", "t": "tres dias de operacion", "icon": "ship" },
+      { "n": "~1.400", "t": "brigadistas desembarcados", "icon": "users" },
+      { "n": "~114", "t": "muertos en combate", "icon": "flame" },
+      { "n": "~1.189", "t": "capturados por el regimen", "icon": "shield" }
+    ]
+  },
+  "vias_frecuencia": {
+    "lede": "En la experiencia latinoamericana y global reciente, las salidas autoritarias suelen combinar presion social sostenida, quiebra economica y fractura de las elites; muy rara vez, una invasion externa. El siguiente ordenamiento es una sintesis ilustrativa de esa frecuencia relativa.",
+    "fuente_nota": "Sintesis cualitativa a partir de la evidencia comparada citada. No es una serie estadistica.",
+    "data": [
+      { "k": "Presion interna masiva + defeccion de elites", "v": 82, "ej": "Chile 1988-90", "tipo": "novional" },
+      { "k": "Transicion negociada / apertura pactada", "v": 74, "ej": "Brasil 1985; Espana 1975-78", "tipo": "novional" },
+      { "k": "Colapso economico o derrota militar", "v": 61, "ej": "Argentina 1983 (tras Malvinas)", "tipo": "mixta" },
+      { "k": "Fin del apoyo de la potencia patrona", "v": 58, "ej": "Europa del Este 1989", "tipo": "patron" },
+      { "k": "Insurreccion armada interna", "v": 28, "ej": "casos aislados", "tipo": "armada" },
+      { "k": "Invasion organizada por exiliados", "v": 9, "ej": "Bahia de Cochinos 1961", "tipo": "armada" }
+    ]
+  },
+  "erosion_economica": {
+    "lede": "El regimen cubano ya enfrenta la peor crisis desde 1959: contraccion sostenida del PIB, inflacion cronica, colapso del azucar y del turismo, y un peso en caida libre. Los colapsos internos son hoy mucho mas plausibles que cualquier accion militar externa.",
+    "modos": {
+      "pib": {
+        "titulo": "Variacion anual del PIB real (%)",
+        "fuente_nota": "CEPAL y cifras oficiales. Acumulado 2019-2024: caida superior al 11 %. Barras claras = proyeccion.",
+        "tooltip_nota": "2025-2026: proyeccion CEPAL.",
+        "data": [
+          { "year": "2015", "v": 4.4, "proj": false },
+          { "year": "2019", "v": -0.2, "proj": false },
+          { "year": "2020", "v": -10.9, "proj": false },
+          { "year": "2021", "v": 1.3, "proj": false },
+          { "year": "2022", "v": 1.8, "proj": false },
+          { "year": "2023", "v": -1.9, "proj": false },
+          { "year": "2024", "v": -1.1, "proj": false },
+          { "year": "2025", "v": -1.5, "proj": true },
+          { "year": "2026", "v": 0.1, "proj": true }
+        ]
+      },
+      "inflacion": {
+        "titulo": "Inflacion interanual, fin de ano (%)",
+        "fuente_nota": "CEPAL / ONEI. En 2025, estimaciones privadas apuntan a niveles cercanos al 70 %.",
+        "tooltip_nota": "2025 parcial (oficial). Estimaciones privadas la situan mucho mas alta.",
+        "data": [
+          { "year": "2021", "v": 77.3 },
+          { "year": "2022", "v": 39.1 },
+          { "year": "2023", "v": 31.0 },
+          { "year": "2024", "v": 25.0 },
+          { "year": "2025*", "v": 18.0 }
+        ]
+      },
+      "azucar": {
+        "titulo": "Produccion de azucar (miles de toneladas)",
+        "fuente_nota": "De ~8 millones de t (1989) a ~165.000 t (2024/25). Tramos intermedios aproximados.",
+        "tooltip_nota": "Zafra 24/25: la peor en mas de un siglo.",
+        "data": [
+          { "year": "1989", "t": 8000 },
+          { "year": "2000", "t": 4057 },
+          { "year": "2010", "t": 1150 },
+          { "year": "2020", "t": 816 },
+          { "year": "24/25", "t": 165 }
+        ]
+      },
+      "turismo": {
+        "titulo": "Llegadas internacionales (millones)",
+        "fuente_nota": "Cifras aproximadas. 2025 (*) parcial: caida interanual de ~25 %.",
+        "tooltip_nota": "Ocupacion hotelera en torno al 24 % en 2025.",
+        "data": [
+          { "year": "2018", "v": 4.7 },
+          { "year": "2019", "v": 4.3 },
+          { "year": "2020", "v": 1.1 },
+          { "year": "2021", "v": 0.6 },
+          { "year": "2022", "v": 1.6 },
+          { "year": "2023", "v": 2.4 },
+          { "year": "2024", "v": 2.2 },
+          { "year": "2025*", "v": 1.6 }
+        ]
+      },
+      "cambio": {
+        "titulo": "Peso cubano: tasa oficial vs. mercado informal (CUP/USD)",
+        "fuente_nota": "Observatorios cambiarios independientes. La brecha oficial/informal supera 18x.",
+        "tooltip_nota": "La tasa oficial (24) es una ficcion frente al mercado real.",
+        "data": [
+          { "year": "2021", "oficial": 24, "informal": 70 },
+          { "year": "2022", "oficial": 24, "informal": 170 },
+          { "year": "2023", "oficial": 24, "informal": 265 },
+          { "year": "2024", "oficial": 24, "informal": 395 },
+          { "year": "2025", "oficial": 24, "informal": 440 }
+        ]
+      }
+    },
+    "mini": [
+      { "n": "20 h", "t": "de apagon diario en algunas provincias durante 2025" },
+      { "n": "oct 2024", "t": "primer apagon nacional total: dias sin electricidad" },
+      { "n": "~10 %", "t": "de la poblacion con problemas diarios de agua potable" }
+    ]
+  },
+  "exodo": {
+    "lede": "La mayor ola migratoria de la historia cubana vacia la isla y erosiona la base del regimen sin un solo disparo. Mas de un millon de personas han salido desde 2021; en 2024 emigraron unas 251.000 y nacieron solo 71.358, la cifra mas baja en 65 anos.",
+    "modos": {
+      "poblacion": {
+        "titulo": "Poblacion efectiva (miles de habitantes)",
+        "fuente_nota": "ONEI vs. estimacion de Albizu-Campos. De ~11,3 M (2020) a ~8,6 M segun calculos independientes.",
+        "tooltip_nota": "ONEI arrastra un rezago estadistico; las estimaciones independientes son menores.",
+        "data": [
+          { "year": "2020", "onei": 11186, "ind": null },
+          { "year": "2021", "onei": 11113, "ind": null },
+          { "year": "2022", "onei": 11089, "ind": null },
+          { "year": "2023", "onei": 10056, "ind": 8620 },
+          { "year": "2024", "onei": 9748, "ind": 8300 }
+        ]
+      },
+      "emigracion": {
+        "titulo": "Llegadas de cubanos a EE.UU. por ano fiscal (miles)",
+        "fuente_nota": "CBP (EE.UU.). Solo EE.UU.; el saldo migratorio total hacia todos los destinos es mayor.",
+        "tooltip_nota": "Pico 2022-24; caida en 2025 por cambios de politica migratoria.",
+        "data": [
+          { "year": "2020", "v": 14 },
+          { "year": "2021", "v": 39 },
+          { "year": "2022", "v": 225 },
+          { "year": "2023", "v": 200 },
+          { "year": "2024", "v": 218 },
+          { "year": "2025", "v": 33 }
+        ]
+      }
+    },
+    "j11_texto": "Las protestas del 11 de julio de 2021, las mayores en decadas, mostraron el vector realmente decisivo: presion interna, desobediencia civil y sociedad civil organizada. Ninguna accion externa tiene ese alcance ni esa legitimidad."
+  },
+  "matriz": {
+    "lede": "Cada estrategia se situa segun su legalidad y bajo riesgo penal (eje horizontal) y su eficacia historica (eje vertical). El tamano del punto marca el riesgo para quien participa. Las opciones armadas caen en el cuadrante inferior izquierdo: ilegales, poco eficaces y peligrosas. Toca un punto para ver el detalle.",
+    "data": [
+      { "name": "Resistencia civil masiva no violenta", "x": 90, "y": 76, "r": 30, "grp": "no-violenta" },
+      { "name": "Transicion negociada con elites", "x": 80, "y": 71, "r": 26, "grp": "no-violenta" },
+      { "name": "Desobediencia civil y huelgas", "x": 82, "y": 60, "r": 42, "grp": "no-violenta" },
+      { "name": "Medios independientes e informacion", "x": 88, "y": 55, "r": 34, "grp": "no-violenta" },
+      { "name": "Presion diplomatica y sanciones dirigidas", "x": 85, "y": 46, "r": 24, "grp": "no-violenta" },
+      { "name": "Insurreccion armada interna", "x": 25, "y": 29, "r": 78, "grp": "armada" },
+      { "name": "Invasion organizada por exiliados", "x": 9, "y": 12, "r": 92, "grp": "armada" },
+      { "name": "Financiar grupos armados desde el exterior", "x": 7, "y": 15, "r": 88, "grp": "armada" }
+    ],
+    "nota_armada": "Via ilegal bajo el derecho internacional e interno, de baja eficacia historica y alto riesgo personal. Su calificacion como agresion o terrorismo la vuelve ademas inviable estrategicamente.",
+    "nota_novional": "Via legal o de bajo riesgo penal, con respaldo empirico como motor de transicion. Combinada con otras del mismo cuadrante, maximiza el efecto sobre un regimen consolidado."
+  },
+  "sintesis": {
+    "parrafos": [
+      "La dificultad de derribar una dictadura consolidada desde fuera es doble. Es juridica: el marco de agresion y terrorismo convierte cualquier invasion o insurreccion organizada en el exilio en un acto perseguible, con exposicion penal real para sus organizadores. Y es empirica: las fuerzas externas rara vez sustituyen a la movilizacion interna que necesitan y casi nunca encuentran.",
+      "El camino que la evidencia respalda combina resistencia pacifica interna con presion externa sostenida: protesta masiva y desobediencia civil (como el 11J), medios independientes y sociedad civil, presion diplomatica y sanciones dirigidas, y el aprovechamiento de una erosion economica que ya esta en marcha. En el caso cubano, el colapso interno (crisis economica, apagones, exodo demografico) es hoy mucho mas determinante que cualquier escenario militar externo."
+    ],
+    "tags": [
+      { "icon": "users", "texto": "Presion interna" },
+      { "icon": "trend_down", "texto": "Erosion economica" },
+      { "icon": "radio", "texto": "Informacion y sociedad civil" },
+      { "icon": "handshake", "texto": "Transicion negociada" }
+    ]
+  },
+  "footer": {
+    "nota": "Documento analitico e historico. Expone el marco juridico y la evidencia comparada sobre transiciones de regimen; no promueve ni facilita acciones ilegales. Las cifras marcadas como proyeccion, aproximadas o ilustrativas se identifican en cada grafica.",
+    "fuentes_texto": "Chenoweth & Stephan (NAVCO) - Carta de la ONU y Res. AGNU 3314 - CEPAL - ONEI - CBP (EE.UU.) - Horizonte Cubano (Columbia Law) - CNN, AS/COA, Havana Times, Cato."
+  }
+}

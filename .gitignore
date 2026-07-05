@@ -11,6 +11,15 @@
 # production
 /build
 /build.old
+/build.prev
+
+# local tooling (no versionar)
+/mcp.json
+
+# PDFs fuente pesados de _inbox (provenance, no al historial de git)
+/ops/_inbox/servicio_militar/Cuba-Servicio-Militar.pdf
+/ops/_inbox/desaparecidos-2023/2023-informe-anual.pdf
+/ops/_inbox/muertes/Asesinatos-y-desapariciones-en-intentos-de-salida.pdf
 
 # claude code session data
 /.claude

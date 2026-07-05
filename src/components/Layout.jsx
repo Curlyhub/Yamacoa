@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Narrador from "./Narrador";
 import temas from "../temas/registry.js";
 
 /* Tipografías de la portada y la cabecera. Cada tema carga las suyas; aquí se
@@ -54,6 +55,13 @@ const CSS = `
 }
 .ym-back:hover{ color:var(--ym-text); border-color:var(--ym-accent,var(--ym-line)); }
 
+.ym-share{
+  font-family:var(--ym-mono); font-size:12px; letter-spacing:.04em;
+  text-decoration:none; color:var(--ym-dim);
+  border:1px solid var(--ym-line); border-radius:999px; padding:6px 13px;
+}
+.ym-share:hover{ color:var(--ym-text); border-color:var(--ym-accent,var(--ym-line)); }
+
 .ym-main{ flex:1; width:100%; }
 
 a:focus-visible, .ym-app [tabindex]:focus-visible{
@@ -72,7 +80,16 @@ a:focus-visible, .ym-app [tabindex]:focus-visible{
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
-  const temaActivo = temas.find((t) => t.path === pathname);
+  const path = pathname.replace(/\/+$/, "") || "/";
+  const temaActivo = temas.find((t) => t.path === path);
+  const shareHref =
+  temaActivo && typeof window !== "undefined"
+    ? "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(`${temaActivo.titulo} — Yamacoa`) +
+      "&url=" + encodeURIComponent(window.location.href)
+      // + "&via=yamacoa"   // descomenta si tienes cuenta @yamacoa
+      // + "&hashtags=Cuba" // opcional
+    : null;
 
   // Carga encapsulada del juego de tipografías del shell (una sola vez).
   useEffect(() => {
@@ -99,10 +116,17 @@ export default function Layout({ children }) {
             </span>
             <span className="ym-brand-sub">Observatorio</span>
           </Link>
-
           {temaActivo && (
             <nav className="ym-nav" aria-label="Navegación del tema">
               <span className="ym-tema-tag">{temaActivo.etiqueta}</span>
+              <a className="ym-share"
+                href={shareHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Compartir ${temaActivo.titulo} en X`}
+              >
+                Compartir en X
+              </a>
               <Link to="/" className="ym-back">
                 ← Volver a la portada
               </Link>
@@ -112,6 +136,7 @@ export default function Layout({ children }) {
       </header>
 
       <main className="ym-main">{children}</main>
+      <Narrador />
     </div>
   );
 }

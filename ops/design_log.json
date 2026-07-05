@@ -1,0 +1,147 @@
+[
+  {
+    "tema": "represion",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Acero a ascua",
+      "acentos": [
+        { "hex": "#E06056", "rol": "primario", "h": 4 },
+        { "hex": "#C74B3F", "rol": "intenso", "h": 5 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "seis-pestanas",
+    "graficos": ["linea", "mapa-provincias", "barra-horizontal", "galeria-casos", "encuesta"],
+    "firma": "mapa de Cuba con senal por provincia sincronizado con barra lateral"
+  },
+  {
+    "tema": "rusificacion",
+    "fecha": "2026-05",
+    "paleta": {
+      "nombre": "Red oligarquica",
+      "acentos": [
+        { "hex": "#FF6B35", "rol": "primario", "h": 18 },
+        { "hex": "#4ECDC4", "rol": "contrapunto", "h": 174 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "scroll-dossier",
+    "graficos": ["force-graph-d3"],
+    "firma": "grafo de fuerza D3 con nodos clicables y sidebar de detalle"
+  },
+  {
+    "tema": "gaesa-escenario",
+    "fecha": "2026-05",
+    "paleta": {
+      "nombre": "Terminal verde",
+      "acentos": [
+        { "hex": "#38D6C9", "rol": "primario", "h": 174 },
+        { "hex": "#F5A623", "rol": "contrapunto", "h": 38 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Space Grotesk", "datos": "JetBrains Mono", "extra": "Inter" },
+    "layout": "tablero-con-slider",
+    "graficos": ["linea-recharts", "area", "barra", "slider-interactivo"],
+    "firma": "slider de capital que recalcula en vivo las proyecciones energeticas"
+  },
+  {
+    "tema": "protestas_cuba",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Fuego",
+      "acentos": [
+        { "hex": "#D4380D", "rol": "primario", "h": 12 },
+        { "hex": "#FAAD14", "rol": "contrapunto", "h": 43 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "scroll-dossier",
+    "graficos": ["mapa-provincias", "linea", "barra", "donut"],
+    "firma": "mapa con proyeccion real de Cuba y filtro temporal por mes"
+  },
+  {
+    "tema": "conflictos_cuba",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Voltaje",
+      "acentos": [
+        { "hex": "#E8A13C", "rol": "primario", "h": 38 },
+        { "hex": "#2FA8A0", "rol": "contrapunto", "h": 176 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "cinco-pestanas",
+    "graficos": ["linea", "fan-chart", "mapa-provincias", "donut", "barra"],
+    "firma": "fan chart de proyeccion con banda de incertidumbre y JSON respirante animado"
+  },
+  {
+    "tema": "anatomia_11j",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Anatomia",
+      "acentos": [
+        { "hex": "#E85D75", "rol": "primario", "h": 348 },
+        { "hex": "#6C5CE7", "rol": "contrapunto", "h": 249 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "pestanas",
+    "graficos": ["violin", "radar", "choropleth", "donut-con-selector", "barra-horizontal"],
+    "firma": "violin plots de densidad KDE real sobre distribucion de edades de detenidos"
+  },
+  {
+    "tema": "racismo",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Memoria",
+      "acentos": [
+        { "hex": "#8B5A6B", "rol": "primario", "h": 330 },
+        { "hex": "#C4973B", "rol": "contrapunto", "h": 40 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "pestanas",
+    "graficos": ["mapa-provincias", "donut", "barra", "linea"],
+    "firma": "paleta aubergine-ocre que evoca la piel y la tierra"
+  },
+  {
+    "tema": "iclep",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Senal",
+      "acentos": [
+        { "hex": "#F28C72", "rol": "primario", "h": 14 },
+        { "hex": "#3BC4B1", "rol": "contrapunto", "h": 168 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "pestanas",
+    "graficos": ["barra", "donut", "linea", "mapa-provincias"],
+    "firma": "triada salmon-amarillo-turquesa que codifica alerta-precaucion-seguro"
+  },
+  {
+    "tema": "himno_narciso",
+    "fecha": "2026-06",
+    "paleta": {
+      "nombre": "Bandera historica",
+      "acentos": [
+        { "hex": "#3D6FE5", "rol": "primario", "h": 222 },
+        { "hex": "#D8392B", "rol": "contrapunto", "h": 5 },
+        { "hex": "#E6B450", "rol": "terciario", "h": 42 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": "Spectral" },
+    "layout": "cuatro-pestanas",
+    "graficos": ["timeline", "texto-himno", "encuesta", "quiz"],
+    "firma": "capsula historica con texto del himno en Spectral y quiz interactivo"
+  }
+]

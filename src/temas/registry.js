@@ -117,6 +117,50 @@ const temas = [
     fuentes: "Justicia 11J / Cubalex", // ⚠ CONFIRMAR
     load: () => import("./anatomia_11j.jsx"),
   },
+  {
+    id: "asesinatos-masacres",
+    slug: "asesinatos-masacres",
+    path: "/asesinatos-masacres",
+    titulo: "Asesinatos y masacres de Estado",
+    subtitulo: "Ejecuciones, hundimientos y muertes en huelga de hambre bajo el Estado cubano · 1959–2022",
+    etiqueta: "MEMORIA · CRÍMENES DE ESTADO",
+    accent: "#3F92B0",
+    fuentes: "Archivo Cuba / Free Society Project · Proyecto de Verdad y Memoria",
+    load: () => import("./asesinatos_masacres.jsx"),
+  },
+  {
+    id: "desaparecidos-2023",
+    slug: "desaparecidos-2023",
+    path: "/desaparecidos-2023",
+    titulo: "Los 79 de 2023",
+    subtitulo: "Muertes y desapariciones documentadas en 2023 atribuidas al Estado cubano",
+    etiqueta: "MEMORIA · VERDAD Y MEMORIA 2023",
+    accent: "#FF6A00",
+    fuentes: "Archivo Cuba & American Museum of the Cuban Diaspora · Verdad y Memoria",
+    load: () => import("./desaparecidos_2023.jsx"),
+  },
+  {
+    id: "servicio-militar",
+    slug: "servicio-militar",
+    path: "/servicio-militar",
+    titulo: "Servir o morir",
+    subtitulo: "El servicio militar obligatorio en Cuba: trata de personas con un costo letal",
+    etiqueta: "DERECHOS · SERVICIO MILITAR",
+    accent: "#33C27A",
+    fuentes: "Maria C. Werlau · Archivo Cuba / Free Society Project",
+    load: () => import("./servicio_militar.jsx"),
+  },
+  {
+    id: "vias-cambio",
+    slug: "vias-cambio",
+    path: "/vias-cambio",
+    titulo: "Vías de cambio: invasión, ley y evidencia",
+    subtitulo: "Qué dice la evidencia sobre cómo caen los regímenes: resistencia civil frente a intervención armada",
+    etiqueta: "VÍAS DE CAMBIO · EVIDENCIA",
+    accent: "#157A72", // teal "voltaje" de la paleta congelada del renderer
+    fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
+    load: () => import("./vias_cambio.jsx"),
+  },
 
 ];
 

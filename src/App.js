@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
-import { HashRouter, Routes, Route } from "react-router-dom";
+//import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout.jsx";
 import Landing from "./components/Landing.jsx";
@@ -26,7 +27,7 @@ function Cargando() {
 
 export default function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Layout>
         <Suspense fallback={<Cargando />}>
           <Routes>
@@ -38,6 +39,24 @@ export default function App() {
           </Routes>
         </Suspense>
       </Layout>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
+
+// export default function App() {
+//   return (
+//     <HashRouter>
+//       <Layout>
+//         <Suspense fallback={<Cargando />}>
+//           <Routes>
+//             <Route path="/" element={<Landing />} />
+//             <Route path="/metodologia" element={<Metodologia />} />
+//             {temasLazy.map(({ id, path, Componente }) => (
+//               <Route key={id} path={path} element={<Componente />} />
+//             ))}
+//           </Routes>
+//         </Suspense>
+//       </Layout>
+//     </HashRouter>
+//   );
+// }
