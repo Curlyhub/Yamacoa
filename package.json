@@ -17,7 +17,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "gen:social": "node scripts/gen-social-meta.mjs",
     "start": "react-scripts start",
+    "prebuild": "node scripts/gen-social-meta.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
