@@ -161,6 +161,17 @@ const temas = [
     fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
     load: () => import("./vias_cambio.jsx"),
   },
+  {
+    id: "electrica",
+    slug: "electrica",
+    path: "/electrica",
+    titulo: "La corriente interrumpida",
+    subtitulo: "El sistema eléctrico cubano: de la electrificación de la isla al apagón permanente",
+    etiqueta: "ENERGÍA · SISTEMA ELÉCTRICO NACIONAL",
+    accent: "#3BA9E0", // azul de arco de la paleta "Arco voltaico" del renderer congelado
+    fuentes: "Unión Eléctrica (UNE) · Horizonte Cubano (Columbia Law) · IEEE Spectrum · ONEI · prensa independiente",
+    load: () => import("./electrica.jsx"),
+  },
 
 ];
 

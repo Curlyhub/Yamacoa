@@ -143,5 +143,22 @@
     "layout": "cuatro-pestanas",
     "graficos": ["timeline", "texto-himno", "encuesta", "quiz"],
     "firma": "capsula historica con texto del himno en Spectral y quiz interactivo"
+  },
+  {
+    "tema": "electrica",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Arco voltaico",
+      "acentos": [
+        { "hex": "#3BA9E0", "rol": "primario", "h": 200 },
+        { "hex": "#F5B841", "rol": "contrapunto", "h": 42 },
+        { "hex": "#E8503A", "rol": "alerta", "h": 9 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "seis-pestanas",
+    "graficos": ["slope-chart", "gauge-radial", "area", "donut", "choropleth", "ridgeline", "parallel-coords", "barra", "slider-calc"],
+    "firma": "medidor radial tipo voltimetro (demanda vs disponible = deficit) + ridgeline de apagones como forma de onda + rampa de voltaje azul->ambar->ascua"
   }
 ]

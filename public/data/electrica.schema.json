@@ -1,0 +1,370 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Yamacoa · expediente eléctrica",
+  "description": "Dataset respirante del expediente sobre el sistema electroenergético nacional (SEN) de Cuba: histórico, trayectoria, estado actual, mapa por provincia, comparativa regional contrafactual, distribución de apagones y coste de oportunidad de centros de datos.",
+  "type": "object",
+  "required": ["meta", "kpis", "historia", "trayectoria", "velocidad", "capacidad", "generacion", "provincias", "comparativa", "radar", "apagones", "centrosDatos"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["slug", "titulo", "subtitulo", "actualizado", "fuentes"],
+      "additionalProperties": false,
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "ventana": { "type": "string" },
+        "actualizado": { "type": "string", "format": "date" },
+        "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "nota": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 }
+      }
+    },
+    "kpis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "valor", "etiqueta"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "valor": { "type": ["number", "string"] },
+          "sufijo": { "type": "string" },
+          "etiqueta": { "type": "string" },
+          "estado": { "type": "string", "enum": ["corroborado", "incierto", "estimacion"] }
+        }
+      }
+    },
+    "historia": {
+      "type": "array",
+      "description": "Hitos cronológicos de la electrificación cubana.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["anio", "hito"],
+        "additionalProperties": false,
+        "properties": {
+          "anio": { "type": "number" },
+          "hito": { "type": "string" },
+          "detalle": { "type": "string" },
+          "capacidadMW": { "type": ["number", "null"] },
+          "electrificacionPct": { "type": ["number", "null"] },
+          "fase": { "type": "string", "enum": ["prerevolucion", "expansion-sovietica", "periodo-especial", "revolucion-energetica", "crisis"] }
+        }
+      }
+    },
+    "trayectoria": {
+      "type": "object",
+      "description": "Cortes temporales para el slope chart de la sección Génesis.",
+      "required": ["cortes", "metricas"],
+      "additionalProperties": false,
+      "properties": {
+        "cortes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["anio", "label"],
+            "additionalProperties": false,
+            "properties": {
+              "anio": { "type": "number" },
+              "label": { "type": "string" },
+              "narrativa": { "type": "string" }
+            }
+          }
+        },
+        "metricas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["clave", "etiqueta", "unidad", "valores"],
+            "additionalProperties": false,
+            "properties": {
+              "clave": { "type": "string" },
+              "etiqueta": { "type": "string" },
+              "unidad": { "type": "string" },
+              "valores": { "type": "object", "additionalProperties": { "type": "number" } },
+              "estado": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "velocidad": {
+      "type": "object",
+      "description": "Comparación del RITMO de expansión antes y después de 1959 (no del volumen absoluto). Sostiene el bloque 'La velocidad, no el relato' de la pestaña Génesis.",
+      "required": ["titular", "nota", "capacidad", "clientes"],
+      "additionalProperties": false,
+      "properties": {
+        "titular": { "type": "string" },
+        "nota": { "type": "string" },
+        "caveat": { "type": "string" },
+        "capacidad": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["periodo", "anios", "inicioMW", "finMW", "cagrPct", "mwPorAnio"],
+            "additionalProperties": false,
+            "properties": {
+              "periodo": { "type": "string" },
+              "anios": { "type": "string" },
+              "inicioMW": { "type": "number" },
+              "finMW": { "type": "number" },
+              "cagrPct": { "type": "number" },
+              "mwPorAnio": { "type": "number" },
+              "estado": { "type": "string" }
+            }
+          }
+        },
+        "clientes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["periodo", "anios", "cagrPct"],
+            "additionalProperties": false,
+            "properties": {
+              "periodo": { "type": "string" },
+              "anios": { "type": "string" },
+              "inicio": { "type": ["number", "null"] },
+              "fin": { "type": ["number", "null"] },
+              "cagrPct": { "type": "number" },
+              "estado": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "capacidad": {
+      "type": "object",
+      "description": "Estado actual del parque de generación cubano.",
+      "required": ["instaladaMW", "disponibleMW", "demandaPicoMW", "deficitTipicoMW", "produccionAnualGWh"],
+      "additionalProperties": false,
+      "properties": {
+        "instaladaMW": { "$ref": "#/definitions/rango" },
+        "disponibleMW": { "$ref": "#/definitions/rango" },
+        "demandaPicoMW": { "$ref": "#/definitions/rango" },
+        "deficitTipicoMW": { "$ref": "#/definitions/rango" },
+        "produccionAnualGWh": { "$ref": "#/definitions/rango" },
+        "caidaProduccionPct": { "type": ["number", "null"] },
+        "antiguedadMediaAnios": { "type": ["number", "null"] },
+        "produccionSerie": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["anio", "gwh"],
+            "additionalProperties": false,
+            "properties": {
+              "anio": { "type": "number" },
+              "gwh": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "generacion": {
+      "type": "array",
+      "description": "Mix de fuentes de generación. Suma ~100%.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["fuente", "pct"],
+        "additionalProperties": false,
+        "properties": {
+          "fuente": { "type": "string" },
+          "pct": { "type": "number" },
+          "mw": { "type": ["number", "null"] },
+          "fosil": { "type": "boolean" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "provincias": {
+      "type": "array",
+      "description": "Una entrada por provincia; senal codifica severidad de apagones/déficit por periodo.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "senal"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "senal": {
+            "type": "object",
+            "additionalProperties": { "type": ["string", "null"], "enum": ["alta", "media", "baja", null] }
+          },
+          "plantas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["nombre", "mw"],
+              "additionalProperties": false,
+              "properties": {
+                "nombre": { "type": "string" },
+                "mw": { "type": "number" },
+                "tipo": { "type": "string" },
+                "anio": { "type": ["number", "null"] },
+                "estado": { "type": "string" }
+              }
+            }
+          },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "comparativa": {
+      "type": "object",
+      "description": "Instantáneas por país (no serie continua): Cuba vs pares regionales que no vivieron la ruptura de 1959.",
+      "required": ["nota", "paises"],
+      "additionalProperties": false,
+      "properties": {
+        "nota": { "type": "string" },
+        "paises": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["pais"],
+            "additionalProperties": false,
+            "properties": {
+              "pais": { "type": "string" },
+              "capacidadMW": { "type": ["number", "null"] },
+              "disponibleMW": { "type": ["number", "null"] },
+              "poblacionMill": { "type": ["number", "null"] },
+              "kwhPerCapita": { "type": ["number", "null"] },
+              "electrificacionPct": { "type": ["number", "null"] },
+              "renovablePct": { "type": ["number", "null"] },
+              "produccionGWh": { "type": ["number", "null"] },
+              "estado": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "radar": {
+      "type": "object",
+      "description": "Comparación multieje Cuba vs pares (radar interactivo). Valores en su unidad cruda; el renderer normaliza por eje.",
+      "required": ["ejes", "series"],
+      "additionalProperties": false,
+      "properties": {
+        "ejes": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["clave", "etiqueta", "unidad"],
+            "additionalProperties": false,
+            "properties": {
+              "clave": { "type": "string" },
+              "etiqueta": { "type": "string" },
+              "unidad": { "type": "string" },
+              "mejorEs": { "type": "string", "enum": ["alto", "bajo"] },
+              "estado": { "type": "string" }
+            }
+          }
+        },
+        "series": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["pais", "valores"],
+            "additionalProperties": false,
+            "properties": {
+              "pais": { "type": "string" },
+              "hipotetico": { "type": "boolean" },
+              "nota": { "type": "string" },
+              "valores": { "type": "object", "additionalProperties": { "type": "number" } }
+            }
+          }
+        }
+      }
+    },
+    "apagones": {
+      "type": "object",
+      "description": "Distribución de horas de apagón para el violin plot (KDE). Reconstrucción a partir de rangos documentados; NO es un censo.",
+      "required": ["unidad", "estado", "grupos"],
+      "additionalProperties": false,
+      "properties": {
+        "unidad": { "type": "string" },
+        "estado": { "type": "string", "enum": ["corroborado", "incierto", "estimacion"] },
+        "grupos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "valores"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "type": "string" },
+              "valores": { "type": "array", "items": { "type": "number" }, "minItems": 3 },
+              "nota": { "type": "string" }
+            }
+          }
+        },
+        "nota": { "type": "string" }
+      }
+    },
+    "centrosDatos": {
+      "type": "object",
+      "description": "Parámetros del cálculo del coste de oportunidad de una Cuba libre para alojar centros de datos.",
+      "required": ["consumoDataCenterMW", "supuestos"],
+      "additionalProperties": false,
+      "properties": {
+        "consumoDataCenterMW": { "$ref": "#/definitions/rango" },
+        "precioKWhIndustrialUSD": { "$ref": "#/definitions/rango" },
+        "empleosPorDataCenter": { "$ref": "#/definitions/rango" },
+        "inversionPorDataCenterUSD": { "$ref": "#/definitions/rango" },
+        "costeSolar": {
+          "type": "object",
+          "description": "Caída del coste de la solar fotovoltaica: refuerza que hoy construir capacidad fiable es mucho más barato.",
+          "additionalProperties": false,
+          "properties": {
+            "anioInicial": { "type": "number" },
+            "anioActual": { "type": "number" },
+            "lcoeInicialUSD": { "type": "number" },
+            "lcoeActualUSD": { "type": "number" },
+            "caidaPct": { "type": "number" },
+            "estado": { "type": "string" },
+            "nota": { "type": "string" }
+          }
+        },
+        "fuentesCalculo": { "type": "array", "items": { "type": "string" } },
+        "supuestos": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "referenciasRegion": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["lugar", "nota"],
+            "additionalProperties": false,
+            "properties": {
+              "lugar": { "type": "string" },
+              "mw": { "type": ["number", "null"] },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "rango": {
+      "type": "object",
+      "required": ["valor"],
+      "additionalProperties": false,
+      "properties": {
+        "valor": { "type": "number" },
+        "min": { "type": ["number", "null"] },
+        "max": { "type": ["number", "null"] },
+        "estado": { "type": "string", "enum": ["corroborado", "incierto", "estimacion"] },
+        "nota": { "type": "string" }
+      }
+    }
+  }
+}

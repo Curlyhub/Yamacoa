@@ -50,5 +50,9 @@
   "/vias-cambio": {
     "t": "Vías de cambio: invasión, ley y evidencia",
     "d": "Qué dice la evidencia sobre cómo caen los regímenes: resistencia civil frente a intervención armada"
+  },
+  "/electrica": {
+    "t": "La corriente interrumpida",
+    "d": "El sistema eléctrico cubano: de la electrificación de la isla al apagón permanente"
   }
 }

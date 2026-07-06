@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "slug": "electrica",
+    "titulo": "La corriente interrumpida",
+    "subtitulo": "El sistema eléctrico cubano: de la electrificación de la isla al apagón permanente",
+    "ventana": "1958–2026",
+    "actualizado": "2026-07-06",
+    "fuentes": [
+      "Unión Eléctrica (UNE) vía Cubadebate y Juventud Rebelde",
+      "Horizonte Cubano (Columbia Law School)",
+      "IEEE Spectrum · Cuba's Energy Crisis (2025)",
+      "ONEI vía Diario de Cuba y El Periódico de la Energía",
+      "CiberCuba · 14ymedio · elTOQUE · Cubanet · Infobae",
+      "Wikipedia · 2024–2026 Cuba blackouts",
+      "Banco Mundial · IEA · ICE (Costa Rica) · ONE (Rep. Dominicana)"
+    ],
+    "nota": "Cifras 'al menos' y con su incertidumbre marcada. Distinción clave: 'termoeléctricas' en sentido estricto (plantas de vapor) generan ~40%; el ~80% fósil solo se alcanza sumando los motores diésel y fuel-oil de la generación distribuida.",
+    "descripcion": "Este expediente reconstruye la trayectoria del sistema electroenergético nacional (SEN) de Cuba desde vísperas de 1959 hasta julio de 2026, contrastando lo que se construyó con el estado actual de la red. En 1958 la isla tenía una capacidad instalada de entre 397 y 430 MW y una electrificación del 56% de la población, concentrada en las ciudades; según compilaciones de la época, Cuba figuraba entre los dos primeros países de América Latina en consumo eléctrico por habitante, aunque el ranking exacto (primero o segundo, tras o junto a Argentina) y la cifra per cápita concreta no pudieron verificarse contra la fuente primaria y se dejan como afirmación cualitativa. El 6 de agosto de 1960 el Estado nacionalizó la Compañía Cubana de Electricidad, que suministraba más del 90% de la electricidad vendida en el país. Entre los años sesenta y ochenta, con apoyo soviético, se construyeron la mayoría de las grandes termoeléctricas que aún hoy sostienen el sistema, y en 1992 el SEN alcanzó su pico documentado: 3.676 MW de capacidad interconectada y un 95% de electrificación. La caída de la URSS abrió el Período Especial: sin crudo subvencionado, el mantenimiento se volvió inviable. En 2005 y 2006 la llamada Revolución Energética apostó por miles de grupos electrógenos diésel y fuel-oil distribuidos (entre 2004 y 2020 se importaron más de 73.000), pero el alivio duró apenas unos cinco años. El estado actual es de crisis: la demanda pico ronda los 3.000 MW (rango observado 2.900–3.300), mientras la capacidad realmente disponible fluctúa a diario y se ha reportado desde 1.165 hasta 1.880 MW en 2025 y 2026. El déficit medio de 2025 fue de unos 1.531 MW según Horizonte Cubano (Columbia Law), con picos de hasta 2.054 MW. La producción anual de 2025 fue de 15.918 GWh, alrededor de un 25% por debajo de los 19.071 GWh de 2020, aunque con una leve recuperación frente a 2024 atribuible al aporte solar. La generación térmica fósil (termoeléctricas de vapor más motores diésel y fuel-oil) representa cerca del 80%; la mayor planta, la CTE Antonio Guiteras de Matanzas (330 MW, unos 38 años de explotación), encadenó 17 desconexiones del sistema a comienzos de julio de 2026. La mayoría de las termoeléctricas supera los 30 a 40 años, muy por encima de su vida útil de diseño. Los apagones diarios oscilan entre 12 y 20 horas como suelo, con picos documentados de hasta 30 horas en La Habana y hasta 87 horas continuas en Matanzas, y afectaciones simultáneas de entre el 54% y el 72% del territorio. Entre octubre de 2024 y julio de 2026 el país sufrió al menos seis apagones nacionales totales. La dependencia del combustible importado se agravó: en 2025 México fue el mayor proveedor (~44%), seguido de Venezuela (~34%) y Rusia (~15%), pero Venezuela cortó sus envíos por completo tras la captura de Nicolás Maduro en enero de 2026. La única señal de crecimiento es la solar fotovoltaica, que pasó de unos 298 MW a fin de 2024 a 1.084 MW a fin de 2025, con apoyo chino. El expediente cierra con dos ejercicios interpretativos, marcados como tales: una comparación de instantáneas entre Cuba y dos pares regionales que no vivieron la ruptura de 1959 (República Dominicana, con 5.950 MW instalados y 99,6% de electrificación, y Costa Rica, con 3.658 MW y una matriz más del 95% renovable), y un cálculo ilustrativo del coste de oportunidad de una Cuba con red estable y fiable para alojar centros de datos, sector para el que la fiabilidad de la red, el precio del kWh y la conectividad submarina son decisivos. No se afirma causalidad: la comparación entre países es observacional y las proyecciones son escenarios explícitos, no contabilidad.",
+    "narracion": "En vísperas de 1959, Cuba tenía una capacidad eléctrica de unos cuatrocientos megavatios y llegaba a algo más de la mitad de su población. Según recuentos de la época, estaba entre los dos primeros países de América Latina en consumo eléctrico por habitante. En 1960 el Estado nacionalizó la Compañía Cubana de Electricidad, que daba más del noventa por ciento de la electricidad del país. Entre los años sesenta y ochenta, con apoyo soviético, se levantaron casi todas las grandes termoeléctricas que hoy siguen sosteniendo la red. En 1992 el sistema tocó su techo: más de tres mil seiscientos megavatios y una cobertura del noventa y cinco por ciento. Después llegó el desplome. Con la caída de la Unión Soviética se acabó el petróleo barato y el mantenimiento se hizo imposible. En dos mil cinco se apostó por miles de plantas pequeñas de diésel repartidas por la isla, pero el respiro duró apenas cinco años. Hoy la demanda máxima ronda los tres mil megavatios, mientras la generación disponible cae muchos días por debajo de los dos mil. El déficit medio de 2025 fue de más de mil quinientos megavatios, con picos por encima de dos mil. La producción anual quedó cerca de un veinticinco por ciento por debajo de la de 2020. La mayoría de las plantas supera los treinta o cuarenta años de uso, muy por encima de su vida útil. La mayor de todas, la Antonio Guiteras, en Matanzas, se desconectó del sistema diecisiete veces solo en los primeros meses de 2026. Los apagones diarios van, como mínimo, de doce a veinte horas, y en algunas zonas han llegado a superar las ochenta horas seguidas. Entre octubre de 2024 y julio de 2026 hubo al menos seis apagones nacionales totales. La única señal de crecimiento es la energía solar, que pasó de unos trescientos a más de mil megavatios en un solo año. El expediente termina con dos ejercicios marcados como interpretativos. El primero compara a Cuba con dos vecinos que no vivieron la ruptura de 1959: República Dominicana y Costa Rica, hoy muy por delante en capacidad por habitante y en fiabilidad de la red. El segundo calcula, como escenario, cuánto podría rendir una Cuba con electricidad estable si alojara centros de datos, un negocio que exige exactamente lo que hoy falta: corriente continua, sin interrupciones. No se afirma ninguna causa: la comparación es observacional y las cuentas son un escenario, no una contabilidad."
+  },
+  "kpis": [
+    { "id": "deficit", "valor": 1550, "sufijo": " MW", "etiqueta": "Déficit medio diario (2025)", "estado": "corroborado" },
+    { "id": "apagon", "valor": "12–20+", "sufijo": " h", "etiqueta": "Apagón diario típico", "estado": "corroborado" },
+    { "id": "cobertura", "valor": 63, "sufijo": " %", "etiqueta": "Demanda cubierta en pico", "estado": "estimacion" },
+    { "id": "solar", "valor": 1084, "sufijo": " MW", "etiqueta": "Solar instalada (fin 2025)", "estado": "corroborado" }
+  ],
+  "historia": [
+    { "anio": 1958, "hito": "Vísperas de 1959: 413 MW y 56% de cobertura", "detalle": "Capacidad instalada de unos 397 a 430 MW y electrificación del 56%, concentrada en las ciudades. Cuba figuraba entre los dos primeros países de América Latina en consumo eléctrico por habitante (ranking exacto no verificado).", "capacidadMW": 413, "electrificacionPct": 56, "fase": "prerevolucion" },
+    { "anio": 1960, "hito": "Nacionalización de la Compañía Cubana de Electricidad", "detalle": "El 6 de agosto de 1960 el Estado expropió la Compañía Cubana de Electricidad, que suministraba más del 90% de la electricidad vendida en el país.", "capacidadMW": null, "electrificacionPct": null, "fase": "expansion-sovietica" },
+    { "anio": 1975, "hito": "Expansión termoeléctrica con apoyo soviético", "detalle": "Entre los años sesenta y ochenta se construyeron, con apoyo soviético, la mayoría de las grandes termoeléctricas que todavía hoy sostienen el sistema.", "capacidadMW": null, "electrificacionPct": null, "fase": "expansion-sovietica" },
+    { "anio": 1991, "hito": "Período Especial: se corta el crudo soviético", "detalle": "La caída de la URSS eliminó el petróleo subvencionado; el mantenimiento se volvió inviable y comenzaron los apagones prolongados.", "capacidadMW": null, "electrificacionPct": null, "fase": "periodo-especial" },
+    { "anio": 1992, "hito": "Pico del SEN: 3.676 MW y 95% de cobertura", "detalle": "El sistema alcanzó 3.676 MW de capacidad interconectada y una electrificación del 95%, justo cuando el combustible empezaba a faltar.", "capacidadMW": 3676, "electrificacionPct": 95, "fase": "periodo-especial" },
+    { "anio": 2005, "hito": "Revolución Energética: grupos electrógenos", "detalle": "Se apostó por miles de grupos electrógenos diésel y fuel-oil distribuidos; entre 2004 y 2020 se importaron más de 73.000. El alivio duró unos cinco años.", "capacidadMW": null, "electrificacionPct": null, "fase": "revolucion-energetica" },
+    { "anio": 2024, "hito": "Colapsos totales del SEN", "detalle": "Entre octubre de 2024 y julio de 2026 el sistema sufrió al menos seis apagones nacionales; la CTE Antonio Guiteras encadenó desconexiones.", "capacidadMW": null, "electrificacionPct": null, "fase": "crisis" },
+    { "anio": 2025, "hito": "Récord de solar y mínimo de crudo", "detalle": "La capacidad solar pasó de unos 298 MW a 1.084 MW en un año, mientras la producción total (15.918 GWh) seguía un 25% por debajo de 2020 y Venezuela cortaba sus envíos en enero de 2026.", "capacidadMW": null, "electrificacionPct": 99, "fase": "crisis" }
+  ],
+  "trayectoria": {
+    "cortes": [
+      { "anio": 1958, "label": "Vísperas de 1959", "narrativa": "Una red pequeña pero de las más avanzadas de la región, con la mitad del país aún a oscuras." },
+      { "anio": 1992, "label": "Pico del SEN", "narrativa": "La electrificación llega al 95% y la capacidad se multiplica por nueve, justo cuando se corta el combustible soviético." },
+      { "anio": 2025, "label": "Crisis", "narrativa": "El acceso es casi universal sobre el papel, pero la capacidad disponible se ha desplomado por debajo de la de 1992 con más población y más demanda." }
+    ],
+    "metricas": [
+      { "clave": "instalada", "etiqueta": "Capacidad instalada", "unidad": "MW", "valores": { "1958": 413, "1992": 3676, "2025": 3000 }, "estado": "2025 incierto: la placa nominal agregada del SEN no se publica; ~3.000 MW es el orden de magnitud citado en prensa." },
+      { "clave": "disponible", "etiqueta": "Disponible en pico", "unidad": "MW", "valores": { "1958": 397, "1992": 3132, "2025": 1900 }, "estado": "corroborado (2025 fluctúa 1.165–1.880 MW)" },
+      { "clave": "electrificacion", "etiqueta": "Electrificación", "unidad": "%", "valores": { "1958": 56, "1992": 95, "2025": 99 }, "estado": "corroborado" }
+    ]
+  },
+  "velocidad": {
+    "titular": "La velocidad, no el relato",
+    "nota": "Llegar del 56% (1958) al 95% de cobertura (finales de los ochenta) suele contarse como una hazaña de la Revolución. Pero el sistema ya se expandía deprisa: la capacidad instalada se multiplicó por 2,1 en solo siete años (1951–1958), un ritmo del ~11% anual compuesto. Con el subsidio soviético se sumaron MÁS megavatios en términos absolutos (~96 MW/año frente a ~30), pero a un ritmo relativo MENOR (~6,8% anual). Y el crecimiento de clientes conectados fue casi idéntico antes y después. Dos vecinos que no rompieron en 1959 —República Dominicana y Costa Rica— llegaron igual a la cobertura casi universal (ver 'El contrafactual').",
+    "caveat": "La cobertura en porcentaje se satura al acercarse al 100%, así que los últimos puntos porcentuales avanzan más despacio por aritmética, no por mérito. El anclaje de 1951 (189 MW) y las cifras de clientes provienen de compilaciones históricas de menor confianza; 397 MW (1958) y 3.676 MW (1992) están bien corroborados. El punto no es que no se construyera, sino que el ritmo previo a 1959 ya era rápido y no se aceleró después.",
+    "capacidad": [
+      { "periodo": "Antes de 1959", "anios": "1951–1958", "inicioMW": 189, "finMW": 397, "cagrPct": 11.2, "mwPorAnio": 30, "estado": "reconstruido" },
+      { "periodo": "Después de 1959", "anios": "1958–1992", "inicioMW": 397, "finMW": 3676, "cagrPct": 6.8, "mwPorAnio": 96, "estado": "corroborado" }
+    ],
+    "clientes": [
+      { "periodo": "Antes de 1959", "anios": "1955–1958", "inicio": 667000, "fin": 732400, "cagrPct": 3.2, "estado": "reconstruido" },
+      { "periodo": "Después de 1959", "anios": "1958–1984", "inicio": 732400, "fin": 1633000, "cagrPct": 3.1, "estado": "reconstruido" }
+    ]
+  },
+  "capacidad": {
+    "instaladaMW": { "valor": 3000, "estado": "incierto", "nota": "La prensa suele confundir la capacidad instalada nominal con la demanda pico; no hay cifra oficial reciente de placa agregada del SEN." },
+    "disponibleMW": { "valor": 1900, "min": 1165, "max": 2000, "estado": "corroborado", "nota": "Fluctúa a diario; se han reportado desde 1.165 hasta 1.880 MW disponibles en 2025-2026." },
+    "demandaPicoMW": { "valor": 3000, "min": 2900, "max": 3300, "estado": "corroborado" },
+    "deficitTipicoMW": { "valor": 1550, "min": 1300, "max": 2054, "estado": "corroborado", "nota": "Promedio de 2025 ~1.531 MW (Horizonte Cubano); picos de hasta ~2.054 MW." },
+    "produccionAnualGWh": { "valor": 15918, "estado": "corroborado", "nota": "2025; alrededor de un 25% por debajo de los 19.071 GWh de 2020." },
+    "caidaProduccionPct": 25,
+    "antiguedadMediaAnios": 35,
+    "produccionSerie": [
+      { "anio": 2020, "gwh": 19071 },
+      { "anio": 2021, "gwh": 17966 },
+      { "anio": 2022, "gwh": 15732 },
+      { "anio": 2023, "gwh": 15331 },
+      { "anio": 2024, "gwh": 14345 },
+      { "anio": 2025, "gwh": 15918 }
+    ]
+  },
+  "generacion": [
+    { "fuente": "Termoeléctricas (vapor)", "pct": 40.6, "fosil": true, "nota": "Las grandes plantas de los años 60-80; la mayoría supera los 30-40 años." },
+    { "fuente": "Motores fuel-oil", "pct": 21.7, "fosil": true },
+    { "fuente": "Motores diésel distribuidos", "pct": 21.9, "fosil": true, "nota": "La generación distribuida de la Revolución Energética (2005-2006)." },
+    { "fuente": "Solar fotovoltaica", "pct": 9.3, "fosil": false, "nota": "1.084 MW instalados a fin de 2025, en expansión con apoyo chino." },
+    { "fuente": "Hidro, biomasa, eólica y otras", "pct": 6.5, "fosil": false }
+  ],
+  "provincias": [
+    { "id": "pinar", "nombre": "Pinar del Río", "senal": { "2025": "media", "2026": "alta" } },
+    { "id": "artemisa", "nombre": "Artemisa", "senal": { "2025": "media", "2026": "alta" }, "nota": "CTE Máximo Gómez (Mariel), entre las más antiguas en explotación." },
+    { "id": "habana", "nombre": "La Habana", "senal": { "2025": "media", "2026": "media" }, "nota": "Capital priorizada en el reparto; aun así se han reportado cortes de hasta 30 horas. CTE Otto Parellada (Tallapiedra), de las más viejas del SEN." },
+    { "id": "mayabeque", "nombre": "Mayabeque", "senal": { "2025": "alta", "2026": "alta" }, "nota": "CTE Ernesto Guevara (Santa Cruz del Norte)." },
+    { "id": "matanzas", "nombre": "Matanzas", "senal": { "2025": "alta", "2026": "alta" }, "plantas": [ { "nombre": "CTE Antonio Guiteras", "mw": 330, "tipo": "Termoeléctrica de vapor", "anio": 1988, "estado": "La mayor del país (~38 años); 17 desconexiones del SEN en lo que va de 2026." } ], "nota": "Se han documentado apagones de hasta 87 horas continuas." },
+    { "id": "cienfuegos", "nombre": "Cienfuegos", "senal": { "2025": "media", "2026": "alta" }, "nota": "CTE Carlos Manuel de Céspedes." },
+    { "id": "villaclara", "nombre": "Villa Clara", "senal": { "2025": "alta", "2026": "alta" } },
+    { "id": "sancti", "nombre": "Sancti Spíritus", "senal": { "2025": "alta", "2026": "alta" } },
+    { "id": "ciego", "nombre": "Ciego de Ávila", "senal": { "2025": "alta", "2026": "alta" } },
+    { "id": "camaguey", "nombre": "Camagüey", "senal": { "2025": "alta", "2026": "alta" }, "nota": "CTE Diez de Octubre (Nuevitas)." },
+    { "id": "tunas", "nombre": "Las Tunas", "senal": { "2025": "alta", "2026": "alta" } },
+    { "id": "holguin", "nombre": "Holguín", "senal": { "2025": "alta", "2026": "alta" }, "nota": "CTE Lidio Ramón Pérez (Felton), la termoeléctrica más nueva del país." },
+    { "id": "granma", "nombre": "Granma", "senal": { "2025": "alta", "2026": "alta" } },
+    { "id": "santiago", "nombre": "Santiago de Cuba", "senal": { "2025": "media", "2026": "alta" }, "nota": "CTE Antonio Maceo (Renté)." },
+    { "id": "guantanamo", "nombre": "Guantánamo", "senal": { "2025": "alta", "2026": "alta" } }
+  ],
+  "comparativa": {
+    "nota": "Instantáneas actuales, no una serie histórica continua (esa serie no pudo verificarse década a década). Los tres países partieron de una electrificación parcial parecida a mediados del siglo XX; hoy República Dominicana y Costa Rica tienen cobertura casi universal y mucha más capacidad por habitante, mientras Cuba retrocedió en términos relativos.",
+    "paises": [
+      { "pais": "Cuba", "capacidadMW": 3000, "disponibleMW": 1900, "poblacionMill": 11.0, "kwhPerCapita": 1414, "electrificacionPct": 99, "renovablePct": 8, "estado": "disponible corroborado; instalada incierta" },
+      { "pais": "República Dominicana", "capacidadMW": 5950, "disponibleMW": null, "poblacionMill": 10.7, "kwhPerCapita": 2135, "electrificacionPct": 99.6, "renovablePct": 20, "produccionGWh": 25397, "estado": "corroborado" },
+      { "pais": "Costa Rica", "capacidadMW": 3658, "disponibleMW": null, "poblacionMill": 5.2, "kwhPerCapita": 1963, "electrificacionPct": 100, "renovablePct": 95, "estado": "corroborado" }
+    ]
+  },
+  "radar": {
+    "ejes": [
+      { "clave": "capPerCapita", "etiqueta": "Capacidad disponible / hab.", "unidad": "W/hab", "mejorEs": "alto", "estado": "corroborado" },
+      { "clave": "consumoPerCapita", "etiqueta": "Consumo / hab.", "unidad": "kWh/hab", "mejorEs": "alto", "estado": "corroborado" },
+      { "clave": "electrificacion", "etiqueta": "Electrificación", "unidad": "%", "mejorEs": "alto", "estado": "corroborado" },
+      { "clave": "renovable", "etiqueta": "Matriz renovable", "unidad": "%", "mejorEs": "alto", "estado": "corroborado" },
+      { "clave": "fiabilidad", "etiqueta": "Fiabilidad de la red", "unidad": "índice 0-100", "mejorEs": "alto", "estado": "estimacion" }
+    ],
+    "series": [
+      { "pais": "Cuba", "valores": { "capPerCapita": 173, "consumoPerCapita": 1414, "electrificacion": 99, "renovable": 8, "fiabilidad": 35 } },
+      { "pais": "República Dominicana", "valores": { "capPerCapita": 556, "consumoPerCapita": 2135, "electrificacion": 99.6, "renovable": 20, "fiabilidad": 82 } },
+      { "pais": "Costa Rica", "valores": { "capPerCapita": 703, "consumoPerCapita": 1963, "electrificacion": 100, "renovable": 95, "fiabilidad": 90 } },
+      { "pais": "Cuba (escenario de pares)", "hipotetico": true, "nota": "Escenario ilustrativo, no dato: Cuba si hubiera seguido la trayectoria media de sus pares regionales.", "valores": { "capPerCapita": 630, "consumoPerCapita": 2049, "electrificacion": 99.8, "renovable": 57.5, "fiabilidad": 86 } }
+    ]
+  },
+  "apagones": {
+    "unidad": "horas sin electricidad al día",
+    "estado": "estimacion",
+    "nota": "Reconstrucción ilustrativa a partir de los rangos documentados por la prensa independiente (mínimo, típico y picos), NO un censo. La Habana suele estar priorizada; Matanzas concentra los extremos, con cortes documentados de hasta 87 horas continuas.",
+    "grupos": [
+      { "label": "La Habana (priorizada)", "valores": [3, 4, 5, 5, 6, 6, 7, 8, 8, 9, 10, 11, 12, 14, 16, 20] },
+      { "label": "Occidente", "valores": [6, 7, 8, 9, 10, 10, 11, 12, 12, 13, 14, 15, 16, 18, 20, 22] },
+      { "label": "Centro", "valores": [8, 10, 11, 12, 13, 14, 15, 15, 16, 17, 18, 19, 20, 21, 22, 24] },
+      { "label": "Oriente", "valores": [10, 12, 13, 14, 15, 16, 17, 18, 18, 19, 20, 21, 22, 23, 24, 26] },
+      { "label": "Matanzas (extremos)", "valores": [12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 36, 48, 60, 72, 84, 87], "nota": "Incluye el pico documentado de 87 horas continuas." }
+    ]
+  },
+  "centrosDatos": {
+    "consumoDataCenterMW": { "valor": 70, "min": 40, "max": 100, "estado": "corroborado", "nota": "Rango de un centro de datos hyperscale mediano; los mayores superan los 500 MW." },
+    "precioKWhIndustrialUSD": { "valor": 0.12, "min": 0.08, "max": 0.15, "estado": "estimacion", "nota": "Tarifa industrial de referencia en la región (Brasil ~US$0,128/kWh; mercados con centros de datos US$0,12–0,18/kWh; Paraguay ~US$0,045). Cuba no publica una tarifa industrial comparable." },
+    "empleosPorDataCenter": { "valor": 60, "min": 30, "max": 200, "estado": "estimacion", "nota": "Empleo directo típico; el impacto mayor es indirecto y en la fase de construcción." },
+    "inversionPorDataCenterUSD": { "valor": 500000000, "min": 100000000, "max": 1000000000, "estado": "corroborado", "nota": "Referencia: Google invirtió US$500 millones en un 'digital port' en República Dominicana. El capex por centro varía con el tamaño (US$100M–US$1.000M en el rango); no incluye la generación que lo alimenta." },
+    "costeSolar": { "anioInicial": 2010, "anioActual": 2025, "lcoeInicialUSD": 0.38, "lcoeActualUSD": 0.058, "caidaPct": 85, "estado": "corroborado", "nota": "El coste nivelado (LCOE) de la solar fotovoltaica a gran escala cayó ~80–85% entre 2010 y 2025 (de ~US$0,38 a ~US$0,058/kWh; el sistema completo pasó de ~US$2,5 a ~US$1 por vatio). Construir hoy capacidad fiable —sobre todo solar— es mucho más barato que cuando Cuba quedó fuera del ciclo de inversión: es un coste que lleva más de una década bajando." },
+    "fuentesCalculo": [
+      "Precio del kWh industrial: GlobalPetrolPrices y Statista — tarifas industriales/comerciales de América Latina, 2025.",
+      "Caída del coste de la solar: IRENA y NREL — LCOE fotovoltaico a gran escala −80–85% desde 2010 (~US$0,38 → ~US$0,058/kWh).",
+      "Inversión por centro de datos: referencia pública de Google (US$500M) en República Dominicana."
+    ],
+    "supuestos": [
+      "El cálculo asume una Cuba con red estable y fiable, cables submarinos redundantes y marco jurídico previsible: hoy no se cumple ninguna de las tres condiciones.",
+      "Los ingresos se estiman como energía vendida (MW × 8.760 h × precio industrial), no como beneficio neto del operador.",
+      "Un centro de datos exige suministro continuo 24/7; la red cubana no puede garantizar hoy ni la demanda residencial en hora pico.",
+      "No existe una cifra pública de inversión en centros de datos que Cuba haya dejado de captar; el ejercicio ilustra un orden de magnitud, no una contabilidad."
+    ],
+    "referenciasRegion": [
+      { "lugar": "República Dominicana", "mw": null, "nota": "Google invirtió US$500M en un 'digital port' con cable submarino directo a EE.UU." },
+      { "lugar": "Panamá", "mw": 5, "nota": "Sparkle (Telecom Italia) opera un centro con ~600 gabinetes y carga TI de ~5 MW." },
+      { "lugar": "Puerto Rico", "mw": null, "nota": "Al menos ocho instalaciones registradas y varios cables submarinos con redundancia." }
+    ]
+  }
+}
