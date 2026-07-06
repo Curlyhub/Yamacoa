@@ -11,13 +11,22 @@ import temas from "../temas/registry";
  *
  * Modelo: kokoro-js (ONNX ~80MB q8) cargado bajo demanda al primer clic, via CDN.
  * WebGPU si esta disponible; fallback WASM. Queda cacheado por el navegador.
- * Voz: em_alex (espanol). Las cifras deben venir en letras desde el dataset
- * (contrato de /narrar): el motor pronuncia mal numerales y simbolos.
+ *
+ * Voz: PARCHE TEMPORAL. El port ONNX que carga kokoro-js (onnx-community/
+ * Kokoro-82M-v1.0-ONNX) no incluye fonemizador de espanol -- solo trae voces
+ * en ingles americano/britanico (af_/am_/bf_/bm_). No existe ninguna voz "em_"
+ * (espanol) en este modelo pese a que el Kokoro-82M original si las tiene; el
+ * propio mantenedor del port confirmo que falta un fonemizador de espanol en
+ * JS (sin fecha). Mientras tanto se usa una voz en ingles, que pronunciara el
+ * texto en espanol con acento/fonemas de ingles. Revisar cuando kokoro-js
+ * anada soporte de espanol y restaurar una voz nativa.
+ * Las cifras deben venir en letras desde el dataset (contrato de /narrar): el
+ * motor pronuncia mal numerales y simbolos en cualquier idioma.
  */
 
 const KOKORO_CDN = "https://cdn.jsdelivr.net/npm/kokoro-js@1.2.0/+esm";
 const MODEL_ID = "onnx-community/Kokoro-82M-v1.0-ONNX";
-const VOICE = "em_alex";
+const VOICE = "af_heart"; // TODO: sin voz en espanol disponible en kokoro-js; volver a "em_alex" (o equivalente) cuando exista.
 
 /* trocea la narracion en frases razonables para sintetizar en cola */
 function segmentar(texto) {
