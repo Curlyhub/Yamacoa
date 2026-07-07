@@ -14,7 +14,11 @@
 import TEMAS from "./social-meta.json";
 
 const SITE = "https://yamacoa.com";
-const DEFAULT_IMG = `${SITE}/yamacoa_og_1200x630.png`;
+// Cache-busting: algunas plataformas (Facebook, Twitter/X, WhatsApp) cachearon la
+// vista previa de yamacoa.com antes de que existiera este banner y no la refrescan
+// solas. La query ?v= fuerza una URL "nueva" para toda plataforma, sin depender de
+// que cada usuario dispare manualmente el re-scrape. Sube la fecha si se repite.
+const DEFAULT_IMG = `${SITE}/yamacoa_og_1200x630.png?v=20260707`;
 
 // Rutas fuera del registry (ver App.js).
 const EXTRAS = {
