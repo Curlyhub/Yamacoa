@@ -14,7 +14,10 @@
         "subtitulo": { "type": "string" },
         "fuente": { "type": "string" },
         "periodo": { "type": "string" },
-        "actualizado": { "type": "string", "description": "ISO date YYYY-MM-DD" }
+        "actualizado": { "type": "string", "description": "ISO date YYYY-MM-DD" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
       }
     },
     "trimestre": {

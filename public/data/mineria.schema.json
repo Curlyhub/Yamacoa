@@ -17,7 +17,10 @@
         "fuente":     { "type": "string" },
         "periodo":    { "type": "string" },
         "actualizado":{ "type": "string" },
-        "nota":       { "type": "string" }
+        "nota":       { "type": "string" },
+        "descripcion":  { "type": "string", "minLength": 400 },
+        "narracion":    { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
       }
     },
     "kpis": {

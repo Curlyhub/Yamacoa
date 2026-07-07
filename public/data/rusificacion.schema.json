@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa/themes/rusificacion.schema.json",
+  "title": "Dataset · grafo de relaciones GAESA / Rusia",
+  "description": "Contrato de datos que consume el renderizador rusificacion_cuba.jsx (force-graph D3). El renderer solo lee 'nodes' y 'links'; 'meta' se añadió después y solo la consume el componente global Narrador (TTS), nunca el renderer.",
+  "type": "object",
+  "required": ["nodes", "links", "tema"],
+  "additionalProperties": false,
+  "properties": {
+    "generado_at": { "type": "string", "description": "Timestamp ISO de generación del grafo." },
+    "tema": { "type": "string", "const": "rusificacion" },
+    "meta": {
+      "type": "object",
+      "description": "Bloque descriptivo NO leído por el renderer (que solo usa nodes/links). Alimenta el Narrador global y las tarjetas OG.",
+      "required": ["descripcion", "narracion", "narracion_en"],
+      "additionalProperties": false,
+      "properties": {
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
+      }
+    },
+    "links": {
+      "type": "array",
+      "description": "Aristas del grafo de fuerza. 's' y 't' referencian ids de 'nodes'.",
+      "items": {
+        "type": "object",
+        "required": ["s", "t", "rel", "status", "confidence"],
+        "additionalProperties": false,
+        "properties": {
+          "s": { "type": "string", "description": "Nodo origen (id)." },
+          "t": { "type": "string", "description": "Nodo destino (id)." },
+          "rel": { "type": "string", "description": "Verbo de la relación, p.ej. CONTROLA, FIRMA_ACUERDO." },
+          "kind": { "type": "string", "enum": ["estructura", "presunto", "confirmado"] },
+          "status": { "type": "string", "enum": ["estructura", "presunto", "confirmado"], "description": "Duplica 'kind'; procedencia del vínculo." },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "first_seen": { "type": "string" },
+          "last_seen": { "type": "string" },
+          "sources": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "description": "Vértices del grafo: personas, empresas, entidades estatales, militares y familiares.",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "cls", "tier", "alleged"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "short": { "type": "string", "description": "Etiqueta corta para el nodo en el lienzo." },
+          "cls": { "type": "string", "enum": ["estado", "empresa", "militar", "testaferro", "regimen", "familia"] },
+          "tier": { "type": "string", "description": "Nivel jerárquico/visual del nodo en el grafo." },
+          "alleged": { "type": "boolean", "description": "Si true, el vínculo del nodo a la red es una acusación documentada, no un hecho establecido." },
+          "sources": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nombre": { "type": "string" },
+              "tipo": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

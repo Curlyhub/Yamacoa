@@ -40,7 +40,10 @@
         "slug": { "type": "string", "pattern": "^[a-z0-9_]+$" },
         "titulo": { "type": "string" },
         "actualizado": { "type": "string", "format": "date" },
-        "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+        "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
       }
     },
     "hero": {

@@ -93,6 +93,7 @@ const temas = [
     etiqueta: "LIBERTAD DE PRENSA · ICLEP", // ⚠ CONFIRMAR
     accent: "#2BB6A6",                       // ⚠ CONFIRMAR (turquesa del eyebrow)
     fuentes: "ICLEP · Instituto Cubano por la Libertad de Expresión y Prensa", // ⚠ CONFIRMAR
+    dataSlug: "iclep", // el dataset es /data/iclep.json, no /data/libertad-prensa.json
     load: () => import("./iclep.jsx"),
   },
   {
@@ -104,6 +105,7 @@ const temas = [
     etiqueta: "REPRESIÓN · RACISMO ESTRUCTURAL", // ⚠ CONFIRMAR
     accent: "#A33B4A",                            // ⚠ CONFIRMAR (garnet del título; alt: ochre #C9803E del eyebrow)
     fuentes: "Informe alternativo CERD 2026 · CRD · 4Métrica · Ciudadanía y Libertad", // ⚠ CONFIRMAR
+    dataSlug: "racismo", // el dataset es /data/racismo.json, no /data/racismo-estructural.json
     load: () => import("./racismo.jsx"),
   },
   {
@@ -115,6 +117,7 @@ const temas = [
     etiqueta: "REPRESIÓN · HISTORIA", // ⚠ CONFIRMAR
     accent: "#E3A52A",                // ⚠ CONFIRMAR (marigold dominante en la paleta)
     fuentes: "Justicia 11J / Cubalex", // ⚠ CONFIRMAR
+    dataSlug: "11j", // el dataset es /data/11j.json, no /data/anatomia-11j.json
     load: () => import("./anatomia_11j.jsx"),
   },
   {
@@ -159,6 +162,7 @@ const temas = [
     etiqueta: "VÍAS DE CAMBIO · EVIDENCIA",
     accent: "#157A72", // teal "voltaje" de la paleta congelada del renderer
     fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
+    dataSlug: "vias_cambio", // el dataset es /data/vias_cambio.json (guion bajo), no /data/vias-cambio.json
     load: () => import("./vias_cambio.jsx"),
   },
   {

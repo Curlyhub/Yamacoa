@@ -6,8 +6,11 @@ import temas from "../temas/registry";
  * Narrador — TTS Kokoro-82M en navegador, componente GLOBAL.
  * Se monta UNA vez en Layout.jsx: <Narrador/>. No toca ningun renderer congelado.
  *
- * Contrato: lee la ruta activa, resuelve el slug contra el registry, hace fetch de
- * /data/<slug>.json y busca meta.narracion. Si no existe, no renderiza nada.
+ * Contrato: lee la ruta activa, resuelve el tema contra el registry, hace fetch de
+ * /data/<dataSlug o slug>.json (dataSlug es un override opcional del registry para
+ * los temas donde el nombre del dataset no coincide con el slug de la ruta) y busca
+ * meta.narracion_en (ver nota de VOZ mas abajo sobre por que es narracion_en y no
+ * narracion). Si no existe, no renderiza nada.
  *
  * Modelo: kokoro-js (ONNX ~80MB q8) cargado bajo demanda al primer clic, via CDN.
  * WebGPU si esta disponible; fallback WASM. Queda cacheado por el navegador.
@@ -17,9 +20,11 @@ import temas from "../temas/registry";
  * en ingles americano/britanico (af_/am_/bf_/bm_). No existe ninguna voz "em_"
  * (espanol) en este modelo pese a que el Kokoro-82M original si las tiene; el
  * propio mantenedor del port confirmo que falta un fonemizador de espanol en
- * JS (sin fecha). Mientras tanto se usa una voz en ingles, que pronunciara el
- * texto en espanol con acento/fonemas de ingles. Revisar cuando kokoro-js
- * anada soporte de espanol y restaurar una voz nativa.
+ * JS (sin fecha). Mientras la voz sea en ingles, el CONTRATO es leer TEXTO EN
+ * INGLES (meta.narracion_en), no el espanol con acento ingles. Si un tema no
+ * tiene narracion_en, el Narrador simplemente no aparece para el (en vez de
+ * mostrar una lectura con fonemas equivocados). Restaurar meta.narracion
+ * (espanol) + una voz "em_" cuando kokoro-js soporte espanol.
  * Las cifras deben venir en letras desde el dataset (contrato de /narrar): el
  * motor pronuncia mal numerales y simbolos en cualquier idioma.
  */
@@ -60,10 +65,12 @@ export default function Narrador() {
     const path = location.pathname.replace(/\/+$/, "") || "/";
     const tema = temas.find((t) => t.path === path);
     if (!tema) return;
-    fetch(`${process.env.PUBLIC_URL || ""}/data/${tema.slug}.json`, { cache: "no-store" })
+    // dataSlug cubre los temas donde el nombre del dataset no coincide con el
+    // slug de la ruta (p. ej. libertad-prensa -> /data/iclep.json).
+    fetch(`${process.env.PUBLIC_URL || ""}/data/${tema.dataSlug || tema.slug}.json`, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((j) => {
-        const n = j && j.meta && typeof j.meta.narracion === "string" ? j.meta.narracion : null;
+        const n = j && j.meta && typeof j.meta.narracion_en === "string" ? j.meta.narracion_en : null;
         if (vivoRef.current && n && n.length >= 200) setNarracion(n);
       })
       .catch(() => {});

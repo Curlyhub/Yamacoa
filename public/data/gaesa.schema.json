@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dataset mínimo · tema gaesa",
+  "description": "El renderizador gaesa-escenario.jsx es un simulador autónomo sin fetch de dataset: todos los parámetros viven embebidos en el componente. Este fichero existe SOLO para dar soporte a la narración TTS (Narrador.jsx) y a las tarjetas OG del registry; el renderer nunca lo lee ni lo referenciará.",
+  "type": "object",
+  "required": ["meta"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["tema", "titulo", "actualizado"],
+      "additionalProperties": false,
+      "properties": {
+        "tema": { "type": "string", "const": "gaesa" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "actualizado": { "type": "string" },
+        "nota": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
+      }
+    }
+  }
+}

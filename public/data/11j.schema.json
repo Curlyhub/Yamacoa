@@ -35,7 +35,10 @@
         },
         "fuente": {
           "type": "string"
-        }
+        },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 200 },
+        "narracion_en": { "type": "string", "minLength": 200 }
       }
     },
     "total": {
