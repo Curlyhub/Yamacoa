@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="dark">
+<title>Yamacoa · Portal de contribuciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Tokens tomados de src/components/Layout.jsx (fuente de verdad, no AGENTS.md). */
+:root{
+  --bg:#0C0E14; --panel:#161A26; --panel2:#10141E;
+  --line:rgba(237,239,245,.12); --line2:rgba(237,239,245,.2);
+  --txt:#EDEFF5; --dim:#8A93A8; --acc:#38D6C9;
+  --ok:#42C9A8; --warn:#E8A13C; --err:#E06056;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--body);
+  line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+
+/* ── cabecera de marca (espejo de .ym-header) ─────────────────────────────── */
+.hdr{border-bottom:1px solid var(--line);background:rgba(12,14,20,.78)}
+.hdr-in{max-width:1080px;margin:0 auto;padding:16px 22px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--txt)}
+.brand-mark{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.18em}
+.brand-mark span{color:var(--acc)}
+.brand-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim)}
+.hdr-nav{margin-left:auto;display:flex;align-items:center;gap:14px}
+.quien{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--dim)}
+
+main{flex:1;width:100%}
+.wrap{max-width:860px;margin:0 auto;padding:34px 18px 72px}
+.wrap.estrecho{max-width:440px;padding-top:min(12vh,90px)}
+
+h1{font-family:var(--display);font-weight:700;font-size:25px;margin:0 0 6px;letter-spacing:-.01em}
+h2{font-family:var(--display);font-weight:600;font-size:16px;margin:0 0 14px;letter-spacing:.01em}
+.sub{color:var(--dim);font-size:14px;margin:0 0 24px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:22px;margin-bottom:18px}
+
+label,.lbl{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dim);margin:16px 0 7px}
+.card > label:first-child,.card > .lbl:first-child{margin-top:0}
+input,textarea{width:100%;background:var(--panel2);border:1px solid var(--line);
+  border-radius:8px;color:var(--txt);padding:11px 12px;font:inherit;font-size:14px;
+  transition:border-color .16s ease}
+input:hover:not(:disabled),textarea:hover{border-color:var(--line2)}
+input:disabled{color:var(--dim);cursor:not-allowed}
+textarea{min-height:150px;resize:vertical;line-height:1.6}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:8px}
+input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
+
+button{background:var(--acc);color:#08131A;border:0;border-radius:8px;padding:11px 20px;
+  font:inherit;font-weight:600;font-size:14px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;justify-content:center}
+button:hover:not(:disabled){filter:brightness(1.08)}
+button:disabled{opacity:.45;cursor:not-allowed;filter:none}
+button.sec{background:transparent;color:var(--dim);border:1px solid var(--line);font-weight:500}
+button.sec:hover:not(:disabled){color:var(--txt);border-color:var(--line2);filter:none}
+button.ancho{width:100%;margin-top:20px}
+button.enlace{background:none;border:0;color:var(--dim);padding:4px 6px;font-size:12px;
+  text-decoration:underline;font-weight:400}
+button.enlace:hover:not(:disabled){color:var(--err);filter:none}
+
+.spinner{width:14px;height:14px;border:2px solid rgba(8,19,26,.3);border-top-color:#08131A;
+  border-radius:50%;animation:giro .6s linear infinite}
+@keyframes giro{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spinner{animation-duration:2s}}
+
+/* ── mensaje inline (base conservada del borrador) ────────────────────────── */
+.msg{font-size:13px;margin-top:14px;padding:10px 12px;border-radius:8px;display:none}
+.msg.err{display:block;background:rgba(224,96,86,.1);color:var(--err);border:1px solid rgba(224,96,86,.3)}
+.msg.ok{display:block;background:rgba(66,201,168,.1);color:var(--ok);border:1px solid rgba(66,201,168,.3)}
+
+/* ── toast ────────────────────────────────────────────────────────────────── */
+#toasts{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;
+  flex-direction:column;gap:10px;max-width:min(380px,calc(100vw - 36px))}
+.toast{background:var(--panel);border:1px solid var(--line);border-left-width:3px;
+  border-radius:10px;padding:12px 14px;font-size:13px;color:var(--txt);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);animation:entra .22s ease}
+.toast.ok{border-left-color:var(--ok)} .toast.err{border-left-color:var(--err)}
+.toast .t-tit{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);margin-bottom:3px}
+.toast.saliendo{animation:sale .2s ease forwards}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}}
+@keyframes sale{to{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.toast,.toast.saliendo{animation:none}}
+@media (max-width:560px){#toasts{left:18px;right:18px;bottom:14px;max-width:none}}
+
+/* ── banner de configuración ──────────────────────────────────────────────── */
+.banner{background:rgba(232,161,60,.1);border:1px solid rgba(232,161,60,.35);
+  border-radius:10px;padding:14px 16px;margin-bottom:22px;font-size:13.5px;color:var(--warn)}
+.banner code{font-family:var(--mono);font-size:12px;color:var(--txt)}
+
+/* ── zona de PDF ──────────────────────────────────────────────────────────── */
+.dropzone{border:1.5px dashed var(--line2);border-radius:10px;background:var(--panel2);
+  padding:22px 16px;text-align:center;cursor:pointer;transition:border-color .16s ease,background .16s ease}
+.dropzone:hover,.dropzone.sobre{border-color:var(--acc);background:rgba(56,214,201,.05)}
+.dropzone p{margin:0;font-size:13.5px;color:var(--dim)}
+.dropzone .dz-fuerte{color:var(--txt);font-weight:500}
+.dropzone .dz-nota{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  text-transform:uppercase;margin-top:7px}
+.archivo{display:flex;align-items:center;gap:12px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.archivo .a-nom{flex:1;min-width:0;font-size:13.5px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.archivo .a-peso{font-family:var(--mono);font-size:11px;color:var(--dim);flex-shrink:0}
+
+/* ── contador de caracteres ───────────────────────────────────────────────── */
+.contador{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:right;margin-top:6px}
+.contador.corto{color:var(--warn)} .contador.tope{color:var(--err)}
+
+/* ── cuota ────────────────────────────────────────────────────────────────── */
+.cuota-caja{border-top:1px solid var(--line);margin-top:22px;padding-top:18px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.cuota-txt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--dim)}
+.cuota-txt b{color:var(--txt);font-weight:500}
+.segmentos{display:flex;gap:5px;flex:1;min-width:120px}
+.seg{height:5px;flex:1;border-radius:3px;background:rgba(237,239,245,.1)}
+.seg.on{background:var(--acc)}
+.seg.lleno{background:var(--err)}
+.cuota-caja .accion{margin-left:auto;display:flex;align-items:center;gap:14px}
+
+/* ── tabla ────────────────────────────────────────────────────────────────── */
+.tabla-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}
+th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.est{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  padding:3px 8px;border-radius:12px;white-space:nowrap}
+.est-pendiente{background:rgba(138,147,168,.15);color:var(--dim)}
+.est-en_proceso{background:rgba(232,161,60,.14);color:var(--warn)}
+.est-procesado{background:rgba(66,201,168,.14);color:var(--ok)}
+.est-error{background:rgba(224,96,86,.14);color:var(--err)}
+.est-eliminado{background:rgba(224,96,86,.08);color:var(--dim);text-decoration:line-through}
+
+/* ── estado vacío ─────────────────────────────────────────────────────────── */
+.vacio{text-align:center;padding:34px 18px;border:1px dashed var(--line);border-radius:10px}
+.vacio .v-tit{font-size:14px;color:var(--txt);margin-bottom:5px}
+.vacio .v-sub{font-size:13px;color:var(--dim);margin:0}
+
+.hidden{display:none !important}
+a{color:var(--acc)}
+@media (max-width:560px){
+  .hdr-in{padding:13px 16px} .brand-sub{display:none}
+  .wrap{padding:24px 16px 60px} .card{padding:18px}
+  h1{font-size:22px}
+  .cuota-caja .accion{margin-left:0;width:100%}
+  .cuota-caja .accion button{flex:1}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="./" aria-label="Yamacoa, portal de contribuciones">
+      <span class="brand-mark">YAMA<span>COA</span></span>
+      <span class="brand-sub">Portal de contribuciones</span>
+    </a>
+    <nav class="hdr-nav" id="nav-sesion" hidden>
+      <span class="quien" id="quien"></span>
+      <button class="sec" id="b-salir">Salir</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- CONFIG SIN CLAVE -->
+  <div id="v-config" class="wrap hidden">
+    <div class="banner">
+      <strong>Configura la clave anónima de Supabase.</strong><br>
+      La constante <code>SUPABASE_ANON</code> de <code>portal/index.html</code> sigue con el
+      valor de plantilla, así que el portal no puede hablar con la base de datos. Pega la
+      <em>anon / publishable key</em> del proyecto y recarga.
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="v-login" class="wrap estrecho hidden">
+    <div class="eyebrow">Acceso restringido</div>
+    <h1>Acceso</h1>
+    <p class="sub">Cuentas creadas por el administrador. No hay registro público.</p>
+    <div class="card">
+      <form id="f-login">
+        <label for="l-email">Correo</label>
+        <input id="l-email" type="email" autocomplete="username" required>
+        <label for="l-pwd">Contraseña</label>
+        <input id="l-pwd" type="password" autocomplete="current-password" required>
+        <button class="ancho" id="b-login" type="submit">Entrar</button>
+      </form>
+      <div id="m-login" class="msg" role="alert"></div>
+    </div>
+  </div>
+
+  <!-- ROTACIÓN FORZADA -->
+  <div id="v-rotar" class="wrap estrecho hidden">
+    <div class="eyebrow">Contraseña caducada</div>
+    <h1>Cambia tu contraseña</h1>
+    <p class="sub">
+      Las contraseñas del portal caducan a los <strong>30 días</strong>. La tuya ha vencido, así
+      que tu cuenta está bloqueada para enviar hasta que la renueves. Al guardarla se
+      desbloquea sola.
+    </p>
+    <div class="card">
+      <form id="f-rotar">
+        <label for="r-pwd">Nueva contraseña (mínimo 10 caracteres)</label>
+        <input id="r-pwd" type="password" autocomplete="new-password" minlength="10" required>
+        <button class="ancho" id="b-rotar" type="submit">Guardar nueva contraseña</button>
+      </form>
+      <div id="m-rotar" class="msg" role="alert"></div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="v-app" class="wrap hidden">
+    <div class="eyebrow">Nueva contribución</div>
+    <h1>Enviar contenido</h1>
+    <p class="sub">Describe el hecho y adjunta el PDF de la fuente, si lo tienes.</p>
+
+    <div class="card">
+      <form id="f-envio">
+        <label for="f-titulo">Título</label>
+        <input id="f-titulo" maxlength="200" required>
+
+        <label for="f-fecha">Fecha (automática)</label>
+        <input id="f-fecha" disabled>
+
+        <label for="f-texto">Texto (descripción detallada del hecho o evento)</label>
+        <textarea id="f-texto" maxlength="20000" required></textarea>
+        <div class="contador" id="cont-texto" aria-live="polite">0 / 20 mínimo</div>
+
+        <span class="lbl" id="lbl-pdf">PDF (opcional, uno solo, máx. 10 MB)</span>
+        <input id="f-pdf" type="file" accept="application/pdf" class="hidden">
+        <div class="dropzone" id="dropzone" role="button" tabindex="0"
+             aria-labelledby="lbl-pdf" aria-describedby="dz-ayuda">
+          <p class="dz-fuerte">Arrastra el PDF aquí o pulsa para elegirlo</p>
+          <p class="dz-nota" id="dz-ayuda">PDF · máx. 10 MB</p>
+        </div>
+        <div class="archivo hidden" id="archivo">
+          <span class="a-nom" id="a-nom"></span>
+          <span class="a-peso" id="a-peso"></span>
+          <button type="button" class="enlace" id="b-quitar">Quitar</button>
+        </div>
+
+        <div class="cuota-caja">
+          <div>
+            <div class="cuota-txt" id="cuota">Hoy: <b>0</b>/5 envíos</div>
+            <div class="segmentos" id="segmentos" role="img" aria-label="Cuota diaria"></div>
+          </div>
+          <div class="accion">
+            <button id="b-enviar" type="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+      <div id="m-envio" class="msg" role="alert"></div>
+    </div>
+
+    <div class="card">
+      <h2>Mis envíos</h2>
+      <div id="lista-vacia" class="vacio hidden">
+        <div class="v-tit">Todavía no has enviado nada.</div>
+        <p class="v-sub">Lo que envíes aparecerá aquí con su estado de procesamiento.</p>
+      </div>
+      <div class="tabla-scroll" id="lista-tabla">
+        <table>
+          <thead><tr><th>Fecha</th><th>Título</th><th>Estado</th></tr></thead>
+          <tbody id="lista"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
+const SUPABASE_ANON = "PEGA_AQUI_LA_ANON_KEY"; // anon key publica; NUNCA la service_role
+
+const $ = (id) => document.getElementById(id);
+const VISTAS = ["v-config","v-login","v-rotar","v-app"];
+const vista = (v) => VISTAS.forEach(x => $(x).classList.toggle("hidden", x!==v));
+const msg = (id, txt, tipo) => { const e=$(id); e.textContent=txt||""; e.className="msg "+(tipo||""); };
+
+/* Sin clave configurada no arrancamos: los fetch fallarian en silencio contra la consola. */
+if (!SUPABASE_ANON || SUPABASE_ANON === "PEGA_AQUI_LA_ANON_KEY") {
+  vista("v-config");
+} else {
+  arrancarPortal();
+}
+
+function arrancarPortal(){
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
+
+/* ── toasts ─────────────────────────────────────────────────────────────── */
+function toast(texto, tipo = "ok"){
+  const el = document.createElement("div");
+  el.className = "toast " + tipo;
+  el.innerHTML = `<div class="t-tit">${tipo === "ok" ? "Listo" : "Error"}</div>`;
+  el.appendChild(document.createTextNode(texto));
+  $("toasts").appendChild(el);
+  setTimeout(() => {
+    el.classList.add("saliendo");
+    el.addEventListener("animationend", () => el.remove());
+    setTimeout(() => el.remove(), 400); // por si prefers-reduced-motion mata la animacion
+  }, 4200);
+}
+
+/* ── boton con estado de carga ──────────────────────────────────────────── */
+function cargando(btn, activo, textoCarga){
+  if (activo) {
+    btn.dataset.txt = btn.textContent;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span>';
+    btn.appendChild(document.createTextNode(textoCarga));
+  } else {
+    btn.disabled = false;
+    btn.textContent = btn.dataset.txt || btn.textContent;
+  }
+}
+
+let perfil = null;
+let archivoSel = null;
+
+/* ── arranque / sesion ──────────────────────────────────────────────────── */
+async function arrancar(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if (!session) return vista("v-login");
+  await cargarPerfil(session.user);
+}
+
+async function cargarPerfil(user){
+  const { data, error } = await sb.from("perfiles").select("*").eq("id", user.id).single();
+  if (error || !data) { await sb.auth.signOut(); return vista("v-login"); }
+  perfil = data;
+  const dias = (Date.now() - new Date(data.pwd_actualizada).getTime()) / 86400000;
+  if (data.bloqueado || dias > 30) { $("nav-sesion").hidden = true; return vista("v-rotar"); }
+  $("quien").textContent = data.email;
+  $("nav-sesion").hidden = false;
+  $("f-fecha").value = new Date().toLocaleDateString("es-ES");
+  vista("v-app");
+  await refrescarLista();
+}
+
+$("f-login").onsubmit = async (ev) => {
+  ev.preventDefault();
+  msg("m-login","");
+  cargando($("b-login"), true, "Entrando…");
+  const { data, error } = await sb.auth.signInWithPassword({
+    email: $("l-email").value.trim(), password: $("l-pwd").value });
+  cargando($("b-login"), false);
+  if (error) return msg("m-login","Credenciales no válidas.","err");
+  await cargarPerfil(data.user);
+};
+
+$("f-rotar").onsubmit = async (ev) => {
+  ev.preventDefault();
+  const pwd = $("r-pwd").value;
+  if (pwd.length < 10) return msg("m-rotar","Mínimo 10 caracteres.","err");
+  cargando($("b-rotar"), true, "Guardando…");
+  const { error } = await sb.auth.updateUser({ password: pwd });
+  cargando($("b-rotar"), false);
+  if (error) return msg("m-rotar", error.message, "err");
+  msg("m-rotar","Contraseña actualizada.","ok");
+  toast("Contraseña actualizada. Tu cuenta queda desbloqueada.");
+  const { data:{ user } } = await sb.auth.getUser();
+  setTimeout(() => cargarPerfil(user), 600);
+};
+
+$("b-salir").onclick = async () => { await sb.auth.signOut(); location.reload(); };
+
+/* ── contador de caracteres ─────────────────────────────────────────────── */
+const MIN_TEXTO = 20, MAX_TEXTO = 20000;
+$("f-texto").addEventListener("input", () => {
+  const n = $("f-texto").value.trim().length;
+  const c = $("cont-texto");
+  if (n < MIN_TEXTO) { c.textContent = `${n} / ${MIN_TEXTO} mínimo`; c.className = "contador corto"; }
+  else if (n > MAX_TEXTO - 500) { c.textContent = `${n} / ${MAX_TEXTO}`; c.className = "contador tope"; }
+  else { c.textContent = `${n} / ${MAX_TEXTO}`; c.className = "contador"; }
+});
+
+/* ── zona de PDF: input + arrastrar y soltar ────────────────────────────── */
+const dz = $("dropzone");
+const kb = (b) => b < 1048576 ? `${Math.round(b/1024)} KB` : `${(b/1048576).toFixed(1)} MB`;
+
+function ponerArchivo(file){
+  if (!file) return;
+  if (file.type !== "application/pdf") return toast("Solo se admiten ficheros PDF.", "err");
+  if (file.size > 10*1024*1024)       return toast("El PDF supera los 10 MB.", "err");
+  archivoSel = file;
+  $("a-nom").textContent = file.name;
+  $("a-peso").textContent = kb(file.size);
+  $("archivo").classList.remove("hidden");
+  dz.classList.add("hidden");
+}
+function quitarArchivo(){
+  archivoSel = null;
+  $("f-pdf").value = "";
+  $("archivo").classList.add("hidden");
+  dz.classList.remove("hidden");
+}
+$("b-quitar").onclick = quitarArchivo;
+dz.onclick = () => $("f-pdf").click();
+dz.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("f-pdf").click(); } };
+$("f-pdf").onchange = (e) => ponerArchivo(e.target.files[0]);
+
+["dragenter","dragover"].forEach(ev => dz.addEventListener(ev, (e) => {
+  e.preventDefault(); dz.classList.add("sobre");
+}));
+["dragleave","drop"].forEach(ev => dz.addEventListener(ev, (e) => {
+  e.preventDefault(); dz.classList.remove("sobre");
+}));
+dz.addEventListener("drop", (e) => ponerArchivo(e.dataTransfer.files[0]));
+// sin esto el navegador abre el PDF al soltarlo fuera de la zona
+["dragover","drop"].forEach(ev => window.addEventListener(ev, (e) => e.preventDefault()));
+
+/* ── cuota ──────────────────────────────────────────────────────────────── */
+const CUOTA = 5;
+async function cuotaHoy(){
+  const desde = new Date(); desde.setHours(0,0,0,0);
+  const { count } = await sb.from("envios")
+    .select("id",{ count:"exact", head:true })
+    .eq("autor_id", perfil.id).gte("creado", desde.toISOString());
+  return count ?? 0;
+}
+function pintarCuota(n){
+  $("cuota").innerHTML = `Hoy: <b>${n}</b>/${CUOTA} envíos`;
+  $("segmentos").innerHTML = Array.from({ length: CUOTA }, (_, i) =>
+    `<span class="seg ${i < n ? (n >= CUOTA ? "lleno" : "on") : ""}"></span>`).join("");
+  $("segmentos").setAttribute("aria-label", `Cuota diaria: ${n} de ${CUOTA} envíos usados`);
+  $("b-enviar").disabled = n >= CUOTA;
+  $("b-enviar").title = n >= CUOTA ? "Has alcanzado el máximo de 5 envíos hoy." : "";
+}
+
+/* ── listado ────────────────────────────────────────────────────────────── */
+const escapar = (s) => String(s).replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+async function refrescarLista(){
+  pintarCuota(await cuotaHoy());
+  const { data } = await sb.from("envios")
+    .select("fecha,titulo,estado,creado").eq("autor_id", perfil.id)
+    .order("creado",{ ascending:false }).limit(50);
+  const filas = data || [];
+  $("lista-vacia").classList.toggle("hidden", filas.length > 0);
+  $("lista-tabla").classList.toggle("hidden", filas.length === 0);
+  $("lista").innerHTML = filas.map(e =>
+    `<tr><td>${escapar(e.fecha)}</td><td>${escapar(e.titulo)}</td>
+     <td><span class="est est-${escapar(e.estado)}">${escapar(e.estado).replace("_"," ")}</span></td></tr>`
+  ).join("");
+}
+
+/* ── envio ──────────────────────────────────────────────────────────────── */
+$("f-envio").onsubmit = async (ev) => {
+  ev.preventDefault();
+  msg("m-envio","");
+  const titulo = $("f-titulo").value.trim();
+  const texto  = $("f-texto").value.trim();
+  if (titulo.length < 4)        return msg("m-envio","El título necesita al menos 4 caracteres.","err");
+  if (texto.length < MIN_TEXTO) return msg("m-envio",`El texto necesita al menos ${MIN_TEXTO} caracteres.`,"err");
+
+  cargando($("b-enviar"), true, "Enviando…");
+  let pdf_path = null;
+  try {
+    if (archivoSel) {
+      pdf_path = `${perfil.id}/${Date.now()}.pdf`;
+      const { error } = await sb.storage.from("envios-pdf").upload(pdf_path, archivoSel,
+        { contentType: "application/pdf" });
+      if (error) throw error;
+    }
+    const { error } = await sb.from("envios").insert(
+      { autor_id: perfil.id, titulo, texto, pdf_path });
+    if (error) throw error;
+    toast("Enviado. Se procesará en el próximo ciclo (03:00).");
+    $("f-titulo").value = ""; $("f-texto").value = "";
+    $("f-texto").dispatchEvent(new Event("input"));
+    quitarArchivo();
+  } catch (e) {
+    const cuotaLlena = /CUOTA_DIARIA/.test(e.message || "");
+    const t = cuotaLlena ? "Has alcanzado el máximo de 5 envíos hoy."
+                         : "No se pudo enviar: " + e.message;
+    msg("m-envio", t, "err");
+    toast(t, "err");
+  } finally {
+    cargando($("b-enviar"), false);
+    await refrescarLista(); // repinta la cuota y puede volver a deshabilitar el boton
+  }
+};
+
+arrancar();
+}
+</script>
+</body>
+</html>
