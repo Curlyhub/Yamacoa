@@ -38,3 +38,4 @@ yarn-error.log*
 
 # artefactos de WSL/NTFS al copiar desde Windows
 *:Zone.Identifier
+.env

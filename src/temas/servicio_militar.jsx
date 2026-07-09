@@ -51,8 +51,13 @@ const CAT_ORDER = ["accidente", "asesinato", "suicidio", "medica", "fusilamiento
 const Y0 = 1964, Y1 = 2023;
 
 /* ── Persistencia de la encuesta ──────────────────────────────────────────── */
-const POLL_BACKEND = { supabaseUrl: "", supabaseAnonKey: "" };
+const POLL_BACKEND = {
+  supabaseUrl: process.env.REACT_APP_SUPABASE_URL || "",
+  supabaseAnonKey: process.env.REACT_APP_SUPABASE_ANON_KEY || "",
+};
 const HAS_SUPA = !!(POLL_BACKEND.supabaseUrl && POLL_BACKEND.supabaseAnonKey);
+// poll_votes es una tabla compartida por todos los temas: los qid van namespaced.
+const NS = "smo";
 const LS_COUNTS = "smo_poll_counts", LS_VOTED = "smo_poll_voted";
 function lsGet(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
@@ -60,13 +65,14 @@ const pollStore = {
   async results() {
     if (HAS_SUPA) {
       try {
-        const r = await fetch(`${POLL_BACKEND.supabaseUrl}/rest/v1/poll_votes?select=question_id,option_id,votes`,
+        const r = await fetch(`${POLL_BACKEND.supabaseUrl}/rest/v1/poll_votes?select=question_id,option_id,votes&question_id=like.${NS}:*`,
           { headers: { apikey: POLL_BACKEND.supabaseAnonKey, Authorization: `Bearer ${POLL_BACKEND.supabaseAnonKey}` } });
         if (r.ok) {
           const out = {};
           for (const row of await r.json()) {
-            if (!out[row.question_id]) out[row.question_id] = {};
-            out[row.question_id][row.option_id] = Number(row.votes) || 0;
+            const qid = row.question_id.slice(NS.length + 1);
+            if (!out[qid]) out[qid] = {};
+            out[qid][row.option_id] = Number(row.votes) || 0;
           }
           return out;
         }
@@ -80,7 +86,7 @@ const pollStore = {
         await fetch(`${POLL_BACKEND.supabaseUrl}/rest/v1/rpc/poll_increment`, {
           method: "POST",
           headers: { apikey: POLL_BACKEND.supabaseAnonKey, Authorization: `Bearer ${POLL_BACKEND.supabaseAnonKey}`, "Content-Type": "application/json" },
-          body: JSON.stringify({ q: qid, o: oid }),
+          body: JSON.stringify({ q: `${NS}:${qid}`, o: oid }),
         });
         return;
       } catch {}
