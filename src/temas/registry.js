@@ -18,15 +18,29 @@
 
 const temas = [
   {
-    id: "conflictos",
-    slug: "conflictos",
-    path: "/conflictos",
-    titulo: "La calle arde",
-    subtitulo: "Observatorio de la protesta cívica en Cuba · primer trimestre de 2026",
-    etiqueta: "PROTESTA CÍVICA · OCC",
-    accent: "#F2913B",
-    fuentes: "Observatorio Cubano de Conflictos (OCC)",
-    load: () => import("./conflictos_cuba.jsx"),
+    id: "convocatoria-11j",
+    slug: "convocatoria-11j",
+    path: "/convocatoria-11j",
+    titulo: "Mañana es 11J",
+    subtitulo:
+      "Quinto aniversario del 11J: dónde y a qué hora sale el mundo a la calle por Cuba, con cada convocatoria en su nivel de verificación",
+    etiqueta: "CONVOCATORIA · 11 DE JULIO",
+    accent: "#32BD4E", // verde señal de la paleta "Luz verde" del renderer congelado
+    fuentes: "Prensa independiente cubana · Prisoners Defenders · Justicia 11J · OCDH",
+    dataSlug: "convocatoria_11j", // el dataset es /data/convocatoria_11j.json (guion bajo)
+    load: () => import("./convocatoria_11j.jsx"),
+  },
+  {
+    id: "anatomia-11j",
+    slug: "anatomia-11j",
+    path: "/anatomia-11j",
+    titulo: "La anatomía de la represión del 11J",
+    subtitulo: "Quién pagó el precio de salir a la calle el 11 de julio de 2021",
+    etiqueta: "REPRESIÓN · HISTORIA", // ⚠ CONFIRMAR
+    accent: "#E3A52A",                // ⚠ CONFIRMAR (marigold dominante en la paleta)
+    fuentes: "Justicia 11J / Cubalex", // ⚠ CONFIRMAR
+    dataSlug: "11j", // el dataset es /data/11j.json, no /data/anatomia-11j.json
+    load: () => import("./anatomia_11j.jsx"),
   },
   {
     id: "represion",
@@ -38,6 +52,17 @@ const temas = [
     accent: "#C4392B",
     fuentes: "OCDH · Prisoners Defenders · prensa independiente cubana",
     load: () => import("./represion_cuba.jsx"),
+  },
+  {
+    id: "conflictos",
+    slug: "conflictos",
+    path: "/conflictos",
+    titulo: "La calle arde",
+    subtitulo: "Observatorio de la protesta cívica en Cuba · primer trimestre de 2026",
+    etiqueta: "PROTESTA CÍVICA · OCC",
+    accent: "#F2913B",
+    fuentes: "Observatorio Cubano de Conflictos (OCC)",
+    load: () => import("./conflictos_cuba.jsx"),
   },
   {
     id: "gaesa",
@@ -109,18 +134,6 @@ const temas = [
     load: () => import("./racismo.jsx"),
   },
   {
-    id: "anatomia-11j",
-    slug: "anatomia-11j",
-    path: "/anatomia-11j",
-    titulo: "La anatomía de la represión del 11J",
-    subtitulo: "Quién pagó el precio de salir a la calle el 11 de julio de 2021",
-    etiqueta: "REPRESIÓN · HISTORIA", // ⚠ CONFIRMAR
-    accent: "#E3A52A",                // ⚠ CONFIRMAR (marigold dominante en la paleta)
-    fuentes: "Justicia 11J / Cubalex", // ⚠ CONFIRMAR
-    dataSlug: "11j", // el dataset es /data/11j.json, no /data/anatomia-11j.json
-    load: () => import("./anatomia_11j.jsx"),
-  },
-  {
     id: "asesinatos-masacres",
     slug: "asesinatos-masacres",
     path: "/asesinatos-masacres",
@@ -164,19 +177,6 @@ const temas = [
     fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
     dataSlug: "vias_cambio", // el dataset es /data/vias_cambio.json (guion bajo), no /data/vias-cambio.json
     load: () => import("./vias_cambio.jsx"),
-  },
-  {
-    id: "convocatoria-11j",
-    slug: "convocatoria-11j",
-    path: "/convocatoria-11j",
-    titulo: "Mañana es 11J",
-    subtitulo:
-      "Quinto aniversario del 11J: dónde y a qué hora sale el mundo a la calle por Cuba, con cada convocatoria en su nivel de verificación",
-    etiqueta: "CONVOCATORIA · 11 DE JULIO",
-    accent: "#32BD4E", // verde señal de la paleta "Luz verde" del renderer congelado
-    fuentes: "Prensa independiente cubana · Prisoners Defenders · Justicia 11J · OCDH",
-    dataSlug: "convocatoria_11j", // el dataset es /data/convocatoria_11j.json (guion bajo)
-    load: () => import("./convocatoria_11j.jsx"),
   },
   {
     id: "electrica",
