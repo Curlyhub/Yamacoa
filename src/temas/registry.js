@@ -166,6 +166,19 @@ const temas = [
     load: () => import("./vias_cambio.jsx"),
   },
   {
+    id: "convocatoria-11j",
+    slug: "convocatoria-11j",
+    path: "/convocatoria-11j",
+    titulo: "Mañana es 11J",
+    subtitulo:
+      "Quinto aniversario del 11J: dónde y a qué hora sale el mundo a la calle por Cuba, con cada convocatoria en su nivel de verificación",
+    etiqueta: "CONVOCATORIA · 11 DE JULIO",
+    accent: "#32BD4E", // verde señal de la paleta "Luz verde" del renderer congelado
+    fuentes: "Prensa independiente cubana · Prisoners Defenders · Justicia 11J · OCDH",
+    dataSlug: "convocatoria_11j", // el dataset es /data/convocatoria_11j.json (guion bajo)
+    load: () => import("./convocatoria_11j.jsx"),
+  },
+  {
     id: "electrica",
     slug: "electrica",
     path: "/electrica",

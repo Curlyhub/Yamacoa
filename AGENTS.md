@@ -14,7 +14,10 @@ el repositorio. Léelo entero antes de tocar código.
 - Create React App (react-scripts 5), React 18, StrictMode activado.
 - Enrutado: react-router-dom con HashRouter (deploy estático sin configurar servidor).
 - Temas: cada uno declara sus dependencias en la cabecera del archivo. Hoy: `recharts`
-  (tema gaesa) y `d3` (tema rusificacion). Las tipografías las cargan los propios temas.
+  (tema gaesa), `d3` (tema rusificacion) y `react-leaflet` + `leaflet` (mapas interactivos,
+  tema convocatoria_11j; dependencia aprobada para futuros temas con mapa mundial: tiles
+  gratuitos CartoDB Dark Matter con atribución CARTO + OpenStreetMap visible, sin API key).
+  Las tipografías las cargan los propios temas.
 - Node 18 o superior.
 
 ## Estructura

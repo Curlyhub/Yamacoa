@@ -160,5 +160,21 @@
     "layout": "seis-pestanas",
     "graficos": ["slope-chart", "gauge-radial", "area", "donut", "choropleth", "ridgeline", "parallel-coords", "barra", "slider-calc"],
     "firma": "medidor radial tipo voltimetro (demanda vs disponible = deficit) + ridgeline de apagones como forma de onda + rampa de voltaje azul->ambar->ascua"
+  },
+  {
+    "tema": "convocatoria_11j",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Luz verde",
+      "acentos": [
+        { "hex": "#32BD4E", "rol": "primario", "h": 132 },
+        { "hex": "#AE5AD8", "rol": "contrapunto", "h": 280 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "longform-con-anclas",
+    "graficos": ["mapa-mundial-leaflet", "cuenta-atras", "mapa-provincias", "muro-nominal", "listado-agrupado"],
+    "firma": "mapa mundial react-leaflet sobre tiles CartoDB Dark Matter con marcadores de convocatoria en cuatro niveles de confianza codificados por forma + opacidad (no solo color) dentro de una unica familia verde-senal, con leyenda fija"
   }
 ]
