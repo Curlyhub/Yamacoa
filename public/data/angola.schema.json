@@ -1,0 +1,276 @@
+{
+ "$schema": "http://json-schema.org/draft-07/schema#",
+ "title": "Dataset del expediente angola (Cuba en Angola: la sangre y el negocio)",
+ "type": "object",
+ "required": ["meta", "kpis", "cronologia", "muertos", "salarios", "mision_serie", "antex", "estudiantes", "angola_costo", "no_corroborado", "veteranos", "metodologia"],
+ "additionalProperties": false,
+ "properties": {
+  "meta": {
+   "type": "object",
+   "required": ["slug", "titulo", "subtitulo", "actualizado", "fuentes"],
+   "additionalProperties": false,
+   "properties": {
+    "slug": { "type": "string", "const": "angola" },
+    "titulo": { "type": "string" },
+    "subtitulo": { "type": "string" },
+    "actualizado": { "type": "string", "format": "date" },
+    "fuentes": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "nota_registro": { "type": "string" },
+    "descripcion": { "type": "string" },
+    "narracion": { "type": "string" },
+    "narracion_en": { "type": "string" }
+   }
+  },
+  "kpis": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": ["id", "valor", "etiqueta"],
+    "additionalProperties": false,
+    "properties": {
+     "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+     "valor": { "type": "string" },
+     "etiqueta": { "type": "string" },
+     "fuente": { "type": "string" }
+    }
+   }
+  },
+  "cronologia": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": ["ano", "fecha", "titulo", "acto", "texto"],
+    "additionalProperties": false,
+    "properties": {
+     "ano": { "type": "integer", "minimum": 1975, "maximum": 2100 },
+     "fecha": { "type": "string" },
+     "titulo": { "type": "string" },
+     "acto": { "type": "string", "enum": ["guerra", "negocio"] },
+     "texto": { "type": "string" },
+     "fuente": { "type": "string" },
+     "hito": { "type": "boolean" }
+    }
+   }
+  },
+  "muertos": {
+   "type": "object",
+   "required": ["nota", "cifras"],
+   "additionalProperties": false,
+   "properties": {
+    "nota": { "type": "string" },
+    "cifras": {
+     "type": "array",
+     "minItems": 2,
+     "items": {
+      "type": "object",
+      "required": ["id", "valor", "quien", "ano", "estado"],
+      "additionalProperties": false,
+      "properties": {
+       "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+       "valor": { "type": "integer", "minimum": 0 },
+       "quien": { "type": "string" },
+       "ano": { "type": "integer" },
+       "alcance": { "type": "string" },
+       "estado": { "type": "string", "enum": ["oficial", "oficial_indirecta", "estimado_independiente"] }
+      }
+     }
+    }
+   }
+  },
+  "salarios": {
+   "type": "object",
+   "required": ["nota", "guerra", "mision"],
+   "additionalProperties": false,
+   "properties": {
+    "nota": { "type": "string" },
+    "guerra": { "$ref": "#/definitions/bloqueSalario" },
+    "mision": { "$ref": "#/definitions/bloqueSalario" }
+   }
+  },
+  "mision_serie": {
+   "type": "array",
+   "minItems": 2,
+   "items": {
+    "type": "object",
+    "required": ["ano", "valor", "detalle", "alcance"],
+    "additionalProperties": false,
+    "properties": {
+     "ano": { "type": "integer" },
+     "valor": { "type": "integer", "minimum": 0 },
+     "detalle": { "type": "string" },
+     "alcance": { "type": "string" }
+    }
+   }
+  },
+  "antex": {
+   "type": "object",
+   "required": ["titulo", "texto", "exportacion_servicios"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "texto": { "type": "string" },
+    "exportacion_servicios": {
+     "type": "object",
+     "required": ["nota", "serie"],
+     "additionalProperties": false,
+     "properties": {
+      "nota": { "type": "string" },
+      "serie": {
+       "type": "array",
+       "minItems": 1,
+       "items": {
+        "type": "object",
+        "required": ["ano", "total_musd"],
+        "additionalProperties": false,
+        "properties": {
+         "ano": { "type": "integer" },
+         "total_musd": { "type": "number", "minimum": 0 },
+         "detalle": { "type": "string" }
+        }
+       }
+      },
+      "fuente": { "type": "string" }
+     }
+    }
+   }
+  },
+  "estudiantes": {
+   "type": "object",
+   "required": ["titulo", "serie", "texto"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "serie": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": ["ano", "valor"],
+      "additionalProperties": false,
+      "properties": {
+       "ano": { "type": "integer" },
+       "valor": { "type": "integer", "minimum": 0 }
+      }
+     }
+    },
+    "texto": { "type": "string" },
+    "fuente": { "type": "string" }
+   }
+  },
+  "angola_costo": {
+   "type": "object",
+   "required": ["titulo", "items"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "items": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": ["id", "valor", "etiqueta"],
+      "additionalProperties": false,
+      "properties": {
+       "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+       "valor": { "type": "string" },
+       "etiqueta": { "type": "string" },
+       "fuente": { "type": "string" }
+      }
+     }
+    }
+   }
+  },
+  "no_corroborado": {
+   "type": "object",
+   "required": ["titulo", "nota", "items"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "nota": { "type": "string" },
+    "items": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": ["id", "afirmacion", "estado", "detalle"],
+      "additionalProperties": false,
+      "properties": {
+       "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+       "afirmacion": { "type": "string" },
+       "estado": { "type": "string", "enum": ["alegacion_de_epoca", "testimonio_unico", "descartada", "no_corroborada"] },
+       "detalle": { "type": "string" }
+      }
+     }
+    }
+   }
+  },
+  "veteranos": {
+   "type": "object",
+   "required": ["titulo", "texto"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "texto": { "type": "string" },
+    "fuente": { "type": "string" }
+   }
+  },
+  "metodologia": {
+   "type": "object",
+   "required": ["resumen", "niveles"],
+   "additionalProperties": false,
+   "properties": {
+    "resumen": { "type": "string" },
+    "niveles": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": ["id", "etiqueta", "descripcion"],
+      "additionalProperties": false,
+      "properties": {
+       "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+       "etiqueta": { "type": "string" },
+       "descripcion": { "type": "string" }
+      }
+     }
+    }
+   }
+  }
+ },
+ "definitions": {
+  "bloqueSalario": {
+   "type": "object",
+   "required": ["titulo", "recibe_estado", "recibe_persona"],
+   "additionalProperties": false,
+   "properties": {
+    "titulo": { "type": "string" },
+    "recibe_estado": {
+     "type": "object",
+     "required": ["valor", "detalle", "estado"],
+     "additionalProperties": false,
+     "properties": {
+      "valor": { "type": "string" },
+      "detalle": { "type": "string" },
+      "estado": { "type": "string", "enum": ["corroborado", "estimado"] }
+     }
+    },
+    "recibe_persona": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "object",
+      "required": ["rol", "pago", "detalle"],
+      "additionalProperties": false,
+      "properties": {
+       "rol": { "type": "string" },
+       "pago": { "type": "string" },
+       "detalle": { "type": "string" }
+      }
+     }
+    }
+   }
+  }
+ }
+}

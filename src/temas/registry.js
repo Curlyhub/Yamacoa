@@ -43,6 +43,18 @@ const temas = [
     load: () => import("./anatomia_11j.jsx"),
   },
   {
+    id: "angola",
+    slug: "angola",
+    path: "/angola",
+    titulo: "Cuba en Angola: la sangre y el negocio",
+    subtitulo:
+      "Medio siglo de una misma operación: el ejército (1975-1991) y los médicos (2007-hoy); quién cobró, quién pagó y cuántos no volvieron",
+    etiqueta: "EXPEDIENTE · INTERNACIONALISMO",
+    accent: "#6E9537", // oliva "Carlota" del renderer congelado
+    fuentes: "Archivo Cuba (verificado) · Gleijeses · elTOQUE · Connectas · prensa independiente",
+    load: () => import("./angola.jsx"),
+  },
+  {
     id: "represion",
     slug: "represion",
     path: "/represion",

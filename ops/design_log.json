@@ -176,5 +176,21 @@
     "layout": "longform-con-anclas",
     "graficos": ["mapa-mundial-leaflet", "cuenta-atras", "mapa-provincias", "muro-nominal", "listado-agrupado"],
     "firma": "mapa mundial react-leaflet sobre tiles CartoDB Dark Matter con marcadores de convocatoria en cuatro niveles de confianza codificados por forma + opacidad (no solo color) dentro de una unica familia verde-senal, con leyenda fija"
+  },
+  {
+    "tema": "angola",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Carlota",
+      "acentos": [
+        { "hex": "#6E9537", "rol": "primario", "h": 85 },
+        { "hex": "#3987C6", "rol": "contrapunto", "h": 207 }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "split-diptico",
+    "graficos": ["dot-plot-rango", "waffle", "serie-anotada", "timeline-espina", "encuesta"],
+    "firma": "waffle de 40 chapas de identificacion troquelado en la costura del diptico: 1 chapa dorada y 1 partida = lo que llega al medico de los 5000 USD mensuales, 38 grises = lo retenido, con revelado escalonado al entrar en vista"
   }
 ]
