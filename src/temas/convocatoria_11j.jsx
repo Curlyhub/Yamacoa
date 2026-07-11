@@ -1138,8 +1138,10 @@ const PIN_SVG = {
     <circle cx="14" cy="14" r="7.5" fill="#1F7A36" stroke="#0B100D" stroke-width="1.5"/>
     <path d="M10.5 14.2l2.4 2.4 4.6-5" fill="none" stroke="#ECF4EE" stroke-width="1.8" stroke-linecap="round"/>
   </svg>`,
-  // Reportada sin verificar: círculo relleno con anillo blanco, 70 %.
+  // Reportada sin verificar: círculo relleno con anillo blanco, 70 %. El aro
+  // oscuro exterior hace legible el anillo también sobre la tesela clara.
   reportado_no_verificado: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" opacity=".7">
+    <circle cx="14" cy="14" r="11.2" fill="none" stroke="rgba(11,16,13,.55)" stroke-width="1.4"/>
     <circle cx="14" cy="14" r="10" fill="none" stroke="#ECF4EE" stroke-width="1.6"/>
     <circle cx="14" cy="14" r="6" fill="#32BD4E"/>
   </svg>`,
@@ -1279,7 +1281,7 @@ function WorldMap({ convocatorias, niveles }) {
         <MapContainer center={[33, -35]} zoom={3} minZoom={2} maxZoom={17}
           scrollWheelZoom={false} worldCopyJump className="worldmap">
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             subdomains="abcd"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           />
@@ -1390,7 +1392,7 @@ function CubaMap({ propagacion, reduced }) {
         <rect x="0" y="0" width={MW} height={MH} fill="url(#c11jGlow)" />
         <g transform={`translate(${CMAP.tx},${CMAP.ty}) scale(${CMAP.k})`}>
           {CUBA_PROV.map((prov) => (
-            <path key={prov.id} d={prov.d} fill="#101913" stroke={COL.line} strokeWidth={1.2 / CMAP.k}>
+            <path key={prov.id} d={prov.d} fill="#26402F" stroke="rgba(226,244,232,.30)" strokeWidth={1.2 / CMAP.k}>
               <title>{prov.nombre}</title>
             </path>
           ))}
@@ -1781,7 +1783,7 @@ const CSS = `
 .c11j .glyph svg { width:22px; height:22px; }
 
 .c11j .mapwrap { position:relative; border:1px solid ${COL.line}; border-radius:10px; overflow:hidden; }
-.c11j .worldmap { height:480px; width:100%; background:#0a0a0a; }
+.c11j .worldmap { height:480px; width:100%; background:#cfd8d3; }
 .c11j .legend { position:absolute; left:10px; bottom:10px; z-index:1000; background:rgba(11,16,13,.9); border:1px solid ${COL.line}; border-radius:8px; padding:10px 12px; font-size:12px; max-width:230px; }
 .c11j .legend-h { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:${COL.dim}; margin-bottom:6px; }
 .c11j .legend-row { display:flex; align-items:center; gap:6px; margin:3px 0; }
