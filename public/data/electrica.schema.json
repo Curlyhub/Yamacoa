@@ -19,7 +19,7 @@
         "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
         "nota": { "type": "string" },
         "descripcion": { "type": "string", "minLength": 400 },
-        "narracion": { "type": "string", "minLength": 200 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "narracion_en": { "type": "string", "minLength": 200, "description": "Traducción al inglés de 'narracion'. La usa el Narrador (TTS) mientras kokoro-js no tenga fonemizador de español; sin este campo, el botón de escuchar no aparece." }
       }
     },

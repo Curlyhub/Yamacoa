@@ -16,7 +16,7 @@
         "actualizado": { "type": "string", "description": "ISO date YYYY-MM-DD" },
         "fuentePrincipal": { "type": "string" },
         "descripcion": { "type": "string", "minLength": 400 },
-        "narracion": { "type": "string", "minLength": 200 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "narracion_en": { "type": "string", "minLength": 200 }
       }
     },

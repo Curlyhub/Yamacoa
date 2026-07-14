@@ -24,7 +24,7 @@
         "nota_registro": { "type": "string", "minLength": 80, "description": "Nota editorial visible: esta página es agitación con rigor de fuentes, un registro distinto al observacional del resto de Yamacoa." },
         "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
         "descripcion": { "type": "string", "minLength": 400 },
-        "narracion": { "type": "string", "minLength": 200 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "narracion_en": { "type": "string", "minLength": 200 }
       }
     },

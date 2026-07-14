@@ -3,75 +3,50 @@ import { useLocation } from "react-router-dom";
 import temas from "../temas/registry";
 
 /*
- * Narrador — TTS Kokoro-82M en navegador, componente GLOBAL.
- * Se monta UNA vez en Layout.jsx: <Narrador/>. No toca ningun renderer congelado.
+ * Narrador v2 — TTS servido por https://tts.yamacoa.com (Kokoro en servidor, con caché
+ * por texto exacto), NO síntesis en el navegador. Sustituye a la v1 (kokoro-js cliente).
  *
- * Contrato: lee la ruta activa, resuelve el tema contra el registry, hace fetch de
- * /data/<dataSlug o slug>.json (dataSlug es un override opcional del registry para
- * los temas donde el nombre del dataset no coincide con el slug de la ruta) y busca
- * meta.narracion_en (ver nota de VOZ mas abajo sobre por que es narracion_en y no
- * narracion). Si no existe, no renderiza nada.
+ * Se monta UNA vez en Layout.jsx: <Narrador/>. No toca ningún renderer congelado.
  *
- * Modelo: kokoro-js (ONNX ~80MB q8) cargado bajo demanda al primer clic, via CDN.
- * WebGPU si esta disponible; fallback WASM. Queda cacheado por el navegador.
+ * Contrato: lee la ruta activa, resuelve el slug contra el registry, hace fetch de
+ * /data/<slug>.json y busca meta.narracion (guion corto, <=1500 caracteres, precalentado
+ * en el servidor durante la creación/refresco del tema — ver skill "narración TTS" en
+ * SKILLS.md). Si no existe, no renderiza nada.
  *
- * Voz: PARCHE TEMPORAL. El port ONNX que carga kokoro-js (onnx-community/
- * Kokoro-82M-v1.0-ONNX) no incluye fonemizador de espanol -- solo trae voces
- * en ingles americano/britanico (af_/am_/bf_/bm_). No existe ninguna voz "em_"
- * (espanol) en este modelo pese a que el Kokoro-82M original si las tiene; el
- * propio mantenedor del port confirmo que falta un fonemizador de espanol en
- * JS (sin fecha). Mientras la voz sea en ingles, el CONTRATO es leer TEXTO EN
- * INGLES (meta.narracion_en), no el espanol con acento ingles. Si un tema no
- * tiene narracion_en, el Narrador simplemente no aparece para el (en vez de
- * mostrar una lectura con fonemas equivocados). Restaurar meta.narracion
- * (espanol) + una voz "em_" cuando kokoro-js soporte espanol.
- * Las cifras deben venir en letras desde el dataset (contrato de /narrar): el
- * motor pronuncia mal numerales y simbolos en cualquier idioma.
+ * IMPORTANTE: el texto que se envía aquí debe ser BYTE A BYTE el mismo que se precalentó
+ * en el servidor (es la clave de caché). Nunca reconstruir ni recortar el texto en el
+ * cliente: se envía meta.narracion tal cual llega del JSON.
  */
 
-const KOKORO_CDN = "https://cdn.jsdelivr.net/npm/kokoro-js@1.2.0/+esm";
-const MODEL_ID = "onnx-community/Kokoro-82M-v1.0-ONNX";
-const VOICE = "af_heart"; // TODO: sin voz en espanol disponible en kokoro-js; volver a "em_alex" (o equivalente) cuando exista.
-
-/* trocea la narracion en frases razonables para sintetizar en cola */
-function segmentar(texto) {
-  return texto
-    .replace(/\s+/g, " ")
-    .split(/(?<=[.!?])\s+/)
-    .map((s) => s.trim())
-    .filter((s) => s.length > 1);
-}
+const TTS_BASE = "https://tts.yamacoa.com";
+const TTS_ENDPOINT = `${TTS_BASE}/api/tts`;
 
 export default function Narrador() {
   const location = useLocation();
   const [narracion, setNarracion] = useState(null);
-  const [fase, setFase] = useState("idle"); // idle | cargando | listo | reproduciendo | pausado | error
-  const [progresoModelo, setProgresoModelo] = useState(0);
-  const [fraseActual, setFraseActual] = useState(0);
+  const [fase, setFase] = useState("idle"); // idle | cargando | reproduciendo | pausado | listo | error
   const [abierto, setAbierto] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null);
 
-  const ttsRef = useRef(null);        // instancia KokoroTTS
-  const audioRef = useRef(null);      // HTMLAudioElement en curso
-  const colaRef = useRef([]);         // frases pendientes
-  const vivoRef = useRef(true);       // cancela al desmontar / cambiar ruta
-  const totalRef = useRef(0);
+  const audioRef = useRef(null);
+  const objectUrlRef = useRef(null);
+  const vivoRef = useRef(true);
 
-  /* 1) resolver narracion segun la ruta activa (HashRouter: pathname ya viene limpio) */
+  /* resolver narracion segun la ruta activa */
   useEffect(() => {
     vivoRef.current = true;
     setNarracion(null);
     setAbierto(false);
+    setErrorMsg(null);
     detener();
     const path = location.pathname.replace(/\/+$/, "") || "/";
     const tema = temas.find((t) => t.path === path);
     if (!tema) return;
-    // dataSlug cubre los temas donde el nombre del dataset no coincide con el
-    // slug de la ruta (p. ej. libertad-prensa -> /data/iclep.json).
     fetch(`${process.env.PUBLIC_URL || ""}/data/${tema.dataSlug || tema.slug}.json`, { cache: "no-store" })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((j) => {
-        const n = j && j.meta && typeof j.meta.narracion_en === "string" ? j.meta.narracion_en : null;
-        if (vivoRef.current && n && n.length >= 200) setNarracion(n);
+        const n = j && j.meta && typeof j.meta.narracion === "string" ? j.meta.narracion : null;
+        if (vivoRef.current && n && n.length > 0 && n.length <= 1500) setNarracion(n);
       })
       .catch(() => {});
     return () => { vivoRef.current = false; detener(); };
@@ -84,76 +59,49 @@ export default function Narrador() {
       audioRef.current.src = "";
       audioRef.current = null;
     }
-    colaRef.current = [];
+    if (objectUrlRef.current) {
+      URL.revokeObjectURL(objectUrlRef.current);
+      objectUrlRef.current = null;
+    }
   }, []);
 
-  /* 2) carga perezosa del modelo */
-  async function asegurarModelo() {
-    if (ttsRef.current) return ttsRef.current;
+  async function reproducir(reintento = false) {
+    if (!narracion) return;
+    setErrorMsg(null);
     setFase("cargando");
-    const { KokoroTTS } = await import(/* webpackIgnore: true */ KOKORO_CDN);
-    let device = "wasm";
-    try { if (navigator.gpu && (await navigator.gpu.requestAdapter())) device = "webgpu"; } catch {}
-    const tts = await KokoroTTS.from_pretrained(MODEL_ID, {
-      dtype: device === "webgpu" ? "fp32" : "q8",
-      device,
-      progress_callback: (p) => {
-        if (p && p.status === "progress" && p.total) {
-          setProgresoModelo(Math.round((p.loaded / p.total) * 100));
-        }
-      },
-    });
-    if (!vivoRef.current) return null;
-    ttsRef.current = tts;
-    return tts;
-  }
-
-  /* 3) reproduce la cola frase a frase (sintetiza la siguiente mientras suena la actual) */
-  async function reproducir() {
     try {
-      const tts = await asegurarModelo();
-      if (!tts || !vivoRef.current) return;
-      const frases = segmentar(narracion);
-      colaRef.current = frases.slice();
-      totalRef.current = frases.length;
-      setFraseActual(0);
-      setFase("reproduciendo");
+      const resp = await fetch(TTS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: narracion }),
+      });
 
-      let siguiente = sintetizar(tts, colaRef.current.shift());
-      let idx = 0;
-      while (vivoRef.current) {
-        const wavUrl = await siguiente;
-        if (!wavUrl || !vivoRef.current) break;
-        // prepara la siguiente en paralelo
-        const prox = colaRef.current.length ? colaRef.current.shift() : null;
-        siguiente = prox ? sintetizar(tts, prox) : Promise.resolve(null);
-        setFraseActual(++idx);
-        const fin = await reproducirWav(wavUrl);
-        URL.revokeObjectURL(wavUrl);
-        if (!fin || !vivoRef.current) break;
-        if (!prox) { setFase("listo"); setFraseActual(0); break; }
+      if (resp.status === 503 && !reintento) {
+        // Kokoro aun arrancando: un reintento tras una breve espera, sin más.
+        await new Promise((res) => setTimeout(res, 3000));
+        if (vivoRef.current) return reproducir(true);
       }
+      if (!resp.ok) throw new Error("tts_" + resp.status);
+      if (!vivoRef.current) return;
+
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      objectUrlRef.current = url;
+      const audio = new Audio(url);
+      audioRef.current = audio;
+      audio.onended = () => { if (vivoRef.current) setFase("listo"); };
+      audio.onerror = () => { if (vivoRef.current) { setFase("error"); setErrorMsg("No se pudo reproducir el audio."); } };
+      await audio.play();
+      if (vivoRef.current) setFase("reproduciendo");
     } catch (e) {
-      console.error("Narrador:", e);
-      if (vivoRef.current) setFase("error");
+      if (!vivoRef.current) return;
+      setFase("error");
+      setErrorMsg(
+        String(e.message || "").includes("tts_503")
+          ? "El servicio de voz está arrancando. Prueba de nuevo en unos segundos."
+          : "No se pudo generar el audio ahora mismo."
+      );
     }
-  }
-
-  async function sintetizar(tts, texto) {
-    if (!texto) return null;
-    const audio = await tts.generate(texto, { voice: VOICE });
-    const blob = new Blob([audio.toWav()], { type: "audio/wav" });
-    return URL.createObjectURL(blob);
-  }
-
-  function reproducirWav(url) {
-    return new Promise((res) => {
-      const a = new Audio(url);
-      audioRef.current = a;
-      a.onended = () => res(true);
-      a.onerror = () => res(false);
-      a.play().catch(() => res(false));
-    });
   }
 
   function alternarPausa() {
@@ -165,15 +113,14 @@ export default function Narrador() {
 
   function cerrar() {
     detener();
-    setFase(ttsRef.current ? "listo" : "idle");
-    setFraseActual(0);
+    setFase("idle");
     setAbierto(false);
+    setErrorMsg(null);
   }
 
   if (!narracion) return null;
 
   const enMarcha = fase === "reproduciendo" || fase === "pausado";
-  const pct = totalRef.current ? Math.round((fraseActual / totalRef.current) * 100) : 0;
 
   return (
     <div className="ym-narrador" data-abierto={abierto || enMarcha ? "1" : "0"}>
@@ -183,7 +130,7 @@ export default function Narrador() {
         <button
           className="ymn-fab"
           aria-label="Escuchar este expediente"
-          onClick={() => { setAbierto(true); if (fase === "idle" || fase === "listo") reproducir(); }}
+          onClick={() => { setAbierto(true); reproducir(); }}
         >
           <IcoOnda /> <span>Escuchar</span>
         </button>
@@ -195,23 +142,23 @@ export default function Narrador() {
             {fase === "cargando" ? (
               <div className="ymn-carga">
                 <span className="ymn-spin" aria-hidden />
-                <span>Descargando voz ({progresoModelo}%)… solo la primera vez</span>
+                <span>Generando audio…</span>
               </div>
             ) : fase === "error" ? (
-              <div className="ymn-carga">No se pudo iniciar la narracion en este navegador.</div>
+              <div className="ymn-carga ymn-err">
+                <span>{errorMsg || "No se pudo iniciar la narración."}</span>
+                <button className="ymn-retry" onClick={() => reproducir()}>Reintentar</button>
+              </div>
             ) : (
               <>
                 <button className="ymn-btn" onClick={alternarPausa}
                   aria-label={fase === "pausado" ? "Reanudar" : "Pausar"}>
                   {fase === "pausado" ? <IcoPlay /> : <IcoPausa />}
                 </button>
-                <div className="ymn-prog" aria-hidden>
-                  <div className="ymn-prog-fill" style={{ width: pct + "%" }} />
-                </div>
-                <span className="ymn-cont">{fraseActual}/{totalRef.current || "–"}</span>
+                <span className="ymn-txt">Narración del expediente</span>
               </>
             )}
-            <button className="ymn-btn ymn-x" onClick={cerrar} aria-label="Cerrar narracion">✕</button>
+            <button className="ymn-btn ymn-x" onClick={cerrar} aria-label="Cerrar narración">✕</button>
           </div>
         </div>
       )}
@@ -238,22 +185,23 @@ const CSS = `
   letter-spacing:.04em;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);
   transition:transform .18s,border-color .18s}
 .ymn-fab:hover{transform:translateY(-1px);border-color:rgba(237,239,245,.4)}
-.ymn-fab:focus-visible,.ymn-btn:focus-visible{outline:2px solid #7AAFC7;outline-offset:2px}
+.ymn-fab:focus-visible,.ymn-btn:focus-visible,.ymn-retry:focus-visible{outline:2px solid #7AAFC7;outline-offset:2px}
 .ymn-dock{background:#161A26;border:1px solid rgba(237,239,245,.18);border-radius:12px;
-  padding:10px 12px;min-width:260px;box-shadow:0 10px 30px rgba(0,0,0,.4);color:#EDEFF5}
+  padding:10px 12px;min-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.4);color:#EDEFF5}
 .ymn-fila{display:flex;align-items:center;gap:10px}
 .ymn-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
   border-radius:50%;border:1px solid rgba(237,239,245,.22);background:transparent;color:#EDEFF5;
   cursor:pointer;flex:none}
 .ymn-btn:hover{border-color:rgba(237,239,245,.5)}
-.ymn-x{border:none;font-size:12px;color:#8A93A8}
-.ymn-prog{flex:1;height:4px;background:rgba(237,239,245,.12);border-radius:2px;overflow:hidden}
-.ymn-prog-fill{height:100%;background:#7AAFC7;border-radius:2px;transition:width .3s}
-.ymn-cont{font-size:10.5px;color:#8A93A8;flex:none}
+.ymn-x{border:none;font-size:12px;color:#8A93A8;margin-left:auto}
+.ymn-txt{font-size:11.5px;color:#C7CDCE}
 .ymn-carga{display:flex;align-items:center;gap:8px;font-size:11px;color:#8A93A8;flex:1}
+.ymn-err{color:#E06056}
+.ymn-retry{font-size:10.5px;color:#7AAFC7;background:transparent;border:1px solid rgba(122,175,199,.4);
+  border-radius:14px;padding:3px 9px;cursor:pointer;flex:none}
 .ymn-spin{width:12px;height:12px;border:2px solid rgba(237,239,245,.2);border-top-color:#7AAFC7;
   border-radius:50%;animation:ymnspin .8s linear infinite;flex:none}
 @keyframes ymnspin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.ymn-spin{animation:none}.ymn-fab{transition:none}}
-@media (max-width:640px){.ym-narrador{right:10px;bottom:10px}.ymn-dock{min-width:220px}}
+@media (max-width:640px){.ym-narrador{right:10px;bottom:10px}.ymn-dock{min-width:200px}}
 `;

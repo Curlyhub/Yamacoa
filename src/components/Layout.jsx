@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-// import Narrador from "./Narrador"; // DESACTIVADO (2026-07-07): descarga de wasm de Kokoro y
+import Narrador from "./Narrador"; // DESACTIVADO (2026-07-07): descarga de wasm de Kokoro y
 // reproducción demasiado lentas; además pendiente de revisión editorial exhaustiva del
 // contenido en inglés (meta.narracion_en) generado en todos los expedientes. Reactivar
 // descomentando este import y el <Narrador /> más abajo cuando ambos se resuelvan.
@@ -139,7 +139,7 @@ export default function Layout({ children }) {
       </header>
 
       <main className="ym-main">{children}</main>
-      {/* <Narrador /> DESACTIVADO -- ver comentario junto al import arriba */}
+      {<Narrador /> }
     </div>
   );
 }

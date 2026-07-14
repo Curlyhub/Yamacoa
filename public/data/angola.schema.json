@@ -16,8 +16,8 @@
     "actualizado": { "type": "string", "format": "date" },
     "fuentes": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "nota_registro": { "type": "string" },
-    "descripcion": { "type": "string" },
-    "narracion": { "type": "string" },
+    "descripcion": { "type": "string", "minLength": 400 },
+    "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
     "narracion_en": { "type": "string" }
    }
   },
