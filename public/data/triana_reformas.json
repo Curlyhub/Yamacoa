@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "slug": "triana_reformas",
+    "titulo": "Triana en cifras",
+    "subtitulo": "Anatomía de una entrevista reformista: dónde acierta, dónde falla la aritmética y a quién se deja de nombrar",
+    "descripcion": "Disección de una entrevista de ~67 minutos con el economista Juan Triana sobre el paquete de reformas cubano. Diagnóstico general sólido; precisión cuantitativa y atribución causal, mucho más débiles.",
+    "narracion": "Juan Triana representa a un economista reformista dentro del marco institucional cubano. Su diagnóstico general es sólido: exige secuencia y responsables, critica el exceso de empresas estatales, defiende subsidiar personas en lugar de productos y reconoce al sector privado como estratégico. Pero cuando pasa a las cifras, el rigor se desploma. Su aritmética petrolera es incompatible consigo misma; confunde el coste de reconstruir el sistema eléctrico; y usa comparaciones sin denominador. Además, para los fallos internos emplea abstracciones como resistencia o implementación, mientras que para la política estadounidense usa sujetos, nombres e intenciones. El resultado es un análisis que ayuda a mover el debate desde la prohibición hacia la reforma, pero que no termina de romper con el lenguaje y las omisiones que permitieron el estancamiento.",
+    "fecha_analisis": "2026-07-14",
+    "actualizado": "2026-07-14",
+    "duracion_min": 67,
+    "programa": "A lo cortico — La Joven Cuba",
+    "entrevistado": "Juan Triana",
+    "genero": "economista"
+  },
+  "veredicto": {
+    "resumen": "No es un economista incompetente. Es un economista con formación y experiencia, condicionado por dos límites: una tradición económica excesivamente discursiva, con pocos números auditables, y una prudencia política que le impide identificar quién tomó las decisiones responsables del estancamiento.",
+    "dimensiones": [
+      { "clave": "Conocimiento institucional e histórico", "nivel": "alto", "valor": 85 },
+      { "clave": "Intuición microeconómica", "nivel": "media-alta", "valor": 68 },
+      { "clave": "Precisión cuantitativa", "nivel": "baja", "valor": 26 },
+      { "clave": "Análisis macroeconómico y causal", "nivel": "medio-bajo", "valor": 38 },
+      { "clave": "Independencia frente al relato oficial", "nivel": "limitada", "valor": 45 },
+      { "clave": "Programa verificable", "nivel": "insuficiente", "valor": 30 }
+    ]
+  },
+  "puntuacion": {
+    "escala": 10,
+    "nota": "Puntuación de esta intervención concreta, no de toda la carrera académica.",
+    "items": [
+      { "dimension": "Conocimiento de la economía cubana", "valor": 8 },
+      { "dimension": "Intuición sobre reformas de mercado", "valor": 7 },
+      { "dimension": "Claridad pedagógica", "valor": 6 },
+      { "dimension": "Precisión numérica", "valor": 3 },
+      { "dimension": "Consistencia aritmética", "valor": 2 },
+      { "dimension": "Análisis causal", "valor": 4 },
+      { "dimension": "Comparación internacional", "valor": 3 },
+      { "dimension": "Independencia crítica", "valor": 5 },
+      { "dimension": "Diseño operativo de políticas", "valor": 4 },
+      { "dimension": "Utilidad global de la entrevista", "valor": 6 }
+    ]
+  },
+  "petroleo": {
+    "titulo": "La cuadratura imposible",
+    "intro": "Triana ofrece tres cifras sobre la necesidad petrolera del país. Las tres no pueden ser simultáneamente correctas. Mueve el consumo diario y compruébalo: no existe ningún valor que satisfaga las tres a la vez.",
+    "cargamento_barriles": 800000,
+    "necesidad_min_bpd": 130000,
+    "necesidad_max_bpd": 150000,
+    "dias_afirmados": 15,
+    "afirmaciones": [
+      { "id": "diaria", "texto": "Necesidad diaria de 130.000 a 150.000 barriles" },
+      { "id": "duracion", "texto": "Un cargamento de 800.000 barriles dura ~15 días" },
+      { "id": "mensual", "texto": "Necesidad mensual: 800.000 × 2 ≈ 1,6 millones de barriles" }
+    ],
+    "hechos": [
+      "A 130.000 b/d, el consumo mensual sería 3,9 millones, no 1,6 millones.",
+      "A 150.000 b/d, serían 4,5 millones mensuales.",
+      "Un cargamento de 800.000 barriles dura entre 5,3 y 6,2 días, no 15.",
+      "Para que 800.000 durasen 15 días, el consumo tendría que ser de solo 53.333 b/d.",
+      "El cálculo mensual está errado por un factor aproximado de 2,4 a 2,8."
+    ]
+  },
+  "termoelectricas": {
+    "titulo": "El salto que faltó sumar",
+    "intro": "Triana estima bien el orden de magnitud por planta, y luego olvida multiplicar. Cinco o seis bloques de 200 millones no son 200 millones.",
+    "coste_mw_min_usd": 800000,
+    "coste_mw_max_usd": 1000000,
+    "coste_planta_usd": 200000000,
+    "plantas_min": 5,
+    "plantas_max": 6,
+    "coste_afirmado_usd": 200000000,
+    "coste_real_min_usd": 1000000000,
+    "coste_real_max_usd": 1200000000,
+    "costes_omitidos": [
+      "Transmisión",
+      "Subestaciones",
+      "Control y estabilidad de red",
+      "Reservas de potencia",
+      "Puertos y almacenamiento",
+      "Suministro de combustible",
+      "Mantenimiento",
+      "Capital circulante"
+    ],
+    "cierre": "Su cifra sirve como cálculo incompleto de generación, no como presupuesto del rescate eléctrico."
+  },
+  "electricidad_regional": {
+    "titulo": "El coste técnico no es excepcional",
+    "intro": "Triana usa la tarifa subsidiada cubana para sugerir que el consumidor paga muy poco. Es cierto nominalmente, pero no dice nada sobre el coste de producir electricidad. Otros sistemas insulares afrontan costes físicos iguales o mayores.",
+    "paises": [
+      { "pais": "Cuba", "tarifa_usd_kwh": null, "perdidas_pct": null, "nota": "Tarifa fuertemente subsidiada, servicio muy interrumpido: el precio no recupera costes y la escasez sustituye al precio." },
+      { "pais": "Jamaica", "tarifa_usd_kwh": 0.36, "perdidas_pct": 27, "nota": "Alta dependencia importadora, pérdidas elevadas y pequeña escala." },
+      { "pais": "Rep. Dominicana", "tarifa_usd_kwh": 0.24, "perdidas_pct": 30, "nota": "Tarifas históricamente altas, subsidios sustanciales y debilidad de cobro." },
+      { "pais": "Puerto Rico", "tarifa_usd_kwh": 0.28, "perdidas_pct": 15, "nota": "Insularidad, combustibles importados y red vulnerable a huracanes." },
+      { "pais": "Barbados", "tarifa_usd_kwh": 0.30, "perdidas_pct": 8, "nota": "Sistema pequeño e insular; transición renovable costosa pero viable, mejor entorno de inversión." }
+    ],
+    "diferencia": "La diferencia decisiva no es el coste físico: es que Cuba combinó alto coste técnico, tarifa artificialmente baja, baja inversión, restricción financiera y mantenimiento diferido. El resultado previsible es déficit de caja, averías, apagones, menos producción y menos recaudación."
+  },
+  "arroz": {
+    "titulo": "La parcela que no es el país",
+    "intro": "Triana cita rendimientos de 7, 8 y 9 toneladas de arroz por hectárea de productores vietnamitas. Son posibles en parcelas intensivas, variedades seleccionadas y proyectos demostrativos. Confundirlos con el rendimiento nacional es sesgo de selección.",
+    "rendimientos_demostrativos": [7, 8, 9],
+    "faltan": [
+      "Rendimiento nacional promedio",
+      "Varianza entre parcelas",
+      "Coste por hectárea",
+      "Agua y fertilizante por hectárea",
+      "Rentabilidad real",
+      "Porcentaje de superficie replicable"
+    ],
+    "cierre": "Sin eso, la cifra funciona como anécdota favorable, no como evidencia de política agrícola."
+  },
+  "aciertos": [
+    { "titulo": "Exige secuencia, responsables y calendario", "texto": "El paquete contiene el «qué», pero no el «cómo, cuándo y quién». Sin eso, el gobierno puede anunciar mucho, ejecutar poco y culpar luego a la implementación. Es su crítica más importante, aunque no la lleva hasta el final." },
+    { "titulo": "Sobran empresas estatales", "texto": "Cuba mantiene miles de empresas formalmente estatales, muchas insolventes y sin función estratégica clara. Reducirlas y concentrarse en lo realmente estratégico libera capital, subsidios y control administrativo." },
+    { "titulo": "Los topes de precio mal diseñados destruyen oferta", "texto": "Un precio máximo por debajo del coste genera menos oferta, subdeclaración, mercado negro, corrupción y peor calidad. Su error no está en la teoría, sino en no desarrollar qué política de competencia y transferencias lo sustituiría." },
+    { "titulo": "Mejor subsidiar personas que productos", "texto": "Subsidiar a todos por igual acaba beneficiando también a hogares con recursos. Las transferencias focalizadas mejoran eficiencia y progresividad, aunque su idea de «tiendas específicas» reproduciría colas, estigma y arbitraje." },
+    { "titulo": "La competencia no depende de la propiedad privada", "texto": "Varias empresas públicas pueden competir. Pero solo si tienen presupuestos separados, sin rescates automáticos, con directivos no nombrados por el mismo órgano. Si no, cuatro empresas estatales son cuatro departamentos del mismo monopolio." },
+    { "titulo": "El sector privado es estratégico, no un apéndice", "texto": "Con cerca del 35 % del empleo fuera del sector estatal, tratarlo como complemento tolerado es insostenible. Limitar por decreto el número de empresas de una persona no elimina la concentración: la traslada a testaferros." }
+  ],
+  "errores_cuantitativos": [
+    { "titulo": "Aritmética petrolera incompatible", "texto": "Sus tres cifras sobre la necesidad petrolera no pueden coexistir. El cálculo mensual está errado por un factor de 2,4 a 2,8, hablando de la principal restricción energética del país." },
+    { "titulo": "Confunde consumo, demanda y necesidad técnica", "texto": "«Cuba necesita 130.000–150.000 barriles diarios» mezcla consumo observado de una economía deprimida con la demanda de una economía normalizada, sin año, fuente ni composición." },
+    { "titulo": "No multiplica el coste eléctrico", "texto": "Cinco o seis centrales de 200 millones no son 200 millones, sino 1.000 a 1.200. Y sustituir bloques de generación no equivale a reconstruir el sistema completo." },
+    { "titulo": "«Un centavo por kWh» es engañoso", "texto": "La cifra depende de qué tasa de cambio se use, entre varias simultáneas. Una tarifa casi gratuita que no está disponible no es verdaderamente barata: ignora salarios reales, apagones y costes privados de baterías y alimentos perdidos." },
+    { "titulo": "Comparación regional sin denominador", "texto": "Confunde precio pagado por el hogar con coste de producir. Otros sistemas insulares tienen costes iguales o mayores, pero cobran más cerca del coste y permiten inversión." },
+    { "titulo": "7–9 t/ha no es representativo", "texto": "Seleccionar la parcela de alto rendimiento es sesgo de selección. Falta la media, la varianza, el coste y el porcentaje de superficie replicable." }
+  ],
+  "falacias": [
+    { "titulo": "Falacia de la implementación", "texto": "«Dependerá de cómo se implemente» puede volverse un escudo: una política cuyo diseño ignora incentivos y capacidad administrativa ya está mal diseñada, aunque sus objetivos sean razonables." },
+    { "titulo": "Agente pasivo", "texto": "«La reforma se paró», «había resistencia», «no se autorizó». La voz pasiva convierte decisiones deliberadas en fenómenos meteorológicos. ¿Quién la paró, con qué autoridad y a qué coste?" },
+    { "titulo": "Falsa equivalencia sobre la resistencia", "texto": "Comparar la resistencia a las reformas con cambiar los muebles o con el primer novio de una hija banaliza una defensa racional de poder y rentas de ministerios, monopolios de importación y empresas militares." },
+    { "titulo": "Sesgo de supervivencia en los directivos", "texto": "Afirmar que los directivos cubanos superan a gerentes multinacionales, citando a los que triunfaron fuera, confunde titulaciones con capacidad y no compara productividad ni retorno sobre activos." },
+    { "titulo": "Falacia de intención sobre los accionistas", "texto": "Advertir contra quienes compran acciones «para hacer dinero» confunde el mecanismo del mercado con una desviación. Lo que hay que perseguir son privilegios, fraude y captura, no el ánimo de lucro." },
+    { "titulo": "Acciones privilegiadas no son control", "texto": "El Estado podría quedarse con 20–40 % y «mantener control» con acciones privilegiadas, pero eso exige definir derechos sobre dividendos, nombramientos, venta de activos, deuda, fusiones y liquidación. No basta decir que tendrá voto." },
+    { "titulo": "«La competencia genera eficiencia sin dudas»", "texto": "La competencia puede mejorar la eficiencia, pero también duplicar en monopolios naturales, generar colusión o exclusión. Cuatro telefónicas con la misma red y el mismo dueño no compiten." },
+    { "titulo": "Post hoc sobre la demora de las mipymes", "texto": "Atribuir el retraso de las pymes a una declaración estadounidense de 1995–96 concede al adversario un veto sobre la política económica nacional. La decisión de prohibirlas siguió siendo de las autoridades cubanas." },
+    { "titulo": "«EE. UU. nunca quitó sanciones»", "texto": "Es falso en sentido literal: con Obama se restablecieron relaciones, se ampliaron viajes y remesas y se retiró temporalmente a Cuba de la lista de patrocinadores del terrorismo. Lo correcto: relajó restricciones, pero no desmontó el núcleo legislativo del embargo." },
+    { "titulo": "Exageración de la Helms–Burton", "texto": "La ley fija criterios para reconocer un gobierno de transición y condiciona el levantamiento de sanciones, pero no otorga jurídicamente a EE. UU. la facultad de nombrar al presidente cubano." },
+    { "titulo": "«Arma genocida»", "texto": "El embargo impone costes reales y bien documentados, pero «genocida» tiene un significado jurídico específico —intención de destruir a un grupo— que no se demuestra. El término reemplaza la estimación que un economista debería intentar." },
+    { "titulo": "Atribución monocausal", "texto": "La entrevista da un peso narrativo desproporcionado a EE. UU. y muy poco al Ordenamiento, la emisión monetaria, las prohibiciones empresariales, la inversión en hoteles o la descapitalización agrícola. Reducir el problema al embargo es falso; negar su coste, también." }
+  ],
+  "omisiones": [
+    { "titulo": "La restricción presupuestaria del Estado", "texto": "Propone proteger salarios, transferir, rehabilitar la red, dar créditos solares y recapitalizar, pero no plantea de qué se financia. Sin crédito y con baja productividad, Cuba ha financiado sus desequilibrios con emisión: reformar sin cuantificar el déficit arriesga otra ronda inflacionaria." },
+    { "titulo": "Propiedad y seguridad jurídica", "texto": "Acciones e inversión extranjera carecen de credibilidad sin garantías sobre expropiación, tribunales, ejecución contractual, repatriación de dividendos, convertibilidad y quiebra. Que hoy sea «políticamente aceptado» no basta." },
+    { "titulo": "Producción frente a comercio importador", "texto": "Muchas mipymes se concentran en importación y reventa. Eso mejora el abasto, pero no es expansión de capacidad productiva. Contar mipymes sin medir valor añadido es tan insuficiente como contar empresas estatales." },
+    { "titulo": "El fracaso de la inversión turística", "texto": "No pregunta por qué el Estado destinó durante años tanta inversión a hoteles mientras se deterioraban redes, agua, agricultura y vivienda. Eso no es geografía ni embargo: fue una decisión interna de asignación de capital." },
+    { "titulo": "El coste de no reformar", "texto": "Reconoce que estas reformas debieron hacerse treinta años antes, pero no calcula el coste de la demora: producción perdida, migración, capital destruido, crecimiento acumulado no realizado." }
+  ],
+  "causal": {
+    "titulo": "¿De quién es la crisis?",
+    "intro": "La explicación honesta es multicausal. Estas ponderaciones ilustran el énfasis narrativo, no una medición: comparan el peso que Triana concede a cada factor con una lectura más equilibrada.",
+    "advertencia": "Ponderaciones ilustrativas del énfasis del discurso, no estimaciones econométricas.",
+    "factores": [
+      { "nombre": "Sanciones y bloqueo de EE. UU.", "peso_triana": 55, "peso_equilibrado": 25 },
+      { "nombre": "Modelo institucional interno", "peso_triana": 12, "peso_equilibrado": 22 },
+      { "nombre": "Errores macroeconómicos", "peso_triana": 8, "peso_equilibrado": 15 },
+      { "nombre": "Mala asignación de capital", "peso_triana": 6, "peso_equilibrado": 12 },
+      { "nombre": "Descapitalización y mantenimiento", "peso_triana": 7, "peso_equilibrado": 10 },
+      { "nombre": "Pérdida de credibilidad", "peso_triana": 5, "peso_equilibrado": 8 },
+      { "nombre": "Éxodo y shock demográfico", "peso_triana": 7, "peso_equilibrado": 8 }
+    ]
+  },
+  "demora": {
+    "titulo": "El precio compuesto de esperar",
+    "intro": "Triana admite que la reforma iniciada en 1990 no tenía por qué haberse parado. Una diferencia de apenas unos puntos de crecimiento anual, sostenida durante décadas, se multiplica. Ajusta la brecha y los años.",
+    "formula": "Y_T = Y₀ · (1 + g)^T",
+    "base_indice": 100,
+    "brecha_default_pct": 3,
+    "años_default": 30,
+    "años_max": 40,
+    "brecha_max_pct": 5,
+    "cierre": "Tres puntos porcentuales durante treinta años producen un factor cercano a 2,43: la demora reformista puede explicar diferencias de varias veces en ingreso y capital acumulado."
+  },
+  "encuesta": {
+    "titulo": "Tu lectura",
+    "intro": "Esta entrevista trata, en el fondo, de a quién se atribuye la crisis y de qué se le puede exigir a un economista público. Vota: los resultados se comparan con los de otros lectores.",
+    "tabla_supabase": "votos_triana_reformas",
+    "rpc_incrementar": "incrementar_voto",
+    "preguntas": [
+      {
+        "id": "factor_principal",
+        "texto": "En tu criterio, ¿cuál es el factor de MAYOR peso en la crisis cubana?",
+        "opciones": [
+          { "id": "bloqueo", "texto": "El bloqueo y las sanciones de EE. UU." },
+          { "id": "modelo", "texto": "El modelo institucional interno" },
+          { "id": "macro", "texto": "Los errores macroeconómicos (Ordenamiento, emisión)" },
+          { "id": "capital", "texto": "La mala asignación de capital (p. ej., hoteles)" },
+          { "id": "descap", "texto": "La descapitalización y el mantenimiento diferido" },
+          { "id": "demografia", "texto": "El éxodo y el shock demográfico" }
+        ]
+      },
+      {
+        "id": "reforma_alivio",
+        "texto": "¿Traerá este paquete de reformas un alivio real para la mayoría en menos de un año?",
+        "opciones": [
+          { "id": "si", "texto": "Sí" },
+          { "id": "no", "texto": "No" },
+          { "id": "algunos", "texto": "Quizás, y solo para algunos" }
+        ]
+      },
+      {
+        "id": "responsabilidad",
+        "texto": "¿Debe un economista público nombrar a los responsables internos del estancamiento?",
+        "opciones": [
+          { "id": "nombrar", "texto": "Sí, debe nombrarlos" },
+          { "id": "criticar", "texto": "Basta con criticar el modelo" },
+          { "id": "depende", "texto": "Depende del contexto y del riesgo" }
+        ]
+      }
+    ]
+  },
+  "conclusion": {
+    "titulo": "El núcleo reformista y su límite",
+    "parrafos": [
+      "La entrevista contiene un núcleo reformista valioso: menos empresas estatales, empresas realmente autónomas, competencia, un sector privado fuerte, inversión extranjera, subsidios focalizados, tarifas más racionales y continuidad. Eso importa.",
+      "Pero evita la conclusión completa: Cuba no está estancada únicamente porque las reformas se implementaron mal. Está estancada porque durante décadas se prohibieron, retrasaron o revirtieron deliberadamente instituciones económicas normales, y porque los decisores no asumieron el coste de sus errores.",
+      "Las sanciones estadounidenses han elevado de forma real y a veces muy grave el coste de operar, financiar, transportar e invertir. Negarlo sería deshonesto. Pero otros países insulares soportan combustibles importados, electricidad cara, huracanes y mercados pequeños sin reproducir el mismo grado de colapso."
+    ],
+    "ecuacion_terminos": [
+      "Sanciones externas",
+      "Modelo institucional",
+      "Errores macroeconómicos",
+      "Mala asignación de capital",
+      "Descapitalización",
+      "Pérdida de credibilidad",
+      "Shock demográfico"
+    ],
+    "cierre": "Su valor está en ayudar a mover el debate cubano desde la prohibición hacia la reforma. Su límite, en no romper del todo con el lenguaje, las omisiones y las protecciones causales que permitieron el estancamiento que ahora intenta corregir."
+  },
+  "fuentes": [
+    { "titulo": "Entrevista: «A lo cortico, con Juan Triana» — La Joven Cuba (YouTube)", "url": "https://www.youtube.com/watch?v=s_YYQ-9vVc8" },
+    { "titulo": "Cuba — Wikipedia (salarios, universo empresarial)", "url": "https://es.wikipedia.org/wiki/Cuba" },
+    { "titulo": "Economy of Cuba — Wikipedia (empleo no estatal)", "url": "https://en.wikipedia.org/wiki/Economy_of_Cuba" },
+    { "titulo": "Reuters — Cuba's petroleum problem (necesidades petroleras)", "url": "https://www.reuters.com/world/us/russian-oil-only-delays-cubas-petroleum-problem-2026-04-08/" },
+    { "titulo": "Jamaica Public Service — Wikipedia (tarifa y pérdidas)", "url": "https://en.wikipedia.org/wiki/Jamaica_Public_Service" },
+    { "titulo": "Electricity sector in the Dominican Republic — Wikipedia", "url": "https://en.wikipedia.org/wiki/Electricity_sector_in_the_Dominican_Republic" },
+    { "titulo": "Helms–Burton Act — Wikipedia", "url": "https://en.wikipedia.org/wiki/Helms%E2%80%93Burton_Act" },
+    { "titulo": "The Guardian — Cuba's polycrisis (análisis multicausal)", "url": "https://www.theguardian.com/global-development/2026/jan/10/cuba-regime-polycrisis-collapse-exodus-economy-migration-us-sanctions-trump" }
+  ]
+}

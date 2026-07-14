@@ -1,0 +1,274 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/triana_reformas.schema.json",
+  "title": "Tema — Triana en cifras",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "veredicto", "puntuacion", "petroleo", "termoelectricas", "electricidad_regional", "arroz", "aciertos", "errores_cuantitativos", "falacias", "omisiones", "causal", "demora", "encuesta", "conclusion", "fuentes"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "descripcion", "narracion", "fecha_analisis"],
+      "properties": {
+        "slug": { "type": "string", "const": "triana_reformas" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "narracion": { "type": "string" },
+        "fecha_analisis": { "type": "string", "format": "date" },
+        "actualizado": { "type": "string" },
+        "duracion_min": { "type": "number" },
+        "programa": { "type": "string" },
+        "entrevistado": { "type": "string" },
+        "genero": { "type": "string" }
+      }
+    },
+    "veredicto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resumen", "dimensiones"],
+      "properties": {
+        "resumen": { "type": "string" },
+        "dimensiones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["clave", "nivel", "valor"],
+            "properties": {
+              "clave": { "type": "string" },
+              "nivel": { "type": "string" },
+              "valor": { "type": "number", "minimum": 0, "maximum": 100 }
+            }
+          }
+        }
+      }
+    },
+    "puntuacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["escala", "items"],
+      "properties": {
+        "escala": { "type": "number" },
+        "nota": { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["dimension", "valor"],
+            "properties": {
+              "dimension": { "type": "string" },
+              "valor": { "type": "number", "minimum": 0, "maximum": 10 }
+            }
+          }
+        }
+      }
+    },
+    "petroleo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "cargamento_barriles", "necesidad_min_bpd", "necesidad_max_bpd", "dias_afirmados", "afirmaciones", "hechos"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "cargamento_barriles": { "type": "number" },
+        "necesidad_min_bpd": { "type": "number" },
+        "necesidad_max_bpd": { "type": "number" },
+        "dias_afirmados": { "type": "number" },
+        "afirmaciones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto"],
+            "properties": {
+              "id": { "type": "string" },
+              "texto": { "type": "string" }
+            }
+          }
+        },
+        "hechos": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "termoelectricas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "coste_mw_min_usd", "coste_mw_max_usd", "coste_planta_usd", "plantas_min", "plantas_max", "coste_afirmado_usd", "coste_real_min_usd", "coste_real_max_usd", "costes_omitidos", "cierre"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "coste_mw_min_usd": { "type": "number" },
+        "coste_mw_max_usd": { "type": "number" },
+        "coste_planta_usd": { "type": "number" },
+        "plantas_min": { "type": "number" },
+        "plantas_max": { "type": "number" },
+        "coste_afirmado_usd": { "type": "number" },
+        "coste_real_min_usd": { "type": "number" },
+        "coste_real_max_usd": { "type": "number" },
+        "costes_omitidos": { "type": "array", "items": { "type": "string" } },
+        "cierre": { "type": "string" }
+      }
+    },
+    "electricidad_regional": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "paises", "diferencia"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "diferencia": { "type": "string" },
+        "paises": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pais", "nota"],
+            "properties": {
+              "pais": { "type": "string" },
+              "tarifa_usd_kwh": { "type": ["number", "null"] },
+              "perdidas_pct": { "type": ["number", "null"] },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "arroz": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "rendimientos_demostrativos", "faltan", "cierre"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "rendimientos_demostrativos": { "type": "array", "items": { "type": "number" } },
+        "faltan": { "type": "array", "items": { "type": "string" } },
+        "cierre": { "type": "string" }
+      }
+    },
+    "aciertos": { "$ref": "#/definitions/bloqueTexto" },
+    "errores_cuantitativos": { "$ref": "#/definitions/bloqueTexto" },
+    "falacias": { "$ref": "#/definitions/bloqueTexto" },
+    "omisiones": { "$ref": "#/definitions/bloqueTexto" },
+    "causal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "advertencia", "factores"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "advertencia": { "type": "string" },
+        "factores": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "peso_triana", "peso_equilibrado"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "peso_triana": { "type": "number", "minimum": 0, "maximum": 100 },
+              "peso_equilibrado": { "type": "number", "minimum": 0, "maximum": 100 }
+            }
+          }
+        }
+      }
+    },
+    "demora": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "formula", "base_indice", "brecha_default_pct", "años_default", "años_max", "brecha_max_pct", "cierre"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "formula": { "type": "string" },
+        "base_indice": { "type": "number" },
+        "brecha_default_pct": { "type": "number" },
+        "años_default": { "type": "number" },
+        "años_max": { "type": "number" },
+        "brecha_max_pct": { "type": "number" },
+        "cierre": { "type": "string" }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "preguntas"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "intro": { "type": "string" },
+        "tabla_supabase": { "type": "string" },
+        "rpc_incrementar": { "type": "string" },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string" },
+              "texto": { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "texto"],
+                  "properties": {
+                    "id": { "type": "string" },
+                    "texto": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "parrafos", "ecuacion_terminos", "cierre"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "parrafos": { "type": "array", "items": { "type": "string" } },
+        "ecuacion_terminos": { "type": "array", "items": { "type": "string" } },
+        "cierre": { "type": "string" }
+      }
+    },
+    "fuentes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titulo", "url"],
+        "properties": {
+          "titulo": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "bloqueTexto": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titulo", "texto"],
+        "properties": {
+          "titulo": { "type": "string" },
+          "texto": { "type": "string" }
+        }
+      }
+    }
+  }
+}

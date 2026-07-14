@@ -214,6 +214,19 @@ const temas = [
     dataSlug: "medidas_176", // el dataset es /data/medidas_176.json (guion bajo)
     load: () => import("./medidas_176.jsx"),
   },
+  {
+    id: "triana",
+    slug: "triana",
+    path: "/triana",
+    titulo: "Triana en cifras",
+    subtitulo:
+      "Anatomía de una entrevista reformista: dónde acierta, dónde falla la aritmética y a quién se deja de nombrar",
+    etiqueta: "ECONOMÍA · FACT-CHECK", // ⚠ CONFIRMAR
+    accent: "#e9b23c",                  // ⚠ CONFIRMAR (oro dominante de la paleta del renderer)
+    fuentes: "La Joven Cuba (entrevista) · Reuters · The Guardian · Wikipedia", // ⚠ CONFIRMAR
+    dataSlug: "triana_reformas", // el dataset es /data/triana_reformas.json
+    load: () => import("./triana_reformas.jsx"),
+  },
 ];
 
 export default temas;
