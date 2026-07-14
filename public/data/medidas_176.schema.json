@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "medidas_176",
+  "type": "object",
+  "required": ["meta", "series_convergencia", "paquetes_event_study", "episodios", "ejes_2026", "encuesta"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["slug", "titulo", "descripcion", "narracion", "fecha_publicacion", "fuentes", "sistema_confianza"],
+      "properties": {
+        "slug": { "const": "medidas_176" },
+        "titulo": { "type": "string", "minLength": 5 },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 20 },
+        "narracion": { "type": "string", "minLength": 100 },
+        "fecha_publicacion": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "anuncio_paquete": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 3 },
+        "sistema_confianza": { "type": "object" },
+        "notas_metodologicas": { "type": "array", "items": { "type": "string" } },
+        "tesis_confianza": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["afirmacion", "nivel"],
+            "properties": {
+              "afirmacion": { "type": "string" },
+              "nivel": { "enum": ["confirmado", "reportado", "estimado"] }
+            }
+          }
+        }
+      }
+    },
+    "series_convergencia": {
+      "type": "array",
+      "minItems": 60,
+      "items": {
+        "type": "object",
+        "required": ["anio", "cuba", "vietnam", "costa_rica", "singapore", "cuba_idx", "vietnam_idx", "costa_rica_idx", "singapore_idx", "estimado"],
+        "properties": {
+          "anio": { "type": "integer", "minimum": 1959, "maximum": 2030 },
+          "cuba": { "type": "number", "exclusiveMinimum": 0 },
+          "vietnam": { "type": "number", "exclusiveMinimum": 0 },
+          "costa_rica": { "type": "number", "exclusiveMinimum": 0 },
+          "singapore": { "type": "number", "exclusiveMinimum": 0 },
+          "cuba_idx": { "type": "number", "exclusiveMinimum": 0 },
+          "vietnam_idx": { "type": "number", "exclusiveMinimum": 0 },
+          "costa_rica_idx": { "type": "number", "exclusiveMinimum": 0 },
+          "singapore_idx": { "type": "number", "exclusiveMinimum": 0 },
+          "estimado": { "type": "boolean" }
+        }
+      }
+    },
+    "paquetes_event_study": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["anio", "nombre", "crec_pre", "crec_post", "confianza"],
+        "properties": {
+          "anio": { "type": "integer" },
+          "nombre": { "type": "string" },
+          "detalle": { "type": "string" },
+          "crec_pre": { "type": ["number", "null"] },
+          "crec_post": { "type": ["number", "null"] },
+          "confianza": { "enum": ["confirmado", "reportado", "estimado"] },
+          "nota": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "episodios": {
+      "type": "array",
+      "minItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["dominio", "anio", "tipo", "titulo", "detalle", "confianza", "fuente"],
+        "properties": {
+          "dominio": { "enum": ["empresa_privada", "agricultura", "divisas", "inversion_extranjera", "banca", "subsidios"] },
+          "anio": { "type": "integer", "minimum": 1959, "maximum": 2030 },
+          "tipo": { "enum": ["apertura", "reversion", "anuncio"] },
+          "titulo": { "type": "string" },
+          "detalle": { "type": "string" },
+          "magnitud": { "type": "string" },
+          "confianza": { "enum": ["confirmado", "reportado", "estimado"] },
+          "fuente": { "type": "string" }
+        }
+      }
+    },
+    "ejes_2026": {
+      "type": "array",
+      "minItems": 23,
+      "maxItems": 23,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "medidas_destacadas", "dependencia_normativa", "confianza"],
+        "properties": {
+          "id": { "type": "integer", "minimum": 1, "maximum": 23 },
+          "nombre": { "type": "string" },
+          "medidas_destacadas": { "type": "integer", "minimum": 1 },
+          "dominio_homologo": { "type": ["string", "null"] },
+          "dependencia_normativa": { "enum": ["alta", "media", "baja"] },
+          "confianza": { "enum": ["confirmado", "reportado", "estimado"] }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "required": ["id", "pregunta", "opciones"],
+      "properties": {
+        "id": { "type": "string" },
+        "pregunta": { "type": "string" },
+        "opciones": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["id", "texto"],
+            "properties": { "id": { "type": "string" }, "texto": { "type": "string" } }
+          }
+        }
+      }
+    }
+  }
+}

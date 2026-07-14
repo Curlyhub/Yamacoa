@@ -201,7 +201,19 @@ const temas = [
     fuentes: "Unión Eléctrica (UNE) · Horizonte Cubano (Columbia Law) · IEEE Spectrum · ONEI · prensa independiente",
     load: () => import("./electrica.jsx"),
   },
-
+  {
+    id: "medidas-176",
+    slug: "medidas-176",
+    path: "/medidas-176",
+    titulo: "Las 176 medidas: anatomía de un ciclo",
+    subtitulo:
+      "Sesenta y seis años de aperturas anunciadas y reversiones ejecutadas, medidos contra los países que no revirtieron",
+    etiqueta: "ECONOMÍA · CONTRAFACTUAL", // ⚠ CONFIRMAR
+    accent: "#35C4A6",                     // ⚠ CONFIRMAR (menta "apertura" de la paleta del renderer)
+    fuentes: "Maddison Project · CEPAL/FMI · Gacetas Oficiales · documento de las 176 medidas", // ⚠ CONFIRMAR
+    dataSlug: "medidas_176", // el dataset es /data/medidas_176.json (guion bajo)
+    load: () => import("./medidas_176.jsx"),
+  },
 ];
 
 export default temas;

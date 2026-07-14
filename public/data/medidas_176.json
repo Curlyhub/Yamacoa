@@ -1,0 +1,1432 @@
+{
+  "meta": {
+    "slug": "medidas_176",
+    "titulo": "Las 176 medidas: anatomía de un ciclo",
+    "subtitulo": "Sesenta y seis años de aperturas anunciadas y reversiones ejecutadas, medidos contra los países que no revirtieron",
+    "descripcion": "Análisis contrafactual del paquete de 176 transformaciones aprobado en junio de 2026: cada eje tiene un antecedente homólogo desde 1959 con resultado observable, y la trayectoria cubana se contrasta con Vietnam, Costa Rica y Singapur.",
+    "narracion": "En junio de dos mil veintiséis el gobierno cubano aprobó ciento setenta y seis medidas en una sesión extraordinaria convocada con cuarenta y ocho horas de antelación, sin calendario de implementación y dependientes de más de ciento cuarenta y ocho normas jurídicas aún no aprobadas. Este expediente no evalúa promesas: evalúa precedentes. Desde mil novecientos cincuenta y nueve, cada dominio del paquete ha vivido ciclos de apertura y reversión, y cada paquete anunciado fue seguido de menos crecimiento que el anterior. Mientras tanto, Vietnam, que partió en mil novecientos ochenta y seis con un tercio del ingreso cubano, cruzó a Cuba en dos mil veintiuno. La pregunta del expediente es simple: si la reversión sigue siendo opción, por qué esta vez sería distinto.",
+    "fecha_publicacion": "2026-07-14",
+    "anuncio_paquete": "2026-06-18",
+    "fuentes": [
+      "Maddison Project Database 2020 (Bolt & van Zanden), PIB per cápita PPP 2011",
+      "Programa de 176 transformaciones económicas y sociales (documento oficial, jun 2026)",
+      "Presentación del primer ministro ante la ANPP, sesión extraordinaria 18-19 jun 2026",
+      "CEPAL / FMI: tasas de crecimiento 2019-2025 (extensión estimada)",
+      "Gacetas Oficiales y decretos-leyes citados por episodio"
+    ],
+    "sistema_confianza": {
+      "confirmado": "norma o serie oficial verificable",
+      "reportado": "prensa o presentación oficial sin norma publicada",
+      "estimado": "cálculo propio o proyección"
+    },
+    "notas_metodologicas": [
+      "Las cifras de Cuba post-1990 en Maddison dependen parcialmente de deflactores oficiales cubanos; posible sobreestimación del nivel. Sesgo conservador: juega CONTRA nuestra tesis, no a favor.",
+      "La revisión poblacional ONEI 2024 (caída a ~9.7M por éxodo) elevaría mecánicamente el PIB per cápita cubano; no se aplica para evitar inflar el denominador con un artefacto migratorio.",
+      "Singapur entra como frontera de referencia, NO como control DID (tendencias paralelas indefendibles).",
+      "Vietnam es el comparador DID principal (punto de partida planificado, shock soviético común, embargo EEUU hasta 1994).",
+      "Costa Rica es control regional sin historia de planificación centralizada.",
+      "La caída pre-2021 del event study refleja el colapso 2020 (COVID + Ordenamiento); el rebote posterior es efecto base, no éxito del paquete.",
+      "Las cifras de crecimiento pre-2011 dependen de deflactores oficiales cubanos, probablemente sobreestimados: el sesgo juega contra la tesis del expediente.",
+      "medidas_destacadas por eje proviene del desglose de prensa del documento oficial; la suma no coincide exactamente con 176."
+    ],
+    "tesis_confianza": [
+      {
+        "afirmacion": "El paquete carece de calendario y depende de 148 normas no aprobadas",
+        "nivel": "confirmado"
+      },
+      {
+        "afirmacion": "Washington condicionó explícitamente la relación bilateral a la profundidad de los cambios",
+        "nivel": "reportado"
+      },
+      {
+        "afirmacion": "El momento del anuncio busca ganar tiempo ante las elecciones de medio término de EEUU (nov 2026)",
+        "nivel": "estimado"
+      }
+    ]
+  },
+  "series_convergencia": [
+    {
+      "anio": 1959,
+      "cuba": 3006.0,
+      "vietnam": 1262.0,
+      "costa_rica": 4141.0,
+      "singapore": 3239.0,
+      "cuba_idx": 59.2,
+      "vietnam_idx": 85.2,
+      "costa_rica_idx": 58.4,
+      "singapore_idx": 19.2,
+      "estimado": false
+    },
+    {
+      "anio": 1960,
+      "cuba": 2994.0,
+      "vietnam": 1274.0,
+      "costa_rica": 4328.0,
+      "singapore": 3464.0,
+      "cuba_idx": 59.0,
+      "vietnam_idx": 86.0,
+      "costa_rica_idx": 61.1,
+      "singapore_idx": 20.6,
+      "estimado": false
+    },
+    {
+      "anio": 1961,
+      "cuba": 3068.0,
+      "vietnam": 1294.0,
+      "costa_rica": 4340.0,
+      "singapore": 3623.0,
+      "cuba_idx": 60.5,
+      "vietnam_idx": 87.4,
+      "costa_rica_idx": 61.2,
+      "singapore_idx": 21.5,
+      "estimado": false
+    },
+    {
+      "anio": 1962,
+      "cuba": 2974.0,
+      "vietnam": 1411.0,
+      "costa_rica": 4439.0,
+      "singapore": 3775.0,
+      "cuba_idx": 58.6,
+      "vietnam_idx": 95.3,
+      "costa_rica_idx": 62.6,
+      "singapore_idx": 22.4,
+      "estimado": false
+    },
+    {
+      "anio": 1963,
+      "cuba": 2958.0,
+      "vietnam": 1406.0,
+      "costa_rica": 4653.0,
+      "singapore": 4049.0,
+      "cuba_idx": 58.3,
+      "vietnam_idx": 94.9,
+      "costa_rica_idx": 65.7,
+      "singapore_idx": 24.1,
+      "estimado": false
+    },
+    {
+      "anio": 1964,
+      "cuba": 3158.0,
+      "vietnam": 1427.0,
+      "costa_rica": 4720.0,
+      "singapore": 3800.0,
+      "cuba_idx": 62.2,
+      "vietnam_idx": 96.4,
+      "costa_rica_idx": 66.6,
+      "singapore_idx": 22.6,
+      "estimado": false
+    },
+    {
+      "anio": 1965,
+      "cuba": 3088.0,
+      "vietnam": 1398.0,
+      "costa_rica": 4983.0,
+      "singapore": 3991.0,
+      "cuba_idx": 60.8,
+      "vietnam_idx": 94.4,
+      "costa_rica_idx": 70.3,
+      "singapore_idx": 23.7,
+      "estimado": false
+    },
+    {
+      "anio": 1966,
+      "cuba": 3185.0,
+      "vietnam": 1369.0,
+      "costa_rica": 5193.0,
+      "singapore": 4317.0,
+      "cuba_idx": 62.8,
+      "vietnam_idx": 92.4,
+      "costa_rica_idx": 73.3,
+      "singapore_idx": 25.6,
+      "estimado": false
+    },
+    {
+      "anio": 1967,
+      "cuba": 3489.0,
+      "vietnam": 1165.0,
+      "costa_rica": 5338.0,
+      "singapore": 4741.0,
+      "cuba_idx": 68.7,
+      "vietnam_idx": 78.7,
+      "costa_rica_idx": 75.3,
+      "singapore_idx": 28.2,
+      "estimado": false
+    },
+    {
+      "anio": 1968,
+      "cuba": 3229.0,
+      "vietnam": 1114.0,
+      "costa_rica": 5574.0,
+      "singapore": 5294.0,
+      "cuba_idx": 63.6,
+      "vietnam_idx": 75.2,
+      "costa_rica_idx": 78.7,
+      "singapore_idx": 31.5,
+      "estimado": false
+    },
+    {
+      "anio": 1969,
+      "cuba": 3137.0,
+      "vietnam": 1178.0,
+      "costa_rica": 5773.0,
+      "singapore": 5931.0,
+      "cuba_idx": 61.8,
+      "vietnam_idx": 79.5,
+      "costa_rica_idx": 81.5,
+      "singapore_idx": 35.2,
+      "estimado": false
+    },
+    {
+      "anio": 1970,
+      "cuba": 2976.0,
+      "vietnam": 1172.0,
+      "costa_rica": 5984.0,
+      "singapore": 6650.0,
+      "cuba_idx": 58.6,
+      "vietnam_idx": 79.1,
+      "costa_rica_idx": 84.4,
+      "singapore_idx": 39.5,
+      "estimado": false
+    },
+    {
+      "anio": 1971,
+      "cuba": 3161.0,
+      "vietnam": 1202.0,
+      "costa_rica": 6199.0,
+      "singapore": 7318.0,
+      "cuba_idx": 62.3,
+      "vietnam_idx": 81.2,
+      "costa_rica_idx": 87.5,
+      "singapore_idx": 43.5,
+      "estimado": false
+    },
+    {
+      "anio": 1972,
+      "cuba": 3253.0,
+      "vietnam": 1278.0,
+      "costa_rica": 6564.0,
+      "singapore": 8155.0,
+      "cuba_idx": 64.1,
+      "vietnam_idx": 86.3,
+      "costa_rica_idx": 92.6,
+      "singapore_idx": 48.5,
+      "estimado": false
+    },
+    {
+      "anio": 1973,
+      "cuba": 3486.0,
+      "vietnam": 1333.0,
+      "costa_rica": 6884.0,
+      "singapore": 8894.0,
+      "cuba_idx": 68.7,
+      "vietnam_idx": 90.0,
+      "costa_rica_idx": 97.1,
+      "singapore_idx": 52.8,
+      "estimado": false
+    },
+    {
+      "anio": 1974,
+      "cuba": 3609.0,
+      "vietnam": 1248.0,
+      "costa_rica": 7061.0,
+      "singapore": 9314.0,
+      "cuba_idx": 71.1,
+      "vietnam_idx": 84.3,
+      "costa_rica_idx": 99.6,
+      "singapore_idx": 55.3,
+      "estimado": false
+    },
+    {
+      "anio": 1975,
+      "cuba": 3733.0,
+      "vietnam": 1132.0,
+      "costa_rica": 7007.0,
+      "singapore": 9602.0,
+      "cuba_idx": 73.6,
+      "vietnam_idx": 76.4,
+      "costa_rica_idx": 98.9,
+      "singapore_idx": 57.0,
+      "estimado": false
+    },
+    {
+      "anio": 1976,
+      "cuba": 3786.0,
+      "vietnam": 1290.0,
+      "costa_rica": 7182.0,
+      "singapore": 10178.0,
+      "cuba_idx": 74.6,
+      "vietnam_idx": 87.1,
+      "costa_rica_idx": 101.3,
+      "singapore_idx": 60.5,
+      "estimado": false
+    },
+    {
+      "anio": 1977,
+      "cuba": 3913.0,
+      "vietnam": 1304.0,
+      "costa_rica": 7602.0,
+      "singapore": 10790.0,
+      "cuba_idx": 77.1,
+      "vietnam_idx": 88.0,
+      "costa_rica_idx": 107.3,
+      "singapore_idx": 64.1,
+      "estimado": false
+    },
+    {
+      "anio": 1978,
+      "cuba": 4114.0,
+      "vietnam": 1285.0,
+      "costa_rica": 7763.0,
+      "singapore": 11588.0,
+      "cuba_idx": 81.1,
+      "vietnam_idx": 86.8,
+      "costa_rica_idx": 109.5,
+      "singapore_idx": 68.8,
+      "estimado": false
+    },
+    {
+      "anio": 1979,
+      "cuba": 4183.0,
+      "vietnam": 1267.0,
+      "costa_rica": 7905.0,
+      "singapore": 12521.0,
+      "cuba_idx": 82.4,
+      "vietnam_idx": 85.6,
+      "costa_rica_idx": 111.5,
+      "singapore_idx": 74.4,
+      "estimado": false
+    },
+    {
+      "anio": 1980,
+      "cuba": 4106.0,
+      "vietnam": 1207.0,
+      "costa_rica": 7828.0,
+      "singapore": 13601.0,
+      "cuba_idx": 80.9,
+      "vietnam_idx": 81.5,
+      "costa_rica_idx": 110.5,
+      "singapore_idx": 80.8,
+      "estimado": false
+    },
+    {
+      "anio": 1981,
+      "cuba": 4420.0,
+      "vietnam": 1223.0,
+      "costa_rica": 7461.0,
+      "singapore": 14335.0,
+      "cuba_idx": 87.1,
+      "vietnam_idx": 82.6,
+      "costa_rica_idx": 105.3,
+      "singapore_idx": 85.2,
+      "estimado": false
+    },
+    {
+      "anio": 1982,
+      "cuba": 4487.0,
+      "vietnam": 1293.0,
+      "costa_rica": 6751.0,
+      "singapore": 14687.0,
+      "cuba_idx": 88.4,
+      "vietnam_idx": 87.3,
+      "costa_rica_idx": 95.3,
+      "singapore_idx": 87.3,
+      "estimado": false
+    },
+    {
+      "anio": 1983,
+      "cuba": 4705.0,
+      "vietnam": 1333.0,
+      "costa_rica": 6743.0,
+      "singapore": 15720.0,
+      "cuba_idx": 92.7,
+      "vietnam_idx": 90.0,
+      "costa_rica_idx": 95.1,
+      "singapore_idx": 93.4,
+      "estimado": false
+    },
+    {
+      "anio": 1984,
+      "cuba": 5051.0,
+      "vietnam": 1420.0,
+      "costa_rica": 7065.0,
+      "singapore": 16767.0,
+      "cuba_idx": 99.5,
+      "vietnam_idx": 95.9,
+      "costa_rica_idx": 99.7,
+      "singapore_idx": 99.6,
+      "estimado": false
+    },
+    {
+      "anio": 1985,
+      "cuba": 5120.0,
+      "vietnam": 1471.0,
+      "costa_rica": 6918.0,
+      "singapore": 16611.0,
+      "cuba_idx": 100.9,
+      "vietnam_idx": 99.3,
+      "costa_rica_idx": 97.6,
+      "singapore_idx": 98.7,
+      "estimado": false
+    },
+    {
+      "anio": 1986,
+      "cuba": 5075.0,
+      "vietnam": 1481.0,
+      "costa_rica": 7087.0,
+      "singapore": 16831.0,
+      "cuba_idx": 100.0,
+      "vietnam_idx": 100.0,
+      "costa_rica_idx": 100.0,
+      "singapore_idx": 100.0,
+      "estimado": false
+    },
+    {
+      "anio": 1987,
+      "cuba": 4887.0,
+      "vietnam": 1500.0,
+      "costa_rica": 7221.0,
+      "singapore": 18345.0,
+      "cuba_idx": 96.3,
+      "vietnam_idx": 101.3,
+      "costa_rica_idx": 101.9,
+      "singapore_idx": 109.0,
+      "estimado": false
+    },
+    {
+      "anio": 1988,
+      "cuba": 4994.0,
+      "vietnam": 1556.0,
+      "costa_rica": 7270.0,
+      "singapore": 19853.0,
+      "cuba_idx": 98.4,
+      "vietnam_idx": 105.1,
+      "costa_rica_idx": 102.6,
+      "singapore_idx": 118.0,
+      "estimado": false
+    },
+    {
+      "anio": 1989,
+      "cuba": 4991.0,
+      "vietnam": 1588.0,
+      "costa_rica": 7489.0,
+      "singapore": 21221.0,
+      "cuba_idx": 98.3,
+      "vietnam_idx": 107.2,
+      "costa_rica_idx": 105.7,
+      "singapore_idx": 126.1,
+      "estimado": false
+    },
+    {
+      "anio": 1990,
+      "cuba": 4713.0,
+      "vietnam": 1634.0,
+      "costa_rica": 7567.0,
+      "singapore": 22666.0,
+      "cuba_idx": 92.9,
+      "vietnam_idx": 110.3,
+      "costa_rica_idx": 106.8,
+      "singapore_idx": 134.7,
+      "estimado": false
+    },
+    {
+      "anio": 1991,
+      "cuba": 3982.3,
+      "vietnam": 1688.2,
+      "costa_rica": 7552.4,
+      "singapore": 23636.7,
+      "cuba_idx": 78.5,
+      "vietnam_idx": 114.0,
+      "costa_rica_idx": 106.6,
+      "singapore_idx": 140.4,
+      "estimado": false
+    },
+    {
+      "anio": 1992,
+      "cuba": 3400.0,
+      "vietnam": 1792.7,
+      "costa_rica": 8038.8,
+      "singapore": 24775.6,
+      "cuba_idx": 67.0,
+      "vietnam_idx": 121.0,
+      "costa_rica_idx": 113.4,
+      "singapore_idx": 147.2,
+      "estimado": false
+    },
+    {
+      "anio": 1993,
+      "cuba": 2657.5,
+      "vietnam": 1894.9,
+      "costa_rica": 8363.5,
+      "singapore": 27073.7,
+      "cuba_idx": 52.4,
+      "vietnam_idx": 127.9,
+      "costa_rica_idx": 118.0,
+      "singapore_idx": 160.9,
+      "estimado": false
+    },
+    {
+      "anio": 1994,
+      "cuba": 2683.1,
+      "vietnam": 2018.4,
+      "costa_rica": 8479.6,
+      "singapore": 29454.6,
+      "cuba_idx": 52.9,
+      "vietnam_idx": 136.3,
+      "costa_rica_idx": 119.7,
+      "singapore_idx": 175.0,
+      "estimado": false
+    },
+    {
+      "anio": 1995,
+      "cuba": 2860.8,
+      "vietnam": 2167.0,
+      "costa_rica": 8576.4,
+      "singapore": 30957.3,
+      "cuba_idx": 56.4,
+      "vietnam_idx": 146.3,
+      "costa_rica_idx": 121.0,
+      "singapore_idx": 183.9,
+      "estimado": false
+    },
+    {
+      "anio": 1996,
+      "cuba": 3249.6,
+      "vietnam": 2323.0,
+      "costa_rica": 8446.8,
+      "singapore": 32724.5,
+      "cuba_idx": 64.0,
+      "vietnam_idx": 156.9,
+      "costa_rica_idx": 119.2,
+      "singapore_idx": 194.4,
+      "estimado": false
+    },
+    {
+      "anio": 1997,
+      "cuba": 3425.6,
+      "vietnam": 2466.9,
+      "costa_rica": 8683.9,
+      "singapore": 34868.1,
+      "cuba_idx": 67.5,
+      "vietnam_idx": 166.6,
+      "costa_rica_idx": 122.5,
+      "singapore_idx": 207.2,
+      "estimado": false
+    },
+    {
+      "anio": 1998,
+      "cuba": 3415.5,
+      "vietnam": 2564.3,
+      "costa_rica": 9053.9,
+      "singapore": 33590.5,
+      "cuba_idx": 67.3,
+      "vietnam_idx": 173.1,
+      "costa_rica_idx": 127.8,
+      "singapore_idx": 199.6,
+      "estimado": false
+    },
+    {
+      "anio": 1999,
+      "cuba": 3623.6,
+      "vietnam": 2641.3,
+      "costa_rica": 9183.9,
+      "singapore": 35156.1,
+      "cuba_idx": 71.4,
+      "vietnam_idx": 178.3,
+      "costa_rica_idx": 129.6,
+      "singapore_idx": 208.9,
+      "estimado": false
+    },
+    {
+      "anio": 2000,
+      "cuba": 4009.3,
+      "vietnam": 2773.1,
+      "costa_rica": 9319.8,
+      "singapore": 37772.8,
+      "cuba_idx": 79.0,
+      "vietnam_idx": 187.2,
+      "costa_rica_idx": 131.5,
+      "singapore_idx": 224.4,
+      "estimado": false
+    },
+    {
+      "anio": 2001,
+      "cuba": 4231.3,
+      "vietnam": 2915.7,
+      "costa_rica": 9451.6,
+      "singapore": 36864.6,
+      "cuba_idx": 83.4,
+      "vietnam_idx": 196.9,
+      "costa_rica_idx": 133.4,
+      "singapore_idx": 219.0,
+      "estimado": false
+    },
+    {
+      "anio": 2002,
+      "cuba": 4369.0,
+      "vietnam": 3070.7,
+      "costa_rica": 9591.6,
+      "singapore": 37829.9,
+      "cuba_idx": 86.1,
+      "vietnam_idx": 207.3,
+      "costa_rica_idx": 135.3,
+      "singapore_idx": 224.8,
+      "estimado": false
+    },
+    {
+      "anio": 2003,
+      "cuba": 4506.7,
+      "vietnam": 3242.3,
+      "costa_rica": 9831.2,
+      "singapore": 38950.7,
+      "cuba_idx": 88.8,
+      "vietnam_idx": 218.9,
+      "costa_rica_idx": 138.7,
+      "singapore_idx": 231.4,
+      "estimado": false
+    },
+    {
+      "anio": 2004,
+      "cuba": 4561.0,
+      "vietnam": 3437.7,
+      "costa_rica": 10086.8,
+      "singapore": 42111.2,
+      "cuba_idx": 89.9,
+      "vietnam_idx": 232.1,
+      "costa_rica_idx": 142.3,
+      "singapore_idx": 250.2,
+      "estimado": false
+    },
+    {
+      "anio": 2005,
+      "cuba": 4713.7,
+      "vietnam": 3637.7,
+      "costa_rica": 10308.4,
+      "singapore": 44698.8,
+      "cuba_idx": 92.9,
+      "vietnam_idx": 245.6,
+      "costa_rica_idx": 145.5,
+      "singapore_idx": 265.6,
+      "estimado": false
+    },
+    {
+      "anio": 2006,
+      "cuba": 5416.1,
+      "vietnam": 3828.9,
+      "costa_rica": 10880.5,
+      "singapore": 48073.6,
+      "cuba_idx": 106.7,
+      "vietnam_idx": 258.5,
+      "costa_rica_idx": 153.5,
+      "singapore_idx": 285.6,
+      "estimado": false
+    },
+    {
+      "anio": 2007,
+      "cuba": 5635.7,
+      "vietnam": 4037.2,
+      "costa_rica": 11584.7,
+      "singapore": 51844.1,
+      "cuba_idx": 111.0,
+      "vietnam_idx": 272.6,
+      "costa_rica_idx": 163.5,
+      "singapore_idx": 308.0,
+      "estimado": false
+    },
+    {
+      "anio": 2008,
+      "cuba": 6004.9,
+      "vietnam": 4200.2,
+      "costa_rica": 11935.2,
+      "singapore": 52180.2,
+      "cuba_idx": 118.3,
+      "vietnam_idx": 283.6,
+      "costa_rica_idx": 168.4,
+      "singapore_idx": 310.0,
+      "estimado": false
+    },
+    {
+      "anio": 2009,
+      "cuba": 6248.3,
+      "vietnam": 4360.1,
+      "costa_rica": 11638.0,
+      "singapore": 51344.5,
+      "cuba_idx": 123.1,
+      "vietnam_idx": 294.4,
+      "costa_rica_idx": 164.2,
+      "singapore_idx": 305.1,
+      "estimado": false
+    },
+    {
+      "anio": 2010,
+      "cuba": 6578.2,
+      "vietnam": 4571.8,
+      "costa_rica": 12031.6,
+      "singapore": 58612.7,
+      "cuba_idx": 129.6,
+      "vietnam_idx": 308.7,
+      "costa_rica_idx": 169.8,
+      "singapore_idx": 348.2,
+      "estimado": false
+    },
+    {
+      "anio": 2011,
+      "cuba": 6928.0,
+      "vietnam": 4786.0,
+      "costa_rica": 12366.0,
+      "singapore": 61672.0,
+      "cuba_idx": 136.5,
+      "vietnam_idx": 323.2,
+      "costa_rica_idx": 174.5,
+      "singapore_idx": 366.4,
+      "estimado": false
+    },
+    {
+      "anio": 2012,
+      "cuba": 7138.0,
+      "vietnam": 4984.0,
+      "costa_rica": 12792.0,
+      "singapore": 62783.0,
+      "cuba_idx": 140.7,
+      "vietnam_idx": 336.5,
+      "costa_rica_idx": 180.5,
+      "singapore_idx": 373.0,
+      "estimado": false
+    },
+    {
+      "anio": 2013,
+      "cuba": 7379.0,
+      "vietnam": 5200.0,
+      "costa_rica": 12916.0,
+      "singapore": 64633.0,
+      "cuba_idx": 145.4,
+      "vietnam_idx": 351.1,
+      "costa_rica_idx": 182.2,
+      "singapore_idx": 384.0,
+      "estimado": false
+    },
+    {
+      "anio": 2014,
+      "cuba": 7628.0,
+      "vietnam": 5455.0,
+      "costa_rica": 13222.0,
+      "singapore": 65655.0,
+      "cuba_idx": 150.3,
+      "vietnam_idx": 368.3,
+      "costa_rica_idx": 186.6,
+      "singapore_idx": 390.1,
+      "estimado": false
+    },
+    {
+      "anio": 2015,
+      "cuba": 7889.0,
+      "vietnam": 5763.0,
+      "costa_rica": 13677.0,
+      "singapore": 65660.0,
+      "cuba_idx": 155.4,
+      "vietnam_idx": 389.1,
+      "costa_rica_idx": 193.0,
+      "singapore_idx": 390.1,
+      "estimado": false
+    },
+    {
+      "anio": 2016,
+      "cuba": 8000.0,
+      "vietnam": 6062.0,
+      "costa_rica": 14098.0,
+      "singapore": 65729.0,
+      "cuba_idx": 157.6,
+      "vietnam_idx": 409.3,
+      "costa_rica_idx": 198.9,
+      "singapore_idx": 390.5,
+      "estimado": false
+    },
+    {
+      "anio": 2017,
+      "cuba": 8141.7,
+      "vietnam": 6422.1,
+      "costa_rica": 14470.8,
+      "singapore": 67331.0,
+      "cuba_idx": 160.4,
+      "vietnam_idx": 433.6,
+      "costa_rica_idx": 204.2,
+      "singapore_idx": 400.0,
+      "estimado": false
+    },
+    {
+      "anio": 2018,
+      "cuba": 8325.6,
+      "vietnam": 6814.1,
+      "costa_rica": 14686.3,
+      "singapore": 68402.3,
+      "cuba_idx": 164.1,
+      "vietnam_idx": 460.1,
+      "costa_rica_idx": 207.2,
+      "singapore_idx": 406.4,
+      "estimado": false
+    },
+    {
+      "anio": 2019,
+      "cuba": 8308.9,
+      "vietnam": 7229.8,
+      "costa_rica": 14891.9,
+      "singapore": 68539.1,
+      "cuba_idx": 163.7,
+      "vietnam_idx": 488.2,
+      "costa_rica_idx": 210.1,
+      "singapore_idx": 407.2,
+      "estimado": true
+    },
+    {
+      "anio": 2020,
+      "cuba": 7403.2,
+      "vietnam": 7374.4,
+      "costa_rica": 14147.3,
+      "singapore": 65660.5,
+      "cuba_idx": 145.9,
+      "vietnam_idx": 497.9,
+      "costa_rica_idx": 199.6,
+      "singapore_idx": 390.1,
+      "estimado": true
+    },
+    {
+      "anio": 2021,
+      "cuba": 7499.4,
+      "vietnam": 7507.1,
+      "costa_rica": 15137.6,
+      "singapore": 71438.6,
+      "cuba_idx": 147.8,
+      "vietnam_idx": 506.9,
+      "costa_rica_idx": 213.6,
+      "singapore_idx": 424.4,
+      "estimado": true
+    },
+    {
+      "anio": 2022,
+      "cuba": 7634.4,
+      "vietnam": 8047.6,
+      "costa_rica": 15697.7,
+      "singapore": 71795.8,
+      "cuba_idx": 150.4,
+      "vietnam_idx": 543.4,
+      "costa_rica_idx": 221.5,
+      "singapore_idx": 426.6,
+      "estimado": true
+    },
+    {
+      "anio": 2023,
+      "cuba": 7489.3,
+      "vietnam": 8401.7,
+      "costa_rica": 16357.0,
+      "singapore": 71867.6,
+      "cuba_idx": 147.6,
+      "vietnam_idx": 567.3,
+      "costa_rica_idx": 230.8,
+      "singapore_idx": 427.0,
+      "estimado": true
+    },
+    {
+      "anio": 2024,
+      "cuba": 7406.9,
+      "vietnam": 8939.4,
+      "costa_rica": 16929.5,
+      "singapore": 74454.8,
+      "cuba_idx": 145.9,
+      "vietnam_idx": 603.6,
+      "costa_rica_idx": 238.9,
+      "singapore_idx": 442.4,
+      "estimado": true
+    },
+    {
+      "anio": 2025,
+      "cuba": 7295.8,
+      "vietnam": 9457.9,
+      "costa_rica": 17437.4,
+      "singapore": 75795.0,
+      "cuba_idx": 143.8,
+      "vietnam_idx": 638.6,
+      "costa_rica_idx": 246.0,
+      "singapore_idx": 450.3,
+      "estimado": true
+    }
+  ],
+  "paquetes_event_study": [
+    {
+      "anio": 2008,
+      "nombre": "Usufructo DL 259",
+      "detalle": "Entrega de tierras estatales ociosas en usufructo",
+      "crec_pre": 8.5,
+      "crec_post": 4.88,
+      "confianza": "confirmado",
+      "nota": null
+    },
+    {
+      "anio": 2011,
+      "nombre": "Lineamientos (313)",
+      "detalle": "VI Congreso PCC: 313 lineamientos de actualización del modelo",
+      "crec_pre": 4.88,
+      "crec_post": 3.26,
+      "confianza": "confirmado",
+      "nota": null
+    },
+    {
+      "anio": 2014,
+      "nombre": "Ley 118 Inversión Extranjera",
+      "detalle": "Nueva ley de inversión extranjera y cartera de oportunidades",
+      "crec_pre": 3.26,
+      "crec_post": 2.2,
+      "confianza": "confirmado",
+      "nota": null
+    },
+    {
+      "anio": 2021,
+      "nombre": "Trilogía 2021",
+      "detalle": "Tarea Ordenamiento (ene) + 63 medidas agro (abr) + mipymes DL 46 (sep)",
+      "crec_pre": -3.27,
+      "crec_post": -0.4,
+      "confianza": "confirmado",
+      "nota": "post incluye tramo estimado 2019-2025"
+    },
+    {
+      "anio": 2023,
+      "nombre": "Proyecciones anti-distorsiones",
+      "detalle": "Programa de gobierno para corregir distorsiones y reimpulsar la economía",
+      "crec_pre": 0.4,
+      "crec_post": -1.3,
+      "confianza": "estimado",
+      "nota": "post incluye tramo estimado 2019-2025"
+    }
+  ],
+  "episodios": [
+    {
+      "dominio": "empresa_privada",
+      "anio": 1959,
+      "tipo": "reversion",
+      "titulo": "Nacionalizaciones iniciales",
+      "detalle": "Expropiación de grandes empresas nacionales y extranjeras entre 1959 y 1960",
+      "confianza": "confirmado",
+      "fuente": "Leyes de nacionalización 1959-60"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 1968,
+      "tipo": "reversion",
+      "titulo": "Ofensiva Revolucionaria",
+      "detalle": "Confiscación de la práctica totalidad del pequeño comercio urbano privado",
+      "confianza": "confirmado",
+      "fuente": "Registros oficiales de la época; historiografía académica",
+      "magnitud": "~56.000 pequeños negocios"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 1978,
+      "tipo": "apertura",
+      "titulo": "Cuentapropismo inicial",
+      "detalle": "Primera autorización limitada del trabajo por cuenta propia",
+      "confianza": "confirmado",
+      "fuente": "DL 14/1978"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 1993,
+      "tipo": "apertura",
+      "titulo": "Cuentapropismo ampliado",
+      "detalle": "Ampliación de oficios autorizados en plena crisis del Periodo Especial",
+      "confianza": "confirmado",
+      "fuente": "DL 141/1993"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 1996,
+      "tipo": "reversion",
+      "titulo": "Freno fiscal",
+      "detalle": "Endurecimiento tributario y de licencias que contrajo el sector",
+      "confianza": "confirmado",
+      "fuente": "Normativa tributaria 1996"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 2010,
+      "tipo": "apertura",
+      "titulo": "Expansión de licencias",
+      "detalle": "Ampliación a ~200 actividades y despidos estatales masivos anunciados",
+      "confianza": "confirmado",
+      "fuente": "Lineamientos VI Congreso; Gaceta Oficial"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 2017,
+      "tipo": "reversion",
+      "titulo": "Congelación de licencias",
+      "detalle": "Suspensión temporal de nuevas licencias en actividades clave",
+      "confianza": "confirmado",
+      "fuente": "Resoluciones MTSS 2017"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 2021,
+      "tipo": "apertura",
+      "titulo": "Legalización de mipymes",
+      "detalle": "Autorización de micro, pequeñas y medianas empresas privadas",
+      "confianza": "confirmado",
+      "fuente": "DL 46/2021"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 2024,
+      "tipo": "reversion",
+      "titulo": "Restricciones a mipymes",
+      "detalle": "Topes de precios, límites a importadoras y mayor control fiscal",
+      "confianza": "confirmado",
+      "fuente": "Resoluciones MFP/MINCIN 2023-24"
+    },
+    {
+      "dominio": "empresa_privada",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: empresa sin límites",
+      "detalle": "Empresas privadas sin límite de tamaño, múltiples empresas por titular, sociedades anónimas",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 1959,
+      "tipo": "reversion",
+      "titulo": "Reformas agrarias I y II",
+      "detalle": "Expropiación y estatización progresiva de la tierra (1959 y 1963)",
+      "confianza": "confirmado",
+      "fuente": "Leyes de Reforma Agraria"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 1980,
+      "tipo": "apertura",
+      "titulo": "Mercados Libres Campesinos",
+      "detalle": "Autorización de venta directa de excedentes a precios libres",
+      "confianza": "confirmado",
+      "fuente": "Normativa MLC 1980"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 1986,
+      "tipo": "reversion",
+      "titulo": "Rectificación: cierre de los MLC",
+      "detalle": "Clausura de los mercados libres campesinos por decisión política",
+      "confianza": "confirmado",
+      "fuente": "Proceso de Rectificación 1986"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 1993,
+      "tipo": "apertura",
+      "titulo": "UBPC y mercados agropecuarios",
+      "detalle": "Cooperativización de tierras estatales y reapertura de mercados (1993-94)",
+      "confianza": "confirmado",
+      "fuente": "DL 142/1993"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 2008,
+      "tipo": "apertura",
+      "titulo": "Usufructo DL 259",
+      "detalle": "Entrega de tierras ociosas en usufructo a personas naturales",
+      "confianza": "confirmado",
+      "fuente": "DL 259/2008"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 2012,
+      "tipo": "apertura",
+      "titulo": "Usufructo ampliado DL 300",
+      "detalle": "Ampliación de extensiones y plazos del usufructo",
+      "confianza": "confirmado",
+      "fuente": "DL 300/2012"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 2021,
+      "tipo": "apertura",
+      "titulo": "63 medidas agropecuarias",
+      "detalle": "Paquete de estímulo a la producción de alimentos",
+      "confianza": "confirmado",
+      "fuente": "Anuncio MINAG abr 2021"
+    },
+    {
+      "dominio": "agricultura",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: usufructo indefinido",
+      "detalle": "Usufructo sin plazo, comercio exterior directo cooperativo, precios libres",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 1961,
+      "tipo": "reversion",
+      "titulo": "Penalización del dólar",
+      "detalle": "Tenencia de divisas tipificada como delito",
+      "confianza": "confirmado",
+      "fuente": "Código Penal y normas cambiarias"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 1993,
+      "tipo": "apertura",
+      "titulo": "Despenalización del dólar",
+      "detalle": "Legalización de la tenencia y circulación del dólar",
+      "confianza": "confirmado",
+      "fuente": "DL 140/1993"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 2004,
+      "tipo": "reversion",
+      "titulo": "Desdolarización y gravamen",
+      "detalle": "Retiro del dólar del comercio y gravamen del 10% a su canje",
+      "confianza": "confirmado",
+      "fuente": "Resolución 80/2004 BCC",
+      "magnitud": "gravamen 10%"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 2019,
+      "tipo": "apertura",
+      "titulo": "Tiendas en MLC",
+      "detalle": "Reapertura parcial del comercio en divisas mediante moneda libremente convertible",
+      "confianza": "confirmado",
+      "fuente": "Resoluciones BCC/MINCIN 2019"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 2021,
+      "tipo": "reversion",
+      "titulo": "Rechazo del dólar en efectivo",
+      "detalle": "Suspensión de depósitos bancarios de dólares en efectivo",
+      "confianza": "confirmado",
+      "fuente": "Resolución BCC jun 2021"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 2024,
+      "tipo": "apertura",
+      "titulo": "Dolarización parcial comercial",
+      "detalle": "Reapertura de comercio minorista en dólares",
+      "confianza": "confirmado",
+      "fuente": "Normativa 2024"
+    },
+    {
+      "dominio": "divisas",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: ampliación de divisas",
+      "detalle": "Casas de cambio privadas, mercado cambiario digital, subastas de divisas",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 1960,
+      "tipo": "reversion",
+      "titulo": "Expropiaciones a capital extranjero",
+      "detalle": "Nacionalización de activos estadounidenses y de otros países",
+      "confianza": "confirmado",
+      "fuente": "Leyes 851/890 de 1960"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 1982,
+      "tipo": "apertura",
+      "titulo": "Decreto-Ley 50",
+      "detalle": "Primera norma de asociación económica con capital extranjero",
+      "confianza": "confirmado",
+      "fuente": "DL 50/1982"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 1995,
+      "tipo": "apertura",
+      "titulo": "Ley 77",
+      "detalle": "Ley de inversión extranjera del Periodo Especial",
+      "confianza": "confirmado",
+      "fuente": "Ley 77/1995"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 2013,
+      "tipo": "apertura",
+      "titulo": "ZED Mariel",
+      "detalle": "Zona Especial de Desarrollo con régimen preferencial",
+      "confianza": "confirmado",
+      "fuente": "DL 313/2013"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 2014,
+      "tipo": "apertura",
+      "titulo": "Ley 118",
+      "detalle": "Nueva ley con rebajas fiscales y cartera de oportunidades; ejecución muy por debajo de lo comprometido",
+      "confianza": "confirmado",
+      "fuente": "Ley 118/2014"
+    },
+    {
+      "dominio": "inversion_extranjera",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: IED en privados",
+      "detalle": "Inversión extranjera en empresas privadas y cooperativas, derechos de superficie a 99 años",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    },
+    {
+      "dominio": "banca",
+      "anio": 1960,
+      "tipo": "reversion",
+      "titulo": "Nacionalización bancaria",
+      "detalle": "Estatización de toda la banca; desde entonces monopolio estatal absoluto",
+      "confianza": "confirmado",
+      "fuente": "Ley de nacionalización bancaria 1960"
+    },
+    {
+      "dominio": "banca",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: banca privada",
+      "detalle": "Primera autorización de banca e instituciones financieras privadas en 66 años; sin ciclo previo que evaluar",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    },
+    {
+      "dominio": "subsidios",
+      "anio": 1962,
+      "tipo": "reversion",
+      "titulo": "Libreta de abastecimiento",
+      "detalle": "Racionamiento universal instaurado como mecanismo permanente",
+      "confianza": "confirmado",
+      "fuente": "Creación de OFICODA 1962"
+    },
+    {
+      "dominio": "subsidios",
+      "anio": 2011,
+      "tipo": "anuncio",
+      "titulo": "Lineamientos: eliminar la libreta",
+      "detalle": "El VI Congreso ordena la eliminación ordenada del racionamiento; quince años después sigue vigente",
+      "confianza": "confirmado",
+      "fuente": "Lineamiento 174, VI Congreso PCC"
+    },
+    {
+      "dominio": "subsidios",
+      "anio": 2026,
+      "tipo": "anuncio",
+      "titulo": "176 medidas: subsidio a personas",
+      "detalle": "Sustitución gradual de subsidios a productos por focalización; eliminación de subsidios a electricidad, agua y transporte",
+      "confianza": "reportado",
+      "fuente": "Presentación ante la ANPP, jun 2026"
+    }
+  ],
+  "ejes_2026": [
+    {
+      "id": 1,
+      "nombre": "Actores económicos",
+      "medidas_destacadas": 29,
+      "dominio_homologo": "empresa_privada",
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 2,
+      "nombre": "Propiedad y gestión",
+      "medidas_destacadas": 8,
+      "dominio_homologo": "empresa_privada",
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 3,
+      "nombre": "Planificación",
+      "medidas_destacadas": 7,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 4,
+      "nombre": "Sector presupuestado",
+      "medidas_destacadas": 5,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 5,
+      "nombre": "Autonomía municipal",
+      "medidas_destacadas": 11,
+      "dominio_homologo": null,
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 6,
+      "nombre": "Energía",
+      "medidas_destacadas": 9,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 7,
+      "nombre": "Agricultura",
+      "medidas_destacadas": 17,
+      "dominio_homologo": "agricultura",
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 8,
+      "nombre": "Política social",
+      "medidas_destacadas": 17,
+      "dominio_homologo": "subsidios",
+      "dependencia_normativa": "baja",
+      "confianza": "reportado"
+    },
+    {
+      "id": 9,
+      "nombre": "Subsidios",
+      "medidas_destacadas": 8,
+      "dominio_homologo": "subsidios",
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 10,
+      "nombre": "Trabajo y salarios",
+      "medidas_destacadas": 13,
+      "dominio_homologo": null,
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 11,
+      "nombre": "Banca y finanzas",
+      "medidas_destacadas": 15,
+      "dominio_homologo": "banca",
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 12,
+      "nombre": "Tributos",
+      "medidas_destacadas": 12,
+      "dominio_homologo": null,
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 13,
+      "nombre": "Precios",
+      "medidas_destacadas": 4,
+      "dominio_homologo": null,
+      "dependencia_normativa": "baja",
+      "confianza": "reportado"
+    },
+    {
+      "id": 14,
+      "nombre": "Inversión extranjera",
+      "medidas_destacadas": 11,
+      "dominio_homologo": "inversion_extranjera",
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    },
+    {
+      "id": 15,
+      "nombre": "Comercio exterior",
+      "medidas_destacadas": 5,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 16,
+      "nombre": "Dolarización parcial",
+      "medidas_destacadas": 4,
+      "dominio_homologo": "divisas",
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 17,
+      "nombre": "Turismo",
+      "medidas_destacadas": 14,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 18,
+      "nombre": "Transporte",
+      "medidas_destacadas": 4,
+      "dominio_homologo": null,
+      "dependencia_normativa": "baja",
+      "confianza": "reportado"
+    },
+    {
+      "id": 19,
+      "nombre": "Comercio y servicios",
+      "medidas_destacadas": 10,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 20,
+      "nombre": "Seguros",
+      "medidas_destacadas": 6,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 21,
+      "nombre": "Digitalización e IA",
+      "medidas_destacadas": 11,
+      "dominio_homologo": null,
+      "dependencia_normativa": "media",
+      "confianza": "reportado"
+    },
+    {
+      "id": 22,
+      "nombre": "Estadísticas",
+      "medidas_destacadas": 4,
+      "dominio_homologo": null,
+      "dependencia_normativa": "baja",
+      "confianza": "reportado"
+    },
+    {
+      "id": 23,
+      "nombre": "Control e inspección",
+      "medidas_destacadas": 7,
+      "dominio_homologo": null,
+      "dependencia_normativa": "alta",
+      "confianza": "reportado"
+    }
+  ],
+  "encuesta": {
+    "id": "medidas_176_implementacion",
+    "pregunta": "¿De las 176 medidas, cuántas cree que estarán implementadas antes de 2028?",
+    "opciones": [
+      {
+        "id": "mayoria",
+        "texto": "La mayoría (más de 100)"
+      },
+      {
+        "id": "parcial",
+        "texto": "Una parte (30 a 100)"
+      },
+      {
+        "id": "minima",
+        "texto": "Casi ninguna (menos de 30)"
+      }
+    ]
+  }
+}
