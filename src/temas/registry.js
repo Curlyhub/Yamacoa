@@ -14,7 +14,15 @@
 //   etiqueta  rótulo de categoría (mono, en mayúsculas)
 //   accent    color de acento del tema (hex)
 //   fuentes   procedencia en texto corto
+//   publicado fecha de publicación (YYYY-MM-DD). La portada ordena por este
+//             campo, de más reciente a más antiguo. NO es `meta.actualizado`
+//             del dataset: aquel se mueve con cada /refrescar y haría saltar
+//             expedientes viejos al primer puesto. Se fija una vez, al crear
+//             el tema, y ya no se toca.
 //   load      import dinámico del .jsx del tema
+//
+// El array es APPEND-ONLY: los temas nuevos se añaden al final y la portada
+// los coloca en su sitio según `publicado`. No hace falta reordenar a mano.
 
 const temas = [
   {
@@ -28,6 +36,7 @@ const temas = [
     accent: "#32BD4E", // verde señal de la paleta "Luz verde" del renderer congelado
     fuentes: "Prensa independiente cubana · Prisoners Defenders · Justicia 11J · OCDH",
     dataSlug: "convocatoria_11j", // el dataset es /data/convocatoria_11j.json (guion bajo)
+    publicado: "2026-07-10",
     load: () => import("./convocatoria_11j.jsx"),
   },
   {
@@ -40,6 +49,7 @@ const temas = [
     accent: "#E3A52A",                // ⚠ CONFIRMAR (marigold dominante en la paleta)
     fuentes: "Justicia 11J / Cubalex", // ⚠ CONFIRMAR
     dataSlug: "11j", // el dataset es /data/11j.json, no /data/anatomia-11j.json
+    publicado: "2026-06-30",
     load: () => import("./anatomia_11j.jsx"),
   },
   {
@@ -52,6 +62,7 @@ const temas = [
     etiqueta: "EXPEDIENTE · INTERNACIONALISMO",
     accent: "#6E9537", // oliva "Carlota" del renderer congelado
     fuentes: "Archivo Cuba (verificado) · Gleijeses · elTOQUE · Connectas · prensa independiente",
+    publicado: "2026-07-11",
     load: () => import("./angola.jsx"),
   },
   {
@@ -63,6 +74,7 @@ const temas = [
     etiqueta: "REPRESIÓN · DERECHOS HUMANOS",
     accent: "#C4392B",
     fuentes: "OCDH · Prisoners Defenders · prensa independiente cubana",
+    publicado: "2026-06-30",
     load: () => import("./represion_cuba.jsx"),
   },
   {
@@ -74,6 +86,7 @@ const temas = [
     etiqueta: "PROTESTA CÍVICA · OCC",
     accent: "#F2913B",
     fuentes: "Observatorio Cubano de Conflictos (OCC)",
+    publicado: "2026-06-30",
     load: () => import("./conflictos_cuba.jsx"),
   },
   {
@@ -86,6 +99,7 @@ const temas = [
     etiqueta: "ENERGÍA · CONTRAFACTUAL",
     accent: "#38D6C9",
     fuentes: "Escenario del autor sobre cifras públicas",
+    publicado: "2026-06-30",
     load: () => import("./gaesa-escenario.jsx"),
   },
   {
@@ -97,6 +111,7 @@ const temas = [
     etiqueta: "RED DE PODER",
     accent: "#D4AE57",
     fuentes: "Periodismo de investigación y documentos oficiales",
+    publicado: "2026-06-30",
     load: () => import("./rusificacion_cuba.jsx"),
   },
   {
@@ -108,6 +123,7 @@ const temas = [
     etiqueta: "HISTORIA · SÍMBOLOS PATRIOS", // ⚠ CONFIRMAR
     accent: "rgb(80, 133, 230)",                        // ⚠ CONFIRMAR (oro de la partitura / la estrella)
     fuentes: "BNF/Gallica · Gay-Calbó (1945) · Heredia",  // ⚠ CONFIRMAR
+    publicado: "2026-06-30",
     load: () => import("./himno_narciso.jsx"),
   },
   {
@@ -119,6 +135,7 @@ const temas = [
     etiqueta: "RECURSOS MINERALES · GEOPOLÍTICA",
     accent: "#f54b08",
     fuentes: "USGS · Sherritt NI 43-101 · Antilles Gold JORC · GeoMinera",
+    publicado: "2026-06-30",
     load: () => import("./mineria.jsx"),
   },
   {
@@ -131,6 +148,7 @@ const temas = [
     accent: "#2BB6A6",                       // ⚠ CONFIRMAR (turquesa del eyebrow)
     fuentes: "ICLEP · Instituto Cubano por la Libertad de Expresión y Prensa", // ⚠ CONFIRMAR
     dataSlug: "iclep", // el dataset es /data/iclep.json, no /data/libertad-prensa.json
+    publicado: "2026-06-30",
     load: () => import("./iclep.jsx"),
   },
   {
@@ -143,6 +161,7 @@ const temas = [
     accent: "#A33B4A",                            // ⚠ CONFIRMAR (garnet del título; alt: ochre #C9803E del eyebrow)
     fuentes: "Informe alternativo CERD 2026 · CRD · 4Métrica · Ciudadanía y Libertad", // ⚠ CONFIRMAR
     dataSlug: "racismo", // el dataset es /data/racismo.json, no /data/racismo-estructural.json
+    publicado: "2026-06-30",
     load: () => import("./racismo.jsx"),
   },
   {
@@ -154,6 +173,7 @@ const temas = [
     etiqueta: "MEMORIA · CRÍMENES DE ESTADO",
     accent: "#3F92B0",
     fuentes: "Archivo Cuba / Free Society Project · Proyecto de Verdad y Memoria",
+    publicado: "2026-07-05",
     load: () => import("./asesinatos_masacres.jsx"),
   },
   {
@@ -165,6 +185,7 @@ const temas = [
     etiqueta: "MEMORIA · VERDAD Y MEMORIA 2023",
     accent: "#FF6A00",
     fuentes: "Archivo Cuba & American Museum of the Cuban Diaspora · Verdad y Memoria",
+    publicado: "2026-07-05",
     load: () => import("./desaparecidos_2023.jsx"),
   },
   {
@@ -176,6 +197,7 @@ const temas = [
     etiqueta: "DERECHOS · SERVICIO MILITAR",
     accent: "#33C27A",
     fuentes: "Maria C. Werlau · Archivo Cuba / Free Society Project",
+    publicado: "2026-07-05",
     load: () => import("./servicio_militar.jsx"),
   },
   {
@@ -188,6 +210,7 @@ const temas = [
     accent: "#157A72", // teal "voltaje" de la paleta congelada del renderer
     fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
     dataSlug: "vias_cambio", // el dataset es /data/vias_cambio.json (guion bajo), no /data/vias-cambio.json
+    publicado: "2026-07-05",
     load: () => import("./vias_cambio.jsx"),
   },
   {
@@ -199,6 +222,7 @@ const temas = [
     etiqueta: "ENERGÍA · SISTEMA ELÉCTRICO NACIONAL",
     accent: "#3BA9E0", // azul de arco de la paleta "Arco voltaico" del renderer congelado
     fuentes: "Unión Eléctrica (UNE) · Horizonte Cubano (Columbia Law) · IEEE Spectrum · ONEI · prensa independiente",
+    publicado: "2026-07-07",
     load: () => import("./electrica.jsx"),
   },
   {
@@ -212,6 +236,7 @@ const temas = [
     accent: "#35C4A6",                     // ⚠ CONFIRMAR (menta "apertura" de la paleta del renderer)
     fuentes: "Maddison Project · CEPAL/FMI · Gacetas Oficiales · documento de las 176 medidas", // ⚠ CONFIRMAR
     dataSlug: "medidas_176", // el dataset es /data/medidas_176.json (guion bajo)
+    publicado: "2026-07-14",
     load: () => import("./medidas_176.jsx"),
   },
   {
@@ -225,6 +250,7 @@ const temas = [
     accent: "#e9b23c",                  // ⚠ CONFIRMAR (oro dominante de la paleta del renderer)
     fuentes: "La Joven Cuba (entrevista) · Reuters · The Guardian · Wikipedia", // ⚠ CONFIRMAR
     dataSlug: "triana_reformas", // el dataset es /data/triana_reformas.json
+    publicado: "2026-07-14",
     load: () => import("./triana_reformas.jsx"),
   },
   {
@@ -237,6 +263,7 @@ const temas = [
     etiqueta: "DEMOGRAFÍA · DIÁSPORA",
     accent: "#A666D6", // violeta "Nido vacío" del renderer congelado
     fuentes: "ONEI · CBP · Naciones Unidas (World Population Prospects) · Albizu-Campos · ASIC",
+    publicado: "2026-07-20",
     load: () => import("./envejecimiento.jsx"),
   },
   {
@@ -249,6 +276,7 @@ const temas = [
     etiqueta: "RECURSOS · CONTRAFACTUAL", // ⚠ CONFIRMAR
     accent: "#0E7C7B",                     // ⚠ CONFIRMAR (teal de la paleta C del renderer)
     fuentes: "USGS · Reuters · Antilles Gold · DevTech/Crespin · MovimientoC40", // ⚠ CONFIRMAR
+    publicado: "2026-07-20",
     load: () => import("./cayo_romano.jsx"),
   },
   {
@@ -261,6 +289,7 @@ const temas = [
     accent: "#C2497F",                      // ⚠ CONFIRMAR (magenta "exilio" de la paleta del renderer)
     fuentes: "elTOQUE · FIU Cuba Poll · Bendixen & Amandi/Miami Herald · OCC · Justicia 11J · 14ymedio", // ⚠ CONFIRMAR
     dataSlug: "coraje_dividido", // el dataset es /data/coraje_dividido.json (guion bajo)
+    publicado: "2026-07-20",
     load: () => import("./coraje_dividido.jsx"),
   },
 ];

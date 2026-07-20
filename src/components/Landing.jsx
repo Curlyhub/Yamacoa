@@ -4,6 +4,18 @@ import temas from "../temas/registry.js";
 
 /* Portada de Yamacoa. Toda la rejilla se deriva del registry: añadir un tema no
    toca este archivo. Estilos encapsulados; usa los tokens del shell (Layout). */
+
+/* Orden de la rejilla: los más recientes arriba.
+   Se ordena por `publicado` (fecha de publicación, estable) y NO por el
+   `actualizado` del dataset, que se mueve con cada /refrescar: si ordenáramos
+   por ese, un expediente antiguo recién refrescado saltaría al primer puesto
+   como si fuera nuevo. Array.sort es estable desde ES2019, así que los temas
+   publicados el mismo día conservan el orden en que están en el registry.
+   El registry sigue siendo append-only: /importar añade al final y esto lo
+   coloca donde toca. */
+const temasOrdenados = [...temas].sort((a, b) =>
+  String(b.publicado || "").localeCompare(String(a.publicado || ""))
+);
 const CSS = `
 .ym-landing{ max-width:1080px; margin:0 auto; padding:0 22px 72px; }
 
@@ -253,7 +265,7 @@ export default function Landing() {
       </div>
 
       <div className="ym-grid" ref={gridRef}>
-        {temas.map((t, i) => (
+        {temasOrdenados.map((t, i) => (
           <div
             key={t.id}
             className="ym-card-reveal"
