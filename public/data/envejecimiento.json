@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "slug": "envejecimiento",
+    "titulo": "El rápido envejecimiento poblacional y la diáspora en Cuba",
+    "subtitulo": "Cómo el éxodo migratorio deformó la pirámide poblacional cubana, comparado con un escenario sin él",
+    "descripcion": "Cuba atraviesa la crisis demográfica más aguda de América Latina: envejecimiento acelerado, natalidad en mínimos históricos y un éxodo migratorio que golpea, sobre todo, a la población en edad laboral y reproductiva. Según la Oficina Nacional de Estadísticas e Información (ONEI), la población residente cayó a 9.748.532 habitantes a finales de 2024, y a un estimado de alrededor de 9,4 millones hacia finales de 2025: un descenso sostenido por cuarto año consecutivo. El demógrafo independiente Juan Carlos Albizu-Campos sitúa la población efectiva muy por debajo de esa cifra oficial: 8,62 millones en 2023 y 8,025 millones en 2024, una divergencia de método (población de derecho frente a población efectivamente presente en la isla) que conviene no leer como un error, sino como dos formas distintas de contar.\n\nEl motor central es la emigración. Desde octubre de 2021, más de 850.000 cubanos han llegado a Estados Unidos según datos de la Oficina de Aduanas y Protección Fronteriza (CBP), con picos entre 2022 y 2023; sumando otros destinos, el total migratorio ronda o supera el millón, aunque no existe una fuente única que consolide esa cifra global con precisión. Las mujeres representan entre el 56% y el 57% de quienes emigran, y buena parte del éxodo se concentra en población en edad laboral y reproductiva, lo que erosiona a la vez la base de nacimientos y la fuerza de trabajo activa.\n\nEl resultado es una pirámide poblacional que se invierte con rapidez. El grupo de 60 años o más alcanzó el 25,7% de la población en 2024 (frente al 19,4% de 2015), la proporción más alta de América Latina y el Caribe, y la mediana de edad llegó a 42,2 años. En paralelo, la natalidad se desploma: 2025 cerró con 68.051 nacimientos frente a 134.354 defunciones —casi el doble—, un saldo natural negativo superior a 66.000 personas y una tasa de fecundidad de 1,45 hijos por mujer, muy por debajo del nivel de reemplazo (2,1). Naciones Unidas proyecta que, de continuar la tendencia, la población cubana podría rondar los 5,6 millones hacia el año 2100; para 2050 las proyecciones son más dispersas, entre 7 y 9,4 millones según la fuente, con el grupo de 60 años o más acercándose a un tercio de la población.\n\nEsta transformación golpea directamente a dos sistemas: pensiones y salud. La pensión mínima, elevada a 4.000 pesos cubanos (CUP) desde septiembre de 2025, equivale a entre 7 y 10 dólares al cambio informal, frente a una canasta de bienes y servicios de referencia que estudios académicos sitúan entre 50.000 y 96.000 CUP mensuales por persona. Una encuesta de la Asociación Sindical Independiente de Cuba (ASIC, 506 personas, no representativa a escala nacional) encontró que el 99% de sus encuestados no cubre con su pensión ni alimentación, ni vivienda ni medicamentos. En salud, más de 77.000 profesionales emigraron entre 2021 y 2024, y la cantidad de médicos cayó cerca de un 30%, de 104 a 131 habitantes por médico.\n\nEl expediente incluye también un ejercicio contrafactual explícitamente hipotético: cómo luciría la pirámide poblacional sin el éxodo migratorio posterior a 2021. No es una proyección demográfica oficial ni una medición, sino una forma de dimensionar cuánto de la crisis actual es tendencia de fondo (baja fecundidad desde los años setenta) y cuánto es aceleración por la salida masiva y reciente de población joven.",
+    "narracion": "Cuba envejece más rápido que ningún otro país de América Latina, mientras se vacía de gente joven. La población oficial cayó a nueve millones setecientos cuarenta y ocho mil habitantes a finales de dos mil veinticuatro, y ronda los nueve millones cuatrocientos mil hacia finales de dos mil veinticinco. Un demógrafo independiente calcula una cifra aún menor: ocho millones de habitantes en dos mil veinticuatro.\n\nEl motor es la emigración: desde dos mil veintiuno, más de ochocientos cincuenta mil cubanos llegaron a Estados Unidos, y más de la mitad de quienes emigran son mujeres. Se van, sobre todo, los más jóvenes y quienes están en edad de trabajar y de tener hijos.\n\nEl resultado: uno de cada cuatro cubanos tiene sesenta años o más, la proporción más alta de la región. La edad mediana llega a cuarenta y dos años. Nacen menos de setenta mil niños al año, frente a más de ciento treinta y cuatro mil muertes: casi el doble.\n\nNaciones Unidas proyecta que Cuba podría tener solo cinco millones seiscientos mil habitantes hacia el año dos mil cien.\n\nLa pensión mínima cubre apenas una fracción de la canasta básica real, y más de setenta y siete mil profesionales de salud emigraron en cuatro años. Este expediente muestra, con datos verificados, cómo se deforma la pirámide poblacional cubana, y la compara con un escenario hipotético: el que existiría sin el éxodo masivo de la última década.",
+    "fecha_publicacion": "2026-07-19",
+    "fuentes": [
+      "ONEI (Oficina Nacional de Estadísticas e Información) — Anuario Demográfico y notas oficiales",
+      "Oficina de Aduanas y Protección Fronteriza de EE. UU. (CBP)",
+      "Naciones Unidas — División de Población (World Population Prospects)",
+      "Juan Carlos Albizu-Campos (demógrafo independiente), citado por 14ymedio, Martí Noticias y Diario de Cuba",
+      "Asociación Sindical Independiente de Cuba (ASIC)",
+      "Prensa independiente y agencias: Infobae, El País, CubaConecta, elTOQUE, CiberCuba"
+    ],
+    "sistema_confianza": {
+      "confirmado": "Cifra oficial o de fuente primaria (ONEI, CBP, ONU) cotejada directamente.",
+      "reportado": "Ampliamente citada por prensa independiente o estudios académicos, sin una única fuente primaria consolidada.",
+      "estimado": "Proyección, extrapolación o cálculo ilustrativo; no es una medición."
+    },
+    "notas_metodologicas": [
+      "La cifra de 'canasta básica' de 12.000 CUP mencionada en el envío original subestima gravemente el coste real: estudios académicos la sitúan entre 50.000 y 96.000 CUP/mes; este expediente usa esos valores.",
+      "El hallazgo de que el 99% de los jubilados no cubre sus necesidades básicas proviene de una encuesta de la ASIC con 506 respuestas: no es representativa a escala nacional y se presenta siempre con esa salvedad.",
+      "La 'mediana de edad más alta' de Cuba se acota a América Latina y el Caribe: no se pudo verificar la comparación con el conjunto de las Américas (incluidos EE. UU., Canadá y Puerto Rico).",
+      "El escenario 'sin el éxodo masivo post-2021' es un ejercicio contrafactual hipotético, no una medición ni una proyección oficial: ilustra magnitud, no certeza.",
+      "La pirámide de edades se construye como modelo ilustrativo, calibrado sobre los porcentajes de población de 60 años o más y la mediana de edad verificados por ONEI; no reproduce el detalle quinquenal exacto del anuario demográfico.",
+      "La escasez del 70% de medicamentos esenciales es una cifra ampliamente repetida en el discurso público, pero no se localizó una fuente primaria que la sustente en esta verificación; se marca como estimada."
+    ],
+    "tesis_confianza": [
+      {
+        "afirmacion": "Población residente cayó a 9.748.532 a finales de 2024 (ONEI)",
+        "nivel": "confirmado"
+      },
+      {
+        "afirmacion": "Estimación independiente de Albizu-Campos: 8,025 millones en 2024",
+        "nivel": "reportado"
+      },
+      {
+        "afirmacion": "60 años o más = 25,7% de la población en 2024, la más alta de América Latina y el Caribe",
+        "nivel": "confirmado"
+      },
+      {
+        "afirmacion": "68.051 nacimientos y 134.354 defunciones en 2025 (saldo -66.303)",
+        "nivel": "confirmado"
+      },
+      {
+        "afirmacion": "Proyección ONU de ~5,6 millones de habitantes hacia 2100",
+        "nivel": "confirmado"
+      },
+      {
+        "afirmacion": "Proyección de 30-36% de personas de 60+ hacia 2050 y población de 7-9,4 millones",
+        "nivel": "estimado"
+      },
+      {
+        "afirmacion": "Escasez del 70% de medicamentos esenciales",
+        "nivel": "estimado"
+      },
+      {
+        "afirmacion": "Escenario contrafactual sin éxodo post-2021 (10,5-11 millones en 2025-26)",
+        "nivel": "estimado"
+      }
+    ]
+  },
+  "piramide": {
+    "advertencia": "Modelo ilustrativo calibrado sobre los porcentajes de personas de 60 años o más y la mediana de edad verificados por ONEI; no reproduce el detalle quinquenal exacto del anuario demográfico.",
+    "escenarios": [
+      {
+        "id": "real",
+        "nombre": "Trayectoria observada",
+        "anclas": [
+          {
+            "anio": 2025,
+            "confianza": "confirmado",
+            "nota": "Cifra ONEI de cierre de 2024 (9.748.532), usada como año base del modelo.",
+            "poblacion_total": 9748532,
+            "pct_60_mas": 25.7,
+            "mediana_edad": 42.2,
+            "grupos": [
+              {
+                "edad": "0-9",
+                "hombres": 5.61,
+                "mujeres": 5.39
+              },
+              {
+                "edad": "10-19",
+                "hombres": 6.38,
+                "mujeres": 6.12
+              },
+              {
+                "edad": "20-29",
+                "hombres": 6.5,
+                "mujeres": 6.5
+              },
+              {
+                "edad": "30-39",
+                "hombres": 7.44,
+                "mujeres": 8.06
+              },
+              {
+                "edad": "40-49",
+                "hombres": 6.0,
+                "mujeres": 6.5
+              },
+              {
+                "edad": "50-59",
+                "hombres": 4.61,
+                "mujeres": 5.19
+              },
+              {
+                "edad": "60-69",
+                "hombres": 6.3,
+                "mujeres": 7.7
+              },
+              {
+                "edad": "70-79",
+                "hombres": 3.36,
+                "mujeres": 4.64
+              },
+              {
+                "edad": "80+",
+                "hombres": 1.41,
+                "mujeres": 2.29
+              }
+            ]
+          },
+          {
+            "anio": 2050,
+            "confianza": "estimado",
+            "nota": "Población 2050: rango 7-9,4 millones según la fuente; 60+ rango 30-36% (una cifra de 39,7% citada en el envío original no se pudo confirmar).",
+            "poblacion_total": 8300000,
+            "pct_60_mas": 33.0,
+            "mediana_edad": 48.0,
+            "grupos": [
+              {
+                "edad": "0-9",
+                "hombres": 4.08,
+                "mujeres": 3.92
+              },
+              {
+                "edad": "10-19",
+                "hombres": 4.33,
+                "mujeres": 4.17
+              },
+              {
+                "edad": "20-29",
+                "hombres": 4.75,
+                "mujeres": 4.75
+              },
+              {
+                "edad": "30-39",
+                "hombres": 5.28,
+                "mujeres": 5.72
+              },
+              {
+                "edad": "40-49",
+                "hombres": 6.0,
+                "mujeres": 6.5
+              },
+              {
+                "edad": "50-59",
+                "hombres": 8.22,
+                "mujeres": 9.28
+              },
+              {
+                "edad": "60-69",
+                "hombres": 8.1,
+                "mujeres": 9.9
+              },
+              {
+                "edad": "70-79",
+                "hombres": 4.41,
+                "mujeres": 6.09
+              },
+              {
+                "edad": "80+",
+                "hombres": 1.71,
+                "mujeres": 2.79
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "contrafactual",
+        "nombre": "Sin el éxodo masivo post-2021 (hipotético)",
+        "advertencia": "Ejercicio ilustrativo del análisis original, no una proyección demográfica oficial ni una medición.",
+        "anclas": [
+          {
+            "anio": 2025,
+            "confianza": "estimado",
+            "poblacion_total": 10800000,
+            "pct_60_mas": 21.0,
+            "mediana_edad": 39.0,
+            "grupos": [
+              {
+                "edad": "0-9",
+                "hombres": 6.12,
+                "mujeres": 5.88
+              },
+              {
+                "edad": "10-19",
+                "hombres": 6.63,
+                "mujeres": 6.37
+              },
+              {
+                "edad": "20-29",
+                "hombres": 7.25,
+                "mujeres": 7.25
+              },
+              {
+                "edad": "30-39",
+                "hombres": 8.16,
+                "mujeres": 8.84
+              },
+              {
+                "edad": "40-49",
+                "hombres": 6.24,
+                "mujeres": 6.76
+              },
+              {
+                "edad": "50-59",
+                "hombres": 4.46,
+                "mujeres": 5.04
+              },
+              {
+                "edad": "60-69",
+                "hombres": 5.4,
+                "mujeres": 6.6
+              },
+              {
+                "edad": "70-79",
+                "hombres": 2.73,
+                "mujeres": 3.77
+              },
+              {
+                "edad": "80+",
+                "hombres": 0.95,
+                "mujeres": 1.55
+              }
+            ]
+          },
+          {
+            "anio": 2050,
+            "confianza": "estimado",
+            "poblacion_total": 10300000,
+            "pct_60_mas": 26.0,
+            "mediana_edad": 45.0,
+            "grupos": [
+              {
+                "edad": "0-9",
+                "hombres": 4.84,
+                "mujeres": 4.66
+              },
+              {
+                "edad": "10-19",
+                "hombres": 5.36,
+                "mujeres": 5.14
+              },
+              {
+                "edad": "20-29",
+                "hombres": 5.75,
+                "mujeres": 5.75
+              },
+              {
+                "edad": "30-39",
+                "hombres": 7.68,
+                "mujeres": 8.32
+              },
+              {
+                "edad": "40-49",
+                "hombres": 6.24,
+                "mujeres": 6.76
+              },
+              {
+                "edad": "50-59",
+                "hombres": 6.34,
+                "mujeres": 7.16
+              },
+              {
+                "edad": "60-69",
+                "hombres": 6.53,
+                "mujeres": 7.98
+              },
+              {
+                "edad": "70-79",
+                "hombres": 3.57,
+                "mujeres": 4.93
+              },
+              {
+                "edad": "80+",
+                "hombres": 1.14,
+                "mujeres": 1.86
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "serie_poblacion": {
+    "advertencia": "Serie deliberadamente dispersa: solo se incluyen los años con cifra corroborada o bien reportada. El tramo 2025-2100 es proyección, marcada con línea punteada en el renderer.",
+    "oficial": [
+      {
+        "anio": 2020,
+        "valor": 11300000,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2024,
+        "valor": 9748532,
+        "confianza": "confirmado"
+      },
+      {
+        "anio": 2025,
+        "valor": 9400000,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2050,
+        "valor": 8300000,
+        "confianza": "estimado"
+      },
+      {
+        "anio": 2100,
+        "valor": 5600000,
+        "confianza": "confirmado"
+      }
+    ],
+    "estimacion_independiente": [
+      {
+        "anio": 2023,
+        "valor": 8620000,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2024,
+        "valor": 8025000,
+        "confianza": "reportado"
+      }
+    ]
+  },
+  "natalidad_mortalidad": {
+    "serie": [
+      {
+        "anio": 2024,
+        "nacimientos": 71358,
+        "defunciones": 130000,
+        "confianza_defunciones": "reportado",
+        "confianza_nacimientos": "confirmado"
+      },
+      {
+        "anio": 2025,
+        "nacimientos": 68051,
+        "defunciones": 134354,
+        "confianza_defunciones": "confirmado",
+        "confianza_nacimientos": "confirmado"
+      }
+    ],
+    "saldo_natural_2025": -66303,
+    "tasa_fecundidad": {
+      "valor": 1.45,
+      "nivel_reemplazo": 2.1,
+      "anio": 2024,
+      "confianza": "reportado"
+    }
+  },
+  "pensiones": {
+    "jubilados_total": 1774310,
+    "pct_poblacion": 18.9,
+    "confianza_jubilados": "reportado",
+    "pension_minima_cup": 4000,
+    "pension_minima_usd_informal_min": 7,
+    "pension_minima_usd_informal_max": 10,
+    "vigente_desde": "2025-09",
+    "confianza_pension_minima": "confirmado",
+    "canasta_basica_cup_min": 50157,
+    "canasta_basica_cup_max": 96060,
+    "confianza_canasta": "reportado",
+    "cobertura_pct_min": 4.2,
+    "cobertura_pct_max": 8.0,
+    "encuesta_asic": {
+      "n": 506,
+      "pct_no_cubre": 99,
+      "fecha": "2025-09",
+      "advertencia": "Encuesta de la Asociación Sindical Independiente de Cuba (ASIC): 506 respuestas, no representativa a escala nacional."
+    }
+  },
+  "salud": {
+    "profesionales_emigrados_2021_2024": 77522,
+    "confianza_profesionales": "confirmado",
+    "medicos_2021": 106131,
+    "medicos_2024": 75364,
+    "caida_pct": 29,
+    "habitantes_por_medico_2021": 104,
+    "habitantes_por_medico_2024": 131,
+    "confianza_medicos": "confirmado",
+    "escasez_medicamentos_pct": 70,
+    "confianza_escasez": "estimado"
+  },
+  "contrafactual": {
+    "titulo": "La pirámide sin el éxodo",
+    "advertencia": "Ejercicio hipotético del análisis original: no es una proyección demográfica oficial ni una medición.",
+    "parrafos": [
+      "Sin el éxodo masivo posterior a 2021 (o limitándolo a niveles históricos, como el Mariel o los balseros de los años noventa), la población cubana en 2025-2026 podría rondar los 10,5-11 millones de habitantes, frente a los cerca de 9,4 millones observados.",
+      "El envejecimiento seguiría produciéndose, porque la baja fecundidad viene de los años setenta, pero de forma más lenta: el grupo de 60 años o más crecería con menos velocidad y la base de población en edad laboral se mantendría más ancha.",
+      "Esta comparación no mide un futuro alternativo real: ilustra, a partir de las mismas magnitudes verificadas (edad y sexo de quienes emigran, tamaño del éxodo), cuánto de la crisis demográfica actual es tendencia estructural y cuánto es aceleración por la salida masiva y reciente de población joven."
+    ]
+  },
+  "encuesta": {
+    "titulo": "Tu lectura",
+    "intro": "Este expediente trata, en el fondo, de una isla que envejece mientras se vacía de gente joven. Vota: los resultados se comparan con los de otros lectores.",
+    "tabla_supabase": "votos_envejecimiento",
+    "rpc_incrementar": "incrementar_voto",
+    "preguntas": [
+      {
+        "id": "causa_principal",
+        "texto": "¿Cuál crees que es el principal motor de la crisis demográfica cubana?",
+        "opciones": [
+          {
+            "id": "exodo",
+            "texto": "El éxodo migratorio masivo"
+          },
+          {
+            "id": "natalidad",
+            "texto": "La caída sostenida de la natalidad"
+          },
+          {
+            "id": "economia",
+            "texto": "La crisis económica que empuja ambas cosas"
+          },
+          {
+            "id": "tendencia",
+            "texto": "Una tendencia demográfica que ya venía de antes"
+          }
+        ]
+      },
+      {
+        "id": "reversibilidad",
+        "texto": "¿Es reversible esta inversión de la pirámide poblacional en las próximas dos décadas?",
+        "opciones": [
+          {
+            "id": "si",
+            "texto": "Sí, con políticas adecuadas"
+          },
+          {
+            "id": "no",
+            "texto": "No, ya es estructural"
+          },
+          {
+            "id": "parcial",
+            "texto": "Parcialmente, pero con un coste alto"
+          }
+        ]
+      },
+      {
+        "id": "prioridad",
+        "texto": "¿Qué debería priorizar el Estado cubano ante este escenario?",
+        "opciones": [
+          {
+            "id": "pensiones",
+            "texto": "Reformar el sistema de pensiones"
+          },
+          {
+            "id": "salud",
+            "texto": "Retener al personal de salud"
+          },
+          {
+            "id": "incentivos",
+            "texto": "Incentivos a la natalidad"
+          },
+          {
+            "id": "retorno",
+            "texto": "Políticas de retorno migratorio"
+          }
+        ]
+      }
+    ]
+  }
+}

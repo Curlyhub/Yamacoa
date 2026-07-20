@@ -1,0 +1,1165 @@
+{
+  "meta": {
+    "slug": "coraje_dividido",
+    "titulo": "Coraje dividido",
+    "subtitulo": "El valor de un pueblo y la fragmentación de su exilio, medidos",
+    "descripcion": "Cuba combina un rechazo al régimen que roza la unanimidad medible con una oposición que carece de estructura para canalizarlo. La mayor encuesta independiente realizada en la isla —coalición de más de veinte medios, 42.263 respuestas, del 24 de abril al 1 de mayo de 2026, no probabilística— registró más del 94% de insatisfacción con el sistema político. En junio de 2026 el Observatorio Cubano de Conflictos documentó 107 protestas presenciales, récord absoluto de la serie (+38,2% interanual), y el 89% de quienes participaron no pertenecía a ninguna organización. Este expediente mide las dos mitades de esa paradoja: el valor, operacionalizado como protesta bajo coste represivo, y la desunión, operacionalizada mediante el Índice de Fragmentación del Exilio (IFE), una elaboración propia con metodología explícita. Cuba puntúa 8,8 sobre 10 en el IFE, más cerca del exilio iraní que de cualquier transición lograda. El contraste comparado —Polonia 1989, Chile 1988, Sudáfrica 1994, frente a Myanmar, Irán y Eritrea— señala la unidad del exilio como la variable que separa las transiciones logradas de las autocracias que persisten: todas las del cuadrante ganador compartieron mando único, financiación disciplinada y un puente operativo entre isla y exilio. En el lado del exilio, el 79% de los cubanoamericanos de Florida apoya una intervención militar (Bendixen & Amandi + Tarrance para Miami Herald, n=800, ±3,5), mientras el precedente del Concilio Cubano —más de 130 organizaciones agrupadas en 1995 y aplastadas en cuatro meses— marca el techo histórico de la coordinación interna. Los bloques contrafactuales son escenarios parametrizados, no predicciones.",
+    "narracion": "Cuba reúne la combinación más extraña del catálogo comparado de resistencias civiles: un rechazo al régimen que roza la unanimidad y, al mismo tiempo, una oposición sin estructura que lo canalice. La mayor encuesta independiente jamás hecha en la isla, con cuarenta y dos mil doscientas sesenta y tres respuestas, registró más de un noventa y cuatro por ciento de insatisfacción con el sistema político. En junio de dos mil veintiséis, el Observatorio Cubano de Conflictos contó ciento siete protestas presenciales: récord absoluto de la serie, un treinta y ocho por ciento más que un año antes. Casi nueve de cada diez manifestantes no pertenecían a organización alguna. Este expediente mide las dos mitades de la paradoja. El valor, entendido como protesta bajo coste represivo. Y la desunión, medida con el Índice de Fragmentación del Exilio, una elaboración propia. Cuba puntúa ocho coma ocho sobre diez: más cerca del exilio iraní que de cualquier transición lograda. Polonia en mil novecientos ochenta y nueve, Chile en mil novecientos ochenta y ocho y Sudáfrica en mil novecientos noventa y cuatro compartieron mando único, financiación disciplinada y un puente operativo entre el interior y el exilio. El hallazgo incómodo: Cuba tiene el rechazo popular de la Polonia de mil novecientos ochenta y nueve con la estructura organizativa del exilio iraní. El coraje no está en déficit; está en dispersión. Lo que falta no es valor, sino cauce.",
+    "edicion": "especial",
+    "version": "1.1.0",
+    "fecha_datos": "2026-07-20",
+    "advertencia": "Los bloques marcados como contrafactuales son escenarios hipotéticos parametrizados, no predicciones. El Índice de Fragmentación del Exilio (IFE) es una elaboración propia con metodología explícita."
+  },
+  "tesis": {
+    "parrafos": [
+      "Cuba presenta la combinación más extraña del catálogo comparado de resistencias civiles: el rechazo al régimen roza la unanimidad medible (más del 94% de insatisfacción en la mayor encuesta independiente jamás realizada, 42.263 respuestas) y, sin embargo, ninguna estructura convierte esa energía en presión coordinada. Este expediente mide las dos mitades de esa paradoja: el valor —operacionalizado como protesta bajo coste represivo— y la desunión —operacionalizada como fragmentación organizativa del exilio—.",
+      "La tesis que sometemos a los datos no es que el pueblo cubano haya perdido la valentía. Es que el régimen y la historia construyeron una arquitectura donde la valentía individual es abundante pero carece de cauce: dentro, la atomización deliberada de todo tejido asociativo; fuera, un exilio con voluntad máxima y coordinación mínima. Los casos comparados (Polonia, Chile, Sudáfrica, Myanmar, Irán, Eritrea) muestran que esa segunda variable —la unidad del exilio— separa históricamente las transiciones logradas de las autocracias que persisten.",
+      "El hallazgo incómodo: Cuba tiene el rechazo popular de la Polonia de 1989 con la estructura organizativa del exilio iraní. Y la evidencia de junio de 2026 —107 protestas presenciales, récord absoluto, todas espontáneas— confirma que el cuello de botella no está en el coraje de la calle sino en la ausencia de mando, dentro y fuera."
+    ]
+  },
+  "cifras_clave": [
+    {
+      "valor": ">94%",
+      "etiqueta": "de insatisfacción con el sistema político",
+      "procedencia": "Encuesta de coalición de +20 medios independientes, 42.263 respuestas (24 abr–1 may 2026); no probabilística",
+      "confianza": "confirmado",
+      "lado": "isla"
+    },
+    {
+      "valor": "107",
+      "etiqueta": "protestas presenciales en junio 2026, récord histórico",
+      "procedencia": "Observatorio Cubano de Conflictos; +38,2% vs jun-2025; récord previo: 54 (mar-2026)",
+      "confianza": "confirmado",
+      "lado": "isla"
+    },
+    {
+      "valor": "79%",
+      "etiqueta": "del exilio de Florida apoya intervención militar",
+      "procedencia": "Miami Herald / Bendixen & Amandi + Tarrance, n=800, 6–10 abr 2026, ±3,5",
+      "confianza": "confirmado",
+      "lado": "exilio"
+    },
+    {
+      "valor": ">130",
+      "etiqueta": "organizaciones agrupó Concilio Cubano en 1995, aplastado en 4 meses",
+      "procedencia": "Registro histórico del Concilio Cubano (oct-1995 / feb-1996)",
+      "confianza": "confirmado",
+      "lado": "exilio"
+    },
+    {
+      "valor": "~385.000",
+      "etiqueta": "manifestantes sostenidos exigiría el umbral del 3,5% de Chenoweth",
+      "procedencia": "Regla del 3,5% (Chenoweth 2013, dataset NAVCO) aplicada a ~11M de habitantes",
+      "confianza": "estimado",
+      "lado": "isla"
+    }
+  ],
+  "paradoja": {
+    "titulo": "La paradoja: voluntad máxima, coordinación mínima",
+    "texto": "Cada punto es un caso histórico o vigente. El eje vertical mide la voluntad de cambio (rechazo al régimen o voto opositor verificado); el horizontal, la coordinación opositora (10 − IFE). Los casos que cruzaron a la democracia habitan el cuadrante superior derecho. Cuba flota sola arriba a la izquierda: toda la energía, ningún cauce.",
+    "paises": [
+      {
+        "id": "cuba",
+        "nombre": "Cuba 2026",
+        "voluntad": 94,
+        "coordinacion": 1.2,
+        "resultado": "régimen persiste",
+        "detalle": "Rechazo >94% (encuesta coalición); exilio atomizado en decenas de organizaciones rivales; protesta récord pero espontánea.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "polonia",
+        "nombre": "Polonia 1989",
+        "voluntad": 88,
+        "coordinacion": 8.0,
+        "resultado": "transición",
+        "detalle": "Solidarność: ~9,5-10M de afiliados (~30% de adultos). Exilio y Occidente canalizaron ~$33M (CIA ~$20M, NED ~$9M, AFL-CIO >$4M; Seth G. Jones, 2018).",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "chile",
+        "nombre": "Chile 1988",
+        "voluntad": 56,
+        "coordinacion": 7.8,
+        "resultado": "transición",
+        "detalle": "Concertación: coalición unificada de casi toda la oposición. Voto No: 56% con 97,6% de participación. ~$1,5M de NED/NDI para registro y conteo paralelo.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "sudafrica",
+        "nombre": "Sudáfrica 1994",
+        "voluntad": 80,
+        "coordinacion": 8.4,
+        "resultado": "transición",
+        "detalle": "ANC: mando único de Oliver Tambo en el exilio (~1967-1991, Lusaka). Sanciones globales coordinadas (CAAA 1986). ANC: 62,65% en 1994.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "myanmar",
+        "nombre": "Myanmar (NUG) 2021-",
+        "voluntad": 92,
+        "coordinacion": 7.2,
+        "resultado": "en disputa",
+        "detalle": "Gobierno de unidad nacional en el exilio; ~92% de apoyo (USIP 2023); >$100M autofinanciados (bonos, lotería, cripto; ~45% vía bonos).",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "venezuela",
+        "nombre": "Venezuela 2023-",
+        "voluntad": 85,
+        "coordinacion": 3.6,
+        "resultado": "régimen persiste",
+        "detalle": "Oposición fragmentada que logró una primaria unitaria (>2,4M votantes, 93% para Machado) pero sin estructura sostenida.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "iran",
+        "nombre": "Irán 2022-",
+        "voluntad": 75,
+        "coordinacion": 2.0,
+        "resultado": "régimen persiste",
+        "detalle": "Diáspora rica (6-8M) y con medios potentes, pero rota: monárquicos vs MEK vs republicanos. La Carta Mahsa colapsó en 2023. Espejo casi exacto del caso cubano.",
+        "confianza": "estimado"
+      },
+      {
+        "id": "eritrea",
+        "nombre": "Eritrea",
+        "voluntad": 60,
+        "coordinacion": 1.0,
+        "resultado": "régimen persiste",
+        "detalle": "Control negativo extremo: ~34 partidos opositores paralizados y una diáspora que FINANCIA al régimen vía impuesto del 2% (>30% del presupuesto estatal; Hirt, African Affairs 2015).",
+        "confianza": "confirmado"
+      }
+    ],
+    "nota_metodologica": "«Voluntad» usa el mejor dato verificable de cada caso (encuestas, voto opositor real); donde no existe, estimación marcada. «Coordinación» = 10 − IFE (índice propio, ver sección siguiente)."
+  },
+  "ife": {
+    "titulo": "Índice de Fragmentación del Exilio (IFE)",
+    "texto": "Índice propio 0–10 (mayor = más fragmentado), media simple de cinco componentes puntuados sobre evidencia documental. No pretende precisión decimal sino orden comparado; la metodología completa acompaña cada componente para que el lector la discuta.",
+    "componentes": [
+      {
+        "id": "dispersion",
+        "nombre": "Dispersión organizativa",
+        "descripcion": "Número de organizaciones activas sin estructura común. Cuba: decenas (la sola Asamblea de la Resistencia agrupa +50 grupos que no integran a los demás bloques)."
+      },
+      {
+        "id": "paraguas",
+        "nombre": "Fracaso de paraguas unitarios",
+        "descripcion": "Intentos de unidad colapsados o efímeros: Concilio Cubano (>130 orgs, 1995, aplastado), Grupo de Trabajo, Alianza Nacional, Acuerdo de Liberación (2026, en prueba)."
+      },
+      {
+        "id": "divergencia",
+        "nombre": "Divergencia táctica isla-exilio",
+        "descripcion": "Brecha entre método preferido dentro (cautela, agotamiento) y fuera (79% pro-intervención en Florida). Documentada en encuesta de coalición y Miami Herald Poll."
+      },
+      {
+        "id": "dependencia",
+        "nombre": "Dependencia financiera externa",
+        "descripcion": "Fracción del andamiaje opositor sostenida por fondos gubernamentales de terceros (USAID/NED). El corte del 83% de 2025 liquidó programas enteros de un plumazo."
+      },
+      {
+        "id": "mando",
+        "nombre": "Ausencia de mando único",
+        "descripcion": "No existe figura o consejo con autoridad reconocida por la mayoría de los bloques ni dentro ni fuera («si tiras una piedra en Miami encuentras a varios que quieren ser presidentes» — R. Herrero)."
+      }
+    ],
+    "casos": [
+      {
+        "id": "cuba",
+        "nombre": "Exilio cubano",
+        "valores": [
+          9,
+          9,
+          8,
+          9,
+          9
+        ],
+        "ife": 8.8
+      },
+      {
+        "id": "eritrea",
+        "nombre": "Diáspora eritrea",
+        "valores": [
+          9,
+          9,
+          8,
+          10,
+          9
+        ],
+        "ife": 9.0
+      },
+      {
+        "id": "iran",
+        "nombre": "Diáspora iraní",
+        "valores": [
+          9,
+          9,
+          7,
+          5,
+          10
+        ],
+        "ife": 8.0
+      },
+      {
+        "id": "venezuela",
+        "nombre": "Oposición venezolana",
+        "valores": [
+          7,
+          6,
+          6,
+          7,
+          6
+        ],
+        "ife": 6.4
+      },
+      {
+        "id": "myanmar",
+        "nombre": "NUG Myanmar",
+        "valores": [
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "ife": 2.8
+      },
+      {
+        "id": "chile",
+        "nombre": "Concertación (Chile)",
+        "valores": [
+          3,
+          2,
+          2,
+          3,
+          1
+        ],
+        "ife": 2.2
+      },
+      {
+        "id": "polonia",
+        "nombre": "Solidarność + exilio",
+        "valores": [
+          2,
+          2,
+          2,
+          3,
+          1
+        ],
+        "ife": 2.0
+      },
+      {
+        "id": "sudafrica",
+        "nombre": "ANC en el exilio",
+        "valores": [
+          1,
+          1,
+          2,
+          3,
+          1
+        ],
+        "ife": 1.6
+      }
+    ],
+    "comparativa": {
+      "texto": "El grafo ordena los cinco componentes según la cadena causal que la evidencia sugiere: la financiación por organización multiplica siglas; más siglas hacen inviable federar; cada sigla produce un aspirante; y sin árbitro, los métodos nunca convergen. Debajo, las dos curvas comparan exilio cubano y ANC con una medida compuesta que pondera cada puntuación por el número de unidades rivales implicadas (a más actores descoordinados en una variable, más pesa su fragmentación).",
+      "formula": "compuesto = puntuación × (1 + log₁₀(unidades rivales)) — medida de elaboración propia; las unidades marcadas (est.) son estimaciones",
+      "metricas": [
+        {
+          "id": "dependencia",
+          "corto": "Dependencia",
+          "componente": "Dependencia financiera externa",
+          "cuba": {
+            "puntuacion": 9,
+            "unidades": 40,
+            "etiqueta": "receptores de fondos descoordinados (est.)",
+            "compuesto": 23.4
+          },
+          "anc": {
+            "puntuacion": 3,
+            "unidades": 1,
+            "etiqueta": "canal receptor único",
+            "compuesto": 3.0
+          }
+        },
+        {
+          "id": "dispersion",
+          "corto": "Dispersión",
+          "componente": "Dispersión organizativa",
+          "cuba": {
+            "puntuacion": 9,
+            "unidades": 50,
+            "etiqueta": "organizaciones catalogadas",
+            "compuesto": 24.3
+          },
+          "anc": {
+            "puntuacion": 1,
+            "unidades": 1,
+            "etiqueta": "estructura única",
+            "compuesto": 1.0
+          }
+        },
+        {
+          "id": "paraguas",
+          "corto": "Paraguas",
+          "componente": "Fracaso de paraguas unitarios",
+          "cuba": {
+            "puntuacion": 9,
+            "unidades": 4,
+            "etiqueta": "paraguas intentados",
+            "compuesto": 14.4
+          },
+          "anc": {
+            "puntuacion": 1,
+            "unidades": 1,
+            "etiqueta": "frente único sostenido",
+            "compuesto": 1.0
+          }
+        },
+        {
+          "id": "mando",
+          "corto": "Mando",
+          "componente": "Ausencia de mando único",
+          "cuba": {
+            "puntuacion": 9,
+            "unidades": 10,
+            "etiqueta": "liderazgos rivales visibles (est.)",
+            "compuesto": 18.0
+          },
+          "anc": {
+            "puntuacion": 1,
+            "unidades": 1,
+            "etiqueta": "mando único (Tambo)",
+            "compuesto": 1.0
+          }
+        },
+        {
+          "id": "divergencia",
+          "corto": "Divergencia",
+          "componente": "Divergencia táctica isla-exilio",
+          "cuba": {
+            "puntuacion": 8,
+            "unidades": 3,
+            "etiqueta": "corrientes de método",
+            "compuesto": 11.8
+          },
+          "anc": {
+            "puntuacion": 2,
+            "unidades": 1,
+            "etiqueta": "línea negociadora única",
+            "compuesto": 2.0
+          }
+        }
+      ],
+      "enlaces": [
+        {
+          "de": "dependencia",
+          "a": "dispersion",
+          "texto": "financiación por sigla multiplica siglas"
+        },
+        {
+          "de": "dispersion",
+          "a": "paraguas",
+          "texto": "a más actores, federar cuesta más"
+        },
+        {
+          "de": "dispersion",
+          "a": "mando",
+          "texto": "cada sigla produce un aspirante"
+        },
+        {
+          "de": "mando",
+          "a": "divergencia",
+          "texto": "sin árbitro, los métodos no convergen"
+        }
+      ]
+    }
+  },
+  "constelacion": {
+    "titulo": "La constelación de la fragmentación",
+    "texto": "Cada punto es una organización opositora cubana documentada en registros históricos y actuales; los halos agrupan los paraguas unitarios que intentaron federarlas y la fecha en que colapsaron o quedaron en suspenso. A la derecha, la topología opuesta: el ANC sudafricano, un solo nodo con radios, que sostuvo mando único durante ~24 años de exilio. La forma de la red ES el dato.",
+    "organizaciones": [
+      {
+        "nombre": "CANF",
+        "decada": "1980s"
+      },
+      {
+        "nombre": "Directorio Democrático Cubano",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Asamblea de la Resistencia",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Cuba Decide",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Pasos de Cambio",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "CTDC",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "UNPACU",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Damas de Blanco",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "MCL (Mov. Cristiano Liberación)",
+        "decada": "1980s"
+      },
+      {
+        "nombre": "Alpha 66",
+        "decada": "1960s"
+      },
+      {
+        "nombre": "Cuba Study Group",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "D Frente",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "Mesa de Unidad de Acción Democrática",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Consejo por la Libertad de Cuba",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Mov. San Isidro (exiliados)",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Archipiélago (exiliados)",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "Justicia 11J",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "Cubalex",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "FANTU",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Partido por la Democracia P. L. Boitel",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Corriente Agramontista",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Coalición Central Opositora",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Frente Nacional de Resistencia Cívica",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Fund. p. los DDHH en Cuba",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Inspira América",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Foro Antitotalitario Unido",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Solidaridad de Trabajadores Cubanos",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Colegio de Pedagogos Indep.",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Instituto La Rosa Blanca",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Mov. Democracia",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Madres y Mujeres Antirrepresión",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Clandestinos",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "La Nueva Nación",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Somos+",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Cuba Independiente y Democrática",
+        "decada": "1980s"
+      },
+      {
+        "nombre": "Partido Solidaridad Democrática",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Unión Liberal Cubana",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Plataforma Femenina",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Consejo de Relatores de DDHH",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "CCDHRN",
+        "decada": "1980s"
+      },
+      {
+        "nombre": "Observatorio Cubano de DDHH",
+        "decada": "2000s"
+      },
+      {
+        "nombre": "Prisoners Defenders",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Food Monitor Program",
+        "decada": "2020s"
+      },
+      {
+        "nombre": "Cubanos por el Mundo",
+        "decada": "2010s"
+      },
+      {
+        "nombre": "Fund. Cubana p. la Democracia",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Junta Patriótica Cubana",
+        "decada": "1960s"
+      },
+      {
+        "nombre": "Presidio Político Histórico",
+        "decada": "1960s"
+      },
+      {
+        "nombre": "Mov. 30 de Noviembre",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Vigilia Mambisa",
+        "decada": "1990s"
+      },
+      {
+        "nombre": "Casa del Preso",
+        "decada": "2010s"
+      }
+    ],
+    "paraguas": [
+      {
+        "nombre": "Concilio Cubano",
+        "anio": "1995",
+        "estado": "aplastado feb-1996",
+        "orgs": ">130"
+      },
+      {
+        "nombre": "Grupo de Trabajo de la Disidencia Interna",
+        "anio": "1997",
+        "estado": "disuelto tras la Primavera Negra (2003)",
+        "orgs": "4 líderes"
+      },
+      {
+        "nombre": "Asamblea de la Resistencia",
+        "anio": "2010s",
+        "estado": "activo, no integra a los demás bloques",
+        "orgs": ">50"
+      },
+      {
+        "nombre": "Acuerdo de Liberación",
+        "anio": "mar-2026",
+        "estado": "en prueba; consejo de 51 miembros",
+        "orgs": "Asamblea + Pasos de Cambio"
+      }
+    ],
+    "contraste_anc": "ANC (Sudáfrica): mando único de Oliver Tambo desde Lusaka, ~1967–1991. Una sola estructura recibió y administró todo el apoyo internacional, negoció con un solo rostro y entregó el poder a un solo partido (62,65% en 1994).",
+    "nota_decadas": "Décadas de fundación aproximadas, asignadas por registro documental disperso: trátense como estimado, no como censo."
+  },
+  "valor_medido": {
+    "titulo": "El valor, medido: protesta bajo coste represivo",
+    "texto": "Si la valentía se mide por la disposición a protestar sabiendo el precio, los cubanos de la isla la exhiben en niveles crecientes y récord. El Observatorio Cubano de Conflictos registró en junio de 2026 el mayor número de protestas presenciales de su serie: 107, casi el doble del récord previo (54, marzo 2026) y +38,2% sobre junio de 2025 — con 135 actos represivos y al menos 38 detenidos ese mismo mes. El coste es conocido por todos: por el 11J hubo ~1.580 procesados y condenas de hasta 30 años. Y el dato que desmonta la lectura de la apatía: el 89% de los presos del 11J que siguen recluidos no tenía vínculo previo con NINGUNA organización. La protesta cubana no es cobarde ni organizada: es valiente y huérfana.",
+    "serie_protestas": [
+      {
+        "mes": "jul-2021",
+        "protestas": 584,
+        "nota": "11J: estallido nacional en ~50 localidades (registro agregado, metodología distinta)",
+        "tipo": "estimado"
+      },
+      {
+        "mes": "dic-2023",
+        "protestas": 26,
+        "nota": "",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "mar-2024",
+        "protestas": 43,
+        "nota": "Protestas de Santiago (17M)",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "jun-2025",
+        "protestas": 77,
+        "nota": "",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "oct-2025",
+        "protestas": 49,
+        "nota": "",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "ene-2026",
+        "protestas": 41,
+        "nota": "",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "mar-2026",
+        "protestas": 54,
+        "nota": "Récord previo de la serie",
+        "tipo": "confirmado"
+      },
+      {
+        "mes": "jun-2026",
+        "protestas": 107,
+        "nota": "RÉCORD: apagones de 24-48h como detonante",
+        "tipo": "confirmado"
+      }
+    ],
+    "nota_serie": "Serie no exhaustiva: puntos mensuales seleccionados con cifra pública verificable del OCC. El pipeline densificará la serie con cada informe mensual.",
+    "coste": [
+      {
+        "indicador": "Procesados por el 11J",
+        "valor": "~1.580",
+        "fuente": "Justicia 11J / Cubalex",
+        "confianza": "confirmado"
+      },
+      {
+        "indicador": "Condena máxima impuesta",
+        "valor": "30 años",
+        "fuente": "Justicia 11J",
+        "confianza": "confirmado"
+      },
+      {
+        "indicador": "Presos del 11J sin afiliación previa",
+        "valor": "89%",
+        "fuente": "Justicia 11J, 'Otro año sin justicia' (2024)",
+        "confianza": "confirmado"
+      },
+      {
+        "indicador": "Actos represivos solo en jun-2026",
+        "valor": "135",
+        "fuente": "OCC + Cubalex",
+        "confianza": "confirmado"
+      }
+    ]
+  },
+  "isla_exilio": {
+    "titulo": "Dos velocidades: isla y exilio ante el método",
+    "texto": "Sobre el diagnóstico no hay dos Cubas: el rechazo al sistema supera el 94% en ambas orillas y el 99% quiere eliminar el partido único. Y la publicación de mayo de 2026 estrechó también la brecha de MÉTODO que este expediente daba por mayor: en el agregado isla+exilio de la encuesta de coalición (58% de respuestas desde la isla), el 60,9% apoya una intervención militar directa de EE.UU. y el 64,9% el derrocamiento «por cualquier medio, incluida la vía armada», frente al 79% pro-intervención del exilio del sur de Florida. La divergencia persiste, pero es de grado, no de naturaleza: dentro pesan más la cautela operativa (20,7% prefiere transición negociada; solo 1,9% la reforma desde dentro) y el agotamiento, y apenas el 6% excluiría al exilio de la transición. La generación divide más que la geografía: el apoyo al embargo cae del 55% al 43% entre nacidos fuera de Cuba y al 47% entre menores de 40.",
+    "divergencias": [
+      {
+        "tema": "Rechazo al sistema político",
+        "isla": 94,
+        "exilio": 96,
+        "unidad": "%",
+        "fuente": "Encuesta coalición 2026"
+      },
+      {
+        "tema": "Eliminar el partido único",
+        "isla": 99,
+        "exilio": 99,
+        "unidad": "%",
+        "fuente": "Encuesta coalición 2026"
+      },
+      {
+        "tema": "Apoyo a intervención militar de EE.UU.",
+        "isla": 61,
+        "exilio": 79,
+        "unidad": "%",
+        "fuente": "Coalición may-2026 / Miami Herald abr-2026",
+        "nota": "El 61 es el agregado isla+exilio de la encuesta de coalición (60,9%; 58% de respuestas desde la isla; pregunta multi-respuesta), no un desglose insular puro; el 79 es solo exilio del sur de Florida."
+      },
+      {
+        "tema": "Derrocamiento por cualquier medio (incl. armada)",
+        "isla": 65,
+        "exilio": null,
+        "unidad": "%",
+        "fuente": "Encuesta coalición may-2026",
+        "nota": "Agregado isla+exilio (64,9%); la coalición no publicó desglose por orilla."
+      },
+      {
+        "tema": "Rechazo a acuerdo sin cambio de régimen",
+        "isla": null,
+        "exilio": 78,
+        "unidad": "%",
+        "fuente": "Miami Herald Poll abr-2026"
+      },
+      {
+        "tema": "Aceptaría al exilio en igualdad en la transición",
+        "isla": 54,
+        "exilio": null,
+        "unidad": "%",
+        "fuente": "Encuesta coalición 2026"
+      },
+      {
+        "tema": "Daría al exilio rol protagónico",
+        "isla": 25,
+        "exilio": null,
+        "unidad": "%",
+        "fuente": "Encuesta coalición 2026"
+      },
+      {
+        "tema": "Excluiría al exilio",
+        "isla": 6,
+        "exilio": null,
+        "unidad": "%",
+        "fuente": "Encuesta coalición 2026"
+      }
+    ],
+    "embargo_generacional": [
+      {
+        "grupo": "Total cubanoamericanos",
+        "apoyo": 55
+      },
+      {
+        "grupo": "Republicanos",
+        "apoyo": 65
+      },
+      {
+        "grupo": "Menores de 40 años",
+        "apoyo": 47
+      },
+      {
+        "grupo": "Nacidos fuera de Cuba",
+        "apoyo": 43
+      },
+      {
+        "grupo": "Demócratas",
+        "apoyo": 25
+      }
+    ],
+    "fuente_embargo": "FIU Cuba Poll 2024 (n=1.001; 25 sep–9 oct 2024; serie desde 1991)",
+    "cobertura_internacional": [
+      {
+        "fuente": "Polymarket",
+        "tipo": "mercado de predicción",
+        "dato": "~35%",
+        "detalle": "Probabilidad implícita de que «el régimen cubano caiga en 2026» (mercado 'Cuban regime falls in 2026?'); abrió en ~28% en marzo. Volumen ~$126k: mercado fino, precio volátil.",
+        "fecha": "abr-2026",
+        "url": "https://polymarket.com/event/cuban-regime-falls-in-2026",
+        "confianza": "reportado"
+      },
+      {
+        "fuente": "Polymarket",
+        "tipo": "mercado de predicción",
+        "dato": "~61%",
+        "detalle": "Probabilidad implícita de que Díaz-Canel deje el poder antes del 31-dic-2026 (serie 'out as leader of Cuba'); el tramo 'antes del 30 de junio' cotizó ~42% en marzo.",
+        "fecha": "jun-2026",
+        "url": "https://polymarket.com/event/miguel-daz-canel-out-as-leader-of-cuba-by-june-30",
+        "confianza": "reportado"
+      },
+      {
+        "fuente": "Polymarket (vía CiberCuba)",
+        "tipo": "mercado de predicción",
+        "dato": "~44%",
+        "detalle": "Probabilidad implícita de un choque militar EE.UU.–Cuba en 2026, según el repaso de mercados publicado en marzo.",
+        "fecha": "mar-2026",
+        "url": "https://en.cibercuba.com/noticias/2026-03-11-u1-e13-s27061-nid322825-apuestas-internet-ponen-precio-caida-regimen-cubano-2026",
+        "confianza": "reportado"
+      },
+      {
+        "fuente": "AP · sindicada (USA Today, AOL, prensa regional)",
+        "tipo": "cobertura",
+        "dato": "79%",
+        "detalle": "La agencia AP distribuyó el sondeo Miami Herald/Bendixen & Amandi ('Cuban Americans support US military attack on Cuba'), llevando el dato del exilio a cabeceras generalistas.",
+        "fecha": "abr-2026",
+        "url": "https://kdhnews.com/news/ap/cuban-americans-support-us-military-attack-on-cuba-reject-economic-deal-poll-shows/article_074bf0c0-6395-5ab0-8084-7ee04eca4f72.html",
+        "confianza": "confirmado"
+      },
+      {
+        "fuente": "encuestascuba.net (coalición +20 medios)",
+        "tipo": "encuesta",
+        "dato": "60,9%",
+        "detalle": "Apoyo a intervención militar directa en el agregado isla+exilio (42.263 respuestas; 64,9% por el derrocamiento «por cualquier medio»). Autoselección: no probabilística.",
+        "fecha": "may-2026",
+        "url": "https://www.cibercuba.com/noticias/2026-05-08-u1-e135253-s27061-nid328496-mayoria-cubanos-apoya-intervencion-militar-eeuu",
+        "confianza": "confirmado"
+      },
+      {
+        "fuente": "El País",
+        "tipo": "cobertura",
+        "dato": "+50 grupos",
+        "detalle": "Reportaje sobre las disputas de liderazgo del exilio ante una posible transición («si tiras una piedra en Miami encuentras a varios que quieren ser presidentes»).",
+        "fecha": "abr-2026",
+        "url": "https://elpais.com/us/2026-04-06/la-expectativa-de-una-transicion-en-cuba-agita-las-disputas-por-el-liderazgo-en-el-exilio.html",
+        "confianza": "confirmado"
+      }
+    ]
+  },
+  "genero": {
+    "titulo": "El género del coraje",
+    "texto": "Las mujeres cubanas cargan una parte desproporcionada de la protesta sostenida: las Damas de Blanco marcharon semanalmente durante más de una década bajo actos de repudio, y tras el 11J las madres de los presos se convirtieron en el rostro de la denuncia. En cifras: ~15% de los detenidos del 11J fueron mujeres (218 de ~1.484 según Cubalex; 314 detenidas por motivos políticos desde el 11J según 14ymedio), con picos de 74-76 presas políticas simultáneas y condenas emblemáticas de 14-15 años. El contraste comparado sugiere que donde la protesta femenina alcanza masa crítica —Sudán 2019, Irán 2022, Bielorrusia 2020— el movimiento gana persistencia; en Cuba esa masa existe pero, como todo lo demás, sin estructura que la multiplique.",
+    "participacion": [
+      {
+        "caso": "Sudán 2019",
+        "pct_mujeres": 70,
+        "confianza": "estimado",
+        "nota": "«Hasta el 70% de los manifestantes» (CNN, may-2019); metodología imprecisa según fuentes académicas"
+      },
+      {
+        "caso": "Bielorrusia 2020",
+        "pct_mujeres": 50,
+        "confianza": "estimado",
+        "nota": "Marchas de mujeres como columna vertebral del movimiento; sin censo formal"
+      },
+      {
+        "caso": "Irán 2022",
+        "pct_mujeres": 50,
+        "confianza": "estimado",
+        "nota": "Movimiento LIDERADO por mujeres (Mujer, Vida, Libertad); participación mixta"
+      },
+      {
+        "caso": "Cuba 11J (detenidos)",
+        "pct_mujeres": 15,
+        "confianza": "confirmado",
+        "nota": "218 mujeres de ~1.484 detenciones documentadas (Cubalex/Justicia 11J)"
+      }
+    ],
+    "casos_emblema": [
+      {
+        "nombre": "Lizandra Góngora",
+        "condena": "14 años",
+        "detalle": "Madre de cinco hijos; manifestante pacífica del 11J"
+      },
+      {
+        "nombre": "Brenda Díaz",
+        "condena": "14 años",
+        "detalle": "Mujer trans recluida en penal masculino; VIH+"
+      },
+      {
+        "nombre": "Mariuska Díaz Calvo",
+        "condena": "15 años",
+        "detalle": "Condenada por sedición tras el 11J"
+      }
+    ]
+  },
+  "financiacion": {
+    "titulo": "2025: el año en que se cortó el andamiaje",
+    "texto": "La dependencia financiera del ecosistema opositor y mediático cubano quedó expuesta el 10 de marzo de 2025, cuando el secretario de Estado Marco Rubio anunció la cancelación del 83% de los programas de USAID (5.200 contratos). El efecto fue inmediato y asimétrico: de los 95 programas del International Republican Institute para Cuba, Venezuela y Nicaragua sobrevivieron 4 — ninguno cubano. Radio y TV Martí dejaron de emitir por primera vez en 40 años (emisión luego parcialmente restituida). El contrafactual birmano muestra la alternativa que el exilio cubano no ha construido: el NUG se autofinancia con más de $100M de su propia diáspora.",
+    "partidas": [
+      {
+        "concepto": "Programas USAID cancelados (global)",
+        "valor": "83%",
+        "detalle": "5.200 contratos; anuncio de M. Rubio, 10-mar-2025",
+        "confianza": "confirmado"
+      },
+      {
+        "concepto": "Programas IRI Cuba/Ven/Nic supervivientes",
+        "valor": "4 de 95",
+        "detalle": "Ninguno cubano (El Nuevo Herald / 14ymedio)",
+        "confianza": "confirmado"
+      },
+      {
+        "concepto": "Subvención USAID perdida por CubaNet",
+        "valor": "$1,8M / 3 años",
+        "detalle": "Editorial de emergencia del medio",
+        "confianza": "confirmado"
+      },
+      {
+        "concepto": "Fondos USAID a Diario de Cuba (2016-2020)",
+        "valor": "$1,3M",
+        "detalle": "Registros públicos",
+        "confianza": "confirmado"
+      },
+      {
+        "concepto": "Fondos retenidos al NED (demanda judicial)",
+        "valor": "$167M",
+        "detalle": "NED vs Ejecutivo, 2025",
+        "confianza": "confirmado"
+      },
+      {
+        "concepto": "Autofinanciación del NUG birmano (contraste)",
+        "valor": ">$100M",
+        "detalle": "Bonos de la 'Spring Revolution' (~45%), lotería, cripto",
+        "confianza": "confirmado"
+      }
+    ]
+  },
+  "contrafactuales": {
+    "titulo": "Contrafactuales: cuatro Cubas que no existen (todavía)",
+    "advertencia": "Escenarios hipotéticos parametrizados. Los supuestos están a la vista y el lector puede manipularlos; nada de esto es una predicción.",
+    "cf1_chenoweth": {
+      "titulo": "CF-1 · La distancia al 3,5%",
+      "texto": "La regla del 3,5% (Chenoweth, 2013; dataset NAVCO: 323 campañas 1900-2006, 53% de éxito no violento vs 26% violento) sitúa el umbral histórico de participación sostenida a partir del cual ninguna campaña no violenta documentada ha fracasado. Para Cuba (~11M): ~385.000 personas. El simulador estima cuántas personas moviliza hoy la protesta espontánea y qué multiplicador de coordinación exigiría cruzar el umbral. Supuesto manipulable: participantes medios por protesta.",
+      "poblacion": 11000000,
+      "umbral_pct": 3.5,
+      "protestas_mes_actual": 107,
+      "participantes_por_protesta_defecto": 150,
+      "participantes_min": 30,
+      "participantes_max": 2000
+    },
+    "cf2_mando_unico": {
+      "titulo": "CF-2 · Cuba con un ANC",
+      "texto": "Si el exilio cubano hubiera consolidado un mando único tipo ANC/Concertación en 2021 (tras el 11J), la trayectoria proyectada del IFE habría descendido hacia la zona donde históricamente ocurren las transiciones (IFE < 3). La curva real, con el Acuerdo de Liberación de 2026 como único movimiento, apenas se dobla. Proyección ilustrativa: la velocidad de consolidación copia la del NUG birmano (2021-2023).",
+      "serie": [
+        {
+          "anio": 2021,
+          "real": 8.9,
+          "hipotetico": 8.9
+        },
+        {
+          "anio": 2022,
+          "real": 8.9,
+          "hipotetico": 7.2
+        },
+        {
+          "anio": 2023,
+          "real": 8.8,
+          "hipotetico": 5.1
+        },
+        {
+          "anio": 2024,
+          "real": 8.8,
+          "hipotetico": 3.8
+        },
+        {
+          "anio": 2025,
+          "real": 8.9,
+          "hipotetico": 3.1
+        },
+        {
+          "anio": 2026,
+          "real": 8.8,
+          "hipotetico": 2.8
+        }
+      ]
+    },
+    "cf3_autofinanciacion": {
+      "titulo": "CF-3 · La diáspora como tesoro propio",
+      "texto": "~2,4M de personas de origen cubano viven en EE.UU. Si una fracción aportara una cuota mensual modesta a un fondo unitario auditado (modelo NUG), la oposición dejaría de depender de decisiones presupuestarias de Washington. El simulador cruza fracción contribuyente × cuota mensual y lo compara con lo que el corte de 2025 destruyó.",
+      "diaspora": 2400000,
+      "fraccion_defecto": 5,
+      "cuota_defecto": 10
+    },
+    "cf4_textuales": [
+      {
+        "id": "espejo_irani",
+        "titulo": "CF-4a · El espejo iraní",
+        "texto": "Irán es el contrafactual involuntario del exilio cubano: diáspora numerosa y próspera, medios propios potentes, rechazo interno masivo… y parálisis por la guerra entre monárquicos, MEK y republicanos. La Carta Mahsa (2023) —su 'Acuerdo de Liberación'— colapsó en semanas. Toda la evidencia disponible indica que la riqueza y el tamaño de una diáspora no compensan la ausencia de mando: lo agravan, porque multiplican los pretendientes."
+      },
+      {
+        "id": "control_eritrea",
+        "titulo": "CF-4b · El control negativo: Eritrea",
+        "texto": "El extremo de la escala: una diáspora que no solo no derriba al régimen sino que lo FINANCIA (impuesto del 2% a la diáspora, >30% del presupuesto estatal según Hirt, 2015). Sirve de ancla del índice: ningún grado de descontento interno compensa una diáspora capturada. Cuba no está ahí —su exilio es opositor—, pero el caso demuestra que la variable diaspórica puede llegar a cambiar de signo."
+      }
+    ]
+  },
+  "encuesta": {
+    "titulo": "Tu voto en el expediente",
+    "nota": "Voto anónimo. Se almacena localmente y, si el sitio lo permite, se agrega de forma global.",
+    "preguntas": [
+      {
+        "id": "cuello",
+        "pregunta": "¿Dónde está el cuello de botella del cambio en Cuba?",
+        "opciones": [
+          "En la represión interna",
+          "En la desunión del exilio",
+          "En ambas por igual",
+          "En la falta de apoyo internacional"
+        ]
+      },
+      {
+        "id": "mando",
+        "pregunta": "¿Aceptarías un mando único de la oposición aunque no fuera tu corriente preferida?",
+        "opciones": [
+          "Sí, la unidad es lo primero",
+          "Solo si surge de una votación abierta",
+          "No, prefiero pluralidad de liderazgos"
+        ]
+      },
+      {
+        "id": "cuota",
+        "pregunta": "¿Contribuirías a un fondo unitario auditado de la diáspora?",
+        "opciones": [
+          "Sí, con cuota mensual",
+          "Sí, puntualmente",
+          "Solo si existe mando único primero",
+          "No"
+        ]
+      }
+    ]
+  },
+  "referencias": [
+    {
+      "id": 1,
+      "titulo": "Resultados de la primera encuesta de opinión a gran escala sobre Cuba",
+      "fuente": "elTOQUE + coalición de medios, may-2026",
+      "url": "https://eltoque.com/resultados-de-la-primera-encuesta-de-opinion-a-gran-escala-sobre-cuba",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 2,
+      "titulo": "Cuban Americans support US military attack on Cuba, reject economic deal, poll shows",
+      "fuente": "Miami Herald / AP (Bendixen & Amandi + Tarrance), abr-2026",
+      "url": "https://kdhnews.com/news/ap/cuban-americans-support-us-military-attack-on-cuba-reject-economic-deal-poll-shows/article_074bf0c0-6395-5ab0-8084-7ee04eca4f72.html",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 3,
+      "titulo": "The 2024 FIU Cuba Poll",
+      "fuente": "Florida International University (Grenier & Lai)",
+      "url": "https://ics.fiu.edu/research/fiu-cuba-poll/the-2024-fiu-cuba-poll-report-final.pdf",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 4,
+      "titulo": "Cuba registró un récord histórico de protestas en junio: 107 manifestaciones",
+      "fuente": "Infobae / OCC, jul-2026",
+      "url": "https://www.infobae.com/america/america-latina/2026/07/03/cuba-registro-un-record-historico-de-protestas-en-junio-hubo-107-manifestaciones-en-todo-el-pais/",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 5,
+      "titulo": "La expectativa de una transición en Cuba agita las disputas por el liderazgo en el exilio",
+      "fuente": "El País, 6-abr-2026 (reproducción verificada)",
+      "url": "https://elpais.com/us/2026-04-06/la-expectativa-de-una-transicion-en-cuba-agita-las-disputas-por-el-liderazgo-en-el-exilio.html",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 6,
+      "titulo": "Las detenidas, las enjuiciadas, las condenadas del 11J",
+      "fuente": "Periodismo de Barrio / Justicia 11J, mar-2024",
+      "url": "https://periodismodebarrio.org/2024/03/las-detenidas-las-enjuiciadas-las-condenadas-del-11j/",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 7,
+      "titulo": "De las 314 mujeres detenidas en Cuba por motivos políticos desde el 11J, 56 siguen en la cárcel",
+      "fuente": "14ymedio",
+      "url": "https://www.14ymedio.com/cuba/314-mujeres-detenidas-cuba-motivos_1_1100719.html",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 8,
+      "titulo": "Anuncio de cancelación del 83% de los programas de USAID",
+      "fuente": "Marco Rubio (X), 10-mar-2025",
+      "url": "https://x.com/marcorubio/status/1899021361797816325",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 9,
+      "titulo": "Only Four Venezuelan Entities, and No Cuban, Survive Trump's Cuts",
+      "fuente": "14ymedio / Translating Cuba, 2025",
+      "url": "https://translatingcuba.com/only-four-venezuelan-entities-and-no-cuban-survive-trumps-cuts/",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 10,
+      "titulo": "A Covert Action: Reagan, the CIA, and the Cold War Struggle in Poland",
+      "fuente": "Seth G. Jones, W.W. Norton, 2018",
+      "url": "https://lawliberty.org/helping-the-poles-throw-off-moscows-yoke-a-conversation-with-seth-g-jones/",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 11,
+      "titulo": "Myanmar opposition drive to crimp junta revenue is far from quixotic",
+      "fuente": "Radio Free Asia, oct-2023",
+      "url": "https://www.rfa.org/english/commentaries/myanmar-nug-revenue-10222023084657.html",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 12,
+      "titulo": "The 2% Tax for Eritreans in the diaspora",
+      "fuente": "Nicole Hirt, African Affairs, ene-2015",
+      "url": "https://academic.oup.com/afraf/article/114/454/115/2195212",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 13,
+      "titulo": "Why Civil Resistance Works / regla del 3,5%",
+      "fuente": "Chenoweth & Stephan, Columbia UP 2011; Chenoweth 2013 (NAVCO)",
+      "url": "https://en.wikipedia.org/wiki/3.5%25_rule",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 14,
+      "titulo": "The Women's Revolution: Female Activism in Sudan",
+      "fuente": "Harvard International Review",
+      "url": "https://hir.harvard.edu/the-womens-revolution-female-activism-in-sudan/",
+      "confianza": "estimado"
+    },
+    {
+      "id": 15,
+      "titulo": "Concilio Cubano (registro histórico)",
+      "fuente": "Refworld / USCIS",
+      "url": "https://www.refworld.org/reference/countryrep/uscis/1998/en/77974",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 16,
+      "titulo": "Chile's 1988 Plebiscite and the End of Pinochet's Dictatorship",
+      "fuente": "ADST",
+      "url": "https://adst.org/2014/11/chiles-1988-plebiscite-and-the-end-of-pinochets-dictatorship/",
+      "confianza": "confirmado"
+    },
+    {
+      "id": 17,
+      "titulo": "Cuban regime falls in 2026? (mercado de predicción)",
+      "fuente": "Polymarket",
+      "url": "https://polymarket.com/event/cuban-regime-falls-in-2026",
+      "confianza": "reportado"
+    },
+    {
+      "id": 18,
+      "titulo": "Mayoría de cubanos apoya intervención militar de EE.UU. y derrocamiento del régimen (encuesta coalición: 60,9% / 64,9%)",
+      "fuente": "CiberCuba / encuestascuba.net, 7-may-2026",
+      "url": "https://www.cibercuba.com/noticias/2026-05-08-u1-e135253-s27061-nid328496-mayoria-cubanos-apoya-intervencion-militar-eeuu",
+      "confianza": "confirmado"
+    }
+  ],
+  "conclusion": {
+    "titulo": "Lectura final",
+    "parrafos": [
+      "El coraje cubano no está en déficit: está en dispersión. Junio de 2026 lo demostró con el récord de la serie del OCC, protagonizado por gente que en un 89% no pertenece a organización alguna. Lo que falta no es valor sino cauce, y el cauce es precisamente lo que el exilio —la única parte de la nación que puede organizarse sin ir presa— no ha construido en 65 años: el IFE cubano (8,8) está más cerca del espejo iraní que de cualquier transición lograda.",
+      "La historia comparada es tozuda: ninguna dictadura del catálogo cayó ante una oposición con este nivel de fragmentación, y todas las transiciones del cuadrante ganador compartieron mando único, financiación disciplinada y un puente operativo isla-exilio. Los tres simuladores de este expediente muestran que ninguna de esas tres condiciones es materialmente imposible para Cuba; todas son decisiones pendientes.",
+      "Este expediente se actualizará con cada informe mensual del OCC y con cada movimiento del mapa organizativo del exilio. Si el Acuerdo de Liberación de 2026 sobrevive a su primer año, será la primera curva descendente del IFE en la historia de la serie. Ese, y no otro, es el número a vigilar."
+    ]
+  }
+}

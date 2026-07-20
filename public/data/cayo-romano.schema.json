@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.org/schemas/cuba-transicion-dataset.json",
+  "title": "CubaTransicionDataset",
+  "description": "Esquema del dataset del análisis Cayo Romano vs Fondo Soberano Minero. Las secciones de proyección son contrafactuales parametrizados por supuestosDiD.",
+  "type": "object",
+  "required": ["meta", "constantes", "proyectos", "c40VsVerificable", "totales", "valoracionAgregada", "supuestosDiD", "referencias"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["titulo", "version", "fecha", "advertencia"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha": { "type": "string", "format": "date" },
+        "unidadMonetaria": { "type": "string" },
+        "advertencia": { "type": "string" }
+      }
+    },
+    "constantes": {
+      "type": "object",
+      "required": ["superficieCubaKm2", "cayoRomanoKm2"],
+      "properties": {
+        "superficieCubaKm2": { "type": "number", "exclusiveMinimum": 0 },
+        "cayoRomanoKm2": { "type": "number", "exclusiveMinimum": 0 },
+        "cayoRomanoPorcentajeTerritorio": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "proyectos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "recurso", "lat", "lon", "estado", "dato"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "nombre": { "type": "string" },
+          "recurso": { "type": "string" },
+          "operador": { "type": ["string", "null"] },
+          "lat": { "type": "number", "minimum": 19, "maximum": 24 },
+          "lon": { "type": "number", "minimum": -86, "maximum": -73 },
+          "estado": { "type": "string", "enum": ["En producción", "En desarrollo", "Exploración", "Reactivación parcial", "Prospectivo", "Activo en disputa del plan C40"] },
+          "dato": { "type": "string" },
+          "prodAnual": { "type": ["string", "null"] },
+          "refIds": { "type": "array", "items": { "type": "integer" } },
+          "especial": { "type": "boolean" }
+        }
+      }
+    },
+    "c40VsVerificable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["recurso", "c40", "verificable", "condicional", "distorsion", "nota"],
+        "properties": {
+          "recurso": { "type": "string" },
+          "c40": { "type": "number", "minimum": 0, "description": "Cifra original del Proyecto Cayo Romano, millones USD bruto" },
+          "verificable": { "type": "number", "minimum": 0, "description": "Bruto in situ con reservas de fuentes públicas (USGS/EIA/operadores)" },
+          "condicional": { "type": "number", "minimum": 0, "description": "Recurso técnicamente recuperable NO descubierto; no sumable como riqueza disponible" },
+          "distorsion": { "type": "string" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "totales": {
+      "type": "object",
+      "required": ["totalC40", "totalVerificableBruto"],
+      "properties": {
+        "totalC40": { "type": "number" },
+        "totalVerificableBruto": { "type": "number" },
+        "totalCondicionalOffshore": { "type": "number" },
+        "factorInflacionSobreVerificable": { "type": "number" }
+      }
+    },
+    "valoracionAgregada": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["concepto", "min", "max", "tipo"],
+        "properties": {
+          "concepto": { "type": "string" },
+          "min": { "type": "number" },
+          "max": { "type": "number" },
+          "tipo": { "type": "string", "enum": ["afirmación del proyecto", "estimación"] }
+        }
+      }
+    },
+    "costesTransicion": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["concepto", "valor"],
+        "properties": {
+          "concepto": { "type": "string" },
+          "valor": { "type": "number" },
+          "contraste": { "type": "string" }
+        }
+      }
+    },
+    "perdidasCayoRomano": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "detalle"],
+        "properties": {
+          "dimension": { "type": "string" },
+          "detalle": { "type": "string" },
+          "vpEstimado": { "type": ["number", "null"], "description": "Valor presente estimado de la pérdida, millones USD" }
+        }
+      }
+    },
+    "comparacionRadar": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "cayoRomano", "fondoSoberano"],
+        "properties": {
+          "dimension": { "type": "string" },
+          "cayoRomano": { "type": "number", "minimum": 0, "maximum": 10 },
+          "fondoSoberano": { "type": "number", "minimum": 0, "maximum": 10 }
+        }
+      }
+    },
+    "supuestosDiD": {
+      "type": "object",
+      "description": "Parámetros del modelo contrafactual de diferencias en diferencias proyectado. Reproducible con la función simular() del artefacto JSX.",
+      "required": ["pibBase2026", "crecimientoStatusQuo", "anioTransicion", "horizonte", "fugaCayo"],
+      "properties": {
+        "pibBase2026": { "type": "number", "exclusiveMinimum": 0 },
+        "crecimientoStatusQuo": { "type": "number", "minimum": -1, "maximum": 1 },
+        "anioTransicion": { "type": "integer", "minimum": 2026 },
+        "horizonte": { "type": "integer", "minimum": 2027 },
+        "shockGuerra": { "type": "number", "minimum": -1, "maximum": 0 },
+        "shockAjustePacifico": { "type": "number", "minimum": -1, "maximum": 0 },
+        "boomReconstruccion": { "type": "number", "minimum": 0, "maximum": 1 },
+        "crecimientoLPfondo": { "type": "number", "minimum": 0, "maximum": 1 },
+        "crecimientoLPcayo": { "type": "number", "minimum": 0, "maximum": 1 },
+        "descuentoLegitimidad": { "type": "number", "minimum": 0, "maximum": 1 },
+        "rentaMineraMax": { "type": "number", "minimum": 0 },
+        "rentaPetroleoDescubrimiento": { "type": "number", "minimum": 0 },
+        "anioPetroleoOnline": { "type": "integer" },
+        "fugaCayo": { "type": "number", "minimum": 0, "maximum": 1, "description": "Fracción de renta soberana perdida bajo el plan C40 (30% petróleo perpetuo + exclusividad minera)" },
+        "haircutGobernanzaBaja": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "contrafactualesTextuales": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo", "descripcion"],
+        "properties": {
+          "id": { "type": "string" },
+          "titulo": { "type": "string" },
+          "descripcion": { "type": "string" }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "titulo", "fuente", "url"],
+        "properties": {
+          "id": { "type": "integer" },
+          "titulo": { "type": "string" },
+          "fuente": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

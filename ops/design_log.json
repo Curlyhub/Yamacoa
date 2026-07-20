@@ -5,14 +5,32 @@
     "paleta": {
       "nombre": "Acero a ascua",
       "acentos": [
-        { "hex": "#E06056", "rol": "primario", "h": 4 },
-        { "hex": "#C74B3F", "rol": "intenso", "h": 5 }
+        {
+          "hex": "#E06056",
+          "rol": "primario",
+          "h": 4
+        },
+        {
+          "hex": "#C74B3F",
+          "rol": "intenso",
+          "h": 5
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "seis-pestanas",
-    "graficos": ["linea", "mapa-provincias", "barra-horizontal", "galeria-casos", "encuesta"],
+    "graficos": [
+      "linea",
+      "mapa-provincias",
+      "barra-horizontal",
+      "galeria-casos",
+      "encuesta"
+    ],
     "firma": "mapa de Cuba con senal por provincia sincronizado con barra lateral"
   },
   {
@@ -21,14 +39,28 @@
     "paleta": {
       "nombre": "Red oligarquica",
       "acentos": [
-        { "hex": "#FF6B35", "rol": "primario", "h": 18 },
-        { "hex": "#4ECDC4", "rol": "contrapunto", "h": 174 }
+        {
+          "hex": "#FF6B35",
+          "rol": "primario",
+          "h": 18
+        },
+        {
+          "hex": "#4ECDC4",
+          "rol": "contrapunto",
+          "h": 174
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "scroll-dossier",
-    "graficos": ["force-graph-d3"],
+    "graficos": [
+      "force-graph-d3"
+    ],
     "firma": "grafo de fuerza D3 con nodos clicables y sidebar de detalle"
   },
   {
@@ -37,14 +69,31 @@
     "paleta": {
       "nombre": "Terminal verde",
       "acentos": [
-        { "hex": "#38D6C9", "rol": "primario", "h": 174 },
-        { "hex": "#F5A623", "rol": "contrapunto", "h": 38 }
+        {
+          "hex": "#38D6C9",
+          "rol": "primario",
+          "h": 174
+        },
+        {
+          "hex": "#F5A623",
+          "rol": "contrapunto",
+          "h": 38
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Space Grotesk", "datos": "JetBrains Mono", "extra": "Inter" },
+    "tipografia": {
+      "display": "Space Grotesk",
+      "datos": "JetBrains Mono",
+      "extra": "Inter"
+    },
     "layout": "tablero-con-slider",
-    "graficos": ["linea-recharts", "area", "barra", "slider-interactivo"],
+    "graficos": [
+      "linea-recharts",
+      "area",
+      "barra",
+      "slider-interactivo"
+    ],
     "firma": "slider de capital que recalcula en vivo las proyecciones energeticas"
   },
   {
@@ -53,14 +102,31 @@
     "paleta": {
       "nombre": "Fuego",
       "acentos": [
-        { "hex": "#D4380D", "rol": "primario", "h": 12 },
-        { "hex": "#FAAD14", "rol": "contrapunto", "h": 43 }
+        {
+          "hex": "#D4380D",
+          "rol": "primario",
+          "h": 12
+        },
+        {
+          "hex": "#FAAD14",
+          "rol": "contrapunto",
+          "h": 43
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "scroll-dossier",
-    "graficos": ["mapa-provincias", "linea", "barra", "donut"],
+    "graficos": [
+      "mapa-provincias",
+      "linea",
+      "barra",
+      "donut"
+    ],
     "firma": "mapa con proyeccion real de Cuba y filtro temporal por mes"
   },
   {
@@ -69,14 +135,32 @@
     "paleta": {
       "nombre": "Voltaje",
       "acentos": [
-        { "hex": "#E8A13C", "rol": "primario", "h": 38 },
-        { "hex": "#2FA8A0", "rol": "contrapunto", "h": 176 }
+        {
+          "hex": "#E8A13C",
+          "rol": "primario",
+          "h": 38
+        },
+        {
+          "hex": "#2FA8A0",
+          "rol": "contrapunto",
+          "h": 176
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "cinco-pestanas",
-    "graficos": ["linea", "fan-chart", "mapa-provincias", "donut", "barra"],
+    "graficos": [
+      "linea",
+      "fan-chart",
+      "mapa-provincias",
+      "donut",
+      "barra"
+    ],
     "firma": "fan chart de proyeccion con banda de incertidumbre y JSON respirante animado"
   },
   {
@@ -85,14 +169,32 @@
     "paleta": {
       "nombre": "Anatomia",
       "acentos": [
-        { "hex": "#E85D75", "rol": "primario", "h": 348 },
-        { "hex": "#6C5CE7", "rol": "contrapunto", "h": 249 }
+        {
+          "hex": "#E85D75",
+          "rol": "primario",
+          "h": 348
+        },
+        {
+          "hex": "#6C5CE7",
+          "rol": "contrapunto",
+          "h": 249
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "pestanas",
-    "graficos": ["violin", "radar", "choropleth", "donut-con-selector", "barra-horizontal"],
+    "graficos": [
+      "violin",
+      "radar",
+      "choropleth",
+      "donut-con-selector",
+      "barra-horizontal"
+    ],
     "firma": "violin plots de densidad KDE real sobre distribucion de edades de detenidos"
   },
   {
@@ -101,14 +203,31 @@
     "paleta": {
       "nombre": "Memoria",
       "acentos": [
-        { "hex": "#8B5A6B", "rol": "primario", "h": 330 },
-        { "hex": "#C4973B", "rol": "contrapunto", "h": 40 }
+        {
+          "hex": "#8B5A6B",
+          "rol": "primario",
+          "h": 330
+        },
+        {
+          "hex": "#C4973B",
+          "rol": "contrapunto",
+          "h": 40
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "pestanas",
-    "graficos": ["mapa-provincias", "donut", "barra", "linea"],
+    "graficos": [
+      "mapa-provincias",
+      "donut",
+      "barra",
+      "linea"
+    ],
     "firma": "paleta aubergine-ocre que evoca la piel y la tierra"
   },
   {
@@ -117,14 +236,31 @@
     "paleta": {
       "nombre": "Senal",
       "acentos": [
-        { "hex": "#F28C72", "rol": "primario", "h": 14 },
-        { "hex": "#3BC4B1", "rol": "contrapunto", "h": 168 }
+        {
+          "hex": "#F28C72",
+          "rol": "primario",
+          "h": 14
+        },
+        {
+          "hex": "#3BC4B1",
+          "rol": "contrapunto",
+          "h": 168
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "pestanas",
-    "graficos": ["barra", "donut", "linea", "mapa-provincias"],
+    "graficos": [
+      "barra",
+      "donut",
+      "linea",
+      "mapa-provincias"
+    ],
     "firma": "triada salmon-amarillo-turquesa que codifica alerta-precaucion-seguro"
   },
   {
@@ -133,15 +269,36 @@
     "paleta": {
       "nombre": "Bandera historica",
       "acentos": [
-        { "hex": "#3D6FE5", "rol": "primario", "h": 222 },
-        { "hex": "#D8392B", "rol": "contrapunto", "h": 5 },
-        { "hex": "#E6B450", "rol": "terciario", "h": 42 }
+        {
+          "hex": "#3D6FE5",
+          "rol": "primario",
+          "h": 222
+        },
+        {
+          "hex": "#D8392B",
+          "rol": "contrapunto",
+          "h": 5
+        },
+        {
+          "hex": "#E6B450",
+          "rol": "terciario",
+          "h": 42
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": "Spectral" },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": "Spectral"
+    },
     "layout": "cuatro-pestanas",
-    "graficos": ["timeline", "texto-himno", "encuesta", "quiz"],
+    "graficos": [
+      "timeline",
+      "texto-himno",
+      "encuesta",
+      "quiz"
+    ],
     "firma": "capsula historica con texto del himno en Spectral y quiz interactivo"
   },
   {
@@ -150,15 +307,41 @@
     "paleta": {
       "nombre": "Arco voltaico",
       "acentos": [
-        { "hex": "#3BA9E0", "rol": "primario", "h": 200 },
-        { "hex": "#F5B841", "rol": "contrapunto", "h": 42 },
-        { "hex": "#E8503A", "rol": "alerta", "h": 9 }
+        {
+          "hex": "#3BA9E0",
+          "rol": "primario",
+          "h": 200
+        },
+        {
+          "hex": "#F5B841",
+          "rol": "contrapunto",
+          "h": 42
+        },
+        {
+          "hex": "#E8503A",
+          "rol": "alerta",
+          "h": 9
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "seis-pestanas",
-    "graficos": ["slope-chart", "gauge-radial", "area", "donut", "choropleth", "ridgeline", "parallel-coords", "barra", "slider-calc"],
+    "graficos": [
+      "slope-chart",
+      "gauge-radial",
+      "area",
+      "donut",
+      "choropleth",
+      "ridgeline",
+      "parallel-coords",
+      "barra",
+      "slider-calc"
+    ],
     "firma": "medidor radial tipo voltimetro (demanda vs disponible = deficit) + ridgeline de apagones como forma de onda + rampa de voltaje azul->ambar->ascua"
   },
   {
@@ -167,14 +350,32 @@
     "paleta": {
       "nombre": "Luz verde",
       "acentos": [
-        { "hex": "#32BD4E", "rol": "primario", "h": 132 },
-        { "hex": "#AE5AD8", "rol": "contrapunto", "h": 280 }
+        {
+          "hex": "#32BD4E",
+          "rol": "primario",
+          "h": 132
+        },
+        {
+          "hex": "#AE5AD8",
+          "rol": "contrapunto",
+          "h": 280
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "longform-con-anclas",
-    "graficos": ["mapa-mundial-leaflet", "cuenta-atras", "mapa-provincias", "muro-nominal", "listado-agrupado"],
+    "graficos": [
+      "mapa-mundial-leaflet",
+      "cuenta-atras",
+      "mapa-provincias",
+      "muro-nominal",
+      "listado-agrupado"
+    ],
     "firma": "mapa mundial react-leaflet sobre tiles CartoDB Dark Matter con marcadores de convocatoria en cuatro niveles de confianza codificados por forma + opacidad (no solo color) dentro de una unica familia verde-senal, con leyenda fija"
   },
   {
@@ -183,14 +384,114 @@
     "paleta": {
       "nombre": "Carlota",
       "acentos": [
-        { "hex": "#6E9537", "rol": "primario", "h": 85 },
-        { "hex": "#3987C6", "rol": "contrapunto", "h": 207 }
+        {
+          "hex": "#6E9537",
+          "rol": "primario",
+          "h": 85
+        },
+        {
+          "hex": "#3987C6",
+          "rol": "contrapunto",
+          "h": 207
+        }
       ],
       "fondo": "oscuro"
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "split-diptico",
-    "graficos": ["dot-plot-rango", "waffle", "serie-anotada", "timeline-espina", "encuesta"],
+    "graficos": [
+      "dot-plot-rango",
+      "waffle",
+      "serie-anotada",
+      "timeline-espina",
+      "encuesta"
+    ],
     "firma": "waffle de 40 chapas de identificacion troquelado en la costura del diptico: 1 chapa dorada y 1 partida = lo que llega al medico de los 5000 USD mensuales, 38 grises = lo retenido, con revelado escalonado al entrar en vista"
+  },
+  {
+    "tema": "envejecimiento",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Nido vacio",
+      "acentos": [
+        {
+          "hex": "#A666D6",
+          "rol": "primario",
+          "h": 274
+        },
+        {
+          "hex": "#78AD52",
+          "rol": "contrapunto",
+          "h": 95
+        }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "tablero",
+    "graficos": [
+      "piramide-poblacional-espejada",
+      "linea-con-tramo-proyectado-punteado",
+      "donut",
+      "gauge-radial",
+      "barra"
+    ],
+    "firma": "piramide poblacional real (barras horizontales espejadas hombres/mujeres por decada de edad) con deslizador de anio 2025-2050 y silueta punteada fantasma del escenario contrafactual sin el exodo post-2021"
+  },
+  {
+    "tema": "coraje_dividido",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Isla y exilio",
+      "acentos": [
+        {
+          "hex": "#C2497F",
+          "rol": "primario",
+          "h": 333
+        },
+        {
+          "hex": "#8FB259",
+          "rol": "contrapunto",
+          "h": 84
+        },
+        {
+          "hex": "#D9A13B",
+          "rol": "contrafactual",
+          "h": 39
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "Duo semantico: magenta = exilio, verde cana = isla; ambar reservado para bloques contrafactuales. PROXIMIDADES DETECTADAS: el verde #8FB259 (h84) queda a 1 grado del primario de angola (#6E9537, h85) y a 11 de contrapunto de envejecimiento (#78AD52, h95); el magenta #C2497F (h333) queda a 6 del primario de racismo (#8B5A6B, h339), aunque muy por encima en saturacion. Por eso el accent de la card es el magenta y no el verde. Un tema nuevo NO deberia tomar ni el verde oliva-cana ni el magenta-granate sin diferenciarse en saturacion o fondo."
+    },
+    "tipografia": {
+      "display": "Archivo Black",
+      "datos": "IBM Plex Mono",
+      "extra": "Georgia serif (prosa editorial)"
+    },
+    "layout": "scroll-dossier-con-pestanas-locales",
+    "graficos": [
+      "cuadrante-dispersion-voluntad-vs-coordinacion",
+      "constelacion-nodos-con-halos",
+      "linea-temporal-de-organizaciones",
+      "matriz-calor",
+      "grafo-causal-dirigido",
+      "matriz-ife-por-componente",
+      "serie-protestas-con-hitos",
+      "dumbbell-brechas",
+      "radar",
+      "barra",
+      "linea",
+      "simuladores-con-deslizador"
+    ],
+    "firma": "constelacion de la fragmentacion: nube de ~50 organizaciones opositoras cubanas con halos que marcan los paraguas unitarios colapsados y su fecha de muerte, contrapuesta a la topologia radial de nodo unico del ANC sudafricano. La forma de la red es el dato.",
+    "procedencia": "Importado ya construido via /importar el 2026-07-20; no paso por el subagente disenador. Ficha reconstruida a partir del renderer congelado."
   }
 ]

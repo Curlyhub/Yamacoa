@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "titulo": "Cayo Romano vs Fondo Soberano Minero: análisis contrafactual",
+    "version": "2.0.0",
+    "fecha": "2026-07-18",
+    "unidadMonetaria": "millones USD salvo indicación",
+    "advertencia": "Las proyecciones son ESCENARIOS CONTRAFACTUALES hipotéticos (supuesto: transición democrática en 2027). No son predicciones."
+  },
+  "constantes": {
+    "superficieCubaKm2": 109884,
+    "cayoRomanoKm2": 777,
+    "cayoRomanoPorcentajeTerritorio": 0.71
+  },
+  "proyectos": [
+    { "id": "moa-jv", "nombre": "Moa JV (Pedro Sotto Alba)", "recurso": "Ni-Co", "operador": "Sherritt / GeoMinera (50/50)", "lat": 20.64, "lon": -74.95, "estado": "En producción", "dato": "114,1 Mt reservas P&P @ 1,01% Ni / 0,12% Co (dic-2023). Vida útil ~25 años. Refino en Fort Saskatchewan, Canadá.", "prodAnual": "~31 kt Ni + ~3,3 kt Co", "refIds": [5] },
+    { "id": "che-guevara", "nombre": "Che Guevara (Punta Gorda)", "recurso": "Ni-Co", "operador": "Cubaníquel (estatal)", "lat": 20.7, "lon": -74.83, "estado": "En producción", "dato": "Planta HPAL estatal en Moa. Producción nacional declinante: 49 kt Ni en 2020 frente a ~70 kt históricas.", "prodAnual": "declive sostenido", "refIds": [4, 8] },
+    { "id": "castellanos", "nombre": "Castellanos", "recurso": "Zn-Pb", "operador": "Emincar (Trafigura/Geominera)", "lat": 22.7, "lon": -83.95, "estado": "En producción", "dato": "Primera gran mina nueva en décadas; producción desde 2017 en Pinar del Río.", "prodAnual": "~100 kt concentrado Zn", "refIds": [6] },
+    { "id": "demajagua", "nombre": "La Demajagua", "recurso": "Au-Ag", "operador": "Minera La Victoria (Antilles Gold / GeoMinera)", "lat": 21.72, "lon": -82.9, "estado": "En desarrollo", "dato": "JV con capital fundacional US$30M; perforación del depósito Au-Ag en Isla de la Juventud.", "prodAnual": null, "refIds": [7] },
+    { "id": "el-cobre", "nombre": "El Cobre / distrito Cu-Au oriental", "recurso": "Cu-Au", "operador": "GeoMinera + exploración", "lat": 20.05, "lon": -75.95, "estado": "Exploración", "dato": "Distrito histórico (desde 1534). USGS identifica potencial porfídico Cu-Au en el arco geológico cubano, sin certificación JORC/NI 43-101 moderna.", "prodAnual": null, "refIds": [3] },
+    { "id": "cromo-camaguey", "nombre": "Cromitas de Camagüey", "recurso": "Cr", "operador": "Estatal", "lat": 21.5, "lon": -77.5, "estado": "Reactivación parcial", "dato": "Yacimientos ofiolíticos históricos; embarque por Nuevitas. ~3 Mt estimadas sin certificación moderna.", "prodAnual": "menor", "refIds": [1] },
+    { "id": "franja-petrolera", "nombre": "Franja petrolera Habana-Matanzas", "recurso": "Petróleo onshore", "operador": "Cupet + contratos", "lat": 23.05, "lon": -81.6, "estado": "En producción", "dato": "Crudo pesado onshore/aguas someras: ~40-50 kbbl/d. Reservas probadas del país ~124 Mbbl. La cifra Mincex de 10.000 Mbbl geológicos NO es reserva probada.", "prodAnual": "40-50 kbbl/d", "refIds": [2] },
+    { "id": "offshore", "nombre": "Cuenca Norte offshore (ZEE)", "recurso": "Petróleo no descubierto", "operador": null, "lat": 23.5, "lon": -79.8, "estado": "Prospectivo", "dato": "USGS 2004: 4.600 Mbbl de recurso técnicamente recuperable NO descubierto (media probabilística). Pozos de 2012 (Repsol) secos.", "prodAnual": "0", "refIds": [2, 3] },
+    { "id": "cayo-romano", "nombre": "Cayo Romano", "recurso": "Territorio (777 km²)", "operador": null, "lat": 22.03, "lon": -77.92, "estado": "Activo en disputa del plan C40", "dato": "Humedal y corredor turístico de Jardines del Rey. El proyecto C40 propone cederlo a EE.UU. a perpetuidad, modelo Enmienda Platt.", "prodAnual": null, "refIds": [1], "especial": true }
+  ],
+  "c40VsVerificable": [
+    { "recurso": "Petróleo", "c40": 560000, "verificable": 10000, "condicional": 368000, "distorsion": "x56 sobre lo probado", "nota": "C40 valora 7.000 Mbbl a $80 como reservas. Probado: ~124 Mbbl. El recurso offshore USGS (4.600 Mbbl) es condicional: no descubierto." },
+    { "recurso": "Níquel", "c40": 20000, "verificable": 100000, "condicional": 0, "distorsion": "/5 (subestimado)", "nota": "C40 usa 1 Mt; USGS estima ~5,5 Mt. Incoherencia interna en dirección opuesta al petróleo." },
+    { "recurso": "Cobalto", "c40": 17500, "verificable": 22500, "condicional": 0, "distorsion": "/2 en reservas", "nota": "C40 usa 250 kt; USGS 500 kt (3ª reserva mundial). Subproducto del níquel: no monetizable de forma independiente." },
+    { "recurso": "Zinc", "c40": 31680, "verificable": 31680, "condicional": 0, "distorsion": "aprox", "nota": "Orden de magnitud plausible; Castellanos produce desde 2017." },
+    { "recurso": "Cromo", "c40": 3480, "verificable": 3480, "condicional": 0, "distorsion": "aprox (sin certificar)", "nota": "Datos históricos sin certificación moderna." },
+    { "recurso": "Oro", "c40": 3000, "verificable": 3000, "condicional": 0, "distorsion": "aprox", "nota": "~50 t; La Demajagua en desarrollo." }
+  ],
+  "totales": {
+    "totalC40": 635660,
+    "totalVerificableBruto": 170660,
+    "totalCondicionalOffshore": 368000,
+    "factorInflacionSobreVerificable": 3.7
+  },
+  "valoracionAgregada": [
+    { "concepto": "Total tabla proyecto C40", "min": 635660, "max": 635660, "tipo": "afirmación del proyecto" },
+    { "concepto": "Bruto verificable (sin offshore hipotético)", "min": 160000, "max": 180000, "tipo": "estimación" },
+    { "concepto": "Bruto incl. recurso offshore condicional", "min": 400000, "max": 600000, "tipo": "estimación" },
+    { "concepto": "VPN de proyectos comercialmente viables", "min": 50000, "max": 180000, "tipo": "estimación" },
+    { "concepto": "Renta soberana descontada (30-50 años)", "min": 20000, "max": 80000, "tipo": "estimación" }
+  ],
+  "costesTransicion": [
+    { "concepto": "Intervención militar (según proyecto C40)", "valor": 15000, "contraste": "Irak 2003-: >2.000.000" },
+    { "concepto": "Reconstrucción (según proyecto C40)", "valor": 75000, "contraste": "Rango realista 10-15 años: 150.000-300.000" },
+    { "concepto": "Deuda externa a asumir", "valor": 35000, "contraste": "Club de París, China, Rusia" }
+  ],
+  "perdidasCayoRomano": [
+    { "dimension": "Territorio", "detalle": "777 km² = 0,71% del territorio nacional, a perpetuidad", "vpEstimado": null },
+    { "dimension": "30% petróleo perpetuo", "detalle": "Si el offshore produce 300 kbbl/d con margen fiscal de $25/bbl", "vpEstimado": 24000 },
+    { "dimension": "Exclusividad minera", "detalle": "Pérdida de competencia en subastas: 15-30% menos regalías", "vpEstimado": 9000 },
+    { "dimension": "Base fiscal (exención restitución)", "detalle": "Décadas de exención sobre propiedades restituidas", "vpEstimado": 12000 }
+  ],
+  "comparacionRadar": [
+    { "dimension": "Legitimidad nacional", "cayoRomano": 2, "fondoSoberano": 8 },
+    { "dimension": "Soberanía territorial", "cayoRomano": 1, "fondoSoberano": 10 },
+    { "dimension": "Ingresos inmediatos", "cayoRomano": 8, "fondoSoberano": 4 },
+    { "dimension": "Ingresos a largo plazo", "cayoRomano": 3, "fondoSoberano": 8 },
+    { "dimension": "Competencia inversora", "cayoRomano": 1, "fondoSoberano": 8 },
+    { "dimension": "Reversibilidad", "cayoRomano": 1, "fondoSoberano": 8 },
+    { "dimension": "Apoyo EE.UU. rápido", "cayoRomano": 7, "fondoSoberano": 4 },
+    { "dimension": "Riesgo corrupción interna", "cayoRomano": 5, "fondoSoberano": 4 }
+  ],
+  "supuestosDiD": {
+    "pibBase2026": 100000,
+    "crecimientoStatusQuo": 0.005,
+    "anioTransicion": 2027,
+    "horizonte": 2041,
+    "shockGuerra": -0.09,
+    "shockAjustePacifico": -0.02,
+    "boomReconstruccion": 0.08,
+    "crecimientoLPfondo": 0.045,
+    "crecimientoLPcayo": 0.038,
+    "descuentoLegitimidad": 0.007,
+    "rentaMineraMax": 3000,
+    "rentaPetroleoDescubrimiento": 4500,
+    "anioPetroleoOnline": 2036,
+    "fugaCayo": 0.42,
+    "haircutGobernanzaBaja": 0.4
+  },
+  "contrafactualesTextuales": [
+    { "id": "CF-3", "titulo": "Sin transición (control)", "descripcion": "Sin cambio político: producción de níquel declinante, offshore sin explorar, renta soberana adicional ~0." },
+    { "id": "CF-4", "titulo": "Intervención fallida", "descripcion": "Insurgencia prolongada tipo Irak: coste 1-2 órdenes de magnitud sobre los $15.000M declarados; PIB por debajo del status quo durante una década. No graficado por dispersión excesiva." }
+  ],
+  "referencias": [
+    { "id": 1, "titulo": "PROYECTO CAYO ROMANO", "fuente": "MovimientoC40, feb-2025", "url": "https://movimientoc40.com/proyecto-cayo-romano/" },
+    { "id": 2, "titulo": "Updated Information on Cuba Mineral and Petroleum Resources", "fuente": "USGS, 2015", "url": "https://www.usgs.gov/news/national-news-release/updated-information-cuba-mineral-and-petroleum-resources-released" },
+    { "id": 3, "titulo": "Recent Trends in Cuba's Mining and Petroleum Industries (FS 2015-3032)", "fuente": "USGS", "url": "https://pubs.usgs.gov/fs/2015/3032/fs20153032.pdf" },
+    { "id": 4, "titulo": "Mineral Commodity Summaries 2025", "fuente": "USGS", "url": "https://pubs.usgs.gov/periodicals/mcs2025/" },
+    { "id": 5, "titulo": "Cuba: Mining, Minerals and Fuel Resources", "fuente": "AZO Mining, 2025", "url": "https://www.azomining.com/Article.aspx?ArticleID=218" },
+    { "id": 6, "titulo": "Cuba seeks to revive mining sector (Castellanos Zn-Pb)", "fuente": "Reuters, 2017", "url": "https://www.reuters.com/article/business/cuba-seeks-to-revive-mining-sector-with-new-lead-and-zinc-mine-idUSKBN1A70IN/" },
+    { "id": 7, "titulo": "Antilles Gold - La Demajagua JV con GeoMinera", "fuente": "Antilles Gold", "url": "https://antillesgold.net/" },
+    { "id": 8, "titulo": "The Imperative for Increased Investment in Cuban Mines", "fuente": "R. Crespin / DevTech, 2025", "url": "https://devtechsys.com/wp-content/uploads/2025/09/The-Imperative-for-Increased-Investment-in-Cuban-Mines-RCrespin-2025-2.pdf" }
+  ]
+}

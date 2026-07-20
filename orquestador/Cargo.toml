@@ -1,0 +1,24 @@
+[package]
+name = "yamacoa-orquestador"
+version = "0.1.0"
+edition = "2021"
+description = "Orquestador nocturno de Yamacoa: sincroniza envios de Supabase al inbox, lanza Claude Code headless y expone tools MCP (rmcp)."
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-cron-scheduler = "0.13"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+chrono = "0.4"
+chrono-tz = "0.10"
+# MCP SDK oficial de Anthropic para Rust (alinear con la version del pipeline; ver nota en main.rs)
+rmcp = { version = "2", features = ["server", "macros", "schemars", "transport-io"] }
+schemars = "0.8"
+
+[profile.release]
+lto = true
+strip = true

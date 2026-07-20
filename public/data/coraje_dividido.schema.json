@@ -1,0 +1,1078 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/coraje_dividido.schema.json",
+  "title": "CorajeDividido",
+  "description": "Contrato del dataset respirante del expediente especial 'Coraje dividido'. Secciones contrafactuales parametrizadas y etiquetadas.",
+  "type": "object",
+  "required": [
+    "meta",
+    "tesis",
+    "cifras_clave",
+    "paradoja",
+    "ife",
+    "constelacion",
+    "valor_medido",
+    "isla_exilio",
+    "genero",
+    "financiacion",
+    "contrafactuales",
+    "encuesta",
+    "referencias",
+    "conclusion"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "slug",
+        "titulo",
+        "subtitulo",
+        "version",
+        "fecha_datos",
+        "advertencia"
+      ],
+      "properties": {
+        "slug": {
+          "const": "coraje_dividido"
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "subtitulo": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string",
+          "description": "Registro factual largo del expediente. Capa descriptiva (/narrar); no la consume el renderer congelado.",
+          "minLength": 200
+        },
+        "narracion": {
+          "type": "string",
+          "description": "Guion de audio corto para el servidor TTS (tts.yamacoa.com). Cifras en palabras.",
+          "maxLength": 1500
+        },
+        "edicion": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "fecha_datos": {
+          "type": "string",
+          "format": "date"
+        },
+        "advertencia": {
+          "type": "string"
+        }
+      }
+    },
+    "tesis": {
+      "type": "object",
+      "required": [
+        "parrafos"
+      ],
+      "properties": {
+        "parrafos": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 100
+          }
+        }
+      }
+    },
+    "cifras_clave": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "valor",
+          "etiqueta",
+          "procedencia",
+          "confianza",
+          "lado"
+        ],
+        "properties": {
+          "valor": {
+            "type": "string"
+          },
+          "etiqueta": {
+            "type": "string"
+          },
+          "procedencia": {
+            "type": "string",
+            "minLength": 20
+          },
+          "confianza": {
+            "type": "string",
+            "enum": [
+              "confirmado",
+              "reportado",
+              "estimado"
+            ]
+          },
+          "lado": {
+            "type": "string",
+            "enum": [
+              "isla",
+              "exilio"
+            ]
+          }
+        }
+      }
+    },
+    "paradoja": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "paises",
+        "nota_metodologica"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "nota_metodologica": {
+          "type": "string"
+        },
+        "paises": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "nombre",
+              "voluntad",
+              "coordinacion",
+              "resultado",
+              "detalle",
+              "confianza"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z_]+$"
+              },
+              "nombre": {
+                "type": "string"
+              },
+              "voluntad": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "coordinacion": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "resultado": {
+                "type": "string",
+                "enum": [
+                  "transición",
+                  "régimen persiste",
+                  "en disputa"
+                ]
+              },
+              "detalle": {
+                "type": "string",
+                "minLength": 40
+              },
+              "confianza": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "ife": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "componentes",
+        "casos",
+        "comparativa"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "componentes": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "nombre",
+              "descripcion"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nombre": {
+                "type": "string"
+              },
+              "descripcion": {
+                "type": "string",
+                "minLength": 40
+              }
+            }
+          }
+        },
+        "casos": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "nombre",
+              "valores",
+              "ife"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nombre": {
+                "type": "string"
+              },
+              "valores": {
+                "type": "array",
+                "minItems": 5,
+                "maxItems": 5,
+                "items": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 10
+                }
+              },
+              "ife": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              }
+            }
+          }
+        },
+        "comparativa": {
+          "type": "object",
+          "required": [
+            "texto",
+            "formula",
+            "metricas",
+            "enlaces"
+          ],
+          "properties": {
+            "texto": {
+              "type": "string"
+            },
+            "formula": {
+              "type": "string"
+            },
+            "metricas": {
+              "type": "array",
+              "minItems": 5,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "corto",
+                  "componente",
+                  "cuba",
+                  "anc"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "corto": {
+                    "type": "string"
+                  },
+                  "componente": {
+                    "type": "string"
+                  },
+                  "cuba": {
+                    "$ref": "#/definitions/medida_comp"
+                  },
+                  "anc": {
+                    "$ref": "#/definitions/medida_comp"
+                  }
+                }
+              }
+            },
+            "enlaces": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "object",
+                "required": [
+                  "de",
+                  "a",
+                  "texto"
+                ],
+                "properties": {
+                  "de": {
+                    "type": "string"
+                  },
+                  "a": {
+                    "type": "string"
+                  },
+                  "texto": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "constelacion": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "organizaciones",
+        "paraguas",
+        "contraste_anc"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string"
+        },
+        "contraste_anc": {
+          "type": "string"
+        },
+        "organizaciones": {
+          "type": "array",
+          "minItems": 20,
+          "items": {
+            "type": "object",
+            "required": [
+              "nombre",
+              "decada"
+            ],
+            "properties": {
+              "nombre": {
+                "type": "string"
+              },
+              "decada": {
+                "type": "string",
+                "enum": [
+                  "1960s",
+                  "1970s",
+                  "1980s",
+                  "1990s",
+                  "2000s",
+                  "2010s",
+                  "2020s"
+                ]
+              }
+            }
+          }
+        },
+        "paraguas": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "nombre",
+              "anio",
+              "estado",
+              "orgs"
+            ],
+            "properties": {
+              "nombre": {
+                "type": "string"
+              },
+              "anio": {
+                "type": "string"
+              },
+              "estado": {
+                "type": "string"
+              },
+              "orgs": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "nota_decadas": {
+          "type": "string"
+        }
+      }
+    },
+    "valor_medido": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "serie_protestas",
+        "nota_serie",
+        "coste"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string",
+          "minLength": 200
+        },
+        "nota_serie": {
+          "type": "string"
+        },
+        "serie_protestas": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "mes",
+              "protestas",
+              "tipo"
+            ],
+            "properties": {
+              "mes": {
+                "type": "string"
+              },
+              "protestas": {
+                "type": "number",
+                "minimum": 0
+              },
+              "nota": {
+                "type": "string"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              }
+            }
+          }
+        },
+        "coste": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "indicador",
+              "valor",
+              "fuente",
+              "confianza"
+            ],
+            "properties": {
+              "indicador": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "string"
+              },
+              "fuente": {
+                "type": "string"
+              },
+              "confianza": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "isla_exilio": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "divergencias",
+        "embargo_generacional",
+        "fuente_embargo",
+        "cobertura_internacional"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string",
+          "minLength": 200
+        },
+        "fuente_embargo": {
+          "type": "string"
+        },
+        "divergencias": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "tema",
+              "isla",
+              "exilio",
+              "unidad",
+              "fuente"
+            ],
+            "properties": {
+              "tema": {
+                "type": "string"
+              },
+              "isla": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 100
+              },
+              "exilio": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "minimum": 0,
+                "maximum": 100
+              },
+              "unidad": {
+                "type": "string"
+              },
+              "fuente": {
+                "type": "string"
+              },
+              "nota": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "embargo_generacional": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "grupo",
+              "apoyo"
+            ],
+            "properties": {
+              "grupo": {
+                "type": "string"
+              },
+              "apoyo": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        },
+        "cobertura_internacional": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "fuente",
+              "tipo",
+              "dato",
+              "detalle",
+              "fecha",
+              "url",
+              "confianza"
+            ],
+            "properties": {
+              "fuente": {
+                "type": "string"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "mercado de predicción",
+                  "encuesta",
+                  "cobertura"
+                ]
+              },
+              "dato": {
+                "type": "string"
+              },
+              "detalle": {
+                "type": "string"
+              },
+              "fecha": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "confianza": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "genero": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "participacion",
+        "casos_emblema"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string",
+          "minLength": 200
+        },
+        "participacion": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "caso",
+              "pct_mujeres",
+              "confianza",
+              "nota"
+            ],
+            "properties": {
+              "caso": {
+                "type": "string"
+              },
+              "pct_mujeres": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "confianza": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              },
+              "nota": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "casos_emblema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "nombre",
+              "condena",
+              "detalle"
+            ],
+            "properties": {
+              "nombre": {
+                "type": "string"
+              },
+              "condena": {
+                "type": "string"
+              },
+              "detalle": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "financiacion": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "texto",
+        "partidas"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "texto": {
+          "type": "string",
+          "minLength": 200
+        },
+        "partidas": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "concepto",
+              "valor",
+              "detalle",
+              "confianza"
+            ],
+            "properties": {
+              "concepto": {
+                "type": "string"
+              },
+              "valor": {
+                "type": "string"
+              },
+              "detalle": {
+                "type": "string"
+              },
+              "confianza": {
+                "type": "string",
+                "enum": [
+                  "confirmado",
+                  "reportado",
+                  "estimado"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "contrafactuales": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "advertencia",
+        "cf1_chenoweth",
+        "cf2_mando_unico",
+        "cf3_autofinanciacion",
+        "cf4_textuales"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "advertencia": {
+          "type": "string"
+        },
+        "cf1_chenoweth": {
+          "type": "object",
+          "required": [
+            "titulo",
+            "texto",
+            "poblacion",
+            "umbral_pct",
+            "protestas_mes_actual",
+            "participantes_por_protesta_defecto",
+            "participantes_min",
+            "participantes_max"
+          ],
+          "properties": {
+            "titulo": {
+              "type": "string"
+            },
+            "texto": {
+              "type": "string"
+            },
+            "poblacion": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "umbral_pct": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 100
+            },
+            "protestas_mes_actual": {
+              "type": "number",
+              "minimum": 0
+            },
+            "participantes_por_protesta_defecto": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "participantes_min": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "participantes_max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "cf2_mando_unico": {
+          "type": "object",
+          "required": [
+            "titulo",
+            "texto",
+            "serie"
+          ],
+          "properties": {
+            "titulo": {
+              "type": "string"
+            },
+            "texto": {
+              "type": "string"
+            },
+            "serie": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "object",
+                "required": [
+                  "anio",
+                  "real",
+                  "hipotetico"
+                ],
+                "properties": {
+                  "anio": {
+                    "type": "integer"
+                  },
+                  "real": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10
+                  },
+                  "hipotetico": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "cf3_autofinanciacion": {
+          "type": "object",
+          "required": [
+            "titulo",
+            "texto",
+            "diaspora",
+            "fraccion_defecto",
+            "cuota_defecto"
+          ],
+          "properties": {
+            "titulo": {
+              "type": "string"
+            },
+            "texto": {
+              "type": "string"
+            },
+            "diaspora": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "fraccion_defecto": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "cuota_defecto": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "cf4_textuales": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "titulo",
+              "texto"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "titulo": {
+                "type": "string"
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 100
+              }
+            }
+          }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "nota",
+        "preguntas"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "nota": {
+          "type": "string"
+        },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "pregunta",
+              "opciones"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z_]+$"
+              },
+              "pregunta": {
+                "type": "string"
+              },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "titulo",
+          "fuente",
+          "url",
+          "confianza"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "titulo": {
+            "type": "string"
+          },
+          "fuente": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "confianza": {
+            "type": "string",
+            "enum": [
+              "confirmado",
+              "reportado",
+              "estimado"
+            ]
+          }
+        }
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "parrafos"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "parrafos": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 100
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "medida_comp": {
+      "type": "object",
+      "required": [
+        "puntuacion",
+        "unidades",
+        "etiqueta",
+        "compuesto"
+      ],
+      "properties": {
+        "puntuacion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "unidades": {
+          "type": "number",
+          "minimum": 0
+        },
+        "etiqueta": {
+          "type": "string"
+        },
+        "compuesto": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

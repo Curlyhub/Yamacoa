@@ -84,5 +84,17 @@
   "/triana": {
     "t": "Triana en cifras",
     "d": "Anatomía de una entrevista reformista: dónde acierta, dónde falla la aritmética y a quién se deja de nombrar"
+  },
+  "/envejecimiento": {
+    "t": "El rápido envejecimiento poblacional y la diáspora en Cuba",
+    "d": "Cómo el éxodo migratorio deformó la pirámide poblacional cubana, comparado con un escenario sin él"
+  },
+  "/cayo-romano": {
+    "t": "Cayo Romano vs Fondo Soberano Minero",
+    "d": "Qué vale de verdad el subsuelo cubano, y qué se cede a perpetuidad: el plan C40 medido contra un fondo soberano"
+  },
+  "/coraje-dividido": {
+    "t": "Coraje dividido",
+    "d": "El valor de un pueblo y la fragmentación de su exilio, medidos"
   }
 }

@@ -227,6 +227,42 @@ const temas = [
     dataSlug: "triana_reformas", // el dataset es /data/triana_reformas.json
     load: () => import("./triana_reformas.jsx"),
   },
+  {
+    id: "envejecimiento",
+    slug: "envejecimiento",
+    path: "/envejecimiento",
+    titulo: "El rápido envejecimiento poblacional y la diáspora en Cuba",
+    subtitulo:
+      "Cómo el éxodo migratorio deformó la pirámide poblacional cubana, comparado con un escenario sin él",
+    etiqueta: "DEMOGRAFÍA · DIÁSPORA",
+    accent: "#A666D6", // violeta "Nido vacío" del renderer congelado
+    fuentes: "ONEI · CBP · Naciones Unidas (World Population Prospects) · Albizu-Campos · ASIC",
+    load: () => import("./envejecimiento.jsx"),
+  },
+  {
+    id: "cayo-romano",
+    slug: "cayo-romano",
+    path: "/cayo-romano",
+    titulo: "Cayo Romano vs Fondo Soberano Minero",
+    subtitulo:
+      "Qué vale de verdad el subsuelo cubano, y qué se cede a perpetuidad: el plan C40 medido contra un fondo soberano",
+    etiqueta: "RECURSOS · CONTRAFACTUAL", // ⚠ CONFIRMAR
+    accent: "#0E7C7B",                     // ⚠ CONFIRMAR (teal de la paleta C del renderer)
+    fuentes: "USGS · Reuters · Antilles Gold · DevTech/Crespin · MovimientoC40", // ⚠ CONFIRMAR
+    load: () => import("./cayo_romano.jsx"),
+  },
+  {
+    id: "coraje-dividido",
+    slug: "coraje-dividido",
+    path: "/coraje-dividido",
+    titulo: "Coraje dividido",
+    subtitulo: "El valor de un pueblo y la fragmentación de su exilio, medidos",
+    etiqueta: "EDICIÓN ESPECIAL · EXILIO", // ⚠ CONFIRMAR
+    accent: "#C2497F",                      // ⚠ CONFIRMAR (magenta "exilio" de la paleta del renderer)
+    fuentes: "elTOQUE · FIU Cuba Poll · Bendixen & Amandi/Miami Herald · OCC · Justicia 11J · 14ymedio", // ⚠ CONFIRMAR
+    dataSlug: "coraje_dividido", // el dataset es /data/coraje_dividido.json (guion bajo)
+    load: () => import("./coraje_dividido.jsx"),
+  },
 ];
 
 export default temas;
