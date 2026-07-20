@@ -11,6 +11,8 @@
       "required": ["titulo", "version", "fecha", "advertencia"],
       "properties": {
         "titulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
         "fecha": { "type": "string", "format": "date" },
         "unidadMonetaria": { "type": "string" },

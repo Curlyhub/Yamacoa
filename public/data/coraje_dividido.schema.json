@@ -50,7 +50,8 @@
         "narracion": {
           "type": "string",
           "description": "Guion de audio corto para el servidor TTS (tts.yamacoa.com). Cifras en palabras.",
-          "maxLength": 1500
+          "maxLength": 1450,
+          "minLength": 300
         },
         "edicion": {
           "type": "string"

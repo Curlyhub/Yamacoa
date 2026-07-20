@@ -15,7 +15,7 @@
         "titulo": { "type": "string" },
         "subtitulo": { "type": "string" },
         "descripcion": { "type": "string" },
-        "narracion": { "type": "string" },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "fecha_analisis": { "type": "string", "format": "date" },
         "actualizado": { "type": "string" },
         "duracion_min": { "type": "number" },
