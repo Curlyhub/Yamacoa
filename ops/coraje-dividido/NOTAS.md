@@ -99,8 +99,10 @@ mientras el `id`/`slug`/`path` usan guion medio (`coraje-dividido`).
 
 - [x] Aplicar `poll_supabase.sql` en Supabase — ejecutado sin errores el 20-jul-2026.
 - [x] Alta en `ops/design_log.json` — ficha 14, con las proximidades de matiz anotadas.
-- [ ] **Pasada del subagente `verificador` sobre las 18 referencias (bloqueante).** Lanzada el
-      20-jul-2026; pendiente de incorporar su informe a este fichero, en una sección
+- [ ] **Pasada del subagente `verificador` sobre las 18 referencias (BLOQUEANTE, SIN HACER).**
+      Se lanzó el 20-jul-2026 y **abortó por límite de sesión sin producir informe alguno**: no
+      llegó a verificarse ni una sola afirmación. No existe salida parcial que recuperar; hay que
+      relanzarla de cero. Cuando termine, incorporar sus hallazgos aquí en una sección
       "Correcciones frente al set original" al estilo de `ops/envejecimiento/NOTAS.md`.
 - [ ] Confirmar los campos marcados ⚠ en la card del registry: `etiqueta`, `accent`, `fuentes`.
 - [ ] Precalentar caché TTS (`tts.yamacoa.com`), pendiente de autorización.
