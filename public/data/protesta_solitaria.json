@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "slug": "protesta_solitaria",
+    "titulo": "Protestar solo",
+    "subtitulo": "El caso de Javier Ernesto Martín Gutiérrez, campeón cubano de MMA encarcelado tras nueve días de protesta pacífica frente a su casa, y el cargo de \"desórdenes públicos\" que el Estado cubano ha usado contra manifestantes solitarios entre 2024 y 2026.",
+    "descripcion": "Javier Ernesto Martín Gutiérrez, conocido como \"Spiderman\" por su carrera como campeón cubano de artes marciales mixtas, permanece en prisión provisional en el Combinado del Este, la prisión de máxima seguridad de La Habana. Su caso arrancó el 24 de abril de 2026, cuando fue detenido tras protestar en solitario, día tras día, frente a su vivienda en el municipio de Marianao. Según las fuentes consultadas —14ymedio, Martí Noticias y CiberCuba— la protesta se extendió entre ocho y nueve días según la fuente, y denunciaba de forma explícita los apagones, la escasez y el deterioro de la vida cotidiana en Cuba.\n\nLo ocurrido tras la detención sigue un patrón que organizaciones de derechos humanos han documentado en otros casos: interceptación violenta por agentes vestidos de civil, un período sin información oficial sobre su paradero que el Instituto Cubano por la Libertad de Expresión y Prensa (ICLEP) calificó como indicador de desaparición forzada de corto plazo, y una retención inicial en Villa Marista, la sede de la Seguridad del Estado, bajo lo que las propias autoridades llamaron \"evaluación clínica\". En mayo de 2026 fue trasladado al Combinado del Este bajo la medida cautelar de prisión provisional.\n\nSe le acusa formalmente de \"desórdenes públicos\"; el segundo cargo, descrito en el envío original como \"incitación a delinquir\", no pudo confirmarse en esos términos exactos: las fuentes disponibles hablan de incitar o instigar a la población a protestar, una formulación cercana pero distinta a la figura penal de incitación a delinquir. Su abogado presentó una solicitud de cambio de medida cautelar y, después, un recurso de queja; ambos fueron rechazados por la fiscalía, lo que matiza —sin descartar— la afirmación de que careció por completo de defensa jurídica.\n\nEste expediente sitúa el caso de Martín junto a un patrón más amplio: el uso del cargo de \"desórdenes públicos\" contra manifestantes pacíficos individuales o de pequeño grupo en Cuba entre 2024 y 2026. Los casos de Manicaragua (Villa Clara, octubre de 2024, cuatro manifestantes condenados a cinco y seis años), Bayamo (Granma, marzo de 2024, protesta por apagones con condenas de hasta nueve años) y Santiago de Cuba (barrio El Carmen, noviembre de 2025, dos mujeres detenidas) muestran que el cargo se aplica de forma recurrente, con o sin visibilidad pública previa del acusado. Prisoners Defenders reportó 1.260 presos políticos en Cuba a abril de 2026; Diario de Cuba, usando una metodología distinta centrada solo en encarcelamiento efectivo, cifra en 820 los presos por razones políticas en el mismo período. Ninguna de las dos organizaciones desglosa públicamente cuántos de esos casos corresponden específicamente al cargo de desórdenes públicos.\n\nCada afirmación de este expediente conserva su fuente y su grado de verificación. Donde el envío original incluía una afirmación que no pudo cotejarse —el segundo cargo exacto, la ausencia total de defensa jurídica, la existencia de un examen médico oficial que descartara un trastorno— queda marcada visiblemente como no confirmada, nunca presentada como un hecho asentado.",
+    "narracion": "Javier Ernesto Martín Gutiérrez, conocido como Spiderman, campeón cubano de artes marciales mixtas, permanece en prisión provisional en el Combinado del Este, la cárcel de máxima seguridad de La Habana. Fue detenido el veinticuatro de abril de dos mil veintiséis, tras protestar en solitario frente a su casa en Marianao durante ocho o nueve días según la fuente, denunciando los apagones y la escasez. Agentes vestidos de civil lo golpearon y lo retuvieron sin información oficial durante varias horas, un episodio que una organización de prensa calificó como desaparición forzada de corto plazo. Estuvo semanas bajo evaluación clínica en Villa Marista antes de ser trasladado, en mayo, al Combinado del Este. Se le acusa de desórdenes públicos; su abogado presentó dos recursos legales y ambos fueron rechazados. Este expediente compara su caso con otros tres, en Villa Clara, Santiago de Cuba y Granma, donde el mismo cargo llevó a condenas de hasta nueve años contra manifestantes sin ninguna visibilidad pública. Prisoners Defenders contó mil doscientos sesenta presos políticos en Cuba a abril de dos mil veintiséis. Cada dato conserva su fuente y su grado de verificación.",
+    "version": "1.0.0",
+    "fecha_datos": "2026-07-26",
+    "advertencia": "El segundo cargo exacto contra Javier Ernesto Martín, el alcance real de su defensa jurídica y la existencia de un examen médico oficial que descartara un trastorno no pudieron confirmarse en esta pasada: aparecen marcados visiblemente como no confirmados, nunca como hechos asentados."
+  },
+  "intro": {
+    "parrafos": [
+      "El 24 de abril de 2026, Javier Ernesto Martín Gutiérrez, campeón cubano de artes marciales mixtas conocido como \"Spiderman\", fue interceptado y golpeado por agentes vestidos de civil tras nueve días protestando en solitario frente a su casa en Marianao. Hoy sigue en prisión provisional en el Combinado del Este, acusado de \"desórdenes públicos\".",
+      "Su caso no es aislado. \"Desórdenes públicos\" es el cargo que el Estado cubano ha usado de forma recurrente entre 2024 y 2026 contra manifestantes pacíficos individuales o de pequeño grupo, con o sin visibilidad pública previa: desde cuatro personas condenadas a varios años en un pueblo de Villa Clara hasta un caso registrado en un barrio de Santiago de Cuba.",
+      "Este expediente separa con cuidado dos niveles. El primero es el caso índice: los hechos concretos de Javier Martín, con su fuente y su grado de verificación marcados uno por uno. El segundo es el patrón: la evidencia, documentada por prensa independiente y por Prisoners Defenders, de que ese mismo cargo se repite contra otras personas. Ninguno de los dos niveles se presenta como si fuera el otro."
+    ]
+  },
+  "caso_indice": {
+    "advertencia": "Los hechos centrales de este caso —identidad, fecha y lugar de la protesta, golpiza, traslados y cargo de desórdenes públicos— están corroborados por prensa independiente. El segundo cargo exacto, la extensión de su defensa jurídica y el resultado de un examen médico oficial no pudieron confirmarse y quedan marcados como no confirmados.",
+    "perfil": {
+      "nombre": "Javier Ernesto Martín Gutiérrez",
+      "alias": "\"Spiderman\"",
+      "disciplina": "Artes marciales mixtas (MMA), campeón cubano",
+      "lugar": "Marianao, La Habana"
+    },
+    "hechos": [
+      {
+        "afirmacion": "Protestó en solitario frente a su vivienda en Marianao durante ocho o nueve días (las fuentes difieren), denunciando los apagones, la escasez y la crisis económica y social del país.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio, Martí Noticias, CiberCuba (abril de 2026)",
+        "nota": "14ymedio reporta ocho días de protesta solitaria; otras fuentes cuentan nueve, desde el 19 hasta el 24 de abril."
+      },
+      {
+        "afirmacion": "Fue interceptado y golpeado en la calle el 24 de abril de 2026 por agentes vestidos de civil.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio (relato de su esposa, Lisandra Cuza)"
+      },
+      {
+        "afirmacion": "Hubo un período sin información oficial sobre su paradero, que ICLEP documentó bajo indicadores de desaparición forzada de corto plazo: detención sin orden judicial ni identificación formal, sin notificación oficial a la familia.",
+        "confianza": "corroborada",
+        "fuente": "ICLEP"
+      },
+      {
+        "afirmacion": "Estuvo retenido en Villa Marista, sede de la Seguridad del Estado, bajo lo que las propias autoridades calificaron como \"evaluación clínica\".",
+        "confianza": "corroborada",
+        "fuente": "Diario de Cuba, CiberCuba"
+      },
+      {
+        "afirmacion": "En mayo de 2026 fue trasladado al Combinado del Este, prisión de máxima seguridad, bajo la medida cautelar de prisión provisional.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio, Martí Noticias"
+      },
+      {
+        "afirmacion": "Se le acusa formalmente de \"desórdenes públicos\".",
+        "confianza": "corroborada",
+        "fuente": "14ymedio, CiberCuba"
+      },
+      {
+        "afirmacion": "El segundo cargo se reporta como \"incitar\" o \"instigar\" a la población a protestar, no como \"incitación a delinquir\" en sentido estricto.",
+        "confianza": "no_confirmada",
+        "fuente": "14ymedio, CiberCuba",
+        "nota": "No se localizó fuente que use literalmente la fórmula \"incitación a delinquir\" para este caso específico."
+      },
+      {
+        "afirmacion": "Su abogado presentó una solicitud de cambio de medida cautelar y, después, un recurso de queja; la fiscalía rechazó ambos.",
+        "confianza": "corroborada",
+        "fuente": "Diario de Cuba"
+      },
+      {
+        "afirmacion": "Careció por completo de acceso a defensa jurídica efectiva.",
+        "confianza": "no_confirmada",
+        "fuente": "Diario de Cuba documenta lo contrario: tuvo abogado activo, con recursos denegados",
+        "nota": "Se corrige a: tuvo defensa jurídica, pero sus recursos fueron sistemáticamente rechazados."
+      },
+      {
+        "afirmacion": "Un examen médico oficial descartó un trastorno de salud mental atribuido a Martín por un perfil oficialista.",
+        "confianza": "no_confirmada",
+        "fuente": "Ninguna fuente localizada confirma un examen médico oficial con ese resultado",
+        "nota": "Lo documentado es que allegados y familiares rechazan públicamente la caracterización oficialista, no que exista un informe médico contrapuesto verificable."
+      }
+    ],
+    "linea_tiempo": [
+      {
+        "fecha": "19-23 abril 2026",
+        "estado": "protesta",
+        "detalle": "Protesta solitaria y continua frente a su vivienda en Marianao, denunciando apagones y crisis económica.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio, Martí Noticias"
+      },
+      {
+        "fecha": "24 abril 2026",
+        "estado": "protesta",
+        "detalle": "Interceptado y golpeado en la calle por agentes vestidos de civil al noveno (u octavo) día de protesta.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio"
+      },
+      {
+        "fecha": "24 abril 2026 (horas siguientes)",
+        "estado": "vacio_informativo",
+        "detalle": "Sin información oficial sobre su paradero; episodio documentado por ICLEP bajo indicadores de desaparición forzada de corto plazo.",
+        "confianza": "corroborada",
+        "fuente": "ICLEP"
+      },
+      {
+        "fecha": "finales abril - mayo 2026",
+        "estado": "confirmado",
+        "detalle": "Confirmada su retención en Villa Marista, bajo interrogatorio y \"evaluación clínica\".",
+        "confianza": "corroborada",
+        "fuente": "Diario de Cuba, CiberCuba"
+      },
+      {
+        "fecha": "mayo 2026",
+        "estado": "confirmado",
+        "detalle": "Trasladado al Combinado del Este bajo prisión provisional, acusado de desórdenes públicos.",
+        "confianza": "corroborada",
+        "fuente": "14ymedio, Martí Noticias"
+      },
+      {
+        "fecha": "junio-julio 2026",
+        "estado": "confirmado",
+        "detalle": "Su abogado presenta recursos para cambiar la medida cautelar; ambos son rechazados por la fiscalía.",
+        "confianza": "corroborada",
+        "fuente": "Diario de Cuba"
+      }
+    ]
+  },
+  "patron": {
+    "texto": "\"Desórdenes públicos\" es un cargo recurrente contra manifestantes pacíficos individuales o de pequeño grupo en Cuba, documentado por Prisoners Defenders y por prensa independiente en casos que no tienen relación entre sí más que el cargo y el contexto de protesta cívica frente a la crisis económica y los apagones.",
+    "cifras": {
+      "presos_politicos_pd": 1260,
+      "fecha_pd": "abril de 2026",
+      "encarcelados_diario_de_cuba": 820,
+      "fecha_dc": "2026",
+      "nota_divergencia": "Las dos cifras usan metodologías distintas: Prisoners Defenders cuenta presos políticos en un sentido amplio (incluye vigilancia, restricción de libertad y procesos abiertos, no solo encarcelamiento); Diario de Cuba mide solo encarcelamiento efectivo. Ninguna de las dos fuentes desglosa públicamente cuántos casos corresponden específicamente al cargo de desórdenes públicos."
+    },
+    "casos_comparables": [
+      {
+        "nombre": "Cuatro manifestantes de Manicaragua",
+        "provincia": "Villa Clara",
+        "fecha": "octubre de 2024",
+        "cargo": "Desórdenes públicos",
+        "condena": "5 y 6 años de prisión",
+        "condena_anios_min": 5,
+        "condena_anios_max": 6,
+        "confianza": "corroborada",
+        "fuente": "Prisoners Defenders, prensa independiente"
+      },
+      {
+        "nombre": "Protesta por apagones en Bayamo",
+        "provincia": "Granma",
+        "fecha": "marzo de 2024",
+        "cargo": "Desórdenes públicos",
+        "condena": "hasta 9 años de prisión",
+        "condena_anios_min": null,
+        "condena_anios_max": 9,
+        "confianza": "corroborada",
+        "fuente": "Diario de Cuba"
+      },
+      {
+        "nombre": "Dos mujeres detenidas en El Carmen",
+        "provincia": "Santiago de Cuba",
+        "fecha": "noviembre de 2025",
+        "cargo": "Desórdenes públicos",
+        "condena": "proceso judicial, condena no confirmada en esta pasada",
+        "condena_anios_min": null,
+        "condena_anios_max": null,
+        "confianza": "no_confirmada",
+        "fuente": "Prisoners Defenders"
+      },
+      {
+        "nombre": "Javier Ernesto Martín Gutiérrez (caso índice)",
+        "provincia": "La Habana",
+        "fecha": "abril de 2026",
+        "cargo": "Desórdenes públicos",
+        "condena": "prisión provisional, sin condena firme",
+        "condena_anios_min": null,
+        "condena_anios_max": null,
+        "confianza": "corroborada",
+        "fuente": "14ymedio, Martí Noticias, Diario de Cuba"
+      }
+    ]
+  },
+  "mapa": {
+    "nota": "El caso índice y los tres casos comparables documentados ocurrieron en cuatro provincias distintas, sin relación organizativa entre sí: el cargo de desórdenes públicos se repite por su utilidad represiva, no por una red coordinada.",
+    "puntos": [
+      { "provincia": "La Habana", "rol": "caso_indice", "detalle": "Javier Ernesto Martín Gutiérrez, detenido en Marianao el 24 de abril de 2026." },
+      { "provincia": "Villa Clara", "rol": "patron_comparable", "detalle": "Cuatro manifestantes de Manicaragua, condenados a 5 y 6 años en octubre de 2024." },
+      { "provincia": "Santiago de Cuba", "rol": "patron_comparable", "detalle": "Dos mujeres detenidas en el barrio El Carmen en noviembre de 2025; condena no confirmada." },
+      { "provincia": "Granma", "rol": "patron_comparable", "detalle": "Protesta por apagones en Bayamo, marzo de 2024, con condenas de hasta 9 años." }
+    ]
+  },
+  "radar": {
+    "nota_metodologica": "Clasificación editorial cualitativa (nulo=0, bajo=1, medio=2, alto=3) sobre lo documentado en las fuentes consultadas para cada caso, no una métrica oficial. Un valor bajo puede reflejar ausencia real del hecho o simplemente ausencia de reporte: la falta de cobertura de un caso anónimo no equivale a que no haya ocurrido.",
+    "ejes": ["Violencia documentada en la detención", "Incomunicación / paradero desconocido", "Visibilidad pública previa del acusado", "Severidad de la condena o el cargo"],
+    "series": [
+      { "nombre": "Javier Ernesto Martín (caso índice)", "valores": [3, 3, 3, 1] },
+      { "nombre": "Manicaragua (Villa Clara)", "valores": [0, 0, 0, 3] },
+      { "nombre": "Bayamo (Granma)", "valores": [0, 0, 1, 3] },
+      { "nombre": "El Carmen (Santiago de Cuba)", "valores": [0, 0, 0, 1] }
+    ]
+  },
+  "gauges": {
+    "rechazo_recursos": {
+      "presentados": 2,
+      "rechazados": 2,
+      "fuente": "Diario de Cuba: solicitud de cambio de medida cautelar y recurso de queja, ambos rechazados por la fiscalía."
+    },
+    "dias_custodia": {
+      "dias": 93,
+      "escala_max": 120,
+      "fecha_corte": "2026-07-26",
+      "nota": "Días transcurridos desde la detención (24 de abril de 2026) hasta la fecha de este expediente, sin condena firme. La escala de 120 es solo una referencia visual editorial, no un límite legal verificado."
+    }
+  },
+  "verificacion": {
+    "total_evaluadas": 11,
+    "corroboradas": 7,
+    "no_confirmadas": 4,
+    "excluidas": 0,
+    "nota": "Los hechos centrales del caso índice —identidad, fecha, lugar, golpiza, desaparición corta, traslados y cargo de desórdenes públicos— están corroborados por prensa independiente. Cuatro afirmaciones del envío original no pudieron confirmarse en sus términos exactos (segundo cargo, alcance de la defensa jurídica, examen médico) y se marcan como no confirmadas sin haber sido descartadas de plano."
+  },
+  "encuesta": {
+    "preguntas": [
+      {
+        "id": "cargo",
+        "texto": "¿Sabías que \"desórdenes públicos\" se usa de forma recurrente contra manifestantes pacíficos individuales en Cuba?",
+        "opciones": ["Sí, lo sabía", "No, es la primera vez que lo veo documentado", "Lo sospechaba pero no conocía casos concretos"]
+      },
+      {
+        "id": "visibilidad",
+        "texto": "¿Crees que la fama pública de un detenido lo protege o lo expone más frente al Estado?",
+        "opciones": ["Lo protege: hay más presión internacional", "Lo expone más: se vuelve un caso ejemplarizante", "No hay diferencia real"]
+      },
+      {
+        "id": "cifras",
+        "texto": "Ante la divergencia entre 1.260 presos políticos (Prisoners Defenders) y 820 encarcelados (Diario de Cuba), ¿qué cifra te parece más útil para entender la represión?",
+        "opciones": ["La más amplia (1.260): capta el fenómeno completo", "La más estricta (820): mide lo verificable", "Ambas, si se explica la diferencia de método"]
+      }
+    ]
+  },
+  "referencias": [
+    { "fuente": "14ymedio", "detalle": "Cobertura de la detención, la golpiza y el relato de su esposa, Lisandra Cuza", "fecha": "abril de 2026" },
+    { "fuente": "Martí Noticias", "detalle": "Cobertura del traslado al Combinado del Este", "fecha": "2026" },
+    { "fuente": "CiberCuba", "detalle": "Cobertura de la detención y la justificación oficial de \"evaluación clínica\"", "fecha": "24 de abril de 2026 en adelante" },
+    { "fuente": "Diario de Cuba", "detalle": "Cobertura de los recursos legales presentados y rechazados", "fecha": "2026" },
+    { "fuente": "ICLEP (Instituto Cubano por la Libertad de Expresión y Prensa)", "detalle": "Documentación del episodio bajo indicadores de desaparición forzada de corto plazo", "fecha": "2026" },
+    { "fuente": "Prisoners Defenders", "detalle": "Informe de mayo de 2026 sobre presos políticos en Cuba y casos comparables por desórdenes públicos", "fecha": "mayo de 2026" },
+    { "fuente": "Cubalex", "detalle": "Documentación histórica del uso de evaluaciones psiquiátricas y clínicas como herramienta represiva", "fecha": "diciembre de 2024" }
+  ],
+  "conclusion": "El caso de Javier Ernesto Martín Gutiérrez concentra, en una sola persona con perfil público, una secuencia que el Estado cubano ha repetido contra manifestantes anónimos en al menos tres provincias más: protesta pacífica, interceptación violenta, un vacío informativo, y un cargo de \"desórdenes públicos\" que en otros casos ya se ha traducido en condenas de varios años. Su fama no lo ha librado de la prisión provisional ni de que sus recursos legales sean rechazados uno tras otro; tampoco garantiza que su caso avance más rápido que los de quienes protestaron sin que nadie los conociera antes. Este expediente documenta esa secuencia con la fuente y el grado de verificación de cada afirmación a la vista."
+}

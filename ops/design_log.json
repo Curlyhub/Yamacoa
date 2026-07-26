@@ -516,5 +516,29 @@
     ],
     "firma": "eje vertical de bronce sin interrupcion que recorre las tres eras (1959, 2006/2008, 2018/2021) con tres sellos circulares engastados -- Fidel, Raul, Diaz-Canel -- que se deslizan sobre el mismo eje sin nunca cortarlo, mientras una franja de PCC/FAR permanece impresa sin moverse detras de los sellos.",
     "procedencia": "Creado via /procesar-inbox (envio 10, locus_internos_y_externos_10) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (15 fichas previas); verificacion previa del subagente verificador, SIN orientacion editorial (el fichero NOTA_EDITORIAL_locus.md que acompanaba el envio se confirmo falso -- no lo escribio el administrador -- y se descarto por completo; el angulo lo decidio el verificador de forma independiente sobre las afirmaciones del propio envio)."
+  },
+  {
+    "tema": "protesta_solitaria",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Vigilia y Sumario",
+      "acentos": [
+        { "hex": "#6C60BE", "rol": "primario", "h": 248 },
+        { "hex": "#50814B", "rol": "contrapunto", "h": 114 }
+      ],
+      "fondo": "oscuro",
+      "nota": "Primario = indigo institucional (S42/L56): la tinta del sumario judicial y la noche de las nueve vigilias solitarias frente a la casa de Marianao. Contrapunto = oliva apagado (S26/L40): el aparato -- muro de prision, uniforme, Villa Marista -- no el cuerpo. Circulo saturado (17 primarios vivos + 8 accents de registry.js sin ficha propia, verificados): hueco real mas ancho para el primario es 52 grados (entre himno h222 azul-bandera reservado y envejecimiento h274 violeta), centro h248, margen real 26 grados -- por debajo del ideal de 40 pero matematicamente el mejor disponible, mismo aprieto que desacreditacion (28) y sucesion (23). Diferenciado de ambos vecinos por saturacion/luz. Para el contrapunto el hueco mas ancho (h280-h38, centro h339) se descarto por colisionar a 6-9 grados con tres primarios vivos (racismo h330, coraje_dividido h333, anatomia_11j h348) -- mismo criterio de rechazo que uso sucesion. Se opto por h114 (S26/L40), a 17-20 grados de sus vecinos de contrapunto mas proximos (envejecimiento h95, desacreditacion h135), diferenciado por ser notablemente mas desaturado y oscuro (oliva institucional, no verde de senal ni verde-bilis medico). Ninguna paleta reservada de CLAUDE.md SS4 tocada; h248 solo se usa como primario (como contrapunto colisionaria a 1 grado con anatomia_11j h249)."
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "longform-con-anexo-acoplado",
+    "graficos": [
+      "linea-de-tiempo-con-hueco-de-desaparicion",
+      "mapa-provincias",
+      "radar",
+      "dot-plot-de-rango",
+      "gauge-radial-doble"
+    ],
+    "firma": "linea de tiempo vertical del caso indice trazada en indigo solido dia a dia (24 abril, nueve dias de vigilia) que al llegar a la ventana sin informacion oficial (retencion, presunta desaparicion forzada de corto plazo segun ICLEP) se vacia a un segmento sin relleno -- solo borde punteado del mismo indigo, opacidad baja -- y recupera el trazo solido al confirmarse el traslado a Villa Marista bajo evaluacion clinica: el hueco visual es el dato, no un adorno.",
+    "procedencia": "Creado via /procesar-inbox (envio 11, tras_las_rejas_javier_11) el 2026-07-26. Ficha del subagente disenador contra ops/design_log.json (17 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (el angulo lo decidio el verificador sobre las afirmaciones del propio envio). Caso indice mayormente corroborado (no descartado) y patron comparable corroborado con casos nombrados (Manicaragua, Bayamo, Santiago de Cuba): ambas secciones se construyeron por separado, sin fusionar cifras."
   }
 ]

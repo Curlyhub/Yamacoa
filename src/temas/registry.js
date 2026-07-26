@@ -305,6 +305,20 @@ const temas = [
     publicado: "2026-07-22",
     load: () => import("./sucesion.jsx"),
   },
+  {
+    id: "protesta-solitaria",
+    slug: "protesta-solitaria",
+    path: "/protesta-solitaria",
+    titulo: "Protestar solo",
+    subtitulo:
+      "El caso de Javier Ernesto Martín Gutiérrez, campeón cubano de MMA encarcelado tras nueve días de protesta pacífica frente a su casa, y el cargo de \"desórdenes públicos\" usado contra manifestantes solitarios en Cuba entre 2024 y 2026.",
+    etiqueta: "REPRESIÓN · CRIMINALIZACIÓN DE LA PROTESTA",
+    accent: "#6C60BE", // indigo "Vigilia y Sumario" del renderer congelado
+    fuentes: "14ymedio · Martí Noticias · CiberCuba · Diario de Cuba · ICLEP · Prisoners Defenders",
+    dataSlug: "protesta_solitaria", // el dataset es /data/protesta_solitaria.json (guion bajo)
+    publicado: "2026-07-26",
+    load: () => import("./protesta_solitaria.jsx"),
+  },
 ];
 
 export default temas;
