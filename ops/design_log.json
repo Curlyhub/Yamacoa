@@ -493,5 +493,28 @@
     ],
     "firma": "constelacion de la fragmentacion: nube de ~50 organizaciones opositoras cubanas con halos que marcan los paraguas unitarios colapsados y su fecha de muerte, contrapuesta a la topologia radial de nodo unico del ANC sudafricano. La forma de la red es el dato.",
     "procedencia": "Importado ya construido via /importar el 2026-07-20; no paso por el subagente disenador. Ficha reconstruida a partir del renderer congelado."
+  },
+  {
+    "tema": "sucesion",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Bronce y Patina",
+      "acentos": [
+        { "hex": "#969933", "rol": "primario", "h": 62 },
+        { "hex": "#46A477", "rol": "contrapunto", "h": 151 }
+      ],
+      "fondo": "oscuro",
+      "nota": "Primario = laton/bronce oficial envejecido (el sello que no cambia de dueno). Contrapunto = patina de verdin/jade que se acumula sobre ese mismo bronce con el paso de las decadas. Circulo saturado por 15 primarios y 17 contrapuntos vivos: hueco maximo real para un primario nuevo es 23 grados (h62 frente a angola #6E9537 h85), no los 40 ideales -- matematicamente imposible de mejorar, mismo aprieto que reporto desacreditacion (28 grados). Para el contrapunto se descarto la brecha numerica mas ancha (~42 grados, centro h322) porque su ventana de cumplimiento caia encima de tres primarios vivos casi identicos (desacreditacion h303 a 2 grados, coraje_dividido h333 a 7, racismo h330 a 10); se eligio en su lugar h151 (jade), a 16 grados del contrapunto mas cercano (desacreditacion h135) pero sin colision de identidad de color con ningun primario. Ninguna paleta reservada de CLAUDE.md SS4 tocada."
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "longform-tres-actos-mas-coda",
+    "graficos": [
+      "timeline-vertical-tres-eras",
+      "small-multiples-continuidad-institucional",
+      "slope-caudillismo-vs-hechos",
+      "barra-anios-en-el-poder"
+    ],
+    "firma": "eje vertical de bronce sin interrupcion que recorre las tres eras (1959, 2006/2008, 2018/2021) con tres sellos circulares engastados -- Fidel, Raul, Diaz-Canel -- que se deslizan sobre el mismo eje sin nunca cortarlo, mientras una franja de PCC/FAR permanece impresa sin moverse detras de los sellos.",
+    "procedencia": "Creado via /procesar-inbox (envio 10, locus_internos_y_externos_10) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (15 fichas previas); verificacion previa del subagente verificador, SIN orientacion editorial (el fichero NOTA_EDITORIAL_locus.md que acompanaba el envio se confirmo falso -- no lo escribio el administrador -- y se descarto por completo; el angulo lo decidio el verificador de forma independiente sobre las afirmaciones del propio envio)."
   }
 ]

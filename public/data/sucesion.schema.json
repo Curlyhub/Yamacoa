@@ -1,0 +1,174 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/sucesion.schema.json",
+  "title": "Sucesion",
+  "description": "Contrato del dataset respirante del expediente 'Sucesión sin urnas': la continuidad institucional del poder en Cuba, 1959-2026, a través de tres transferencias (Fidel Castro, Raúl Castro, Miguel Díaz-Canel), con un contrapunto epistemológico sobre el uso indebido de marcos pseudo-académicos (Locus de Control, tesis weberiana) para explicar el fenómeno.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "eras", "continuidad", "anios_en_poder",
+    "caudillismo_vs_hechos", "meta_critica", "referencias", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["slug", "titulo", "subtitulo", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "sucesion" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "required": ["parrafos"],
+      "properties": {
+        "parrafos": { "type": "array", "minItems": 2, "maxItems": 5, "items": { "type": "string", "minLength": 80 } }
+      }
+    },
+    "eras": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "lider", "periodo_texto", "cargo_estado", "cargo_pcc", "mecanismo", "confianza", "fuente"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z_]+$" },
+          "lider": { "type": "string" },
+          "periodo_texto": { "type": "string" },
+          "cargo_estado": {
+            "type": "object",
+            "required": ["inicio", "detalle"],
+            "properties": {
+              "inicio": { "type": "string" },
+              "fin": { "type": "string" },
+              "detalle": { "type": "string", "minLength": 20 }
+            }
+          },
+          "cargo_pcc": {
+            "type": "object",
+            "required": ["inicio", "detalle"],
+            "properties": {
+              "inicio": { "type": "string" },
+              "fin": { "type": "string" },
+              "detalle": { "type": "string", "minLength": 20 }
+            }
+          },
+          "mecanismo": { "type": "string", "minLength": 30 },
+          "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+          "fuente": { "type": "string", "minLength": 5 }
+        }
+      }
+    },
+    "continuidad": {
+      "type": "object",
+      "required": ["texto_editorial", "filas"],
+      "properties": {
+        "texto_editorial": { "type": "string", "minLength": 40 },
+        "filas": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["institucion", "se_mantuvo", "detalle"],
+            "properties": {
+              "institucion": { "type": "string" },
+              "se_mantuvo": { "type": "boolean" },
+              "detalle": { "type": "string", "minLength": 20 }
+            }
+          }
+        }
+      }
+    },
+    "anios_en_poder": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["lider", "anios", "detalle"],
+        "properties": {
+          "lider": { "type": "string" },
+          "anios": { "type": "number", "minimum": 0 },
+          "detalle": { "type": "string" }
+        }
+      }
+    },
+    "caudillismo_vs_hechos": {
+      "type": "object",
+      "required": ["texto", "figuras"],
+      "properties": {
+        "texto": { "type": "string", "minLength": 60 },
+        "figuras": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["nombre", "pais", "anio_inicio", "categoria_academica", "confianza", "fuente"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "pais": { "type": "string" },
+              "anio_inicio": { "type": "integer" },
+              "anio_fin": { "type": ["integer", "null"] },
+              "categoria_academica": { "type": "string" },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "meta_critica": {
+      "type": "object",
+      "required": ["rotter", "weber", "critica_academica"],
+      "properties": {
+        "rotter": {
+          "type": "object",
+          "required": ["texto", "confianza", "fuente"],
+          "properties": {
+            "texto": { "type": "string", "minLength": 40 },
+            "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" }
+          }
+        },
+        "weber": {
+          "type": "object",
+          "required": ["texto", "confianza", "fuente"],
+          "properties": {
+            "texto": { "type": "string", "minLength": 40 },
+            "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" }
+          }
+        },
+        "critica_academica": {
+          "type": "object",
+          "required": ["texto", "confianza", "fuente"],
+          "properties": {
+            "texto": { "type": "string", "minLength": 40 },
+            "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["fuente", "detalle"],
+        "properties": {
+          "fuente": { "type": "string" },
+          "detalle": { "type": "string" },
+          "fecha": { "type": "string" }
+        }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  }
+}

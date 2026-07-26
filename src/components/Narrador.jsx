@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
+import { RotateCcw } from "lucide-react";
 import temas from "../temas/registry";
 
 /*
@@ -27,6 +28,7 @@ export default function Narrador() {
   const [fase, setFase] = useState("idle"); // idle | cargando | reproduciendo | pausado | listo | error
   const [abierto, setAbierto] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [progreso, setProgreso] = useState({ actual: 0, duracion: 0 });
 
   const audioRef = useRef(null);
   const objectUrlRef = useRef(null);
@@ -69,6 +71,7 @@ export default function Narrador() {
     if (!narracion) return;
     setErrorMsg(null);
     setFase("cargando");
+    if (!reintento) setProgreso({ actual: 0, duracion: 0 });
     try {
       const resp = await fetch(TTS_ENDPOINT, {
         method: "POST",
@@ -89,6 +92,12 @@ export default function Narrador() {
       objectUrlRef.current = url;
       const audio = new Audio(url);
       audioRef.current = audio;
+      audio.onloadedmetadata = () => {
+        if (vivoRef.current) setProgreso((p) => ({ ...p, duracion: audio.duration || 0 }));
+      };
+      audio.ontimeupdate = () => {
+        if (vivoRef.current) setProgreso({ actual: audio.currentTime, duracion: audio.duration || 0 });
+      };
       audio.onended = () => { if (vivoRef.current) setFase("listo"); };
       audio.onerror = () => { if (vivoRef.current) { setFase("error"); setErrorMsg("No se pudo reproducir el audio."); } };
       await audio.play();
@@ -111,6 +120,24 @@ export default function Narrador() {
     else { a.pause(); setFase("pausado"); }
   }
 
+  function reiniciar() {
+    // El WAV ya está en memoria (audioRef/objectUrlRef): solo rebobina y reproduce,
+    // sin volver a pedirlo al servidor TTS.
+    const a = audioRef.current;
+    if (!a) return;
+    a.currentTime = 0;
+    a.play();
+    setFase("reproduciendo");
+  }
+
+  function buscar(e) {
+    const a = audioRef.current;
+    if (!a || !progreso.duracion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const frac = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+    a.currentTime = frac * progreso.duracion;
+  }
+
   function cerrar() {
     detener();
     setFase("idle");
@@ -120,7 +147,9 @@ export default function Narrador() {
 
   if (!narracion) return null;
 
-  const enMarcha = fase === "reproduciendo" || fase === "pausado";
+  const enMarcha = fase === "reproduciendo" || fase === "pausado" || fase === "listo";
+  const mostrarProgreso = fase === "reproduciendo" || fase === "pausado";
+  const pct = progreso.duracion ? Math.min(100, (progreso.actual / progreso.duracion) * 100) : 0;
 
   return (
     <div className="ym-narrador" data-abierto={abierto || enMarcha ? "1" : "0"}>
@@ -137,7 +166,7 @@ export default function Narrador() {
       )}
 
       {(abierto || enMarcha) && (
-        <div className="ymn-dock" role="region" aria-label="Narracion del expediente">
+        <div className={"ymn-dock" + (mostrarProgreso ? " ymn-dock--progreso" : "")} role="region" aria-label="Narracion del expediente">
           <div className="ymn-fila">
             {fase === "cargando" ? (
               <div className="ymn-carga">
@@ -149,6 +178,13 @@ export default function Narrador() {
                 <span>{errorMsg || "No se pudo iniciar la narración."}</span>
                 <button className="ymn-retry" onClick={() => reproducir()}>Reintentar</button>
               </div>
+            ) : fase === "listo" ? (
+              <>
+                <button className="ymn-btn" onClick={reiniciar} aria-label="Escuchar de nuevo">
+                  <RotateCcw size={13} strokeWidth={2} />
+                </button>
+                <span className="ymn-txt">Escuchar de nuevo</span>
+              </>
             ) : (
               <>
                 <button className="ymn-btn" onClick={alternarPausa}
@@ -156,14 +192,36 @@ export default function Narrador() {
                   {fase === "pausado" ? <IcoPlay /> : <IcoPausa />}
                 </button>
                 <span className="ymn-txt">Narración del expediente</span>
+                <span className="ymn-tiempo">{fmtTiempo(progreso.actual)} / {fmtTiempo(progreso.duracion)}</span>
               </>
             )}
             <button className="ymn-btn ymn-x" onClick={cerrar} aria-label="Cerrar narración">✕</button>
           </div>
+          {mostrarProgreso && (
+            <div
+              className="ymn-progreso-track"
+              onClick={buscar}
+              role="slider"
+              tabIndex={0}
+              aria-label="Progreso de la narración"
+              aria-valuemin={0}
+              aria-valuemax={Math.round(progreso.duracion) || 0}
+              aria-valuenow={Math.round(progreso.actual)}
+            >
+              <span className="ymn-progreso-fill" style={{ width: pct + "%" }} />
+            </div>
+          )}
         </div>
       )}
     </div>
   );
+}
+
+function fmtTiempo(s) {
+  if (!isFinite(s) || s < 0) return "0:00";
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return `${m}:${String(sec).padStart(2, "0")}`;
 }
 
 const IcoOnda = () => (
@@ -186,8 +244,9 @@ const CSS = `
   transition:transform .18s,border-color .18s}
 .ymn-fab:hover{transform:translateY(-1px);border-color:rgba(237,239,245,.4)}
 .ymn-fab:focus-visible,.ymn-btn:focus-visible,.ymn-retry:focus-visible{outline:2px solid #7AAFC7;outline-offset:2px}
-.ymn-dock{background:#161A26;border:1px solid rgba(237,239,245,.18);border-radius:12px;
-  padding:10px 12px;min-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.4);color:#EDEFF5}
+.ymn-dock{position:relative;overflow:hidden;background:#161A26;border:1px solid rgba(237,239,245,.18);
+  border-radius:12px;padding:10px 12px;min-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.4);color:#EDEFF5}
+.ymn-dock--progreso{padding-bottom:16px}
 .ymn-fila{display:flex;align-items:center;gap:10px}
 .ymn-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
   border-radius:50%;border:1px solid rgba(237,239,245,.22);background:transparent;color:#EDEFF5;
@@ -195,6 +254,12 @@ const CSS = `
 .ymn-btn:hover{border-color:rgba(237,239,245,.5)}
 .ymn-x{border:none;font-size:12px;color:#8A93A8;margin-left:auto}
 .ymn-txt{font-size:11.5px;color:#C7CDCE}
+.ymn-tiempo{font-size:10px;color:#8A93A8;letter-spacing:.02em;flex:none}
+.ymn-progreso-track{position:absolute;left:0;right:0;bottom:0;height:10px;cursor:pointer}
+.ymn-progreso-track::before{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;
+  background:rgba(237,239,245,.15)}
+.ymn-progreso-fill{position:absolute;left:0;bottom:4px;height:2px;
+  background:#7AAFC7;transition:width .15s linear;display:block}
 .ymn-carga{display:flex;align-items:center;gap:8px;font-size:11px;color:#8A93A8;flex:1}
 .ymn-err{color:#E06056}
 .ymn-retry{font-size:10.5px;color:#7AAFC7;background:transparent;border:1px solid rgba(122,175,199,.4);
@@ -202,6 +267,6 @@ const CSS = `
 .ymn-spin{width:12px;height:12px;border:2px solid rgba(237,239,245,.2);border-top-color:#7AAFC7;
   border-radius:50%;animation:ymnspin .8s linear infinite;flex:none}
 @keyframes ymnspin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.ymn-spin{animation:none}.ymn-fab{transition:none}}
+@media (prefers-reduced-motion:reduce){.ymn-spin{animation:none}.ymn-fab{transition:none}.ymn-progreso-fill{transition:none}}
 @media (max-width:640px){.ym-narrador{right:10px;bottom:10px}.ymn-dock{min-width:200px}}
 `;

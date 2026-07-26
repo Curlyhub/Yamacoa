@@ -292,6 +292,19 @@ const temas = [
     publicado: "2026-07-20",
     load: () => import("./coraje_dividido.jsx"),
   },
+  {
+    id: "sucesion",
+    slug: "sucesion",
+    path: "/sucesion",
+    titulo: "Sucesión sin urnas",
+    subtitulo:
+      "Tres hombres, un aparato: cómo se ha transferido el poder en Cuba desde 1959 — y por qué un hilo viral que lo explica con teología y psicología usa la herramienta equivocada.",
+    etiqueta: "HISTORIA INSTITUCIONAL · PODER",
+    accent: "#969933",
+    fuentes: "Actas del PCC · ABC News · France24 · CNBC · Rotter (1966) · Weber (1904-05) · Redalyc/SciELO · Dialnet",
+    publicado: "2026-07-22",
+    load: () => import("./sucesion.jsx"),
+  },
 ];
 
 export default temas;
