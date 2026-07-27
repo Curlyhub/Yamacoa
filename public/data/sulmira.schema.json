@@ -1,0 +1,217 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/sulmira.schema.json",
+  "title": "Sulmira",
+  "description": "Contrato del dataset respirante del expediente sobre Sulmira Martinez Perez ('Salem Cuba'), activista de redes sociales condenada a 5 anios de prision por publicaciones en Facebook, con un patron comparable de condenas por publicaciones similares en Cuba.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "caso_indice", "verificadores", "patron",
+    "verificacion", "encuesta", "referencias", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "sulmira" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": {
+          "type": "string",
+          "description": "Registro factual largo del expediente. Capa descriptiva (/narrar); no la consume el renderer congelado.",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "description": "Guion de audio corto para el servidor TTS (tts.yamacoa.com). Cifras en palabras, espaniol, sin em dashes.",
+          "minLength": 300,
+          "maxLength": 1450
+        },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parrafos"],
+      "properties": {
+        "parrafos": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 80 }
+        }
+      }
+    },
+    "caso_indice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["advertencia", "perfil", "hechos", "linea_tiempo"],
+      "properties": {
+        "advertencia": { "type": "string", "minLength": 60 },
+        "perfil": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["nombre", "alias", "edad_detencion", "lugar"],
+          "properties": {
+            "nombre": { "type": "string" },
+            "alias": { "type": "string" },
+            "edad_detencion": { "type": "string" },
+            "lugar": { "type": "string" }
+          }
+        },
+        "hechos": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["afirmacion", "confianza", "fuente"],
+            "properties": {
+              "afirmacion": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 },
+              "nota": { "type": "string" }
+            }
+          }
+        },
+        "linea_tiempo": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 14,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fecha", "detalle", "confianza", "fuente", "es_aplazamiento"],
+            "properties": {
+              "fecha": { "type": "string" },
+              "detalle": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 },
+              "es_aplazamiento": { "type": "boolean" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "verificadores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organizaciones"],
+      "properties": {
+        "organizaciones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "rol_reconocimiento", "fuente"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "rol_reconocimiento": { "type": "string", "minLength": 10 },
+              "fuente": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "patron": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["texto", "cifras", "casos_comparables"],
+      "properties": {
+        "texto": { "type": "string", "minLength": 40 },
+        "cifras": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mujeres_presas_politicas", "total_presos_politicos", "fecha_pd", "nota_metodologica"],
+          "properties": {
+            "mujeres_presas_politicas": { "type": "integer", "minimum": 0 },
+            "total_presos_politicos": { "type": "integer", "minimum": 0 },
+            "fecha_pd": { "type": "string" },
+            "nota_metodologica": { "type": "string", "minLength": 40 }
+          }
+        },
+        "casos_comparables": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "cargo", "condena_anios", "fecha", "fuente", "confianza"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "cargo": { "type": "string" },
+              "condena_anios": { "type": "number", "minimum": 0 },
+              "fecha": { "type": "string" },
+              "fuente": { "type": "string" },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] }
+            }
+          }
+        }
+      }
+    },
+    "verificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_evaluadas", "corroboradas", "no_confirmadas", "excluidas", "nota"],
+      "properties": {
+        "total_evaluadas": { "type": "integer", "minimum": 1 },
+        "corroboradas": { "type": "integer", "minimum": 0 },
+        "no_confirmadas": { "type": "integer", "minimum": 0 },
+        "excluidas": { "type": "integer", "minimum": 0 },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preguntas"],
+      "properties": {
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z_]+$" },
+              "texto": { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fuente", "detalle"],
+        "properties": {
+          "fuente": { "type": "string" },
+          "detalle": { "type": "string" },
+          "fecha": { "type": "string" }
+        }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  }
+}

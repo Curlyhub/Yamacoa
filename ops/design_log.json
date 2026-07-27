@@ -540,5 +540,28 @@
     ],
     "firma": "linea de tiempo vertical del caso indice trazada en indigo solido dia a dia (24 abril, nueve dias de vigilia) que al llegar a la ventana sin informacion oficial (retencion, presunta desaparicion forzada de corto plazo segun ICLEP) se vacia a un segmento sin relleno -- solo borde punteado del mismo indigo, opacidad baja -- y recupera el trazo solido al confirmarse el traslado a Villa Marista bajo evaluacion clinica: el hueco visual es el dato, no un adorno.",
     "procedencia": "Creado via /procesar-inbox (envio 11, tras_las_rejas_javier_11) el 2026-07-26. Ficha del subagente disenador contra ops/design_log.json (17 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (el angulo lo decidio el verificador sobre las afirmaciones del propio envio). Caso indice mayormente corroborado (no descartado) y patron comparable corroborado con casos nombrados (Manicaragua, Bayamo, Santiago de Cuba): ambas secciones se construyeron por separado, sin fusionar cifras."
+  },
+  {
+    "tema": "sulmira",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Senial Cortada",
+      "acentos": [
+        { "hex": "#4E7A44", "rol": "primario", "h": 109 },
+        { "hex": "#CF4AA9", "rol": "contrapunto", "h": 317 }
+      ],
+      "fondo": "oscuro",
+      "nota": "Primario = verdin institucional desaturado (S28/L37): el uniforme y el muro del campamento penitenciario, no el verde de senal de convocatoria_11j (h132) ni el oliva de vigilia de protesta_solitaria (h114) ni el verde-jade de sucesion (h151) -- diferenciado de los tres por ser mas oscuro y apagado. Contrapunto = magenta interferencia (S58/L55), reservado EXCLUSIVAMENTE al renderer (glitch de la firma, sellos puntuales): nunca sale como accent de registry.js/portada, por lo que no compite por hueco en el circulo saturado de accents vivos de la landing. Ninguna paleta reservada de CLAUDE.md SS4 tocada."
+    },
+    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "layout": "retrato-vertical-con-friso-de-patron",
+    "graficos": [
+      "timeline-vertical-con-sellos-de-aplazamiento",
+      "fila-de-sellos-verificadores",
+      "waffle-mujeres-presas-politicas",
+      "barra-horizontal-casos-comparables"
+    ],
+    "firma": "el bloque tipografico de la 'confesion' oficial (IBM Plex Mono, gris neutro, tono de acta) que al hacer scroll (IntersectionObserver) o al pasar el cursor se resuelve en scanlines horizontales y un desplazamiento cromatico rojo/cian tipo aberracion de video, revelando debajo -- en Archivo, sin distorsion -- la afirmacion documentada sobre su actividad real en Facebook antes de la detencion: el guion impuesto se rompe y asoma la voz propia. Ninguna de las dos capas es una cita textual inventada de una confesion o acusacion oficialista: ambas son afirmaciones ya verificadas del propio dataset (caso_indice.hechos), presentadas con su fuente y su chip de confianza.",
+    "procedencia": "Creado via /procesar-inbox (envio 12, tras_las_rejas_sulmira_12) el 2026-07-27. Ficha del subagente disenador contra ops/design_log.json (18 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (mismo patron que protesta_solitaria, envio 11, misma autora, misma serie 'Tras las Rejas'). Caso indice mayormente corroborado (13 de 15 hechos; 2 no confirmados por fuente unica) y patron comparable corroborado (Labrada, Garcia Lopez, dos casos de Infobae, joven de El Imparcial): ambas secciones se construyeron por separado, sin fusionar cifras."
   }
 ]

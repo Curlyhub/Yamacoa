@@ -319,6 +319,19 @@ const temas = [
     publicado: "2026-07-26",
     load: () => import("./protesta_solitaria.jsx"),
   },
+  {
+    id: "sulmira",
+    slug: "sulmira",
+    path: "/sulmira",
+    titulo: "La voz que le prestaron",
+    subtitulo:
+      "Sulmira Martínez Pérez, \"Salem Cuba\", 21-22 años, condenada a 5 años de prisión por memes y llamados pacíficos a protestar en Facebook: la autoinculpación forzada que la televisión estatal transmitió como si fuera su propia voz.",
+    etiqueta: "REPRESIÓN · PRESOS POLÍTICOS",
+    accent: "#4E7A44",
+    fuentes: "Prisoners Defenders · Cubalex · Alas Tensas · ICLEP · CiberCuba · Diario de Cuba",
+    publicado: "2026-07-27",
+    load: () => import("./sulmira.jsx"),
+  },
 ];
 
 export default temas;
