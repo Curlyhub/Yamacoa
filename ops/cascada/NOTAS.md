@@ -212,6 +212,24 @@ descripción idénticos al `meta`; no se tocó.
 3. Aplicar en Supabase, **en este orden**: `ops/_shared/poll_supabase.sql` (una
    sola vez para toda la plataforma, si aún no se aplicó) y después
    `ops/cascada/poll_supabase.sql`.
-4. Sin capa narrativa: `meta.descripcion` y `meta.narracion` no existen todavía.
-   Se añaden con `/narrar cascada`, que solo toca `.json` y `.schema.json`.
-5. Opcional: vaciar `ops/_import/cascada/`.
+4. Opcional: vaciar `ops/_import/cascada/`.
+
+## Capa narrativa — añadida 29-jul-2026
+
+`/narrar`. Solo se tocaron `.json` y `.schema.json`; el renderer no.
+
+- `meta.descripcion` — 806 palabras (rango 400-1200). Registro factual, cifras en
+  dígitos. Recoge la cascada completa, los tres sesgos declarados del
+  multiplicador, la corrección de la recuperación mina-a-metal, la advertencia
+  sobre recursos inclusivos de reservas, el umbral de valor cero y la advertencia
+  de independencia del laboratorio.
+- `meta.narracion` — 1.181 caracteres, bajo el `maxLength: 1450` del schema y el
+  límite duro de 1.500 de la API. Cifras en letras, ninguna frase por encima de
+  25 palabras (verificado por script). Español.
+- Schema: `descripcion` y `narracion` dentro de `meta`, sumadas a `meta.required`,
+  `additionalProperties: false` intacto.
+
+`DATOS_EMBEBIDOS` **ya no es espejo exacto** del dataset: le faltan estos dos
+campos. Es deliberado y no rompe nada — `Narrador.jsx` hace fetch de
+`/data/<dataSlug>.json` directamente y nunca lee el fallback del renderer, y el
+contrato de `/narrar` prohíbe tocar el `.jsx` congelado.

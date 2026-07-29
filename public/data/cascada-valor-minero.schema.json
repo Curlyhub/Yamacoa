@@ -33,8 +33,10 @@
     "meta": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "titulo", "version", "actualizado", "unidad_monetaria", "unidad_magnitud", "nota_metodologica"],
+      "required": ["slug", "titulo", "version", "actualizado", "unidad_monetaria", "unidad_magnitud", "nota_metodologica", "descripcion", "narracion"],
       "properties": {
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "titulo": { "type": "string", "minLength": 1 },
         "subtitulo": { "type": "string" },

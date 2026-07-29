@@ -190,6 +190,23 @@ dataset de `cascada`, no del renderer.
    cuatro fallos ocurrieron como se cuentan.
 2. Confirmar `etiqueta`, `accent` y `fuentes` del registry.
 3. Nada que aplicar en Supabase: este tema no tiene encuesta.
-4. Sin capa narrativa: `meta.descripcion` y `meta.narracion` no existen todavía.
-   Se añaden con `/narrar fondo`, que solo toca `.json` y `.schema.json`.
-5. Opcional: vaciar `ops/_import/fondo/`.
+4. Opcional: vaciar `ops/_import/fondo/`.
+
+## Capa narrativa — añadida 29-jul-2026
+
+`/narrar`. Solo se tocaron `.json` y `.schema.json`; el renderer no.
+
+- `meta.descripcion` — 741 palabras (rango 400-1200). Registro factual, cifras en
+  dígitos. Recorre los cuatro fallos con sus cifras y el artículo que cada uno
+  genera, la decisión abierta del dividendo ciudadano, las tres juntas débiles
+  que el propio marco declara y el principio rector.
+- `meta.narracion` — 1.165 caracteres, bajo el `maxLength: 1450` del schema y el
+  límite duro de 1.500 de la API. Cifras en letras, ninguna frase por encima de
+  25 palabras (verificado por script; hubo que partir en dos las de Alaska y
+  Venezuela). Español.
+- Schema: `descripcion` y `narracion` dentro de `meta`, sumadas a `meta.required`,
+  `additionalProperties: false` intacto.
+
+`DATOS_EMBEBIDOS` **ya no es espejo exacto** del dataset: le faltan estos dos
+campos. Deliberado — `Narrador.jsx` hace fetch de `/data/<dataSlug>.json` y nunca
+lee el fallback del renderer.

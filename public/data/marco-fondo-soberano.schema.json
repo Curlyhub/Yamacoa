@@ -40,8 +40,10 @@
     "meta": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["slug", "titulo", "subtitulo", "version", "actualizado", "naturaleza", "advertencia_naturaleza"],
+      "required": ["slug", "titulo", "subtitulo", "version", "actualizado", "naturaleza", "advertencia_naturaleza", "descripcion", "narracion"],
       "properties": {
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
         "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
         "titulo": { "type": "string", "minLength": 1 },
         "subtitulo": { "type": "string", "minLength": 1 },

@@ -7,17 +7,34 @@
     "actualizado": "2026-07-29",
     "unidad_monetaria": "USD",
     "unidad_magnitud": "millones",
-    "nota_metodologica": "Toda cifra etiquetada 'confirmado' procede literalmente de tablas del informe técnico NI 43-101. Las etiquetadas 'calculado' son aritmética derivada de esas tablas, con la fórmula explícita en el campo 'formula'. Las etiquetadas 'estimado' incorporan supuestos externos al informe. Ninguna cifra de este dataset procede de fuentes secundarias."
+    "nota_metodologica": "Toda cifra etiquetada 'confirmado' procede literalmente de tablas del informe técnico NI 43-101. Las etiquetadas 'calculado' son aritmética derivada de esas tablas, con la fórmula explícita en el campo 'formula'. Las etiquetadas 'estimado' incorporan supuestos externos al informe. Ninguna cifra de este dataset procede de fuentes secundarias.",
+    "descripcion": "Este expediente mide la distancia entre dos magnitudes que el debate público suele tratar como si fueran la misma: el valor bruto del contenido metálico que hay en el subsuelo y el valor que ese subsuelo puede llegar a producir de verdad. La primera se obtiene multiplicando toneladas de metal por su precio de mercado y no es un valor de activo. Entre una y otra median la recuperación metalúrgica, el coste operativo, el capital, el descuento temporal y la titularidad.\n\nPara medir esa distancia en lugar de suponerla, el expediente usa el único yacimiento cubano con estudio de factibilidad auditado bajo estándar internacional: el informe técnico NI 43-101 del Moa Joint Venture, redactado por Micon International Co Limited conforme a las definiciones CIM de 2014, con fecha efectiva del 31 de agosto de 2022. El vehículo se constituyó el 1 de diciembre de 1994 y pertenece a partes iguales a Sherritt International, de Canadá, y a General Nickel Company, del Estado cubano, con una regalía del 5 % sobre el valor neto de ventas y una contribución territorial del 1 %.\n\nLa cascada, en base 100 % y a precios del caso base, va de 25.328 millones de dólares de valor bruto de contenido metálico in situ a 812 millones de valor actual neto al 8 % después de impuestos. Los tramos que se pierden por el camino son 10.564 millones por recuperación de mina a metal, 11.026 millones por coste de caja, 1.851 millones por capital de sostenimiento, cierre e impuestos, y 1.075 millones por el descuento temporal sobre 26 años de vida de mina. La participación efectiva del Estado cubano, sumando el 50 % del capital más regalías e impuestos, queda en 888 millones.\n\nDe ahí sale el resultado central. El multiplicador entre valor realizable y valor bruto in situ es del 3,21 % en el caso base y del 4,91 % en el escenario alternativo alcista; medido sobre la toma estatal, del 3,51 % y del 4,57 % respectivamente. El rango recomendado para trasladar cualquier tabla de riqueza in situ a valor realizable es del 3,2 % al 4,9 %, con tres sesgos que deben declararse junto al número. Al alza, porque Moa es el mejor activo minero de Cuba —planta en operación desde 1961, puerto propio, refinería asociada y operador extranjero cotizado— y cualquier otro yacimiento tendrá un multiplicador inferior: la cifra es techo, no valor central. A la baja, porque el valor actual neto se calculó con la red eléctrica cubana deteriorada. Y de acotamiento, porque el resultado es específico de laterita de níquel y cobalto con proceso de lixiviación ácida a presión, y no se traslada a oro ni a tierras raras.\n\nUn hallazgo colateral corrige una cifra de uso corriente: la recuperación real de mina a metal es del 61,2 % en níquel y del 58,8 % en cobalto, no del 85,2 % y el 84,2 % que suelen citarse. Estas últimas son recuperaciones de planta, que miden el rendimiento entre lo que entra a proceso y el metal final, no qué fracción del metal contenido en reservas llega a venderse.\n\nEl inventario geológico advierte además de un error frecuente: los recursos se reportan de forma inclusiva respecto a las reservas, de modo que sumar ambas categorías constituye doble contabilización. Solo las reservas probadas y probables, 117,18 millones de toneladas con 1.182,4 kilotoneladas de níquel contenido y 144 de cobalto, admiten valoración económica.\n\nLa sensibilidad marca el punto de quiebre. Con los precios un 15 % por debajo del caso base, el valor actual neto cae a 11 millones: el umbral de valor cero está en un níquel de 13.340 dólares por tonelada. En el mercado real de 2024 el níquel se sostuvo cerca del caso base, pero el cobalto cotizó a la mitad del supuesto del informe, y el cobalto aporta el 27 % del ingreso bruto del proyecto.\n\nCruzando esas magnitudes está el pasivo externo cubano: 4.795,5 millones de deuda oficial con el Club de París al cierre de 2025 y 19.743 millones de deuda externa total según el último dato general publicado por el Banco Central, que es de 2020. Las reclamaciones patrimoniales por nacionalizaciones siguen sin cuantificación auditada, y su omisión sesga el balance a favor del activo.\n\nLa conclusión es de método antes que de cifra: el argumento a favor de un fondo soberano cubano no puede sostenerse sobre magnitudes de riqueza in situ. El valor de opción sobre reservas no desarrolladas es real y no es cero, pero debe declararse como opción y no como patrimonio disponible. El propio informe incorpora una advertencia de independencia que el expediente mantiene visible: el laboratorio que realizó la mayoría de los ensayos no se considera independiente del Moa Joint Venture, y sus protocolos de control de calidad no incluyen blancos ni materiales de referencia certificados.",
+    "narracion": "Las cifras de riqueza mineral que circulan sobre Cuba miden el metal que hay en el subsuelo multiplicado por su precio de mercado. No son valor de activo. Este expediente mide la distancia real usando el único yacimiento cubano con estudio de factibilidad auditado bajo estándar internacional: el informe técnico del Moa Joint Venture, participado a partes iguales por la canadiense Sherritt y el Estado cubano.\n\nDe veinticinco mil trescientos millones de dólares de valor bruto en el subsuelo quedan ochocientos doce millones de valor actual neto después de impuestos. Por el camino se pierden la recuperación metalúrgica, el coste de operación, el capital y el descuento del tiempo. La participación efectiva del Estado cubano son ochocientos ochenta y ocho millones: en torno al tres y medio por ciento del punto de partida.\n\nEse multiplicador es además un techo, porque Moa es el mejor activo minero del país. Y el margen es estrecho: con los precios un quince por ciento por debajo del caso base, el valor cae prácticamente a cero.\n\nLa conclusión no es que el subsuelo no valga nada. Es que la riqueza in situ, por sí sola, no puede sostener el argumento de un fondo soberano."
   },
-
   "fuente_primaria": {
     "titulo": "NI 43-101 Technical Report for the Mineral Resource and Mineral Reserve Estimate on the Moa Project, Province of Holguin, Cuba",
     "autor_independiente": "Micon International Co Limited",
     "personas_cualificadas": [
-      { "nombre": "Beatrice Foret", "rol": "recursos minerales", "afiliacion": "Micon" },
-      { "nombre": "Michiel F. Breed", "rol": "reservas minerales", "afiliacion": "Micon" },
-      { "nombre": "Christopher Jacobs", "rol": "economía minera", "afiliacion": "Micon" },
-      { "nombre": "Bryce Reid", "rol": "ingeniería química", "afiliacion": "Sherritt" }
+      {
+        "nombre": "Beatrice Foret",
+        "rol": "recursos minerales",
+        "afiliacion": "Micon"
+      },
+      {
+        "nombre": "Michiel F. Breed",
+        "rol": "reservas minerales",
+        "afiliacion": "Micon"
+      },
+      {
+        "nombre": "Christopher Jacobs",
+        "rol": "economía minera",
+        "afiliacion": "Micon"
+      },
+      {
+        "nombre": "Bryce Reid",
+        "rol": "ingeniería química",
+        "afiliacion": "Sherritt"
+      }
     ],
     "estandar": "CIM Definition Standards 2014 / NI 43-101",
     "fecha_efectiva": "2022-08-31",
@@ -26,13 +43,20 @@
     "advertencia_independencia": "El laboratorio DELABEL, que realizó la mayoría de los ensayos, no se considera independiente del Moa JV. La QP señala que los protocolos QAQC no incluyen blancos ni materiales de referencia certificados, y recomienda reforzarlos.",
     "confianza": "confirmado"
   },
-
   "titularidad": {
     "vehiculo": "Moa Joint Venture",
     "constituido": "1994-12-01",
     "socios": [
-      { "nombre": "Sherritt International Corporation", "origen": "Canadá", "participacion_pct": 50 },
-      { "nombre": "General Nickel Company S.A. (GNC)", "origen": "Estado cubano", "participacion_pct": 50 }
+      {
+        "nombre": "Sherritt International Corporation",
+        "origen": "Canadá",
+        "participacion_pct": 50
+      },
+      {
+        "nombre": "General Nickel Company S.A. (GNC)",
+        "origen": "Estado cubano",
+        "participacion_pct": 50
+      }
     ],
     "regalia_pct": 5,
     "contribucion_territorial_pct": 1,
@@ -40,51 +64,64 @@
     "nota": "Toda cifra de este dataset se reporta en base 100% salvo indicación expresa. La participación económica del Estado cubano es una fracción de esas cifras.",
     "confianza": "confirmado"
   },
-
   "inventario_geologico": {
     "nota_critica": "Los recursos se reportan INCLUSIVOS de las reservas. Sumar ambas categorías constituye doble contabilización. Los recursos inferidos se fijaron como estéril en el cálculo de reservas.",
     "categorias": [
       {
         "categoria": "Reservas probadas",
         "tonelaje_mt": 83.49,
-        "ley_ni_pct": 1.02, "ley_co_pct": 0.13,
-        "metal_ni_kt": 851.8, "metal_co_kt": 104.9,
-        "confianza": "confirmado", "admite_valoracion": true
+        "ley_ni_pct": 1.02,
+        "ley_co_pct": 0.13,
+        "metal_ni_kt": 851.8,
+        "metal_co_kt": 104.9,
+        "confianza": "confirmado",
+        "admite_valoracion": true
       },
       {
         "categoria": "Reservas probables",
         "tonelaje_mt": 33.69,
-        "ley_ni_pct": 0.98, "ley_co_pct": 0.12,
-        "metal_ni_kt": 330.6, "metal_co_kt": 39.1,
-        "confianza": "confirmado", "admite_valoracion": true
+        "ley_ni_pct": 0.98,
+        "ley_co_pct": 0.12,
+        "metal_ni_kt": 330.6,
+        "metal_co_kt": 39.1,
+        "confianza": "confirmado",
+        "admite_valoracion": true
       },
       {
         "categoria": "Reservas probadas + probables",
         "tonelaje_mt": 117.18,
-        "ley_ni_pct": 1.01, "ley_co_pct": 0.12,
-        "metal_ni_kt": 1182.4, "metal_co_kt": 144.0,
-        "confianza": "confirmado", "admite_valoracion": true,
+        "ley_ni_pct": 1.01,
+        "ley_co_pct": 0.12,
+        "metal_ni_kt": 1182.4,
+        "metal_co_kt": 144,
+        "confianza": "confirmado",
+        "admite_valoracion": true,
         "es_total": true
       },
       {
         "categoria": "Recursos medidos + indicados",
         "tonelaje_mt": 156.54,
-        "ley_ni_pct": 1.07, "ley_co_pct": 0.12,
-        "metal_ni_kt": 1677.2, "metal_co_kt": 192.1,
-        "confianza": "confirmado", "admite_valoracion": false,
+        "ley_ni_pct": 1.07,
+        "ley_co_pct": 0.12,
+        "metal_ni_kt": 1677.2,
+        "metal_co_kt": 192.1,
+        "confianza": "confirmado",
+        "admite_valoracion": false,
         "nota": "Inclusivo de reservas. Los recursos que no son reservas no tienen viabilidad económica demostrada."
       },
       {
         "categoria": "Recursos inferidos",
         "tonelaje_mt": 42.2,
-        "ley_ni_pct": 1.0, "ley_co_pct": 0.1,
-        "metal_ni_kt": 419.3, "metal_co_kt": 49.2,
-        "confianza": "reportado", "admite_valoracion": false,
+        "ley_ni_pct": 1,
+        "ley_co_pct": 0.1,
+        "metal_ni_kt": 419.3,
+        "metal_co_kt": 49.2,
+        "confianza": "reportado",
+        "admite_valoracion": false,
         "nota": "Fijados como estéril en la estimación de reservas. No admiten cifra monetaria bajo ninguna circunstancia."
       }
     ]
   },
-
   "recuperacion": {
     "planta_declarada": {
       "ni_slurry_a_sulfuro_pct": 86.7,
@@ -106,35 +143,39 @@
       "nota_editorial": "Diferencia decisiva. La recuperación de planta (85%) mide el rendimiento entre lo que entra a proceso y el metal final. La recuperación mina-a-metal (61%) mide qué fracción del metal contenido en las reservas llega a venderse. Citar la primera como si fuera la segunda infla el resultado en unos 24 puntos porcentuales."
     }
   },
-
   "escenarios_precio": [
     {
       "id": "base",
       "etiqueta": "Caso base del informe",
-      "ni_usd_lb": 7.12, "ni_usd_t": 15700,
-      "co_usd_lb": 21.32, "co_usd_t": 47000,
+      "ni_usd_lb": 7.12,
+      "ni_usd_t": 15700,
+      "co_usd_lb": 21.32,
+      "co_usd_t": 47000,
       "confianza": "confirmado",
       "nota": "Precios de referencia de largo plazo adoptados por las personas cualificadas. Es el caso que sustenta la declaración de viabilidad económica de las reservas."
     },
     {
       "id": "alternativo",
       "etiqueta": "Escenario alternativo (alcista)",
-      "ni_usd_lb": 9.00, "ni_usd_t": 19842,
-      "co_usd_lb": 23.50, "co_usd_t": 51809,
+      "ni_usd_lb": 9,
+      "ni_usd_t": 19842,
+      "co_usd_lb": 23.5,
+      "co_usd_t": 51809,
       "confianza": "confirmado",
       "nota": "Construido con previsiones de analistas. Incorpora también precios más altos de azufre, diésel y fueloil. NO es el caso base: usarlo como referencia central sobreestima el resultado en un 87%."
     },
     {
       "id": "lme2024",
       "etiqueta": "Mercado real 2024",
-      "ni_usd_lb": 7.71, "ni_usd_t": 17000,
-      "co_usd_lb": 11.34, "co_usd_t": 25000,
+      "ni_usd_lb": 7.71,
+      "ni_usd_t": 17000,
+      "co_usd_lb": 11.34,
+      "co_usd_t": 25000,
       "confianza": "reportado",
       "procedencia": "Níquel: media anual LME contado 2024 (USGS Mineral Commodity Summaries 2025). Cobalto: rango de mercado 2024.",
       "nota": "El níquel se sostiene cerca del caso base, pero el cobalto cotiza a la mitad del supuesto del informe. El cobalto aporta el 27% del ingreso bruto del proyecto."
     }
   ],
-
   "cascada": {
     "descripcion": "Descomposición del valor bruto de contenido metálico in situ hasta la participación efectiva del Estado cubano. Base 100% salvo el último tramo.",
     "escenario_referencia": "base",
@@ -143,7 +184,10 @@
         "orden": 1,
         "concepto": "Valor bruto de contenido metálico in situ",
         "valor_musd": 25328,
-        "detalle": { "ni_musd": 18560, "co_musd": 6768 },
+        "detalle": {
+          "ni_musd": 18560,
+          "co_musd": 6768
+        },
         "formula": "metal_contenido_reservas × precio_referencia",
         "confianza": "calculado",
         "nota": "Magnitud que suele citarse como 'riqueza mineral'. No es valor de activo. Sirve únicamente como denominador."
@@ -152,7 +196,10 @@
         "orden": 2,
         "concepto": "Ingreso bruto realizable a lo largo de la vida de mina",
         "valor_musd": 14764,
-        "detalle": { "ni_musd": 11133, "co_musd": 3631 },
+        "detalle": {
+          "ni_musd": 11133,
+          "co_musd": 3631
+        },
         "perdida_vs_anterior_musd": -10564,
         "causa": "Recuperación mina-a-metal del 61% en níquel y 59% en cobalto",
         "confianza": "confirmado"
@@ -196,16 +243,44 @@
       }
     ]
   },
-
   "multiplicador": {
     "definicion": "Cociente entre valor realizable y valor bruto de contenido metálico in situ, para las mismas reservas y los mismos precios",
     "valores": [
-      { "escenario": "base", "van8_musd": 812, "bruto_in_situ_musd": 25328, "multiplicador_pct": 3.21, "confianza": "calculado" },
-      { "escenario": "alternativo", "van8_musd": 1517, "bruto_in_situ_musd": 30921, "multiplicador_pct": 4.91, "confianza": "calculado" },
-      { "escenario": "base", "concepto": "toma estatal", "valor_musd": 888, "bruto_in_situ_musd": 25328, "multiplicador_pct": 3.51, "confianza": "calculado" },
-      { "escenario": "alternativo", "concepto": "toma estatal", "valor_musd": 1414, "bruto_in_situ_musd": 30921, "multiplicador_pct": 4.57, "confianza": "calculado" }
+      {
+        "escenario": "base",
+        "van8_musd": 812,
+        "bruto_in_situ_musd": 25328,
+        "multiplicador_pct": 3.21,
+        "confianza": "calculado"
+      },
+      {
+        "escenario": "alternativo",
+        "van8_musd": 1517,
+        "bruto_in_situ_musd": 30921,
+        "multiplicador_pct": 4.91,
+        "confianza": "calculado"
+      },
+      {
+        "escenario": "base",
+        "concepto": "toma estatal",
+        "valor_musd": 888,
+        "bruto_in_situ_musd": 25328,
+        "multiplicador_pct": 3.51,
+        "confianza": "calculado"
+      },
+      {
+        "escenario": "alternativo",
+        "concepto": "toma estatal",
+        "valor_musd": 1414,
+        "bruto_in_situ_musd": 30921,
+        "multiplicador_pct": 4.57,
+        "confianza": "calculado"
+      }
     ],
-    "rango_recomendado_pct": { "min": 3.2, "max": 4.9 },
+    "rango_recomendado_pct": {
+      "min": 3.2,
+      "max": 4.9
+    },
     "sesgos_a_etiquetar": [
       {
         "direccion": "al alza",
@@ -221,7 +296,6 @@
       }
     ]
   },
-
   "sensibilidad": {
     "descripcion": "Sensibilidad del VAN8 después de impuestos a variaciones porcentuales sobre el caso base",
     "confianza": "confirmado",
@@ -229,32 +303,80 @@
       {
         "variable": "Precios de los metales",
         "puntos": [
-          { "pct_caso_base": 75, "van8_musd": -612 },
-          { "pct_caso_base": 80, "van8_musd": -291 },
-          { "pct_caso_base": 85, "van8_musd": 11 },
-          { "pct_caso_base": 90, "van8_musd": 279 },
-          { "pct_caso_base": 95, "van8_musd": 544 },
-          { "pct_caso_base": 100, "van8_musd": 812 },
-          { "pct_caso_base": 110, "van8_musd": 1348 },
-          { "pct_caso_base": 125, "van8_musd": 2153 }
+          {
+            "pct_caso_base": 75,
+            "van8_musd": -612
+          },
+          {
+            "pct_caso_base": 80,
+            "van8_musd": -291
+          },
+          {
+            "pct_caso_base": 85,
+            "van8_musd": 11
+          },
+          {
+            "pct_caso_base": 90,
+            "van8_musd": 279
+          },
+          {
+            "pct_caso_base": 95,
+            "van8_musd": 544
+          },
+          {
+            "pct_caso_base": 100,
+            "van8_musd": 812
+          },
+          {
+            "pct_caso_base": 110,
+            "van8_musd": 1348
+          },
+          {
+            "pct_caso_base": 125,
+            "van8_musd": 2153
+          }
         ]
       },
       {
         "variable": "Costes operativos",
         "puntos": [
-          { "pct_caso_base": 75, "van8_musd": 1979 },
-          { "pct_caso_base": 100, "van8_musd": 812 },
-          { "pct_caso_base": 115, "van8_musd": 111 },
-          { "pct_caso_base": 120, "van8_musd": -122 },
-          { "pct_caso_base": 125, "van8_musd": -356 }
+          {
+            "pct_caso_base": 75,
+            "van8_musd": 1979
+          },
+          {
+            "pct_caso_base": 100,
+            "van8_musd": 812
+          },
+          {
+            "pct_caso_base": 115,
+            "van8_musd": 111
+          },
+          {
+            "pct_caso_base": 120,
+            "van8_musd": -122
+          },
+          {
+            "pct_caso_base": 125,
+            "van8_musd": -356
+          }
         ]
       },
       {
         "variable": "Costes de capital",
         "puntos": [
-          { "pct_caso_base": 75, "van8_musd": 963 },
-          { "pct_caso_base": 100, "van8_musd": 812 },
-          { "pct_caso_base": 125, "van8_musd": 661 }
+          {
+            "pct_caso_base": 75,
+            "van8_musd": 963
+          },
+          {
+            "pct_caso_base": 100,
+            "van8_musd": 812
+          },
+          {
+            "pct_caso_base": 125,
+            "van8_musd": 661
+          }
         ]
       }
     ],
@@ -269,12 +391,23 @@
       "nota_editorial": "La media LME del níquel en 2024 fue de unos 17.000 USD/t y descendió hasta ~15.500 USD/t en diciembre de 2024. El umbral de valor cero se sitúa en 13.340 USD/t. El margen es de un 16%."
     },
     "van_por_tasa_descuento": [
-      { "tasa_pct": 6, "base_musd": 971, "alternativo_musd": 1798 },
-      { "tasa_pct": 8, "base_musd": 812, "alternativo_musd": 1517 },
-      { "tasa_pct": 10, "base_musd": 690, "alternativo_musd": 1303 }
+      {
+        "tasa_pct": 6,
+        "base_musd": 971,
+        "alternativo_musd": 1798
+      },
+      {
+        "tasa_pct": 8,
+        "base_musd": 812,
+        "alternativo_musd": 1517
+      },
+      {
+        "tasa_pct": 10,
+        "base_musd": 690,
+        "alternativo_musd": 1303
+      }
     ]
   },
-
   "linea_deuda": {
     "descripcion": "Referencia de pasivo para cruzar horizontalmente sobre la cascada",
     "partidas": [
@@ -307,7 +440,6 @@
       }
     ]
   },
-
   "implicacion_fondo_soberano": {
     "tesis": "El argumento a favor de un fondo soberano cubano no puede sostenerse sobre magnitudes de riqueza in situ.",
     "puntos": [
@@ -337,30 +469,66 @@
         "id": "p1",
         "texto": "Antes de leer esto, ¿qué creías que medían las cifras de riqueza mineral cubana que circulan?",
         "opciones": [
-          { "id": "o1", "texto": "Lo que el país podría llegar a ingresar" },
-          { "id": "o2", "texto": "El metal del subsuelo a precio de mercado, sin descontar nada" },
-          { "id": "o3", "texto": "Un valor ya descontado de costes y de tiempo" },
-          { "id": "o4", "texto": "No tenía claro qué medían" }
+          {
+            "id": "o1",
+            "texto": "Lo que el país podría llegar a ingresar"
+          },
+          {
+            "id": "o2",
+            "texto": "El metal del subsuelo a precio de mercado, sin descontar nada"
+          },
+          {
+            "id": "o3",
+            "texto": "Un valor ya descontado de costes y de tiempo"
+          },
+          {
+            "id": "o4",
+            "texto": "No tenía claro qué medían"
+          }
         ]
       },
       {
         "id": "p2",
         "texto": "El Estado cubano capta en torno al 3,5 % del valor bruto in situ de su mejor activo minero. ¿Qué lo explica mejor?",
         "opciones": [
-          { "id": "o1", "texto": "La geología: una laterita de baja ley exige un proceso caro" },
-          { "id": "o2", "texto": "Los términos pactados con el socio extranjero" },
-          { "id": "o3", "texto": "El deterioro del país: red eléctrica, riesgo y coste de capital" },
-          { "id": "o4", "texto": "Nada anómalo: es lo corriente en minería" }
+          {
+            "id": "o1",
+            "texto": "La geología: una laterita de baja ley exige un proceso caro"
+          },
+          {
+            "id": "o2",
+            "texto": "Los términos pactados con el socio extranjero"
+          },
+          {
+            "id": "o3",
+            "texto": "El deterioro del país: red eléctrica, riesgo y coste de capital"
+          },
+          {
+            "id": "o4",
+            "texto": "Nada anómalo: es lo corriente en minería"
+          }
         ]
       },
       {
         "id": "p3",
         "texto": "Con este multiplicador sobre la mesa, ¿sigue en pie el argumento de un fondo soberano minero cubano?",
         "opciones": [
-          { "id": "o1", "texto": "Sí, pero como custodia de una opción, no como reparto de abundancia" },
-          { "id": "o2", "texto": "Sí, tal como se plantea: el valor realizable basta" },
-          { "id": "o3", "texto": "No: lo realizable no cubre siquiera la deuda externa" },
-          { "id": "o4", "texto": "No se puede decidir sin auditar el resto de los yacimientos" }
+          {
+            "id": "o1",
+            "texto": "Sí, pero como custodia de una opción, no como reparto de abundancia"
+          },
+          {
+            "id": "o2",
+            "texto": "Sí, tal como se plantea: el valor realizable basta"
+          },
+          {
+            "id": "o3",
+            "texto": "No: lo realizable no cubre siquiera la deuda externa"
+          },
+          {
+            "id": "o4",
+            "texto": "No se puede decidir sin auditar el resto de los yacimientos"
+          }
         ]
       }
     ]
