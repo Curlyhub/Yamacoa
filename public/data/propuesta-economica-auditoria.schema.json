@@ -1,0 +1,1292 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/propuesta-economica-auditoria.schema.json",
+  "title": "Auditar a los aliados — contrato de dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "marco",
+    "propuesta",
+    "aciertos",
+    "correcciones",
+    "demografia",
+    "denominador",
+    "anexo1",
+    "carencias",
+    "contrafactuales",
+    "comparacion",
+    "regla_unica",
+    "valoracion",
+    "exigencias",
+    "cierre",
+    "formulas",
+    "encuesta",
+    "fuentes"
+  ],
+  "definitions": {
+    "confianza": {
+      "type": "string",
+      "enum": [
+        "confirmado",
+        "reportado",
+        "estimado"
+      ],
+      "description": "Nivel de confianza obligatorio en toda magnitud publicable."
+    },
+    "hito": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "etiqueta",
+        "valor",
+        "unidad",
+        "confianza"
+      ],
+      "properties": {
+        "etiqueta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valor": {
+          "type": "number"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        }
+      }
+    },
+    "mathmlString": {
+      "type": "string",
+      "pattern": "^<math"
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "titulo",
+        "subtitulo",
+        "version",
+        "actualizado",
+        "ciclo_horas",
+        "aviso_simulacion",
+        "nota_ecosistema",
+        "descripcion",
+        "narracion"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "actualizado": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "ciclo_horas": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "aviso_simulacion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nota_ecosistema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "descripcion": {
+          "type": "string",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "minLength": 300,
+          "maxLength": 1450
+        }
+      }
+    },
+    "marco": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "parrafos",
+        "cita"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parrafos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "cita": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "propuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "version_doc",
+        "fecha",
+        "paginas",
+        "autores",
+        "objetivo",
+        "bloques",
+        "primera_fase",
+        "supuestos"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_doc": {
+          "type": "string"
+        },
+        "fecha": {
+          "type": "string"
+        },
+        "paginas": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "autores": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "objetivo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bloques": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "primera_fase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supuestos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "texto",
+              "critico"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 1
+              },
+              "critico": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "aciertos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "titulo",
+          "detalle",
+          "respaldo"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detalle": {
+            "type": "string",
+            "minLength": 1
+          },
+          "respaldo": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "correcciones": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "items"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "objecion",
+              "realidad",
+              "queda_en_pie",
+              "confianza"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "objecion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "realidad": {
+                "type": "string",
+                "minLength": 1
+              },
+              "queda_en_pie": {
+                "type": "string",
+                "minLength": 1
+              },
+              "confianza": {
+                "$ref": "#/definitions/confianza"
+              }
+            }
+          }
+        }
+      }
+    },
+    "demografia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "fuente",
+        "confianza",
+        "salidas_dia",
+        "indicadores",
+        "serie_poblacion",
+        "argumento"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fuente": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "salidas_dia": {
+          "type": "number",
+          "minimum": 0
+        },
+        "indicadores": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "etiqueta",
+              "valor",
+              "unidad",
+              "formato"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "etiqueta": {
+                "type": "string",
+                "minLength": 1
+              },
+              "valor": {
+                "type": "number"
+              },
+              "unidad": {
+                "type": "string"
+              },
+              "formato": {
+                "type": "string",
+                "enum": [
+                  "entero",
+                  "decimal"
+                ]
+              }
+            }
+          }
+        },
+        "serie_poblacion": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "anio",
+              "valor",
+              "confianza"
+            ],
+            "properties": {
+              "anio": {
+                "type": "integer",
+                "minimum": 1900
+              },
+              "valor": {
+                "type": "number",
+                "minimum": 0
+              },
+              "confianza": {
+                "$ref": "#/definitions/confianza"
+              }
+            }
+          }
+        },
+        "argumento": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "criterio_documento",
+            "conclusion_documento",
+            "objecion",
+            "conclusion_correcta"
+          ],
+          "properties": {
+            "criterio_documento": {
+              "type": "string",
+              "minLength": 1
+            },
+            "conclusion_documento": {
+              "type": "string",
+              "minLength": 1
+            },
+            "objecion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "conclusion_correcta": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "denominador": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "poblacion_anexo",
+        "poblacion_min",
+        "poblacion_max",
+        "magnitudes",
+        "hitos",
+        "recomendacion"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "poblacion_anexo": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "poblacion_min": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "poblacion_max": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "recomendacion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "magnitudes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "etiqueta",
+              "valor_base",
+              "unidad"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "etiqueta": {
+                "type": "string",
+                "minLength": 1
+              },
+              "valor_base": {
+                "type": "number"
+              },
+              "unidad": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "hitos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "etiqueta",
+              "poblacion"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "etiqueta": {
+                "type": "string",
+                "minLength": 1
+              },
+              "poblacion": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "anexo1": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "confianza",
+        "vias",
+        "poblacion_declarada",
+        "discrepancia_pct",
+        "discrepancia_personas",
+        "diagnostico",
+        "atenuante",
+        "correccion"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "poblacion_declarada": {
+          "type": "number"
+        },
+        "discrepancia_pct": {
+          "type": "number"
+        },
+        "discrepancia_personas": {
+          "type": "number"
+        },
+        "diagnostico": {
+          "type": "string",
+          "minLength": 1
+        },
+        "atenuante": {
+          "type": "string",
+          "minLength": 1
+        },
+        "correccion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vias": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "etiqueta",
+              "operacion",
+              "numerador",
+              "denominador",
+              "unidad_num",
+              "unidad_den",
+              "poblacion_implicita"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "etiqueta": {
+                "type": "string",
+                "minLength": 1
+              },
+              "operacion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "numerador": {
+                "type": "number"
+              },
+              "denominador": {
+                "type": "number"
+              },
+              "unidad_num": {
+                "type": "string"
+              },
+              "unidad_den": {
+                "type": "string"
+              },
+              "poblacion_implicita": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "carencias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "items",
+        "nota"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nota": {
+          "type": "string",
+          "minLength": 1
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "carencia",
+              "coste",
+              "prioridad"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "carencia": {
+                "type": "string",
+                "minLength": 1
+              },
+              "coste": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prioridad": {
+                "type": "string",
+                "enum": [
+                  "critica",
+                  "alta",
+                  "media"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "contrafactuales": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "codigo",
+          "titulo",
+          "supuesto",
+          "mecanismo",
+          "referente",
+          "plausibilidad",
+          "plausibilidad_nivel",
+          "falsacion"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "codigo": {
+            "type": "string",
+            "pattern": "^CF-\\d+$"
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supuesto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mecanismo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "referente": {
+            "type": "string",
+            "minLength": 1
+          },
+          "plausibilidad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "plausibilidad_nivel": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "falsacion": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "comparacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "advertencia",
+        "reglas",
+        "casos",
+        "mecanismos"
+      ],
+      "properties": {
+        "advertencia": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reglas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "casos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "nombre",
+              "periodo",
+              "es_caso_de",
+              "no_es_caso_de",
+              "titular",
+              "narrativa",
+              "fases",
+              "leccion",
+              "advertencias"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nombre": {
+                "type": "string",
+                "minLength": 1
+              },
+              "periodo": {
+                "type": "string",
+                "minLength": 1
+              },
+              "es_caso_de": {
+                "type": "string",
+                "minLength": 1
+              },
+              "no_es_caso_de": {
+                "type": "string",
+                "minLength": 1
+              },
+              "titular": {
+                "type": "string",
+                "minLength": 1
+              },
+              "narrativa": {
+                "type": "string",
+                "minLength": 1
+              },
+              "leccion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "advertencias": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "fases": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "etiqueta",
+                    "rango",
+                    "signo",
+                    "hitos",
+                    "cierre"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "etiqueta": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "rango": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "signo": {
+                      "type": "string",
+                      "enum": [
+                        "positivo",
+                        "negativo"
+                      ]
+                    },
+                    "cierre": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "hitos": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "$ref": "#/definitions/hito"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "mecanismos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "mecanismo",
+              "caso",
+              "condicion",
+              "estado",
+              "veredicto"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "mecanismo": {
+                "type": "string",
+                "minLength": 1
+              },
+              "caso": {
+                "type": "string",
+                "minLength": 1
+              },
+              "condicion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "estado": {
+                "type": "string",
+                "enum": [
+                  "presente",
+                  "parcial",
+                  "ausente"
+                ]
+              },
+              "veredicto": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "regla_unica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "enunciado",
+        "inversiones"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "enunciado": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inversiones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "medida",
+              "referencia",
+              "orden_propuesto",
+              "orden_evidencia",
+              "riesgo"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "medida": {
+                "type": "string",
+                "minLength": 1
+              },
+              "referencia": {
+                "type": "string",
+                "minLength": 1
+              },
+              "riesgo": {
+                "type": "string",
+                "minLength": 1
+              },
+              "orden_propuesto": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "orden_evidencia": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "valoracion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "aviso",
+        "dimensiones",
+        "globales"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aviso": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dimensiones": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "dimension",
+              "preliminar",
+              "revisada",
+              "motivo"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "dimension": {
+                "type": "string",
+                "minLength": 1
+              },
+              "preliminar": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "revisada": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "motivo": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "globales": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "etiqueta",
+              "preliminar",
+              "revisada"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "etiqueta": {
+                "type": "string",
+                "minLength": 1
+              },
+              "preliminar": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              },
+              "revisada": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    "exigencias": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "numero",
+          "titulo",
+          "detalle"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "numero": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "detalle": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "cierre": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parrafos",
+        "remate"
+      ],
+      "properties": {
+        "parrafos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "remate": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "formulas": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "titulo",
+          "lectura",
+          "mathml",
+          "variables"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "lectura": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mathml": {
+            "$ref": "#/definitions/mathmlString"
+          },
+          "variables": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "simbolo",
+                "nombre"
+              ],
+              "properties": {
+                "simbolo": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "nombre": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "nota_privacidad",
+        "preguntas"
+      ],
+      "description": "Convención de base única: la clave de voto es `${meta.slug}::${pregunta.id}::${opcion.id}`.",
+      "properties": {
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intro": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nota_privacidad": {
+          "type": "string",
+          "minLength": 1
+        },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "texto",
+              "opciones"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^p\\d+$"
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 1
+              },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "texto"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^o\\d+$"
+                    },
+                    "texto": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fuentes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "cita"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cita": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

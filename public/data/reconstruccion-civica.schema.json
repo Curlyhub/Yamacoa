@@ -1,0 +1,1254 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/reconstruccion-civica.schema.json",
+  "title": "Reconstruir la norma — contrato de dataset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "tesis",
+    "modelo",
+    "estado_sistema",
+    "comparacion_interna",
+    "contrafactuales",
+    "casos_externos",
+    "ventanas_rotas",
+    "acciones",
+    "secuencia",
+    "indice_ct",
+    "falsacion",
+    "contraindicaciones",
+    "encuesta",
+    "fuentes"
+  ],
+  "definitions": {
+    "confianza": {
+      "type": "string",
+      "enum": [
+        "confirmado",
+        "reportado",
+        "estimado"
+      ],
+      "description": "Nivel de confianza obligatorio en toda magnitud publicable."
+    },
+    "numeroOnulo": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "textoOnulo": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "indicadorSimple": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "etiqueta",
+        "valor",
+        "unidad",
+        "confianza"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "etiqueta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valor": {
+          "type": "number"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "procedencia": {
+          "type": "string"
+        }
+      }
+    },
+    "indicadorAntesDespues": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "etiqueta",
+        "antes",
+        "despues",
+        "confianza",
+        "procedencia"
+      ],
+      "properties": {
+        "etiqueta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "antes": {
+          "$ref": "#/definitions/numeroOnulo"
+        },
+        "despues": {
+          "$ref": "#/definitions/numeroOnulo"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "procedencia": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "efectoEtiquetado": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "etiqueta",
+        "valor",
+        "unidad"
+      ],
+      "properties": {
+        "etiqueta": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valor": {
+          "type": "number"
+        },
+        "unidad": {
+          "type": "string"
+        }
+      }
+    },
+    "itemHistorico": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "descripcion",
+        "confianza",
+        "procedencia"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "descripcion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "magnitud": {
+          "$ref": "#/definitions/textoOnulo"
+        },
+        "anio": {
+          "type": "string"
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "procedencia": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "titulo",
+        "version",
+        "actualizado",
+        "ciclo_horas",
+        "descripcion",
+        "narracion"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subtitulo": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "minLength": 300,
+          "maxLength": 1450
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "actualizado": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "ciclo_horas": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "nota_ecosistema": {
+          "type": "string"
+        },
+        "aviso_simulacion": {
+          "type": "string"
+        }
+      }
+    },
+    "tesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formulacion_rechazada",
+        "formulacion_operativa",
+        "cierre"
+      ],
+      "properties": {
+        "formulacion_rechazada": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formulacion_operativa": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cierre": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "modelo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formula",
+        "mathml_probabilidad",
+        "mathml_indice",
+        "especificacion",
+        "betas",
+        "lectura_curva",
+        "escenarios",
+        "terminos"
+      ],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "minLength": 1
+        },
+        "corolario": {
+          "type": "string"
+        },
+        "terminos": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "clave",
+              "simbolo",
+              "mathml",
+              "nombre",
+              "descripcion"
+            ],
+            "properties": {
+              "clave": {
+                "type": "string",
+                "enum": [
+                  "M",
+                  "S",
+                  "I",
+                  "E"
+                ]
+              },
+              "simbolo": {
+                "type": "string"
+              },
+              "nombre": {
+                "type": "string",
+                "minLength": 1
+              },
+              "descripcion": {
+                "type": "string",
+                "minLength": 1
+              },
+              "estado_cuba": {
+                "type": "string"
+              },
+              "mathml": {
+                "type": "string",
+                "pattern": "^<math"
+              }
+            }
+          }
+        },
+        "mathml_probabilidad": {
+          "type": "string",
+          "pattern": "^<math"
+        },
+        "mathml_indice": {
+          "type": "string",
+          "pattern": "^<math"
+        },
+        "especificacion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lectura_curva": {
+          "type": "string",
+          "minLength": 1
+        },
+        "betas": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "M",
+            "S",
+            "I",
+            "E",
+            "tau",
+            "escala",
+            "confianza",
+            "procedencia"
+          ],
+          "properties": {
+            "M": {
+              "type": "number"
+            },
+            "S": {
+              "type": "number"
+            },
+            "I": {
+              "type": "number"
+            },
+            "E": {
+              "type": "number"
+            },
+            "tau": {
+              "type": "number"
+            },
+            "escala": {
+              "type": "number"
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "escenarios": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "nombre",
+              "M",
+              "S",
+              "I",
+              "E",
+              "confianza",
+              "nota"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "nombre": {
+                "type": "string",
+                "minLength": 1
+              },
+              "M": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "S": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "I": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "E": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "confianza": {
+                "$ref": "#/definitions/confianza"
+              },
+              "nota": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "estado_sistema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fuente",
+        "procedencia",
+        "confianza",
+        "indicadores"
+      ],
+      "properties": {
+        "fuente": {
+          "type": "string",
+          "minLength": 1
+        },
+        "procedencia": {
+          "type": "string",
+          "minLength": 1
+        },
+        "margen_error": {
+          "type": "string"
+        },
+        "nivel_confianza": {
+          "type": "string"
+        },
+        "confianza": {
+          "$ref": "#/definitions/confianza"
+        },
+        "lectura": {
+          "type": "string"
+        },
+        "indicadores": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/indicadorSimple"
+          }
+        }
+      }
+    },
+    "comparacion_interna": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nota_metodologica",
+        "tesis",
+        "existente",
+        "ausente",
+        "reemplazo"
+      ],
+      "properties": {
+        "nota_metodologica": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tesis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "existente": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/itemHistorico"
+          }
+        },
+        "ausente": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/itemHistorico"
+          }
+        },
+        "reemplazo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "descripcion",
+            "mecanismo",
+            "confianza",
+            "procedencia"
+          ],
+          "properties": {
+            "descripcion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mecanismo": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "contrafactuales": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "codigo",
+          "titulo",
+          "supuesto",
+          "plausibilidad",
+          "justificacion_plausibilidad",
+          "corolario"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codigo": {
+            "type": "string",
+            "pattern": "^C\\d+$"
+          },
+          "titulo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "supuesto": {
+            "type": "string",
+            "minLength": 1
+          },
+          "referencia_externa": {
+            "type": "string"
+          },
+          "plausibilidad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "justificacion_plausibilidad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "corolario": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "casos_externos": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "caso",
+          "pais",
+          "periodo",
+          "palanca_dominante",
+          "palancas",
+          "velocidad",
+          "democratico",
+          "transferibilidad",
+          "mecanismo",
+          "indicadores",
+          "advertencias",
+          "hallazgo_solido"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "caso": {
+            "type": "string",
+            "minLength": 1
+          },
+          "pais": {
+            "type": "string",
+            "minLength": 1
+          },
+          "periodo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "palanca_dominante": {
+            "type": "string",
+            "minLength": 1
+          },
+          "palancas": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "M",
+              "S",
+              "I",
+              "E"
+            ],
+            "properties": {
+              "M": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "S": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "I": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "E": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "velocidad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "democratico": {
+            "type": "boolean"
+          },
+          "transferibilidad": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mecanismo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "indicadores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/indicadorAntesDespues"
+            }
+          },
+          "series_confianza": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "etiqueta",
+              "confianza",
+              "procedencia"
+            ],
+            "properties": {
+              "etiqueta": {
+                "type": "string"
+              },
+              "confianza_min": {
+                "type": "number"
+              },
+              "desconfianza_max": {
+                "type": "number"
+              },
+              "confianza": {
+                "$ref": "#/definitions/confianza"
+              },
+              "procedencia": {
+                "type": "string"
+              }
+            }
+          },
+          "difusion": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "pais",
+                "anio",
+                "voluntarios",
+                "confianza"
+              ],
+              "properties": {
+                "pais": {
+                  "type": "string"
+                },
+                "anio": {
+                  "type": "integer"
+                },
+                "voluntarios": {
+                  "type": "integer"
+                },
+                "confianza": {
+                  "$ref": "#/definitions/confianza"
+                }
+              }
+            }
+          },
+          "condiciones": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "condicion",
+                "presente_en_cuba"
+              ],
+              "properties": {
+                "condicion": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "presente_en_cuba": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "advertencias": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "hallazgo_solido": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "ventanas_rotas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aclaracion",
+        "keizer",
+        "braga",
+        "filadelfia",
+        "honduras",
+        "ventana_institucional"
+      ],
+      "properties": {
+        "aclaracion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ventana_institucional": {
+          "type": "string",
+          "minLength": 1
+        },
+        "keizer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "descripcion",
+            "confianza",
+            "procedencia",
+            "experimentos",
+            "limitacion"
+          ],
+          "properties": {
+            "descripcion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            },
+            "limitacion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "experimentos": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "senal",
+                  "conducta",
+                  "ordenado",
+                  "desordenado"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "senal": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "conducta": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "ordenado": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "desordenado": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "n": {
+                    "$ref": "#/definitions/numeroOnulo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "braga": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "descripcion",
+            "confianza",
+            "procedencia",
+            "comparaciones_totales",
+            "reduccion_media",
+            "heterogeneidad",
+            "tipos"
+          ],
+          "properties": {
+            "descripcion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            },
+            "comparaciones_totales": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "reduccion_media": {
+              "type": "number"
+            },
+            "heterogeneidad": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tipos": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tipo",
+                  "comparaciones",
+                  "efecto",
+                  "significativo"
+                ],
+                "properties": {
+                  "tipo": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "comparaciones": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "efecto": {
+                    "$ref": "#/definitions/numeroOnulo"
+                  },
+                  "significativo": {
+                    "type": "boolean"
+                  },
+                  "nota": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "filadelfia": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "descripcion",
+            "confianza",
+            "procedencia",
+            "efectos",
+            "lectura"
+          ],
+          "properties": {
+            "descripcion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lectura": {
+              "type": "string",
+              "minLength": 1
+            },
+            "efectos": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/efectoEtiquetado"
+              }
+            }
+          }
+        },
+        "honduras": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "descripcion",
+            "confianza",
+            "procedencia",
+            "efectos",
+            "lectura"
+          ],
+          "properties": {
+            "descripcion": {
+              "type": "string",
+              "minLength": 1
+            },
+            "confianza": {
+              "$ref": "#/definitions/confianza"
+            },
+            "procedencia": {
+              "type": "string",
+              "minLength": 1
+            },
+            "lectura": {
+              "type": "string",
+              "minLength": 1
+            },
+            "efectos": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/efectoEtiquetado"
+              }
+            }
+          }
+        }
+      }
+    },
+    "acciones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "nivel",
+          "condicion",
+          "items"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nivel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "condicion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "titulo",
+                "detalle"
+              ],
+              "properties": {
+                "titulo": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "detalle": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "secuencia": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "periodo",
+          "objetivo",
+          "intervenciones",
+          "verificable_por"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "periodo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "objetivo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "intervenciones": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "verificable_por": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "indice_ct": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formula",
+        "mathml",
+        "advertencia",
+        "componentes"
+      ],
+      "properties": {
+        "formula": {
+          "type": "string",
+          "minLength": 1
+        },
+        "advertencia": {
+          "type": "string",
+          "minLength": 1
+        },
+        "componentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "simbolo",
+              "mathml",
+              "nombre",
+              "signo",
+              "peso",
+              "inicial"
+            ],
+            "properties": {
+              "simbolo": {
+                "type": "string",
+                "minLength": 1
+              },
+              "nombre": {
+                "type": "string",
+                "minLength": 1
+              },
+              "signo": {
+                "type": "string",
+                "enum": [
+                  "+",
+                  "−"
+                ]
+              },
+              "peso": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "inicial": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "mathml": {
+                "type": "string",
+                "pattern": "^<math"
+              }
+            }
+          }
+        },
+        "mathml": {
+          "type": "string",
+          "pattern": "^<math"
+        }
+      }
+    },
+    "falsacion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contraindicaciones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "description": "Encuesta del expediente. Forma canónica de ENCUESTAS.md §2.4: las opciones son objetos con id, porque el id entra en la clave de voto y permite reescribir el texto sin perder los votos acumulados.",
+      "additionalProperties": false,
+      "required": [
+        "titulo",
+        "intro",
+        "preguntas"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "intro": {
+          "type": "string"
+        },
+        "nota_privacidad": {
+          "type": "string"
+        },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "texto",
+              "opciones"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*$"
+              },
+              "texto": {
+                "type": "string"
+              },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "texto"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z][a-z0-9_]*$"
+                    },
+                    "texto": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "fuentes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "cita"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cita": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

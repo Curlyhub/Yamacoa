@@ -1,0 +1,1262 @@
+{
+  "meta": {
+    "slug": "propuesta-economica-auditoria",
+    "titulo": "Auditar a los aliados",
+    "subtitulo": "Evaluación crítica de la Propuesta para transformar la economía cubana",
+    "version": "1.0.0",
+    "actualizado": "2026-07-28",
+    "ciclo_horas": 8,
+    "aviso_simulacion": "Los controles de esta página exploran identidades aritméticas y formas funcionales. Ningún valor que produzcan es un dato observado.",
+    "nota_ecosistema": "Los cinco autores son economistas cubanos vinculados en distinta medida a la crítica reformista del modelo. Sus fuentes principales —ONEI, CEPAL, FMI, elTOQUE, EIU, Cuba Study Group— comparten orientaciones normativas parcialmente convergentes. Esta evaluación tiene el mismo problema: usa en buena parte las mismas fuentes. Los sesgos de selección se heredan y no se cancelan entre sí.",
+    "descripcion": "Auditar a los aliados es una evaluación crítica de la Propuesta para transformar la economía cubana, un documento de 118 páginas publicado en versión 1 el 20 de julio de 2026 por cinco economistas cubanos: Mauricio De Miranda Parrondo, Pedro Monreal González, Omar Everleny Pérez Villanueva, Ricardo Torres Pérez y Pavel Vidal Alejandro. La propuesta plantea una economía social de mercado sustentada en un Estado democrático de derecho y organiza una primera fase de 3 años con 20 objetivos repartidos en 6 bloques: estabilización fiscal, monetaria, de precios y cambiaria; emergencia energética; agricultura y turismo; empresa privada, empresas estatales y GAESA; apertura comercial, inversión y reinserción financiera; y protección social, reforma laboral, administración pública y seguridad. Descansa sobre cuatro supuestos, tres de ellos declarados críticos: avance en la negociación con Estados Unidos, financiamiento internacional de emergencia y condiciones políticas internas para sustituir el modelo.\n\nEl punto de partida del expediente es una asimetría. El documento se publica firmado y es falsable: dice qué hacer, en qué orden y bajo qué supuestos. El Gobierno anuncia 176 medidas sin secuencia, sin cuadro fiscal y sin condiciones de reversión. Por eso la crítica que sigue es de aliado y busca endurecer el programa, no desacreditarlo. Empieza corrigiendo cuatro objeciones de una evaluación preliminar que no se sostienen: la medida 6.1 ya fija un horizonte de 24 a 36 meses para las plantas flotantes; la medida 9.3 ya define los aranceles agrícolas como temporales y decrecientes; el tope de 402 hectáreas equivale a 30 caballerías y no es acumulable entre modalidades; y la formulación sobre vacaciones fiscales de uno o dos años no aparece en el texto localizado.\n\nEl expediente reconoce seis aciertos del documento: exigir gobernanza antes de privatizar, proteger a los propietarios actuales descartando desalojos y restituciones, rechazar austeridad adicional porque el ajuste ya ocurrió de forma regresiva, incorporar GAESA al presupuesto civil y auditarlo, restaurar la libertad sindical con derecho de huelga, y crear un fondo nacional de activos públicos con gestión profesional temporal antes de cualquier venta.\n\nSobre esa base plantea tres objeciones. La primera es aritmética y no requiere fuente externa: el Anexo 1 del documento es internamente inconsistente. Dividiendo PIB nominal entre PIB per cápita se obtiene una población implícita de 11,018 millones; multiplicando densidad por superficie se obtienen 10,076 millones. La tabla declara 10,08 millones. La discrepancia es del 9,35 %, unas 942.000 personas, y se explica porque el anexo mezcla dos añadas estadísticas de la serie de población.\n\nLa segunda es demográfica. La Oficina Nacional de Estadística e Información presentó los datos de 2025 el 21 de julio de 2026, un día después de la fecha de cierre de la propuesta, de modo que el documento no pudo incorporarlos. La población efectiva quedó en 9.434.593 habitantes, 313.414 menos que en 2024, con un saldo migratorio externo de −245.264 personas, 68.064 nacimientos frente a 136.214 defunciones, una fecundidad global de 1,29 hijos por mujer frente al reemplazo de 2,1, un 26,7 % de población de 60 años o más y una edad mediana de 45 años. La población en edad laboral perdió 1.259.894 personas en cinco años, un 18,3 %. El documento usa la compatibilidad con las restricciones demográficas como criterio para priorizar turismo y agricultura, pero son los dos sectores más intensivos en trabajo poco calificado de la economía cubana: aplicado correctamente, el criterio lleva a priorizar productividad por trabajador. A esto se añade el efecto denominador: si la población cae y el numerador no varía, todo indicador per cápita mejora solo.\n\nLa tercera es de secuencia. De la comparación con Singapur, Corea del Sur, Costa Rica y Chile emerge una regla: la capacidad de verificación precedió a la liberalización del mecanismo correspondiente, y los dos casos que invirtieron ese orden —Chile con la banca en 1982, Corea con la cuenta de capital en 1997— pagaron una crisis. La propuesta cubana invierte ese orden en cuatro medidas: abre el mercado de tierras antes de construir catastro y registro de beneficiario real, libera precios antes de montar transferencias operativas, sube tipos de interés antes de auditar la banca y anuncia la fragmentación de GAESA antes de controlar sus activos. El expediente advierte además que comparar Cuba con esos cuatro países es seleccionar sobre la variable dependiente, y que Chile suele citarse al revés: la reducción de la pobreza del 38,6 % en 1990 al 6,5 % en 2022 la produjo el crecimiento en democracia más un aumento deliberado de impuestos, no la liberalización de los setenta, que dejó una inflación del 375 % en 1974 y una caída del PIB del 13 % en 1975.\n\nSeis contrafactuales examinan qué ocurre si fallan los supuestos. El primero señala que los cuatro no son independientes, sino que están correlacionados, de modo que el escenario central del documento es en realidad el mejor de los escenarios. La valoración revisada baja la priorización sectorial de 7 a 5, la protección social de 6,5 a 5,5, la reproducibilidad de los datos de 4,5 a 4 y la viabilidad política de 3 a 2,5; como programa inmediatamente ejecutable pasa de 4 a 3,5, y como marco para debatir la transición se mantiene en 7. El expediente cierra con cinco exigencias: publicar el cuadro macro consolidado, publicar un programa alternativo sin alivio de sanciones, anteponer verificación a liberalización, construir un registro social antes de focalizar y corregir el Anexo 1. Nada de ello es un argumento contra la propuesta, sino a favor de que exista una versión 2.",
+    "narracion": "Cinco economistas cubanos publicaron el 20 de julio de 2026 una propuesta para transformar la economía cubana. Ciento dieciocho páginas, seis bloques, veinte objetivos para los primeros tres años. Es el programa de reforma más serio que existe sobre la mesa. Esto es una auditoría de aliado, no una descalificación.\n\nLa auditoría encuentra tres problemas. El primero es aritmético. La tabla comparativa del documento mezcla dos series de población: por una vía implica once millones de habitantes, por otra diez. La discrepancia es de más de nueve por ciento, unas novecientas cuarenta y dos mil personas.\n\nEl segundo es demográfico. Un día después del cierre del documento, la Oficina Nacional de Estadística e Información publicó los datos de 2025. La población quedó en nueve coma cuatro millones de habitantes, trescientos trece mil menos que el año anterior. La fuerza laboral perdió más de dieciocho por ciento en cinco años. Con esa restricción, priorizar turismo y agricultura contradice el propio criterio del documento.\n\nEl tercero es de secuencia. En Singapur, Corea del Sur, Costa Rica y Chile la capacidad de verificar precedió a la liberalización. Los dos que invirtieron ese orden pagaron una crisis. La propuesta cubana lo invierte en cuatro medidas.\n\nNada de esto es un argumento contra la propuesta. Es el argumento a favor de que exista una versión dos."
+  },
+  "marco": {
+    "titulo": "Por qué esta crítica es de aliado",
+    "parrafos": [
+      "La Propuesta para transformar la economía cubana es, en este momento, el programa de reforma más serio que existe sobre la mesa. Sus cinco autores publican con nombre y apellido un documento falsable: dice qué hacer, en qué orden y bajo qué supuestos. El régimen no publica nada equivalente. Anuncia 176 medidas sin secuencia, sin cuadro fiscal y sin condiciones de reversión.",
+      "Esa asimetría es el punto de partida. Un programa que se somete a auditoría pública es una forma de oposición: obliga a discutir con cifras en un país donde la discusión con cifras está proscrita.",
+      "Por eso la crítica correcta no es la que desacredita. Es la que endurece. Un documento que se publica como versión 1 pide exactamente esto: que alguien verifique la aritmética, busque los supuestos ocultos y ponga a prueba la secuencia contra la evidencia comparada. Lo que sigue hace las tres cosas, y empieza corrigiendo cuatro errores de la propia evaluación preliminar."
+    ],
+    "cita": "Auditar un programa aliado no lo debilita. Lo convierte en el único que puede sobrevivir al contacto con la realidad."
+  },
+  "propuesta": {
+    "titulo": "Propuesta para transformar la economía cubana",
+    "version_doc": "Versión 1",
+    "fecha": "20 de julio de 2026",
+    "paginas": 118,
+    "autores": [
+      "Mauricio De Miranda Parrondo",
+      "Pedro Monreal González",
+      "Omar Everleny Pérez Villanueva",
+      "Ricardo Torres Pérez",
+      "Pavel Vidal Alejandro"
+    ],
+    "objetivo": "Una economía social de mercado sustentada en un Estado democrático de Derecho.",
+    "bloques": [
+      "Estabilización fiscal, monetaria, de precios y cambiaria",
+      "Emergencia energética",
+      "Agricultura y turismo",
+      "Empresa privada, empresas estatales y GAESA",
+      "Apertura comercial, inversión y reinserción financiera",
+      "Protección social, reforma laboral, administración pública y seguridad"
+    ],
+    "primera_fase": "3 años · 20 objetivos · 6 bloques",
+    "supuestos": [
+      {
+        "id": "s1",
+        "texto": "Avance sustantivo en la negociación diplomática Cuba – Estados Unidos",
+        "critico": true
+      },
+      {
+        "id": "s2",
+        "texto": "Rearticulación de la inserción internacional, distinta de la dependencia soviética o venezolana",
+        "critico": false
+      },
+      {
+        "id": "s3",
+        "texto": "Disponibilidad de financiamiento internacional de emergencia",
+        "critico": true
+      },
+      {
+        "id": "s4",
+        "texto": "Condiciones políticas internas para iniciar la sustitución del modelo",
+        "critico": true
+      }
+    ]
+  },
+  "aciertos": [
+    {
+      "id": "a1",
+      "titulo": "Gobernanza antes de privatizar",
+      "detalle": "Advierte explícitamente que privatizar antes de construir instituciones produce captura y corrupción. Propone corporatizar, auditar, separar regulación y propiedad y crear un régimen de insolvencia antes de vender.",
+      "respaldo": "Coincide con el mecanismo de Singapur: profesionalizar la gestión estatal antes de expandirla o venderla."
+    },
+    {
+      "id": "a2",
+      "titulo": "Protección de propietarios actuales",
+      "detalle": "Descarta desalojos y restituciones físicas de viviendas, y protege a beneficiarios legítimos de la reforma agraria.",
+      "respaldo": "Neutraliza el miedo a la restauración, que es el principal activo propagandístico del régimen frente a cualquier transición."
+    },
+    {
+      "id": "a3",
+      "titulo": "Rechazo a la austeridad adicional",
+      "detalle": "Reconoce que el ajuste ya ocurrió, pero de forma regresiva: pérdida de salario real, deterioro de pensiones y traslado del costo a los hogares.",
+      "respaldo": "Diagnóstico correcto y poco frecuente en programas de estabilización."
+    },
+    {
+      "id": "a4",
+      "titulo": "Desmilitarización económica",
+      "detalle": "Incorporar GAESA al presupuesto civil, auditarlo y transferir sus reservas al Banco Central.",
+      "respaldo": "Condición necesaria de cualquier estabilización creíble. También la medida políticamente más difícil de todo el programa."
+    },
+    {
+      "id": "a5",
+      "titulo": "Libertad sindical y negociación colectiva",
+      "detalle": "Derecho de huelga, tutela judicial, protección frente a discriminación y portabilidad de pensiones.",
+      "respaldo": "Rompe con el sindicato único, que es una de las piezas centrales del control."
+    },
+    {
+      "id": "a6",
+      "titulo": "Fondo nacional de activos públicos",
+      "detalle": "Gestión profesional temporal de las grandes empresas antes de cualquier venta.",
+      "respaldo": "Es literalmente el mecanismo Temasek. Es el punto donde la comparación internacional apoya al documento en lugar de cuestionarlo."
+    }
+  ],
+  "correcciones": {
+    "titulo": "Cuatro objeciones de la evaluación preliminar que no se sostienen",
+    "intro": "La honestidad analítica exige empezar por aquí. Atribuir al documento algo que no dice le entrega a sus autores una refutación gratuita.",
+    "items": [
+      {
+        "id": "c1",
+        "objecion": "«Las plantas flotantes deberían limitarse a contratos de 18-36 meses con cláusulas de salida»",
+        "realidad": "La medida 6.1 ya especifica un horizonte «del orden de 24 a 36 meses, con opciones de renovación o de salida», y exige contratación mediante procesos competitivos y transparentes.",
+        "queda_en_pie": "Sigue faltando el precio máximo por MWh, la penalización por indisponibilidad y la auditoría pública del combustible.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "c2",
+        "objecion": "«Los aranceles agrícolas deberían ser un mecanismo variable y decreciente»",
+        "realidad": "La medida 9.3 ya los define «temporales y decrecientes», aplicados de forma selectiva por productos, transparente y no discriminatoria.",
+        "queda_en_pie": "No se fija el umbral de disparo, la regla de eliminación automática ni quién la certifica. La objeción válida es de diseño, no de omisión.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "c3",
+        "objecion": "«El límite de 402 hectáreas parece administrativo, no resultado de un análisis productivo»",
+        "realidad": "Equivale a 30 caballerías, no es acumulable entre modalidades de propiedad, usufructo y gestión, y el documento lo presenta como restricción frente al anuncio gubernamental de junio de 2026 de pasar a usufructo indefinido y superficie no definida.",
+        "queda_en_pie": "La crítica correcta es otra y es más incisiva: el documento fija un tope de superficie sin fijar un tope de control. Sin registro de beneficiario real, un tope se evade con testaferros y sociedades interpuestas.",
+        "confianza": "confirmado"
+      },
+      {
+        "id": "c4",
+        "objecion": "«Las vacaciones fiscales de uno o dos años pueden incentivar la creación artificial de sociedades»",
+        "realidad": "Esa formulación no aparece en el texto localizado. La evaluación preliminar la atribuye al documento y construye sobre ella una recomendación alternativa.",
+        "queda_en_pie": "Debe verificarse contra página exacta o eliminarse antes de circular la crítica.",
+        "confianza": "reportado"
+      }
+    ]
+  },
+  "demografia": {
+    "titulo": "La restricción que cambió de naturaleza",
+    "intro": "La ONEI presentó los datos de 2025 el 21 de julio de 2026: un día después de la fecha de cierre de la propuesta. El documento no pudo incorporarlos. Cambian uno de sus nueve criterios de priorización.",
+    "fuente": "ONEI, Indicadores Demográficos de Cuba y sus Territorios 2025",
+    "confianza": "reportado",
+    "salidas_dia": 672,
+    "indicadores": [
+      {
+        "id": "poblacion",
+        "etiqueta": "Población efectiva 2025",
+        "valor": 9434593,
+        "unidad": "hab.",
+        "formato": "entero"
+      },
+      {
+        "id": "variacion",
+        "etiqueta": "Variación respecto a 2024",
+        "valor": -313414,
+        "unidad": "hab.",
+        "formato": "entero"
+      },
+      {
+        "id": "migratorio",
+        "etiqueta": "Saldo migratorio externo",
+        "valor": -245264,
+        "unidad": "hab.",
+        "formato": "entero"
+      },
+      {
+        "id": "nacimientos",
+        "etiqueta": "Nacimientos",
+        "valor": 68064,
+        "unidad": "",
+        "formato": "entero"
+      },
+      {
+        "id": "defunciones",
+        "etiqueta": "Defunciones",
+        "valor": 136214,
+        "unidad": "",
+        "formato": "entero"
+      },
+      {
+        "id": "laboral",
+        "etiqueta": "Población en edad laboral (17–64)",
+        "valor": 5606541,
+        "unidad": "hab.",
+        "formato": "entero"
+      },
+      {
+        "id": "perdida_laboral",
+        "etiqueta": "Pérdida de población laboral en 5 años",
+        "valor": -1259894,
+        "unidad": "hab.",
+        "formato": "entero"
+      },
+      {
+        "id": "fecundidad",
+        "etiqueta": "Fecundidad global (reemplazo: 2,1)",
+        "valor": 1.29,
+        "unidad": "hijos/mujer",
+        "formato": "decimal"
+      },
+      {
+        "id": "envejecimiento",
+        "etiqueta": "Población de 60 años o más",
+        "valor": 26.7,
+        "unidad": "%",
+        "formato": "decimal"
+      },
+      {
+        "id": "mediana",
+        "etiqueta": "Edad mediana",
+        "valor": 45,
+        "unidad": "años",
+        "formato": "entero"
+      }
+    ],
+    "serie_poblacion": [
+      {
+        "anio": 2020,
+        "valor": 11181595,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2021,
+        "valor": 11113215,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2022,
+        "valor": 11089511,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2023,
+        "valor": 10055968,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2024,
+        "valor": 9748007,
+        "confianza": "reportado"
+      },
+      {
+        "anio": 2025,
+        "valor": 9434593,
+        "confianza": "reportado"
+      }
+    ],
+    "argumento": {
+      "criterio_documento": "Compatibilidad con las restricciones demográficas y de capacidades humanas.",
+      "conclusion_documento": "Priorizar turismo y agricultura antes que manufactura compleja o servicios especializados.",
+      "objecion": "Turismo y agricultura son los dos sectores más intensivos en trabajo poco calificado de la economía cubana. Con la fuerza laboral cayendo un 18,3 % en cinco años, la restricción demográfica no favorece a los sectores intensivos en mano de obra: los penaliza más que a ningún otro.",
+      "conclusion_correcta": "Aplicado correctamente, el criterio lleva a priorizar productividad por trabajador, no ocupación: servicios exportables digitales, agroprocesamiento mecanizado, energía distribuida y mantenimiento industrial."
+    }
+  },
+  "denominador": {
+    "titulo": "El efecto denominador",
+    "intro": "Si la población cae y el numerador no varía, todo indicador per cápita mejora solo. Un programa evaluado con métricas per cápita registrará éxito mientras la gente se va.",
+    "poblacion_anexo": 10.08,
+    "poblacion_min": 8,
+    "poblacion_max": 11.2,
+    "magnitudes": [
+      {
+        "id": "expo",
+        "etiqueta": "Exportaciones de bienes y servicios per cápita",
+        "valor_base": 864,
+        "unidad": "USD"
+      },
+      {
+        "id": "elec",
+        "etiqueta": "Consumo eléctrico per cápita",
+        "valor_base": 1384,
+        "unidad": "kWh"
+      },
+      {
+        "id": "acero",
+        "etiqueta": "Consumo aparente de acero per cápita",
+        "valor_base": 10,
+        "unidad": "kg"
+      },
+      {
+        "id": "cemento",
+        "etiqueta": "Consumo de cemento per cápita",
+        "valor_base": 69,
+        "unidad": "kg"
+      }
+    ],
+    "hitos": [
+      {
+        "id": "anexo",
+        "etiqueta": "Anexo 1",
+        "poblacion": 10.08
+      },
+      {
+        "id": "onei24",
+        "etiqueta": "ONEI 2024",
+        "poblacion": 9.748
+      },
+      {
+        "id": "onei25",
+        "etiqueta": "ONEI 2025",
+        "poblacion": 9.435
+      }
+    ],
+    "recomendacion": "El marco de seguimiento debe fijar indicadores en niveles absolutos y en tasas por hogar residente, y publicar la serie de población empleada en cada corte."
+  },
+  "anexo1": {
+    "titulo": "Auditoría aritmética del Anexo 1",
+    "intro": "La tabla comparativa del documento es internamente inconsistente. El cálculo es directo y no requiere ninguna fuente externa.",
+    "confianza": "confirmado",
+    "vias": [
+      {
+        "id": "via_pib",
+        "etiqueta": "Vía PIB",
+        "operacion": "PIB nominal ÷ PIB per cápita",
+        "numerador": 11437,
+        "denominador": 1038,
+        "unidad_num": "millones USD",
+        "unidad_den": "USD/hab.",
+        "poblacion_implicita": 11.018
+      },
+      {
+        "id": "via_dens",
+        "etiqueta": "Vía densidad",
+        "operacion": "Densidad × superficie",
+        "numerador": 91.7,
+        "denominador": 109884,
+        "unidad_num": "hab./km²",
+        "unidad_den": "km²",
+        "poblacion_implicita": 10.076
+      }
+    ],
+    "poblacion_declarada": 10.08,
+    "discrepancia_pct": 9.35,
+    "discrepancia_personas": 942000,
+    "diagnostico": "La población implícita de 11,02 millones corresponde aproximadamente a la serie ONEI anterior a la revisión; los 10,08 millones, a una serie posterior. El anexo mezcla dos añadas estadísticas.",
+    "atenuante": "La nota al pie advierte que los indicadores per cápita implican estimados de población que varían entre organizaciones. Eso explica el fenómeno, pero no lo corrige: en una tabla presentada como comparación entre países, la magnitud del sesgo puede superar las diferencias que la tabla pretende mostrar.",
+    "correccion": "Una sola convención de población, declarada, aplicada a todas las celdas de la columna Cuba, con nota de cuál se usa para los demás países."
+  },
+  "carencias": {
+    "titulo": "Lo que falta, ordenado por coste de omisión",
+    "items": [
+      {
+        "id": "k1",
+        "carencia": "Cuadro macro consolidado año a año",
+        "coste": "Sin él no puede saberse si las medidas son mutuamente financiables",
+        "prioridad": "critica"
+      },
+      {
+        "id": "k2",
+        "carencia": "Necesidad total de divisas y su calendario",
+        "coste": "Es la restricción binaria del programa entero",
+        "prioridad": "critica"
+      },
+      {
+        "id": "k3",
+        "carencia": "Programa alternativo sin alivio de sanciones",
+        "coste": "Si falla el supuesto 1, el país se queda sin plan",
+        "prioridad": "critica"
+      },
+      {
+        "id": "k4",
+        "carencia": "Registro social o padrón de hogares",
+        "coste": "Focalizar sin registro produce exclusión de los más pobres",
+        "prioridad": "critica"
+      },
+      {
+        "id": "k5",
+        "carencia": "Microsimulación distributiva",
+        "coste": "Sin ella no se sabe quién paga el ajuste",
+        "prioridad": "alta"
+      },
+      {
+        "id": "k6",
+        "carencia": "Matriz de riesgos políticos",
+        "coste": "GAESA y los perdedores con capacidad coercitiva",
+        "prioridad": "alta"
+      },
+      {
+        "id": "k7",
+        "carencia": "Reglas de reversión de reformas",
+        "coste": "Sin ellas, un error se convierte en trayectoria",
+        "prioridad": "alta"
+      },
+      {
+        "id": "k8",
+        "carencia": "Metodología reproducible del Anexo 1",
+        "coste": "Auditabilidad",
+        "prioridad": "media"
+      }
+    ],
+    "nota": "La expresión «registro social» no aparece en el documento. Esa ausencia es especialmente costosa porque el propio texto reconoce que en 2026 el Gobierno anunció la sustitución del subsidio universal por un esquema focalizado."
+  },
+  "contrafactuales": [
+    {
+      "id": "cf0",
+      "codigo": "CF-0",
+      "titulo": "Los cuatro supuestos no son independientes",
+      "supuesto": "El documento enumera cuatro condiciones —negociación con EE. UU., nueva inserción internacional, financiamiento de emergencia, apertura política interna— y las trata como una lista.",
+      "mecanismo": "No son cuatro sucesos independientes: están fuertemente correlacionados en ambos sentidos. La negociación probablemente requiere apertura interna; el financiamiento multilateral requiere la negociación. Un programa cuyo escenario central es la conjunción de cuatro eventos correlacionados no tiene escenario base: tiene el mejor de los escenarios descrito como si fuera el promedio.",
+      "referente": "Las transiciones negociadas de España, Chile y Brasil tardaron entre 15 y 25 años en consolidarse, y ninguna exigió las cuatro condiciones simultáneamente en el año uno.",
+      "plausibilidad": "no cuantificada por los autores",
+      "plausibilidad_nivel": 3,
+      "falsacion": "Que los autores publiquen probabilidades subjetivas por supuesto y un programa que funcione en el complemento. Si la probabilidad conjunta resulta alta, esta objeción cae."
+    },
+    {
+      "id": "cf1",
+      "codigo": "CF-1",
+      "titulo": "Reformas internas sin alivio de sanciones",
+      "supuesto": "Se aplican los seis bloques de la primera fase; el Título III de Helms-Burton sigue vigente; no hay acceso al FMI ni al Banco Mundial.",
+      "mecanismo": "Caen simultáneamente cuatro fuentes de divisas: turismo estadounidense, banca corresponsal, financiamiento multilateral e inversión de gran escala. Sobrevive lo que no pasa por el sistema financiero estadounidense: remesas, inversión familiar de la diáspora, agricultura, servicios digitales exportables y solar distribuida.",
+      "referente": "Durante 2026 la suspensión de envíos de combustible venezolano, la amenaza arancelaria a proveedores de hidrocarburos y las sanciones a entidades vinculadas a GAESA forzaron la suspensión de operaciones de importantes empresas extranjeras con vínculos de larga data. El escenario adverso ya ocurrió una vez, dentro del período que el propio documento describe.",
+      "plausibilidad": "alta",
+      "plausibilidad_nivel": 4,
+      "falsacion": "Suspensión efectiva del Título III y restablecimiento de al menos una relación de banca corresponsal con capacidad de compensación en dólares."
+    },
+    {
+      "id": "cf2",
+      "codigo": "CF-2",
+      "titulo": "Venta del 50 % de las tierras UBPC sin catastro",
+      "supuesto": "Se ejecuta la medida tal como está escrita: incorporación al mercado del 50 % de 1,4 millones de hectáreas durante el segundo año, sin catastro actualizado, sin registro de beneficiario real, sin tribunales agrarios y sin valoración independiente del suelo.",
+      "mecanismo": "En un mercado con información asimétrica extrema, quien tiene liquidez en divisas y acceso a información registral compra barato a quien necesita liquidez inmediata. El tope de 402 hectáreas no impide la concentración si no hay registro de beneficiario final: solo obliga a fragmentar la titularidad nominal.",
+      "referente": "La privatización masiva en economías de transición con instituciones débiles produjo saqueo de activos y coaliciones contrarias al Estado de Derecho. El propio documento lo advierte, y aun así calendariza la venta agraria en el año dos.",
+      "plausibilidad": "alta, condicionada a que se ejecute el calendario",
+      "plausibilidad_nivel": 4,
+      "falsacion": "Catastro nacional cerrado y registro de beneficiario real operativo antes de la primera transacción."
+    },
+    {
+      "id": "cf3",
+      "codigo": "CF-3",
+      "titulo": "Liberar precios y tipo de cambio sin transferencia operativa",
+      "supuesto": "Se ejecutan las medidas 3.1, 3.3 y 4 antes de que exista un mecanismo verificable de pago de transferencias.",
+      "mecanismo": "El tipo de cambio informal pasó de ≈40 a ≈670 CUP/USD entre enero de 2021 y mediados de 2026, con inflación promedio del 31,8 % en 2022-2024 frente a 5,6 % regional. Liberar precios en mercados con escasez física, concentración de importadores y acceso desigual a divisas convierte un precio administrado en un precio oligopólico, no competitivo. Los hogares sin remesas absorben el ajuste completo.",
+      "referente": "Chile 1975: apertura y liberalización aceleradas produjeron una caída del PIB del 13 % y un desplome industrial del 27 %, con inflación del 375 % en 1974.",
+      "plausibilidad": "alta",
+      "plausibilidad_nivel": 4,
+      "falsacion": "Un sistema de pago que acredite transferencias a un porcentaje verificable de hogares objetivo durante tres meses consecutivos, con error de exclusión publicado."
+    },
+    {
+      "id": "cf4",
+      "codigo": "CF-4",
+      "titulo": "Fragmentar GAESA como reforma administrativa",
+      "supuesto": "Se ejecuta la medida 13 mediante decisión administrativa.",
+      "mecanismo": "GAESA concentra a la vez poder económico, estructura militar, redes de lealtad, acceso a divisas y capacidad de veto. Entre el anuncio y la ejecución hay una ventana en la que el sujeto de la reforma controla los activos, los registros y la fuerza. Las respuestas disponibles en esa ventana son ocultamiento, transferencia acelerada a interpuestos, destrucción documental o resistencia.",
+      "referente": "Georgia 2004: el volteo de una norma predatoria funcionó porque precedió a la negociación con los afectados, pero se hizo desde un Estado que ya controlaba el aparato coercitivo. En el escenario del documento, Cuba no lo controla.",
+      "plausibilidad": "baja en la versión benigna",
+      "plausibilidad_nivel": 2,
+      "falsacion": "Congelación verificable de transferencias extraordinarias de activos y declaración patrimonial de la cúpula, ambas antes de cualquier anuncio de fragmentación."
+    },
+    {
+      "id": "cf5",
+      "codigo": "CF-5",
+      "titulo": "La transición ocurre con la demografía de 2030",
+      "supuesto": "Se aplica el programa completo y funciona; el país recupera crecimiento hacia el año tres.",
+      "mecanismo": "A −245 000 personas netas al año y con fecundidad de 1,29, la recuperación llega a un país con menos trabajadores, más pensionistas y una razón de dependencia estructuralmente peor. Un programa que promete pensiones y salarios reales crecientes compromete obligaciones permanentes sobre una base contributiva menguante.",
+      "referente": "Ningún caso comparado emprendió su transformación con esta dinámica: Corea y Singapur la hicieron con bono demográfico; Costa Rica y Chile con estructuras jóvenes.",
+      "plausibilidad": "alta en el mecanismo, indeterminada en la magnitud",
+      "plausibilidad_nivel": 4,
+      "falsacion": "Saldo migratorio neto próximo a cero durante cuatro trimestres consecutivos. Sería, además, el mejor indicador único de éxito del programa completo."
+    }
+  ],
+  "comparacion": {
+    "advertencia": "Comparar Cuba con Singapur, Corea, Costa Rica y Chile es seleccionar sobre la variable dependiente: se eligen cuatro éxitos y se pregunta qué hicieron. Ese diseño produjo tanto la literatura del «milagro asiático» como la del Consenso de Washington, y ambas fallaron fuera de muestra porque ninguna incluyó el denominador: cuántos países aplicaron políticas parecidas y no lo lograron.",
+    "reglas": [
+      "Ninguno de los cuatro es un control válido para Cuba. No hay tendencias paralelas verificables; cualquier estimación de tipo diferencias-en-diferencias sobre estos pares sería indefendible.",
+      "Singapur es un referente de frontera, no un caso comparable. Ciudad-Estado de 700 km² y menos de dos millones de habitantes en 1965, sin agricultura ni interior. Muestra hasta dónde puede llegar la calidad institucional; no cómo llegar desde Cuba.",
+      "Un patrón fuerte entre los cuatro casos no eleva la confianza en ninguna medida concreta del documento cubano. No hay regla de fusión entre el nivel patrón y el nivel caso."
+    ],
+    "casos": [
+      {
+        "id": "chile",
+        "nombre": "Chile",
+        "periodo": "1973 – 2022",
+        "es_caso_de": "Éxito posterior a 1990, en democracia y con más impuestos",
+        "no_es_caso_de": "Terapia de choque exitosa",
+        "titular": "El caso que suele citarse al revés",
+        "narrativa": "Quien invoca a Chile para justificar liberalización rápida está citando exactamente la década que fracasó. La reducción de pobreza no la produjo la liberalización: la produjo el crecimiento sostenido más un aumento deliberado de impuestos en democracia.",
+        "fases": [
+          {
+            "id": "chile_a",
+            "etiqueta": "Fase autoritaria radical",
+            "rango": "1973–1983",
+            "signo": "negativo",
+            "hitos": [
+              {
+                "etiqueta": "Inflación 1974",
+                "valor": 375,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Caída del PIB 1975",
+                "valor": -13,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Caída de la producción industrial 1975",
+                "valor": -27,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Caída del PIB 1982",
+                "valor": -14.3,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Desempleo 1982",
+                "valor": 23.7,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Desempleo 1983 (serie Meller)",
+                "valor": 31.3,
+                "unidad": "%",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "El Estado tuvo que intervenir más de cinco bancos y renacionalizar el sistema financiero que acababa de privatizar."
+          },
+          {
+            "id": "chile_b",
+            "etiqueta": "Fase democrática",
+            "rango": "1990–2022",
+            "signo": "positivo",
+            "hitos": [
+              {
+                "etiqueta": "Pobreza por ingresos 1990",
+                "valor": 38.6,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Pobreza por ingresos 2022",
+                "valor": 6.5,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Indigencia 1990 → 2013",
+                "valor": 2.5,
+                "unidad": "% (desde 13,0 %)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Gasto social 1990 → 2009",
+                "valor": 17,
+                "unidad": "% del PIB (desde 12 %)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Crecimiento medio 1990-2003",
+                "valor": 5.5,
+                "unidad": "% anual",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "IED 1990 → 1997",
+                "valor": 8092,
+                "unidad": "M USD (desde 1 460)",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "En 1990 se aprobó una reforma tributaria que revirtió las rebajas de los ochenta; con ella se financió el gasto social, que casi se cuadruplicó entre 1990 y 2009."
+          }
+        ],
+        "leccion": "La propuesta cubana no contiene una reforma tributaria progresiva de esa naturaleza: contiene reducciones tributarias puntuales (medida 2.1) y financiación parcial vía venta de activos (medida 2.3). Es el punto exacto donde la analogía chilena, bien leída, contradice al documento.",
+        "advertencias": [
+          "El crecimiento chileno se apoyó en el cobre y en una posición externa que Cuba no tiene.",
+          "La desigualdad se mantuvo alta pese a la caída de la pobreza.",
+          "El estallido de 2019 sugiere pasivos de legitimidad no capturados por la línea de pobreza."
+        ]
+      },
+      {
+        "id": "corea",
+        "nombre": "Corea del Sur",
+        "periodo": "1948 – 1998",
+        "es_caso_de": "Estado desarrollista con reciprocidad exportadora; luego democratización (1987); luego reestructuración de crisis (1997)",
+        "no_es_caso_de": "Liberalización temprana ni apertura financiera prudente",
+        "titular": "La reciprocidad, no la protección",
+        "narrativa": "El subsidio coreano se condicionaba a desempeño exportador verificable y se retiraba ante el incumplimiento. Sin esa reciprocidad, la protección se convierte en renta permanente.",
+        "fases": [
+          {
+            "id": "corea_a",
+            "etiqueta": "Estado desarrollista",
+            "rango": "1948–1996",
+            "signo": "positivo",
+            "hitos": [
+              {
+                "etiqueta": "Reforma agraria radical, previa a la industrialización",
+                "valor": 1950,
+                "unidad": "año",
+                "confianza": "confirmado"
+              },
+              {
+                "etiqueta": "Sustitución de importaciones antes de promoción exportadora",
+                "valor": 25,
+                "unidad": "años",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Ingreso por habitante a inicios de los sesenta",
+                "valor": 100,
+                "unidad": "USD (≈3 % del de EE. UU.)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Ingreso por habitante en 1998",
+                "valor": 22,
+                "unidad": "% del de EE. UU.",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "Control estatal de la banca, del tipo de cambio y de los movimientos de capital. Lo contrario de una apertura temprana de la cuenta financiera."
+          },
+          {
+            "id": "corea_b",
+            "etiqueta": "Crisis de 1997",
+            "rango": "1997–1999",
+            "signo": "negativo",
+            "hitos": [
+              {
+                "etiqueta": "Rescate del FMI",
+                "valor": 58000,
+                "unidad": "M USD",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Quiebra de conglomerados (Daewoo entre otros)",
+                "valor": 1,
+                "unidad": "caso emblemático",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "El endeudamiento de los chaebol combinado con apertura financiera acelerada produjo salida masiva de capitales, desplome del won, despidos masivos y fin del empleo vitalicio."
+          }
+        ],
+        "leccion": "Corea abrió comercio antes que capital, y aun así se equivocó al abrir capital demasiado rápido. El documento cubano propone subir tipos de interés (medida 3.4) sin haber auditado los balances bancarios: es el mismo orden invertido.",
+        "advertencias": [
+          "Bono demográfico ausente en la Cuba de 2026.",
+          "Respaldo geopolítico de un aliado dispuesto a tolerar lo que prohibía a otros países.",
+          "Burocracia meritocrática construida durante décadas."
+        ]
+      },
+      {
+        "id": "costarica",
+        "nombre": "Costa Rica",
+        "periodo": "1980 – 2000",
+        "es_caso_de": "Diversificación productiva preservando universalismo social, en democracia continua",
+        "no_es_caso_de": "Transformación rápida",
+        "titular": "El análogo estructural más cercano",
+        "narrativa": "Economía pequeña, alta densidad de logro social previo, sin ejército desde 1948, base turística y dependencia de mercados concentrados. Es el caso con más poder explicativo para Cuba, y el documento lo menciona solo dos veces.",
+        "fases": [
+          {
+            "id": "cr_a",
+            "etiqueta": "Crisis",
+            "rango": "1980–1982",
+            "signo": "negativo",
+            "hitos": [
+              {
+                "etiqueta": "Caída del PIB 1980-1982",
+                "valor": -9.2,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Desempleo",
+                "valor": 9.4,
+                "unidad": "% (desde 4,8 %)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Inflación acumulada",
+                "valor": 207,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Caída del salario real",
+                "valor": -30,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Tipo de cambio (₡ por USD)",
+                "valor": 65,
+                "unidad": "₡ (desde 8)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Canasta básica sobre salario promedio",
+                "valor": 86,
+                "unidad": "% (desde 60 %)",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "Deuda pública de 2 900 M USD en 1981 y moratoria declarada."
+          },
+          {
+            "id": "cr_b",
+            "etiqueta": "Ajuste y promoción de exportaciones",
+            "rango": "1985–2000",
+            "signo": "positivo",
+            "hitos": [
+              {
+                "etiqueta": "Programas de Ajuste Estructural escalonados",
+                "valor": 3,
+                "unidad": "PAE I, II y III",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Horizonte real de la transformación",
+                "valor": 15,
+                "unidad": "años",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "Minidevaluaciones en vez de un salto único, y mantenimiento de la arquitectura universal de salud y educación mientras cambiaba la base productiva."
+          }
+        ],
+        "leccion": "Cuba está en posición peor que la Costa Rica de 1982 en depreciación y en duración de la contracción. Y Costa Rica no apostó por profundizar en café y banano porque ya tenía plantaciones: construyó una oferta nueva. Tener capacidad hotelera ociosa es una razón para usarla, no para especializarse en ella.",
+        "advertencias": [
+          "El horizonte real fue de quince años, no de tres.",
+          "El universalismo no se desmontó: se preservó como ancla de legitimidad mientras todo lo demás cambiaba.",
+          "La diversificación llegó por atracción de IED con capacidades previas, no por explotar capacidad instalada."
+        ]
+      },
+      {
+        "id": "singapur",
+        "nombre": "Singapur",
+        "periodo": "1965 – 2024",
+        "es_caso_de": "Construcción de calidad institucional y atracción de IED bajo hegemonía de partido",
+        "no_es_caso_de": "Democratización, ni economía con agricultura o territorio",
+        "titular": "Referente de frontera, no modelo",
+        "narrativa": "Muestra hasta dónde puede llegar la calidad institucional. No muestra cómo llegar desde Cuba. Es N = 1, y la lista de países que intentaron capitalismo autoritario y obtuvieron captura en lugar de desarrollo es larga.",
+        "fases": [
+          {
+            "id": "sg_a",
+            "etiqueta": "Punto de partida",
+            "rango": "1965",
+            "signo": "negativo",
+            "hitos": [
+              {
+                "etiqueta": "PIB per cápita nominal",
+                "valor": 500,
+                "unidad": "USD (nivel de México y Sudáfrica)",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Desempleo",
+                "valor": 9,
+                "unidad": "%",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "Superficie",
+                "valor": 700,
+                "unidad": "km²",
+                "confianza": "confirmado"
+              }
+            ],
+            "cierre": "Sin recursos naturales, sin interior y con el agua importada por acuerdo con Johor."
+          },
+          {
+            "id": "sg_b",
+            "etiqueta": "Frontera actual",
+            "rango": "2024",
+            "signo": "positivo",
+            "hitos": [
+              {
+                "etiqueta": "PIB per cápita nominal",
+                "valor": 67707,
+                "unidad": "USD",
+                "confianza": "reportado"
+              },
+              {
+                "etiqueta": "PIB per cápita en PPA",
+                "valor": 132570,
+                "unidad": "USD",
+                "confianza": "reportado"
+              }
+            ],
+            "cierre": "El único mecanismo directamente transferible es institucional: profesionalizar la gestión de las empresas estatales antes de expandirlas o venderlas."
+          }
+        ],
+        "leccion": "La propuesta cubana de un fondo nacional de activos públicos gestionado profesionalmente es exactamente el mecanismo Temasek. Es el punto donde la comparación internacional apoya al documento en lugar de cuestionarlo.",
+        "advertencias": [
+          "Ciudad-Estado sin agricultura ni interior; Cuba tiene 109 884 km² y un sector agropecuario.",
+          "Salarios públicos altos como antídoto anticorrupción requieren una base fiscal capaz de pagarlos.",
+          "No debe transferirse la conclusión de que el autoritarismo eficaz es un atajo."
+        ]
+      }
+    ],
+    "mecanismos": [
+      {
+        "id": "m1",
+        "mecanismo": "Reforma agraria con tope verificado",
+        "caso": "corea",
+        "condicion": "Registro de beneficiario real",
+        "estado": "ausente",
+        "veredicto": "El tope de 402 ha es evadible"
+      },
+      {
+        "id": "m2",
+        "mecanismo": "Reciprocidad: subsidio a cambio de desempeño",
+        "caso": "corea",
+        "condicion": "Métrica exportadora auditada y capacidad de retirada",
+        "estado": "ausente",
+        "veredicto": "Los aranceles se convertirán en renta"
+      },
+      {
+        "id": "m3",
+        "mecanismo": "Gobernanza corporativa antes de privatizar",
+        "caso": "singapur",
+        "condicion": "Cuadros profesionales y auditoría",
+        "estado": "presente",
+        "veredicto": "Acierto del documento"
+      },
+      {
+        "id": "m4",
+        "mecanismo": "Universalismo preservado durante el ajuste",
+        "caso": "costarica",
+        "condicion": "Base fiscal y padrón de hogares",
+        "estado": "ausente",
+        "veredicto": "Riesgo alto de exclusión"
+      },
+      {
+        "id": "m5",
+        "mecanismo": "Diversificación por capacidades nuevas",
+        "caso": "costarica",
+        "condicion": "IED con encadenamientos",
+        "estado": "parcial",
+        "veredicto": "Depende íntegramente del supuesto 1"
+      },
+      {
+        "id": "m6",
+        "mecanismo": "Impuestos al alza en democracia para financiar lo social",
+        "caso": "chile",
+        "condicion": "Legitimidad democrática",
+        "estado": "ausente",
+        "veredicto": "Contradice la medida 2.1"
+      },
+      {
+        "id": "m7",
+        "mecanismo": "Apertura financiera al final de la secuencia",
+        "caso": "corea",
+        "condicion": "Banca auditada y recapitalizada",
+        "estado": "ausente",
+        "veredicto": "Contradice la medida 3.4"
+      },
+      {
+        "id": "m8",
+        "mecanismo": "Ajuste cambiario gradual",
+        "caso": "costarica",
+        "condicion": "Reservas mínimas",
+        "estado": "ausente",
+        "veredicto": "Refuerza la crítica a la unificación"
+      }
+    ]
+  },
+  "regla_unica": {
+    "titulo": "La regla que emerge de los cuatro casos",
+    "enunciado": "En los cuatro casos, la construcción de la capacidad de verificación precedió a la liberalización del mecanismo correspondiente. Los dos que se saltaron ese orden en algún momento —Chile con la banca en 1982, Corea con la cuenta de capital en 1997— pagaron una crisis por ello.",
+    "inversiones": [
+      {
+        "id": "i1",
+        "medida": "Mercado de tierras UBPC",
+        "referencia": "Medida 8.2 · año 2",
+        "orden_propuesto": [
+          "Abrir el mercado",
+          "Construir catastro"
+        ],
+        "orden_evidencia": [
+          "Catastro y registro de beneficiario real",
+          "Abrir el mercado"
+        ],
+        "riesgo": "Concentración encubierta mediante testaferros"
+      },
+      {
+        "id": "i2",
+        "medida": "Liberalización de precios",
+        "referencia": "Medidas 3.1 y 3.3",
+        "orden_propuesto": [
+          "Liberar precios",
+          "Montar transferencias"
+        ],
+        "orden_evidencia": [
+          "Transferencia operativa verificada",
+          "Liberar precios por grupos"
+        ],
+        "riesgo": "Precio oligopólico y ajuste íntegro sobre hogares sin remesas"
+      },
+      {
+        "id": "i3",
+        "medida": "Tipos de interés",
+        "referencia": "Medida 3.4",
+        "orden_propuesto": [
+          "Subir tipos",
+          "Auditar la banca"
+        ],
+        "orden_evidencia": [
+          "Auditoría y recapitalización bancaria",
+          "Subir tipos"
+        ],
+        "riesgo": "Morosidad, asfixia del capital circulante y quiebra de empresas ya insolventes"
+      },
+      {
+        "id": "i4",
+        "medida": "Fragmentación de GAESA",
+        "referencia": "Medida 13",
+        "orden_propuesto": [
+          "Anunciar la fragmentación",
+          "Auditar activos"
+        ],
+        "orden_evidencia": [
+          "Congelar transferencias y declarar patrimonio",
+          "Anunciar la fragmentación"
+        ],
+        "riesgo": "Ocultamiento, transferencia a interpuestos y destrucción documental"
+      }
+    ]
+  },
+  "valoracion": {
+    "titulo": "Valoración revisada",
+    "aviso": "Juicio analítico, no medición objetiva.",
+    "dimensiones": [
+      {
+        "id": "v1",
+        "dimension": "Diagnóstico estructural",
+        "preliminar": 8.5,
+        "revisada": 8.5,
+        "motivo": "Se sostiene"
+      },
+      {
+        "id": "v2",
+        "dimension": "Modelo normativo propuesto",
+        "preliminar": 8,
+        "revisada": 8,
+        "motivo": "Se sostiene"
+      },
+      {
+        "id": "v3",
+        "dimension": "Priorización sectorial",
+        "preliminar": 7,
+        "revisada": 5,
+        "motivo": "El criterio demográfico, correctamente aplicado, contradice la elección de turismo y agricultura"
+      },
+      {
+        "id": "v4",
+        "dimension": "Protección social",
+        "preliminar": 6.5,
+        "revisada": 5.5,
+        "motivo": "Ausencia total de registro social; focalización sin infraestructura"
+      },
+      {
+        "id": "v5",
+        "dimension": "Secuencia económica",
+        "preliminar": 5.5,
+        "revisada": 5,
+        "motivo": "Cuatro inversiones del orden verificación → liberalización"
+      },
+      {
+        "id": "v6",
+        "dimension": "Reproducibilidad de los datos",
+        "preliminar": 4.5,
+        "revisada": 4,
+        "motivo": "Inconsistencia aritmética del Anexo 1 confirmada al 9,35 %"
+      },
+      {
+        "id": "v7",
+        "dimension": "Cuantificación macroeconómica",
+        "preliminar": 3,
+        "revisada": 3,
+        "motivo": "Se sostiene"
+      },
+      {
+        "id": "v8",
+        "dimension": "Viabilidad política",
+        "preliminar": 3,
+        "revisada": 2.5,
+        "motivo": "Los cuatro supuestos están correlacionados y no se declara probabilidad conjunta"
+      },
+      {
+        "id": "v9",
+        "dimension": "Robustez ante escenarios adversos",
+        "preliminar": 3.5,
+        "revisada": 3,
+        "motivo": "El escenario adverso ya ocurrió en 2026 y el documento no lo incorpora"
+      },
+      {
+        "id": "v10",
+        "dimension": "Adecuación cultural e histórica",
+        "preliminar": 6.5,
+        "revisada": 7,
+        "motivo": "La protección de propietarios actuales está mejor resuelta de lo que reconocía la evaluación preliminar"
+      }
+    ],
+    "globales": [
+      {
+        "id": "g1",
+        "etiqueta": "Como marco para debatir la transición",
+        "preliminar": 7,
+        "revisada": 7
+      },
+      {
+        "id": "g2",
+        "etiqueta": "Como programa inmediatamente ejecutable",
+        "preliminar": 4,
+        "revisada": 3.5
+      }
+    ]
+  },
+  "exigencias": [
+    {
+      "id": "e1",
+      "numero": 1,
+      "titulo": "Publicar el cuadro macro consolidado",
+      "detalle": "Año a año, con necesidad total de divisas y su calendario. Sin esto no puede saberse si el programa es autoconsistente."
+    },
+    {
+      "id": "e2",
+      "numero": 2,
+      "titulo": "Publicar un programa B sin alivio de sanciones",
+      "detalle": "Y declarar la probabilidad subjetiva conjunta de los cuatro supuestos. Dado CF-1, el programa B es probablemente el principal."
+    },
+    {
+      "id": "e3",
+      "numero": 3,
+      "titulo": "Anteponer verificación a liberalización",
+      "detalle": "Catastro y beneficiario real antes del mercado de tierras; transferencia operativa antes de liberar precios; auditoría bancaria antes de subir tipos; control de activos antes de anunciar la fragmentación de GAESA."
+    },
+    {
+      "id": "e4",
+      "numero": 4,
+      "titulo": "Construir el registro social antes de focalizar",
+      "detalle": "Con error de exclusión medido y publicado, sobre un piso universal mínimo previo."
+    },
+    {
+      "id": "e5",
+      "numero": 5,
+      "titulo": "Corregir el Anexo 1",
+      "detalle": "Una sola convención de población declarada, fuente por celda, año efectivo por observación, y niveles absolutos allí donde el denominador se contrae."
+    }
+  ],
+  "cierre": {
+    "parrafos": [
+      "La comparación con Singapur, Corea, Costa Rica y Chile no ofrece el aval que suele buscarse en esos nombres. Ofrece una regla incómoda: los cuatro construyeron capacidad de verificación antes de liberalizar el mecanismo correspondiente, y los dos que se saltaron ese orden pagaron una crisis por ello.",
+      "La propuesta cubana invierte ese orden en cuatro medidas, y lo hace sobre una base demográfica que ningún caso comparado tuvo: una fuerza laboral que perdió el 18,3 % en cinco años.",
+      "La corrección no es abandonar el programa. Es reordenarlo: rápido en derechos, transparencia, competencia y capacidad de verificar; deliberadamente lento en ventas de activos, mercado de tierras y retirada de protección; y diseñado desde el principio para funcionar en el escenario en el que Washington no coopera."
+    ],
+    "remate": "Nada de esto es un argumento contra la propuesta. Es el argumento a favor de que exista una versión 2. Un programa que se deja auditar es lo contrario de un régimen que no se deja contar."
+  },
+  "formulas": [
+    {
+      "id": "f1",
+      "titulo": "Población implícita",
+      "lectura": "Toda tabla que publique un agregado y su valor per cápita está publicando también, de manera implícita, una población. Si dos celdas de la misma tabla implican poblaciones distintas, la tabla es inconsistente sin necesidad de acudir a ninguna fuente externa.",
+      "mathml": "<math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mover><mi>N</mi><mo>^</mo></mover><mo>=</mo><mfrac><mi>Y</mi><mrow><mi>y</mi></mrow></mfrac><mo>,</mo><mspace width=\"1.4em\"/><mtext>con</mtext><mspace width=\"0.6em\"/><mi>Y</mi><mo>=</mo><mtext>agregado</mtext><mo>,</mo><mspace width=\"0.6em\"/><mi>y</mi><mo>=</mo><mtext>valor per cápita</mtext></mrow></math>",
+      "variables": [
+        {
+          "simbolo": "N̂",
+          "nombre": "Población implícita en la tabla"
+        },
+        {
+          "simbolo": "Y",
+          "nombre": "Magnitud agregada publicada"
+        },
+        {
+          "simbolo": "y",
+          "nombre": "Magnitud per cápita publicada"
+        }
+      ]
+    },
+    {
+      "id": "f2",
+      "titulo": "Efecto denominador",
+      "lectura": "La variación relativa de cualquier indicador per cápita es exactamente el inverso de la variación relativa de la población, cuando el numerador no cambia. Una caída poblacional del 6,4 % produce una mejora automática del 6,8 % en todos los indicadores per cápita, sin que mejore absolutamente nada.",
+      "mathml": "<math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi>y</mi><mo>=</mo><mfrac><mi>X</mi><mi>N</mi></mfrac><mspace width=\"2em\"/><mo>⟹</mo><mspace width=\"2em\"/><mfrac><mrow><mi>Δ</mi><mi>y</mi></mrow><mi>y</mi></mfrac><mo>=</mo><mfrac><mrow><mo>−</mo><mi>Δ</mi><mi>N</mi><mo>/</mo><mi>N</mi></mrow><mrow><mn>1</mn><mo>+</mo><mi>Δ</mi><mi>N</mi><mo>/</mo><mi>N</mi></mrow></mfrac></mrow></math>",
+      "variables": [
+        {
+          "simbolo": "X",
+          "nombre": "Magnitud agregada, constante"
+        },
+        {
+          "simbolo": "N",
+          "nombre": "Población residente"
+        },
+        {
+          "simbolo": "y",
+          "nombre": "Indicador per cápita"
+        }
+      ]
+    },
+    {
+      "id": "f3",
+      "titulo": "Función de bienestar ausente",
+      "lectura": "Para afirmar que un conjunto de políticas es óptimo haría falta definir qué se maximiza y con qué pesos. El documento propone políticas plausibles, pero no declara ninguna función objetivo: por tanto no demuestra que sean las que maximizan el bienestar cubano, solo que son defendibles.",
+      "mathml": "<math display=\"block\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mi>W</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><mi>T</mi></munderover><msup><mi>β</mi><mi>t</mi></msup><mrow><mo>[</mo><mrow><mi>Δ</mi><msubsup><mi>y</mi><mi>t</mi><mtext>real</mtext></msubsup><mo>−</mo><msub><mi>λ</mi><mi>p</mi></msub><msub><mi>P</mi><mi>t</mi></msub><mo>−</mo><msub><mi>λ</mi><mi>g</mi></msub><msub><mi>G</mi><mi>t</mi></msub><mo>−</mo><msub><mi>λ</mi><mi>e</mi></msub><msub><mi>E</mi><mi>t</mi></msub><mo>−</mo><msub><mi>λ</mi><mi>m</mi></msub><msub><mi>M</mi><mi>t</mi></msub></mrow><mo>]</mo></mrow></mrow></math>",
+      "variables": [
+        {
+          "simbolo": "Δyᵗ",
+          "nombre": "Variación del ingreso real"
+        },
+        {
+          "simbolo": "Pₜ",
+          "nombre": "Pobreza"
+        },
+        {
+          "simbolo": "Gₜ",
+          "nombre": "Desigualdad"
+        },
+        {
+          "simbolo": "Eₜ",
+          "nombre": "Apagones"
+        },
+        {
+          "simbolo": "Mₜ",
+          "nombre": "Emigración"
+        },
+        {
+          "simbolo": "β",
+          "nombre": "Factor de descuento intertemporal"
+        }
+      ]
+    }
+  ],
+  "encuesta": {
+    "titulo": "Tu lectura",
+    "intro": "Tres preguntas. El voto es anónimo y se registra una sola vez por navegador.",
+    "nota_privacidad": "No se recoge ningún dato personal. Solo se incrementa un contador agregado por opción.",
+    "preguntas": [
+      {
+        "id": "p1",
+        "texto": "De las cuatro inversiones del orden verificación → liberalización, ¿cuál te parece más peligrosa?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "Vender tierras UBPC sin catastro"
+          },
+          {
+            "id": "o2",
+            "texto": "Liberar precios sin transferencia operativa"
+          },
+          {
+            "id": "o3",
+            "texto": "Subir tipos sin auditar la banca"
+          },
+          {
+            "id": "o4",
+            "texto": "Anunciar la fragmentación de GAESA sin controlar sus activos"
+          }
+        ]
+      },
+      {
+        "id": "p2",
+        "texto": "¿Debería la propuesta publicar un programa alternativo que funcione sin alivio de las sanciones?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "Sí, y debería ser el programa principal"
+          },
+          {
+            "id": "o2",
+            "texto": "Sí, como anexo de contingencia"
+          },
+          {
+            "id": "o3",
+            "texto": "No: sin alivio no hay programa viable"
+          }
+        ]
+      },
+      {
+        "id": "p3",
+        "texto": "¿Qué caso internacional te parece más aplicable a Cuba?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "Costa Rica: diversificar preservando el universalismo"
+          },
+          {
+            "id": "o2",
+            "texto": "Corea: reciprocidad y apertura financiera al final"
+          },
+          {
+            "id": "o3",
+            "texto": "Chile posterior a 1990: crecer y subir impuestos en democracia"
+          },
+          {
+            "id": "o4",
+            "texto": "Ninguno: Cuba necesita una secuencia propia"
+          }
+        ]
+      }
+    ]
+  },
+  "fuentes": [
+    {
+      "id": "doc",
+      "cita": "De Miranda Parrondo, M.; Monreal González, P.; Pérez Villanueva, O. E.; Torres Pérez, R.; Vidal Alejandro, P. — Propuesta para transformar la economía cubana, Versión 1, 20 de julio de 2026, 118 pp. Incluye Anexo 1 (indicadores comparativos 2022-2024) y Anexo 2 (cronograma por semestres)."
+    },
+    {
+      "id": "onei",
+      "cita": "ONEI, Indicadores Demográficos de Cuba y sus Territorios 2025 (presentación en conferencia de prensa, 21 de julio de 2026)."
+    },
+    {
+      "id": "eltoque",
+      "cita": "elTOQUE, serie del tipo de cambio informal del peso cubano."
+    },
+    {
+      "id": "torres",
+      "cita": "Torres, R., Without Power, There Is No Country: Cuba's Electricity Generation Crisis (Cuba Study Group, 2026)."
+    },
+    {
+      "id": "vidal",
+      "cita": "Vidal, P., «Where the Cuban Economy Stands in Latin America: A New Measurement of Gross Domestic Product», Cuban Studies 49 (2020): 97–118."
+    },
+    {
+      "id": "cepalcuba",
+      "cita": "CEPAL, The Cuban Economy: Structural Reforms and Economic Performance in the 1990s (Santiago de Chile, 2001)."
+    },
+    {
+      "id": "memoriachilena",
+      "cita": "Memoria Chilena / Biblioteca Nacional de Chile, «Crisis económica 1982»."
+    },
+    {
+      "id": "casen",
+      "cita": "Encuestas CASEN 1990–2022, Ministerio de Desarrollo Social y Familia de Chile."
+    },
+    {
+      "id": "arellano",
+      "cita": "Arellano, J. P., Veinte años de políticas sociales y Políticas sociales para el crecimiento con equidad en Chile, 1990-2002 (CIEPLAN)."
+    },
+    {
+      "id": "meller",
+      "cita": "Meller, P., Pobreza y distribución del ingreso en Chile (década del 90)."
+    },
+    {
+      "id": "rosales",
+      "cita": "Rosales, O., «La experiencia económica de Corea del Sur: lecciones y desafíos», El Trimestre Económico."
+    },
+    {
+      "id": "sakong",
+      "cita": "SaKong, Il, La economía coreana: seis décadas de crecimiento y desarrollo."
+    },
+    {
+      "id": "toussaint",
+      "cita": "Toussaint, E., «Corea del Sur: el milagro desenmascarado»."
+    },
+    {
+      "id": "cepalcr",
+      "cita": "CEPAL, Reformas estructurales y política económica en Costa Rica."
+    },
+    {
+      "id": "mas",
+      "cita": "Monetary Authority of Singapore, intervención de Ravi Menon en el 50.º aniversario de la independencia (línea base de 1965)."
+    }
+  ]
+}

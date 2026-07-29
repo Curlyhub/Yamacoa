@@ -218,6 +218,8 @@ async fn procesar_carpeta(cfg: &Cfg, slug: &str) -> Result<Option<String>> {
 
 // ============================================================ tick nocturno
 
+// ============================================================ tick nocturno
+
 async fn tick(cfg: &Cfg) -> Result<()> {
     let supa = Supa::new(cfg);
     fs::create_dir_all(cfg.inbox())?;
@@ -237,6 +239,15 @@ async fn tick(cfg: &Cfg) -> Result<()> {
         }
     }
 
+    // 2b) Sin trabajo nuevo, no se toca el inbox. Evita que un tick sin envios
+    // reprocese carpetas viejas conservadas para diagnostico.
+    // Con PROCESAR_MANUALES=1 se fuerza el barrido aunque no haya cola.
+    let incluir_manuales = env::var("PROCESAR_MANUALES").as_deref() == Ok("1");
+    if de_bd.is_empty() && !incluir_manuales {
+        info!("sin envios pendientes; nada que hacer");
+        return Ok(());
+    }
+
     // 3) inventario del inbox (incluye carpetas manuales del admin)
     let carpetas: Vec<String> = fs::read_dir(cfg.inbox())?
         .filter_map(|d| d.ok())
@@ -247,6 +258,14 @@ async fn tick(cfg: &Cfg) -> Result<()> {
     // 4) procesar en serie (una instancia de Claude Code a la vez)
     for slug in carpetas {
         let origen_bd = de_bd.iter().find(|(s, _)| *s == slug).map(|(_, e)| e);
+
+        // Una carpeta sin fila en BD es residuo de un fallo anterior o un deposito
+        // manual del admin. No entra en el tick nocturno salvo peticion explicita.
+        if origen_bd.is_none() && !incluir_manuales {
+            info!(%slug, "carpeta sin fila en BD; omitida (PROCESAR_MANUALES=1 para incluirla)");
+            continue;
+        }
+
         match procesar_carpeta(cfg, &slug).await {
             Ok(Some(tema_slug)) => {
                 fs::remove_dir_all(cfg.inbox().join(&slug)).ok();
