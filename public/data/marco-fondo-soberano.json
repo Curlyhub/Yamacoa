@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "slug": "marco-fondo-soberano",
+    "titulo": "El fondo que aún no existe",
+    "subtitulo": "Marco para la creación de cualquier fondo soberano en una Cuba democrática",
+    "kicker": "Edición especial",
+    "version": "1.0.0",
+    "actualizado": "2026-07-29",
+    "naturaleza": "marco normativo",
+    "advertencia_naturaleza": "Esto no es la propuesta de un fondo. Es el conjunto de condiciones que cualquier fondo soberano cubano debería satisfacer para merecer ese nombre, con independencia de qué recurso lo alimente, qué gobierno lo cree o qué mayoría lo apruebe.",
+    "tema_hermano": {
+      "slug": "cascada",
+      "ruta": "#/cascada",
+      "relacion": "Aquel tema aporta el tratamiento cuantitativo del valor realizable del subsuelo. Este aporta la arquitectura institucional. Se referencian sin solaparse."
+    }
+  },
+
+  "premisa": {
+    "enunciado": "Este marco está escrito para una Cuba democrática consolidada. No para las condiciones actuales, ni para un período de transición.",
+    "desarrollo": "Las garantías que exige —plebiscito vinculante con observación internacional, educación nacional plural, reforma constitucional, poder judicial capaz de aplicar el régimen sancionador— no son factibles en entornos poco democráticos. Un fondo soberano no crea instituciones: las presupone. Donde no existan, lo que se cree llevará el nombre pero no la función.",
+    "declaracion_de_sesgo": "Este texto no es neutral en un punto: sostiene que la rigidez constitucional de las reglas de extracción es preferible a la flexibilidad legislativa. Ese es un juicio, no un dato.",
+    "confianza": "normativo"
+  },
+
+  "fallos": [
+    {
+      "id": "perimetro",
+      "orden": 1,
+      "titulo": "El fallo de perímetro",
+      "caso": "Alaska",
+      "periodo": "1976 – presente",
+      "sintesis": "El conflicto migra a lo que dejaste fuera del blindaje.",
+      "hechos": [
+        {
+          "texto": "El Fondo Permanente se creó en 1976 por votación popular, 75.588 votos contra 38.518, incorporándose al Artículo IX Sección 15 de la Constitución del estado.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "El texto ordena que al menos el 25% de los cánones, regalías y bonos minerales se deposite en un fondo permanente cuyo capital solo puede destinarse a inversiones generadoras de renta.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "Medio siglo después, el capital sigue intacto. La protección constitucional funcionó como se prometió.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "Pero las ganancias se alojaron en una cuenta separada creada por ley ordinaria, no por la constitución. Es el componente gastable.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "En 2018-19, una parte fija de esas ganancias pasó a tratarse como ingreso general para financiar operaciones ordinarias del gobierno.",
+          "confianza": "confirmado"
+        }
+      ],
+      "leccion": "Blindar el principal y dejar el rendimiento en rango legal es dejar la puerta abierta, solo que un poco más lejos del vestíbulo.",
+      "genera_articulos": [4]
+    },
+    {
+      "id": "rigidez",
+      "orden": 2,
+      "titulo": "El fallo de rigidez",
+      "caso": "Timor-Leste",
+      "periodo": "2005 – presente",
+      "sintesis": "Una regla calibrada para un país rico, aplicada a uno que debe reconstruirse, se incumple.",
+      "hechos": [
+        {
+          "texto": "Timor-Leste adoptó una regla de extracción del 3% de la riqueza petrolera anual, calcada del modelo noruego.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "El Natural Resource Governance Institute documenta que resultó demasiado restrictiva dada la escasez de capital, la pobreza y la alta rentabilidad social de la inversión doméstica. La regla se ha incumplido de forma sistemática.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "El 3% noruego no es un principio sino un parámetro: se fijó en el 4% al introducirse la regla y se rebajó al 3% en 2017, tras una comisión que recomendó un perfil de gasto más gradual ante el descenso de los tipos globales.",
+          "confianza": "confirmado"
+        }
+      ],
+      "leccion": "La restricción tiene que ser función del estado de desarrollo del país, no una constante. Constitucionalizar el 3% en una economía que debe reconstruirse es constitucionalizar su incumplimiento.",
+      "genera_articulos": [7, 8, 9, 10]
+    },
+    {
+      "id": "proliferacion",
+      "orden": 3,
+      "titulo": "El fallo de proliferación",
+      "caso": "Venezuela",
+      "periodo": "2005 – 2015",
+      "sintesis": "No era un fondo con problemas de control: era un sistema de presupuestos paralelos.",
+      "hechos": [
+        {
+          "texto": "Según Transparencia Venezuela, el FONDEN comprometió unos 174.898 millones de dólares en 781 proyectos entre 2005 y mediados de 2015.",
+          "confianza": "reportado"
+        },
+        {
+          "texto": "Cerca del 29% del total asignado fue a gasto corriente y en torno al 5% a compra de armamento y vehículos militares.",
+          "confianza": "reportado"
+        },
+        {
+          "texto": "Educación y salud, que figuraban entre los objetivos fundacionales, recibieron cada uno menos del 3%.",
+          "confianza": "reportado"
+        },
+        {
+          "texto": "El FONDEN no estaba solo: convivía con una docena larga de fondos poco transparentes, incluidos dos bilaterales con China.",
+          "confianza": "reportado"
+        },
+        {
+          "texto": "El NRGI identifica el mismo patrón en los fondos soberanos de Angola, Irán y Rusia: eluden los procedimientos presupuestarios ordinarios y funcionan como vehículos de patronazgo político.",
+          "confianza": "confirmado"
+        }
+      ],
+      "leccion": "Perímetro único. Cada fondo adicional es un perímetro más que vigilar, y basta que uno sea laxo para que se convierta en la salida de todo.",
+      "genera_articulos": [5, 6]
+    },
+    {
+      "id": "custodia",
+      "orden": 4,
+      "titulo": "El fallo de custodia",
+      "caso": "Kazajistán",
+      "periodo": "2017 – 2023",
+      "sintesis": "La inmunidad soberana no protege a un fondo como protege a un banco central.",
+      "hechos": [
+        {
+          "texto": "En octubre de 2017, unos inversores con un laudo arbitral de la Cámara de Comercio de Estocolmo obtuvieron de un tribunal de Bruselas una orden de embargo sobre activos del Fondo Nacional de Kazajistán.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "BNY Mellon, custodio global, congeló 22.600 millones de dólares, alrededor del 40% de toda la cartera, en lo que se considera el mayor embargo de la historia jurídica. El laudo subyacente era de unos 542 millones.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "El detonante no fue deuda soberana impagada, sino una disputa entre inversores y el Estado sobre el trato recibido por sus inversiones. Kazajistán era un Estado funcional, sin crisis de deuda, integrado en mercados.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "El eslabón que cedió no fue el Estado ni su ley, sino el custodio: BNY Mellon congeló todo lo que tenía bajo custodia porque incumplir las órdenes belga y neerlandesa lo exponía a responsabilidad civil y penal en esas jurisdicciones.",
+          "confianza": "confirmado"
+        },
+        {
+          "texto": "En el mismo litigio, un tribunal sueco sí rechazó ejecutar contra activos del Banco Nacional de Kazajistán por gozar de inmunidad soberana. La línea se trazó donde estaba el banco central, no donde estaba el fondo.",
+          "confianza": "confirmado"
+        }
+      ],
+      "leccion": "El riesgo no viene de la deuda actual sino de la integración internacional futura. Cada tratado de protección de inversiones que un Estado firma es, simultáneamente, un canal de ejecución contra sus activos.",
+      "aplicacion_cuba": "Una Cuba democrática generará un volumen alto de reclamaciones patrimoniales —compensaciones por las nacionalizaciones de 1959-60, disputas de reprivatización— y firmará tratados de inversión para atraer capital. El fondo será el único activo estatal grande, líquido, localizable y custodiado en jurisdicción extranjera.",
+      "genera_articulos": [12]
+    }
+  ],
+
+  "articulado": [
+    {
+      "n": 1,
+      "titulo": "Premisa democrática",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "El fondo solo puede crearse en condiciones de salud democrática verificable. Las garantías del proceso —observación internacional, validadores transversales, pluralidad efectiva del debate previo— no son ornamento procedimental: son la condición que hace que el blindaje signifique algo.",
+      "nota": "Noruega no se volvió confiable por crear su fondo; creó su fondo porque ya era confiable. El fondo es marcador de calidad institucional, no su causa."
+    },
+    {
+      "n": 2,
+      "titulo": "Naturaleza jurídica y rango constitucional",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "Creación mediante tres fases sucesivas e inseparables: proceso nacional de educación ciudadana; plebiscito nacional vinculante con observación internacional acreditada; incorporación a la Constitución si el resultado es favorable.",
+      "clausulas": [
+        "Toda modificación posterior de las reglas de aportación, de las reglas de extracción o de los objetivos fundamentales exige repetir íntegramente el mismo procedimiento.",
+        "El funcionamiento operativo cotidiano queda expresamente fuera de esta exigencia."
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "Distinción entre funcionamiento y extracción",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "Dos planos separados, con regímenes opuestos por diseño.",
+      "clausulas": [
+        "Funcionamiento operativo: gestión profesional, selección de activos, control de riesgos, reporting. Sujeto a Parlamento, Banco Central y organismos técnicos. Flexible en lo técnico y plenamente transparente.",
+        "Extracción de valor y objetivos: cuánto, cuándo y bajo qué condiciones pueden transferirse recursos. Sometido al blindaje constitucional reforzado. La baja flexibilidad es deliberada."
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "Perímetro del blindaje",
+      "es_nuevo": true,
+      "responde_a": ["perimetro"],
+      "cuerpo": "El blindaje constitucional cubre, con idéntico rango y sin excepción: el capital principal; el rendimiento no extraído, que se capitaliza automáticamente al principal en el mismo ejercicio y adquiere su mismo rango en el mismo acto; las reglas de aportación; las reglas de extracción; y los objetivos fundamentales.",
+      "clausulas": [
+        "No existe cuenta intermedia. Queda prohibida la creación, por vía legal o reglamentaria, de cualquier cuenta, reserva o subfondo que aloje rendimientos bajo un régimen jurídico distinto al del principal."
+      ],
+      "nota": "Este es el artículo que impide el fallo de Alaska. Debe leerse como parte inseparable del blindaje del capital."
+    },
+    {
+      "n": 5,
+      "titulo": "Perímetro institucional",
+      "es_nuevo": true,
+      "responde_a": ["proliferacion"],
+      "cuerpo": "Queda prohibida constitucionalmente la creación de fondos soberanos paralelos. Cualquier finalidad nueva se instrumenta como ventanilla interna del fondo único, bajo la misma gobernanza, el mismo régimen de transparencia y el mismo blindaje.",
+      "clausulas": [
+        "Se admiten cuentas internas de finalidad distinta —estabilización a corto plazo y ahorro intergeneracional, con perfiles de liquidez diferentes— siempre que compartan perímetro jurídico y órgano de gobierno. Chile opera con esta arquitectura."
+      ]
+    },
+    {
+      "n": 6,
+      "titulo": "Fuentes admisibles",
+      "es_nuevo": false,
+      "revisado": true,
+      "responde_a": ["proliferacion"],
+      "cuerpo": "El fondo se nutre exclusivamente de rentas de recursos naturales agotables; ingresos extraordinarios no recurrentes; rendimientos del propio fondo con regla de reinversión prioritaria; y contribuciones voluntarias con trazabilidad completa.",
+      "clausulas": [
+        "Queda expresamente excluida la tributación ordinaria de sectores de actividad corriente.",
+        "Se evitará en todo caso la dependencia de una fuente única."
+      ],
+      "fundamento": "Un fondo soberano convierte riqueza agotable o extraordinaria en activo permanente. El níquel califica: es finito y pertenece también a quien no ha nacido. El turismo o la biotecnología no son rentas de recurso: son actividad ordinaria sujeta a impuestos ordinarios. Apartar constitucionalmente esa recaudación sustrae ingreso corriente de la deliberación presupuestaria democrática sin la justificación intergeneracional que sí ampara al mineral. Sería blindar contra la temporalidad política ingresos que deben estar sujetos a la temporalidad política."
+    },
+    {
+      "n": 7,
+      "titulo": "Regla de aportación creciente",
+      "es_nuevo": true,
+      "responde_a": ["rigidez"],
+      "cuerpo": "La fracción de renta admisible que ingresa al fondo no es constante: comienza baja y crece conforme el país converge. En la fase temprana, la mayor parte de la renta se destina a reconstrucción, donde su rentabilidad social es máxima; a medida que esa rentabilidad marginal decae, la fracción aportada aumenta.",
+      "nota": "Preferible a su simétrica —una tasa de extracción decreciente— por una razón política: no exige a ningún gobierno justificar que saca dinero del fondo del pueblo. Noruega hizo esto de facto sin proponérselo: la ley es de 1990 y la primera transferencia efectiva se produjo en 1996."
+    },
+    {
+      "n": 8,
+      "titulo": "Regla de extracción",
+      "es_nuevo": false,
+      "revisado": true,
+      "responde_a": ["rigidez"],
+      "cuerpo": "La extracción se calcula como porcentaje del valor de mercado medio del fondo en los cinco de los seis ejercicios precedentes, no sobre el valor puntual. La media móvil impide que un gobierno extraiga sobre un pico de valoración. Alaska aplica esta metodología con un tope legal del 5%.",
+      "clausulas": [
+        "El porcentaje es decreciente y pre-especificado en el propio texto constitucional, no delegado a ley de desarrollo.",
+        "Queda prohibida la extracción del capital principal salvo emergencia nacional extrema, definida taxativamente y sometida a plebiscito."
+      ],
+      "cuestiones_abiertas": [
+        {
+          "titulo": "Base de cálculo",
+          "texto": "Debe quedar explícito si el porcentaje se aplica al valor del fondo o al rendimiento real esperado. La diferencia es de un orden de magnitud y la ambigüedad hace la regla inaplicable."
+        },
+        {
+          "titulo": "Objeto de la restricción",
+          "texto": "Una tasa decreciente sobre un fondo creciente puede producir transferencias absolutas crecientes. Hay que decidir si la restricción vincula a la tasa o a la transferencia real per cápita. A treinta años, la diferencia es enorme."
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "titulo": "Indicador de convergencia",
+      "es_nuevo": true,
+      "responde_a": ["rigidez"],
+      "cuerpo": "El calendario de aportación y extracción se indexa a un indicador de convergencia, con tres requisitos innegociables.",
+      "clausulas": [
+        "Producción externa: el indicador debe ser producido o certificado por una entidad ajena al gobierno, no por la oficina nacional de estadística. Quien controla la serie controla la regla.",
+        "Fórmula pre-especificada: el calendario de transición y su fórmula figuran en el texto constitucional. No se delegan.",
+        "Bidireccionalidad definida: debe estar escrito qué ocurre si el indicador retrocede."
+      ]
+    },
+    {
+      "n": 10,
+      "titulo": "Cláusula de escape",
+      "es_nuevo": true,
+      "responde_a": ["rigidez"],
+      "cuerpo": "Toda regla fiscal sin cláusula de escape creíble se rompe. Este marco la incorpora explícitamente en lugar de fingir que no hará falta.",
+      "clausulas": [
+        "La reversión al alza de la tasa de extracción es automática, nunca discrecional.",
+        "Se activa solo por condiciones de shock verificadas externamente y definidas de antemano.",
+        "Lleva caducidad automática predefinida, con retorno al calendario ordinario sin necesidad de acto positivo alguno."
+      ]
+    },
+    {
+      "n": 11,
+      "titulo": "Gobernanza",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "Consejo de Administración de profesionales independientes, nombrados con participación del Parlamento y del Banco Central, con mandatos largos y renovación escalonada. Comité de Ética y Cumplimiento independiente. Banco Central como supervisor de riesgos sistémicos, con separación estructural respecto al fondo. Parlamento con control político del marco general, sin capacidad de modificar por sí solo las reglas de extracción.",
+      "clausulas": [
+        "Ningún gobierno podrá ordenar inversiones concretas ni disponer de recursos fuera de las reglas constitucionales."
+      ]
+    },
+    {
+      "n": 12,
+      "titulo": "Inmunidad, custodia y jurisdicción",
+      "es_nuevo": true,
+      "responde_a": ["custodia"],
+      "cuerpo": "Cuatro cláusulas que son buen diseño con o sin deuda pendiente.",
+      "clausulas": [
+        "Declaración de fin público no comercial del patrimonio, en el texto constitucional, con la formulación más restrictiva posible respecto a la excepción de uso comercial. No garantiza inmunidad —decide el juez extranjero—, pero es el material probatorio que se alega.",
+        "Prohibición constitucional de renuncia a la inmunidad. Ningún órgano del fondo ni del Ejecutivo puede firmar cláusulas de waiver que afecten a su patrimonio. Cierra la vía de exposición más común, que es contractual y voluntaria.",
+        "Custodia deliberadamente fragmentada: multiplicidad de custodios y diversificación jurisdiccional. La concentración en un custodio único convirtió un litigio de 542 millones en un congelamiento de 22.600.",
+        "Separación estructural respecto al banco central, para que una reclamación contra el fondo no arrastre las reservas monetarias ni viceversa."
+      ]
+    },
+    {
+      "n": 13,
+      "titulo": "Transparencia",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "Con rango constitucional desde el origen: publicación periódica y accesible de cartera, rentabilidad, costes y decisiones relevantes; auditorías independientes obligatorias; acceso público a las metodologías de valoración y de cálculo de la regla de extracción; informes anuales al Parlamento y a la ciudadanía."
+    },
+    {
+      "n": 14,
+      "titulo": "Régimen sancionador",
+      "es_nuevo": false,
+      "responde_a": [],
+      "cuerpo": "Sanciones administrativas y, en casos graves, penales, para quienes intenten disponer de recursos al margen de las reglas constitucionales, falseen información para justificar una extracción indebida, o presionen a los órganos de gestión para vulnerar el mandato. Previo debido proceso y con control judicial.",
+      "nota": "La eficacia de este artículo depende íntegramente del Artículo 1. Donde el poder judicial no sea independiente, este régimen es decorativo, y conviene decirlo en el propio texto en lugar de simular una garantía que no existe."
+    }
+  ],
+
+  "decision_pendiente": {
+    "titulo": "El dividendo ciudadano",
+    "planteamiento": "Este marco deja abierta deliberadamente una pregunta que no puede resolverse por vía técnica.",
+    "a_favor": {
+      "etiqueta": "A favor del reparto directo",
+      "argumento": "El diseño exige que cualquier modificación futura pase por plebiscito. Pero un plebiscito solo protege si el ciudadano medio tiene un interés material identificable en el resultado. Sin cheque, la defensa del fondo depende de una convicción abstracta sobre las generaciones futuras, que es exactamente el tipo de convicción que cede ante una crisis fiscal. Alaska reparte un dividendo anual, y ese dividendo es lo que ha convertido a cada residente en parte interesada."
+    },
+    "en_contra": {
+      "etiqueta": "En contra",
+      "argumento": "El dividendo compite con la reconstrucción. En un país que sale de donde sale Cuba, cada dólar repartido es un dólar que no va a red eléctrica, agua o vivienda, donde su rentabilidad social es superior. Y el propio caso de Alaska muestra que el dividendo, una vez instaurado, se politiza: se convierte en objeto de puja electoral y en presión adicional sobre las ganancias del fondo. Puede acabar siendo la palanca que abre el perímetro en lugar de la fuerza que lo defiende."
+    },
+    "resolucion_procedimental": "El plebiscito de creación debería someter esta cuestión por separado, no fundida en la aprobación general del fondo, porque son decisiones de naturaleza distinta y una puede ganar mientras la otra pierde."
+  },
+
+  "anexo_admisibilidad": {
+    "titulo": "Anexo de admisibilidad para la fase de ejecución",
+    "preambulo": "Estas cinco condiciones no son recomendaciones. Son criterios de admisibilidad: mientras no se cumplan, no hay fondo que constituir.",
+    "criterios": [
+      {
+        "letra": "A",
+        "titulo": "Protocolo de valoración patrimonial",
+        "texto": "Ninguna cifra de riqueza mineral entra en el debate público sin la cadena completa: reservas certificadas, recursos declarados por separado y nunca agregados, recuperación metalúrgica, costes operativos y de capital, y valor actual neto descontado, con auditor independiente.",
+        "prohibicion": "Queda prohibido usar el valor bruto de contenido metálico en yacimiento como valor de activo. Es la magnitud que sostiene la mayoría de las cifras que circulan sobre el subsuelo cubano, y sobreestima el valor realizable en un factor superior a veinte.",
+        "enlace_tema": "#/cascada"
+      },
+      {
+        "letra": "B",
+        "titulo": "Balance consolidado previo",
+        "texto": "Antes de capitalizar: deuda oficial, deuda comercial, reclamaciones patrimoniales y pasivos contingentes, todo en un único estado auditado."
+      },
+      {
+        "letra": "C",
+        "titulo": "Criterio de carry",
+        "texto": "No capitalizar mientras existan pasivos con coste superior al rendimiento esperado del fondo. Ahorrar y deber simultáneamente destruye valor cada año, con independencia de que alguien litigue o no. Es aritmética, no política."
+      },
+      {
+        "letra": "D",
+        "titulo": "Admisibilidad de fuentes",
+        "texto": "Verificación de que cada flujo entrante pertenece a una de las categorías del Artículo 6."
+      },
+      {
+        "letra": "E",
+        "titulo": "Capacidad sancionadora verificada",
+        "texto": "Constatación de que existe un poder judicial en condiciones de aplicar el Artículo 14 antes de que haya patrimonio que proteger."
+      }
+    ]
+  },
+
+  "limites": {
+    "titulo": "Lo que este marco no resuelve",
+    "preambulo": "Un documento que solo enumera sus fortalezas no merece confianza. Estas son sus juntas débiles.",
+    "entradas": [
+      {
+        "titulo": "No resuelve el problema del origen",
+        "texto": "Este marco define un procedimiento, no una dotación. Es posible —incluso probable en el horizonte visible— que Cuba no tenga durante años excedente que apartar. Un contenedor constitucional bien diseñado sobre cero sigue siendo cero.",
+        "respuesta_honesta": "El fondo no se justifica por la abundancia presente sino por la custodia de una opción: existe un activo agotable cuyo valor depende de decisiones futuras, y no existe institución que impida malvenderlo. Es una justificación más modesta que la habitual, y es la única que resiste los números."
+      },
+      {
+        "titulo": "No resuelve el problema del patrimonio existente",
+        "texto": "El mayor activo estatal cubano hoy no es una reserva mineral: es el conglomerado empresarial bajo control militar. Qué ocurre con ese patrimonio en una transición es la pregunta patrimonial central, y este marco no la aborda.",
+        "respuesta_honesta": "Cualquier documento sobre fondos soberanos cubanos que esquive esta cuestión está discutiendo el segundo problema mientras el primero sigue abierto."
+      },
+      {
+        "titulo": "No resuelve la asimetría de la evidencia sobre credibilidad",
+        "texto": "Este marco afirma que la rigidez constitucional genera confianza. La evidencia de que produce durabilidad es sólida: el capital de Alaska lleva cincuenta años intacto. La evidencia de que reduce el coste de financiación soberana es mucho más débil y está confundida con la calidad institucional general del país.",
+        "respuesta_honesta": "El argumento debe formularse en términos de durabilidad, que se puede defender, y no de prima de riesgo, que no."
+      },
+      {
+        "titulo": "No resuelve la referencia a Singapur",
+        "texto": "Suele citarse junto a Noruega como modelo. Los vehículos soberanos singapurenses son referencias técnicas de gestión, no de legitimación democrática, y su marco político carece de alternancia.",
+        "respuesta_honesta": "Invocarlos en la fase de educación ciudadana de un documento cuyo eje es el plebiscito vinculante introduce una contradicción normativa que los críticos explotarán con razón."
+      }
+    ]
+  },
+
+  "principio_rector": {
+    "enunciado": "El fondo no pertenece al gobierno de turno ni a ninguna mayoría parlamentaria temporal. Pertenece a todos los cubanos, presentes y futuros.",
+    "consecuencia": "De ahí se sigue lo único que este documento pide de verdad: que las reglas que protegen su capital y limitan su extracción solo puedan alterarse mediante el mismo procedimiento de legitimación ciudadana reforzada que las creó. Todo lo demás —las tasas, los indicadores, los calendarios— es calibración. Esto es la estructura."
+  },
+
+  "fuentes": [
+    { "caso": "perimetro", "referencia": "Constitución de Alaska, Artículo IX Sección 15; documentación de la Alaska Permanent Fund Corporation sobre la estructura de dos cuentas y la metodología de extracción por porcentaje de valor de mercado." },
+    { "caso": "rigidez", "referencia": "Natural Resource Governance Institute, análisis sobre reglas de depósito y retirada en fondos de recursos naturales; Norges Bank y Ministerio de Finanzas de Noruega sobre la revisión de la regla fiscal del 4% al 3% en 2017." },
+    { "caso": "proliferacion", "referencia": "Transparencia Venezuela, investigación sobre el FONDEN; Natural Resource Governance Institute sobre fondos usados como vehículos de patronazgo político." },
+    { "caso": "custodia", "referencia": "Documentación judicial y de prensa especializada sobre el embargo de activos del Fondo Nacional de Kazajistán en Bélgica (2017) y resoluciones posteriores en Reino Unido, Suecia y Bélgica." }
+  ]
+}

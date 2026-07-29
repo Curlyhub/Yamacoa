@@ -495,18 +495,66 @@
     "procedencia": "Importado ya construido via /importar el 2026-07-20; no paso por el subagente disenador. Ficha reconstruida a partir del renderer congelado."
   },
   {
+    "tema": "desacreditacion",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Contusion",
+      "acentos": [
+        {
+          "hex": "#AB69A8",
+          "rol": "primario",
+          "h": 303
+        },
+        {
+          "hex": "#62B276",
+          "rol": "contrapunto",
+          "h": 135
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "Duo de moreton: violeta fresco (dano reputacional recien infligido) a verde-bilis de sanado (la etiqueta que queda circulando, pseudoclinica, enfermiza). PROXIMIDADES DETECTADAS (verificadas por script contra los 14 primarios vivos): el primario H303 queda a 28 grados de racismo (h330) y envejecimiento (h274), y a 31 de coraje_dividido (h333) -- el hueco libre maximo real en el circulo saturado es 28 grados (no los 40 ideales), matematicamente imposible de mejorar; se tomo el punto optimo (302-303) y se diferencio por tono/saturacion/valor (S28/L54, desaturado y medio-oscuro), replicando el precedente ya aceptado en coraje_dividido para el mismo aprieto. El contrapunto H135 si cumple con margen (33 grados de iclep h168) y se desaturo (S34) para leerse como verde-bilis, no como el verde vivo de convocatoria_11j."
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "split-panel-dos-frentes",
+    "graficos": [
+      "cronologia-doble-carril",
+      "matriz-tacticas-bicolor",
+      "diccionario-etiquetas-tipografico",
+      "donut",
+      "barra-horizontal"
+    ],
+    "firma": "muro tipografico disciplinado (cuadricula, no nube organica) de las etiquetas reales documentadas contra disidentes -- MERCENARIO, CRIMINAL COMUN, MENTALMENTE INESTABLE, AGENTE EXTRANJERO, IMPOSTOR/FALSO DISIDENTE, LA DISIDENCIA ES UN GIMNASIO -- en IBM Plex Mono mayuscula, tamano por peso documentado (alto/medio/bajo, cualitativo) y color por frente de origen (violeta=Estado, bilis=diaspora).",
+    "procedencia": "Creado via /procesar-inbox (envio 9, la_tirania_toca_las_9) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (14 fichas previas); verificacion previa del subagente verificador."
+  },
+  {
     "tema": "sucesion",
     "fecha": "2026-07",
     "paleta": {
       "nombre": "Bronce y Patina",
       "acentos": [
-        { "hex": "#969933", "rol": "primario", "h": 62 },
-        { "hex": "#46A477", "rol": "contrapunto", "h": 151 }
+        {
+          "hex": "#969933",
+          "rol": "primario",
+          "h": 62
+        },
+        {
+          "hex": "#46A477",
+          "rol": "contrapunto",
+          "h": 151
+        }
       ],
       "fondo": "oscuro",
       "nota": "Primario = laton/bronce oficial envejecido (el sello que no cambia de dueno). Contrapunto = patina de verdin/jade que se acumula sobre ese mismo bronce con el paso de las decadas. Circulo saturado por 15 primarios y 17 contrapuntos vivos: hueco maximo real para un primario nuevo es 23 grados (h62 frente a angola #6E9537 h85), no los 40 ideales -- matematicamente imposible de mejorar, mismo aprieto que reporto desacreditacion (28 grados). Para el contrapunto se descarto la brecha numerica mas ancha (~42 grados, centro h322) porque su ventana de cumplimiento caia encima de tres primarios vivos casi identicos (desacreditacion h303 a 2 grados, coraje_dividido h333 a 7, racismo h330 a 10); se eligio en su lugar h151 (jade), a 16 grados del contrapunto mas cercano (desacreditacion h135) pero sin colision de identidad de color con ningun primario. Ninguna paleta reservada de CLAUDE.md SS4 tocada."
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "longform-tres-actos-mas-coda",
     "graficos": [
       "timeline-vertical-tres-eras",
@@ -523,13 +571,25 @@
     "paleta": {
       "nombre": "Vigilia y Sumario",
       "acentos": [
-        { "hex": "#6C60BE", "rol": "primario", "h": 248 },
-        { "hex": "#50814B", "rol": "contrapunto", "h": 114 }
+        {
+          "hex": "#6C60BE",
+          "rol": "primario",
+          "h": 248
+        },
+        {
+          "hex": "#50814B",
+          "rol": "contrapunto",
+          "h": 114
+        }
       ],
       "fondo": "oscuro",
       "nota": "Primario = indigo institucional (S42/L56): la tinta del sumario judicial y la noche de las nueve vigilias solitarias frente a la casa de Marianao. Contrapunto = oliva apagado (S26/L40): el aparato -- muro de prision, uniforme, Villa Marista -- no el cuerpo. Circulo saturado (17 primarios vivos + 8 accents de registry.js sin ficha propia, verificados): hueco real mas ancho para el primario es 52 grados (entre himno h222 azul-bandera reservado y envejecimiento h274 violeta), centro h248, margen real 26 grados -- por debajo del ideal de 40 pero matematicamente el mejor disponible, mismo aprieto que desacreditacion (28) y sucesion (23). Diferenciado de ambos vecinos por saturacion/luz. Para el contrapunto el hueco mas ancho (h280-h38, centro h339) se descarto por colisionar a 6-9 grados con tres primarios vivos (racismo h330, coraje_dividido h333, anatomia_11j h348) -- mismo criterio de rechazo que uso sucesion. Se opto por h114 (S26/L40), a 17-20 grados de sus vecinos de contrapunto mas proximos (envejecimiento h95, desacreditacion h135), diferenciado por ser notablemente mas desaturado y oscuro (oliva institucional, no verde de senal ni verde-bilis medico). Ninguna paleta reservada de CLAUDE.md SS4 tocada; h248 solo se usa como primario (como contrapunto colisionaria a 1 grado con anatomia_11j h249)."
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "longform-con-anexo-acoplado",
     "graficos": [
       "linea-de-tiempo-con-hueco-de-desaparicion",
@@ -547,13 +607,25 @@
     "paleta": {
       "nombre": "Senial Cortada",
       "acentos": [
-        { "hex": "#4E7A44", "rol": "primario", "h": 109 },
-        { "hex": "#CF4AA9", "rol": "contrapunto", "h": 317 }
+        {
+          "hex": "#4E7A44",
+          "rol": "primario",
+          "h": 109
+        },
+        {
+          "hex": "#CF4AA9",
+          "rol": "contrapunto",
+          "h": 317
+        }
       ],
       "fondo": "oscuro",
       "nota": "Primario = verdin institucional desaturado (S28/L37): el uniforme y el muro del campamento penitenciario, no el verde de senal de convocatoria_11j (h132) ni el oliva de vigilia de protesta_solitaria (h114) ni el verde-jade de sucesion (h151) -- diferenciado de los tres por ser mas oscuro y apagado. Contrapunto = magenta interferencia (S58/L55), reservado EXCLUSIVAMENTE al renderer (glitch de la firma, sellos puntuales): nunca sale como accent de registry.js/portada, por lo que no compite por hueco en el circulo saturado de accents vivos de la landing. Ninguna paleta reservada de CLAUDE.md SS4 tocada."
     },
-    "tipografia": { "display": "Archivo", "datos": "IBM Plex Mono", "extra": null },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
     "layout": "retrato-vertical-con-friso-de-patron",
     "graficos": [
       "timeline-vertical-con-sellos-de-aplazamiento",
@@ -563,5 +635,161 @@
     ],
     "firma": "el bloque tipografico de la 'confesion' oficial (IBM Plex Mono, gris neutro, tono de acta) que al hacer scroll (IntersectionObserver) o al pasar el cursor se resuelve en scanlines horizontales y un desplazamiento cromatico rojo/cian tipo aberracion de video, revelando debajo -- en Archivo, sin distorsion -- la afirmacion documentada sobre su actividad real en Facebook antes de la detencion: el guion impuesto se rompe y asoma la voz propia. Ninguna de las dos capas es una cita textual inventada de una confesion o acusacion oficialista: ambas son afirmaciones ya verificadas del propio dataset (caso_indice.hechos), presentadas con su fuente y su chip de confianza.",
     "procedencia": "Creado via /procesar-inbox (envio 12, tras_las_rejas_sulmira_12) el 2026-07-27. Ficha del subagente disenador contra ops/design_log.json (18 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (mismo patron que protesta_solitaria, envio 11, misma autora, misma serie 'Tras las Rejas'). Caso indice mayormente corroborado (13 de 15 hechos; 2 no confirmados por fuente unica) y patron comparable corroborado (Labrada, Garcia Lopez, dos casos de Infobae, joven de El Imparcial): ambas secciones se construyeron por separado, sin fusionar cifras."
+  },
+  {
+    "tema": "normas",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Petroleo y Arcilla",
+      "acentos": [
+        {
+          "hex": "#2E9B87",
+          "rol": "primario",
+          "h": 168
+        },
+        {
+          "hex": "#8B76A8",
+          "rol": "contrapunto",
+          "h": 267
+        },
+        {
+          "hex": "#C4694A",
+          "rol": "alerta",
+          "h": 17
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "Primario = petroleo desaturado (S54/L39) sobre fondo verde-negro #0E1A18. AVISO: la banda teal del registry esta poblada (#157A72 h176, #2BB6A6 h173, #35C4A6 h168, #38D6C9 h176); #2E9B87 es distinguible pero NO holgadamente -- si un tema futuro necesita teal, conviene desplazarlo o reasignar este accent a ciruela #8B76A8 o arcilla #C4694A, ambas ya en la paleta del renderer. El ambar #C98A17 es terciario de aviso de simulacion, no co-primario: no colisiona con el ambar-teal 'voltaje' reservado a conflictos OCC en CLAUDE.md SS4. Ninguna otra paleta reservada tocada."
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "ensayo-numerado-con-modelos-interactivos",
+    "graficos": [
+      "radar-comparacion-interna-recharts",
+      "curva-logistica-con-deslizadores",
+      "malla-de-normas-de-segundo-orden",
+      "anillos-y-pesas-de-indicadores",
+      "grafico-de-pendientes-de-experimentos",
+      "divergente-de-efectos-filadelfia",
+      "ventana-institucional-conmutador-control-vs-tratamiento",
+      "secuencia-por-etapas",
+      "indice-ct-interactivo"
+    ],
+    "firma": "las formulas del modelo se sirven como MathML nativo desde el dataset (10 bloques) e inyectan con dangerouslySetInnerHTML, de modo que el aparato matematico respira con el JSON en vez de vivir hardcodeado en el renderer. Cada bloque interactivo (curva del modelo, malla de normas, indice C_t) va precedido de un aviso en ambar punteado que lo marca como simulacion de forma funcional y no como dato observado: los controles exploran la forma de la funcion, no predicen.",
+    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/normas/ (set ya construido: renderer + dataset + schema). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las 17 fuentes NO se cotejaron en el import. Ficha registrada a posteriori, a mano, para que futuras propuestas de paleta no colisionen. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, la ruta original daba 404 en silencio y el dataset no habria respirado nunca) y se anadio la encuesta, que el set no traia. El dataset conserva el nombre interno reconstruccion-civica, enlazado por dataSlug. El 2026-07-28, tras revision editorial, se rehizo el grafico de 'la ventana institucional' (experimento BID/Honduras): reutilizaba el componente Divergente pese a que sus tres efectos son positivos (nada divergia), recortaba la etiqueta del valor mayor fuera del viewBox y no mostraba honduras.descripcion. Sustituido por un conmutador control/tratamiento en HTML/CSS que reproduce la manipulacion experimental, sin fabricar linea base (el control es cero por definicion). Divergente se conservo intacto para Filadelfia, donde la forma si corresponde."
+  },
+  {
+    "tema": "auditar",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Bermellon y Cian",
+      "acentos": [
+        {
+          "hex": "#E8462C",
+          "rol": "primario-renderer",
+          "h": 8
+        },
+        {
+          "hex": "#C765A8",
+          "rol": "accent-portada",
+          "h": 319
+        },
+        {
+          "hex": "#2FC2D6",
+          "rol": "contrapunto",
+          "h": 187
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "COLISION DETECTADA Y ESQUIVADA: el primario del renderer, bermellon #E8462C (h8), queda a 3 grados de represion (#C4392B, h5) y cae en el rojo reservado a represion por CLAUDE.md SS4. Se resolvio como en desacreditacion: el bermellon se queda DENTRO de la pagina y a la portada sale el magenta de la misma paleta (#C765A8, h319), que es el hueco mayor disponible con 14 grados libres (frente a coraje_dividido h319... el mas cercano real). Las otras opciones de la paleta estaban peor: violeta h249 a 1 grado de protesta_solitaria, ambar h39 a 1 grado de anatomia_11j, musgo h137 a 5 de convocatoria_11j, cian h187 a 8 de cayo_romano. PENDIENTE DE CONFIRMACION HUMANA."
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "auditoria-por-secciones-con-anexos",
+    "graficos": [
+      "pendiente-de-catalogar"
+    ],
+    "firma": "pendiente de catalogar",
+    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/auditar/ (set ya construido: renderer + dataset + schema, sin SQL ni NOTAS). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las fuentes NO se cotejaron en el import. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, mismo defecto que traia el set de normas) y se sustituyo el accent de portada por colision con represion. La encuesta del set apunta a una convencion de tabla unica (yamacoa_encuesta_votar / yamacoa_encuesta_resultados) que NO EXISTE en el repo, igual que el ENCUESTAS.md que su cabecera manda verificar: queda sin resolver."
+  },
+  {
+    "tema": "cascada_valor_minero",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Acero y Laterita",
+      "acentos": [
+        {
+          "hex": "#7479B4",
+          "rol": "primario",
+          "h": 235
+        },
+        {
+          "hex": "#B1723E",
+          "rol": "contrapunto-renderer",
+          "h": 27
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "CIRCULO SATURADO: 20 fichas previas, 45 acentos registrados. Primario = acero desaturado h235 (S30/L58) sobre fondo #111218. Es el UNICO hueco vacio de 26 grados que queda en todo el circulo considerando la totalidad de los acentos (entre himno_narciso h222 y protesta_solitaria h248), con margen real de 13 grados a cada lado. Por debajo del ideal de 40 y por debajo incluso del 26 que acepto protesta_solitaria; se toma porque matematicamente no existe nada mejor. Diferenciado de himno (#3D6FE5, S78/L57, azul-bandera saturado y RESERVADO en CLAUDE.md SS4) por saturacion menos de la mitad, y de protesta_solitaria (#6C60BE, S42/L56) por ser mas frio y mas desaturado. CONFIRMADO POR EL OPERADOR el 2026-07-29 al asentar esta ficha: el acento de portada queda en el acero h235 pese a su proximidad al azul-bandera reservado. La alternativa descartada era renunciar al acento de portada y sacar la laterita, aceptando 9 grados de colision con rusificacion h18. Contrapunto = laterita ocre h27 (S48/L47), RESERVADO EXCLUSIVAMENTE AL RENDERER para pintar los tramos de perdida de la cascada: nunca sale como accent de registry.js ni de portada, por lo que no compite por hueco en el circulo de la landing (mismo criterio que sulmira con su magenta h317). Es el color literal del material del tema: laterita niquelifera, goethita y hematita, 44% Fe. El ambar de aviso (#C98A17) NO se reclama como acento propio: se usa como convencion de plataforma para contrafactual y advertencia, igual que en normas. La linea de deuda se traza en hueso neutro (#D8D2C6) precisamente para no reclamar ningun tono: el rojo de alerta que pediria semanticamente esta reservado a represion en CLAUDE.md SS4."
+    },
+    "tipografia": {
+      "display": "Archivo Black",
+      "datos": "IBM Plex Mono",
+      "extra": "Inter"
+    },
+    "layout": "cascada-con-lista-espejo-y-anexos",
+    "graficos": [
+      "cascada-waterfall-recharts",
+      "lista-espejo-sincronizada-por-hover",
+      "haz-de-sensibilidad-multilinea",
+      "tarjetas-de-multiplicador",
+      "tabla-de-admisibilidad-de-valoracion",
+      "encuesta-de-barras-inline-sobre-base-unica"
+    ],
+    "firma": "la cascada waterfall: una unica barra de acero profundo (valor bruto in situ, 25.328 M USD) de la que caen cuatro tramos de laterita ocre -- recuperacion, coste operativo, capital e impuestos, descuento temporal -- hasta dejar un ultimo bloque de acero claro que es la participacion real del Estado cubano (888 M, el 3,5% del punto de partida). El argumento es la merma, y se ve antes de leerse. Cruzando el grafico, dos reglas discontinuas en hueso marcan la deuda del Club de Paris y la deuda externa del BCC: la segunda queda POR ENCIMA de todos los tramos salvo los dos primeros, de modo que el lector ve que el pasivo externo supera al valor realizable sin que ningun texto se lo afirme. Debajo, una lista espejo sincronizada por hover con el grafico: cada tramo declara su perdida, su causa y su chip de confianza, y el porcentaje que representa sobre el bruto original.",
+    "procedencia": "Construido en sesion de trabajo el 2026-07-29 sobre el informe tecnico NI 43-101 del Moa Joint Venture (Micon International, personas cualificadas Foret/Breed/Jacobs/Reid, estandar CIM 2014, fecha efectiva 2022-08-31). Fuente primaria unica y auditada: NO se uso ninguna fuente secundaria para las cifras del activo. Origen del tema: discusion sobre el documento marco del Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional, en la que se detecto que la cifra de riqueza minera cubana en circulacion (213.446 M EUR en /mineria, y 450.000 M EUR en la propuesta inicial) mide valor bruto de contenido metalico in situ y no valor de activo. El tema deriva empiricamente el multiplicador VAN/in-situ cubano (3,2% caso base, 4,9% escenario alternativo; 3,5% de toma estatal) en lugar de tomar prestada la heuristica generica de industria del 5-15%. Se corrigio en el proceso un error previo propio: se habia citado el VAN de 1.517 M USD, que es el escenario alternativo alcista, cuando el caso base auditado es 812 M. Hallazgo colateral incorporado al dataset: la recuperacion mina-a-metal real es del 61,2% en niquel, no del 85,2% que se cita habitualmente y que corresponde solo a recuperacion de planta. Gates ejecutados: balance de llaves consciente de cadenas OK, compilacion esbuild JSX bundle:false OK, validacion ajv draft-07 OK, mas comprobaciones de coherencia interna (suma de reservas probadas+probables, monotonia de la cascada, consistencia del multiplicador con los tramos) OK. RESUELTO el 2026-07-29 durante el import: el enlace a /mineria como numerador se sirve desde el dataset (bloque referencia_interna) y se pinta al cierre de la seccion 3, con la cautela del USGS declarada en la propia tarjeta. Comprobado que /mineria ancla las 5,5 Mt en el USGS de 2024 y ya las declara con confianza media; el USGS MCS 2025 no desglosa Cuba y la agrega dentro de otros paises (mas de 9,1 Mt para todas las jurisdicciones restantes), de modo que la cifra debe leerse como estimacion de 2024 y no como dato corriente. Se anadio ademas encuesta de tres preguntas sobre la base unica (patron A de ENCUESTAS.md): decision del operador tomada durante el import, antes de publicar y por tanto antes de que el renderer quedara congelado."
+  },
+  {
+    "tema": "marco_fondo_soberano",
+    "fecha": "2026-07",
+    "paleta": {
+      "nombre": "Bronce y Ciruela",
+      "acentos": [
+        {
+          "hex": "#83924F",
+          "rol": "primario",
+          "h": 73
+        },
+        {
+          "hex": "#9B65A4",
+          "rol": "contrapunto-renderer",
+          "h": 291
+        }
+      ],
+      "fondo": "oscuro",
+      "nota": "CIRCULO SATURADO: 21 fichas previas contando cascada_valor_minero, 44 acentos registrados. Tras asignar h235 a cascada_valor_minero, el hueco de 26 grados entre himno h222 y protesta_solitaria h248 queda partido y ya no existe. Los dos mejores huecos restantes empatan a 11-12 grados de margen: h73 (entre sucesion h62 y angola h85; la ficha original citaba aqui el contrapunto de coraje_dividido h84, que NO sale a portada y por tanto no compite: corregido el 2026-07-29 durante el import) y h291 (entre convocatoria_11j h280 y desacreditacion h303). Se toman AMBOS, uno por rol. Primario = bronce oliva h73 (S30/L44) sobre fondo #131310. Semanticamente es el material del tema: bronce de sello, permanencia, articulo grabado en piedra. Diferenciado de sucesion (#969933, S50/L39, amarillo-oliva mucho mas saturado) y de coraje_dividido contrapunto (#8FB259, S37/L52, verde claro) por ser mas oscuro y notablemente mas apagado que ambos. Contrapunto = ciruela h291 (S26/L52), RESERVADO EXCLUSIVAMENTE AL RENDERER para marcar los cuatro fallos comparados: nunca sale como accent de registry.js ni de portada, por lo que no compite por hueco en el circulo de la landing (mismo criterio que sulmira con su magenta h317 y que cascada_valor_minero con su laterita h27). Se eligio la banda violeta pese a estar poblada (h248, h249, h267, h274, h280, h303) precisamente porque al ser renderer-only el criterio de colision es mucho mas laxo. El ambar #C98A17 NO se reclama como acento: se usa como convencion de plataforma para cuestiones abiertas y decision pendiente, igual que en normas y en cascada_valor_minero. Ninguna paleta reservada de CLAUDE.md SS4 tocada; no se usa rojo en ningun rol.",
+      "mapeo_semantico": "bronce = prescripcion (el articulado); ciruela = diagnostico (los cuatro fallos); ambar = lo que queda sin decidir. El lector puede leer el argumento por color antes de leerlo por texto."
+    },
+    "tipografia": {
+      "display": "Archivo Black",
+      "datos": "IBM Plex Mono",
+      "extra": "Inter"
+    },
+    "layout": "doctrina-en-cinco-partes-con-matriz-de-trazabilidad",
+    "graficos": [
+      "matriz-bipartita-de-trazabilidad-svg",
+      "fichas-de-fallo-con-hechos-plegables",
+      "articulado-con-resaltado-cruzado",
+      "columnas-enfrentadas-de-decision-abierta",
+      "anexo-alfabetico-de-admisibilidad"
+    ],
+    "firma": "la matriz de trazabilidad: un diagrama bipartito en SVG con los cuatro casos de fallo comparado a la izquierda (Alaska, Timor-Leste, Venezuela, Kazajistan) y los catorce articulos a la derecha, unidos por bandas curvas en ciruela. Al pasar el cursor por cualquiera de los dos lados se ilumina la conexion completa y el resaltado se propaga al cuerpo del documento: sobrevolar 'Kazajistan' enciende tambien el Articulo 12 doscientos pixeles mas abajo, y sobrevolar el Articulo 12 enciende Kazajistan. Los articulos sin banda se dibujan en gris y quedan declarados en texto como procedentes del marco original, no derivados de un fallo comparado. El dispositivo no decora: es la tesis del documento hecha objeto, porque el argumento entero consiste en que ningun articulo nuevo es una preferencia estetica sino la respuesta a una junta por la que se rompio un fondo real. Un lector que solo mire el diagrama ya ha entendido la estructura del texto.",
+    "procedencia": "Construido en sesion de trabajo el 2026-07-29 a partir de un documento marco previo del administrador sobre el Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional. Es un tema NORMATIVO, no de datos: el dataset codifica un articulado y su evidencia comparada, no una serie. Las diez secciones del documento original sobreviven todas, reordenadas; se anaden cuatro articulos nuevos (4 perimetro del blindaje, 5 perimetro institucional, 9 indicador de convergencia, 10 clausula de escape, 12 inmunidad y custodia) y se revisan dos (6 fuentes admisibles, 8 regla de extraccion). Cada articulo nuevo deriva de un fallo documentado, y el gate de coherencia verifica esa trazabilidad en ambos sentidos. Correcciones asumidas frente a la version original del administrador: el mecanismo decreciente se invierte a aportacion creciente (art. 7); las fuentes pasan de nombres concretos a categorias admisibles con exclusion expresa de la tributacion ordinaria de servicios (art. 6); el argumento de confianza se reformula de prima de riesgo a durabilidad, porque solo el segundo tiene evidencia; Singapur se degrada de referencia de gobernanza a referencia tecnica de gestion. La Parte V enumera cuatro cosas que el marco NO resuelve, incluida GAESA. El dividendo ciudadano queda como decision abierta con ambos lados argumentados, no como recomendacion. Gates ejecutados: balance de llaves OK, esbuild JSX bundle:false OK, ajv draft-07 OK, mas coherencia interna (trazabilidad bidireccional fallo<->articulo, todo articulo marcado 'nuevo' justificado por un fallo, numeracion continua sin huecos, toda entrada de fallo con fuente declarada) OK. Tema hermano: cascada_valor_minero, enlazado desde el criterio A del anexo; aquel aporta el numerador cuantitativo y este la arquitectura institucional, sin solaparse. Import del 2026-07-29 (/importar fondo): sin encuesta por decision del operador, el set no traia ninguna y el renderer no la contempla. Se corrigieron dos enlaces muertos al tema hermano — apuntaban a /cascada-valor-minero, que es el slug del DATASET de aquel tema y no su ruta; la ruta registrada es /cascada. Corregidos a #/cascada en dataset y en el fallback embebido, antes de publicar."
   }
 ]

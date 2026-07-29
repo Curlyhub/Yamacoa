@@ -1,0 +1,411 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/cascada-valor-minero.schema.json",
+  "title": "Cascada de valor minero cubano",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "fuente_primaria",
+    "titularidad",
+    "inventario_geologico",
+    "recuperacion",
+    "escenarios_precio",
+    "cascada",
+    "multiplicador",
+    "sensibilidad",
+    "linea_deuda",
+    "implicacion_fondo_soberano",
+    "referencia_interna",
+    "encuesta"
+  ],
+
+  "definitions": {
+    "confianza": {
+      "type": "string",
+      "enum": ["confirmado", "reportado", "estimado", "calculado", "no_cuantificado"]
+    },
+    "musd": { "type": ["number", "null"] },
+    "pct": { "type": "number", "minimum": -100, "maximum": 1000 }
+  },
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "version", "actualizado", "unidad_monetaria", "unidad_magnitud", "nota_metodologica"],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "titulo": { "type": "string", "minLength": 1 },
+        "subtitulo": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "actualizado": { "type": "string", "format": "date" },
+        "unidad_monetaria": { "type": "string", "enum": ["USD", "EUR"] },
+        "unidad_magnitud": { "type": "string" },
+        "nota_metodologica": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "fuente_primaria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "autor_independiente", "personas_cualificadas", "estandar", "fecha_efectiva", "fecha_informe", "url", "confianza"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "autor_independiente": { "type": "string" },
+        "personas_cualificadas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "rol", "afiliacion"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "rol": { "type": "string" },
+              "afiliacion": { "type": "string" }
+            }
+          }
+        },
+        "estandar": { "type": "string" },
+        "fecha_efectiva": { "type": "string", "format": "date" },
+        "fecha_informe": { "type": "string", "format": "date" },
+        "url": { "type": "string", "format": "uri" },
+        "advertencia_independencia": { "type": "string" },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    },
+
+    "titularidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vehiculo", "socios", "regalia_pct", "contribucion_territorial_pct", "confianza"],
+      "properties": {
+        "vehiculo": { "type": "string" },
+        "constituido": { "type": "string", "format": "date" },
+        "socios": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "origen", "participacion_pct"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "origen": { "type": "string" },
+              "participacion_pct": { "$ref": "#/definitions/pct" }
+            }
+          }
+        },
+        "regalia_pct": { "$ref": "#/definitions/pct" },
+        "contribucion_territorial_pct": { "$ref": "#/definitions/pct" },
+        "base_regalia": { "type": "string" },
+        "nota": { "type": "string" },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    },
+
+    "inventario_geologico": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nota_critica", "categorias"],
+      "properties": {
+        "nota_critica": { "type": "string", "minLength": 1 },
+        "categorias": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["categoria", "tonelaje_mt", "metal_ni_kt", "metal_co_kt", "confianza", "admite_valoracion"],
+            "properties": {
+              "categoria": { "type": "string" },
+              "tonelaje_mt": { "type": "number", "minimum": 0 },
+              "ley_ni_pct": { "type": "number", "minimum": 0 },
+              "ley_co_pct": { "type": "number", "minimum": 0 },
+              "metal_ni_kt": { "type": "number", "minimum": 0 },
+              "metal_co_kt": { "type": "number", "minimum": 0 },
+              "confianza": { "$ref": "#/definitions/confianza" },
+              "admite_valoracion": { "type": "boolean" },
+              "es_total": { "type": "boolean" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "recuperacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planta_declarada", "mina_a_metal_real"],
+      "properties": {
+        "planta_declarada": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["ni_global_planta_pct", "co_global_planta_pct", "confianza"],
+          "properties": { "confianza": { "$ref": "#/definitions/confianza" } }
+        },
+        "mina_a_metal_real": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["recuperacion_ni_pct", "recuperacion_co_pct", "formula", "confianza", "nota_editorial"],
+          "properties": {
+            "formula": { "type": "string" },
+            "confianza": { "$ref": "#/definitions/confianza" },
+            "nota_editorial": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "escenarios_precio": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "etiqueta", "ni_usd_t", "co_usd_t", "confianza"],
+        "properties": {
+          "id": { "type": "string" },
+          "etiqueta": { "type": "string" },
+          "ni_usd_lb": { "type": "number", "minimum": 0 },
+          "ni_usd_t": { "type": "number", "minimum": 0 },
+          "co_usd_lb": { "type": "number", "minimum": 0 },
+          "co_usd_t": { "type": "number", "minimum": 0 },
+          "confianza": { "$ref": "#/definitions/confianza" },
+          "procedencia": { "type": "string" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+
+    "cascada": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["descripcion", "escenario_referencia", "tramos"],
+      "properties": {
+        "descripcion": { "type": "string" },
+        "escenario_referencia": { "type": "string" },
+        "tramos": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["orden", "concepto", "valor_musd", "confianza"],
+            "properties": {
+              "orden": { "type": "integer", "minimum": 1 },
+              "concepto": { "type": "string" },
+              "valor_musd": { "$ref": "#/definitions/musd" },
+              "detalle": { "type": "object" },
+              "perdida_vs_anterior_musd": { "type": "number" },
+              "causa": { "type": "string" },
+              "formula": { "type": "string" },
+              "confianza": { "$ref": "#/definitions/confianza" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "multiplicador": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["definicion", "valores", "rango_recomendado_pct", "sesgos_a_etiquetar"],
+      "properties": {
+        "definicion": { "type": "string" },
+        "valores": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["escenario", "bruto_in_situ_musd", "multiplicador_pct", "confianza"],
+            "properties": {
+              "escenario": { "type": "string" },
+              "bruto_in_situ_musd": { "type": "number", "minimum": 0 },
+              "multiplicador_pct": { "$ref": "#/definitions/pct" },
+              "confianza": { "$ref": "#/definitions/confianza" }
+            }
+          }
+        },
+        "rango_recomendado_pct": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["min", "max"],
+          "properties": {
+            "min": { "type": "number" },
+            "max": { "type": "number" }
+          }
+        },
+        "sesgos_a_etiquetar": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["direccion", "descripcion"],
+            "properties": {
+              "direccion": { "type": "string", "enum": ["al alza", "a la baja", "acotamiento"] },
+              "descripcion": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "sensibilidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["descripcion", "confianza", "series", "umbral_critico"],
+      "properties": {
+        "descripcion": { "type": "string" },
+        "confianza": { "$ref": "#/definitions/confianza" },
+        "series": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["variable", "puntos"],
+            "properties": {
+              "variable": { "type": "string" },
+              "puntos": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["pct_caso_base", "van8_musd"],
+                  "properties": {
+                    "pct_caso_base": { "type": "number" },
+                    "van8_musd": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "umbral_critico": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["caida_precios_pct", "ni_umbral_usd_t", "van8_resultante_musd", "confianza"],
+          "properties": {
+            "caida_precios_pct": { "type": "number" },
+            "ni_umbral_usd_t": { "type": "number" },
+            "van8_resultante_musd": { "type": "number" },
+            "confianza": { "$ref": "#/definitions/confianza" }
+          }
+        },
+        "van_por_tasa_descuento": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["tasa_pct", "base_musd", "alternativo_musd"],
+            "properties": {
+              "tasa_pct": { "type": "number" },
+              "base_musd": { "type": "number" },
+              "alternativo_musd": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+
+    "linea_deuda": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["descripcion", "partidas"],
+      "properties": {
+        "descripcion": { "type": "string" },
+        "partidas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["concepto", "valor_musd", "confianza"],
+            "properties": {
+              "concepto": { "type": "string" },
+              "valor_musd": { "$ref": "#/definitions/musd" },
+              "confianza": { "$ref": "#/definitions/confianza" },
+              "procedencia": { "type": "string" },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "implicacion_fondo_soberano": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tesis", "puntos", "confianza", "nota"],
+      "properties": {
+        "tesis": { "type": "string" },
+        "puntos": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "confianza": { "$ref": "#/definitions/confianza" },
+        "nota": { "type": "string" }
+      }
+    },
+
+    "referencia_interna": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Enlace al expediente que aporta el numerador (inventario geológico nacional). Este tema aporta el multiplicador que lo traduce a valor realizable.",
+      "required": ["tema", "ruta", "titulo", "papel", "texto", "cautela", "confianza"],
+      "properties": {
+        "tema": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "ruta": { "type": "string", "pattern": "^#/[a-z0-9-]+$" },
+        "titulo": { "type": "string", "minLength": 1 },
+        "papel": { "type": "string", "enum": ["numerador", "denominador", "contexto"] },
+        "texto": { "type": "string", "minLength": 1 },
+        "cautela": { "type": "string", "minLength": 1 },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    },
+
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "intro", "nota_privacidad", "preguntas"],
+      "description": "Convención de base única: la clave de voto es `${meta.slug}::${pregunta.id}::${opcion.id}`. Ver ENCUESTAS.md.",
+      "properties": {
+        "titulo": { "type": "string", "minLength": 1 },
+        "intro": { "type": "string", "minLength": 1 },
+        "nota_privacidad": { "type": "string", "minLength": 1 },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^p\\d+$" },
+              "texto": { "type": "string", "minLength": 1 },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "texto"],
+                  "properties": {
+                    "id": { "type": "string", "pattern": "^o\\d+$" },
+                    "texto": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

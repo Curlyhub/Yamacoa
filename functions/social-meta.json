@@ -97,6 +97,10 @@
     "t": "Coraje dividido",
     "d": "El valor de un pueblo y la fragmentación de su exilio, medidos"
   },
+  "/desacreditacion": {
+    "t": "La maquinaria de desacreditar",
+    "d": "Cómo se fabrica el descrédito de un opositor cubano: etiquetado coordinado, patologización pseudo-clínica y hostigamiento mediático, desde el oficialismo y desde el propio exilio."
+  },
   "/sucesion": {
     "t": "Sucesión sin urnas",
     "d": "Tres hombres, un aparato: cómo se ha transferido el poder en Cuba desde 1959 — y por qué un hilo viral que lo explica con teología y psicología usa la herramienta equivocada."
@@ -108,5 +112,21 @@
   "/sulmira": {
     "t": "La voz que le prestaron",
     "d": "Sulmira Martínez Pérez, \"Salem Cuba\", 21-22 años, condenada a 5 años de prisión por memes y llamados pacíficos a protestar en Facebook: la autoinculpación forzada que la televisión estatal transmitió como si fuera su propia voz."
+  },
+  "/normas": {
+    "t": "Reconstruir la norma",
+    "d": "Marginalidad, desciudadanización y las condiciones materiales del cambio cívico en Cuba"
+  },
+  "/auditar": {
+    "t": "Auditar a los aliados",
+    "d": "Evaluación crítica de la Propuesta para transformar la economía cubana"
+  },
+  "/cascada": {
+    "t": "Del subsuelo al fondo: cuánto vale realmente el níquel cubano",
+    "d": "Anclaje empírico del multiplicador VAN/in-situ a partir del único activo minero cubano con estudio de factibilidad auditado"
+  },
+  "/fondo": {
+    "t": "El fondo que aún no existe",
+    "d": "Marco para la creación de cualquier fondo soberano en una Cuba democrática"
   }
 }

@@ -1,0 +1,241 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/marco-fondo-soberano.schema.json",
+  "title": "Marco para la creación de un fondo soberano en Cuba",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "premisa",
+    "fallos",
+    "articulado",
+    "decision_pendiente",
+    "anexo_admisibilidad",
+    "limites",
+    "principio_rector",
+    "fuentes"
+  ],
+
+  "definitions": {
+    "confianza": {
+      "type": "string",
+      "enum": ["confirmado", "reportado", "estimado", "normativo"]
+    },
+    "idFallo": {
+      "type": "string",
+      "enum": ["perimetro", "rigidez", "proliferacion", "custodia"]
+    },
+    "hecho": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["texto", "confianza"],
+      "properties": {
+        "texto": { "type": "string", "minLength": 1 },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    }
+  },
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "version", "actualizado", "naturaleza", "advertencia_naturaleza"],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "titulo": { "type": "string", "minLength": 1 },
+        "subtitulo": { "type": "string", "minLength": 1 },
+        "kicker": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "actualizado": { "type": "string", "format": "date" },
+        "naturaleza": { "type": "string", "enum": ["marco normativo"] },
+        "advertencia_naturaleza": { "type": "string", "minLength": 1 },
+        "tema_hermano": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["slug", "ruta", "relacion"],
+          "properties": {
+            "slug": { "type": "string" },
+            "ruta": { "type": "string" },
+            "relacion": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "premisa": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enunciado", "desarrollo", "declaracion_de_sesgo", "confianza"],
+      "properties": {
+        "enunciado": { "type": "string", "minLength": 1 },
+        "desarrollo": { "type": "string", "minLength": 1 },
+        "declaracion_de_sesgo": { "type": "string", "minLength": 1 },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    },
+
+    "fallos": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "orden", "titulo", "caso", "periodo", "sintesis", "hechos", "leccion", "genera_articulos"],
+        "properties": {
+          "id": { "$ref": "#/definitions/idFallo" },
+          "orden": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "titulo": { "type": "string" },
+          "caso": { "type": "string" },
+          "periodo": { "type": "string" },
+          "sintesis": { "type": "string" },
+          "hechos": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/hecho" } },
+          "leccion": { "type": "string", "minLength": 1 },
+          "aplicacion_cuba": { "type": "string" },
+          "genera_articulos": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "integer", "minimum": 1, "maximum": 14 }
+          }
+        }
+      }
+    },
+
+    "articulado": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["n", "titulo", "cuerpo"],
+        "properties": {
+          "n": { "type": "integer", "minimum": 1, "maximum": 14 },
+          "titulo": { "type": "string", "minLength": 1 },
+          "es_nuevo": { "type": "boolean" },
+          "revisado": { "type": "boolean" },
+          "responde_a": { "type": "array", "items": { "$ref": "#/definitions/idFallo" } },
+          "cuerpo": { "type": "string", "minLength": 1 },
+          "clausulas": { "type": "array", "items": { "type": "string" } },
+          "fundamento": { "type": "string" },
+          "nota": { "type": "string" },
+          "cuestiones_abiertas": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["titulo", "texto"],
+              "properties": {
+                "titulo": { "type": "string" },
+                "texto": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "decision_pendiente": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "planteamiento", "a_favor", "en_contra", "resolucion_procedimental"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "planteamiento": { "type": "string" },
+        "a_favor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["etiqueta", "argumento"],
+          "properties": {
+            "etiqueta": { "type": "string" },
+            "argumento": { "type": "string", "minLength": 1 }
+          }
+        },
+        "en_contra": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["etiqueta", "argumento"],
+          "properties": {
+            "etiqueta": { "type": "string" },
+            "argumento": { "type": "string", "minLength": 1 }
+          }
+        },
+        "resolucion_procedimental": { "type": "string" }
+      }
+    },
+
+    "anexo_admisibilidad": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "preambulo", "criterios"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "preambulo": { "type": "string" },
+        "criterios": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["letra", "titulo", "texto"],
+            "properties": {
+              "letra": { "type": "string", "pattern": "^[A-Z]$" },
+              "titulo": { "type": "string" },
+              "texto": { "type": "string", "minLength": 1 },
+              "prohibicion": { "type": "string" },
+              "enlace_tema": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "limites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "preambulo", "entradas"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "preambulo": { "type": "string" },
+        "entradas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["titulo", "texto", "respuesta_honesta"],
+            "properties": {
+              "titulo": { "type": "string" },
+              "texto": { "type": "string", "minLength": 1 },
+              "respuesta_honesta": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      }
+    },
+
+    "principio_rector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enunciado", "consecuencia"],
+      "properties": {
+        "enunciado": { "type": "string", "minLength": 1 },
+        "consecuencia": { "type": "string", "minLength": 1 }
+      }
+    },
+
+    "fuentes": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["caso", "referencia"],
+        "properties": {
+          "caso": { "$ref": "#/definitions/idFallo" },
+          "referencia": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

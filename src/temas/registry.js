@@ -293,6 +293,19 @@ const temas = [
     load: () => import("./coraje_dividido.jsx"),
   },
   {
+    id: "desacreditacion",
+    slug: "desacreditacion",
+    path: "/desacreditacion",
+    titulo: "La maquinaria de desacreditar",
+    subtitulo:
+      "Cómo se fabrica el descrédito de un opositor cubano: etiquetado coordinado, patologización pseudo-clínica y hostigamiento mediático, desde el oficialismo y desde el propio exilio.",
+    etiqueta: "DISCURSO · TÁCTICAS DE REPRESIÓN",
+    accent: "#AB69A8",
+    fuentes: "Cubalex · ICLEP · CiberCuba · 14ymedio · Amnesty International · HRW · Freedom House",
+    publicado: "2026-07-22",
+    load: () => import("./desacreditacion.jsx"),
+  },
+  {
     id: "sucesion",
     slug: "sucesion",
     path: "/sucesion",
@@ -331,6 +344,77 @@ const temas = [
     fuentes: "Prisoners Defenders · Cubalex · Alas Tensas · ICLEP · CiberCuba · Diario de Cuba",
     publicado: "2026-07-27",
     load: () => import("./sulmira.jsx"),
+  },
+  {
+    id: "normas",
+    slug: "normas",
+    path: "/normas",
+    titulo: "Reconstruir la norma",
+    subtitulo:
+      "Marginalidad, desciudadanización y las condiciones materiales del cambio cívico en Cuba",
+    etiqueta: "SOCIEDAD · CULTURA CÍVICA",
+    accent: "#2E9B87", // petróleo, color dominante del renderer congelado
+    fuentes: "Literatura experimental sobre normas sociales (Science · PNAS · J-PAL) · OCDE · Banco Mundial · OCDH · Rojas · Pedraza",
+    dataSlug: "reconstruccion-civica", // el dataset es /data/reconstruccion-civica.json
+    publicado: "2026-07-28",
+    load: () => import("./reconstruccion_civica.jsx"),
+  },
+  {
+    id: "auditar",
+    slug: "auditar",
+    path: "/auditar",
+    titulo: "Auditar a los aliados",
+    subtitulo:
+      "Evaluación crítica de la Propuesta para transformar la economía cubana",
+    etiqueta: "ECONOMÍA · EVALUACIÓN DE PROPUESTAS",
+    // El primario del renderer es bermellón #E8462C (h8), pero como accent de
+    // portada queda a 3 grados de represion (#C4392B, h5) y cae en el rojo
+    // reservado a represión por CLAUDE.md §4. El magenta de la misma paleta
+    // (#C765A8, h319) tampoco sirve: queda a 16 grados de desacreditacion
+    // (#AB69A8) y a 14 de #C2497F. Se usa el hueco real mayor de la rueda,
+    // 48 grados libres entre h200 y h248. El bermellón se queda en la página.
+    accent: "#4A63C8",
+    fuentes: "ONEI · CEPAL · FMI · elTOQUE · EIU · Cuba Study Group",
+    dataSlug: "propuesta-economica-auditoria", // el dataset es /data/propuesta-economica-auditoria.json
+    publicado: "2026-07-28",
+    load: () => import("./propuesta_economica_auditoria.jsx"),
+  },
+  {
+    id: "cascada",
+    slug: "cascada",
+    path: "/cascada",
+    titulo: "Del subsuelo al fondo: cuánto vale realmente el níquel cubano",
+    subtitulo:
+      "Anclaje empírico del multiplicador VAN/in-situ a partir del único activo minero cubano con estudio de factibilidad auditado",
+    etiqueta: "MINERÍA · VALORACIÓN DE ACTIVOS", // ⚠ CONFIRMAR
+    // Confirmado 29-jul-2026 al asentar la ficha en ops/design_log.json: acero
+    // desaturado h235 (S30/L58), el único hueco libre del círculo (26°, entre
+    // himno h218 y protesta-solitaria h248). Vecino del azul-bandera reservado
+    // por CLAUDE.md §4, del que se separa por menos de la mitad de saturación.
+    // La laterita #B1723E de la cascada NO sale a portada: se queda dentro.
+    accent: "#7479B4",
+    fuentes: "Informe técnico NI 43-101 del Moa JV (Micon International · CIM 2014)", // ⚠ CONFIRMAR
+    dataSlug: "cascada-valor-minero", // el dataset es /data/cascada-valor-minero.json
+    publicado: "2026-07-29",
+    load: () => import("./cascada-valor-minero.jsx"),
+  },
+  {
+    id: "fondo",
+    slug: "fondo",
+    path: "/fondo",
+    titulo: "El fondo que aún no existe",
+    subtitulo:
+      "Marco para la creación de cualquier fondo soberano en una Cuba democrática",
+    etiqueta: "EDICIÓN ESPECIAL · MARCO NORMATIVO", // ⚠ CONFIRMAR
+    // Bronce oliva h73 (S30/L44), primario de la paleta del renderer. El círculo
+    // está saturado: el margen real son 11° con sucesion (#969933, h62) y 12°
+    // con angola (#6E9537, h85). Se separa de ambos por saturación (S30 frente
+    // a S50 y S46). La ciruela #9B65A4 del renderer NO sale a portada.
+    accent: "#83924F", // ⚠ CONFIRMAR
+    fuentes: "NRGI · Transparencia Venezuela · Alaska Permanent Fund · fallos comparados (Alaska · Timor-Leste · Venezuela · Kazajistán)", // ⚠ CONFIRMAR
+    dataSlug: "marco-fondo-soberano", // el dataset es /data/marco-fondo-soberano.json
+    publicado: "2026-07-29",
+    load: () => import("./marco-fondo-soberano.jsx"),
   },
 ];
 

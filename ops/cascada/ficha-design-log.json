@@ -1,0 +1,37 @@
+{
+  "tema": "cascada_valor_minero",
+  "fecha": "2026-07",
+  "paleta": {
+    "nombre": "Acero y Laterita",
+    "acentos": [
+      {
+        "hex": "#7479B4",
+        "rol": "primario",
+        "h": 235
+      },
+      {
+        "hex": "#B1723E",
+        "rol": "contrapunto-renderer",
+        "h": 27
+      }
+    ],
+    "fondo": "oscuro",
+    "nota": "CIRCULO SATURADO: 20 fichas previas, 45 acentos registrados. Primario = acero desaturado h235 (S30/L58) sobre fondo #111218. Es el UNICO hueco vacio de 26 grados que queda en todo el circulo considerando la totalidad de los acentos (entre himno_narciso h222 y protesta_solitaria h248), con margen real de 13 grados a cada lado. Por debajo del ideal de 40 y por debajo incluso del 26 que acepto protesta_solitaria; se toma porque matematicamente no existe nada mejor. Diferenciado de himno (#3D6FE5, S78/L57, azul-bandera saturado y RESERVADO en CLAUDE.md SS4) por saturacion menos de la mitad, y de protesta_solitaria (#6C60BE, S42/L56) por ser mas frio y mas desaturado. CONFIRMADO POR EL OPERADOR el 2026-07-29 al asentar esta ficha: el acento de portada queda en el acero h235 pese a su proximidad al azul-bandera reservado. La alternativa descartada era renunciar al acento de portada y sacar la laterita, aceptando 9 grados de colision con rusificacion h18. Contrapunto = laterita ocre h27 (S48/L47), RESERVADO EXCLUSIVAMENTE AL RENDERER para pintar los tramos de perdida de la cascada: nunca sale como accent de registry.js ni de portada, por lo que no compite por hueco en el circulo de la landing (mismo criterio que sulmira con su magenta h317). Es el color literal del material del tema: laterita niquelifera, goethita y hematita, 44% Fe. El ambar de aviso (#C98A17) NO se reclama como acento propio: se usa como convencion de plataforma para contrafactual y advertencia, igual que en normas. La linea de deuda se traza en hueso neutro (#D8D2C6) precisamente para no reclamar ningun tono: el rojo de alerta que pediria semanticamente esta reservado a represion en CLAUDE.md SS4."
+  },
+  "tipografia": {
+    "display": "Archivo Black",
+    "datos": "IBM Plex Mono",
+    "extra": "Inter"
+  },
+  "layout": "cascada-con-lista-espejo-y-anexos",
+  "graficos": [
+    "cascada-waterfall-recharts",
+    "lista-espejo-sincronizada-por-hover",
+    "haz-de-sensibilidad-multilinea",
+    "tarjetas-de-multiplicador",
+    "tabla-de-admisibilidad-de-valoracion",
+    "encuesta-de-barras-inline-sobre-base-unica"
+  ],
+  "firma": "la cascada waterfall: una unica barra de acero profundo (valor bruto in situ, 25.328 M USD) de la que caen cuatro tramos de laterita ocre -- recuperacion, coste operativo, capital e impuestos, descuento temporal -- hasta dejar un ultimo bloque de acero claro que es la participacion real del Estado cubano (888 M, el 3,5% del punto de partida). El argumento es la merma, y se ve antes de leerse. Cruzando el grafico, dos reglas discontinuas en hueso marcan la deuda del Club de Paris y la deuda externa del BCC: la segunda queda POR ENCIMA de todos los tramos salvo los dos primeros, de modo que el lector ve que el pasivo externo supera al valor realizable sin que ningun texto se lo afirme. Debajo, una lista espejo sincronizada por hover con el grafico: cada tramo declara su perdida, su causa y su chip de confianza, y el porcentaje que representa sobre el bruto original.",
+  "procedencia": "Construido en sesion de trabajo el 2026-07-29 sobre el informe tecnico NI 43-101 del Moa Joint Venture (Micon International, personas cualificadas Foret/Breed/Jacobs/Reid, estandar CIM 2014, fecha efectiva 2022-08-31). Fuente primaria unica y auditada: NO se uso ninguna fuente secundaria para las cifras del activo. Origen del tema: discusion sobre el documento marco del Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional, en la que se detecto que la cifra de riqueza minera cubana en circulacion (213.446 M EUR en /mineria, y 450.000 M EUR en la propuesta inicial) mide valor bruto de contenido metalico in situ y no valor de activo. El tema deriva empiricamente el multiplicador VAN/in-situ cubano (3,2% caso base, 4,9% escenario alternativo; 3,5% de toma estatal) en lugar de tomar prestada la heuristica generica de industria del 5-15%. Se corrigio en el proceso un error previo propio: se habia citado el VAN de 1.517 M USD, que es el escenario alternativo alcista, cuando el caso base auditado es 812 M. Hallazgo colateral incorporado al dataset: la recuperacion mina-a-metal real es del 61,2% en niquel, no del 85,2% que se cita habitualmente y que corresponde solo a recuperacion de planta. Gates ejecutados: balance de llaves consciente de cadenas OK, compilacion esbuild JSX bundle:false OK, validacion ajv draft-07 OK, mas comprobaciones de coherencia interna (suma de reservas probadas+probables, monotonia de la cascada, consistencia del multiplicador con los tramos) OK. RESUELTO el 2026-07-29 durante el import: el enlace a /mineria como numerador se sirve desde el dataset (bloque referencia_interna) y se pinta al cierre de la seccion 3, con la cautela del USGS declarada en la propia tarjeta. Comprobado que /mineria ancla las 5,5 Mt en el USGS de 2024 y ya las declara con confianza media; el USGS MCS 2025 no desglosa Cuba y la agrega dentro de otros paises (mas de 9,1 Mt para todas las jurisdicciones restantes), de modo que la cifra debe leerse como estimacion de 2024 y no como dato corriente. Se anadio ademas encuesta de tres preguntas sobre la base unica (patron A de ENCUESTAS.md): decision del operador tomada durante el import, antes de publicar y por tanto antes de que el renderer quedara congelado."
+}
