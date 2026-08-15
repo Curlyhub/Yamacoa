@@ -1,5 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import * as d3 from "d3";
+import {
+  ResponsiveContainer, ComposedChart, Bar, Line, LineChart,
+  XAxis, YAxis, CartesianGrid, Tooltip, Cell,
+} from "recharts";
 
 /* ============================================================================
    YAMACOA · expediente "militarizacion" — RENDERER CONGELADO
@@ -79,80 +83,129 @@ function CitaOficial({ origen }) {
   );
 }
 
-function EspinaFases({ fases }) {
+/* Rail izquierdo: la espina cronologica es el CONTROL del expediente. Al elegir
+   una fase cambia el panel derecho, se resalta su mes en ambas graficas y se
+   mueve la lectura del dial. No es una lista decorativa: es la navegacion. */
+function RailFases({ fases, sel, onSel }) {
   return (
-    <div className="mi-espina">
-      <div className="mi-espina-linea" aria-hidden="true" />
-      <div className="mi-espina-track">
-        {fases.map((f) => (
-          <div className="mi-fase" key={f.id}>
-            <span className="mi-fase-dot" aria-hidden="true" />
-            <span className="mi-fase-periodo">{f.periodo}</span>
-            <h3>{f.titulo}</h3>
-            <p>{f.descripcion}</p>
-            <ul>{f.hechos_clave.map((h, i) => <li key={i}>{h}</li>)}</ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BarraEventos({ serie }) {
-  const max = Math.max(...serie.map((m) => m.eventos));
-  return (
-    <div className="mi-barras-eventos">
-      {serie.map((m) => (
-        <div className="mi-be-col" key={m.mes}>
-          <div className="mi-be-pct">{m.pct_represion}%</div>
-          <div className="mi-be-track" style={{ height: 150 }}>
-            <div className="mi-be-total" style={{ height: (m.eventos / max) * 100 + "%" }}>
-              <div className="mi-be-represion" style={{ height: (m.represion / m.eventos) * 100 + "%" }} />
-            </div>
-          </div>
-          <div className="mi-be-num">{m.eventos}</div>
-          <div className="mi-be-mes">{m.mes}</div>
-        </div>
+    <nav className="mi-rail" aria-label="Fases del periodo">
+      <span className="mi-rail-linea" aria-hidden="true" />
+      {fases.map((f) => (
+        <button key={f.id} className={"mi-rail-b" + (sel === f.id ? " on" : "")} onClick={() => onSel(f.id)} aria-current={sel === f.id}>
+          <span className="mi-rail-dot" aria-hidden="true" />
+          <span className="mi-rail-txt">
+            <b>{f.periodo}</b>
+            <i>{f.titulo}</i>
+          </span>
+        </button>
       ))}
-      <div className="mi-be-leyenda">
-        <span><i className="mi-sw mi-sw-total" /> eventos totales</span>
-        <span><i className="mi-sw mi-sw-rep" /> de ellos, represión directa (% anotado arriba)</span>
-      </div>
-    </div>
+    </nav>
   );
 }
 
-function LineaProtestas({ serie }) {
-  const W = 640, H = 180, PAD = 28;
-  const max = Math.max(...serie.map((p) => p.valor));
-  const pts = serie.map((p, i) => ({
-    x: PAD + (i / (serie.length - 1)) * (W - PAD * 2),
-    y: H - PAD - (p.valor / max) * (H - PAD * 2 - 20),
-    ...p,
-  }));
-  const firmesIdx = pts.findIndex((p) => p.parcial);
-  const solido = firmesIdx === -1 ? pts : pts.slice(0, firmesIdx + 1);
-  const punteado = firmesIdx === -1 ? [] : pts.slice(firmesIdx);
-  const toPath = (arr) => arr.map((p, i) => (i === 0 ? "M" : "L") + p.x + "," + p.y).join(" ");
+function PanelFase({ fase, mes }) {
   return (
-    <div className="mi-linea-wrap">
-      <svg viewBox={`0 0 ${W} ${H}`} className="mi-linea-svg" role="img" aria-label="Protestas mensuales segun Cubalex, enero a julio de 2026">
-        <path d={toPath(solido)} className="mi-linea-path" />
-        {punteado.length > 1 && <path d={toPath(punteado)} className="mi-linea-path mi-linea-path-parcial" />}
-        {pts.map((p) => (
-          <g key={p.mes}>
-            <circle cx={p.x} cy={p.y} r={p.parcial ? 4.5 : 3.5} className={"mi-linea-dot" + (p.parcial ? " mi-linea-dot-parcial" : "")} />
-            <text x={p.x} y={p.y - 10} textAnchor="middle" className="mi-linea-valor">{p.valor}</text>
-            <text x={p.x} y={H - 6} textAnchor="middle" className="mi-linea-mes">{p.mes.slice(0, 3)}{p.parcial ? "*" : ""}</text>
-          </g>
-        ))}
-      </svg>
-      <p className="mi-linea-nota">* julio es un mes parcial (hasta el día 24). Serie según Cubalex, sin réplica exacta de otro observatorio.</p>
+    <div className="mi-fase-panel">
+      <span className="mi-fase-periodo">{fase.periodo}</span>
+      <h3>{fase.titulo}</h3>
+      <p className="mi-fase-desc">{fase.descripcion}</p>
+      <ul className="mi-fase-lista">{fase.hechos_clave.map((h, i) => <li key={i}>{h}</li>)}</ul>
+      {mes && (
+        <div className="mi-fase-cifras">
+          <div><b>{mes.eventos}</b><span>eventos</span></div>
+          <div><b>{mes.represion}</b><span>de ellos, represión</span></div>
+          <div><b>{mes.pct_represion}%</b><span>proporción</span></div>
+          <div><b>{mes.victimas}</b><span>víctimas</span></div>
+          <div><b>{mes.provincias}</b><span>provincias</span></div>
+        </div>
+      )}
     </div>
   );
 }
 
-function DialRiesgo({ riesgo }) {
+function TipEventos({ active, payload }) {
+  if (!active || !payload || !payload.length) return null;
+  const d = payload[0].payload;
+  return (
+    <div className="mi-tip">
+      <div className="mi-tip-h">{d.mes}</div>
+      <div className="mi-tip-r"><span>Eventos totales</span><b>{d.eventos}</b></div>
+      <div className="mi-tip-r"><span>Represión directa</span><b>{d.represion}</b></div>
+      <div className="mi-tip-r"><span>Proporción</span><b>{d.pct_represion}%</b></div>
+      <div className="mi-tip-r"><span>Víctimas</span><b>{d.victimas}</b></div>
+      <div className="mi-tip-r"><span>Provincias</span><b>{d.provincias}</b></div>
+      <div className="mi-tip-f">según Cubalex · sin réplica independiente</div>
+    </div>
+  );
+}
+
+function TipProtestas({ active, payload }) {
+  if (!active || !payload || !payload.length) return null;
+  const d = payload[0].payload;
+  return (
+    <div className="mi-tip">
+      <div className="mi-tip-h">{d.mes}{d.parcial ? " (parcial)" : ""}</div>
+      <div className="mi-tip-r"><span>Protestas</span><b>{d.valor}</b></div>
+      {d.parcial && <div className="mi-tip-f">mes parcial: hasta el día 24</div>}
+      {!d.parcial && <div className="mi-tip-f">según Cubalex · diverge del OCC</div>}
+    </div>
+  );
+}
+
+function GraficaEventos({ serie, mesSel }) {
+  return (
+    <div className="mi-chart-card">
+      <div className="mi-chart-h">Eventos por mes, y cuántos son represión directa</div>
+      <div className="mi-chart-sub">Barra clara: eventos totales. Barra intensa: los que son represión directa. Pasa el cursor por cualquier mes.</div>
+      <ResponsiveContainer width="100%" height={250}>
+        <ComposedChart data={serie} margin={{ top: 8, right: 10, left: -14, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(237,231,242,.06)" vertical={false} />
+          <XAxis dataKey="mes" tick={{ fill: "#948BA3", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fill: "#948BA3", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
+          <Tooltip content={<TipEventos />} cursor={{ fill: "rgba(237,231,242,.05)" }} />
+          <Bar dataKey="eventos" radius={[4, 4, 0, 0]} maxBarSize={48}>
+            {serie.map((d, i) => <Cell key={i} fill={C.primario} opacity={mesSel && d.mes === mesSel ? 1 : 0.55} />)}
+          </Bar>
+          <Bar dataKey="represion" radius={[4, 4, 0, 0]} maxBarSize={26}>
+            {serie.map((d, i) => <Cell key={i} fill={C.contrapunto} opacity={mesSel && d.mes === mesSel ? 1 : 0.75} />)}
+          </Bar>
+        </ComposedChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+function GraficaProtestas({ serie, mesSel }) {
+  return (
+    <div className="mi-chart-card">
+      <div className="mi-chart-h">Protestas por mes · enero-julio 2026</div>
+      <div className="mi-chart-sub">Serie propia de Cubalex. El punto hueco de julio marca un mes parcial (hasta el día 24).</div>
+      <ResponsiveContainer width="100%" height={210}>
+        <LineChart data={serie} margin={{ top: 8, right: 12, left: -14, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(237,231,242,.06)" vertical={false} />
+          <XAxis dataKey="mes" tick={{ fill: "#948BA3", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fill: "#948BA3", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
+          <Tooltip content={<TipProtestas />} cursor={{ stroke: "rgba(237,231,242,.12)" }} />
+          <Line
+            type="monotone" dataKey="valor" stroke={C.contrapunto} strokeWidth={2.4}
+            dot={(props) => {
+              const { cx, cy, payload, index } = props;
+              const on = mesSel && payload.mes === mesSel;
+              return (
+                <circle key={index} cx={cx} cy={cy} r={on ? 6 : payload.parcial ? 5 : 3.6}
+                  fill={payload.parcial ? C.bg : C.contrapunto} stroke={C.contrapunto} strokeWidth={payload.parcial ? 2 : 0} />
+              );
+            }}
+            activeDot={{ r: 7, fill: C.contrapunto }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+      <p className="mi-linea-nota">El Observatorio Cubano de Conflictos reporta cifras muy distintas para los mismos meses; ver la nota de divergencia más abajo.</p>
+    </div>
+  );
+}
+
+function DialRiesgo({ riesgo, mesSel, onSel }) {
   const R = 108, CX = 130, CY = 128;
   const angFor = (nivel) => Math.PI - ((nivel - 1) / (riesgo.escala_max - 1)) * Math.PI;
   const pt = (nivel, r = R) => ({ x: CX + r * Math.cos(angFor(nivel)), y: CY - r * Math.sin(angFor(nivel)) });
@@ -187,37 +240,61 @@ function DialRiesgo({ riesgo }) {
         <span>clavado desde {riesgo.desde}</span>
       </div>
       <div className="mi-dial-trail">
-        {riesgo.historial.map((h, i) => (
-          <div className={"mi-dial-trail-item" + (h.nivel != null ? " mi-dial-trail-pinned" : "")} key={h.mes}>
-            {i > 0 && <span className={"mi-dial-trail-conn" + (h.nivel != null && riesgo.historial[i - 1].nivel != null ? " mi-dial-trail-conn-solid" : "")} />}
-            <span className="mi-dial-trail-dot" />
-            <span className="mi-dial-trail-mes">{h.mes}</span>
-            <span className="mi-dial-trail-val">{h.nivel != null ? h.nivel + "/5" : "sin cuantificar"}</span>
-          </div>
-        ))}
+        {riesgo.historial.map((h, i) => {
+          const on = mesSel && mesSel.split(" ")[0] === h.mes;
+          return (
+            <button
+              className={"mi-dial-trail-item" + (h.nivel != null ? " mi-dial-trail-pinned" : "") + (on ? " mi-dial-trail-on" : "")}
+              key={h.mes}
+              onClick={() => onSel && onSel(h.mes)}
+              title={h.fase}
+            >
+              {i > 0 && <span className={"mi-dial-trail-conn" + (h.nivel != null && riesgo.historial[i - 1].nivel != null ? " mi-dial-trail-conn-solid" : "")} />}
+              <span className="mi-dial-trail-dot" />
+              <span className="mi-dial-trail-mes">{h.mes}</span>
+              <span className="mi-dial-trail-val">{h.nivel != null ? h.nivel + "/5" : "sin cuantificar"}</span>
+            </button>
+          );
+        })}
       </div>
+      {mesSel && (() => {
+        const h = riesgo.historial.find((x) => x.mes === mesSel.split(" ")[0]);
+        return h ? <p className="mi-dial-fase">{h.mes}: {h.fase}</p> : null;
+      })()}
       <p className="mi-dial-nota">{riesgo.nota}</p>
     </div>
   );
 }
 
-function MapaCobertura({ serie }) {
+/* Small multiples de cobertura. El informe fuente NO nombra las provincias de
+   sus conteos mensuales (solo cuantas son), asi que la silueta se rellena por
+   proporcion y jamas se pinta una provincia concreta: seria inventar el reparto.
+   Es clicable para sincronizar el mes con el resto del panel. */
+function MapaCobertura({ serie, mesSel, onSel }) {
   const cubaPath = useMemo(() => {
     const proj = d3.geoMercator().fitExtent([[4, 4], [76, 52]], CUBA_FEATURE);
     return d3.geoPath(proj)(CUBA_FEATURE);
   }, []);
   return (
     <div className="mi-cobertura">
-      {serie.map((m) => (
-        <div className="mi-cob-item" key={m.mes}>
-          <svg viewBox="0 0 80 56" className="mi-cob-svg" role="img" aria-label={`${m.mes}: ${m.provincias} de 15 provincias con eventos registrados`}>
-            <path d={cubaPath} className="mi-cob-outline" />
-            <path d={cubaPath} className="mi-cob-fill" style={{ fillOpacity: m.provincias / 15 }} />
-          </svg>
-          <div className="mi-cob-badge">{m.provincias}<span>/15</span></div>
-          <div className="mi-cob-mes">{m.mes.split(" ")[0]}</div>
-        </div>
-      ))}
+      {serie.map((m) => {
+        const on = mesSel === m.mes;
+        return (
+          <button className={"mi-cob-item" + (on ? " on" : "")} key={m.mes} onClick={() => onSel(m.mes)}
+                  title={`${m.mes}: ${m.provincias} de 15 provincias con eventos registrados`}>
+            <svg viewBox="0 0 80 56" className="mi-cob-svg" role="img" aria-label={`${m.mes}: ${m.provincias} de 15 provincias con eventos registrados`}>
+              <path d={cubaPath} className="mi-cob-outline" />
+              <path d={cubaPath} className="mi-cob-fill" style={{ fillOpacity: m.provincias / 15 }} />
+            </svg>
+            <div className="mi-cob-badge">{m.provincias}<span>/15</span></div>
+            <div className="mi-cob-mes">{m.mes.split(" ")[0]}</div>
+          </button>
+        );
+      })}
+      <p className="mi-cob-nota">
+        La silueta se rellena en proporción al número de provincias, no por provincia
+        concreta: el informe dice cuántas fueron, nunca cuáles.
+      </p>
     </div>
   );
 }
@@ -327,6 +404,7 @@ function Encuesta({ datos }) {
 
 export default function App() {
   const [data, setData] = useState(EMBEDDED);
+  const [faseSel, setFaseSel] = useState(EMBEDDED.fases[0].id);
 
   useEffect(() => {
     const id = "mi-fonts";
@@ -342,6 +420,16 @@ export default function App() {
 
   const m = data.meta;
   const v = data.verificacion;
+
+  // La fase elegida gobierna el panel, las graficas, el dial y el mapa.
+  const fase = data.fases.find((f) => f.id === faseSel) || data.fases[0];
+  const mesSel = useMemo(() => {
+    if (!fase) return null;
+    const per = fase.periodo.toLowerCase();
+    const hit = data.cifras.serie_mensual.find((x) => per.indexOf(x.mes.split(" ")[0].toLowerCase()) !== -1);
+    return hit ? hit.mes : null;
+  }, [fase, data.cifras.serie_mensual]);
+  const mesActivo = data.cifras.serie_mensual.find((x) => x.mes === mesSel) || null;
 
   return (
     <div className="mi-root">
@@ -366,25 +454,37 @@ export default function App() {
         </section>
 
         <section>
-          <SecHead n="02" t="Seis meses en fases" d="De la organización territorial a la jurisdicción militar sobre un civil, sin que ninguna fase haya retrocedido." />
-          <EspinaFases fases={data.fases} />
-        </section>
-
-        <section>
-          <SecHead n="03" t="Los datos mensuales" d={data.cifras.advertencia} />
-          <BarraEventos serie={data.cifras.serie_mensual} />
-          <LineaProtestas serie={data.cifras.serie_protestas} />
+          <SecHead n="02" t="Recorrer el periodo por fases" d="Elige una fase en el raíl: el panel, las dos gráficas, el dial y el mapa de cobertura se sincronizan con su mes." />
+          <div className="mi-estudio">
+            <RailFases fases={data.fases} sel={faseSel} onSel={setFaseSel} />
+            <div className="mi-estudio-panel">
+              <PanelFase fase={fase} mes={mesActivo} />
+              <GraficaEventos serie={data.cifras.serie_mensual} mesSel={mesSel} />
+              <GraficaProtestas serie={data.cifras.serie_protestas} mesSel={mesSel ? mesSel.split(" ")[0] : null} />
+              <p className="mi-cifras-adv">⚠ {data.cifras.advertencia}</p>
+            </div>
+          </div>
           <p className="mi-divergencia">{data.cifras.nota_divergencia_occ}</p>
         </section>
 
         <section>
-          <SecHead n="04" t="El dial de riesgo" d="Escala de militarización social de Cubalex, de 1 a 5." />
-          <DialRiesgo riesgo={data.riesgo} />
+          <SecHead n="03" t="El dial de riesgo" d="Escala de militarización social de Cubalex, de 1 a 5. Toca cualquier mes del rastro para llevarlo al resto del panel." />
+          <DialRiesgo riesgo={data.riesgo} mesSel={mesSel} onSel={(mes) => {
+            const f = data.fases.find((x) => x.periodo.toLowerCase().indexOf(mes.toLowerCase()) !== -1);
+            if (f) setFaseSel(f.id);
+          }} />
         </section>
 
         <section>
-          <SecHead n="05" t="Geografía: de la dispersión a La Habana" d={data.geografia.nota} />
-          <MapaCobertura serie={data.cifras.serie_mensual} />
+          <SecHead n="04" t="Geografía: de la dispersión a La Habana" d={data.geografia.nota} />
+          <MapaCobertura serie={data.cifras.serie_mensual} mesSel={mesSel} onSel={(mes) => {
+            const idx = data.cifras.serie_mensual.findIndex((x) => x.mes === mes);
+            if (idx >= 0 && data.fases[Math.min(idx, data.fases.length - 1)]) {
+              const nombre = mes.split(" ")[0].toLowerCase();
+              const f = data.fases.find((x) => x.periodo.toLowerCase().indexOf(nombre) !== -1);
+              if (f) setFaseSel(f.id);
+            }
+          }} />
           <p className="mi-geo-pct"><b>{data.geografia.pct_habana_jun_jul}%</b> de los eventos de junio y julio se concentraron en La Habana.</p>
           <ul className="mi-geo-lugares">
             {data.geografia.lugares_identificados.map((l, i) => (
@@ -394,17 +494,17 @@ export default function App() {
         </section>
 
         <section>
-          <SecHead n="06" t="Casos documentados" d="Cinco casos individuales, verificados de forma independiente, casi siempre distintos del patrón agregado." />
+          <SecHead n="05" t="Casos documentados" d="Cinco casos individuales, verificados de forma independiente, casi siempre distintos del patrón agregado." />
           <GaleriaCasos casos={data.casos} />
         </section>
 
         <section>
-          <SecHead n="07" t="Evaluación jurídica: cinco requisitos, ninguno cumplido" />
+          <SecHead n="06" t="Evaluación jurídica: cinco requisitos, ninguno cumplido" />
           <ChecklistJuridico evaluacion={data.evaluacion_juridica} />
         </section>
 
         <section>
-          <SecHead n="08" t="Cómo se verificó este expediente" d={v.nota} />
+          <SecHead n="07" t="Cómo se verificó este expediente" d={v.nota} />
           <div className="mi-verif-stats">
             <div><b>{v.total_evaluadas}</b><span>afirmaciones evaluadas</span></div>
             <div><b style={{ color: C.corrob }}>{v.corroboradas}</b><span>corroboradas</span></div>
@@ -414,12 +514,12 @@ export default function App() {
         </section>
 
         <section>
-          <SecHead n="09" t="Tu lectura" />
+          <SecHead n="08" t="Tu lectura" />
           <Encuesta datos={data.encuesta} />
         </section>
 
         <section>
-          <SecHead n="10" t="Referencias" />
+          <SecHead n="09" t="Referencias" />
           <ul className="mi-referencias">
             {data.referencias.map((r, i) => <li key={i}><b>{r.fuente}</b> — {r.detalle}{r.fecha ? ` (${r.fecha})` : ""}</li>)}
           </ul>
@@ -458,36 +558,38 @@ const CSS = `
 .mi-cita-eyebrow{ display:block; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; color:${C.dim}; margin-bottom:8px; }
 .mi-cita-texto{ font-family:'IBM Plex Mono',monospace; font-size:15px; line-height:1.55; color:${C.contrapunto}; margin:0 0 8px; }
 .mi-cita-atrib{ font-size:12px; color:${C.dim}; margin:0; display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
-.mi-espina{ position:relative; }
-.mi-espina-track{ display:flex; gap:0; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x proximity; }
-.mi-fase{ position:relative; flex:0 0 240px; scroll-snap-align:start; padding:22px 16px 4px; border-top:2px solid ${C.primario}; margin-right:4px; }
-.mi-fase-dot{ position:absolute; top:-6px; left:0; width:11px; height:11px; border-radius:50%; background:${C.primario}; }
+.mi-estudio{ display:grid; grid-template-columns:minmax(190px,230px) minmax(0,1fr); gap:20px; align-items:start; }
+.mi-rail{ position:sticky; top:16px; display:flex; flex-direction:column; gap:2px; padding-left:6px; }
+.mi-rail-linea{ position:absolute; left:11px; top:14px; bottom:14px; width:2px; background:${C.line}; }
+.mi-rail-b{ position:relative; display:flex; align-items:flex-start; gap:12px; background:none; border:none; padding:9px 8px; border-radius:8px; cursor:pointer; text-align:left; color:${C.dim}; font-family:inherit; transition:background .18s, color .18s; }
+.mi-rail-b:hover{ background:${C.panel}; color:${C.paper}; }
+.mi-rail-b.on{ background:${C.panel}; color:${C.paper}; }
+.mi-rail-dot{ width:11px; height:11px; border-radius:50%; background:${C.panel2}; border:2px solid ${C.dim}; flex-shrink:0; margin-top:3px; z-index:1; transition:background .18s, border-color .18s, transform .18s; }
+.mi-rail-b.on .mi-rail-dot{ background:${C.contrapunto}; border-color:${C.contrapunto}; transform:scale(1.2); }
+.mi-rail-txt{ display:flex; flex-direction:column; gap:2px; }
+.mi-rail-txt b{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:${C.contrapunto}; font-weight:500; }
+.mi-rail-txt i{ font-style:normal; font-size:13px; line-height:1.3; }
+.mi-estudio-panel{ display:flex; flex-direction:column; gap:16px; min-width:0; }
+.mi-fase-panel{ background:${C.panel}; border-radius:10px; padding:18px; border-left:3px solid ${C.contrapunto}; }
 .mi-fase-periodo{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:${C.contrapunto}; letter-spacing:.08em; }
-.mi-fase h3{ font-size:15.5px; margin:4px 0 6px; }
-.mi-fase p{ font-size:12.5px; line-height:1.5; color:${C.dim}; margin:0 0 8px; }
-.mi-fase ul{ margin:0; padding-left:16px; }
-.mi-fase li{ font-size:11.5px; line-height:1.5; color:${C.paper}; margin-bottom:4px; }
-.mi-barras-eventos{ display:flex; align-items:flex-end; gap:14px; background:${C.panel}; border-radius:10px; padding:20px 18px 14px; position:relative; }
-.mi-be-col{ display:flex; flex-direction:column; align-items:center; flex:1; }
-.mi-be-pct{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:${C.contrapunto}; margin-bottom:4px; }
-.mi-be-track{ width:100%; max-width:34px; display:flex; align-items:flex-end; }
-.mi-be-total{ width:100%; background:${C.primario}; border-radius:4px 4px 0 0; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
-.mi-be-represion{ width:100%; background:${C.contrapunto}; }
-.mi-be-num{ font-family:'IBM Plex Mono',monospace; font-size:12px; margin-top:6px; }
-.mi-be-mes{ font-size:10.5px; color:${C.dim}; margin-top:2px; text-align:center; }
-.mi-be-leyenda{ position:absolute; top:14px; right:16px; display:flex; flex-direction:column; gap:4px; font-size:10.5px; color:${C.dim}; }
-.mi-sw{ display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; vertical-align:middle; }
-.mi-sw-total{ background:${C.primario}; }
-.mi-sw-rep{ background:${C.contrapunto}; }
-.mi-linea-wrap{ margin-top:18px; background:${C.panel}; border-radius:10px; padding:16px 18px; }
-.mi-linea-svg{ width:100%; height:auto; }
-.mi-linea-path{ fill:none; stroke:${C.contrapunto}; stroke-width:2; }
-.mi-linea-path-parcial{ stroke-dasharray:5 4; opacity:.7; }
-.mi-linea-dot{ fill:${C.contrapunto}; }
-.mi-linea-dot-parcial{ fill:${C.bg}; stroke:${C.contrapunto}; stroke-width:2; }
-.mi-linea-valor{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; fill:${C.paper}; }
-.mi-linea-mes{ font-family:'IBM Plex Mono',monospace; font-size:9px; fill:${C.dim}; }
-.mi-linea-nota{ font-size:11px; color:${C.dim}; margin:8px 0 0; }
+.mi-fase-panel h3{ font-size:19px; margin:5px 0 8px; }
+.mi-fase-desc{ font-size:13.5px; line-height:1.6; color:${C.paper}; margin:0 0 10px; }
+.mi-fase-lista{ margin:0 0 14px; padding-left:16px; }
+.mi-fase-lista li{ font-size:12.5px; line-height:1.55; color:${C.dim}; margin-bottom:4px; }
+.mi-fase-cifras{ display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:10px; border-top:1px solid ${C.line}; padding-top:12px; }
+.mi-fase-cifras div{ text-align:center; }
+.mi-fase-cifras b{ display:block; font-family:'IBM Plex Mono',monospace; font-size:19px; color:${C.contrapunto}; }
+.mi-fase-cifras span{ font-size:9.5px; color:${C.dim}; text-transform:uppercase; letter-spacing:.04em; }
+.mi-chart-card{ background:${C.panel}; border-radius:10px; padding:16px 14px 10px; }
+.mi-chart-h{ font-size:14px; font-weight:600; margin-bottom:3px; padding-left:4px; }
+.mi-chart-sub{ font-size:11.5px; color:${C.dim}; margin-bottom:10px; line-height:1.45; padding-left:4px; }
+.mi-tip{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:10px 12px; box-shadow:0 6px 22px rgba(0,0,0,.45); }
+.mi-tip-h{ font-size:12.5px; font-weight:700; margin-bottom:6px; }
+.mi-tip-r{ display:flex; justify-content:space-between; gap:18px; font-size:11.5px; color:${C.dim}; margin-bottom:2px; }
+.mi-tip-r b{ color:${C.paper}; font-family:'IBM Plex Mono',monospace; }
+.mi-tip-f{ font-size:10px; color:${C.dim}; margin-top:6px; border-top:1px solid ${C.line}; padding-top:5px; font-style:italic; }
+.mi-cifras-adv{ font-size:11.5px; color:${C.dim}; line-height:1.55; background:${C.panel2}; border-radius:8px; padding:10px 14px; margin:0; }
+.mi-linea-nota{ font-size:11px; color:${C.dim}; margin:6px 0 0; padding-left:4px; }
 .mi-divergencia{ font-size:12.5px; line-height:1.55; color:${C.dim}; background:${C.panel2}; border-radius:8px; padding:12px 16px; margin-top:12px; }
 .mi-dial-wrap{ display:flex; flex-direction:column; align-items:center; background:${C.panel}; border-radius:10px; padding:22px 18px; }
 .mi-dial-svg{ width:100%; max-width:340px; height:auto; }
@@ -502,7 +604,12 @@ const CSS = `
 .mi-dial-caption b{ font-family:'IBM Plex Mono',monospace; font-size:28px; }
 .mi-dial-caption span{ font-size:11px; color:${C.dim}; text-transform:uppercase; letter-spacing:.08em; }
 .mi-dial-trail{ display:flex; align-items:flex-end; gap:0; margin-top:20px; width:100%; max-width:520px; }
-.mi-dial-trail-item{ position:relative; display:flex; flex-direction:column; align-items:center; flex:1; }
+.mi-dial-trail-item{ position:relative; display:flex; flex-direction:column; align-items:center; flex:1; background:none; border:none; padding:6px 2px; cursor:pointer; font-family:inherit; border-radius:8px; transition:background .18s; }
+.mi-dial-trail-item:hover{ background:${C.panel2}; }
+.mi-dial-trail-on{ background:${C.panel2}; }
+.mi-dial-trail-on .mi-dial-trail-dot{ transform:scale(1.4); }
+.mi-dial-trail-on .mi-dial-trail-mes{ color:${C.contrapunto}; }
+.mi-dial-fase{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:${C.contrapunto}; margin-top:12px; text-align:center; }
 .mi-dial-trail-conn{ position:absolute; top:5px; right:50%; width:100%; height:2px; background:${C.dim}; opacity:.4; border-top:2px dashed ${C.dim}; background:none; }
 .mi-dial-trail-conn-solid{ border-top:2px solid ${C.contrapunto}; opacity:1; }
 .mi-dial-trail-dot{ width:11px; height:11px; border-radius:50%; background:${C.panel2}; border:2px solid ${C.dim}; z-index:1; }
@@ -510,8 +617,11 @@ const CSS = `
 .mi-dial-trail-mes{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:${C.dim}; margin-top:6px; }
 .mi-dial-trail-val{ font-size:9.5px; color:${C.paper}; margin-top:2px; text-align:center; }
 .mi-dial-nota{ font-size:11.5px; color:${C.dim}; line-height:1.5; margin-top:16px; text-align:center; max-width:560px; }
-.mi-cobertura{ display:flex; gap:12px; flex-wrap:wrap; background:${C.panel}; border-radius:10px; padding:18px; }
-.mi-cob-item{ display:flex; flex-direction:column; align-items:center; flex:1; min-width:70px; }
+.mi-cobertura{ display:flex; gap:12px; flex-wrap:wrap; background:${C.panel}; border-radius:10px; padding:18px; align-items:flex-start; }
+.mi-cob-item{ display:flex; flex-direction:column; align-items:center; flex:1; min-width:70px; background:none; border:1px solid transparent; border-radius:10px; padding:8px 4px; cursor:pointer; font-family:inherit; color:inherit; transition:background .18s, border-color .18s; }
+.mi-cob-item:hover{ background:${C.panel2}; }
+.mi-cob-item.on{ background:${C.panel2}; border-color:${C.contrapunto}; }
+.mi-cob-nota{ flex:1 0 100%; font-size:11.5px; color:${C.dim}; line-height:1.55; margin:6px 0 0; }
 .mi-cob-svg{ width:64px; height:auto; }
 .mi-cob-outline{ fill:none; stroke:${C.dim}; stroke-width:.6; opacity:.5; }
 .mi-cob-fill{ stroke:none; fill:${C.contrapunto}; }
@@ -556,9 +666,13 @@ const CSS = `
 .mi-referencias li{ font-size:13px; color:${C.dim}; line-height:1.5; }
 .mi-referencias b{ color:${C.paper}; }
 .mi-conclusion{ font-size:15px; line-height:1.65; border-top:1px solid ${C.line}; padding-top:20px; }
+@media (max-width:820px){
+  .mi-estudio{ grid-template-columns:1fr; }
+  .mi-rail{ position:static; flex-direction:row; overflow-x:auto; padding-left:0; gap:6px; }
+  .mi-rail-linea{ display:none; }
+  .mi-rail-b{ flex:0 0 auto; flex-direction:column; align-items:flex-start; gap:6px; }
+}
 @media (max-width:640px){
-  .mi-barras-eventos{ flex-wrap:wrap; }
-  .mi-be-leyenda{ position:static; margin-top:10px; }
   .mi-dial-trail{ flex-wrap:wrap; }
 }
 `;

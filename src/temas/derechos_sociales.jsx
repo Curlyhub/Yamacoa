@@ -1,4 +1,8 @@
 import { useEffect, useState } from "react";
+import {
+  ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
+  CartesianGrid, Tooltip, Cell,
+} from "recharts";
 
 /* ============================================================================
    YAMACOA · expediente "derechos_sociales" — RENDERER CONGELADO
@@ -51,49 +55,100 @@ function Hecho({ h }) {
   );
 }
 
+/* FIRMA — cuentagotas de julio. Cada dia es una gota; el nivel de relleno NO se
+   inventa dia a dia (la fuente no publica telemetria diaria): las 31 comparten
+   el mismo estado de fondo y solo los 3 apagones nacionales con fecha
+   verificada llevan marca propia. Al pasar el cursor por un dia se abre su
+   lectura; la franja de violencia queda aparte, sin fecha asignable. */
 function CuentagotasJulio({ calendario }) {
   const dias = Array.from({ length: calendario.dias }, (_, i) => i + 1);
-  const blackoutDias = new Set(calendario.blackouts.map((b) => b.dia));
+  const porDia = new Map(calendario.blackouts.map((b) => [b.dia, b]));
+  const [hov, setHov] = useState(null);
+  const bo = hov != null ? porDia.get(hov) : null;
+
   return (
     <div className="ds-cuentagotas">
-      <div className="ds-cg-grid">
+      <div className="ds-cg-grid" onMouseLeave={() => setHov(null)}>
         {dias.map((d) => {
-          const isBlackout = blackoutDias.has(d);
+          const b = porDia.get(d);
           return (
-            <div className={"ds-cg-cell" + (isBlackout ? " ds-cg-cell-blackout" : "")} key={d} title={isBlackout ? `${d} de julio: desconexión total del SEN` : `${d} de julio: sin agua potable regular en zonas periféricas`}>
-              <svg viewBox="0 0 20 26" className="ds-cg-drop">
+            <button
+              className={"ds-cg-cell" + (b ? " ds-cg-cell-blackout" : "") + (hov === d ? " ds-cg-cell-hov" : "")}
+              key={d}
+              onMouseEnter={() => setHov(d)}
+              onFocus={() => setHov(d)}
+              aria-label={b ? `${d} de julio: desconexión total del sistema eléctrico` : `${d} de julio: sin agua potable regular en zonas periféricas`}
+            >
+              <svg viewBox="0 0 20 26" className="ds-cg-drop" aria-hidden="true">
                 <path d="M10 1 C10 1 2 12 2 18 A8 8 0 0 0 18 18 C18 12 10 1 10 1 Z" className="ds-cg-drop-shape" />
               </svg>
               <span className="ds-cg-day">{d}</span>
-            </div>
+            </button>
           );
         })}
       </div>
-      <p className="ds-cg-nota">{calendario.nota_agua} <span className="ds-cg-legend"><i className="ds-cg-sw ds-cg-sw-blackout" /> apagón nacional total (día verificado)</span></p>
-      <div className="ds-cg-violencia">
-        <span className="ds-cg-violencia-label">Violencia del mes, sin fecha asignable:</span>
-        <span className="ds-cg-violencia-item"><b>37</b> homicidios<Chip estado="no_confirmada" /></span>
-        <span className="ds-cg-violencia-item"><b>9</b> feminicidios<Chip estado="corroborada" /></span>
-        <span className="ds-cg-violencia-item"><b>4</b> suicidios<Chip estado="no_confirmada" /></span>
+
+      <div className="ds-cg-lectura" role="status">
+        {hov == null ? (
+          <span className="ds-cg-lectura-idle">Pasa el cursor por cualquier día de julio.</span>
+        ) : bo ? (
+          <>
+            <b className="ds-cg-lectura-t">{bo.fecha}</b>
+            <span>Desconexión total del Sistema Electroenergético Nacional.</span>
+            <Chip estado={bo.confianza} /><span className="ds-hecho-fuente">{bo.fuente}</span>
+          </>
+        ) : (
+          <>
+            <b className="ds-cg-lectura-t">{hov} de julio</b>
+            <span>Sin agua potable regular en zonas periféricas de La Habana — condición sostenida todo el mes.</span>
+            <Chip estado="corroborada" /><span className="ds-hecho-fuente">Diario de Cuba</span>
+          </>
+        )}
       </div>
+
+      <p className="ds-cg-nota">{calendario.nota_agua} <span className="ds-cg-legend"><i className="ds-cg-sw ds-cg-sw-blackout" /> apagón nacional total (día verificado)</span></p>
       <p className="ds-cg-nota">{calendario.nota_violencia}</p>
     </div>
   );
 }
 
+function TipComp({ active, payload }) {
+  if (!active || !payload || !payload.length) return null;
+  const d = payload[0].payload;
+  return (
+    <div className="ds-tip">
+      <div className="ds-tip-h">{d.fuente}</div>
+      <div className="ds-tip-r"><span>Muertes contadas</span><b>{d.etiqueta}</b></div>
+      <div className="ds-tip-f">{d.metodo}</div>
+    </div>
+  );
+}
+
+/* Dos monitores independientes, dos cifras para el mismo mes. Se dibujan como
+   barras comparables con tooltip propio; nunca se promedian ni se elige una. */
 function ComparativaHomicidios({ c }) {
-  const max = Math.max(c.cubalex_valor, c.cubanet_valor_aprox);
+  const datos = [
+    { fuente: "Cubalex", valor: c.cubalex_valor, etiqueta: String(c.cubalex_valor), estado: "no_confirmada",
+      metodo: "Red amplia de fuentes y redes sociales. Sin réplica independiente." },
+    { fuente: "Cubanet", valor: c.cubanet_valor_aprox, etiqueta: "~" + c.cubanet_valor_aprox, estado: "corroborada",
+      metodo: "Verificación propia más acotada, caso por caso." },
+  ];
   return (
     <div className="ds-comparativa">
-      <div className="ds-comp-row">
-        <span className="ds-comp-label">Cubalex</span>
-        <span className="ds-comp-track"><span className="ds-comp-fill ds-comp-fill-a" style={{ width: (c.cubalex_valor / max) * 100 + "%" }}><b>{c.cubalex_valor}</b></span></span>
-        <Chip estado="no_confirmada" />
-      </div>
-      <div className="ds-comp-row">
-        <span className="ds-comp-label">Cubanet</span>
-        <span className="ds-comp-track"><span className="ds-comp-fill ds-comp-fill-b" style={{ width: (c.cubanet_valor_aprox / max) * 100 + "%" }}><b>~{c.cubanet_valor_aprox}</b></span></span>
-        <Chip estado="corroborada" />
+      <ResponsiveContainer width="100%" height={150}>
+        <BarChart data={datos} layout="vertical" margin={{ top: 4, right: 40, left: 8, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(232,236,230,.06)" horizontal={false} />
+          <XAxis type="number" tick={{ fill: "#8B948D", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis type="category" dataKey="fuente" width={72} tick={{ fill: "#E8ECE6", fontSize: 12 }} axisLine={false} tickLine={false} />
+          <Tooltip content={<TipComp />} cursor={{ fill: "rgba(232,236,230,.05)" }} />
+          <Bar dataKey="valor" radius={[0, 5, 5, 0]} maxBarSize={38}>
+            {datos.map((d, i) => <Cell key={i} fill={d.estado === "corroborada" ? C.primario : C.contrapuntoClaro} />)}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <div className="ds-comp-chips">
+        <span><Chip estado="no_confirmada" /> Cubalex, {c.cubalex_valor} homicidios</span>
+        <span><Chip estado="corroborada" /> Cubanet, unos {c.cubanet_valor_aprox}</span>
       </div>
       <p className="ds-comp-nota">{c.nota}</p>
     </div>
@@ -102,18 +157,23 @@ function ComparativaHomicidios({ c }) {
 
 function DonutHoteles({ h }) {
   const R = 46, C_ = 2 * Math.PI * R;
+  const [hov, setHov] = useState(null);
   const pct = h.pct_cerrado;
   const dash = (pct / 100) * C_;
+  const abiertos = 100 - pct;
   return (
     <div className="ds-donut-wrap">
       <svg viewBox="0 0 120 120" className="ds-donut-svg" role="img" aria-label={`${pct}% del parque hotelero cerrado`}>
-        <circle cx="60" cy="60" r={R} className="ds-donut-bg" />
-        <circle cx="60" cy="60" r={R} className="ds-donut-fill" strokeDasharray={`${dash} ${C_}`} transform="rotate(-90 60 60)" />
-        <text x="60" y="56" textAnchor="middle" className="ds-donut-pct">{pct}%</text>
-        <text x="60" y="72" textAnchor="middle" className="ds-donut-sub">cerrado</text>
+        <circle cx="60" cy="60" r={R} className="ds-donut-bg"
+                onMouseEnter={() => setHov("abierto")} onMouseLeave={() => setHov(null)} />
+        <circle cx="60" cy="60" r={R} className="ds-donut-fill" strokeDasharray={`${dash} ${C_}`} transform="rotate(-90 60 60)"
+                onMouseEnter={() => setHov("cerrado")} onMouseLeave={() => setHov(null)} />
+        <text x="60" y="56" textAnchor="middle" className="ds-donut-pct">{hov === "abierto" ? abiertos : pct}%</text>
+        <text x="60" y="72" textAnchor="middle" className="ds-donut-sub">{hov === "abierto" ? "en servicio" : "cerrado"}</text>
       </svg>
       <div className="ds-donut-legend">
         <p>Salida de <b>{h.cadenas_salida.join(", ")}</b> del parque hotelero cubano.</p>
+        <p className="ds-donut-hint">Pasa el cursor por cada arco del anillo.</p>
         <p className="ds-donut-fuente"><Chip estado={h.confianza} /> <span>{h.fuente}</span></p>
       </div>
     </div>
@@ -194,6 +254,8 @@ function Encuesta({ datos }) {
 
 export default function App() {
   const [data, setData] = useState(EMBEDDED);
+  const [hilo, setHilo] = useState("ambos");
+  const ver = (h) => hilo === "ambos" || hilo === h;
 
   useEffect(() => {
     const id = "ds-fonts";
@@ -227,27 +289,49 @@ export default function App() {
           {data.intro.parrafos.map((p, i) => <p className="ds-parrafo" key={i}>{p}</p>)}
         </section>
 
+        <div className="ds-conmutador" role="group" aria-label="Filtrar por hilo">
+          {[["ambos", "Ambos hilos"], ["desc", "Solo derechos sociales"], ["violencia", "Solo violencia"]].map(([k, lbl]) => (
+            <button key={k} className={"ds-conm-b" + (hilo === k ? " on" : "")} onClick={() => setHilo(k)} aria-pressed={hilo === k}>
+              {lbl}
+            </button>
+          ))}
+          <span className="ds-conm-hint">
+            {hilo === "ambos" && "Las dos crisis del mes, en el orden en que se cruzan."}
+            {hilo === "desc" && "Agua, electricidad y salud: lo mejor verificado del informe."}
+            {hilo === "violencia" && "Homicidios, feminicidios y suicidios: donde los monitores no coinciden."}
+          </span>
+        </div>
+
+        {ver("desc") && (
         <section>
           <SecHead n="01" hilo="desc" t="Agua: tres meses de espera" d={data.desc.agua.resumen} />
           <div className="ds-hechos-grid">{data.desc.agua.hechos.map((h, i) => <Hecho h={h} key={i} />)}</div>
         </section>
+        )}
 
+        {ver("violencia") && (
         <section>
           <SecHead n="02" hilo="violencia" t="Homicidios: dos monitores, dos cifras" d={data.violencia.homicidios.nota} />
           <ComparativaHomicidios c={data.comparativa_homicidios} />
         </section>
+        )}
 
+        {ver("desc") && (
         <section>
           <SecHead n="03" hilo="desc" t="Electricidad y el calendario de julio" d={data.desc.electricidad.resumen} />
           <div className="ds-hechos-grid">{data.desc.electricidad.hechos.map((h, i) => <Hecho h={h} key={i} />)}</div>
           <CuentagotasJulio calendario={data.calendario_julio} />
         </section>
+        )}
 
+        {ver("desc") && (
         <section>
           <SecHead n="04" hilo="desc" t="Salud: lo que faltó" d={data.desc.salud.resumen} />
           <div className="ds-hechos-grid">{data.desc.salud.hechos.map((h, i) => <Hecho h={h} key={i} />)}</div>
         </section>
+        )}
 
+        {ver("violencia") && (
         <section>
           <SecHead n="05" hilo="violencia" t="Feminicidios, suicidios y el resto de la violencia" />
           <div className="ds-hechos-grid">
@@ -256,6 +340,7 @@ export default function App() {
             <Hecho h={{ afirmacion: data.violencia.otros_hechos.descripcion, confianza: data.violencia.otros_hechos.confianza, fuente: data.violencia.otros_hechos.fuente, nota: data.violencia.otros_hechos.nota }} />
           </div>
         </section>
+        )}
 
         <section>
           <SecHead n="06" t="Contexto económico: 176 medidas y cierre hotelero" />
@@ -319,33 +404,42 @@ const CSS = `
 .ds-hecho-fuente{ font-size:11px; color:${C.dim}; }
 .ds-hecho p{ font-size:13.5px; line-height:1.5; margin:0; }
 .ds-hecho-nota{ color:${C.dim}; font-size:12px; margin-top:6px !important; }
+.ds-conmutador{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:34px; padding:12px 14px; background:${C.panel}; border-radius:10px; border-left:3px solid ${C.primario}; }
+.ds-conm-b{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:7px 12px; border-radius:999px; border:1px solid ${C.line}; background:${C.panel2}; color:${C.dim}; cursor:pointer; }
+.ds-conm-b:hover{ color:${C.paper}; border-color:${C.dim}; }
+.ds-conm-b.on{ color:${C.bg}; background:${C.primario}; border-color:${C.primario}; font-weight:600; }
+.ds-conm-hint{ flex:1 1 220px; font-size:11.5px; color:${C.dim}; }
 .ds-cuentagotas{ margin-top:18px; background:${C.panel}; border-radius:10px; padding:18px; }
-.ds-cg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(30px,1fr)); gap:4px; }
-.ds-cg-cell{ display:flex; flex-direction:column; align-items:center; gap:2px; }
+.ds-cg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(32px,1fr)); gap:4px; }
+.ds-cg-cell{ display:flex; flex-direction:column; align-items:center; gap:2px; background:none; border:1px solid transparent; border-radius:7px; padding:4px 2px; cursor:pointer; font-family:inherit; transition:background .15s, border-color .15s; }
+.ds-cg-cell:hover, .ds-cg-cell-hov{ background:${C.panel2}; border-color:${C.line}; }
 .ds-cg-drop{ width:16px; height:20px; }
-.ds-cg-drop-shape{ fill:${C.primario}; opacity:.45; }
+.ds-cg-drop-shape{ fill:${C.primario}; opacity:.45; transition:opacity .15s; }
+.ds-cg-cell:hover .ds-cg-drop-shape{ opacity:.8; }
 .ds-cg-cell-blackout .ds-cg-drop-shape{ fill:${C.contrapuntoClaro}; opacity:1; filter:drop-shadow(0 0 4px rgba(138,90,99,.7)); }
 .ds-cg-day{ font-family:'IBM Plex Mono',monospace; font-size:8px; color:${C.dim}; }
+.ds-cg-lectura{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; min-height:38px; margin-top:12px; padding:10px 14px; background:${C.panel2}; border-radius:8px; font-size:12.5px; line-height:1.45; }
+.ds-cg-lectura-t{ font-family:'IBM Plex Mono',monospace; color:${C.contrapuntoClaro}; }
+.ds-cg-lectura-idle{ color:${C.dim}; font-style:italic; }
 .ds-cg-nota{ font-size:11.5px; color:${C.dim}; line-height:1.5; margin:12px 0 0; }
 .ds-cg-legend{ display:inline-flex; align-items:center; gap:5px; margin-left:8px; white-space:nowrap; }
 .ds-cg-sw{ display:inline-block; width:9px; height:9px; border-radius:2px; background:${C.contrapuntoClaro}; }
-.ds-cg-violencia{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:16px; padding-top:14px; border-top:1px solid ${C.line}; }
-.ds-cg-violencia-label{ font-size:11.5px; color:${C.dim}; }
-.ds-cg-violencia-item{ display:inline-flex; align-items:center; gap:6px; font-size:13px; }
-.ds-cg-violencia-item b{ font-family:'IBM Plex Mono',monospace; font-size:16px; }
-.ds-comparativa{ margin-top:12px; background:${C.panel}; border-radius:10px; padding:18px; display:flex; flex-direction:column; gap:10px; }
-.ds-comp-row{ display:grid; grid-template-columns:80px 1fr auto; align-items:center; gap:12px; }
-.ds-comp-label{ font-size:13px; font-weight:600; }
-.ds-comp-track{ position:relative; height:26px; background:${C.panel2}; border-radius:6px; overflow:hidden; }
-.ds-comp-fill{ position:absolute; top:2px; bottom:2px; left:0; border-radius:5px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; }
-.ds-comp-fill-a{ background:${C.contrapuntoClaro}; }
-.ds-comp-fill-b{ background:${C.primario}; }
-.ds-comp-fill b{ font-family:'IBM Plex Mono',monospace; font-size:12px; }
-.ds-comp-nota{ font-size:12px; color:${C.dim}; line-height:1.5; margin:6px 0 0; }
+.ds-comparativa{ margin-top:12px; background:${C.panel}; border-radius:10px; padding:18px 14px 14px; }
+.ds-tip{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:10px 12px; box-shadow:0 6px 22px rgba(0,0,0,.45); max-width:260px; }
+.ds-tip-h{ font-size:12.5px; font-weight:700; margin-bottom:5px; }
+.ds-tip-r{ display:flex; justify-content:space-between; gap:16px; font-size:11.5px; color:${C.dim}; }
+.ds-tip-r b{ color:${C.paper}; font-family:'IBM Plex Mono',monospace; }
+.ds-tip-f{ font-size:10.5px; color:${C.dim}; margin-top:6px; border-top:1px solid ${C.line}; padding-top:5px; line-height:1.4; font-style:italic; }
+.ds-comp-chips{ display:flex; gap:16px; flex-wrap:wrap; padding-left:6px; margin-top:4px; }
+.ds-comp-chips span{ display:inline-flex; align-items:center; gap:7px; font-size:12px; color:${C.dim}; }
+.ds-comp-nota{ font-size:12px; color:${C.dim}; line-height:1.5; margin:12px 0 0; }
 .ds-donut-wrap{ display:flex; gap:22px; align-items:center; flex-wrap:wrap; background:${C.panel}; border-radius:10px; padding:18px; margin-bottom:14px; }
 .ds-donut-svg{ width:120px; height:120px; flex-shrink:0; }
-.ds-donut-bg{ fill:none; stroke:${C.panel2}; stroke-width:12; }
-.ds-donut-fill{ fill:none; stroke:${C.contrapuntoClaro}; stroke-width:12; stroke-linecap:round; transition:stroke-dasharray .6s; }
+.ds-donut-bg{ fill:none; stroke:${C.panel2}; stroke-width:12; cursor:pointer; transition:stroke .18s; }
+.ds-donut-bg:hover{ stroke:#39433A; }
+.ds-donut-fill{ fill:none; stroke:${C.contrapuntoClaro}; stroke-width:12; stroke-linecap:round; transition:stroke-dasharray .6s, stroke .18s; cursor:pointer; }
+.ds-donut-fill:hover{ stroke:#A06B76; }
+.ds-donut-hint{ font-size:11px !important; color:${C.dim}; font-style:italic; }
 .ds-donut-pct{ font-family:'IBM Plex Mono',monospace; font-size:20px; fill:${C.paper}; }
 .ds-donut-sub{ font-size:10px; fill:${C.dim}; text-transform:uppercase; letter-spacing:.06em; }
 .ds-donut-legend{ flex:1; min-width:200px; }
