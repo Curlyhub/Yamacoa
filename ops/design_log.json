@@ -791,5 +791,176 @@
     ],
     "firma": "la matriz de trazabilidad: un diagrama bipartito en SVG con los cuatro casos de fallo comparado a la izquierda (Alaska, Timor-Leste, Venezuela, Kazajistan) y los catorce articulos a la derecha, unidos por bandas curvas en ciruela. Al pasar el cursor por cualquiera de los dos lados se ilumina la conexion completa y el resaltado se propaga al cuerpo del documento: sobrevolar 'Kazajistan' enciende tambien el Articulo 12 doscientos pixeles mas abajo, y sobrevolar el Articulo 12 enciende Kazajistan. Los articulos sin banda se dibujan en gris y quedan declarados en texto como procedentes del marco original, no derivados de un fallo comparado. El dispositivo no decora: es la tesis del documento hecha objeto, porque el argumento entero consiste en que ningun articulo nuevo es una preferencia estetica sino la respuesta a una junta por la que se rompio un fondo real. Un lector que solo mire el diagrama ya ha entendido la estructura del texto.",
     "procedencia": "Construido en sesion de trabajo el 2026-07-29 a partir de un documento marco previo del administrador sobre el Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional. Es un tema NORMATIVO, no de datos: el dataset codifica un articulado y su evidencia comparada, no una serie. Las diez secciones del documento original sobreviven todas, reordenadas; se anaden cuatro articulos nuevos (4 perimetro del blindaje, 5 perimetro institucional, 9 indicador de convergencia, 10 clausula de escape, 12 inmunidad y custodia) y se revisan dos (6 fuentes admisibles, 8 regla de extraccion). Cada articulo nuevo deriva de un fallo documentado, y el gate de coherencia verifica esa trazabilidad en ambos sentidos. Correcciones asumidas frente a la version original del administrador: el mecanismo decreciente se invierte a aportacion creciente (art. 7); las fuentes pasan de nombres concretos a categorias admisibles con exclusion expresa de la tributacion ordinaria de servicios (art. 6); el argumento de confianza se reformula de prima de riesgo a durabilidad, porque solo el segundo tiene evidencia; Singapur se degrada de referencia de gobernanza a referencia tecnica de gestion. La Parte V enumera cuatro cosas que el marco NO resuelve, incluida GAESA. El dividendo ciudadano queda como decision abierta con ambos lados argumentados, no como recomendacion. Gates ejecutados: balance de llaves OK, esbuild JSX bundle:false OK, ajv draft-07 OK, mas coherencia interna (trazabilidad bidireccional fallo<->articulo, todo articulo marcado 'nuevo' justificado por un fallo, numeracion continua sin huecos, toda entrada de fallo con fuente declarada) OK. Tema hermano: cascada_valor_minero, enlazado desde el criterio A del anexo; aquel aporta el numerador cuantitativo y este la arquitectura institucional, sin solaparse. Import del 2026-07-29 (/importar fondo): sin encuesta por decision del operador, el set no traia ninguna y el renderer no la contempla. Se corrigieron dos enlaces muertos al tema hermano — apuntaban a /cascada-valor-minero, que es el slug del DATASET de aquel tema y no su ruta; la ruta registrada es /cascada. Corregidos a #/cascada en dataset y en el fallback embebido, antes de publicar."
+  },
+  {
+    "tema": "angel_veliz",
+    "fecha": "2026-07-31",
+    "nota": "Ficha reconstruida retroactivamente desde src/temas/angel_veliz.jsx (ausente de la bitacora antes de este cambio).",
+    "paleta": {
+      "nombre": "Traslado y Linea Muerta",
+      "acentos": [
+        {
+          "hex": "#71397F",
+          "rol": "primario",
+          "h": 288
+        },
+        {
+          "hex": "#6B717B",
+          "rol": "contrapunto",
+          "h": 218
+        },
+        {
+          "hex": "#5BAE9A",
+          "rol": "corrob",
+          "h": 166
+        },
+        {
+          "hex": "#D9A13B",
+          "rol": "noconf",
+          "h": 39
+        }
+      ],
+      "fondo": "oscuro"
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "retrato-caso-y-patron-con-doble-carril",
+    "graficos": [
+      "plano-de-trayecto-svg-regimen-penitenciario",
+      "timeline-doble-carril-hijo-madre",
+      "fila-sellos-verificadores",
+      "waffle-once-j",
+      "barra-horizontal-comparables",
+      "encuesta"
+    ],
+    "firma": "plano de trayecto SVG: eje horizontal los tres traslados carcelarios (Kilo 7 a 8 a 9), eje vertical el regimen penitenciario, con sellos DENEGADO rotados marcando cada solicitud rechazada de volver a minima severidad -- la linea nunca vuelve a subir"
+  },
+  {
+    "tema": "militarizacion",
+    "fecha": "2026-08-15",
+    "paleta": {
+      "nombre": "Plomo de Cuartel",
+      "acentos": [
+        {
+          "hex": "#4D4068",
+          "rol": "primario",
+          "h": 260,
+          "s": 24,
+          "l": 33,
+          "nota": "Plomo-pizarra con fondo violeta frio: el gris de un uniforme de campana o el cristal ahumado de un tribunal militar, no el violeta saturado de sus vecinos reales en registry.js (protesta_solitaria h248, distancia 12 grados; envejecimiento h274, distancia 14 grados; angel_veliz h288, distancia 28 grados). Circulo saturado (30+ accents reales en registry.js): mismo criterio de aprieto documentado que sucesion (23 grados), desacreditacion (28 grados) y protesta_solitaria (26 grados), diferenciado por saturacion/luz muy por debajo de esos vecinos (S24/L33 frente a S42-58/L52-62)."
+        },
+        {
+          "hex": "#C7BEAE",
+          "rol": "contrapunto-renderer",
+          "h": 38,
+          "s": 18,
+          "l": 73,
+          "nota": "Papel kaki / hueso de expediente, casi acromatico a proposito. RENDERER-ONLY: arco caliente del dial de riesgo, sellos 'NO CUMPLE', barras de represion, mapa de cobertura. Nunca sale como accent de registry.js ni de portada, mismo criterio que el magenta de sulmira (h317) y la laterita de cascada_valor_minero (h27); a S18 no compite por hueco de matiz."
+        }
+      ],
+      "fondo": "oscuro",
+      "fondo_hex": "#15121C"
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "seis-secciones-con-espina-cronologica",
+    "graficos": [
+      "dial-radial-de-riesgo-clavado-en-tope-mecanico",
+      "small-multiples-mapa-cobertura-provincial",
+      "barra-anotada-eventos-represion",
+      "linea-protestas-con-tramo-parcial-punteado",
+      "espina-horizontal-de-fases",
+      "checklist-sello-no-cumple",
+      "galeria-casos-con-cronologia-plegada",
+      "encuesta"
+    ],
+    "firma": "el dial de riesgo de Cubalex (escala 1 a 5) dibujado como manometro de cuartel: aguja clavada en el tope mecanico (5/5) desde abril de 2026, con una fila de meses conectados (el 'trail') que registra febrero y marzo como tramo punteado 'sin cuantificar' -en vez de aguja que sube con cifras inventadas, porque el informe fuente no publica un nivel numerico anterior a abril- y abril-julio como plataforma solida en color contrapunto: la lectura queda grabada como cicatriz permanente sin fabricar ningun dato que Cubalex no publico.",
+    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/militar/Cubalex-Militarizacion-en-Cuba_ReporteAug2026.pdf (informe especial de Cubalex, corte de datos 25 de julio de 2026). Subagente verificador: 11 afirmaciones evaluadas, 9 corroboradas por fuentes independientes de Cubalex (sesion del Consejo de Defensa Nacional del 17-ene-2026 y su desmentido, Resolucion 6/2026 del MININT, campana Mi Firma por la Patria, restriccion de viajes interprovinciales, y cinco casos individuales: Eduardo Ceballos, Alexander Verdecia, Andy Garcia Lorenzo, Manuel Cuesta Morua, Luis Manuel Otero Alcantara), 2 no confirmadas/divergentes (las dos series numericas agregadas del propio monitoreo de Cubalex -eventos mensuales y protestas mensuales-, sin replica exacta de otro observatorio; la serie de protestas diverge de las cifras del Observatorio Cubano de Conflictos para los mismos meses). Ambas series se presentan igualmente en el dataset pero marcadas de forma visible como 'segun Cubalex', nunca como corroboradas por segunda fuente (cifras.advertencia y cifras.nota_divergencia_occ). Geometria real de Cuba (CUBA_FEATURE, contorno de 42 puntos) reutilizada verbatim de represion_cuba.jsx solo para la silueta del mapa de cobertura; sin senal por provincia nombrada porque el informe no identifica la mayoria de las provincias de sus conteos mensuales, solo siete lugares explicitos (seis municipios de La Habana y un evento en Santiago de Cuba), listados en geografia.lugares_identificados. Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
+  },
+  {
+    "tema": "derechos_sociales",
+    "fecha": "2026-08-15",
+    "paleta": {
+      "nombre": "Cisterna y Vino Oxidado",
+      "acentos": [
+        {
+          "hex": "#3A5F4D",
+          "rol": "primario",
+          "h": 151,
+          "s": 24,
+          "l": 30,
+          "nota": "Verde-cisterna institucional, agua estancada, no bronce vivo. Circulo saturado a grano fino (~47 accents en 360 grados tras 24 fichas previas): el hueco real mas ancho de primarios vivos es de solo 36 grados (entre convocatoria_11j h132 y normas h168), por debajo del minimo de 40. Se ocupa el punto medio de ese hueco y se diferencia por saturacion/luminosidad: sucesion-contrapunto cae en el mismo matiz h151 pero a S40/L46 (mucho mas claro y vivo); este primario es S24/L30, mas oscuro y turbio, y ademas compite como primario contra un uso secundario ajeno, lo que reduce la confusion practica. Mismo patron ya documentado por cascada_valor_minero, marco_fondo_soberano y auditar."
+        },
+        {
+          "hex": "#3F222B",
+          "rol": "contrapunto-renderer",
+          "h": 341,
+          "s": 30,
+          "l": 19,
+          "nota": "Vino oxidado casi negro, marca puntual de violencia (cuentagotas-calendario, comparativa de homicidios, donut hotelero). Hueco real de contrapuntos vivos mas ancho es 46 grados (entre auditar-accent-portada h319 y represion-intenso h5), dando ~23 grados de margen, a 2 del minimo de 25 -el mejor resultado posible en la rueda saturada-. Mitigado a S30/L19 (casi negro) frente a vecinos rosas/magenta vivos y claros (anatomia_11j H350 S75 L64, coraje_dividido H333 S50 L52, sulmira-cp H317 S58 L55, auditar-portada H319 S47 L59): no se lee como 'un rosa mas'. RENDERER-ONLY, no sale como accent de registry.js."
+        }
+      ],
+      "fondo": "oscuro",
+      "fondo_hex": "#0F1210"
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "boletin-mensual-en-dos-hilos",
+    "graficos": [
+      "cuentagotas-calendario-de-julio",
+      "comparativa-homicidios-dos-fuentes",
+      "donut-cierre-hotelero",
+      "fichas-de-contexto-breve",
+      "encuesta"
+    ],
+    "firma": "cuentagotas-calendario de julio: 31 casillas verticales, una por dia, cada una una gota SVG en verde-cisterna apagado que representa la condicion sostenida de falta de agua potable durante todo el mes (no una telemetria diaria inventada); solo los 3 dias de apagon nacional total con fecha verificada de forma independiente (6, 10 y 14 de julio) llevan el borde en vino oxidado con resplandor. Las cifras de violencia del mes (37 homicidios, 9 feminicidios, 4 suicidios) se muestran como una franja aparte, rotulada explicitamente 'sin fecha asignable', porque el informe fuente no desglosa el dia de cada hecho: nunca se proyectan sobre una casilla concreta del calendario para no fabricar una correlacion que las fuentes no establecen.",
+    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/derechossociales/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf. Antes de disenar, el subagente disenador detecto y corrigio una laguna en esta bitacora: angel_veliz estaba publicado en registry.js pero ausente aqui; se reconstruyo su ficha desde el jsx antes de calcular distancias de matiz. Angulo elegido tras cruzar el informe contra temas ya publicados: represion y militarizacion ya cubren represion politica y el caso Otero Alcantara (que reaparece en este informe de julio), electrica cubre la crisis electrica con enfoque de ingenieria y medidas_176 cubre las 176 medidas con enfoque contrafactual-comparado; ninguno cubria el angulo de violacion de derechos DESC (agua, electricidad, salud) ni el repunte de violencia ciudadana. Subagente verificador: 11 afirmaciones evaluadas, 7 corroboradas por fuentes independientes de Cubalex (crisis hidrica en La Habana, apagones totales del SEN con fecha verificada, crisis sanitaria, cierre del 73% del parque hotelero, 176 medidas con 92.000 plazas eliminadas y atrasos salariales, sanciones OFAC, y 9 feminicidios confirmados de forma independiente por el Observatorio de Genero Alas Tensas), 2 parcialmente corroboradas (patron general de robos violentos sin confirmar el detalle de equipos de generacion electrica; inicio de la ayuda de Caritas sin confirmar denuncias de desvio) y 2 no confirmadas (37 homicidios totales y 4 suicidios, cifras autorreferenciales de la serie propia de Cubalex; un monitor independiente distinto, Cubanet, conto alrededor de 20 muertes violentas el mismo mes con metodologia distinta -ver comparativa_homicidios, que muestra ambas cifras sin fusionarlas ni promediarlas-). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
+  },
+  {
+    "tema": "cerco_julio",
+    "fecha": "2026-08-15",
+    "paleta": {
+      "nombre": "Citacion y Reten",
+      "acentos": [
+        {
+          "hex": "#D4BD2B",
+          "rol": "primario",
+          "h": 52,
+          "nota": "Oro-mostaza de papel de convocatoria administrativa, no bronce ni oro de bandera. Circulo con 57 acentos vivos (separacion media 6.3 grados): el maximo global alcanzable para cualquier primario nuevo es 13 grados, muy por debajo de 40. Se prioriza distancia real frente al cluster tematicamente confundible (represion h4, militarizacion h260, derechos_sociales h151, sulmira h109, protesta_solitaria h248, angel_veliz h288, anatomia_11j h348, racismo h330): minimo real 48 grados frente a los ocho. Vecino numerico mas cercano en toda la bitacora es sucesion (h62, Delta 10 grados), tema y layout completamente ajenos."
+        },
+        {
+          "hex": "#4B578B",
+          "rol": "contrapunto",
+          "h": 229,
+          "nota": "Azul-pizarra desaturado (S=30%), vernaculo cubano literal para el puesto de control/reten de la Seguridad del Estado, no una metafora importada; no es azul bandera saturado (h222, S75, de himno_narciso). Maximo global para contrapunto nuevo es 20 grados. Vecino numerico mas cercano es cascada_valor_minero (h235, Delta 6 grados), mitigado por saturacion/luminosidad muy distintas (S30/L42 grafito apagado vs S30/L58 periwinkle claro) y por no compartir nunca el mismo carril narrativo del sitio."
+        }
+      ],
+      "fondo": "oscuro",
+      "fondo_hex": "#14120C"
+    },
+    "tipografia": {
+      "display": "Archivo",
+      "datos": "IBM Plex Mono",
+      "extra": null
+    },
+    "layout": "triptico-central-con-satelites-y-cierre-en-balanza",
+    "graficos": [
+      "timeline-triple-sincronizada",
+      "mapa-provincias",
+      "galeria-casos-satelite",
+      "conteo-de-cierre-muertes-vs-excarcelados",
+      "encuesta"
+    ],
+    "firma": "tres lineas de tiempo verticales -Gonzalez Aguero, Diaz Rodriguez, Hernandez Leyva- alineadas en un unico marcador horizontal (2 de julio, mismo operativo) con los mismos glifos de ruptura (incomunicacion, golpiza, desnudez forzada, amenaza de muerte) estampados en la misma cota vertical en las tres pistas; a partir de ahi las pistas se desalinean y cada una sigue su propio hostigamiento de julio en dias distintos. La sincronia inicial es la prueba visual de un operativo centralizado, y coincide honestamente con el corte real entre lo corroborado (2 de julio, prensa independiente) y lo no confirmado (todo lo posterior, solo Cubalex).",
+    "procedencia": "Tercer expediente construido en la sesion desde informes de Cubalex sobre Cuba en 2026 (militarizacion, derechos_sociales, ahora cerco_julio). Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/situacion-0626/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf: este PDF resulto ser byte a byte identico (MD5 f1d8acaf69b7f3fa49c835948ecf3f01) al usado en derechos_sociales; se detecto la duplicacion antes de procesar y se consulto al administrador, que pidio extraer un angulo distinto del mismo informe. Angulo elegido: la campana de represion selectiva/individualizada de julio (operativo del 2 de julio contra defensores, muertes bajo custodia, excarcelaciones), contenido no usado por derechos_sociales (DESC + violencia ciudadana) ni por militarizacion (caso Otero Alcantara, estado de excepcion). Subagente verificador: 13 afirmaciones evaluadas, 6 corroboradas por fuentes independientes de Cubalex (el operativo del 2 de julio como fenomeno, con mas de una decena de nombres propios reportados por prensa; los hechos centrales de Gonzalez Aguero, Diaz Rodriguez y Hernandez Leyva; el interrogatorio de Anna Sofia Benitez; el caso del adolescente de 13 anos golpeado en Boyeros, identificado por prensa independiente como Alex Javier Hernandez Gonzalez; la muerte de Rolando Yunior Rodriguez Torres; las cuatro excarcelaciones), 3 parcialmente corroboradas (la cifra 'al menos 25' del operativo, sin respaldo textual exacto; el caso Acosta Gomez, con traslado carcelario y fianzas que divergen entre el informe original y la prensa independiente; la muerte de Jorge Luis Iglesia Rodriguez, confirmada pero con causa distinta -infeccion de prostata segun prensa independiente, no solo tuberculosis como cita Cubalex-) y 4 no confirmadas (el hostigamiento continuado tras el 2 de julio, el caso Lopez Canino, dos menores adicionales en Regla y Arroyo Naranjo, y la muerte de Osviel Rivero Viera, sin ninguna fuente independiente localizada). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
   }
 ]

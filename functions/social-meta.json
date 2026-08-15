@@ -128,5 +128,21 @@
   "/fondo": {
     "t": "El fondo que aún no existe",
     "d": "Marco para la creación de cualquier fondo soberano en una Cuba democrática"
+  },
+  "/angel-veliz": {
+    "t": "Movido tres veces, aliviado ninguna",
+    "d": "Ángel Jesús Véliz Marcano, preso del 11J en Camagüey, condenado a 6 años de prisión: tres traslados carcelarios entre 2021 y 2024, ninguno hacia el régimen de mínima severidad que le habría acercado a la libertad condicional, mientras su madre, exiliada desde 2024, ya no puede comunicarse con él por teléfono."
+  },
+  "/militarizacion": {
+    "t": "Guerra sin declarar",
+    "d": "Desde el 17 de enero de 2026, estructuras militares gobiernan funciones civiles en Cuba sin que el Estado haya proclamado ninguna de las situaciones excepcionales que prevé su propia Constitución: 215 eventos documentados por Cubalex entre febrero y julio, un civil procesado por espionaje ante un tribunal militar y amenazas de muerte contra presos políticos."
+  },
+  "/derechos_sociales": {
+    "t": "Julio sin tregua",
+    "d": "En julio de 2026, zonas periféricas de La Habana cumplieron tres meses sin agua potable, el sistema eléctrico colapsó por completo al menos tres veces y Cubalex contó nueve feminicidios, la cifra más alta de su serie mensual. El propio informe describe julio como el mes de mayor violencia ciudadana desde 2022 — pero, a diferencia de los feminicidios, esa cifra total no ha sido confirmada por una segunda fuente."
+  },
+  "/cerco_julio": {
+    "t": "El cerco de julio",
+    "d": "El 2 de julio de 2026, la Seguridad del Estado desplegó un operativo simultáneo contra activistas en varias provincias para impedirles asistir a un acto de la Embajada de Estados Unidos. Tres defensores de derechos humanos fueron incomunicados, golpeados y amenazados de muerte el mismo día. En paralelo, cuatro presos políticos salieron libres tras cumplir condena, mientras otros no sobrevivieron bajo custodia."
   }
 }

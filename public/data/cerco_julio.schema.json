@@ -1,0 +1,254 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/cerco_julio.schema.json",
+  "title": "Cerco de julio",
+  "description": "Contrato del dataset respirante del expediente sobre la campana de represion selectiva contra defensores de derechos humanos en Cuba en julio de 2026 (operativo del 2 de julio, hostigamiento continuado, muertes bajo custodia y excarcelaciones), basado en el informe mensual de Cubalex.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "operativo", "tres_pistas", "casos_satelite",
+    "cierre_balanza", "contexto_agregado", "provincias", "verificacion",
+    "encuesta", "referencias", "metodologia", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "descripcion", "narracion", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "cerco_julio" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parrafos"],
+      "properties": { "parrafos": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "minLength": 80 } } }
+    },
+    "operativo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fecha", "resumen", "cifra_afirmada", "hechos", "nombres_adicionales"],
+      "properties": {
+        "fecha": { "type": "string" },
+        "resumen": { "type": "string", "minLength": 40 },
+        "cifra_afirmada": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["valor", "confianza", "fuente", "nota"],
+          "properties": {
+            "valor": { "type": "integer", "minimum": 0 },
+            "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" },
+            "nota": { "type": "string", "minLength": 30 }
+          }
+        },
+        "hechos": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/hecho" } },
+        "nombres_adicionales": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      }
+    },
+    "tres_pistas": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["persona", "eventos"],
+        "properties": {
+          "persona": { "type": "string" },
+          "eventos": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fecha", "hecho", "confianza", "fuente", "sincronizado"],
+              "properties": {
+                "fecha": { "type": "string" },
+                "hecho": { "type": "string", "minLength": 10 },
+                "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+                "fuente": { "type": "string" },
+                "sincronizado": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "casos_satelite": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nombre", "resumen", "hechos", "confianza_global"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "resumen": { "type": "string", "minLength": 20 },
+          "hechos": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/hecho" } },
+          "confianza_global": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] }
+        }
+      }
+    },
+    "cierre_balanza": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["muertes", "excarcelados", "nota"],
+      "properties": {
+        "muertes": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/persona_evento" } },
+        "excarcelados": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/persona_evento" } },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "contexto_agregado": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resumen", "cifras", "cortes_telecom", "confianza", "fuente"],
+      "properties": {
+        "resumen": { "type": "string", "minLength": 30 },
+        "cifras": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["eventos", "incidentes", "victimas", "municipios", "provincias_total"],
+          "properties": {
+            "eventos": { "type": "integer" },
+            "incidentes": { "type": "integer" },
+            "victimas": { "type": "integer" },
+            "municipios": { "type": "integer" },
+            "provincias_total": { "type": "integer" }
+          }
+        },
+        "cortes_telecom": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["valor", "nota"],
+          "properties": { "valor": { "type": "integer" }, "nota": { "type": "string" } }
+        },
+        "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+        "fuente": { "type": "string" }
+      }
+    },
+    "provincias": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nombre", "eventos", "confianza", "fuente"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "eventos": { "type": "integer", "minimum": 0 },
+          "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+          "fuente": { "type": "string" }
+        }
+      }
+    },
+    "verificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_evaluadas", "corroboradas", "parcialmente_corroboradas", "no_confirmadas", "excluidas", "nota"],
+      "properties": {
+        "total_evaluadas": { "type": "integer", "minimum": 1 },
+        "corroboradas": { "type": "integer", "minimum": 0 },
+        "parcialmente_corroboradas": { "type": "integer", "minimum": 0 },
+        "no_confirmadas": { "type": "integer", "minimum": 0 },
+        "excluidas": { "type": "integer", "minimum": 0 },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preguntas"],
+      "properties": {
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z_]+$" },
+              "texto": { "type": "string" },
+              "opciones": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fuente", "detalle"],
+        "properties": { "fuente": { "type": "string" }, "detalle": { "type": "string" }, "fecha": { "type": "string" } }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fuentes", "periodo", "cadencia", "extraccion", "validacion", "limitaciones", "cambios_metodologicos"],
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tipo"],
+            "properties": { "nombre": { "type": "string" }, "tipo": { "type": "string" }, "url": { "type": "string" } }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  },
+  "definitions": {
+    "hecho": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["afirmacion", "confianza", "fuente"],
+      "properties": {
+        "afirmacion": { "type": "string", "minLength": 15 },
+        "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+        "fuente": { "type": "string", "minLength": 3 },
+        "nota": { "type": "string" }
+      }
+    },
+    "persona_evento": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nombre", "detalle", "confianza", "fuente"],
+      "properties": {
+        "nombre": { "type": "string" },
+        "detalle": { "type": "string", "minLength": 15 },
+        "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+        "fuente": { "type": "string" },
+        "nota": { "type": "string" }
+      }
+    }
+  }
+}

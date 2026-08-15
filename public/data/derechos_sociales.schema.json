@@ -1,0 +1,258 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/derechos_sociales.schema.json",
+  "title": "Derechos sociales",
+  "description": "Contrato del dataset respirante del expediente sobre la crisis de derechos economicos, sociales y culturales (agua, electricidad, salud) y el repunte de violencia ciudadana en Cuba en julio de 2026, basado en el informe mensual de Cubalex.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "desc", "violencia", "comparativa_homicidios",
+    "hoteles", "economia_contexto", "calendario_julio", "verificacion",
+    "encuesta", "referencias", "metodologia", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "descripcion", "narracion", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "derechos_sociales" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parrafos"],
+      "properties": {
+        "parrafos": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "minLength": 80 } }
+      }
+    },
+    "desc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agua", "electricidad", "salud"],
+      "properties": {
+        "agua": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["resumen", "hechos"],
+          "properties": {
+            "resumen": { "type": "string", "minLength": 30 },
+            "hechos": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/hecho" } }
+          }
+        },
+        "electricidad": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["resumen", "hechos"],
+          "properties": {
+            "resumen": { "type": "string", "minLength": 30 },
+            "hechos": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/hecho" } }
+          }
+        },
+        "salud": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["resumen", "hechos"],
+          "properties": {
+            "resumen": { "type": "string", "minLength": 30 },
+            "hechos": { "type": "array", "minItems": 1, "maxItems": 6, "items": { "$ref": "#/definitions/hecho" } }
+          }
+        }
+      }
+    },
+    "violencia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["homicidios", "feminicidios", "suicidios", "otros_hechos"],
+      "properties": {
+        "homicidios": { "$ref": "#/definitions/metrica" },
+        "feminicidios": { "$ref": "#/definitions/metrica" },
+        "suicidios": { "$ref": "#/definitions/metrica" },
+        "otros_hechos": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["descripcion", "confianza", "fuente"],
+          "properties": {
+            "descripcion": { "type": "string", "minLength": 30 },
+            "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" },
+            "nota": { "type": "string" }
+          }
+        }
+      }
+    },
+    "comparativa_homicidios": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cubalex_valor", "cubalex_fuente", "cubanet_valor_aprox", "cubanet_fuente", "nota"],
+      "properties": {
+        "cubalex_valor": { "type": "integer", "minimum": 0 },
+        "cubalex_fuente": { "type": "string" },
+        "cubanet_valor_aprox": { "type": "integer", "minimum": 0 },
+        "cubanet_fuente": { "type": "string" },
+        "nota": { "type": "string", "minLength": 60 }
+      }
+    },
+    "hoteles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pct_cerrado", "cadenas_salida", "confianza", "fuente", "nota"],
+      "properties": {
+        "pct_cerrado": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "cadenas_salida": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+        "fuente": { "type": "string" },
+        "nota": { "type": "string", "minLength": 30 }
+      }
+    },
+    "economia_contexto": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titulo", "detalle", "confianza", "fuente"],
+        "properties": {
+          "titulo": { "type": "string" },
+          "detalle": { "type": "string", "minLength": 20 },
+          "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+          "fuente": { "type": "string" },
+          "nota": { "type": "string" }
+        }
+      }
+    },
+    "calendario_julio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dias", "blackouts", "nota_agua", "nota_violencia"],
+      "properties": {
+        "dias": { "const": 31 },
+        "blackouts": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["dia", "fecha", "confianza", "fuente"],
+            "properties": {
+              "dia": { "type": "integer", "minimum": 1, "maximum": 31 },
+              "fecha": { "type": "string" },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string" }
+            }
+          }
+        },
+        "nota_agua": { "type": "string", "minLength": 40 },
+        "nota_violencia": { "type": "string", "minLength": 40 }
+      }
+    },
+    "verificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_evaluadas", "corroboradas", "parcialmente_corroboradas", "no_confirmadas", "excluidas", "nota"],
+      "properties": {
+        "total_evaluadas": { "type": "integer", "minimum": 1 },
+        "corroboradas": { "type": "integer", "minimum": 0 },
+        "parcialmente_corroboradas": { "type": "integer", "minimum": 0 },
+        "no_confirmadas": { "type": "integer", "minimum": 0 },
+        "excluidas": { "type": "integer", "minimum": 0 },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preguntas"],
+      "properties": {
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z_]+$" },
+              "texto": { "type": "string" },
+              "opciones": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "type": "string" } }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fuente", "detalle"],
+        "properties": {
+          "fuente": { "type": "string" },
+          "detalle": { "type": "string" },
+          "fecha": { "type": "string" }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fuentes", "periodo", "cadencia", "extraccion", "validacion", "limitaciones", "cambios_metodologicos"],
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tipo"],
+            "properties": { "nombre": { "type": "string" }, "tipo": { "type": "string" }, "url": { "type": "string" } }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": { "type": "array", "items": { "type": "string" } },
+        "cambios_metodologicos": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  },
+  "definitions": {
+    "hecho": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["afirmacion", "confianza", "fuente"],
+      "properties": {
+        "afirmacion": { "type": "string", "minLength": 20 },
+        "confianza": { "type": "string", "enum": ["corroborada", "parcialmente_corroborada", "no_confirmada"] },
+        "fuente": { "type": "string", "minLength": 5 },
+        "nota": { "type": "string" }
+      }
+    },
+    "metrica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valor", "etiqueta", "confianza", "fuente"],
+      "properties": {
+        "valor": { "type": "integer", "minimum": 0 },
+        "etiqueta": { "type": "string" },
+        "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+        "fuente": { "type": "string" },
+        "nota": { "type": "string" }
+      }
+    }
+  }
+}

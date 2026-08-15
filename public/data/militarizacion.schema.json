@@ -1,0 +1,362 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/militarizacion.schema.json",
+  "title": "Militarización",
+  "description": "Contrato del dataset respirante del expediente sobre la militarizacion de facto de la vida civil en Cuba desde el 17 de enero de 2026, basado en el informe especial de Cubalex (febrero-julio 2026).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "origen", "fases", "cifras", "riesgo", "geografia",
+    "casos", "evaluacion_juridica", "verificacion", "encuesta", "referencias",
+    "metodologia", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "descripcion", "narracion", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "militarizacion" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": {
+          "type": "string",
+          "description": "Registro factual largo del expediente. Capa descriptiva (/narrar); no la consume el renderer congelado.",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "description": "Guion de audio corto para el servidor TTS (tts.yamacoa.com). Cifras en palabras, espanol, sin em dashes.",
+          "minLength": 300,
+          "maxLength": 1450
+        },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parrafos"],
+      "properties": {
+        "parrafos": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 80 }
+        }
+      }
+    },
+    "origen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fecha", "hechos", "cita_oficial"],
+      "properties": {
+        "fecha": { "type": "string" },
+        "hechos": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["afirmacion", "confianza", "fuente"],
+            "properties": {
+              "afirmacion": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 }
+            }
+          }
+        },
+        "cita_oficial": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["texto", "atribucion", "fecha", "confianza", "fuente"],
+          "properties": {
+            "texto": { "type": "string", "minLength": 10 },
+            "atribucion": { "type": "string" },
+            "fecha": { "type": "string" },
+            "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+            "fuente": { "type": "string" }
+          }
+        }
+      }
+    },
+    "fases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "periodo", "titulo", "descripcion", "hechos_clave"],
+        "properties": {
+          "id": { "type": "string" },
+          "periodo": { "type": "string" },
+          "titulo": { "type": "string" },
+          "descripcion": { "type": "string", "minLength": 40 },
+          "hechos_clave": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "items": { "type": "string", "minLength": 10 }
+          }
+        }
+      }
+    },
+    "cifras": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["advertencia", "serie_mensual", "serie_protestas", "nota_divergencia_occ"],
+      "properties": {
+        "advertencia": { "type": "string", "minLength": 60 },
+        "serie_mensual": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mes", "eventos", "represion", "pct_represion", "victimas", "provincias"],
+            "properties": {
+              "mes": { "type": "string" },
+              "eventos": { "type": "integer", "minimum": 0 },
+              "represion": { "type": "integer", "minimum": 0 },
+              "pct_represion": { "type": "number", "minimum": 0, "maximum": 100 },
+              "victimas": { "type": "integer", "minimum": 0 },
+              "provincias": { "type": "integer", "minimum": 0, "maximum": 15 }
+            }
+          }
+        },
+        "serie_protestas": {
+          "type": "array",
+          "minItems": 7,
+          "maxItems": 7,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mes", "valor", "parcial"],
+            "properties": {
+              "mes": { "type": "string" },
+              "valor": { "type": "integer", "minimum": 0 },
+              "parcial": { "type": "boolean" }
+            }
+          }
+        },
+        "nota_divergencia_occ": { "type": "string", "minLength": 60 }
+      }
+    },
+    "riesgo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["escala_max", "nivel_actual", "desde", "historial", "nota"],
+      "properties": {
+        "escala_max": { "const": 5 },
+        "nivel_actual": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "desde": { "type": "string" },
+        "historial": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["mes", "nivel", "fase"],
+            "properties": {
+              "mes": { "type": "string" },
+              "nivel": { "type": ["integer", "null"], "minimum": 1, "maximum": 5 },
+              "fase": { "type": "string" }
+            }
+          }
+        },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "geografia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pct_habana_jun_jul", "lugares_identificados", "nota"],
+      "properties": {
+        "pct_habana_jun_jul": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "lugares_identificados": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["lugar", "provincia", "evento", "fecha", "fuente", "confianza"],
+            "properties": {
+              "lugar": { "type": "string" },
+              "provincia": { "type": "string" },
+              "evento": { "type": "string", "minLength": 10 },
+              "fecha": { "type": "string" },
+              "fuente": { "type": "string" },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] }
+            }
+          }
+        },
+        "nota": { "type": "string", "minLength": 60 }
+      }
+    },
+    "casos": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "nombre", "resumen", "hechos", "desenlace", "confianza_global"],
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "alias": { "type": "string" },
+          "resumen": { "type": "string", "minLength": 30 },
+          "hechos": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["afirmacion", "confianza", "fuente"],
+              "properties": {
+                "afirmacion": { "type": "string", "minLength": 20 },
+                "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+                "fuente": { "type": "string", "minLength": 5 }
+              }
+            }
+          },
+          "actos": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["paso", "fecha", "resultado"],
+              "properties": {
+                "paso": { "type": "integer", "minimum": 1 },
+                "fecha": { "type": "string" },
+                "resultado": { "type": "string", "minLength": 10 }
+              }
+            }
+          },
+          "desenlace": { "type": "string", "minLength": 20 },
+          "confianza_global": { "type": "string", "enum": ["corroborada", "no_confirmada"] }
+        }
+      }
+    },
+    "evaluacion_juridica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requisitos", "nota"],
+      "properties": {
+        "requisitos": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "cumplido", "descripcion"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "cumplido": { "type": "boolean" },
+              "descripcion": { "type": "string", "minLength": 30 }
+            }
+          }
+        },
+        "nota": { "type": "string", "minLength": 60 }
+      }
+    },
+    "verificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_evaluadas", "corroboradas", "no_confirmadas", "excluidas", "nota"],
+      "properties": {
+        "total_evaluadas": { "type": "integer", "minimum": 1 },
+        "corroboradas": { "type": "integer", "minimum": 0 },
+        "no_confirmadas": { "type": "integer", "minimum": 0 },
+        "excluidas": { "type": "integer", "minimum": 0 },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preguntas"],
+      "properties": {
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z_]+$" },
+              "texto": { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fuente", "detalle"],
+        "properties": {
+          "fuente": { "type": "string" },
+          "detalle": { "type": "string" },
+          "fecha": { "type": "string" }
+        }
+      }
+    },
+    "metodologia": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fuentes", "periodo", "cadencia", "extraccion", "validacion", "limitaciones", "cambios_metodologicos"],
+      "properties": {
+        "fuentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "tipo"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "tipo": { "type": "string" },
+              "url": { "type": "string" }
+            }
+          }
+        },
+        "periodo": { "type": "string" },
+        "cadencia": { "type": "string" },
+        "extraccion": { "type": "string" },
+        "validacion": { "type": "string" },
+        "limitaciones": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "cambios_metodologicos": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  }
+}

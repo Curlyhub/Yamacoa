@@ -416,6 +416,59 @@ const temas = [
     publicado: "2026-07-29",
     load: () => import("./marco-fondo-soberano.jsx"),
   },
+  {
+    id: "angel-veliz",
+    slug: "angel-veliz",
+    path: "/angel-veliz",
+    titulo: "Movido tres veces, aliviado ninguna",
+    subtitulo:
+      "Ángel Jesús Véliz Marcano, preso del 11J en Camagüey, condenado a 6 años de prisión: tres traslados carcelarios entre 2021 y 2024, ninguno hacia el régimen de mínima severidad que le habría acercado a la libertad condicional, mientras su madre, exiliada desde 2024, ya no puede comunicarse con él por teléfono.",
+    etiqueta: "REPRESIÓN · PRESOS POLÍTICOS",
+    accent: "#71397F",
+    fuentes: "Prisoners Defenders · CiberCuba · Cubanet · Diario de Cuba · Diario Las Américas · Martí Noticias · ADN Cuba",
+    dataSlug: "angel_veliz", // el dataset es /data/angel_veliz.json (guion bajo)
+    publicado: "2026-07-31",
+    load: () => import("./angel_veliz.jsx"),
+  },
+  {
+    id: "militarizacion",
+    slug: "militarizacion",
+    path: "/militarizacion",
+    titulo: "Guerra sin declarar",
+    subtitulo:
+      "Desde el 17 de enero de 2026, estructuras militares gobiernan funciones civiles en Cuba sin que el Estado haya proclamado ninguna de las situaciones excepcionales que prevé su propia Constitución: 215 eventos documentados por Cubalex entre febrero y julio, un civil procesado por espionaje ante un tribunal militar y amenazas de muerte contra presos políticos.",
+    etiqueta: "ESTADO Y DERECHO · MILITARIZACIÓN",
+    accent: "#4D4068",
+    fuentes: "Cubalex · CiberCuba · Martí Noticias · Diario de Cuba · 14ymedio · CubaNet · OCC",
+    publicado: "2026-08-15",
+    load: () => import("./militarizacion.jsx"),
+  },
+  {
+    id: "derechos_sociales",
+    slug: "derechos_sociales",
+    path: "/derechos_sociales",
+    titulo: "Julio sin tregua",
+    subtitulo:
+      "En julio de 2026, zonas periféricas de La Habana cumplieron tres meses sin agua potable, el sistema eléctrico colapsó por completo al menos tres veces y Cubalex contó nueve feminicidios, la cifra más alta de su serie mensual. El propio informe describe julio como el mes de mayor violencia ciudadana desde 2022 — pero, a diferencia de los feminicidios, esa cifra total no ha sido confirmada por una segunda fuente.",
+    etiqueta: "DERECHOS SOCIALES · JULIO 2026",
+    accent: "#3A5F4D",
+    fuentes: "Cubalex · Cubanet · Alas Tensas · Diario de Cuba · 14ymedio · CiberCuba · Infobae · OnCubaNews",
+    publicado: "2026-08-15",
+    load: () => import("./derechos_sociales.jsx"),
+  },
+  {
+    id: "cerco_julio",
+    slug: "cerco_julio",
+    path: "/cerco_julio",
+    titulo: "El cerco de julio",
+    subtitulo:
+      "El 2 de julio de 2026, la Seguridad del Estado desplegó un operativo simultáneo contra activistas en varias provincias para impedirles asistir a un acto de la Embajada de Estados Unidos. Tres defensores de derechos humanos fueron incomunicados, golpeados y amenazados de muerte el mismo día. En paralelo, cuatro presos políticos salieron libres tras cumplir condena, mientras otros no sobrevivieron bajo custodia.",
+    etiqueta: "REPRESIÓN · DEFENSORES DE DERECHOS HUMANOS",
+    accent: "#D4BD2B",
+    fuentes: "Cubalex · CiberCuba · Martí Noticias · Diario de Cuba · 14ymedio · Cubanet · ADN Cuba",
+    publicado: "2026-08-15",
+    load: () => import("./cerco_julio.jsx"),
+  },
 ];
 
 export default temas;

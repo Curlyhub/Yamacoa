@@ -1,0 +1,242 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/angel_veliz.schema.json",
+  "title": "Angel Veliz",
+  "description": "Contrato del dataset respirante del expediente sobre Angel Jesus Veliz Marcano, preso politico del 11J en Camaguey, condenado a 6 anios de prision, con un patron comparable de negacion sistematica del regimen de minima severidad y huelgas de hambre entre presos politicos cubanos.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta", "intro", "caso_indice", "verificadores", "patron",
+    "verificacion", "encuesta", "referencias", "conclusion"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "version", "fecha_datos", "advertencia"],
+      "properties": {
+        "slug": { "const": "angel_veliz" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": {
+          "type": "string",
+          "description": "Registro factual largo del expediente. Capa descriptiva (/narrar); no la consume el renderer congelado.",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "description": "Guion de audio corto para el servidor TTS (tts.yamacoa.com). Cifras en palabras, espaniol, sin em dashes.",
+          "minLength": 300,
+          "maxLength": 1450
+        },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "format": "date" },
+        "advertencia": { "type": "string", "minLength": 60 }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parrafos"],
+      "properties": {
+        "parrafos": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": { "type": "string", "minLength": 80 }
+        }
+      }
+    },
+    "caso_indice": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["advertencia", "perfil", "hechos", "linea_tiempo", "traslados"],
+      "properties": {
+        "advertencia": { "type": "string", "minLength": 60 },
+        "perfil": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["nombre", "provincia", "causa_penal", "condena", "prision_actual", "comunicacion_madre"],
+          "properties": {
+            "nombre": { "type": "string" },
+            "provincia": { "type": "string" },
+            "causa_penal": { "type": "string" },
+            "condena": { "type": "string" },
+            "prision_actual": { "type": "string" },
+            "comunicacion_madre": { "type": "string" }
+          }
+        },
+        "hechos": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["afirmacion", "confianza", "fuente"],
+            "properties": {
+              "afirmacion": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 },
+              "nota": { "type": "string" }
+            }
+          }
+        },
+        "linea_tiempo": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 16,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fecha", "detalle", "confianza", "fuente", "carril", "es_denegacion", "es_vacio_informativo"],
+            "properties": {
+              "fecha": { "type": "string" },
+              "detalle": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 },
+              "carril": { "type": "string", "enum": ["hijo", "madre"] },
+              "es_denegacion": { "type": "boolean" },
+              "es_vacio_informativo": { "type": "boolean" },
+              "nota": { "type": "string" }
+            }
+          }
+        },
+        "traslados": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["prision", "fecha", "regimen", "detalle", "confianza", "fuente"],
+            "properties": {
+              "prision": { "type": "string" },
+              "fecha": { "type": "string" },
+              "regimen": { "type": "string", "enum": ["maxima", "media", "minima"] },
+              "detalle": { "type": "string", "minLength": 20 },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] },
+              "fuente": { "type": "string", "minLength": 5 },
+              "nota": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "verificadores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organizaciones"],
+      "properties": {
+        "organizaciones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "rol_reconocimiento", "fuente"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "rol_reconocimiento": { "type": "string", "minLength": 10 },
+              "fuente": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "patron": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["texto", "cifras", "casos_comparables"],
+      "properties": {
+        "texto": { "type": "string", "minLength": 40 },
+        "cifras": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["presos_politicos_totales", "presos_11j", "porcentaje_11j", "fecha_pd", "nota_metodologica"],
+          "properties": {
+            "presos_politicos_totales": { "type": "integer", "minimum": 0 },
+            "presos_11j": { "type": "integer", "minimum": 0 },
+            "porcentaje_11j": { "type": "number", "minimum": 0, "maximum": 100 },
+            "fecha_pd": { "type": "string" },
+            "nota_metodologica": { "type": "string", "minLength": 40 }
+          }
+        },
+        "casos_comparables": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["nombre", "situacion", "condena_anios", "condena_texto", "fecha", "fuente", "confianza"],
+            "properties": {
+              "nombre": { "type": "string" },
+              "situacion": { "type": "string" },
+              "condena_anios": { "type": ["number", "null"] },
+              "condena_texto": { "type": "string" },
+              "fecha": { "type": "string" },
+              "fuente": { "type": "string" },
+              "confianza": { "type": "string", "enum": ["corroborada", "no_confirmada"] }
+            }
+          }
+        }
+      }
+    },
+    "verificacion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_evaluadas", "corroboradas", "no_confirmadas", "excluidas", "nota"],
+      "properties": {
+        "total_evaluadas": { "type": "integer", "minimum": 1 },
+        "corroboradas": { "type": "integer", "minimum": 0 },
+        "no_confirmadas": { "type": "integer", "minimum": 0 },
+        "excluidas": { "type": "integer", "minimum": 0 },
+        "nota": { "type": "string", "minLength": 40 }
+      }
+    },
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preguntas"],
+      "properties": {
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z_]+$" },
+              "texto": { "type": "string" },
+              "opciones": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 6,
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "referencias": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fuente", "detalle"],
+        "properties": {
+          "fuente": { "type": "string" },
+          "detalle": { "type": "string" },
+          "fecha": { "type": "string" }
+        }
+      }
+    },
+    "conclusion": { "type": "string", "minLength": 100 }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "slug": "derechos_sociales",
+    "titulo": "Julio sin tregua",
+    "subtitulo": "En julio de 2026, zonas periféricas de La Habana cumplieron tres meses sin agua potable, el sistema eléctrico colapsó por completo al menos tres veces y Cubalex contó nueve feminicidios, la cifra más alta de su serie mensual. El propio informe describe julio como el mes de mayor violencia ciudadana desde que comenzó su monitoreo en 2022 — pero, a diferencia de los feminicidios, esa cifra total no ha sido confirmada por una segunda fuente.",
+    "descripcion": "El informe mensual de Cubalex sobre derechos humanos en Cuba correspondiente a julio de 2026 documenta dos crisis que avanzan en paralelo: el colapso sostenido de las condiciones materiales de vida (derechos económicos, sociales y culturales) y un repunte agudo de violencia ciudadana. Este expediente separa ambos hilos y verifica cada uno por su cuenta, sin fusionarlos en una sola narrativa de \"todo empeora igual\".\n\nEn el frente de derechos económicos, sociales y culturales, tres hechos quedaron corroborados por fuentes independientes de Cubalex. Primero, zonas periféricas de La Habana, como Arroyo Naranjo, llevaban más de tres meses sin agua potable regular. Segundo, el Sistema Electroenergético Nacional sufrió al menos tres desconexiones totales durante julio (6, 10 y 14 de julio, según prensa independiente), además de apagones locales prolongados. Tercero, el sistema de salud reportó escasez de insumos para diálisis, condiciones extremas en áreas de neonatología y fallas de higiene en infraestructura sanitaria. A esto se suma el cierre del 73% del parque hotelero cubano, coincidiendo con la salida de las cadenas españolas Meliá, Iberostar y Barceló, y un paquete de 176 medidas económicas que incluyó la eliminación de 92.000 plazas estatales y atrasos salariales de hasta seis meses en algunos territorios.\n\nEn el frente de violencia ciudadana, la verificación produjo un resultado más matizado. Cubalex reportó 9 feminicidios en julio: esa cifra fue corroborada de forma independiente por el Observatorio de Género de Alas Tensas (OGAT), que llegó al mismo número por su cuenta. Pero la cifra de 37 homicidios totales —que el informe describe como la más alta desde que Cubalex inició su monitoreo en 2022— no pudo confirmarse: es una afirmación autorreferencial sobre la propia serie histórica de Cubalex, y otro monitor independiente, Cubanet, contó alrededor de 20 muertes violentas para el mismo mes, con una metodología distinta. Los 4 suicidios que reporta Cubalex, también descritos como el máximo del año, tampoco tienen respaldo de una segunda fuente: Cuba no publica estadística oficial mensual de suicidios.\n\nEste expediente no oculta esa divergencia ni la resuelve por decreto: presenta la cifra de Cubalex marcada como no confirmada, junto a la cifra de contraste de Cubanet, para que quede visible que dos monitores independientes, con metodologías distintas, llegan a números distintos sobre el mismo mes. La denuncia del informe original sobre un presunto desvío de ayuda humanitaria estadounidense distribuida vía Cáritas en la provincia de Granma tampoco pudo confirmarse: el inicio de la distribución del paquete de 100 millones de dólares sí está corroborado, pero no las denuncias de desvío o reventa.\n\nLo que si tiene el mismo diagnóstico en ambas fuentes -Cubalex y prensa independiente por separado- es la fotografía general del mes: una población que entró en agosto de 2026 sin agua regular en algunos barrios, con el sistema eléctrico colapsando por tercera vez consecutiva en cuestión de semanas, con un sistema de salud que no puede garantizar insumos básicos, y con una violencia social que, se mida como se mida, alcanzó uno de sus puntos más altos documentados.",
+    "narracion": "En julio de dos mil veintiséis, zonas periféricas de La Habana cumplieron más de tres meses sin agua potable regular. El sistema eléctrico nacional colapsó por completo al menos tres veces durante el mes, y los hospitales reportaron escasez de insumos para diálisis y condiciones extremas en salas de neonatología. Cerró el setenta y tres por ciento del parque hotelero cubano, coincidiendo con la salida de las cadenas Meliá, Iberostar y Barceló. El Estado eliminó noventa y dos mil plazas de trabajo como parte de un paquete de ciento setenta y seis medidas económicas. En paralelo, Cubalex contó nueve feminicidios en julio, cifra confirmada de forma independiente por el Observatorio de Género Alas Tensas. Pero la cifra de treinta y siete homicidios totales, que el informe describe como la más alta desde dos mil veintidós, no pudo confirmarse con una segunda fuente: otro monitor, Cubanet, contó alrededor de veinte muertes violentas ese mismo mes, con una metodología distinta. Los cuatro suicidios reportados tampoco tienen respaldo independiente. Este expediente separa siempre la crisis de derechos económicos y sociales, mejor verificada, de la violencia ciudadana, donde persiste una divergencia real entre monitores. Ninguna cifra se presenta como cierta si depende de una sola fuente.",
+    "version": "1.0.0",
+    "fecha_datos": "2026-07-31",
+    "advertencia": "La cifra de 37 homicidios y la de 4 suicidios en julio de 2026 son propias del monitoreo de Cubalex y no fueron confirmadas por una segunda fuente: Cubanet, un monitor independiente, contó alrededor de 20 muertes violentas el mismo mes con una metodología distinta. Los 9 feminicidios sí fueron corroborados de forma independiente por el Observatorio de Género Alas Tensas. Las denuncias de desvío de ayuda humanitaria en Granma tampoco se confirmaron."
+  },
+  "intro": {
+    "parrafos": [
+      "El informe mensual de Cubalex sobre derechos humanos en Cuba de julio de 2026 documenta dos crisis paralelas: el colapso de las condiciones materiales de vida (agua, electricidad, salud) y un repunte de violencia ciudadana. Este expediente las trata como dos series separadas, cada una verificada por su cuenta.",
+      "En derechos económicos, sociales y culturales, tres meses sin agua potable en zonas periféricas de La Habana, al menos tres apagones nacionales totales y una crisis sanitaria con escasez de insumos quedaron corroborados por fuentes independientes de Cubalex.",
+      "En violencia ciudadana, los 9 feminicidios de julio fueron confirmados por un segundo monitor (Alas Tensas), pero los 37 homicidios totales —presentados como el máximo desde 2022— no lo fueron: Cubanet, otro monitor independiente, contó alrededor de 20 para el mismo mes. Ambas cifras se muestran, marcadas según su estado de verificación."
+    ]
+  },
+  "desc": {
+    "agua": {
+      "resumen": "Zonas periféricas de La Habana, como Arroyo Naranjo, llevaban más de tres meses sin agua potable regular a julio de 2026.",
+      "hechos": [
+        { "afirmacion": "Municipios periféricos de La Habana, entre ellos Arroyo Naranjo, acumulaban más de tres meses sin agua potable regular.", "confianza": "corroborada", "fuente": "Diario de Cuba" },
+        { "afirmacion": "La crisis hídrica se suma a la eléctrica como parte de un patrón de colapso estructural de servicios esenciales, según el informe de Cubalex.", "confianza": "corroborada", "fuente": "Cubalex (informe julio 2026)" }
+      ]
+    },
+    "electricidad": {
+      "resumen": "El Sistema Electroenergético Nacional (SEN) sufrió al menos tres desconexiones totales durante julio de 2026, además de apagones locales de varios días consecutivos.",
+      "hechos": [
+        { "afirmacion": "El SEN colapsó por completo al menos tres veces en julio de 2026 (6, 10 y 14 de julio).", "confianza": "corroborada", "fuente": "14ymedio, CiberCuba, Diario de Cuba" },
+        { "afirmacion": "Se registraron además apagones locales prolongados, de varios días consecutivos, en distintas provincias.", "confianza": "corroborada", "fuente": "Cubalex (informe julio 2026), 14ymedio" }
+      ]
+    },
+    "salud": {
+      "resumen": "El sistema de salud reportó escasez de insumos para diálisis, condiciones extremas en áreas de neonatología y fallas de higiene en infraestructura sanitaria.",
+      "hechos": [
+        { "afirmacion": "Hospitales como el Hermanos Ameijeiras reportaron escasez de insumos para tratamientos de diálisis.", "confianza": "corroborada", "fuente": "Infobae, Diario de Cuba" },
+        { "afirmacion": "Se documentaron condiciones extremas en áreas de neonatología, incluida la falta de equipamiento adecuado.", "confianza": "corroborada", "fuente": "Infobae, Diario de Cuba" },
+        { "afirmacion": "Se reportaron fallas de higiene en infraestructura sanitaria hospitalaria.", "confianza": "corroborada", "fuente": "Diario de Cuba" }
+      ]
+    }
+  },
+  "violencia": {
+    "homicidios": { "valor": 37, "etiqueta": "homicidios en julio de 2026, según Cubalex", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "nota": "Cifra autorreferencial de la serie propia de Cubalex, descrita como la más alta desde el inicio de su monitoreo en 2022. Otro monitor independiente, Cubanet, contó alrededor de 20 muertes violentas para el mismo mes con una metodología distinta. Ver comparativa_homicidios." },
+    "feminicidios": { "valor": 9, "etiqueta": "feminicidios en julio de 2026", "confianza": "corroborada", "fuente": "Cubalex; confirmado de forma independiente por el Observatorio de Género Alas Tensas (OGAT)" },
+    "suicidios": { "valor": 4, "etiqueta": "suicidios en julio de 2026, según Cubalex, el máximo del año", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "nota": "Cuba no publica estadística oficial mensual de suicidios; no se localizó ninguna fuente independiente con cifra propia para julio de 2026." },
+    "otros_hechos": {
+      "descripcion": "El resto de los hechos de violencia correspondió mayormente a robos y asaltos violentos, ejecutados con machetes y armas de fuego, en un contexto de crisis de combustible que ha impulsado el robo de vehículos, motos y triciclos.",
+      "confianza": "parcialmente_corroborada",
+      "fuente": "Cubanet",
+      "nota": "El patrón general de robos violentos vinculados a la crisis de combustible está bien documentado por prensa independiente. No se encontró corroboración específica de que los asaltos se concentraran, como afirma el informe de Cubalex, en equipos de generación eléctrica."
+    }
+  },
+  "comparativa_homicidios": {
+    "cubalex_valor": 37,
+    "cubalex_fuente": "Cubalex, informe mensual de julio de 2026",
+    "cubanet_valor_aprox": 20,
+    "cubanet_fuente": "Cubanet, \"Cuba: julio dejó al menos 20 muertos en hechos violentos\"",
+    "nota": "Dos monitores independientes de la violencia en Cuba llegan a cifras distintas para el mismo mes. Cubalex agrega denuncias de una red más amplia de fuentes y redes sociales; Cubanet documenta casos con verificación propia más acotada. Ninguna de las dos cifras es oficial: el Estado cubano no publica estadística de homicidios. Este expediente no elige una sobre la otra, las presenta ambas con su fuente."
+  },
+  "hoteles": {
+    "pct_cerrado": 73,
+    "cadenas_salida": ["Meliá", "Iberostar", "Barceló"],
+    "confianza": "corroborada",
+    "fuente": "OnCubaNews, CiberCuba, Diario de Cuba; reconocido por el Primer Ministro Manuel Marrero ante la Asamblea Nacional",
+    "nota": "El 73% del parque hotelero cubano permanecía cerrado a julio de 2026, coincidiendo con la salida de las tres principales cadenas hoteleras españolas del país."
+  },
+  "economia_contexto": [
+    { "titulo": "176 medidas económicas", "detalle": "Paquete de 176 medidas que incluyó una nueva escala salarial presupuestada, billetes de alta denominación, mayores límites en banca electrónica y subsidios focalizados para 1,4 millones de personas vulnerables.", "confianza": "corroborada", "fuente": "The Conversation, CiberCuba" },
+    { "titulo": "92.000 plazas estatales eliminadas", "detalle": "Se anunció la eliminación de 92.000 plazas estatales por reestructuración, concentradas en los sectores de Salud, Educación, Cultura y Deportes.", "confianza": "corroborada", "fuente": "CiberCuba, The Conversation" },
+    { "titulo": "Atrasos salariales de hasta 6 meses", "detalle": "Persistieron atrasos salariales de hasta seis meses en algunos territorios (Guáimaro); otras fuentes documentan casos aún peores, de hasta 116 meses acumulados en Camagüey.", "confianza": "corroborada", "fuente": "CiberCuba" },
+    { "titulo": "Ampliación de sanciones de la OFAC", "detalle": "El Departamento del Tesoro de Estados Unidos amplió sanciones contra dos ciudadanos cubanos y nueve entidades vinculadas al régimen, el 23 de julio de 2026.", "confianza": "corroborada", "fuente": "Cubanet, Cuba en Miami, Departamento de Estado de EE.UU." },
+    { "titulo": "Ayuda humanitaria vía Cáritas", "detalle": "Estados Unidos comenzó en julio de 2026 la distribución de un paquete de 100 millones de dólares en ayuda humanitaria a través de Cáritas, con entregas documentadas en la provincia de Granma.", "confianza": "corroborada", "fuente": "La Patilla, Infobae" },
+    { "titulo": "Denuncias de desvío de la ayuda (no confirmadas)", "detalle": "El informe original de Cubalex denuncia al menos dos casos de desvío o reventa de la ayuda humanitaria en Granma.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "nota": "No se localizó ninguna fuente independiente, ni oficialista ni de prensa cubana, que documente estas denuncias específicas de desvío o reventa." }
+  ],
+  "calendario_julio": {
+    "dias": 31,
+    "blackouts": [
+      { "dia": 6, "fecha": "6 de julio de 2026", "confianza": "corroborada", "fuente": "14ymedio, CiberCuba" },
+      { "dia": 10, "fecha": "10 de julio de 2026", "confianza": "corroborada", "fuente": "14ymedio, CiberCuba, Diario de Cuba" },
+      { "dia": 14, "fecha": "14 de julio de 2026", "confianza": "corroborada", "fuente": "Diario de Cuba" }
+    ],
+    "nota_agua": "La falta de agua potable en las zonas periféricas de La Habana fue una condición sostenida durante todo julio (ya llevaba más de tres meses al cierre del mes), no un evento puntual de un día concreto: los 31 días del mes comparten el mismo diagnóstico de fondo.",
+    "nota_violencia": "El informe de Cubalex no desglosa la fecha exacta de cada homicidio, feminicidio o suicidio: las cifras de violencia (37, 9 y 4) son totales mensuales y se presentan aparte, nunca proyectadas sobre un día concreto del calendario."
+  },
+  "verificacion": {
+    "total_evaluadas": 11,
+    "corroboradas": 7,
+    "parcialmente_corroboradas": 2,
+    "no_confirmadas": 2,
+    "excluidas": 0,
+    "nota": "Se evaluaron 11 afirmaciones del informe original de Cubalex. Quedaron corroboradas por fuentes independientes: los feminicidios (9), la crisis hídrica en La Habana, los apagones totales del SEN, la crisis sanitaria (diálisis, neonatología, higiene), el cierre del 73% del parque hotelero, las 176 medidas económicas con sus 92.000 plazas eliminadas y atrasos salariales, y la ampliación de sanciones de la OFAC. Quedaron parcialmente corroboradas: el patrón general de robos violentos (sin confirmar el detalle de que se concentren en equipos de generación eléctrica) y el inicio de la ayuda de Cáritas (sin confirmar las denuncias de desvío). No se confirmaron: la cifra total de homicidios (37) y la de suicidios (4), ambas propias del monitoreo interno de Cubalex sin réplica independiente exacta."
+  },
+  "encuesta": {
+    "preguntas": [
+      {
+        "id": "agua_electricidad",
+        "texto": "Tres meses sin agua potable y al menos tres apagones nacionales totales en un solo mes. ¿Cuál de las dos crisis te parece más grave para la vida cotidiana?",
+        "opciones": ["La falta de agua potable", "Los apagones nacionales totales", "Ambas por igual: son la misma crisis de fondo"]
+      },
+      {
+        "id": "cifras_violencia",
+        "texto": "Cubalex y Cubanet reportan cifras distintas de homicidios para el mismo mes (37 frente a unos 20). ¿Qué te parece más razonable?",
+        "opciones": ["Confiar en el monitor con la red más amplia (Cubalex)", "Confiar en el monitor con verificación más acotada (Cubanet)", "Ninguna cifra es confiable sin datos oficiales del Estado"]
+      },
+      {
+        "id": "prioridad_estatal",
+        "texto": "El Estado desplegó fuerzas de seguridad para contener protestas por apagones, pero no logró frenar el aumento de la violencia ciudadana. ¿Qué debería priorizar?",
+        "opciones": ["Seguridad ciudadana antes que control social", "Resolver la causa de fondo (energía y agua) antes que cualquier despliegue", "No hay forma de priorizar sin más información"]
+      }
+    ]
+  },
+  "referencias": [
+    { "fuente": "Cubalex", "detalle": "Informe Mensual sobre la Situación de los Derechos Humanos en Cuba, julio de 2026", "fecha": "agosto de 2026" },
+    { "fuente": "Diario de Cuba", "detalle": "Cobertura de la crisis hídrica en Arroyo Naranjo y de la crisis sanitaria", "fecha": "julio de 2026" },
+    { "fuente": "14ymedio", "detalle": "Cobertura de los apagones totales del Sistema Electroenergético Nacional", "fecha": "julio de 2026" },
+    { "fuente": "CiberCuba", "detalle": "Cobertura de los apagones, el cierre hotelero, las 176 medidas y los atrasos salariales", "fecha": "julio de 2026" },
+    { "fuente": "Infobae", "detalle": "Cobertura de la crisis del sistema de salud (diálisis, neonatología)", "fecha": "julio de 2026" },
+    { "fuente": "OnCubaNews", "detalle": "Cobertura del cierre del 73% del parque hotelero cubano", "fecha": "julio de 2026" },
+    { "fuente": "The Conversation", "detalle": "Análisis de las 176 medidas económicas", "fecha": "julio de 2026" },
+    { "fuente": "Cubanet", "detalle": "Conteo independiente de muertes violentas en julio de 2026 (~20), usado como fuente de contraste frente a la cifra de Cubalex (37)", "fecha": "julio de 2026" },
+    { "fuente": "Alas Tensas / Observatorio de Género (OGAT)", "detalle": "Confirmación independiente de 9 feminicidios en julio de 2026", "fecha": "julio de 2026" },
+    { "fuente": "Cuba en Miami / Departamento de Estado de EE.UU.", "detalle": "Confirmación de la ampliación de sanciones de la OFAC del 23 de julio de 2026", "fecha": "julio de 2026" },
+    { "fuente": "La Patilla / Infobae", "detalle": "Cobertura del inicio de la distribución de ayuda humanitaria vía Cáritas", "fecha": "julio de 2026" }
+  ],
+  "metodologia": {
+    "fuentes": [
+      { "nombre": "Cubalex", "tipo": "informe mensual / monitoreo propio", "url": "https://cubalex.org" },
+      { "nombre": "Cubanet", "tipo": "monitoreo independiente de contraste (violencia ciudadana)", "url": "" },
+      { "nombre": "Alas Tensas / OGAT", "tipo": "observatorio de género independiente", "url": "" },
+      { "nombre": "Prensa independiente cubana (14ymedio, CiberCuba, Diario de Cuba, Infobae, OnCubaNews)", "tipo": "cobertura periodística", "url": "" }
+    ],
+    "periodo": "julio de 2026",
+    "cadencia": "Nivel 2 — creación asistida vía /procesar-inbox; no entra en el ciclo automático de refresco de 8 horas.",
+    "extraccion": "Verificación asistida por LLM (motor agnóstico) sobre el PDF de origen, con un subagente dedicado a corroborar cada afirmación cuantitativa y cualitativa contra fuentes independientes antes de incluirla en el dataset.",
+    "validacion": "ajv contra derechos_sociales.schema.json · node scripts/bracket-balance.mjs · npm run build",
+    "limitaciones": [
+      "Las cifras de homicidios y suicidios de julio de 2026 son la métrica interna de Cubalex; no existe estadística oficial cubana de homicidios ni de suicidios, y el único monitor independiente comparable (Cubanet) reporta una cifra distinta de homicidios para el mismo mes.",
+      "El informe original no desglosa la fecha exacta de cada homicidio, feminicidio o suicidio: no es posible ubicarlos en días concretos del calendario.",
+      "Las denuncias de desvío de ayuda humanitaria en Granma no pudieron confirmarse de forma independiente."
+    ],
+    "cambios_metodologicos": []
+  },
+  "conclusion": "Julio de 2026 deja dos crisis documentadas con distinto grado de certeza. La primera —el colapso de las condiciones materiales de vida: tres meses sin agua potable en La Habana, al menos tres apagones nacionales totales, un sistema de salud sin insumos básicos, el cierre de tres cuartas partes del parque hotelero— está sólidamente corroborada por prensa independiente, más allá del propio informe de Cubalex que la documenta. La segunda —el repunte de violencia ciudadana— tiene una pieza firme (nueve feminicidios, confirmados por un segundo monitor) y dos piezas que dependen de una sola fuente: treinta y siete homicidios totales y cuatro suicidios, ninguno replicado de forma independiente, con un monitor alternativo que cuenta casi la mitad de los homicidios que reporta Cubalex para el mismo mes. Este expediente no promedia esas dos cifras ni elige una: las muestra ambas, con su fuente a la vista, porque la falta de estadística oficial cubana sobre violencia deja a la ciudadanía dependiendo de monitores privados que, se ha visto, no siempre coinciden."
+}
