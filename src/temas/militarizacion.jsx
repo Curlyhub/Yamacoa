@@ -205,48 +205,76 @@ function GraficaProtestas({ serie, mesSel }) {
   );
 }
 
+/* Dial de riesgo. La aguja NO es decorativa: lee el mes que gobierna el panel
+   (o el que se sobrevuela en el rastro). Los meses que Cubalex no cuantifica
+   (febrero, marzo) no se rellenan con un valor por defecto: la aguja se retira
+   a una posicion fantasma punteada y la lectura dice "sin cuantificar". */
 function DialRiesgo({ riesgo, mesSel, onSel }) {
   const R = 108, CX = 130, CY = 128;
-  const angFor = (nivel) => Math.PI - ((nivel - 1) / (riesgo.escala_max - 1)) * Math.PI;
-  const pt = (nivel, r = R) => ({ x: CX + r * Math.cos(angFor(nivel)), y: CY - r * Math.sin(angFor(nivel)) });
+  const [hovMes, setHovMes] = useState(null);
+  const mesLeido = hovMes || (mesSel ? mesSel.split(" ")[0] : null);
+  const entrada = riesgo.historial.find((h) => h.mes === mesLeido) || null;
+  const nivel = entrada ? entrada.nivel : riesgo.nivel_actual;
+  const sinCuantificar = entrada != null && entrada.nivel == null;
+
+  const angFor = (n) => Math.PI - ((n - 1) / (riesgo.escala_max - 1)) * Math.PI;
+  const pt = (n, r = R) => ({ x: CX + r * Math.cos(angFor(n)), y: CY - r * Math.sin(angFor(n)) });
   const arcPath = (from, to, r = R) => {
     const a = pt(from, r), b = pt(to, r);
     return `M ${a.x} ${a.y} A ${r} ${r} 0 0 1 ${b.x} ${b.y}`;
   };
-  const needle = pt(riesgo.nivel_actual, R * 0.82);
+  // Sin dato: la aguja se planta en el centro del arco, punteada, sin afirmar nivel.
+  const nivelAguja = sinCuantificar ? (1 + riesgo.escala_max) / 2 : (nivel || riesgo.nivel_actual);
+  const needle = pt(nivelAguja, R * 0.82);
   const ticks = [1, 2, 3, 4, 5];
+  const etiqueta = sinCuantificar
+    ? `${entrada.mes}: nivel sin cuantificar por la fuente`
+    : `${entrada ? entrada.mes + ": " : ""}nivel ${nivel} de ${riesgo.escala_max}`;
+
   return (
     <div className="mi-dial-wrap">
-      <svg viewBox="0 0 260 150" className="mi-dial-svg" role="img" aria-label={`Nivel de riesgo ${riesgo.nivel_actual} de ${riesgo.escala_max}, clavado desde ${riesgo.desde}`}>
+      <svg viewBox="0 0 260 150" className="mi-dial-svg" role="img" aria-label={etiqueta}>
         <path d={arcPath(1, 5)} className="mi-dial-arc-bg" />
-        <path d={arcPath(4.3, 5)} className="mi-dial-arc-hot" />
+        {!sinCuantificar && nivel >= 5 && <path d={arcPath(4.3, 5)} className="mi-dial-arc-hot" />}
         {ticks.map((t) => {
           const p1 = pt(t, R + 6), p2 = pt(t, R - 6), lbl = pt(t, R - 22);
           return (
             <g key={t}>
               <line x1={p1.x} y1={p1.y} x2={p2.x} y2={p2.y} className="mi-dial-tick" />
-              <text x={lbl.x} y={lbl.y + 4} textAnchor="middle" className="mi-dial-ticklabel">{t}</text>
+              <text x={lbl.x} y={lbl.y + 4} textAnchor="middle" className={"mi-dial-ticklabel" + (!sinCuantificar && t === nivel ? " on" : "")}>{t}</text>
             </g>
           );
         })}
-        <line x1={CX} y1={CY} x2={needle.x} y2={needle.y} className="mi-dial-needle" />
+        <line x1={CX} y1={CY} x2={needle.x} y2={needle.y}
+              className={"mi-dial-needle" + (sinCuantificar ? " mi-dial-needle-off" : "")} />
         <circle cx={CX} cy={CY} r={7} className="mi-dial-hub" />
-        <g className="mi-dial-pin" transform={`translate(${needle.x},${needle.y})`}>
-          <rect x={-6} y={-6} width={12} height={12} className="mi-dial-pin-box" transform="rotate(45)" />
-        </g>
+        {!sinCuantificar && (
+          <g transform={`translate(${needle.x},${needle.y})`}>
+            <rect x={-6} y={-6} width={12} height={12} className="mi-dial-pin-box" transform="rotate(45)" />
+          </g>
+        )}
+        {sinCuantificar && <text x={CX} y={CY - 42} textAnchor="middle" className="mi-dial-sindato">sin cuantificar</text>}
       </svg>
       <div className="mi-dial-caption">
-        <b>{riesgo.nivel_actual}/{riesgo.escala_max}</b>
-        <span>clavado desde {riesgo.desde}</span>
+        <b>{sinCuantificar ? "—" : `${nivel}/${riesgo.escala_max}`}</b>
+        <span>
+          {sinCuantificar
+            ? `${entrada.mes}: la fuente no publica nivel`
+            : entrada
+              ? `${entrada.mes} · ${entrada.fase}`
+              : `clavado desde ${riesgo.desde}`}
+        </span>
       </div>
-      <div className="mi-dial-trail">
+      <div className="mi-dial-trail" onMouseLeave={() => setHovMes(null)}>
         {riesgo.historial.map((h, i) => {
-          const on = mesSel && mesSel.split(" ")[0] === h.mes;
+          const on = mesLeido === h.mes;
           return (
             <button
               className={"mi-dial-trail-item" + (h.nivel != null ? " mi-dial-trail-pinned" : "") + (on ? " mi-dial-trail-on" : "")}
               key={h.mes}
               onClick={() => onSel && onSel(h.mes)}
+              onMouseEnter={() => setHovMes(h.mes)}
+              onFocus={() => setHovMes(h.mes)}
               title={h.fase}
             >
               {i > 0 && <span className={"mi-dial-trail-conn" + (h.nivel != null && riesgo.historial[i - 1].nivel != null ? " mi-dial-trail-conn-solid" : "")} />}
@@ -257,10 +285,6 @@ function DialRiesgo({ riesgo, mesSel, onSel }) {
           );
         })}
       </div>
-      {mesSel && (() => {
-        const h = riesgo.historial.find((x) => x.mes === mesSel.split(" ")[0]);
-        return h ? <p className="mi-dial-fase">{h.mes}: {h.fase}</p> : null;
-      })()}
       <p className="mi-dial-nota">{riesgo.nota}</p>
     </div>
   );
@@ -596,8 +620,12 @@ const CSS = `
 .mi-dial-arc-bg{ fill:none; stroke:${C.panel2}; stroke-width:10; stroke-linecap:round; }
 .mi-dial-arc-hot{ fill:none; stroke:${C.contrapunto}; stroke-width:10; stroke-linecap:round; filter:drop-shadow(0 0 6px rgba(199,190,174,.55)); }
 .mi-dial-tick{ stroke:${C.dim}; stroke-width:1.5; }
-.mi-dial-ticklabel{ font-family:'IBM Plex Mono',monospace; font-size:9px; fill:${C.dim}; }
-.mi-dial-needle{ stroke:${C.contrapunto}; stroke-width:3; stroke-linecap:round; }
+.mi-dial-ticklabel{ font-family:'IBM Plex Mono',monospace; font-size:9px; fill:${C.dim}; transition:fill .25s, font-size .25s; }
+.mi-dial-ticklabel.on{ fill:${C.contrapunto}; font-size:12px; font-weight:600; }
+.mi-dial-needle{ stroke:${C.contrapunto}; stroke-width:3; stroke-linecap:round; transition:x2 .5s cubic-bezier(.34,1.3,.5,1), y2 .5s cubic-bezier(.34,1.3,.5,1); }
+.mi-dial-needle-off{ stroke:${C.dim}; stroke-width:2; stroke-dasharray:4 5; opacity:.65; }
+.mi-dial-sindato{ font-family:'IBM Plex Mono',monospace; font-size:11px; fill:${C.dim}; letter-spacing:.06em; }
+.mi-dial-caption b{ transition:color .25s; }
 .mi-dial-hub{ fill:${C.primario}; stroke:${C.contrapunto}; stroke-width:1.5; }
 .mi-dial-pin-box{ fill:none; stroke:${C.contrapunto}; stroke-width:1.5; }
 .mi-dial-caption{ display:flex; flex-direction:column; align-items:center; margin-top:-6px; }

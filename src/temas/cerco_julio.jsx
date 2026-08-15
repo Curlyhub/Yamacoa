@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import * as d3 from "d3";
+import { CUBA_PATHS, CUBA_VIEWBOX } from "./electrica_geo";
 
 /* ============================================================================
    YAMACOA · expediente "cerco_julio" — RENDERER CONGELADO
@@ -12,9 +12,10 @@ import * as d3 from "d3";
    Datos en public/data/cerco_julio.json (validado por cerco_julio.schema.json).
    Paleta "Citacion y Reten": oro-mostaza de convocatoria administrativa +
    azul-pizarra de puesto de control, sobre fondo oscuro.
-   Geometria de Cuba (CUBA_FEATURE, PROV_GEO) reutilizada verbatim de
-   represion_cuba.jsx; solo 3 de 15 provincias tienen cifra en el informe
-   fuente, el resto queda sin senal (no se inventan datos).
+   Geometria provincial real reutilizada de electrica_geo.js (paths del cuba.svg
+   de MapSVG, uno por provincia): coropleta seleccionable. Solo 3 de las 15
+   provincias tienen cifra en el informe fuente; el resto queda apagado y
+   declarado "sin desglose" (no se inventan datos).
    ========================================================================== */
 
 const C = {
@@ -25,25 +26,14 @@ const C = {
 };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/cerco_julio.json";
 
-const PROV_GEO = {
-  pinar: [-83.70, 22.42], artemisa: [-82.76, 22.81], habana: [-82.38, 23.13],
-  mayabeque: [-82.05, 22.96], matanzas: [-81.40, 22.95], cienfuegos: [-80.45, 22.15],
-  villaclara: [-79.97, 22.40], sancti: [-79.45, 21.93], ciego: [-78.76, 21.84],
-  camaguey: [-77.92, 21.38], tunas: [-76.95, 20.96], holguin: [-76.26, 20.89],
-  granma: [-76.64, 20.38], santiago: [-75.82, 20.02], guantanamo: [-75.21, 20.14],
-};
-const CUBA_FEATURE = {
-  type: "Feature",
-  geometry: { type: "Polygon", coordinates: [[
-    [-84.95,21.86],[-84.40,22.05],[-83.90,22.35],[-83.30,22.70],[-82.80,23.00],
-    [-82.30,23.18],[-81.50,23.18],[-80.90,23.13],[-80.20,22.92],[-79.60,22.66],
-    [-79.00,22.46],[-78.40,22.40],[-77.80,22.10],[-77.20,21.82],[-76.60,21.34],
-    [-76.10,21.12],[-75.60,21.05],[-75.10,20.72],[-74.50,20.50],[-74.13,20.25],
-    [-74.55,20.05],[-75.05,19.92],[-75.85,19.86],[-76.55,19.96],[-77.20,20.02],
-    [-77.72,19.84],[-78.22,20.32],[-78.62,20.70],[-79.05,21.00],[-79.62,21.30],
-    [-80.22,21.50],[-80.82,21.60],[-81.42,21.70],[-82.02,21.86],[-82.62,22.00],
-    [-83.22,22.05],[-83.92,22.00],[-84.42,21.90],[-84.95,21.86],
-  ]] },
+// Geometria provincial real (coropleta), compartida con el expediente electrica:
+// paths por provincia extraidos del cuba.svg de MapSVG. Se enlazan al dataset por
+// el codigo ISO CU-XX, no por el nombre, para no depender de tildes ni variantes.
+const ISO_POR_ID = {
+  habana: "CU-03", camaguey: "CU-09", santiago: "CU-13",
+  pinar: "CU-01", matanzas: "CU-04", villaclara: "CU-05", cienfuegos: "CU-06",
+  sancti: "CU-07", ciego: "CU-08", tunas: "CU-10", holguin: "CU-11",
+  granma: "CU-12", guantanamo: "CU-14", artemisa: "CU-15", mayabeque: "CU-16",
 };
 
 const EMBEDDED = {"meta": {"slug": "cerco_julio", "titulo": "El cerco de julio", "subtitulo": "El 2 de julio de 2026, la Seguridad del Estado desplegó un operativo simultáneo contra activistas en varias provincias para impedirles asistir a un acto de la Embajada de Estados Unidos. Tres defensores de derechos humanos fueron incomunicados, golpeados y amenazados de muerte el mismo día — y el hostigamiento contra ellos no se detuvo en todo el mes. En paralelo, cuatro presos políticos salieron libres tras cumplir condena, mientras otros no sobrevivieron bajo custodia.", "descripcion": "El 2 de julio de 2026, según el informe mensual de Cubalex y confirmado por al menos cuatro medios de prensa independiente, la Seguridad del Estado cubano ejecutó un operativo coordinado contra activistas y opositores en distintas provincias del país. El objetivo declarado por las propias fuentes: impedir su asistencia a una recepción organizada por la Embajada de Estados Unidos en La Habana por el 250 aniversario de la independencia estadounidense. Cubalex cifra en \"al menos 25\" el número de personas afectadas; ese número exacto no aparece verbatim en la prensa independiente consultada, aunque el fenómeno del operativo sí está ampliamente documentado, con más de una decena de nombres propios reportados por distintos medios: Marthadela Tamayo, Osvaldo Navarro, Lisandra Orraca, Irina León, Dagoberto Valdés, Yoandy Izquierdo, Rosa María Rodríguez Gil, Esteban Ajete y Katia Hernández, entre otros.\n\nEste expediente sigue de cerca a tres de los afectados con el trato documentado más severo: José Elías González Agüero, Alexander Díaz Rodríguez y Mario Alberto Hernández Leyva, defensores de derechos humanos y expresos políticos. Los tres coinciden en un mismo punto de partida, el 2 de julio: González Agüero y Díaz Rodríguez fueron detenidos e incomunicados durante tres días, con golpizas, desnudez forzada y amenazas de muerte con arma de fuego, según coinciden CiberCuba, Martí Noticias, Diario de Cuba y Periódico Cubano. Hernández Leyva fue golpeado en una unidad policial y trasladado a un área boscosa cerca de Artemisa, donde fue desnudado, fotografiado y devuelto a La Habana esa misma noche. A partir de ese punto sincronizado, las tres historias se separan: el informe de Cubalex denuncia que los tres fueron citados de nuevo el 8 de julio, que la familia de González Agüero fue amenazada el día 11 para impedirle salir de su casa, y que Hernández Leyva sufrió nuevas detenciones los días 10 y 12. Ninguna de estas afirmaciones de seguimiento pudo confirmarse con una fuente independiente de Cubalex: no se localizó cobertura de prensa sobre esos hechos concretos, aunque tampoco se encontró nada que las contradiga.\n\nEl mismo operativo del 2 de julio incluyó a Anna Sofía Benítez, sometida a un interrogatorio de entre 10 y 12 horas según distintos medios. Otros dos casos, verificados de forma independiente por fuera del operativo del día 2: un adolescente de 13 años, identificado por prensa independiente como Alex Javier Hernández González, fue golpeado por la policía durante una protesta en Santiago de las Vegas (Boyeros) el 22 de julio; y Lismani Acosta Gómez fue detenido el 6 de julio durante un cacerolazo en Guanabacoa, aunque los detalles de su traslado carcelario difieren entre el informe original (que menciona la prisión de Cuba-Panamá y fianzas de 100.000 y 50.000 pesos) y la prensa independiente localizada (que sitúa su traslado al centro de detención El Vivac, sin confirmar las cifras de fianza).\n\nEl mes cierra con un contraste que este expediente presenta de forma deliberada en una misma balanza, sin promediar sus dos lados: por un lado, tres muertes bajo custodia denunciadas por Cubalex, de las cuales solo una (Rolando Yunior Rodríguez Torres, por intoxicación sin atención médica oportuna) fue corroborada de forma independiente; otra (Jorge Luis Iglesia Rodríguez) tiene su muerte confirmada en prisión, pero con una causa que la prensa independiente reporta distinta —una infección de próstata, no la tuberculosis no tratada que cita Cubalex, aunque ambas condiciones coexistían—; y la tercera (Osviel Rivero Viera) no pudo confirmarse en ninguna fuente consultada. Por el otro lado, cuatro excarcelaciones sí quedaron plenamente corroboradas: tres personas que cumplieron íntegra su condena de cinco años por el 11 de julio de 2021, y una cuarta liberada bajo libertad condicional.\n\nComo contexto agregado, no protagonista, el informe original de Cubalex registra 388 eventos represivos y 817 incidentes de hostigamiento en julio, afectando a 302 personas en 51 municipios de 15 provincias; La Habana concentró 191 de esos eventos, muy por delante de Camagüey (39) y Santiago de Cuba (27). Estas tres cifras provinciales son las únicas que el informe desglosa por nombre; el resto de las provincias no aparece individualizado en el material consultado, y este expediente no completa ese vacío con datos inventados.", "narracion": "El dos de julio de dos mil veintiséis, la Seguridad del Estado cubano ejecutó un operativo simultáneo contra activistas en varias provincias, para impedirles asistir a una recepción de la Embajada de Estados Unidos. Tres defensores de derechos humanos, José Elías González Agüero, Alexander Díaz Rodríguez y Mario Alberto Hernández Leyva, fueron detenidos ese mismo día: incomunicación, golpizas, desnudez forzada y amenazas de muerte, confirmadas por varios medios independientes. A partir de ahí, cada historia sigue un camino distinto: el informe de Cubalex denuncia nuevas citaciones y detenciones durante todo julio, pero esos hechos posteriores no pudieron confirmarse con una segunda fuente. El mismo operativo incluyó un interrogatorio de once horas a la activista Anna Sofía Benítez. Por separado, un adolescente de trece años fue golpeado por la policía en una protesta, y otro activista fue detenido durante un cacerolazo. El mes cierra con un contraste: tres muertes bajo custodia denunciadas por Cubalex, de las cuales solo una fue confirmada de forma independiente, frente a cuatro excarcelaciones plenamente corroboradas, entre ellas tres personas que cumplieron íntegra su condena de cinco años por las protestas del once de julio de dos mil veintiuno. Este expediente separa siempre lo confirmado de lo que solo reporta una fuente, sin mezclarlos en una sola cifra.", "version": "1.0.0", "fecha_datos": "2026-07-31", "advertencia": "La cifra de \"al menos 25\" personas afectadas por el operativo del 2 de julio no tiene respaldo textual exacto en prensa independiente, aunque el operativo en sí está ampliamente corroborado. El hostigamiento continuado contra los tres defensores tras el 2 de julio (citaciones y detenciones posteriores) solo lo reporta Cubalex. De las tres muertes bajo custodia denunciadas, solo una fue confirmada de forma independiente; una segunda tiene una causa de muerte distinta según prensa independiente, y la tercera no pudo confirmarse en ninguna fuente."}, "intro": {"parrafos": ["El 2 de julio de 2026, la Seguridad del Estado desplegó un operativo simultáneo contra activistas en varias provincias, para impedirles asistir a una recepción de la Embajada de Estados Unidos. Este expediente sigue tres historias que arrancan en el mismo punto exacto de ese operativo y luego se separan.", "José Elías González Agüero, Alexander Díaz Rodríguez y Mario Alberto Hernández Leyva sufrieron, el mismo día, incomunicación, golpizas y amenazas de muerte, confirmadas por prensa independiente. Lo que Cubalex denuncia que ocurrió después —nuevas citaciones y detenciones durante julio— no tiene, por ahora, una segunda fuente.", "El mes cierra con una balanza deliberada: tres muertes bajo custodia denunciadas por Cubalex, verificadas con distinto grado de certeza cada una, frente a cuatro excarcelaciones plenamente corroboradas. Este expediente no promedia ambos lados: los presenta juntos, con su fuente a la vista."]}, "operativo": {"fecha": "2 de julio de 2026", "resumen": "La Seguridad del Estado desplegó un operativo simultáneo contra activistas y opositores en distintas provincias, para impedirles asistir a una recepción de la Embajada de Estados Unidos en La Habana por el 250 aniversario de su independencia.", "cifra_afirmada": {"valor": 25, "confianza": "parcialmente_corroborada", "fuente": "Cubalex (informe julio 2026)", "nota": "El operativo del 2 de julio está ampliamente documentado por prensa independiente, con más de una decena de nombres propios distintos reportados. La cifra exacta \"al menos 25\" no aparece verbatim en ninguna fuente independiente consultada, aunque es plausible dado el número de nombres ya identificados."}, "hechos": [{"afirmacion": "El operativo coordinado del 2 de julio de 2026 está documentado por al menos cuatro medios de prensa independiente.", "confianza": "corroborada", "fuente": "Diario de Cuba, 14ymedio, Martí Noticias, Cubanet"}, {"afirmacion": "El objetivo declarado fue impedir la asistencia de activistas y opositores a una recepción de la Embajada de Estados Unidos por el 250 aniversario de su independencia.", "confianza": "corroborada", "fuente": "Diario de Cuba, 14ymedio"}], "nombres_adicionales": ["Marthadela Tamayo", "Osvaldo Navarro", "Lisandra Orraca", "Irina León", "Dagoberto Valdés", "Yoandy Izquierdo", "Rosa María Rodríguez Gil", "Esteban Ajete", "Katia Hernández"]}, "tres_pistas": [{"persona": "José Elías González Agüero", "eventos": [{"fecha": "2 de julio", "hecho": "Detenido e incomunicado, junto a Alexander Díaz Rodríguez, para impedir su asistencia a la recepción diplomática.", "confianza": "corroborada", "fuente": "CiberCuba, Martí Noticias", "sincronizado": true}, {"fecha": "2-4 de julio", "hecho": "Tres días de incomunicación, golpizas, desnudez forzada y amenazas de muerte con arma de fuego.", "confianza": "corroborada", "fuente": "CiberCuba, Diario de Cuba, Periódico Cubano", "sincronizado": true}, {"fecha": "8 de julio", "hecho": "Citado nuevamente por la Seguridad del Estado, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}, {"fecha": "11 de julio", "hecho": "Su familia fue amenazada para impedirle salir de su casa, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}]}, {"persona": "Alexander Díaz Rodríguez", "eventos": [{"fecha": "2 de julio", "hecho": "Detenido e incomunicado, junto a José Elías González Agüero, para impedir su asistencia a la recepción diplomática.", "confianza": "corroborada", "fuente": "CiberCuba, Martí Noticias", "sincronizado": true}, {"fecha": "2-4 de julio", "hecho": "Tres días de incomunicación, golpizas, desnudez forzada y amenazas de muerte con arma de fuego; un papel le fue introducido a la fuerza en la boca.", "confianza": "corroborada", "fuente": "CiberCuba, Diario de Cuba", "sincronizado": true}, {"fecha": "8 de julio", "hecho": "Citado nuevamente por la Seguridad del Estado, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}]}, {"persona": "Mario Alberto Hernández Leyva", "eventos": [{"fecha": "2 de julio", "hecho": "Golpeado en una unidad policial y trasladado a una zona boscosa cerca de Artemisa.", "confianza": "corroborada", "fuente": "Martí Noticias", "sincronizado": true}, {"fecha": "2 de julio", "hecho": "Desnudado, fotografiado y devuelto a La Habana esa misma noche, cerca de las 22:00 horas.", "confianza": "corroborada", "fuente": "Martí Noticias", "sincronizado": true}, {"fecha": "8 de julio", "hecho": "Citado nuevamente, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}, {"fecha": "10 de julio", "hecho": "Nueva detención, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}, {"fecha": "12 de julio", "hecho": "Nueva detención, vigilancia domiciliaria y retenciones de hasta 24 horas, según el informe de Cubalex.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "sincronizado": false}]}], "casos_satelite": [{"id": "benitez", "nombre": "Anna Sofía Benítez", "resumen": "Sometida a un interrogatorio de entre 10 y 12 horas el 2 de julio de 2026, en el mismo operativo dirigido a impedir la asistencia a la recepción diplomática.", "hechos": [{"afirmacion": "Fue interrogada durante entre 10 y 12 horas, según distintas fuentes, el 2 de julio de 2026.", "confianza": "corroborada", "fuente": "Diario Las Américas, ADN Cuba, CiberCuba, Cubanet"}], "confianza_global": "corroborada"}, {"id": "hernandez_gonzalez", "nombre": "Alex Javier Hernández González, 13 años", "resumen": "Golpeado por la policía durante una protesta en Santiago de las Vegas (Boyeros) el 22 de julio de 2026.", "hechos": [{"afirmacion": "Un adolescente de 13 años, identificado por prensa independiente, fue golpeado por la policía durante una protesta el 22 de julio de 2026.", "confianza": "corroborada", "fuente": "Diario de Cuba, Martí Noticias, 14ymedio, Infobae, Prisoners Defenders"}], "confianza_global": "corroborada"}, {"id": "acosta_gomez", "nombre": "Lismani Acosta Gómez", "resumen": "Detenido el 6 de julio de 2026 durante un cacerolazo en Guanabacoa; los detalles de su traslado carcelario difieren entre el informe original y la prensa independiente.", "hechos": [{"afirmacion": "Fue detenido el 6 de julio de 2026 durante un cacerolazo en Guanabacoa.", "confianza": "corroborada", "fuente": "CiberCuba, 14ymedio"}, {"afirmacion": "El informe de Cubalex indica fianzas sucesivas de 100.000 y 50.000 pesos y traslado a la prisión de Cuba-Panamá.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "nota": "Prensa independiente sitúa en cambio su traslado al centro de detención El Vivac, con cambio de medida a prisión provisional, sin mencionar las cifras de fianza citadas por Cubalex."}], "confianza_global": "parcialmente_corroborada"}], "cierre_balanza": {"muertes": [{"nombre": "Rolando Yunior Rodríguez Torres", "detalle": "Murió tras un mes hospitalizado, después de intoxicarse con medicamentos en prisión y no recibir atención médica oportuna.", "confianza": "corroborada", "fuente": "14ymedio"}, {"nombre": "Jorge Luis Iglesia Rodríguez", "detalle": "Murió en la Prisión Provincial de Guantánamo. Cubalex atribuye la muerte a tuberculosis no tratada.", "confianza": "parcialmente_corroborada", "fuente": "14ymedio, Diario de Cuba", "nota": "Prensa independiente reporta que la causa de muerte registrada fue una infección de próstata; la tuberculosis, diagnosticada en junio, era una condición concurrente que tampoco recibió tratamiento adecuado."}, {"nombre": "Osviel Rivero Viera", "detalle": "Cubalex reporta su muerte en el Combinado del Este, tras casi dos años detenido.", "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)", "nota": "No se localizó ninguna fuente independiente que mencione este nombre ni este hecho."}], "excarcelados": [{"nombre": "Nilo Abrahante Santiago", "detalle": "Cumplió íntegra su condena de 5 años por las protestas del 11 de julio de 2021.", "confianza": "corroborada", "fuente": "14ymedio, Diario de Cuba"}, {"nombre": "Aníbal Yasiel Palau Jacinto", "detalle": "Cumplió íntegra su condena de 5 años por las protestas del 11 de julio de 2021.", "confianza": "corroborada", "fuente": "Martí Noticias"}, {"nombre": "Kevin Damián Frómeta Castro", "detalle": "Cumplió íntegra su condena de 5 años por las protestas del 11 de julio de 2021.", "confianza": "corroborada", "fuente": "Solidaridad Española con Cuba"}, {"nombre": "Ángel Castro Carrera", "detalle": "Excarcelado bajo libertad condicional tras cumplir 5 de los 6 años de su condena por \"sabotaje\".", "confianza": "corroborada", "fuente": "Martí Noticias, 23 de julio de 2026"}], "nota": "De las tres muertes bajo custodia que denuncia Cubalex, solo una fue confirmada de forma independiente sin matices; las cuatro excarcelaciones sí lo fueron, todas. Este expediente no resume ambos lados en un solo número: los muestra juntos, cada nombre con su propia fuente y su propio grado de certeza."}, "contexto_agregado": {"resumen": "Cifras agregadas del informe mensual de Cubalex para julio de 2026, presentadas como contexto, no como protagonistas de este expediente.", "cifras": {"eventos": 388, "incidentes": 817, "victimas": 302, "municipios": 51, "provincias_total": 15}, "cortes_telecom": {"valor": 8, "nota": "El doble que en junio de 2026, según el informe de Cubalex; incluye un corte de internet durante una protesta en Jatibonico."}, "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)"}, "provincias": [{"id": "habana", "nombre": "La Habana", "eventos": 191, "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)"}, {"id": "camaguey", "nombre": "Camagüey", "eventos": 39, "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)"}, {"id": "santiago", "nombre": "Santiago de Cuba", "eventos": 27, "confianza": "no_confirmada", "fuente": "Cubalex (informe julio 2026)"}], "verificacion": {"total_evaluadas": 13, "corroboradas": 6, "parcialmente_corroboradas": 3, "no_confirmadas": 4, "excluidas": 0, "nota": "Se evaluaron 13 afirmaciones del informe original de Cubalex. Quedaron corroboradas: el operativo del 2 de julio como fenómeno (aunque no su cifra exacta de 25 personas), los hechos centrales de González Agüero y Díaz Rodríguez, los de Hernández Leyva, el interrogatorio de Anna Sofía Benítez, el caso del adolescente golpeado en Boyeros, y las cuatro excarcelaciones. Quedaron parcialmente corroboradas: la cifra de personas afectadas por el operativo, el caso Acosta Gómez (detención confirmada, traslado y fianzas sin confirmar) y la muerte de Jorge Luis Iglesia Rodríguez (confirmada, causa distinta a la reportada por Cubalex). No se confirmaron: el hostigamiento continuado tras el 2 de julio (citaciones y detenciones posteriores), el caso de Agustín López Canino, los otros dos menores detenidos en Regla y Arroyo Naranjo, y la muerte de Osviel Rivero Viera."}, "encuesta": {"preguntas": [{"id": "operativo_coordinado", "texto": "Tres defensores sufrieron el mismo trato el mismo día, en un operativo para impedirles asistir a un acto diplomático. ¿Qué te parece más revelador?", "opciones": ["La coordinación centralizada del operativo", "Que el motivo fuera impedir un acto simbólico, no una protesta", "Que el hostigamiento posterior no tenga aún segunda fuente"]}, {"id": "balanza_final", "texto": "El mismo mes hubo tres muertes bajo custodia (una confirmada) y cuatro excarcelaciones (las cuatro confirmadas). ¿Qué transmite mejor ese contraste?", "opciones": ["Que el sistema libera a quien ya cumplió, sin más concesión que esa", "Que las muertes bajo custodia siguen sin transparencia real", "Ambas cosas a la vez, sin que una compense a la otra"]}, {"id": "cifras_no_confirmadas", "texto": "Cuatro de las trece afirmaciones evaluadas en este expediente no pudieron confirmarse con una segunda fuente. ¿Cómo deberíamos tratarlas?", "opciones": ["Publicarlas igual, marcadas como no confirmadas", "No publicarlas hasta tener una segunda fuente", "Depende de la gravedad de cada afirmación"]}]}, "referencias": [{"fuente": "Cubalex", "detalle": "Informe Mensual sobre la Situación de los Derechos Humanos en Cuba, julio de 2026", "fecha": "agosto de 2026"}, {"fuente": "CiberCuba", "detalle": "Cobertura del operativo del 2 de julio contra González Agüero y Díaz Rodríguez", "fecha": "julio de 2026"}, {"fuente": "Martí Noticias", "detalle": "Cobertura del caso de Hernández Leyva y de la excarcelación de Ángel Castro Carrera", "fecha": "julio de 2026"}, {"fuente": "Diario de Cuba", "detalle": "Cobertura del operativo del 2 de julio y de la muerte de Jorge Luis Iglesia Rodríguez", "fecha": "julio de 2026"}, {"fuente": "14ymedio", "detalle": "Cobertura de la muerte de Rolando Yunior Rodríguez Torres y de las excarcelaciones por el 11J", "fecha": "julio de 2026"}, {"fuente": "Cubanet", "detalle": "Cobertura del operativo del 2 de julio", "fecha": "julio de 2026"}, {"fuente": "Periódico Cubano", "detalle": "Cobertura de los hechos contra González Agüero y Díaz Rodríguez", "fecha": "julio de 2026"}, {"fuente": "Diario Las Américas / ADN Cuba", "detalle": "Cobertura del interrogatorio de Anna Sofía Benítez", "fecha": "julio de 2026"}, {"fuente": "Infobae / Prisoners Defenders", "detalle": "Cobertura del caso del adolescente golpeado en Boyeros", "fecha": "julio de 2026"}, {"fuente": "Solidaridad Española con Cuba", "detalle": "Cobertura de la excarcelación de Kevin Damián Frómeta Castro", "fecha": "julio de 2026"}], "metodologia": {"fuentes": [{"nombre": "Cubalex", "tipo": "informe mensual / monitoreo propio", "url": "https://cubalex.org"}, {"nombre": "Prensa independiente cubana (CiberCuba, 14ymedio, Diario de Cuba, Martí Noticias, Cubanet, ADN Cuba)", "tipo": "cobertura periodística", "url": ""}, {"nombre": "Prisoners Defenders", "tipo": "organización de derechos humanos", "url": ""}], "periodo": "julio de 2026", "cadencia": "Nivel 2 — creación asistida vía /procesar-inbox; no entra en el ciclo automático de refresco de 8 horas.", "extraccion": "Verificación asistida por LLM (motor agnóstico) sobre el PDF de origen, con un subagente dedicado a corroborar cada afirmación individual contra fuentes independientes antes de incluirla en el dataset.", "validacion": "ajv contra cerco_julio.schema.json · node scripts/bracket-balance.mjs · npm run build", "limitaciones": ["El hostigamiento continuado contra los tres defensores tras el 2 de julio (nuevas citaciones y detenciones) solo lo reporta Cubalex; no se localizó cobertura de prensa independiente sobre esos hechos concretos.", "Las cifras agregadas del mes (388 eventos, 817 incidentes, 302 víctimas) son la métrica interna de Cubalex; el desglose por provincia solo está disponible para tres de las quince provincias.", "De las tres muertes bajo custodia denunciadas, una tiene una causa de muerte distinta según prensa independiente y otra no pudo confirmarse en ninguna fuente."], "cambios_metodologicos": []}, "conclusion": "El 2 de julio de 2026 deja una prueba visual poco frecuente: tres personas, en tres lugares, sometidas al mismo trato el mismo día, por el mismo motivo declarado. Esa sincronía —incomunicación, golpizas, desnudez forzada, amenazas de muerte— está confirmada por prensa independiente más allá del propio informe de Cubalex que la denuncia. Lo que Cubalex describe que ocurrió después, durante el resto de julio, todavía depende de una sola fuente. El mes se cierra con una balanza que este expediente no simplifica: tres muertes bajo custodia, verificadas con distinto grado de certeza cada una, y cuatro excarcelaciones, las cuatro confirmadas sin matices. Ninguna de las dos cifras corrige a la otra; ambas describen, con su propio nivel de certeza, lo que le pasó a un grupo de personas nombradas en julio de 2026."};
@@ -206,55 +196,63 @@ function GaleriaCasosSatelite({ casos }) {
   );
 }
 
-/* Mapa de Cuba con provincias seleccionables + dossier lateral, al estilo del
-   mapa de represion_cuba.jsx (geometria congelada compartida). Solo tres
-   provincias tienen cifra en el informe fuente: las demas se dibujan apagadas y
-   declaradas "sin desglose", nunca con un valor inventado. */
+/* Coropleta provincial real sobre el cuba.svg de MapSVG (electrica_geo.js):
+   cada provincia es su propio path, seleccionable, con intensidad proporcional
+   a los eventos. Solo tres provincias tienen cifra en el informe fuente: las
+   demas quedan apagadas y declaradas "sin desglose", nunca con valor inventado. */
 function MapaProvincias({ provincias, contexto }) {
-  const MW = 1000, MH = 380;
-  const { cubaPath, project } = useMemo(() => {
-    const p = d3.geoMercator().fitExtent([[26, 26], [MW - 26, MH - 26]], CUBA_FEATURE);
-    return { cubaPath: d3.geoPath(p)(CUBA_FEATURE), project: p };
-  }, []);
   const max = Math.max(...provincias.map((p) => p.eventos));
-  const conDato = useMemo(() => new Map(provincias.map((p) => [p.id, p])), [provincias]);
-  const [sel, setSel] = useState(provincias[0] ? provincias[0].id : null);
+  const conDato = useMemo(() => {
+    const m = new Map();
+    provincias.forEach((p) => { if (ISO_POR_ID[p.id]) m.set(ISO_POR_ID[p.id], p); });
+    return m;
+  }, [provincias]);
+  const [sel, setSel] = useState(provincias[0] ? ISO_POR_ID[provincias[0].id] : null);
+  const [hov, setHov] = useState(null);
   const prov = conDato.get(sel);
-  const NOMBRES = {
-    pinar: "Pinar del Río", artemisa: "Artemisa", habana: "La Habana", mayabeque: "Mayabeque",
-    matanzas: "Matanzas", cienfuegos: "Cienfuegos", villaclara: "Villa Clara", sancti: "Sancti Spíritus",
-    ciego: "Ciego de Ávila", camaguey: "Camagüey", tunas: "Las Tunas", holguin: "Holguín",
-    granma: "Granma", santiago: "Santiago de Cuba", guantanamo: "Guantánamo",
-  };
   const pctDelTotal = prov ? Math.round((prov.eventos / contexto.cifras.eventos) * 100) : 0;
+  const rotulado = hov ? conDato.get(hov) : null;
+  const tituloHov = hov ? (CUBA_PATHS.find((p) => p.id === hov) || {}).title : null;
 
   return (
     <div className="cj-mapa-stage">
       <div className="cj-mapa-wrap">
-        <svg viewBox={`0 0 ${MW} ${MH}`} className="cj-mapa-svg" preserveAspectRatio="xMidYMid meet">
-          <path d={cubaPath} className="cj-mapa-outline" />
-          {Object.entries(PROV_GEO).map(([id, lonlat]) => {
-            const [x, y] = project(lonlat);
-            const p = conDato.get(id);
+        <svg viewBox={CUBA_VIEWBOX} className="cj-mapa-svg" preserveAspectRatio="xMidYMid meet"
+             role="img" aria-label="Eventos represivos por provincia en julio de 2026">
+          {CUBA_PATHS.map((prv) => {
+            const p = conDato.get(prv.id);
             const activo = !!p;
-            const r = activo ? 10 + Math.sqrt(p.eventos / max) * 34 : 5;
-            const on = sel === id;
+            const on = sel === prv.id;
+            const intensidad = activo ? 0.28 + (p.eventos / max) * 0.72 : 0;
             return (
-              <g key={id} transform={`translate(${x},${y})`} className={activo ? "cj-mapa-g cj-mapa-g-on" : "cj-mapa-g"}
-                 onClick={() => activo && setSel(id)} tabIndex={activo ? 0 : -1}
-                 onKeyDown={(ev) => { if (activo && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); setSel(id); } }}>
-                {activo && <circle r={r + 8} className="cj-mapa-halo" />}
-                <circle r={r} className={"cj-mapa-punto" + (activo ? " cj-mapa-punto-activo" : "") + (on ? " cj-mapa-punto-sel" : "")} />
-                <text className="cj-mapa-lbl" y={r + 15} textAnchor="middle">{NOMBRES[id]}</text>
-                {activo && <text className="cj-mapa-num" y={4} textAnchor="middle">{p.eventos}</text>}
-              </g>
+              <path
+                key={prv.id}
+                d={prv.d}
+                className={"cj-prov" + (activo ? " cj-prov-on" : "") + (on ? " cj-prov-sel" : "")}
+                style={activo ? { fillOpacity: intensidad } : undefined}
+                onClick={() => activo && setSel(prv.id)}
+                onMouseEnter={() => setHov(prv.id)}
+                onMouseLeave={() => setHov(null)}
+                tabIndex={activo ? 0 : -1}
+                onFocus={() => setHov(prv.id)}
+                onBlur={() => setHov(null)}
+                onKeyDown={(ev) => { if (activo && (ev.key === "Enter" || ev.key === " ")) { ev.preventDefault(); setSel(prv.id); } }}
+              >
+                <title>{prv.title}{p ? ` — ${p.eventos} eventos` : " — sin desglose publicado"}</title>
+              </path>
             );
           })}
         </svg>
-        <div className="cj-mapa-legend">
-          <span className="cj-mapa-legend-t">Eventos represivos registrados en julio:</span>
-          <span className="cj-mapa-legend-i"><i className="cj-sw-on" />Con cifra en el informe</span>
-          <span className="cj-mapa-legend-i"><i className="cj-sw-off" />Sin desglose publicado</span>
+        <div className="cj-mapa-pie">
+          <span className="cj-mapa-hov">
+            {tituloHov
+              ? <>{tituloHov}{rotulado ? <b> · {rotulado.eventos} eventos</b> : <i> · sin desglose publicado</i>}</>
+              : "Pasa el cursor por el mapa; toca una provincia encendida para fijarla."}
+          </span>
+          <span className="cj-mapa-legend">
+            <span className="cj-mapa-legend-i"><i className="cj-sw-on" />Con cifra en el informe</span>
+            <span className="cj-mapa-legend-i"><i className="cj-sw-off" />Sin desglose publicado</span>
+          </span>
         </div>
       </div>
       <aside className="cj-dossier">
@@ -609,20 +607,16 @@ const CSS = `
 .cj-mapa-stage{ display:grid; grid-template-columns:minmax(0,1.9fr) minmax(230px,1fr); gap:18px; align-items:start; }
 .cj-mapa-wrap{ background:${C.panel}; border-radius:10px; padding:14px; }
 .cj-mapa-svg{ width:100%; height:auto; display:block; }
-.cj-mapa-outline{ fill:rgba(233,228,214,.035); stroke:rgba(233,228,214,.16); stroke-width:1.2; }
-.cj-mapa-g{ outline:none; }
-.cj-mapa-g-on{ cursor:pointer; }
-.cj-mapa-halo{ fill:${C.contrapunto}; opacity:.16; }
-.cj-mapa-punto{ fill:rgba(148,140,120,.28); stroke:rgba(0,0,0,.4); stroke-width:1; transition:fill .2s, stroke .2s; }
-.cj-mapa-punto-activo{ fill:${C.contrapunto}; }
-.cj-mapa-g-on:hover .cj-mapa-punto-activo{ fill:#5D6BA8; }
-.cj-mapa-punto-sel{ stroke:${C.primario}; stroke-width:2.5; }
-.cj-mapa-lbl{ font-family:'IBM Plex Mono',monospace; font-size:12px; fill:${C.dim}; pointer-events:none; }
-.cj-mapa-num{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; fill:${C.paper}; pointer-events:none; }
-.cj-mapa-legend{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:8px; font-size:11px; color:${C.dim}; }
-.cj-mapa-legend-t{ font-family:'IBM Plex Mono',monospace; letter-spacing:.04em; }
+.cj-prov{ fill:rgba(148,140,120,.16); stroke:${C.bg}; stroke-width:.6; outline:none; transition:fill-opacity .2s, fill .2s, stroke .2s; }
+.cj-prov-on{ fill:${C.contrapunto}; cursor:pointer; }
+.cj-prov-on:hover{ fill:#6C79B4; }
+.cj-prov-sel{ stroke:${C.primario}; stroke-width:1.8; }
+.cj-mapa-pie{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; margin-top:10px; font-size:11.5px; color:${C.dim}; }
+.cj-mapa-hov b{ color:${C.primario}; font-family:'IBM Plex Mono',monospace; }
+.cj-mapa-hov i{ font-style:italic; }
+.cj-mapa-legend{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:11px; color:${C.dim}; }
 .cj-mapa-legend-i{ display:inline-flex; align-items:center; gap:5px; }
-.cj-mapa-legend-i i{ width:10px; height:10px; border-radius:50%; display:inline-block; }
+.cj-mapa-legend-i i{ width:10px; height:10px; border-radius:2px; display:inline-block; }
 .cj-sw-on{ background:${C.contrapunto}; }
 .cj-sw-off{ background:rgba(148,140,120,.35); }
 .cj-dossier{ background:${C.panel}; border-radius:10px; padding:16px; border-top:3px solid ${C.contrapunto}; }

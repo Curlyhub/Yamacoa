@@ -339,8 +339,11 @@ function Cascada({ tramos }) {
                 border: "1px solid " + C.borde,
                 borderRadius: 3,
                 fontFamily: "'IBM Plex Mono', monospace",
-                fontSize: 12
+                fontSize: 12,
+                color: C.texto
               }}
+              itemStyle={{ color: C.texto }}
+              labelStyle={{ color: C.tenue }}
               labelFormatter={() => ""}
               formatter={(v, name, p) => {
                 if (name !== "visible") return null;
@@ -476,8 +479,11 @@ function Sensibilidad({ series, umbral }) {
               border: "1px solid " + C.borde,
               borderRadius: 3,
               fontFamily: "'IBM Plex Mono', monospace",
-              fontSize: 12
+              fontSize: 12,
+              color: C.texto
             }}
+            itemStyle={{ color: C.texto }}
+            labelStyle={{ color: C.tenue }}
             formatter={(v) => fmt(v) + " M USD"}
             labelFormatter={(l) => l + "% del caso base"}
           />
