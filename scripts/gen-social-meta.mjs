@@ -43,14 +43,39 @@ async function imgFor(slug) {
   return undefined;
 }
 
+// Cuerpo indexable: el registro factual largo del dataset (meta.descripcion,
+// 400-1200 palabras). Se sirve dentro de #root para que crawlers, motores de
+// busqueda y extractores que NO ejecutan JavaScript vean el texto del
+// expediente, no la shell vacia. React lo reemplaza al montar.
+async function cuerpoDe(t) {
+  const slug = t.dataSlug || t.slug;
+  try {
+    const raw = await readFile(resolve(PUBLIC, `data/${slug}.json`), "utf8");
+    const meta = (JSON.parse(raw) || {}).meta || {};
+    const desc = meta.descripcion;
+    if (typeof desc !== "string" || desc.length < 200) return undefined;
+    return {
+      parrafos: desc.split(/\n{2,}/).map((s) => s.trim()).filter(Boolean),
+      fuentes: t.fuentes || "",
+      fecha: meta.fecha_datos || t.publicado || "",
+      etiqueta: t.etiqueta || "",
+    };
+  } catch {
+    return undefined;
+  }
+}
+
 const temas = await loadRegistry();
 const map = {};
+let conCuerpo = 0;
 for (const t of temas) {
   const entry = { t: t.titulo, d: t.subtitulo };
   const img = await imgFor(t.slug);
   if (img) entry.img = img;
+  const cuerpo = await cuerpoDe(t);
+  if (cuerpo) { entry.body = cuerpo; conCuerpo++; }
   map[t.path] = entry;
 }
 
 await writeFile(OUT, JSON.stringify(map, null, 2) + "\n");
-console.log(`social-meta: ${Object.keys(map).length} rutas -> ${OUT}`);
+console.log(`social-meta: ${Object.keys(map).length} rutas (${conCuerpo} con cuerpo indexable) -> ${OUT}`);

@@ -39,6 +39,56 @@ class SetText {
   element(el) { el.setInnerContent(this.value); }
 }
 
+const esc = (s) => String(s)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;");
+
+// Siembra #root con el texto real del expediente. Sin esto, la respuesta
+// publica es una shell que solo dice "You need to enable JavaScript": los
+// crawlers, motores de busqueda y extractores automaticos no ven ni una linea
+// del articulo. React vacia #root al montar, asi que el lector con JavaScript
+// no percibe este bloque; el que no lo ejecuta, lo lee entero.
+class SeedRoot {
+  constructor(html) { this.html = html; }
+  element(el) { el.setInnerContent(this.html, { html: true }); }
+}
+
+// Enlace canonico por ruta (la shell trae uno generico).
+class SetHref {
+  constructor(value) { this.value = value; }
+  element(el) { el.setAttribute("href", this.value); }
+}
+
+function articuloHTML(tema, title, pageUrl, img) {
+  const b = tema.body;
+  const parrafos = b.parrafos.map((p) => `<p>${esc(p)}</p>`).join("");
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: tema.t,
+    description: tema.d,
+    url: pageUrl,
+    image: img,
+    inLanguage: "es",
+    isAccessibleForFree: true,
+    publisher: { "@type": "Organization", name: "Yamacoa Observatorio", url: SITE },
+  };
+  if (b.fecha) ld.datePublished = b.fecha;
+  if (b.fuentes) ld.citation = b.fuentes;
+  return (
+    `<article>` +
+    (b.etiqueta ? `<p>${esc(b.etiqueta)}</p>` : "") +
+    `<h1>${esc(tema.t)}</h1>` +
+    `<p>${esc(tema.d)}</p>` +
+    parrafos +
+    (b.fuentes ? `<p>Fuentes: ${esc(b.fuentes)}</p>` : "") +
+    (b.fecha ? `<p>Datos actualizados: ${esc(b.fecha)}</p>` : "") +
+    `<p><a href="${esc(pageUrl)}">${esc(title)}</a></p>` +
+    `</article>` +
+    `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, "\\u003c")}</script>`
+  );
+}
+
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
@@ -54,8 +104,9 @@ export async function onRequest(context) {
   const img = tema.img || DEFAULT_IMG;
   const pageUrl = `${SITE}${key}`;
 
-  return new HTMLRewriter()
+  let rw = new HTMLRewriter()
     .on("title", new SetText(title))
+    .on('link[rel="canonical"]', new SetHref(pageUrl))
     .on('meta[name="description"]', new SetContent(tema.d))
     .on('meta[property="og:title"]', new SetContent(title))
     .on('meta[property="og:description"]', new SetContent(tema.d))
@@ -64,6 +115,12 @@ export async function onRequest(context) {
     .on('meta[property="og:image:secure_url"]', new SetContent(img))
     .on('meta[name="twitter:title"]', new SetContent(title))
     .on('meta[name="twitter:description"]', new SetContent(tema.d))
-    .on('meta[name="twitter:image"]', new SetContent(img))
-    .transform(res);
+    .on('meta[name="twitter:image"]', new SetContent(img));
+
+  // Cuerpo indexable solo si el generador pudo extraerlo del dataset.
+  if (tema.body && Array.isArray(tema.body.parrafos) && tema.body.parrafos.length) {
+    rw = rw.on("div#root", new SeedRoot(articuloHTML(tema, title, pageUrl, img)));
+  }
+
+  return rw.transform(res);
 }
