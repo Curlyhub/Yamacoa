@@ -31,7 +31,8 @@
       "galeria-casos",
       "encuesta"
     ],
-    "firma": "mapa de Cuba con senal por provincia sincronizado con barra lateral"
+    "firma": "mapa de Cuba con senal por provincia sincronizado con barra lateral",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "rusificacion",
@@ -61,7 +62,8 @@
     "graficos": [
       "force-graph-d3"
     ],
-    "firma": "grafo de fuerza D3 con nodos clicables y sidebar de detalle"
+    "firma": "grafo de fuerza D3 con nodos clicables y sidebar de detalle",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "gaesa-escenario",
@@ -94,7 +96,8 @@
       "barra",
       "slider-interactivo"
     ],
-    "firma": "slider de capital que recalcula en vivo las proyecciones energeticas"
+    "firma": "slider de capital que recalcula en vivo las proyecciones energeticas",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "protestas_cuba",
@@ -161,7 +164,8 @@
       "donut",
       "barra"
     ],
-    "firma": "fan chart de proyeccion con banda de incertidumbre y JSON respirante animado"
+    "firma": "fan chart de proyeccion con banda de incertidumbre y JSON respirante animado",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "anatomia_11j",
@@ -195,7 +199,8 @@
       "donut-con-selector",
       "barra-horizontal"
     ],
-    "firma": "violin plots de densidad KDE real sobre distribucion de edades de detenidos"
+    "firma": "violin plots de densidad KDE real sobre distribucion de edades de detenidos",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "racismo",
@@ -228,7 +233,8 @@
       "barra",
       "linea"
     ],
-    "firma": "paleta aubergine-ocre que evoca la piel y la tierra"
+    "firma": "paleta aubergine-ocre que evoca la piel y la tierra",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "iclep",
@@ -261,7 +267,8 @@
       "linea",
       "mapa-provincias"
     ],
-    "firma": "triada salmon-amarillo-turquesa que codifica alerta-precaucion-seguro"
+    "firma": "triada salmon-amarillo-turquesa que codifica alerta-precaucion-seguro",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "himno_narciso",
@@ -299,7 +306,8 @@
       "encuesta",
       "quiz"
     ],
-    "firma": "capsula historica con texto del himno en Spectral y quiz interactivo"
+    "firma": "capsula historica con texto del himno en Spectral y quiz interactivo",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "electrica",
@@ -342,7 +350,8 @@
       "barra",
       "slider-calc"
     ],
-    "firma": "medidor radial tipo voltimetro (demanda vs disponible = deficit) + ridgeline de apagones como forma de onda + rampa de voltaje azul->ambar->ascua"
+    "firma": "medidor radial tipo voltimetro (demanda vs disponible = deficit) + ridgeline de apagones como forma de onda + rampa de voltaje azul->ambar->ascua",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "convocatoria_11j",
@@ -376,7 +385,8 @@
       "muro-nominal",
       "listado-agrupado"
     ],
-    "firma": "mapa mundial react-leaflet sobre tiles CartoDB Dark Matter con marcadores de convocatoria en cuatro niveles de confianza codificados por forma + opacidad (no solo color) dentro de una unica familia verde-senal, con leyenda fija"
+    "firma": "mapa mundial react-leaflet sobre tiles CartoDB Dark Matter con marcadores de convocatoria en cuatro niveles de confianza codificados por forma + opacidad (no solo color) dentro de una unica familia verde-senal, con leyenda fija",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "angola",
@@ -410,7 +420,8 @@
       "timeline-espina",
       "encuesta"
     ],
-    "firma": "waffle de 40 chapas de identificacion troquelado en la costura del diptico: 1 chapa dorada y 1 partida = lo que llega al medico de los 5000 USD mensuales, 38 grises = lo retenido, con revelado escalonado al entrar en vista"
+    "firma": "waffle de 40 chapas de identificacion troquelado en la costura del diptico: 1 chapa dorada y 1 partida = lo que llega al medico de los 5000 USD mensuales, 38 grises = lo retenido, con revelado escalonado al entrar en vista",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "envejecimiento",
@@ -444,7 +455,8 @@
       "gauge-radial",
       "barra"
     ],
-    "firma": "piramide poblacional real (barras horizontales espejadas hombres/mujeres por decada de edad) con deslizador de anio 2025-2050 y silueta punteada fantasma del escenario contrafactual sin el exodo post-2021"
+    "firma": "piramide poblacional real (barras horizontales espejadas hombres/mujeres por decada de edad) con deslizador de anio 2025-2050 y silueta punteada fantasma del escenario contrafactual sin el exodo post-2021",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "coraje_dividido",
@@ -492,7 +504,8 @@
       "simuladores-con-deslizador"
     ],
     "firma": "constelacion de la fragmentacion: nube de ~50 organizaciones opositoras cubanas con halos que marcan los paraguas unitarios colapsados y su fecha de muerte, contrapuesta a la topologia radial de nodo unico del ANC sudafricano. La forma de la red es el dato.",
-    "procedencia": "Importado ya construido via /importar el 2026-07-20; no paso por el subagente disenador. Ficha reconstruida a partir del renderer congelado."
+    "procedencia": "Importado ya construido via /importar el 2026-07-20; no paso por el subagente disenador. Ficha reconstruida a partir del renderer congelado.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "desacreditacion",
@@ -528,7 +541,8 @@
       "barra-horizontal"
     ],
     "firma": "muro tipografico disciplinado (cuadricula, no nube organica) de las etiquetas reales documentadas contra disidentes -- MERCENARIO, CRIMINAL COMUN, MENTALMENTE INESTABLE, AGENTE EXTRANJERO, IMPOSTOR/FALSO DISIDENTE, LA DISIDENCIA ES UN GIMNASIO -- en IBM Plex Mono mayuscula, tamano por peso documentado (alto/medio/bajo, cualitativo) y color por frente de origen (violeta=Estado, bilis=diaspora).",
-    "procedencia": "Creado via /procesar-inbox (envio 9, la_tirania_toca_las_9) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (14 fichas previas); verificacion previa del subagente verificador."
+    "procedencia": "Creado via /procesar-inbox (envio 9, la_tirania_toca_las_9) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (14 fichas previas); verificacion previa del subagente verificador.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "sucesion",
@@ -563,7 +577,8 @@
       "barra-anios-en-el-poder"
     ],
     "firma": "eje vertical de bronce sin interrupcion que recorre las tres eras (1959, 2006/2008, 2018/2021) con tres sellos circulares engastados -- Fidel, Raul, Diaz-Canel -- que se deslizan sobre el mismo eje sin nunca cortarlo, mientras una franja de PCC/FAR permanece impresa sin moverse detras de los sellos.",
-    "procedencia": "Creado via /procesar-inbox (envio 10, locus_internos_y_externos_10) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (15 fichas previas); verificacion previa del subagente verificador, SIN orientacion editorial (el fichero NOTA_EDITORIAL_locus.md que acompanaba el envio se confirmo falso -- no lo escribio el administrador -- y se descarto por completo; el angulo lo decidio el verificador de forma independiente sobre las afirmaciones del propio envio)."
+    "procedencia": "Creado via /procesar-inbox (envio 10, locus_internos_y_externos_10) el 2026-07-22. Ficha del subagente disenador contra ops/design_log.json (15 fichas previas); verificacion previa del subagente verificador, SIN orientacion editorial (el fichero NOTA_EDITORIAL_locus.md que acompanaba el envio se confirmo falso -- no lo escribio el administrador -- y se descarto por completo; el angulo lo decidio el verificador de forma independiente sobre las afirmaciones del propio envio).",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "protesta_solitaria",
@@ -599,7 +614,8 @@
       "gauge-radial-doble"
     ],
     "firma": "linea de tiempo vertical del caso indice trazada en indigo solido dia a dia (24 abril, nueve dias de vigilia) que al llegar a la ventana sin informacion oficial (retencion, presunta desaparicion forzada de corto plazo segun ICLEP) se vacia a un segmento sin relleno -- solo borde punteado del mismo indigo, opacidad baja -- y recupera el trazo solido al confirmarse el traslado a Villa Marista bajo evaluacion clinica: el hueco visual es el dato, no un adorno.",
-    "procedencia": "Creado via /procesar-inbox (envio 11, tras_las_rejas_javier_11) el 2026-07-26. Ficha del subagente disenador contra ops/design_log.json (17 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (el angulo lo decidio el verificador sobre las afirmaciones del propio envio). Caso indice mayormente corroborado (no descartado) y patron comparable corroborado con casos nombrados (Manicaragua, Bayamo, Santiago de Cuba): ambas secciones se construyeron por separado, sin fusionar cifras."
+    "procedencia": "Creado via /procesar-inbox (envio 11, tras_las_rejas_javier_11) el 2026-07-26. Ficha del subagente disenador contra ops/design_log.json (17 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (el angulo lo decidio el verificador sobre las afirmaciones del propio envio). Caso indice mayormente corroborado (no descartado) y patron comparable corroborado con casos nombrados (Manicaragua, Bayamo, Santiago de Cuba): ambas secciones se construyeron por separado, sin fusionar cifras.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "sulmira",
@@ -634,7 +650,8 @@
       "barra-horizontal-casos-comparables"
     ],
     "firma": "el bloque tipografico de la 'confesion' oficial (IBM Plex Mono, gris neutro, tono de acta) que al hacer scroll (IntersectionObserver) o al pasar el cursor se resuelve en scanlines horizontales y un desplazamiento cromatico rojo/cian tipo aberracion de video, revelando debajo -- en Archivo, sin distorsion -- la afirmacion documentada sobre su actividad real en Facebook antes de la detencion: el guion impuesto se rompe y asoma la voz propia. Ninguna de las dos capas es una cita textual inventada de una confesion o acusacion oficialista: ambas son afirmaciones ya verificadas del propio dataset (caso_indice.hechos), presentadas con su fuente y su chip de confianza.",
-    "procedencia": "Creado via /procesar-inbox (envio 12, tras_las_rejas_sulmira_12) el 2026-07-27. Ficha del subagente disenador contra ops/design_log.json (18 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (mismo patron que protesta_solitaria, envio 11, misma autora, misma serie 'Tras las Rejas'). Caso indice mayormente corroborado (13 de 15 hechos; 2 no confirmados por fuente unica) y patron comparable corroborado (Labrada, Garcia Lopez, dos casos de Infobae, joven de El Imparcial): ambas secciones se construyeron por separado, sin fusionar cifras."
+    "procedencia": "Creado via /procesar-inbox (envio 12, tras_las_rejas_sulmira_12) el 2026-07-27. Ficha del subagente disenador contra ops/design_log.json (18 fichas previas); verificacion previa del subagente verificador, SIN NOTA_EDITORIAL.md en el inbox (mismo patron que protesta_solitaria, envio 11, misma autora, misma serie 'Tras las Rejas'). Caso indice mayormente corroborado (13 de 15 hechos; 2 no confirmados por fuente unica) y patron comparable corroborado (Labrada, Garcia Lopez, dos casos de Infobae, joven de El Imparcial): ambas secciones se construyeron por separado, sin fusionar cifras.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "normas",
@@ -679,7 +696,8 @@
       "indice-ct-interactivo"
     ],
     "firma": "las formulas del modelo se sirven como MathML nativo desde el dataset (10 bloques) e inyectan con dangerouslySetInnerHTML, de modo que el aparato matematico respira con el JSON en vez de vivir hardcodeado en el renderer. Cada bloque interactivo (curva del modelo, malla de normas, indice C_t) va precedido de un aviso en ambar punteado que lo marca como simulacion de forma funcional y no como dato observado: los controles exploran la forma de la funcion, no predicen.",
-    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/normas/ (set ya construido: renderer + dataset + schema). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las 17 fuentes NO se cotejaron en el import. Ficha registrada a posteriori, a mano, para que futuras propuestas de paleta no colisionen. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, la ruta original daba 404 en silencio y el dataset no habria respirado nunca) y se anadio la encuesta, que el set no traia. El dataset conserva el nombre interno reconstruccion-civica, enlazado por dataSlug. El 2026-07-28, tras revision editorial, se rehizo el grafico de 'la ventana institucional' (experimento BID/Honduras): reutilizaba el componente Divergente pese a que sus tres efectos son positivos (nada divergia), recortaba la etiqueta del valor mayor fuera del viewBox y no mostraba honduras.descripcion. Sustituido por un conmutador control/tratamiento en HTML/CSS que reproduce la manipulacion experimental, sin fabricar linea base (el control es cero por definicion). Divergente se conservo intacto para Filadelfia, donde la forma si corresponde."
+    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/normas/ (set ya construido: renderer + dataset + schema). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las 17 fuentes NO se cotejaron en el import. Ficha registrada a posteriori, a mano, para que futuras propuestas de paleta no colisionen. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, la ruta original daba 404 en silencio y el dataset no habria respirado nunca) y se anadio la encuesta, que el set no traia. El dataset conserva el nombre interno reconstruccion-civica, enlazado por dataSlug. El 2026-07-28, tras revision editorial, se rehizo el grafico de 'la ventana institucional' (experimento BID/Honduras): reutilizaba el componente Divergente pese a que sus tres efectos son positivos (nada divergia), recortaba la etiqueta del valor mayor fuera del viewBox y no mostraba honduras.descripcion. Sustituido por un conmutador control/tratamiento en HTML/CSS que reproduce la manipulacion experimental, sin fabricar linea base (el control es cero por definicion). Divergente se conservo intacto para Filadelfia, donde la forma si corresponde.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "auditar",
@@ -716,7 +734,8 @@
       "pendiente-de-catalogar"
     ],
     "firma": "pendiente de catalogar",
-    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/auditar/ (set ya construido: renderer + dataset + schema, sin SQL ni NOTAS). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las fuentes NO se cotejaron en el import. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, mismo defecto que traia el set de normas) y se sustituyo el accent de portada por colision con represion. La encuesta del set apunta a una convencion de tabla unica (yamacoa_encuesta_votar / yamacoa_encuesta_resultados) que NO EXISTE en el repo, igual que el ENCUESTAS.md que su cabecera manda verificar: queda sin resolver."
+    "procedencia": "Importado via /importar el 2026-07-28 desde ops/_import/auditar/ (set ya construido: renderer + dataset + schema, sin SQL ni NOTAS). NO se ejecuto el subagente disenador ni el verificador: la direccion visual venia en el .jsx y las fuentes NO se cotejaron en el import. Durante el cableado se corrigio RUTA_DATOS (/datos/ -> /data/, mismo defecto que traia el set de normas) y se sustituyo el accent de portada por colision con represion. La encuesta del set apunta a una convencion de tabla unica (yamacoa_encuesta_votar / yamacoa_encuesta_resultados) que NO EXISTE en el repo, igual que el ENCUESTAS.md que su cabecera manda verificar: queda sin resolver.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "cascada_valor_minero",
@@ -753,7 +772,8 @@
       "encuesta-de-barras-inline-sobre-base-unica"
     ],
     "firma": "la cascada waterfall: una unica barra de acero profundo (valor bruto in situ, 25.328 M USD) de la que caen cuatro tramos de laterita ocre -- recuperacion, coste operativo, capital e impuestos, descuento temporal -- hasta dejar un ultimo bloque de acero claro que es la participacion real del Estado cubano (888 M, el 3,5% del punto de partida). El argumento es la merma, y se ve antes de leerse. Cruzando el grafico, dos reglas discontinuas en hueso marcan la deuda del Club de Paris y la deuda externa del BCC: la segunda queda POR ENCIMA de todos los tramos salvo los dos primeros, de modo que el lector ve que el pasivo externo supera al valor realizable sin que ningun texto se lo afirme. Debajo, una lista espejo sincronizada por hover con el grafico: cada tramo declara su perdida, su causa y su chip de confianza, y el porcentaje que representa sobre el bruto original.",
-    "procedencia": "Construido en sesion de trabajo el 2026-07-29 sobre el informe tecnico NI 43-101 del Moa Joint Venture (Micon International, personas cualificadas Foret/Breed/Jacobs/Reid, estandar CIM 2014, fecha efectiva 2022-08-31). Fuente primaria unica y auditada: NO se uso ninguna fuente secundaria para las cifras del activo. Origen del tema: discusion sobre el documento marco del Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional, en la que se detecto que la cifra de riqueza minera cubana en circulacion (213.446 M EUR en /mineria, y 450.000 M EUR en la propuesta inicial) mide valor bruto de contenido metalico in situ y no valor de activo. El tema deriva empiricamente el multiplicador VAN/in-situ cubano (3,2% caso base, 4,9% escenario alternativo; 3,5% de toma estatal) en lugar de tomar prestada la heuristica generica de industria del 5-15%. Se corrigio en el proceso un error previo propio: se habia citado el VAN de 1.517 M USD, que es el escenario alternativo alcista, cuando el caso base auditado es 812 M. Hallazgo colateral incorporado al dataset: la recuperacion mina-a-metal real es del 61,2% en niquel, no del 85,2% que se cita habitualmente y que corresponde solo a recuperacion de planta. Gates ejecutados: balance de llaves consciente de cadenas OK, compilacion esbuild JSX bundle:false OK, validacion ajv draft-07 OK, mas comprobaciones de coherencia interna (suma de reservas probadas+probables, monotonia de la cascada, consistencia del multiplicador con los tramos) OK. RESUELTO el 2026-07-29 durante el import: el enlace a /mineria como numerador se sirve desde el dataset (bloque referencia_interna) y se pinta al cierre de la seccion 3, con la cautela del USGS declarada en la propia tarjeta. Comprobado que /mineria ancla las 5,5 Mt en el USGS de 2024 y ya las declara con confianza media; el USGS MCS 2025 no desglosa Cuba y la agrega dentro de otros paises (mas de 9,1 Mt para todas las jurisdicciones restantes), de modo que la cifra debe leerse como estimacion de 2024 y no como dato corriente. Se anadio ademas encuesta de tres preguntas sobre la base unica (patron A de ENCUESTAS.md): decision del operador tomada durante el import, antes de publicar y por tanto antes de que el renderer quedara congelado."
+    "procedencia": "Construido en sesion de trabajo el 2026-07-29 sobre el informe tecnico NI 43-101 del Moa Joint Venture (Micon International, personas cualificadas Foret/Breed/Jacobs/Reid, estandar CIM 2014, fecha efectiva 2022-08-31). Fuente primaria unica y auditada: NO se uso ninguna fuente secundaria para las cifras del activo. Origen del tema: discusion sobre el documento marco del Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional, en la que se detecto que la cifra de riqueza minera cubana en circulacion (213.446 M EUR en /mineria, y 450.000 M EUR en la propuesta inicial) mide valor bruto de contenido metalico in situ y no valor de activo. El tema deriva empiricamente el multiplicador VAN/in-situ cubano (3,2% caso base, 4,9% escenario alternativo; 3,5% de toma estatal) en lugar de tomar prestada la heuristica generica de industria del 5-15%. Se corrigio en el proceso un error previo propio: se habia citado el VAN de 1.517 M USD, que es el escenario alternativo alcista, cuando el caso base auditado es 812 M. Hallazgo colateral incorporado al dataset: la recuperacion mina-a-metal real es del 61,2% en niquel, no del 85,2% que se cita habitualmente y que corresponde solo a recuperacion de planta. Gates ejecutados: balance de llaves consciente de cadenas OK, compilacion esbuild JSX bundle:false OK, validacion ajv draft-07 OK, mas comprobaciones de coherencia interna (suma de reservas probadas+probables, monotonia de la cascada, consistencia del multiplicador con los tramos) OK. RESUELTO el 2026-07-29 durante el import: el enlace a /mineria como numerador se sirve desde el dataset (bloque referencia_interna) y se pinta al cierre de la seccion 3, con la cautela del USGS declarada en la propia tarjeta. Comprobado que /mineria ancla las 5,5 Mt en el USGS de 2024 y ya las declara con confianza media; el USGS MCS 2025 no desglosa Cuba y la agrega dentro de otros paises (mas de 9,1 Mt para todas las jurisdicciones restantes), de modo que la cifra debe leerse como estimacion de 2024 y no como dato corriente. Se anadio ademas encuesta de tres preguntas sobre la base unica (patron A de ENCUESTAS.md): decision del operador tomada durante el import, antes de publicar y por tanto antes de que el renderer quedara congelado.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "marco_fondo_soberano",
@@ -790,7 +810,8 @@
       "anexo-alfabetico-de-admisibilidad"
     ],
     "firma": "la matriz de trazabilidad: un diagrama bipartito en SVG con los cuatro casos de fallo comparado a la izquierda (Alaska, Timor-Leste, Venezuela, Kazajistan) y los catorce articulos a la derecha, unidos por bandas curvas en ciruela. Al pasar el cursor por cualquiera de los dos lados se ilumina la conexion completa y el resaltado se propaga al cuerpo del documento: sobrevolar 'Kazajistan' enciende tambien el Articulo 12 doscientos pixeles mas abajo, y sobrevolar el Articulo 12 enciende Kazajistan. Los articulos sin banda se dibujan en gris y quedan declarados en texto como procedentes del marco original, no derivados de un fallo comparado. El dispositivo no decora: es la tesis del documento hecha objeto, porque el argumento entero consiste en que ningun articulo nuevo es una preferencia estetica sino la respuesta a una junta por la que se rompio un fondo real. Un lector que solo mire el diagrama ya ha entendido la estructura del texto.",
-    "procedencia": "Construido en sesion de trabajo el 2026-07-29 a partir de un documento marco previo del administrador sobre el Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional. Es un tema NORMATIVO, no de datos: el dataset codifica un articulado y su evidencia comparada, no una serie. Las diez secciones del documento original sobreviven todas, reordenadas; se anaden cuatro articulos nuevos (4 perimetro del blindaje, 5 perimetro institucional, 9 indicador de convergencia, 10 clausula de escape, 12 inmunidad y custodia) y se revisan dos (6 fuentes admisibles, 8 regla de extraccion). Cada articulo nuevo deriva de un fallo documentado, y el gate de coherencia verifica esa trazabilidad en ambos sentidos. Correcciones asumidas frente a la version original del administrador: el mecanismo decreciente se invierte a aportacion creciente (art. 7); las fuentes pasan de nombres concretos a categorias admisibles con exclusion expresa de la tributacion ordinaria de servicios (art. 6); el argumento de confianza se reformula de prima de riesgo a durabilidad, porque solo el segundo tiene evidencia; Singapur se degrada de referencia de gobernanza a referencia tecnica de gestion. La Parte V enumera cuatro cosas que el marco NO resuelve, incluida GAESA. El dividendo ciudadano queda como decision abierta con ambos lados argumentados, no como recomendacion. Gates ejecutados: balance de llaves OK, esbuild JSX bundle:false OK, ajv draft-07 OK, mas coherencia interna (trazabilidad bidireccional fallo<->articulo, todo articulo marcado 'nuevo' justificado por un fallo, numeracion continua sin huecos, toda entrada de fallo con fuente declarada) OK. Tema hermano: cascada_valor_minero, enlazado desde el criterio A del anexo; aquel aporta el numerador cuantitativo y este la arquitectura institucional, sin solaparse. Import del 2026-07-29 (/importar fondo): sin encuesta por decision del operador, el set no traia ninguna y el renderer no la contempla. Se corrigieron dos enlaces muertos al tema hermano — apuntaban a /cascada-valor-minero, que es el slug del DATASET de aquel tema y no su ruta; la ruta registrada es /cascada. Corregidos a #/cascada en dataset y en el fallback embebido, antes de publicar."
+    "procedencia": "Construido en sesion de trabajo el 2026-07-29 a partir de un documento marco previo del administrador sobre el Fondo Soberano de Resiliencia y Sostenibilidad Intergeneracional. Es un tema NORMATIVO, no de datos: el dataset codifica un articulado y su evidencia comparada, no una serie. Las diez secciones del documento original sobreviven todas, reordenadas; se anaden cuatro articulos nuevos (4 perimetro del blindaje, 5 perimetro institucional, 9 indicador de convergencia, 10 clausula de escape, 12 inmunidad y custodia) y se revisan dos (6 fuentes admisibles, 8 regla de extraccion). Cada articulo nuevo deriva de un fallo documentado, y el gate de coherencia verifica esa trazabilidad en ambos sentidos. Correcciones asumidas frente a la version original del administrador: el mecanismo decreciente se invierte a aportacion creciente (art. 7); las fuentes pasan de nombres concretos a categorias admisibles con exclusion expresa de la tributacion ordinaria de servicios (art. 6); el argumento de confianza se reformula de prima de riesgo a durabilidad, porque solo el segundo tiene evidencia; Singapur se degrada de referencia de gobernanza a referencia tecnica de gestion. La Parte V enumera cuatro cosas que el marco NO resuelve, incluida GAESA. El dividendo ciudadano queda como decision abierta con ambos lados argumentados, no como recomendacion. Gates ejecutados: balance de llaves OK, esbuild JSX bundle:false OK, ajv draft-07 OK, mas coherencia interna (trazabilidad bidireccional fallo<->articulo, todo articulo marcado 'nuevo' justificado por un fallo, numeracion continua sin huecos, toda entrada de fallo con fuente declarada) OK. Tema hermano: cascada_valor_minero, enlazado desde el criterio A del anexo; aquel aporta el numerador cuantitativo y este la arquitectura institucional, sin solaparse. Import del 2026-07-29 (/importar fondo): sin encuesta por decision del operador, el set no traia ninguna y el renderer no la contempla. Se corrigieron dos enlaces muertos al tema hermano — apuntaban a /cascada-valor-minero, que es el slug del DATASET de aquel tema y no su ruta; la ruta registrada es /cascada. Corregidos a #/cascada en dataset y en el fallback embebido, antes de publicar.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "angel_veliz",
@@ -836,7 +857,8 @@
       "barra-horizontal-comparables",
       "encuesta"
     ],
-    "firma": "plano de trayecto SVG: eje horizontal los tres traslados carcelarios (Kilo 7 a 8 a 9), eje vertical el regimen penitenciario, con sellos DENEGADO rotados marcando cada solicitud rechazada de volver a minima severidad -- la linea nunca vuelve a subir"
+    "firma": "plano de trayecto SVG: eje horizontal los tres traslados carcelarios (Kilo 7 a 8 a 9), eje vertical el regimen penitenciario, con sellos DENEGADO rotados marcando cada solicitud rechazada de volver a minima severidad -- la linea nunca vuelve a subir",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "militarizacion",
@@ -881,7 +903,8 @@
       "encuesta"
     ],
     "firma": "el dial de riesgo de Cubalex (escala 1 a 5) dibujado como manometro de cuartel: aguja clavada en el tope mecanico (5/5) desde abril de 2026, con una fila de meses conectados (el 'trail') que registra febrero y marzo como tramo punteado 'sin cuantificar' -en vez de aguja que sube con cifras inventadas, porque el informe fuente no publica un nivel numerico anterior a abril- y abril-julio como plataforma solida en color contrapunto: la lectura queda grabada como cicatriz permanente sin fabricar ningun dato que Cubalex no publico.",
-    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/militar/Cubalex-Militarizacion-en-Cuba_ReporteAug2026.pdf (informe especial de Cubalex, corte de datos 25 de julio de 2026). Subagente verificador: 11 afirmaciones evaluadas, 9 corroboradas por fuentes independientes de Cubalex (sesion del Consejo de Defensa Nacional del 17-ene-2026 y su desmentido, Resolucion 6/2026 del MININT, campana Mi Firma por la Patria, restriccion de viajes interprovinciales, y cinco casos individuales: Eduardo Ceballos, Alexander Verdecia, Andy Garcia Lorenzo, Manuel Cuesta Morua, Luis Manuel Otero Alcantara), 2 no confirmadas/divergentes (las dos series numericas agregadas del propio monitoreo de Cubalex -eventos mensuales y protestas mensuales-, sin replica exacta de otro observatorio; la serie de protestas diverge de las cifras del Observatorio Cubano de Conflictos para los mismos meses). Ambas series se presentan igualmente en el dataset pero marcadas de forma visible como 'segun Cubalex', nunca como corroboradas por segunda fuente (cifras.advertencia y cifras.nota_divergencia_occ). Geometria real de Cuba (CUBA_FEATURE, contorno de 42 puntos) reutilizada verbatim de represion_cuba.jsx solo para la silueta del mapa de cobertura; sin senal por provincia nombrada porque el informe no identifica la mayoria de las provincias de sus conteos mensuales, solo siete lugares explicitos (seis municipios de La Habana y un evento en Santiago de Cuba), listados en geografia.lugares_identificados. Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
+    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/militar/Cubalex-Militarizacion-en-Cuba_ReporteAug2026.pdf (informe especial de Cubalex, corte de datos 25 de julio de 2026). Subagente verificador: 11 afirmaciones evaluadas, 9 corroboradas por fuentes independientes de Cubalex (sesion del Consejo de Defensa Nacional del 17-ene-2026 y su desmentido, Resolucion 6/2026 del MININT, campana Mi Firma por la Patria, restriccion de viajes interprovinciales, y cinco casos individuales: Eduardo Ceballos, Alexander Verdecia, Andy Garcia Lorenzo, Manuel Cuesta Morua, Luis Manuel Otero Alcantara), 2 no confirmadas/divergentes (las dos series numericas agregadas del propio monitoreo de Cubalex -eventos mensuales y protestas mensuales-, sin replica exacta de otro observatorio; la serie de protestas diverge de las cifras del Observatorio Cubano de Conflictos para los mismos meses). Ambas series se presentan igualmente en el dataset pero marcadas de forma visible como 'segun Cubalex', nunca como corroboradas por segunda fuente (cifras.advertencia y cifras.nota_divergencia_occ). Geometria real de Cuba (CUBA_FEATURE, contorno de 42 puntos) reutilizada verbatim de represion_cuba.jsx solo para la silueta del mapa de cobertura; sin senal por provincia nombrada porque el informe no identifica la mayoria de las provincias de sus conteos mensuales, solo siete lugares explicitos (seis municipios de La Habana y un evento en Santiago de Cuba), listados en geografia.lugares_identificados. Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "derechos_sociales",
@@ -923,7 +946,8 @@
       "encuesta"
     ],
     "firma": "cuentagotas-calendario de julio: 31 casillas verticales, una por dia, cada una una gota SVG en verde-cisterna apagado que representa la condicion sostenida de falta de agua potable durante todo el mes (no una telemetria diaria inventada); solo los 3 dias de apagon nacional total con fecha verificada de forma independiente (6, 10 y 14 de julio) llevan el borde en vino oxidado con resplandor. Las cifras de violencia del mes (37 homicidios, 9 feminicidios, 4 suicidios) se muestran como una franja aparte, rotulada explicitamente 'sin fecha asignable', porque el informe fuente no desglosa el dia de cada hecho: nunca se proyectan sobre una casilla concreta del calendario para no fabricar una correlacion que las fuentes no establecen.",
-    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/derechossociales/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf. Antes de disenar, el subagente disenador detecto y corrigio una laguna en esta bitacora: angel_veliz estaba publicado en registry.js pero ausente aqui; se reconstruyo su ficha desde el jsx antes de calcular distancias de matiz. Angulo elegido tras cruzar el informe contra temas ya publicados: represion y militarizacion ya cubren represion politica y el caso Otero Alcantara (que reaparece en este informe de julio), electrica cubre la crisis electrica con enfoque de ingenieria y medidas_176 cubre las 176 medidas con enfoque contrafactual-comparado; ninguno cubria el angulo de violacion de derechos DESC (agua, electricidad, salud) ni el repunte de violencia ciudadana. Subagente verificador: 11 afirmaciones evaluadas, 7 corroboradas por fuentes independientes de Cubalex (crisis hidrica en La Habana, apagones totales del SEN con fecha verificada, crisis sanitaria, cierre del 73% del parque hotelero, 176 medidas con 92.000 plazas eliminadas y atrasos salariales, sanciones OFAC, y 9 feminicidios confirmados de forma independiente por el Observatorio de Genero Alas Tensas), 2 parcialmente corroboradas (patron general de robos violentos sin confirmar el detalle de equipos de generacion electrica; inicio de la ayuda de Caritas sin confirmar denuncias de desvio) y 2 no confirmadas (37 homicidios totales y 4 suicidios, cifras autorreferenciales de la serie propia de Cubalex; un monitor independiente distinto, Cubanet, conto alrededor de 20 muertes violentas el mismo mes con metodologia distinta -ver comparativa_homicidios, que muestra ambas cifras sin fusionarlas ni promediarlas-). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
+    "procedencia": "Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/derechossociales/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf. Antes de disenar, el subagente disenador detecto y corrigio una laguna en esta bitacora: angel_veliz estaba publicado en registry.js pero ausente aqui; se reconstruyo su ficha desde el jsx antes de calcular distancias de matiz. Angulo elegido tras cruzar el informe contra temas ya publicados: represion y militarizacion ya cubren represion politica y el caso Otero Alcantara (que reaparece en este informe de julio), electrica cubre la crisis electrica con enfoque de ingenieria y medidas_176 cubre las 176 medidas con enfoque contrafactual-comparado; ninguno cubria el angulo de violacion de derechos DESC (agua, electricidad, salud) ni el repunte de violencia ciudadana. Subagente verificador: 11 afirmaciones evaluadas, 7 corroboradas por fuentes independientes de Cubalex (crisis hidrica en La Habana, apagones totales del SEN con fecha verificada, crisis sanitaria, cierre del 73% del parque hotelero, 176 medidas con 92.000 plazas eliminadas y atrasos salariales, sanciones OFAC, y 9 feminicidios confirmados de forma independiente por el Observatorio de Genero Alas Tensas), 2 parcialmente corroboradas (patron general de robos violentos sin confirmar el detalle de equipos de generacion electrica; inicio de la ayuda de Caritas sin confirmar denuncias de desvio) y 2 no confirmadas (37 homicidios totales y 4 suicidios, cifras autorreferenciales de la serie propia de Cubalex; un monitor independiente distinto, Cubanet, conto alrededor de 20 muertes violentas el mismo mes con metodologia distinta -ver comparativa_homicidios, que muestra ambas cifras sin fusionarlas ni promediarlas-). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar.",
+    "unificado": "2026-10-17"
   },
   {
     "tema": "cerco_julio",
@@ -961,6 +985,7 @@
       "encuesta"
     ],
     "firma": "tres lineas de tiempo verticales -Gonzalez Aguero, Diaz Rodriguez, Hernandez Leyva- alineadas en un unico marcador horizontal (2 de julio, mismo operativo) con los mismos glifos de ruptura (incomunicacion, golpiza, desnudez forzada, amenaza de muerte) estampados en la misma cota vertical en las tres pistas; a partir de ahi las pistas se desalinean y cada una sigue su propio hostigamiento de julio en dias distintos. La sincronia inicial es la prueba visual de un operativo centralizado, y coincide honestamente con el corte real entre lo corroborado (2 de julio, prensa independiente) y lo no confirmado (todo lo posterior, solo Cubalex).",
-    "procedencia": "Tercer expediente construido en la sesion desde informes de Cubalex sobre Cuba en 2026 (militarizacion, derechos_sociales, ahora cerco_julio). Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/situacion-0626/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf: este PDF resulto ser byte a byte identico (MD5 f1d8acaf69b7f3fa49c835948ecf3f01) al usado en derechos_sociales; se detecto la duplicacion antes de procesar y se consulto al administrador, que pidio extraer un angulo distinto del mismo informe. Angulo elegido: la campana de represion selectiva/individualizada de julio (operativo del 2 de julio contra defensores, muertes bajo custodia, excarcelaciones), contenido no usado por derechos_sociales (DESC + violencia ciudadana) ni por militarizacion (caso Otero Alcantara, estado de excepcion). Subagente verificador: 13 afirmaciones evaluadas, 6 corroboradas por fuentes independientes de Cubalex (el operativo del 2 de julio como fenomeno, con mas de una decena de nombres propios reportados por prensa; los hechos centrales de Gonzalez Aguero, Diaz Rodriguez y Hernandez Leyva; el interrogatorio de Anna Sofia Benitez; el caso del adolescente de 13 anos golpeado en Boyeros, identificado por prensa independiente como Alex Javier Hernandez Gonzalez; la muerte de Rolando Yunior Rodriguez Torres; las cuatro excarcelaciones), 3 parcialmente corroboradas (la cifra 'al menos 25' del operativo, sin respaldo textual exacto; el caso Acosta Gomez, con traslado carcelario y fianzas que divergen entre el informe original y la prensa independiente; la muerte de Jorge Luis Iglesia Rodriguez, confirmada pero con causa distinta -infeccion de prostata segun prensa independiente, no solo tuberculosis como cita Cubalex-) y 4 no confirmadas (el hostigamiento continuado tras el 2 de julio, el caso Lopez Canino, dos menores adicionales en Regla y Arroyo Naranjo, y la muerte de Osviel Rivero Viera, sin ninguna fuente independiente localizada). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar."
+    "procedencia": "Tercer expediente construido en la sesion desde informes de Cubalex sobre Cuba en 2026 (militarizacion, derechos_sociales, ahora cerco_julio). Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/situacion-0626/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf: este PDF resulto ser byte a byte identico (MD5 f1d8acaf69b7f3fa49c835948ecf3f01) al usado en derechos_sociales; se detecto la duplicacion antes de procesar y se consulto al administrador, que pidio extraer un angulo distinto del mismo informe. Angulo elegido: la campana de represion selectiva/individualizada de julio (operativo del 2 de julio contra defensores, muertes bajo custodia, excarcelaciones), contenido no usado por derechos_sociales (DESC + violencia ciudadana) ni por militarizacion (caso Otero Alcantara, estado de excepcion). Subagente verificador: 13 afirmaciones evaluadas, 6 corroboradas por fuentes independientes de Cubalex (el operativo del 2 de julio como fenomeno, con mas de una decena de nombres propios reportados por prensa; los hechos centrales de Gonzalez Aguero, Diaz Rodriguez y Hernandez Leyva; el interrogatorio de Anna Sofia Benitez; el caso del adolescente de 13 anos golpeado en Boyeros, identificado por prensa independiente como Alex Javier Hernandez Gonzalez; la muerte de Rolando Yunior Rodriguez Torres; las cuatro excarcelaciones), 3 parcialmente corroboradas (la cifra 'al menos 25' del operativo, sin respaldo textual exacto; el caso Acosta Gomez, con traslado carcelario y fianzas que divergen entre el informe original y la prensa independiente; la muerte de Jorge Luis Iglesia Rodriguez, confirmada pero con causa distinta -infeccion de prostata segun prensa independiente, no solo tuberculosis como cita Cubalex-) y 4 no confirmadas (el hostigamiento continuado tras el 2 de julio, el caso Lopez Canino, dos menores adicionales en Regla y Arroyo Naranjo, y la muerte de Osviel Rivero Viera, sin ninguna fuente independiente localizada). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar.",
+    "unificado": "2026-10-17"
   }
 ]

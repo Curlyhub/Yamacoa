@@ -13,27 +13,27 @@ import React, { useState, useEffect } from "react";
 const RUTA_DATOS = "/data/marco-fondo-soberano.json";
 
 const C = {
-  fondo: "#131310",
-  panel: "#1C1D18",
-  borde: "#2E3028",
-  texto: "#E9E9E2",
-  cuerpo: "#C6C7BC",
-  tenue: "#8A8C7E",
-  bronce: "#83924F",
-  bronceClaro: "#A8B872",
-  bronceTenue: "#4E5632",
-  ciruela: "#9B65A4",
-  ciruelaClara: "#BD8AC4",
-  ciruelaTenue: "#5A3B60",
-  ambar: "#C98A17",
-  hueso: "#D8D2C6"
+  fondo: "#fcf9f4",
+  panel: "#fcf9f4",
+  borde: "#e2d8cb",
+  texto: "#1f1a16",
+  cuerpo: "#4a3f36",
+  tenue: "#6b5d50",
+  bronce: "#5C6B2A",
+  bronceClaro: "#4A5820",
+  bronceTenue: "#7A8550",
+  ciruela: "#7D4887",
+  ciruelaClara: "#6A3A75",
+  ciruelaTenue: "#C9A9CF",
+  ambar: "#94650A",
+  hueso: "#1f1a16"
 };
 
 const CONFIANZA = {
-  confirmado: { etiqueta: "confirmado", color: "#A8B872" },
-  reportado: { etiqueta: "reportado", color: "#BD8AC4" },
-  estimado: { etiqueta: "estimado", color: "#C98A17" },
-  normativo: { etiqueta: "normativo", color: "#8A8C7E" }
+  confirmado: { etiqueta: "confirmado", color: "#5C6B2A" },
+  reportado: { etiqueta: "reportado", color: "#7D4887" },
+  estimado: { etiqueta: "estimado", color: "#94650A" },
+  normativo: { etiqueta: "normativo", color: "#6b5d50" }
 };
 
 const DATOS_EMBEBIDOS = {
@@ -216,7 +216,7 @@ function Parte({ numero, titulo, children }) {
         <Rotulo color={C.bronce}>Parte {numero}</Rotulo>
         <h2
           style={{
-            fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+            fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
             fontSize: "clamp(21px, 3.4vw, 30px)",
             margin: 0,
             letterSpacing: "-0.02em",
@@ -305,7 +305,7 @@ function Trazabilidad({ fallos, articulado, activo, setActivo }) {
                 textAnchor="end"
                 fill={on ? C.ciruelaClara : C.tenue}
                 fontSize="13"
-                fontFamily="'Archivo', sans-serif"
+                fontFamily="'Manrope', sans-serif"
                 style={{ transition: "fill 160ms" }}
               >
                 {f.caso}
@@ -389,10 +389,10 @@ export default function MarcoFondoSoberano() {
   return (
     <div
       style={{
-        background: C.fondo,
+        background: "transparent",
         color: C.texto,
         minHeight: "100vh",
-        fontFamily: "'Inter', system-ui, sans-serif",
+        fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
         padding: "clamp(22px, 5vw, 76px) clamp(16px, 5vw, 40px) 120px"
       }}
     >
@@ -412,7 +412,7 @@ export default function MarcoFondoSoberano() {
           </div>
           <h1
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
               fontSize: "clamp(34px, 7.4vw, 62px)",
               lineHeight: 1.02,
               letterSpacing: "-0.033em",
@@ -430,7 +430,8 @@ export default function MarcoFondoSoberano() {
           style={{
             border: "1px solid " + C.bronceTenue,
             borderLeft: "3px solid " + C.bronce,
-            background: "rgba(131,146,79,0.06)",
+            background: "rgba(92,107,42,0.07)",
+            borderRadius: 16,
             padding: "20px 22px",
             marginBottom: 52
           }}
@@ -445,7 +446,7 @@ export default function MarcoFondoSoberano() {
           <Rotulo>Premisa</Rotulo>
           <p
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
               fontSize: "clamp(19px, 3.2vw, 26px)",
               lineHeight: 1.34,
               letterSpacing: "-0.018em",
@@ -463,7 +464,7 @@ export default function MarcoFondoSoberano() {
               marginTop: 22,
               fontSize: 14.5,
               lineHeight: 1.66,
-              color: "#D2CDBE"
+              color: "#4a3f36"
             }}
           >
             {d.premisa.declaracion_de_sesgo}
@@ -489,7 +490,9 @@ export default function MarcoFondoSoberano() {
                 style={{
                   border: "1px solid " + (on ? C.ciruela : C.borde),
                   borderLeft: "3px solid " + (on ? C.ciruela : C.ciruelaTenue),
-                  background: on ? "rgba(155,101,164,0.06)" : C.panel,
+                  background: on ? "rgba(125,72,135,0.07)" : C.panel,
+                  borderRadius: 16,
+                  boxShadow: "var(--y-shadow)",
                   padding: "20px 22px",
                   marginBottom: 16,
                   transition: "all 160ms"
@@ -502,7 +505,7 @@ export default function MarcoFondoSoberano() {
                     </Rotulo>
                     <h3
                       style={{
-                        fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                        fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
                         fontSize: 19,
                         margin: "0 0 8px",
                         letterSpacing: "-0.014em"
@@ -597,7 +600,7 @@ export default function MarcoFondoSoberano() {
           <Rotulo color={C.bronce}>La firma del marco</Rotulo>
           <h2
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
               fontSize: "clamp(19px, 3.1vw, 26px)",
               margin: "0 0 10px",
               letterSpacing: "-0.02em"
@@ -626,7 +629,7 @@ export default function MarcoFondoSoberano() {
                 style={{
                   padding: "22px 0",
                   borderTop: "1px solid " + C.borde,
-                  background: on ? "rgba(131,146,79,0.05)" : "transparent",
+                  background: on ? "rgba(92,107,42,0.06)" : "transparent",
                   transition: "background 160ms"
                 }}
               >
@@ -642,7 +645,7 @@ export default function MarcoFondoSoberano() {
                   </span>
                   <h3
                     style={{
-                      fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                      fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
                       fontSize: 18,
                       margin: 0,
                       letterSpacing: "-0.014em",
@@ -751,7 +754,7 @@ export default function MarcoFondoSoberano() {
                         key={i}
                         style={{
                           border: "1px dashed " + C.ambar,
-                          background: "rgba(201,138,23,0.06)",
+                          background: "rgba(148,101,10,0.07)",
                           padding: "11px 14px",
                           marginTop: 11,
                           display: "flex",
@@ -759,7 +762,7 @@ export default function MarcoFondoSoberano() {
                         }}
                       >
                         <span style={{ color: C.ambar, fontSize: 14 }}>⚠</span>
-                        <div style={{ fontSize: 13.5, lineHeight: 1.62, color: "#D2CDBE" }}>
+                        <div style={{ fontSize: 13.5, lineHeight: 1.62, color: "#4a3f36" }}>
                           <strong style={{ color: C.ambar }}>{q.titulo}.</strong> {q.texto}
                         </div>
                       </div>
@@ -789,6 +792,8 @@ export default function MarcoFondoSoberano() {
                   border: "1px solid " + C.borde,
                   borderTop: "3px solid " + (i === 0 ? C.bronce : C.ciruela),
                   background: C.panel,
+                  borderRadius: 16,
+                  boxShadow: "var(--y-shadow)",
                   padding: "20px 20px"
                 }}
               >
@@ -802,14 +807,14 @@ export default function MarcoFondoSoberano() {
           <div
             style={{
               border: "1px dashed " + C.ambar,
-              background: "rgba(201,138,23,0.06)",
+              background: "rgba(148,101,10,0.07)",
               padding: "15px 17px",
               display: "flex",
               gap: 11
             }}
           >
             <span style={{ color: C.ambar, fontSize: 15 }}>⚠</span>
-            <div style={{ fontSize: 14.5, lineHeight: 1.66, color: "#D2CDBE" }}>
+            <div style={{ fontSize: 14.5, lineHeight: 1.66, color: "#4a3f36" }}>
               {d.decision_pendiente.resolucion_procedimental}
             </div>
           </div>
@@ -832,7 +837,7 @@ export default function MarcoFondoSoberano() {
             >
               <div
                 style={{
-                  fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                  fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
                   fontSize: 22,
                   color: C.bronce,
                   lineHeight: 1
@@ -841,7 +846,7 @@ export default function MarcoFondoSoberano() {
                 {c.letra}
               </div>
               <div>
-                <h3 style={{ fontFamily: "'Archivo', sans-serif", fontSize: 16, margin: "0 0 7px", fontWeight: 700 }}>
+                <h3 style={{ fontFamily: "'Manrope', sans-serif", fontSize: 16, margin: "0 0 7px", fontWeight: 700 }}>
                   {c.titulo}
                 </h3>
                 <p style={{ margin: "0 0 9px", fontSize: 14.5, lineHeight: 1.66, color: C.cuerpo }}>
@@ -879,7 +884,7 @@ export default function MarcoFondoSoberano() {
             <div key={i} style={{ padding: "20px 0", borderTop: "1px solid " + C.borde }}>
               <h3
                 style={{
-                  fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                  fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
                   fontSize: 16.5,
                   margin: "0 0 9px",
                   letterSpacing: "-0.012em",
@@ -911,13 +916,14 @@ export default function MarcoFondoSoberano() {
             border: "1px solid " + C.bronceTenue,
             padding: "clamp(24px, 5vw, 38px)",
             marginBottom: 54,
-            background: "rgba(131,146,79,0.05)"
+            borderRadius: 24,
+            background: "rgba(92,107,42,0.06)"
           }}
         >
           <Rotulo color={C.bronce}>Principio rector</Rotulo>
           <p
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif", fontWeight: 800,
               fontSize: "clamp(19px, 3.2vw, 27px)",
               lineHeight: 1.32,
               letterSpacing: "-0.02em",

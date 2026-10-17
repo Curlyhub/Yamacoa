@@ -13,26 +13,26 @@ import {
    ========================================================================= */
 
 const C = {
-  bg: "#12100e",
-  bg2: "#1a1712",
-  panel: "#1e1a14",
-  line: "#3a332a",
-  ink: "#f3ecdd",
-  mut: "#9c9184",
-  gold: "#e9b23c",
-  jade: "#37b98a",
-  coral: "#e65a3f",
-  violet: "#9b7fd4",
-  cyan: "#4bb6c9",
+  bg: "#fcf9f4",
+  bg2: "#f5efe7",
+  panel: "#fcf9f4",
+  line: "#ddd2c4",
+  ink: "#1f1a16",
+  mut: "#6b5d50",
+  gold: "#A87300",
+  jade: "#1B7F5A",
+  coral: "#B83A22",
+  violet: "#6A4FB0",
+  cyan: "#1C7590",
 };
 
 const F = {
-  disp: "'Archivo Black', 'Arial Black', sans-serif",
+  disp: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
   mono: "'IBM Plex Mono', ui-monospace, monospace",
-  body: "Georgia, 'Times New Roman', serif",
+  body: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
 };
 
-const RUEDA = [C.gold, C.jade, C.coral, C.violet, C.cyan, "#d98cae", "#7fb37f"];
+const RUEDA = [C.gold, C.jade, C.coral, C.violet, C.cyan, "#A8487A", "#4F7F3A"];
 
 /* Data incrustada: fallback para previsualización. En producción la prop `data`
    (data fresca del layout) o el fetch la sobrescriben — el renderer sigue congelado. */
@@ -290,11 +290,11 @@ function Eyebrow({ n, children, color = C.gold }) {
 }
 
 function H({ children, size = 30 }) {
-  return <h2 style={{ fontFamily: F.disp, fontSize: size, lineHeight: 1.02, color: C.ink, margin: "0 0 16px", letterSpacing: -0.5 }}>{children}</h2>;
+  return <h2 style={{ fontFamily: F.disp, fontWeight: 800, fontSize: size, lineHeight: 1.02, color: C.ink, margin: "0 0 16px", letterSpacing: -0.5 }}>{children}</h2>;
 }
 
 function P({ children, style }) {
-  return <p style={{ fontFamily: F.body, fontSize: 16.5, lineHeight: 1.62, color: "#cfc6b6", margin: "0 0 14px", ...style }}>{children}</p>;
+  return <p style={{ fontFamily: F.body, fontSize: 16.5, lineHeight: 1.62, color: "#4a3f36", margin: "0 0 14px", ...style }}>{children}</p>;
 }
 
 function Section({ children, style }) {
@@ -302,7 +302,7 @@ function Section({ children, style }) {
 }
 
 function Card({ children, style }) {
-  return <div style={{ background: C.panel, border: `1px solid ${C.line}`, borderRadius: 6, padding: 18, ...style }}>{children}</div>;
+  return <div style={{ background: C.panel, border: `1px solid ${C.line}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: 18, ...style }}>{children}</div>;
 }
 
 /* ============================ VEREDICTO ============================ */
@@ -347,7 +347,7 @@ function RadarDesempeno({ d }) {
             <PolarAngleAxis dataKey="dim" tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} />
             <PolarRadiusAxis domain={[0, 10]} tick={{ fill: C.line, fontSize: 10 }} axisLine={false} tickCount={6} />
             <Radar dataKey="v" stroke={C.gold} fill={C.gold} fillOpacity={0.28} strokeWidth={2} dot />
-            <Tooltip contentStyle={tipStyle} formatter={(v) => [v + " / 10", "Nota"]} />
+            <Tooltip contentStyle={tipStyle} itemStyle={tipItem} labelStyle={tipItem} formatter={(v) => [v + " / 10", "Nota"]} />
           </RadarChart>
         </ResponsiveContainer>
       </div>
@@ -355,7 +355,8 @@ function RadarDesempeno({ d }) {
   );
 }
 
-const tipStyle = { background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 4, fontFamily: F.mono, fontSize: 12, color: C.ink };
+const tipStyle = { background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", fontFamily: F.mono, fontSize: 12, color: "#fcf9f4" };
+const tipItem = { color: "#fcf9f4" };
 
 /* ============================ PETRÓLEO (interactivo, firma) ============================ */
 function PetroleoInteractivo({ d }) {
@@ -384,7 +385,7 @@ function PetroleoInteractivo({ d }) {
       <Card style={{ marginTop: 22, padding: 22 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: 8 }}>
           <span style={{ fontFamily: F.mono, fontSize: 12, color: C.mut, letterSpacing: 1 }}>CONSUMO DIARIO (barriles)</span>
-          <span style={{ fontFamily: F.disp, fontSize: 34, color: C.gold }}>{fmt(bpd)}</span>
+          <span style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 34, color: C.gold }}>{fmt(bpd)}</span>
         </div>
         <input
           type="range" min={40000} max={160000} step={1000} value={bpd}
@@ -404,7 +405,7 @@ function PetroleoInteractivo({ d }) {
           {claim(false, "«Necesidad mensual ≈ 1,6 millones»", fmt(mensual) + " b/mes")}
         </div>
 
-        <div style={{ marginTop: 18, padding: "12px 14px", background: C.bg, border: `1px dashed ${C.coral}`, borderRadius: 6, fontFamily: F.mono, fontSize: 12.5, color: "#e9b9ac", lineHeight: 1.55 }}>
+        <div style={{ marginTop: 18, padding: "12px 14px", background: C.bg, border: `1px dashed ${C.coral}`, borderRadius: 6, fontFamily: F.mono, fontSize: 12.5, color: "#8a3a26", lineHeight: 1.55 }}>
           Para que 800.000 barriles durasen los 15 días afirmados, el consumo tendría que ser de solo <b style={{ color: C.coral }}>{fmt(bpdParaAfirmado)} b/d</b> — muy por debajo de su propio rango. Ninguna posición del control satisface las tres afirmaciones a la vez.
         </div>
       </Card>
@@ -439,13 +440,13 @@ function SaltoTermico({ d }) {
       <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 20 }}>
         <Card style={{ flex: 1, minWidth: 200, textAlign: "center", borderColor: C.coral }}>
           <div style={{ fontFamily: F.mono, fontSize: 11, color: C.mut, letterSpacing: 1 }}>ÉL DICE</div>
-          <div style={{ fontFamily: F.disp, fontSize: 40, color: C.coral, margin: "8px 0" }}>${dichoM} M</div>
+          <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 40, color: C.coral, margin: "8px 0" }}>${dichoM} M</div>
           <div style={{ fontFamily: F.body, fontSize: 13, color: C.mut }}>por {plantas} bloques de 200 MW</div>
         </Card>
-        <div style={{ display: "flex", alignItems: "center", fontFamily: F.disp, fontSize: 34, color: C.line }}>≠</div>
+        <div style={{ display: "flex", alignItems: "center", fontFamily: F.disp, fontWeight: 800, fontSize: 34, color: C.line }}>≠</div>
         <Card style={{ flex: 1, minWidth: 200, textAlign: "center", borderColor: C.jade }}>
           <div style={{ fontFamily: F.mono, fontSize: 11, color: C.mut, letterSpacing: 1 }}>SUMA REAL</div>
-          <div style={{ fontFamily: F.disp, fontSize: 40, color: C.jade, margin: "8px 0" }}>${fmt(realM)} M</div>
+          <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 40, color: C.jade, margin: "8px 0" }}>${fmt(realM)} M</div>
           <div style={{ fontFamily: F.body, fontSize: 13, color: C.mut }}>200 × {plantas} = {fmt(realM)}, no {dichoM}</div>
         </Card>
       </div>
@@ -455,7 +456,7 @@ function SaltoTermico({ d }) {
           <BarChart data={barras} margin={{ top: 24, right: 10, left: -10, bottom: 0 }}>
             <XAxis dataKey="name" tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} axisLine={{ stroke: C.line }} tickLine={false} />
             <YAxis tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} axisLine={false} tickLine={false} unit="M" />
-            <Tooltip contentStyle={tipStyle} formatter={(v, k) => [`$${v} M`, k === "acum" ? "Acumulado" : "Bloque"]} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+            <Tooltip contentStyle={tipStyle} itemStyle={tipItem} labelStyle={tipItem} formatter={(v, k) => [`$${v} M`, k === "acum" ? "Acumulado" : "Bloque"]} cursor={{ fill: "rgba(60,40,20,0.05)" }} />
             <ReferenceLine y={dichoM} stroke={C.coral} strokeDasharray="4 4" label={{ value: "cifra afirmada", fill: C.coral, fontSize: 11, fontFamily: F.mono, position: "insideTopLeft" }} />
             <Bar dataKey="v" fill={C.cyan} radius={[3, 3, 0, 0]}>
               <LabelList dataKey="acum" position="top" formatter={(v) => "Σ " + v} style={{ fill: C.gold, fontFamily: F.mono, fontSize: 11 }} />
@@ -492,7 +493,7 @@ function ElectricidadRegional({ d }) {
           <BarChart data={data} layout="vertical" margin={{ top: 4, right: 40, left: 24, bottom: 0 }}>
             <XAxis type="number" tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} axisLine={{ stroke: C.line }} tickLine={false} domain={[0, 0.4]} tickFormatter={(v) => "$" + v} />
             <YAxis type="category" dataKey="pais" tick={{ fill: C.ink, fontSize: 12, fontFamily: F.mono }} axisLine={false} tickLine={false} width={110} />
-            <Tooltip contentStyle={tipStyle} formatter={(v, k) => [k === "tarifa" ? "$" + v + " /kWh" : v + " %", k === "tarifa" ? "Tarifa" : "Pérdidas"]} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+            <Tooltip contentStyle={tipStyle} itemStyle={tipItem} labelStyle={tipItem} formatter={(v, k) => [k === "tarifa" ? "$" + v + " /kWh" : v + " %", k === "tarifa" ? "Tarifa" : "Pérdidas"]} cursor={{ fill: "rgba(60,40,20,0.05)" }} />
             <Bar dataKey="tarifa" radius={[0, 4, 4, 0]}>
               <LabelList dataKey="tarifa" position="right" formatter={(v) => "$" + v.toFixed(2)} style={{ fill: C.mut, fontFamily: F.mono, fontSize: 11 }} />
               {data.map((e, i) => <Cell key={i} fill={RUEDA[i % RUEDA.length]} />)}
@@ -573,14 +574,14 @@ function Acordeon({ items, color, defaultOpen }) {
       {items.map((x, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} style={{ background: C.panel, border: `1px solid ${isOpen ? color : C.line}`, borderRadius: 6, overflow: "hidden" }}>
+          <div key={i} style={{ background: C.panel, border: `1px solid ${isOpen ? color : C.line}`, borderRadius: 16, overflow: "hidden" }}>
             <button
               onClick={() => setOpen(isOpen ? -1 : i)}
               style={{ width: "100%", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}
             >
               <span style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <span style={{ fontFamily: F.mono, fontSize: 11, color, width: 22 }}>{String(i + 1).padStart(2, "0")}</span>
-                <span style={{ fontFamily: F.disp, fontSize: 15, color: C.ink, lineHeight: 1.15 }}>{x.titulo}</span>
+                <span style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 15, color: C.ink, lineHeight: 1.15 }}>{x.titulo}</span>
               </span>
               <span style={{ fontFamily: F.mono, fontSize: 18, color, transform: isOpen ? "rotate(45deg)" : "none", transition: "transform .2s" }}>+</span>
             </button>
@@ -658,7 +659,7 @@ function Causal({ d }) {
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
         <svg viewBox="0 0 300 300" width="260" height="260" style={{ flexShrink: 0 }} role="img" aria-label="Reparto de causas">
           {arcs.map((a, i) => <path key={i} d={a.d} fill={a.color} stroke={C.bg} strokeWidth="1.5" style={{ transition: "all .5s" }} />)}
-          <text x="150" y="145" fill={C.ink} fontSize="13" fontFamily={F.disp} textAnchor="middle">{modo === "triana" ? "TRIANA" : "EQUILIBRIO"}</text>
+          <text x="150" y="145" fill={C.ink} fontSize="13" fontFamily={F.disp} fontWeight="800" textAnchor="middle">{modo === "triana" ? "TRIANA" : "EQUILIBRIO"}</text>
           <text x="150" y="164" fill={C.mut} fontSize="10" fontFamily={F.mono} textAnchor="middle">reparto %</text>
         </svg>
         <div style={{ flex: 1, minWidth: 240, display: "grid", gap: 7 }}>
@@ -703,17 +704,17 @@ function Demora({ d }) {
         <div style={{ display: "flex", gap: 24, flexWrap: "wrap", marginBottom: 8 }}>
           <div style={{ flex: 1, minWidth: 200 }}>
             <div style={{ fontFamily: F.mono, fontSize: 12, color: C.mut }}>BRECHA DE CRECIMIENTO ANUAL</div>
-            <div style={{ fontFamily: F.disp, fontSize: 28, color: C.jade }}>{g.toFixed(1)} %</div>
+            <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 28, color: C.jade }}>{g.toFixed(1)} %</div>
             <input type="range" min={0} max={d.brecha_max_pct} step={0.1} value={g} onChange={(e) => setG(Number(e.target.value))} style={{ width: "100%", accentColor: C.jade }} aria-label="Brecha de crecimiento" />
           </div>
           <div style={{ flex: 1, minWidth: 200 }}>
             <div style={{ fontFamily: F.mono, fontSize: 12, color: C.mut }}>AÑOS DE DEMORA</div>
-            <div style={{ fontFamily: F.disp, fontSize: 28, color: C.gold }}>{T}</div>
+            <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 28, color: C.gold }}>{T}</div>
             <input type="range" min={5} max={d.años_max} step={1} value={T} onChange={(e) => setT(Number(e.target.value))} style={{ width: "100%", accentColor: C.gold }} aria-label="Años de demora" />
           </div>
           <div style={{ minWidth: 150, textAlign: "right", alignSelf: "center" }}>
             <div style={{ fontFamily: F.mono, fontSize: 12, color: C.mut }}>MULTIPLICADOR</div>
-            <div style={{ fontFamily: F.disp, fontSize: 40, color: C.coral }}>×{mult.toFixed(2)}</div>
+            <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 40, color: C.coral }}>×{mult.toFixed(2)}</div>
           </div>
         </div>
 
@@ -722,7 +723,7 @@ function Demora({ d }) {
             <LineChart data={serie} margin={{ top: 6, right: 12, left: -12, bottom: 0 }}>
               <XAxis dataKey="t" tick={{ fill: C.mut, fontSize: 10, fontFamily: F.mono }} axisLine={{ stroke: C.line }} tickLine={false} unit="a" />
               <YAxis tick={{ fill: C.mut, fontSize: 10, fontFamily: F.mono }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={tipStyle} formatter={(v, k) => [fmt(v), k === "reforma" ? "Con reforma" : "Estancado"]} labelFormatter={(l) => "Año " + l} />
+              <Tooltip contentStyle={tipStyle} itemStyle={tipItem} labelStyle={tipItem} formatter={(v, k) => [fmt(v), k === "reforma" ? "Con reforma" : "Estancado"]} labelFormatter={(l) => "Año " + l} />
               <Line type="monotone" dataKey="estancado" stroke={C.mut} strokeWidth={1.5} strokeDasharray="5 4" dot={false} />
               <Line type="monotone" dataKey="reforma" stroke={C.jade} strokeWidth={2.5} dot={false} />
             </LineChart>
@@ -791,7 +792,7 @@ function Encuesta({ d, slug }) {
           const votado = votos[q.id];
           return (
             <Card key={q.id} style={{ padding: 20, borderColor: votado ? C.gold : C.line }}>
-              <div style={{ fontFamily: F.disp, fontSize: 17, color: C.ink, lineHeight: 1.2, marginBottom: 14 }}>{q.texto}</div>
+              <div style={{ fontFamily: F.disp, fontWeight: 800, fontSize: 17, color: C.ink, lineHeight: 1.2, marginBottom: 14 }}>{q.texto}</div>
               <div style={{ display: "grid", gap: 8 }}>
                 {q.opciones.map((o, oi) => {
                   const n = cnt[o.id] || 0;
@@ -839,7 +840,7 @@ function Conclusion({ d }) {
           {d.ecuacion_terminos.map((t, i) => (
             <React.Fragment key={i}>
               <span style={{ fontFamily: F.mono, fontSize: 13, color: C.ink, background: C.panel, border: `1px solid ${C.line}`, borderRadius: 4, padding: "6px 10px" }}>{t}</span>
-              {i < d.ecuacion_terminos.length - 1 && <span style={{ fontFamily: F.disp, color: C.gold }}>+</span>}
+              {i < d.ecuacion_terminos.length - 1 && <span style={{ fontFamily: F.disp, fontWeight: 800, color: C.gold }}>+</span>}
             </React.Fragment>
           ))}
         </div>
@@ -877,11 +878,11 @@ function Hero({ meta }) {
         <span>~{meta.duracion_min} MIN</span><span style={{ color: C.line }}>|</span>
         <span style={{ color: C.gold }}>ANÁLISIS · {meta.fecha_analisis}</span>
       </div>
-      <h1 style={{ fontFamily: F.disp, fontSize: "clamp(40px, 9vw, 82px)", lineHeight: 0.94, color: C.ink, margin: "0 0 8px", letterSpacing: -1.5 }}>
+      <h1 style={{ fontFamily: F.disp, fontWeight: 800, fontSize: "clamp(40px, 9vw, 82px)", lineHeight: 0.94, color: C.ink, margin: "0 0 8px", letterSpacing: -1.5 }}>
         {meta.titulo}
         <span style={{ color: C.gold }}>.</span>
       </h1>
-      <p style={{ fontFamily: F.body, fontSize: 19, lineHeight: 1.5, color: "#cfc6b6", maxWidth: 720, margin: "18px 0 0" }}>{meta.subtitulo}</p>
+      <p style={{ fontFamily: F.body, fontSize: 19, lineHeight: 1.5, color: "#4a3f36", maxWidth: 720, margin: "18px 0 0" }}>{meta.subtitulo}</p>
     </header>
   );
 }
@@ -917,11 +918,11 @@ export default function TrianaReformas({ data: propData, supabase }) {
   }, [supabase]);
 
   if (!data) {
-    return <div style={{ background: C.bg, color: C.mut, fontFamily: F.mono, minHeight: "60vh", display: "grid", placeItems: "center" }}>Cargando…</div>;
+    return <div style={{ background: "transparent", color: C.mut, fontFamily: F.mono, minHeight: "60vh", display: "grid", placeItems: "center" }}>Cargando…</div>;
   }
 
   return (
-    <div style={{ background: C.bg, minHeight: "100vh" }}>
+    <div style={{ background: "transparent", minHeight: "100vh" }}>
       <Hero meta={data.meta} />
       <Veredicto d={data.veredicto} />
       <RadarDesempeno d={data.puntuacion} />

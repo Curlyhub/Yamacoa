@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { cargarFuentes } from "../design/tokens";
 
 /* ─── paleta editorial neutra (no reservada) ────────────────────────────── */
 const COL = {
-  bg: "#0C0E14", panel: "#141820", panel2: "#0E1018",
-  accent: "#7BA7C8", accentGlow: "rgba(123,167,200,.14)",
-  node: "#161D2B", nodeBorder: "#253040",
-  arrow: "#2E4060",
-  text: "#EDEFF5", muted: "#8A93A8", faint: "#536070",
-  line: "rgba(255,255,255,.07)",
-  cadCiclo: "#4DBFA8", cadEstatica: "#9B8FD0",
+  bg: "transparent", panel: "#fcf9f4", panel2: "#f5efe7",
+  accent: "#2F6690", accentGlow: "rgba(47,102,144,.10)",
+  node: "#fcf9f4", nodeBorder: "rgba(60,40,20,.18)",
+  arrow: "#8a7a68",
+  text: "#1f1a16", muted: "#6b5d50", faint: "#8a7a68",
+  line: "rgba(60,40,20,.15)",
+  cadCiclo: "#1E7466", cadEstatica: "#5E4FA8",
 };
 
 /* ─── dataset embebido (respaldo) ──────────────────────────────────────── */
@@ -116,12 +117,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const id = "yamacoa-fonts-met";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link");
-    l.id = id; l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-    document.head.appendChild(l);
+    cargarFuentes();
   }, []);
 
   const temaActivo = (data.temas || []).find(t => t.id === sel) || data.temas?.[0];
@@ -130,7 +126,7 @@ export default function App() {
   const cadLabel = m.cadencia === "estatica" ? "estática" : "ciclo ~8 h";
 
   return (
-    <div style={{ background: COL.bg, color: COL.text, minHeight: "100vh", fontFamily: "Archivo, system-ui, sans-serif" }}>
+    <div style={{ background: COL.bg, color: COL.text, minHeight: "100vh", fontFamily: "Manrope, system-ui, -apple-system, 'Segoe UI', sans-serif" }}>
       <style>{CSS}</style>
       <div className="wrap">
 
@@ -302,7 +298,7 @@ const CSS = `
 .flow-wrap{overflow-x:auto;padding-bottom:10px;margin-bottom:24px}
 .flow{display:flex;align-items:stretch;gap:0;min-width:680px}
 
-.fnode{flex:1;background:${COL.node};border:1px solid ${COL.nodeBorder};border-radius:12px;
+.fnode{flex:1;background:${COL.node};border:1px solid ${COL.nodeBorder};border-radius:16px;box-shadow:var(--y-shadow);
   padding:15px 13px;min-width:140px;display:flex;flex-direction:column;gap:9px}
 .fnode.hi{border-color:${COL.accent};background:${COL.accentGlow}}
 .fnode-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;
@@ -333,7 +329,7 @@ const CSS = `
   padding:5px 10px;text-align:center;width:100%}
 .pub-arr{color:${COL.arrow};font-size:13px;line-height:1}
 
-.detail{background:${COL.panel};border:1px solid ${COL.nodeBorder};border-radius:14px;
+.detail{background:${COL.panel};border:0;border-radius:24px;box-shadow:var(--y-shadow);
   padding:18px 20px;margin-bottom:20px;animation:fade .3s ease}
 @keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 .detail-title{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:12px}

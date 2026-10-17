@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { cargarFuentes } from "../design/tokens";
 import {
   ResponsiveContainer, ComposedChart, BarChart, Bar, Line,
   XAxis, YAxis, Tooltip, CartesianGrid, Cell, ReferenceLine,
@@ -7,51 +8,51 @@ import {
 
 /* ─── paleta cobre / malaquita / níquel (no reservada) ─────────────────── */
 const COL = {
-  bg:       "#080C0E",
-  panel:    "#0F1618",
-  panel2:   "#0B1214",
-  primary:  "#C47B2B",
-  primGlow: "rgba(196,123,43,.15)",
-  sec:      "#3B8C6A",
-  secGlow:  "rgba(59,140,106,.12)",
-  nickel:   "#9EAAB8",
-  gold:     "#C8A838",
-  alert:    "#C4392B",
-  alertBg:  "rgba(196,57,43,.08)",
-  alertBdr: "rgba(196,57,43,.28)",
-  text:     "#E8EDF2",
-  muted:    "#7A8A96",
-  faint:    "#4A5A66",
-  line:     "rgba(255,255,255,.07)",
-  node:     "#111A1E",
-  nodeBdr:  "#1E2E36",
+  bg:       "transparent",
+  panel:    "#fcf9f4",
+  panel2:   "#f5efe7",
+  primary:  "#B5501C",
+  primGlow: "rgba(181,80,28,.10)",
+  sec:      "#2E7A5A",
+  secGlow:  "rgba(46,122,90,.10)",
+  nickel:   "#5F6E7E",
+  gold:     "#957A00",
+  alert:    "#B0281C",
+  alertBg:  "rgba(176,40,28,.06)",
+  alertBdr: "rgba(176,40,28,.30)",
+  text:     "#1f1a16",
+  muted:    "#6b5d50",
+  faint:    "#7a6b5b",
+  line:     "rgba(60,40,20,.10)",
+  node:     "#fcf9f4",
+  nodeBdr:  "#e6ddd1",
 };
 
 /* mineral → color marcador */
 const MCOL = {
-  "Ni-Co": COL.primary, "Pb-Zn": "#5B8DB8",
+  "Ni-Co": COL.primary, "Pb-Zn": "#3366A0",
   "Au-Ag": COL.gold, "Au": COL.gold,
-  "Cu": COL.sec, "Cu-Au": "#5BAA7A",
-  "Zeolita": "#8A6DC4", "Mn": "#7A8590",
+  "Cu": COL.sec, "Cu-Au": "#5E8A1E",
+  "Zeolita": "#6E50B0", "Mn": "#6A747E",
   "Cromita": "#6A5230",
 };
 const mCol = (m) => MCOL[m] ?? COL.nickel;
 
 const ESTADO = {
-  activo:       { label: "Activo",          col: "#3BAE6A" },
+  activo:       { label: "Activo",          col: "#24874A" },
   suspendido:   { label: "Suspendido",       col: COL.alert },
   virgen:       { label: "Sin explotar",     col: COL.muted },
   histórico:    { label: "Histórico",        col: COL.faint },
   desarrollo:   { label: "En desarrollo",    col: COL.gold },
-  construccion: { label: "En construcción",  col: "#7AAFC7" },
-  intermitente: { label: "Intermitente",     col: "#B88030" },
+  construccion: { label: "En construcción",  col: "#3B7F9E" },
+  intermitente: { label: "Intermitente",     col: "#9A6420" },
   exploracion:  { label: "Exploración",      col: COL.nickel },
 };
 
 const PROC_COL = {
-  extraccion:  "#C47B2B",
-  preparacion: "#5B8DB8",
-  proceso:     "#3B8C6A",
+  extraccion:  "#B5501C",
+  preparacion: "#3366A0",
+  proceso:     "#2E7A5A",
   transporte:  "#8A3A1A",
   refinado:    "#7A2818",
 };
@@ -149,7 +150,7 @@ const EMBEDDED = {
     escenarios: [
       { id:"bear", label:"Bajista", color:"#C4392B", sup:"Ni 13k · Co 25k · Au 3.200 USD/oz" },
       { id:"base", label:"Base",    color:"#9EAAB8", sup:"Ni 20k · Co 40k · Au 5.000 USD/oz" },
-      { id:"bull", label:"Alcista", color:"#3BAE6A", sup:"Ni 26k · Co 60k · Au 6.500 USD/oz" },
+      { id:"bull", label:"Alcista", color:"#24874A", sup:"Ni 26k · Co 60k · Au 6.500 USD/oz" },
     ],
   },
   produccion: [
@@ -201,12 +202,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const id = "yamacoa-fonts-min";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link");
-    l.id = id; l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-    document.head.appendChild(l);
+    cargarFuentes();
   }, []);
 
   const alerta = data.alertaGeopolitica || {};
@@ -214,7 +210,7 @@ export default function App() {
   const TL = { mapa:"Mapa de recursos", valoracion:"Valoración", produccion:"Producción", proceso:"Proceso HPAL", encuesta:"Encuesta" };
 
   return (
-    <div style={{ background:COL.bg, color:COL.text, minHeight:"100vh", fontFamily:"Archivo, system-ui, sans-serif" }}>
+    <div style={{ background:COL.bg, color:COL.text, fontFamily:"'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif" }}>
       <style>{CSS}</style>
       <div className="mn-wrap">
 
@@ -307,11 +303,11 @@ function TabMapa({ data }) {
           </defs>
 
           {/* isla principal */}
-          <path d={CUBA_POLY} fill={COL.node} stroke={COL.faint} strokeWidth="1"/>
+          <path d={CUBA_POLY} fill={COL.panel2} stroke="rgba(60,40,20,.35)" strokeWidth="1"/>
 
           {/* Isla de la Juventud */}
           <ellipse cx={IJ.cx} cy={IJ.cy} rx={IJ.rx} ry={IJ.ry}
-            fill={COL.node} stroke={COL.faint} strokeWidth="1"/>
+            fill={COL.panel2} stroke="rgba(60,40,20,.35)" strokeWidth="1"/>
 
           {/* marcadores de yacimientos */}
           {yacs.map(y => {
@@ -329,7 +325,7 @@ function TabMapa({ data }) {
                 )}
                 <circle cx={x} cy={sy} r={r}
                   fill={mCol(y.mineralPrincipal)}
-                  stroke={isHov ? COL.text : "rgba(0,0,0,.4)"}
+                  stroke={isHov ? COL.text : "rgba(252,249,244,.95)"}
                   strokeWidth={isHov ? 1.5 : 1}
                   opacity={isDim ? 0.2 : y.estado === "histórico" ? 0.5 : 1}
                   filter={isHov ? "url(#glow-mn)" : undefined}
@@ -375,7 +371,7 @@ function TabMapa({ data }) {
             {minerales.map(m => (
               <button key={m} className={"mn-filtro-btn" + (filtro === m ? " active" : "")}
                 onClick={() => setFiltro(m)}
-                style={filtro === m && m !== "todos" ? { background: mCol(m), color:"#000", borderColor: mCol(m) } : {}}>
+                style={filtro === m && m !== "todos" ? { background: mCol(m), color:"#fcf9f4", borderColor: mCol(m) } : {}}>
                 {m === "todos" ? "Todos" : m}
               </button>
             ))}
@@ -450,10 +446,10 @@ function TabMapa({ data }) {
 /* ═══════════════════════════════════════════════════════════════════════════
    TAB: VALORACIÓN
 ═══════════════════════════════════════════════════════════════════════════ */
-const CONF_COL = { alta:"#3BAE6A", "media-alta":"#7AAFC7", media:COL.nickel, "media-baja":"#B88030", baja:COL.alert };
+const CONF_COL = { alta:"#24874A", "media-alta":"#3B7F9E", media:COL.nickel, "media-baja":"#9A6420", baja:COL.alert };
 
 /* ─── donut: distribución por tipo mineral ─── */
-const DCOL = { "Níquel-Cobalto": COL.primary, "Oro-Plata (La Demajagua + Jacinto)": COL.gold, "Au potencial (La Holguinera)": "#B8982A" };
+const DCOL = { "Níquel-Cobalto": COL.primary, "Oro-Plata (La Demajagua + Jacinto)": COL.gold, "Au potencial (La Holguinera)": "#B39020" };
 
 function TipoDonut({ distrib }) {
   if (!distrib?.length) return null;
@@ -470,7 +466,7 @@ function TipoDonut({ distrib }) {
             ))}
           </Pie>
           <Tooltip formatter={(v, n) => [v.toLocaleString("es") + " M USD", n]}
-            contentStyle={{ background:COL.panel, border:`1px solid ${COL.nodeBdr}`, borderRadius:8, fontSize:12 }}/>
+            contentStyle={{ background:COL.panel, border:`1px solid ${COL.nodeBdr}`, borderRadius:12, boxShadow:"0 8px 24px rgba(40,25,10,.14)", fontSize:12 }}/>
         </PieChart>
         <div className="mn-donut-legend">
           {distrib.map((d, i) => (
@@ -894,21 +890,21 @@ function TabEncuesta({ data }) {
 ═══════════════════════════════════════════════════════════════════════════ */
 const CSS = `
 *{box-sizing:border-box}
-.mn-wrap{max-width:1100px;margin:0 auto;padding:24px 18px 64px}
+.mn-wrap{max-width:1100px;margin:0 auto;padding:24px 18px 64px;--sh:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055))}
 
 /* hero */
 .mn-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;
-  letter-spacing:.18em;color:${COL.faint};margin-bottom:10px}
+  letter-spacing:.18em;color:${COL.primary};margin-bottom:10px}
 .mn-hero{padding:8px 0 28px}
 .mn-h1{font-size:38px;font-weight:800;letter-spacing:-.025em;margin:0 0 10px;line-height:1.1}
-.mn-sub{color:${COL.muted};font-size:16px;margin:0 0 12px;line-height:1.5}
+.mn-sub{color:#4a3f36;font-size:16px;margin:0 0 12px;line-height:1.5}
 .mn-fuente-line{font-size:12px;color:${COL.faint};margin-bottom:20px}
 .mn-fuente-tag{font-family:'IBM Plex Mono',monospace;background:${COL.nodeBdr};
   padding:1px 7px;border-radius:4px;margin-right:8px;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
 
 /* kpis */
 .mn-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
-.mn-kpi{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:12px;
+.mn-kpi{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:20px;
   padding:14px 16px;position:relative}
 .mn-kpi-val{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;
   color:${COL.primary};line-height:1.2;margin-bottom:4px}
@@ -918,14 +914,14 @@ const CSS = `
 /* confianza badge */
 .mn-conf{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;
   padding:1px 6px;border-radius:4px;border:1px solid;margin-top:6px;text-transform:lowercase}
-.mn-conf-alta{color:#3BAE6A;border-color:#3BAE6A44}
-.mn-conf-media-alta{color:#7AAFC7;border-color:#7AAFC744}
+.mn-conf-alta{color:#24874A;border-color:#24874A55}
+.mn-conf-media-alta{color:#3B7F9E;border-color:#3B7F9E44}
 .mn-conf-media{color:${COL.nickel};border-color:${COL.nodeBdr}}
-.mn-conf-media-baja{color:#B88030;border-color:#B8803044}
+.mn-conf-media-baja{color:#9A6420;border-color:#9A642044}
 .mn-conf-baja{color:${COL.alert};border-color:${COL.alertBdr}}
 
 /* alerta */
-.mn-alerta{background:${COL.alertBg};border:1px solid ${COL.alertBdr};border-radius:12px;
+.mn-alerta{background:${COL.alertBg};border:1px solid ${COL.alertBdr};border-radius:20px;
   padding:14px 18px;margin-bottom:16px}
 .mn-alerta-hd{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;
   letter-spacing:.14em;color:${COL.alert};margin-bottom:10px;display:flex;align-items:center;gap:8px}
@@ -940,7 +936,7 @@ const CSS = `
 .mn-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;
   border-bottom:1px solid ${COL.line};padding-bottom:0}
 .mn-tab{background:none;border:none;border-bottom:2px solid transparent;
-  color:${COL.muted};font-family:Archivo,system-ui,sans-serif;font-size:13.5px;
+  color:${COL.muted};font-family:'Manrope',system-ui,sans-serif;font-size:13.5px;
   font-weight:500;padding:10px 14px 11px;cursor:pointer;transition:color .15s,border-color .15s;
   margin-bottom:-1px}
 .mn-tab.active{color:${COL.primary};border-bottom-color:${COL.primary}}
@@ -951,16 +947,16 @@ const CSS = `
 .mn-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;
   letter-spacing:.2em;color:${COL.faint};border-bottom:1px solid ${COL.line};
   padding-bottom:10px;margin-bottom:14px}
-.mn-section-desc{font-size:14.5px;color:${COL.muted};line-height:1.68;margin:0 0 24px;max-width:72ch}
+.mn-section-desc{font-size:14.5px;color:#4a3f36;line-height:1.68;margin:0 0 24px;max-width:72ch}
 .mn-chart-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;
   letter-spacing:.14em;color:${COL.faint};margin-bottom:8px}
 
 /* mapa */
 .mn-tab-mapa{display:flex;flex-direction:column;gap:16px}
-.mn-mapa-wrap{position:relative;background:${COL.node};border:1px solid ${COL.nodeBdr};
-  border-radius:12px;padding:12px;overflow:hidden}
+.mn-mapa-wrap{position:relative;background:${COL.node};border:0;box-shadow:var(--sh);
+  border-radius:24px;padding:12px;overflow:hidden}
 .mn-mapa-tip{position:absolute;bottom:12px;right:12px;
-  background:${COL.panel};border:1px solid ${COL.nodeBdr};border-radius:10px;
+  background:${COL.panel};border:1px solid ${COL.nodeBdr};border-radius:14px;box-shadow:0 8px 24px rgba(40,25,10,.14);
   padding:12px 14px;min-width:220px;max-width:280px;z-index:2}
 .mn-tip-nombre{font-weight:700;font-size:14px;margin-bottom:2px}
 .mn-tip-prov{font-size:11px;color:${COL.muted};margin-bottom:8px;
@@ -971,16 +967,16 @@ const CSS = `
 .mn-tip-res{font-size:11.5px;color:${COL.muted};margin:4px 0;line-height:1.4}
 
 /* filtro */
-.mn-mapa-tabla-wrap{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:12px;padding:16px}
+.mn-mapa-tabla-wrap{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:24px;padding:16px}
 .mn-filtro-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
 .mn-filtro-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;
   letter-spacing:.14em;color:${COL.faint};white-space:nowrap}
 .mn-filtro-btns{display:flex;gap:6px;flex-wrap:wrap}
-.mn-filtro-btn{background:none;border:1px solid ${COL.nodeBdr};border-radius:6px;
+.mn-filtro-btn{background:none;border:1px solid ${COL.nodeBdr};border-radius:999px;
   color:${COL.muted};font-size:12px;padding:4px 10px;cursor:pointer;transition:all .15s;
-  font-family:Archivo,system-ui,sans-serif}
+  font-family:'Manrope',system-ui,sans-serif}
 .mn-filtro-btn:hover{border-color:${COL.nickel};color:${COL.text}}
-.mn-filtro-btn.active{background:${COL.primary};border-color:${COL.primary};color:#000;font-weight:600}
+.mn-filtro-btn.active{background:${COL.primary};border-color:${COL.primary};color:#fcf9f4;font-weight:600}
 
 /* tablas */
 .mn-tabla-scroll{overflow-x:auto}
@@ -990,7 +986,7 @@ const CSS = `
   border-bottom:1px solid ${COL.nodeBdr};white-space:nowrap;font-weight:500}
 .mn-tabla td{padding:9px 12px;border-bottom:1px solid ${COL.line};color:${COL.text};
   vertical-align:middle}
-.mn-tabla tr.even td{background:rgba(255,255,255,.017)}
+.mn-tabla tr.even td{background:rgba(60,40,20,.025)}
 .mn-tabla tr:hover td{background:${COL.primGlow}}
 .mn-num{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:12.5px}
 .mn-num-big{font-size:14px;color:${COL.primary};font-weight:700}
@@ -1000,7 +996,7 @@ const CSS = `
   background:${COL.nodeBdr};padding:2px 7px;border-radius:4px}
 
 /* tooltips recharts */
-.mn-recharts-tip{background:${COL.panel};border:1px solid ${COL.nodeBdr};border-radius:10px;
+.mn-recharts-tip{background:${COL.panel};border:1px solid ${COL.nodeBdr};border-radius:14px;box-shadow:0 8px 24px rgba(40,25,10,.14);
   padding:12px 14px;font-size:12.5px;min-width:200px;max-width:280px;line-height:1.55}
 .mn-rt-nombre{font-weight:700;font-size:13.5px;margin-bottom:4px;color:${COL.text}}
 .mn-rt-val{font-family:'IBM Plex Mono',monospace;font-size:15px;color:${COL.primary};font-weight:700}
@@ -1008,7 +1004,7 @@ const CSS = `
 
 /* producción stats */
 .mn-prod-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:24px}
-.mn-ps{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:10px;padding:12px 14px}
+.mn-ps{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:16px;padding:12px 14px}
 .mn-ps-v{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:${COL.primary};margin-bottom:4px}
 .mn-ps-l{font-size:11.5px;color:${COL.muted}}
 .mn-ps-badge{background:${COL.alertBg};color:${COL.alert};border:1px solid ${COL.alertBdr};
@@ -1018,7 +1014,7 @@ const CSS = `
 .mn-proc-scroll{overflow-x:auto;padding-bottom:8px;margin-bottom:16px}
 .mn-proc-flow{display:flex;align-items:stretch;gap:0;min-width:900px;padding:4px 0}
 .mn-proc-step{flex:1;min-width:100px;background:${COL.node};border:1px solid ${COL.nodeBdr};
-  border-radius:10px;padding:12px 11px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
+  border-radius:16px;padding:12px 11px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
 .mn-proc-step.interrupted{border-color:${COL.alertBdr};background:${COL.alertBg}}
 .mn-proc-num{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;
   color:${COL.faint};line-height:1;margin-bottom:2px}
@@ -1036,27 +1032,27 @@ const CSS = `
 .mn-proc-ley-item{display:flex;align-items:center;gap:5px;text-transform:uppercase;letter-spacing:.1em}
 
 /* ficha técnica */
-.mn-proc-ficha{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:12px;padding:16px 18px}
+.mn-proc-ficha{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:24px;padding:16px 18px}
 .mn-proc-ficha-title{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;
   letter-spacing:.14em;color:${COL.faint};margin-bottom:14px}
 .mn-proc-ficha-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
 .mn-pf-item{display:flex;justify-content:space-between;align-items:center;
-  font-size:12.5px;padding:7px 10px;background:${COL.panel2};border-radius:7px}
+  font-size:12.5px;padding:7px 10px;background:${COL.panel2};border-radius:10px}
 .mn-pf-lbl{color:${COL.muted}}
 
 /* encuesta */
-.mn-poll-q{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:12px;
+.mn-poll-q{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:24px;
   padding:16px 18px;margin-bottom:14px}
 .mn-poll-texto{font-size:15px;font-weight:600;margin:0 0 14px;line-height:1.4}
 .mn-poll-ops{display:flex;flex-direction:column;gap:8px}
-.mn-poll-op{position:relative;border:1px solid ${COL.nodeBdr};border-radius:9px;overflow:hidden;
+.mn-poll-op{position:relative;border:1px solid ${COL.nodeBdr};border-radius:14px;overflow:hidden;
   cursor:pointer;transition:border-color .15s}
 .mn-poll-op:not(.dimmed):hover{border-color:${COL.primary}}
 .mn-poll-op.selected{border-color:${COL.primary}}
 .mn-poll-op.dimmed{opacity:.55;cursor:default}
-.mn-poll-bar-bg{position:absolute;inset:0;overflow:hidden;border-radius:8px;pointer-events:none}
+.mn-poll-bar-bg{position:absolute;inset:0;overflow:hidden;border-radius:13px;pointer-events:none}
 .mn-poll-bar-fill{height:100%;background:${COL.primGlow};transition:width .6s ease}
-.mn-poll-op.selected .mn-poll-bar-fill{background:rgba(196,123,43,.22)}
+.mn-poll-op.selected .mn-poll-bar-fill{background:rgba(181,80,28,.18)}
 .mn-poll-op-inner{position:relative;display:flex;justify-content:space-between;
   align-items:center;padding:11px 14px;font-size:13.5px}
 .mn-poll-pct{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:${COL.primary}}
@@ -1069,11 +1065,11 @@ const CSS = `
   font-family:'IBM Plex Mono',monospace;font-size:11px;color:${COL.faint}}
 
 /* faja aurífera */
-.mn-faja-box{background:${COL.node};border:1px solid ${COL.nodeBdr};border-radius:12px;
+.mn-faja-box{background:${COL.node};border:0;box-shadow:var(--sh);border-radius:24px;
   padding:16px 18px}
 .mn-faja-hd{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;
   letter-spacing:.18em;color:${COL.gold};margin-bottom:10px}
-.mn-faja-desc{font-size:13.5px;color:${COL.muted};line-height:1.65;margin:0 0 14px;max-width:70ch}
+.mn-faja-desc{font-size:13.5px;color:#4a3f36;line-height:1.65;margin:0 0 14px;max-width:70ch}
 .mn-faja-stats{display:flex;gap:24px;flex-wrap:wrap}
 .mn-faja-stat{display:flex;flex-direction:column;gap:2px}
 .mn-faja-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:${COL.gold}}

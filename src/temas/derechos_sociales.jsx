@@ -3,6 +3,7 @@ import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
   CartesianGrid, Tooltip, Cell,
 } from "recharts";
+import { cargarFuentes } from "../design/tokens";
 
 /* ============================================================================
    YAMACOA · expediente "derechos_sociales" — RENDERER CONGELADO
@@ -21,10 +22,10 @@ import {
    ========================================================================== */
 
 const C = {
-  bg: "#0F1210", panel: "#1B211C", panel2: "#232B24",
-  line: "rgba(232,236,230,.10)", paper: "#E8ECE6", dim: "#8B948D",
+  bg: "#fcf9f4", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", paper: "#1f1a16", dim: "#6b5d50",
   primario: "#3A5F4D", contrapunto: "#3F222B", contrapuntoClaro: "#8A5A63",
-  corrob: "#5FAE8F", parcial: "#C9954B", noconf: "#D9A13B",
+  corrob: "#1F7A5C", parcial: "#A0521A", noconf: "#8A6410",
 };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/derechos_sociales.json";
 
@@ -137,10 +138,10 @@ function ComparativaHomicidios({ c }) {
     <div className="ds-comparativa">
       <ResponsiveContainer width="100%" height={150}>
         <BarChart data={datos} layout="vertical" margin={{ top: 4, right: 40, left: 8, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="2 4" stroke="rgba(232,236,230,.06)" horizontal={false} />
-          <XAxis type="number" tick={{ fill: "#8B948D", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
-          <YAxis type="category" dataKey="fuente" width={72} tick={{ fill: "#E8ECE6", fontSize: 12 }} axisLine={false} tickLine={false} />
-          <Tooltip content={<TipComp />} cursor={{ fill: "rgba(232,236,230,.05)" }} />
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(60,40,20,.10)" horizontal={false} />
+          <XAxis type="number" tick={{ fill: "#6b5d50", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis type="category" dataKey="fuente" width={72} tick={{ fill: "#1f1a16", fontSize: 12 }} axisLine={false} tickLine={false} />
+          <Tooltip content={<TipComp />} cursor={{ fill: "rgba(60,40,20,.05)" }} />
           <Bar dataKey="valor" radius={[0, 5, 5, 0]} maxBarSize={38}>
             {datos.map((d, i) => <Cell key={i} fill={d.estado === "corroborada" ? C.primario : C.contrapuntoClaro} />)}
           </Bar>
@@ -239,7 +240,7 @@ function Encuesta({ datos }) {
               const elegida = miVoto[q.id] === op;
               return (
                 <button key={op} className="ds-opcion" disabled={votado} onClick={() => votar(q.id, op)}>
-                  <span className="ds-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(58,95,77,.45)" : "rgba(139,148,141,.16)" }} />
+                  <span className="ds-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(58,95,77,.24)" : "rgba(107,93,80,.14)" }} />
                   <span className="ds-opcion-txt"><span>{elegida ? "✓ " : ""}{op}</span>{votado && <span>{pct}%</span>}</span>
                 </button>
               );
@@ -258,12 +259,7 @@ export default function App() {
   const ver = (h) => hilo === "ambos" || hilo === h;
 
   useEffect(() => {
-    const id = "ds-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
     let live = true;
     fetch(DATA_URL).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setData(j); }).catch(() => {});
     return () => { live = false; };
@@ -376,13 +372,13 @@ export default function App() {
 }
 
 const CSS = `
-.ds-root{ background:${C.bg}; color:${C.paper}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; }
+.ds-root{ background:transparent; color:${C.paper}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; --sh:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); }
 .ds-root *{ box-sizing:border-box; }
 .ds-hero{ padding:48px 20px 28px; max-width:920px; margin:0 auto; }
 .ds-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:${C.contrapuntoClaro}; }
 .ds-hero h1{ font-size:clamp(28px,5vw,46px); margin:10px 0 8px; line-height:1.08; }
 .ds-subtitulo{ color:${C.dim}; font-size:16px; max-width:700px; line-height:1.55; }
-.ds-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:8px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
+.ds-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:16px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
 .ds-main{ max-width:920px; margin:0 auto; padding:0 20px 80px; }
 .ds-main section{ margin-top:56px; }
 .ds-sec-head{ margin-bottom:16px; }
@@ -399,17 +395,17 @@ const CSS = `
 .ds-chip-parcial{ color:${C.parcial}; border:1px dashed ${C.parcial}; }
 .ds-chip-no{ color:${C.noconf}; border:1px dashed ${C.noconf}; }
 .ds-hechos-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
-.ds-hecho{ background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.ds-hecho{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:12px 16px; }
 .ds-hecho-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
 .ds-hecho-fuente{ font-size:11px; color:${C.dim}; }
 .ds-hecho p{ font-size:13.5px; line-height:1.5; margin:0; }
 .ds-hecho-nota{ color:${C.dim}; font-size:12px; margin-top:6px !important; }
-.ds-conmutador{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:34px; padding:12px 14px; background:${C.panel}; border-radius:10px; border-left:3px solid ${C.primario}; }
+.ds-conmutador{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-top:34px; padding:12px 14px; background:${C.panel}; box-shadow:var(--sh); border-radius:16px; border-left:3px solid ${C.primario}; }
 .ds-conm-b{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; padding:7px 12px; border-radius:999px; border:1px solid ${C.line}; background:${C.panel2}; color:${C.dim}; cursor:pointer; }
 .ds-conm-b:hover{ color:${C.paper}; border-color:${C.dim}; }
 .ds-conm-b.on{ color:${C.bg}; background:${C.primario}; border-color:${C.primario}; font-weight:600; }
 .ds-conm-hint{ flex:1 1 220px; font-size:11.5px; color:${C.dim}; }
-.ds-cuentagotas{ margin-top:18px; background:${C.panel}; border-radius:10px; padding:18px; }
+.ds-cuentagotas{ margin-top:18px; background:${C.panel}; box-shadow:var(--sh); border-radius:24px; padding:18px; }
 .ds-cg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(32px,1fr)); gap:4px; }
 .ds-cg-cell{ display:flex; flex-direction:column; align-items:center; gap:2px; background:none; border:1px solid transparent; border-radius:7px; padding:4px 2px; cursor:pointer; font-family:inherit; transition:background .15s, border-color .15s; }
 .ds-cg-cell:hover, .ds-cg-cell-hov{ background:${C.panel2}; border-color:${C.line}; }
@@ -418,27 +414,27 @@ const CSS = `
 .ds-cg-cell:hover .ds-cg-drop-shape{ opacity:.8; }
 .ds-cg-cell-blackout .ds-cg-drop-shape{ fill:${C.contrapuntoClaro}; opacity:1; filter:drop-shadow(0 0 4px rgba(138,90,99,.7)); }
 .ds-cg-day{ font-family:'IBM Plex Mono',monospace; font-size:8px; color:${C.dim}; }
-.ds-cg-lectura{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; min-height:38px; margin-top:12px; padding:10px 14px; background:${C.panel2}; border-radius:8px; font-size:12.5px; line-height:1.45; }
+.ds-cg-lectura{ display:flex; align-items:center; gap:9px; flex-wrap:wrap; min-height:38px; margin-top:12px; padding:10px 14px; background:${C.panel2}; border-radius:14px; font-size:12.5px; line-height:1.45; }
 .ds-cg-lectura-t{ font-family:'IBM Plex Mono',monospace; color:${C.contrapuntoClaro}; }
 .ds-cg-lectura-idle{ color:${C.dim}; font-style:italic; }
 .ds-cg-nota{ font-size:11.5px; color:${C.dim}; line-height:1.5; margin:12px 0 0; }
 .ds-cg-legend{ display:inline-flex; align-items:center; gap:5px; margin-left:8px; white-space:nowrap; }
 .ds-cg-sw{ display:inline-block; width:9px; height:9px; border-radius:2px; background:${C.contrapuntoClaro}; }
-.ds-comparativa{ margin-top:12px; background:${C.panel}; border-radius:10px; padding:18px 14px 14px; }
-.ds-tip{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:10px 12px; box-shadow:0 6px 22px rgba(0,0,0,.45); max-width:260px; }
-.ds-tip-h{ font-size:12.5px; font-weight:700; margin-bottom:5px; }
-.ds-tip-r{ display:flex; justify-content:space-between; gap:16px; font-size:11.5px; color:${C.dim}; }
-.ds-tip-r b{ color:${C.paper}; font-family:'IBM Plex Mono',monospace; }
-.ds-tip-f{ font-size:10.5px; color:${C.dim}; margin-top:6px; border-top:1px solid ${C.line}; padding-top:5px; line-height:1.4; font-style:italic; }
+.ds-comparativa{ margin-top:12px; background:${C.panel}; box-shadow:var(--sh); border-radius:24px; padding:18px 14px 14px; }
+.ds-tip{ background:#3a2418; border:0; border-radius:12px; padding:10px 12px; box-shadow:0 8px 24px rgba(40,25,10,.22); max-width:260px; }
+.ds-tip-h{ color:#f2cdb8; font-size:12.5px; font-weight:700; margin-bottom:5px; }
+.ds-tip-r{ display:flex; justify-content:space-between; gap:16px; font-size:11.5px; color:#c9a893; }
+.ds-tip-r b{ color:#fcf9f4; font-family:'IBM Plex Mono',monospace; }
+.ds-tip-f{ font-size:10.5px; color:#c9a893; margin-top:6px; border-top:1px solid rgba(252,249,244,.18); padding-top:5px; line-height:1.4; font-style:italic; }
 .ds-comp-chips{ display:flex; gap:16px; flex-wrap:wrap; padding-left:6px; margin-top:4px; }
 .ds-comp-chips span{ display:inline-flex; align-items:center; gap:7px; font-size:12px; color:${C.dim}; }
 .ds-comp-nota{ font-size:12px; color:${C.dim}; line-height:1.5; margin:12px 0 0; }
-.ds-donut-wrap{ display:flex; gap:22px; align-items:center; flex-wrap:wrap; background:${C.panel}; border-radius:10px; padding:18px; margin-bottom:14px; }
+.ds-donut-wrap{ display:flex; gap:22px; align-items:center; flex-wrap:wrap; background:${C.panel}; box-shadow:var(--sh); border-radius:24px; padding:18px; margin-bottom:14px; }
 .ds-donut-svg{ width:120px; height:120px; flex-shrink:0; }
 .ds-donut-bg{ fill:none; stroke:${C.panel2}; stroke-width:12; cursor:pointer; transition:stroke .18s; }
-.ds-donut-bg:hover{ stroke:#39433A; }
+.ds-donut-bg:hover{ stroke:#e6ddd0; }
 .ds-donut-fill{ fill:none; stroke:${C.contrapuntoClaro}; stroke-width:12; stroke-linecap:round; transition:stroke-dasharray .6s, stroke .18s; cursor:pointer; }
-.ds-donut-fill:hover{ stroke:#A06B76; }
+.ds-donut-fill:hover{ stroke:#6F4049; }
 .ds-donut-hint{ font-size:11px !important; color:${C.dim}; font-style:italic; }
 .ds-donut-pct{ font-family:'IBM Plex Mono',monospace; font-size:20px; fill:${C.paper}; }
 .ds-donut-sub{ font-size:10px; fill:${C.dim}; text-transform:uppercase; letter-spacing:.06em; }
@@ -447,20 +443,20 @@ const CSS = `
 .ds-donut-fuente{ display:flex; align-items:center; gap:8px; }
 .ds-donut-fuente span{ font-size:11px; color:${C.dim}; }
 .ds-fichas-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
-.ds-ficha{ background:${C.panel}; border-radius:8px; padding:14px 16px; }
+.ds-ficha{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:14px 16px; }
 .ds-ficha-top{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:6px; }
 .ds-ficha-top h4{ font-size:14px; margin:0; }
 .ds-ficha p{ font-size:12.5px; line-height:1.5; margin:0; color:${C.paper}; }
 .ds-ficha-nota{ color:${C.dim} !important; font-size:11.5px !important; margin-top:6px !important; }
 .ds-ficha-fuente{ display:block; font-size:10.5px; color:${C.dim}; margin-top:8px; }
 .ds-verif-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
-.ds-verif-stats div{ background:${C.panel}; border-radius:8px; padding:14px 16px; text-align:center; }
+.ds-verif-stats div{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:14px 16px; text-align:center; }
 .ds-verif-stats b{ font-family:'IBM Plex Mono',monospace; font-size:24px; display:block; color:${C.paper}; }
 .ds-verif-stats span{ font-size:10.5px; color:${C.dim}; text-transform:uppercase; letter-spacing:.05em; }
 .ds-encuesta{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.ds-pregunta{ background:${C.panel}; border:1px solid ${C.line}; border-radius:10px; padding:14px 16px; }
+.ds-pregunta{ background:${C.panel}; border:0; box-shadow:var(--sh); border-radius:24px; padding:14px 16px; }
 .ds-pregunta p{ font-size:14px; line-height:1.5; margin:0 0 12px; }
-.ds-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:6px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
+.ds-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:12px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
 .ds-opcion:disabled{ cursor:default; }
 .ds-opcion-fill{ position:absolute; inset:0; transition:width .4s; }
 .ds-opcion-txt{ position:relative; display:flex; justify-content:space-between; padding:8px 10px; }

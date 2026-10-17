@@ -1014,18 +1014,18 @@ const DATOS_EMBEBIDOS = {
    Ámbar (#C98A17) está RESERVADO en toda la plataforma para contrafactuales.
    -------------------------------------------------------------------------- */
 const P = {
-  fondo: "#0E1A18",
-  superficie: "#14231F",
-  superficieAlt: "#1B2E29",
-  borde: "#26403A",
-  bordeVivo: "#38574F",
-  tinta: "#EDE7DC",
-  tintaTenue: "#9DAFA8",
-  petroleo: "#2E9B87",
-  ciruela: "#8B76A8",
-  arcilla: "#C4694A",
-  salvia: "#9BB88F",
-  ambar: "#C98A17"
+  fondo: "#fcf9f4",
+  superficie: "#fcf9f4",
+  superficieAlt: "#f5efe7",
+  borde: "#e2d8cb",
+  bordeVivo: "#9c8c7a",
+  tinta: "#1f1a16",
+  tintaTenue: "#6b5d50",
+  petroleo: "#1A7566",
+  ciruela: "#6A5490",
+  arcilla: "#A84B2C",
+  salvia: "#4F7A43",
+  ambar: "#94650A"
 };
 
 const COLOR_CONFIANZA = { confirmado: P.petroleo, reportado: P.salvia, estimado: P.arcilla };
@@ -1033,7 +1033,7 @@ const COLOR_CASO = { bogota: P.petroleo, georgia: P.arcilla, estonia: P.ciruela,
 const COLOR_TERMINO = { M: P.arcilla, S: P.ciruela, I: P.salvia, E: P.petroleo };
 
 const MONO = "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
-const TITULAR = "'Archivo Black', 'Arial Black', system-ui, sans-serif";
+const TITULAR = "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 const fmt = (n, dec) =>
   n === null || n === undefined
@@ -1081,7 +1081,7 @@ function Confianza({ nivel, procedencia, compacto }) {
           textTransform: "uppercase",
           color: c,
           border: `1px solid ${c}`,
-          borderRadius: 2,
+          borderRadius: 999,
           padding: "1px 6px",
           whiteSpace: "nowrap",
           alignSelf: "flex-start"
@@ -1105,7 +1105,7 @@ function Seccion({ numero, titulo, sumario, children }) {
         <span style={{ fontFamily: MONO, fontSize: 12, color: P.petroleo, letterSpacing: "0.12em" }}>
           {String(numero).padStart(2, "0")}
         </span>
-        <h2 style={{ fontFamily: TITULAR, fontSize: "clamp(21px, 3.2vw, 31px)", lineHeight: 1.15, margin: 0, color: P.tinta }}>
+        <h2 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(21px, 3.2vw, 31px)", lineHeight: 1.15, margin: 0, color: P.tinta }}>
           {titulo}
         </h2>
       </div>
@@ -1126,7 +1126,8 @@ function Tarjeta({ children, acento, estilo }) {
         background: P.superficie,
         border: `1px solid ${P.borde}`,
         borderLeft: `3px solid ${acento || P.borde}`,
-        borderRadius: 3,
+        borderRadius: 16,
+        boxShadow: "var(--y-shadow)",
         padding: "18px 20px",
         ...(estilo || {})
       }}
@@ -1165,7 +1166,7 @@ function AvisoSimulacion({ texto }) {
         letterSpacing: "0.06em",
         color: P.ambar,
         border: `1px dashed ${P.ambar}`,
-        borderRadius: 2,
+        borderRadius: 10,
         padding: "7px 10px",
         marginBottom: 16,
         lineHeight: 1.6
@@ -1211,7 +1212,7 @@ function Boton({ children, onClick, activo, color }) {
         fontFamily: MONO,
         fontSize: 11.5,
         padding: "7px 12px",
-        borderRadius: 2,
+        borderRadius: 999,
         cursor: "pointer",
         background: activo ? c : "transparent",
         color: activo ? P.fondo : c,
@@ -1409,7 +1410,7 @@ function CurvaModelo({ modelo, aviso }) {
 
           <div style={{ display: "flex", gap: 22, flexWrap: "wrap", marginTop: 10 }}>
             <div>
-              <div style={{ fontFamily: TITULAR, fontSize: 34, color: P.ambar, lineHeight: 1 }}>
+              <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 34, color: P.ambar, lineHeight: 1 }}>
                 {fmt(pActual * 100, 1)}
                 <span style={{ fontSize: 17 }}> %</span>
               </div>
@@ -1418,7 +1419,7 @@ function CurvaModelo({ modelo, aviso }) {
               </div>
             </div>
             <div>
-              <div style={{ fontFamily: TITULAR, fontSize: 22, color: P.tintaTenue, lineHeight: 1.4 }}>
+              <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 22, color: P.tintaTenue, lineHeight: 1.4 }}>
                 {fmt(pendiente, 3)}
               </div>
               <div style={{ fontFamily: MONO, fontSize: 10.5, color: P.tintaTenue, marginTop: 4 }}>
@@ -1426,7 +1427,7 @@ function CurvaModelo({ modelo, aviso }) {
               </div>
             </div>
             <div>
-              <div style={{ fontFamily: TITULAR, fontSize: 22, color: P.tintaTenue, lineHeight: 1.4 }}>{fmt(zActual, 2)}</div>
+              <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 22, color: P.tintaTenue, lineHeight: 1.4 }}>{fmt(zActual, 2)}</div>
               <div style={{ fontFamily: MONO, fontSize: 10.5, color: P.tintaTenue, marginTop: 4 }}>índice z</div>
             </div>
           </div>
@@ -1466,7 +1467,7 @@ function MallaNormas({ real, aviso }) {
           />
         ))}
       </div>
-      <div style={{ fontFamily: TITULAR, fontSize: 25, color: color, marginTop: 10 }}>{fmt(pct, 0)} %</div>
+      <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 25, color: color, marginTop: 10 }}>{fmt(pct, 0)} %</div>
     </div>
   );
 
@@ -1549,7 +1550,7 @@ function Anillo({ valor, etiqueta, color }) {
           transform="rotate(-90 60 60)"
           style={{ transition: "stroke-width 140ms" }}
         />
-        <text x="60" y="59" textAnchor="middle" style={{ fontFamily: TITULAR, fontSize: 23, fill: P.tinta }}>
+        <text x="60" y="59" textAnchor="middle" style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 23, fill: P.tinta }}>
           {fmt(valor)}
         </text>
         <text x="60" y="76" textAnchor="middle" style={{ fontFamily: MONO, fontSize: 10, fill: P.tintaTenue }}>
@@ -1904,7 +1905,7 @@ function Secuencia({ etapas }) {
               <div style={{ fontFamily: MONO, fontSize: 11, color: on ? P.ambar : P.petroleo, letterSpacing: "0.08em" }}>
                 {e.periodo}
               </div>
-              <div style={{ fontFamily: TITULAR, fontSize: 15, color: P.tinta, margin: "5px 0 8px" }}>{e.objetivo}</div>
+              <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 15, color: P.tinta, margin: "5px 0 8px" }}>{e.objetivo}</div>
               <ul style={{ margin: 0, paddingLeft: 15, color: P.tintaTenue, fontSize: 13, lineHeight: 1.6 }}>
                 {e.intervenciones.map((it) => (
                   <li key={it}>{it}</li>
@@ -1973,7 +1974,7 @@ function IndiceInteractivo({ indice, aviso }) {
           <div style={{ fontFamily: MONO, fontSize: 10.5, letterSpacing: "0.1em", color: P.tintaTenue, marginBottom: 10 }}>
             ÍNDICE COMPUESTO
           </div>
-          <div style={{ fontFamily: TITULAR, fontSize: 52, color: ct > 20 ? P.petroleo : P.arcilla, lineHeight: 1 }}>
+          <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 52, color: ct > 20 ? P.petroleo : P.arcilla, lineHeight: 1 }}>
             {fmt(ct, 1)}
           </div>
           <div style={{ height: 10, background: P.superficieAlt, border: `1px solid ${P.borde}`, borderRadius: 2, marginTop: 16 }}>
@@ -2005,9 +2006,9 @@ function BloqueContrafactual({ cf, abiertoInicial }) {
     <div
       style={{
         border: `2px dashed ${P.ambar}`,
-        borderRadius: 3,
+        borderRadius: 16,
         padding: "16px 20px",
-        background: "rgba(201, 138, 23, 0.05)"
+        background: "rgba(148, 101, 10, 0.06)"
       }}
     >
       <div
@@ -2030,7 +2031,7 @@ function BloqueContrafactual({ cf, abiertoInicial }) {
           ⚠ Contrafactual · no es evidencia
         </span>
         <span style={{ fontFamily: MONO, fontSize: 11, color: P.ambar }}>{cf.codigo}</span>
-        <h3 style={{ fontFamily: TITULAR, fontSize: 16.5, color: P.tinta, margin: 0, flex: "1 1 200px" }}>{cf.titulo}</h3>
+        <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16.5, color: P.tinta, margin: 0, flex: "1 1 200px" }}>{cf.titulo}</h3>
         <span style={{ fontFamily: MONO, fontSize: 15, color: P.ambar }}>{abierto ? "−" : "+"}</span>
       </div>
       {abierto ? (
@@ -2219,7 +2220,7 @@ function Encuesta({ encuesta, slug }) {
                       overflow: "hidden",
                       background: P.superficieAlt,
                       border: `1px solid ${elegida ? P.petroleo : P.borde}`,
-                      borderRadius: 2,
+                      borderRadius: 12,
                       padding: "9px 11px",
                       marginBottom: 7,
                       cursor: votada ? "default" : "pointer",
@@ -2233,7 +2234,7 @@ function Encuesta({ encuesta, slug }) {
                         position: "absolute",
                         inset: "0 auto 0 0",
                         width: votada ? pct + "%" : 0,
-                        background: elegida ? "rgba(46,155,135,.30)" : "rgba(157,175,168,.16)",
+                        background: elegida ? "rgba(26,117,102,.22)" : "rgba(107,93,80,.12)",
                         transition: "width .5s ease",
                         opacity: on ? 1 : 0.9
                       }}
@@ -2318,7 +2319,7 @@ export default function ReconstruccionCivica() {
 
   if (!datos) {
     return (
-      <div style={{ background: P.fondo, color: P.tintaTenue, fontFamily: MONO, padding: 40, minHeight: "60vh" }}>
+      <div style={{ background: "transparent", color: P.tintaTenue, fontFamily: MONO, padding: 40, minHeight: "60vh" }}>
         Cargando dataset…
       </div>
     );
@@ -2329,7 +2330,7 @@ export default function ReconstruccionCivica() {
   const desaprueba = (datos.estado_sistema.indicadores.find((i) => i.id === "desaprueba") || {}).valor || 92;
 
   return (
-    <div style={{ background: P.fondo, color: P.tinta, minHeight: "100vh" }}>
+    <div style={{ background: "transparent", color: P.tinta, fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif", minHeight: "100vh" }}>
       <div style={{ maxWidth: 1020, margin: "0 auto", padding: "0 22px 90px" }}>
         <header style={{ padding: "72px 0 46px" }}>
           <div
@@ -2344,7 +2345,7 @@ export default function ReconstruccionCivica() {
           >
             Yamacoa · observatorio · {datos.meta.slug}
           </div>
-          <h1 style={{ fontFamily: TITULAR, fontSize: "clamp(36px, 7vw, 68px)", lineHeight: 1.02, margin: 0, letterSpacing: "-0.015em" }}>
+          <h1 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(36px, 7vw, 68px)", lineHeight: 1.02, margin: 0, letterSpacing: "-0.015em" }}>
             {datos.meta.titulo}
           </h1>
           <p style={{ fontSize: "clamp(16px, 2.2vw, 20px)", lineHeight: 1.5, color: P.tintaTenue, maxWidth: 700, marginTop: 18 }}>
@@ -2401,7 +2402,7 @@ export default function ReconstruccionCivica() {
               return (
                 <Tarjeta key={t.clave} acento={COLOR_TERMINO[t.clave]}>
                   <MateEnLinea html={t.mathml} color={COLOR_TERMINO[t.clave]} tamano={19} />
-                  <div style={{ fontFamily: TITULAR, fontSize: 14, margin: "6px 0 7px" }}>{t.nombre}</div>
+                  <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 14, margin: "6px 0 7px" }}>{t.nombre}</div>
                   <div style={{ fontSize: 13, lineHeight: 1.6, color: P.tintaTenue }}>{t.descripcion}</div>
                   {t.estado_cuba ? (
                     <div style={{ fontFamily: MONO, fontSize: 10.5, marginTop: 10, color: encontra ? P.arcilla : P.ciruela }}>
@@ -2436,7 +2437,7 @@ export default function ReconstruccionCivica() {
             {datos.estado_sistema.nivel_confianza}.
           </Nota>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 17, margin: "40px 0 8px" }}>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 17, margin: "40px 0 8px" }}>
             Por qué casi todos coinciden y casi nadie actúa
           </h3>
           <p style={{ color: P.tintaTenue, fontSize: 14.5, lineHeight: 1.7, maxWidth: 760, marginTop: 0 }}>
@@ -2450,7 +2451,7 @@ export default function ReconstruccionCivica() {
         <Seccion numero={3} titulo="Comparación interna: la densidad asociativa antes de 1959" sumario={datos.comparacion_interna.tesis}>
           <Nota tono="alerta">{datos.comparacion_interna.nota_metodologica}</Nota>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "30px 0 14px" }}>Lo que existía</h3>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "30px 0 14px" }}>Lo que existía</h3>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
             {datos.comparacion_interna.existente.map((it) => (
               <Tarjeta key={it.id} acento={COLOR_CONFIANZA[it.confianza]}>
@@ -2464,7 +2465,7 @@ export default function ReconstruccionCivica() {
             ))}
           </div>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "34px 0 14px" }}>Lo que no existía (por qué no idealizar)</h3>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "34px 0 14px" }}>Lo que no existía (por qué no idealizar)</h3>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
             {datos.comparacion_interna.ausente.map((it) => (
               <Tarjeta key={it.id} acento={P.arcilla}>
@@ -2525,7 +2526,7 @@ export default function ReconstruccionCivica() {
               <div style={{ fontFamily: MONO, fontSize: 11, color: P.tintaTenue, marginBottom: 4 }}>
                 {caso.pais} · {caso.periodo} · {caso.velocidad}
               </div>
-              <h3 style={{ fontFamily: TITULAR, fontSize: 22, margin: "0 0 12px" }}>{caso.caso}</h3>
+              <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 22, margin: "0 0 12px" }}>{caso.caso}</h3>
               <div style={{ fontSize: 14.5, lineHeight: 1.65, marginBottom: 16 }}>{caso.mecanismo}</div>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
                 <span
@@ -2535,7 +2536,7 @@ export default function ReconstruccionCivica() {
                     padding: "3px 8px",
                     border: `1px solid ${caso.democratico ? P.petroleo : P.arcilla}`,
                     color: caso.democratico ? P.petroleo : P.arcilla,
-                    borderRadius: 2
+                    borderRadius: 999
                   }}
                 >
                   {caso.democratico ? "democrático" : "no democrático"}
@@ -2547,7 +2548,7 @@ export default function ReconstruccionCivica() {
                     padding: "3px 8px",
                     border: `1px solid ${P.borde}`,
                     color: P.tintaTenue,
-                    borderRadius: 2
+                    borderRadius: 999
                   }}
                 >
                   palanca: {caso.palanca_dominante}
@@ -2604,7 +2605,7 @@ export default function ReconstruccionCivica() {
             </Tarjeta>
           </div>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "36px 0 6px" }}>Qué palanca movió cada caso</h3>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "36px 0 6px" }}>Qué palanca movió cada caso</h3>
           <p style={{ color: P.tintaTenue, fontSize: 13.5, lineHeight: 1.6, maxWidth: 700, marginTop: 0 }}>
             Peso relativo asignado por lectura de los mecanismos documentados, no medido.{" "}
             <Confianza nivel="estimado" compacto />
@@ -2628,7 +2629,9 @@ export default function ReconstruccionCivica() {
                 ))}
                 <Legend wrapperStyle={{ fontFamily: MONO, fontSize: 11 }} />
                 <Tooltip
-                  contentStyle={{ background: P.superficie, border: `1px solid ${P.borde}`, fontFamily: MONO, fontSize: 12, color: P.tinta }}
+                  contentStyle={{ background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", fontFamily: MONO, fontSize: 12, color: "#fcf9f4" }}
+                  itemStyle={{ color: "#fcf9f4" }}
+                  labelStyle={{ color: "#f2cdb8" }}
                 />
               </RadarChart>
             </ResponsiveContainer>
@@ -2637,7 +2640,7 @@ export default function ReconstruccionCivica() {
 
         {/* ------------------------------------------------ 6 · ventanas rotas */}
         <Seccion numero={6} titulo="Ventanas rotas, bien entendidas" sumario={vr.aclaracion}>
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "0 0 8px" }}>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "0 0 8px" }}>
             La violación visible de una norma debilita otras normas distintas
           </h3>
           <p style={{ color: P.tintaTenue, fontSize: 14, lineHeight: 1.65, maxWidth: 720, marginTop: 0 }}>
@@ -2649,14 +2652,14 @@ export default function ReconstruccionCivica() {
           </div>
           <Nota tono="alerta">{vr.keizer.limitacion}</Nota>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "38px 0 8px" }}>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "38px 0 8px" }}>
             Reparar el entorno funciona. Perseguir infracciones menores, no.
           </h3>
           <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
             {vr.braga.tipos.map((t) => (
               <Tarjeta key={t.tipo} acento={t.significativo ? P.petroleo : P.arcilla}>
                 <div style={{ fontSize: 14, lineHeight: 1.55, marginBottom: 10 }}>{t.tipo}</div>
-                <div style={{ fontFamily: TITULAR, fontSize: 28, color: t.significativo ? P.petroleo : P.arcilla }}>
+                <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 28, color: t.significativo ? P.petroleo : P.arcilla }}>
                   {t.efecto !== null && t.efecto !== undefined ? `${fmt(t.efecto)} %` : "n. s."}
                 </div>
                 <div style={{ fontFamily: MONO, fontSize: 11, color: P.tintaTenue, marginTop: 6 }}>
@@ -2673,7 +2676,7 @@ export default function ReconstruccionCivica() {
             {fmt(vr.braga.reduccion_media)} %. {vr.braga.heterogeneidad}
           </Nota>
 
-          <h3 style={{ fontFamily: TITULAR, fontSize: 16, margin: "38px 0 8px" }}>Restaurar terrenos baldíos: Filadelfia</h3>
+          <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, margin: "38px 0 8px" }}>Restaurar terrenos baldíos: Filadelfia</h3>
           <p style={{ color: P.tintaTenue, fontSize: 14, lineHeight: 1.65, maxWidth: 720, marginTop: 0 }}>
             {vr.filadelfia.descripcion}
           </p>
@@ -2714,13 +2717,13 @@ export default function ReconstruccionCivica() {
               return (
                 <div key={bloque.id}>
                   <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap", marginBottom: 10 }}>
-                    <h3 style={{ fontFamily: TITULAR, fontSize: 17, color: col, margin: 0 }}>{bloque.nivel}</h3>
+                    <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 17, color: col, margin: 0 }}>{bloque.nivel}</h3>
                     <span style={{ fontFamily: MONO, fontSize: 11, color: P.tintaTenue }}>{bloque.condicion}</span>
                   </div>
                   <div style={{ display: "grid", gap: 10, gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))" }}>
                     {bloque.items.map((it) => (
                       <Tarjeta key={it.titulo} acento={col}>
-                        <div style={{ fontFamily: TITULAR, fontSize: 14, marginBottom: 7 }}>{it.titulo}</div>
+                        <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 14, marginBottom: 7 }}>{it.titulo}</div>
                         <div style={{ fontSize: 13.5, lineHeight: 1.62, color: P.tintaTenue }}>{it.detalle}</div>
                       </Tarjeta>
                     ))}
@@ -2760,7 +2763,7 @@ export default function ReconstruccionCivica() {
                   alignItems: "flex-start",
                   background: P.superficie,
                   border: `1px solid ${P.borde}`,
-                  borderRadius: 3,
+                  borderRadius: 14,
                   padding: "12px 14px"
                 }}
               >

@@ -13,22 +13,22 @@ import {
    ========================================================================= */
 
 const C = {
-  bg: "#141225",
-  bg2: "#1b1836",
-  panel: "#201c3d",
-  line: "#37325a",
-  ink: "#f1eefa",
-  mut: "#948bb5",
-  violeta: "#A666D6",
-  musgo: "#78AD52",
-  alerta: "#D9A441",
-  coral: "#DD6B5B",
+  bg: "#fcf9f4",
+  bg2: "#f5efe7",
+  panel: "#fcf9f4",
+  line: "#e2d8cb",
+  ink: "#1f1a16",
+  mut: "#6b5d50",
+  violeta: "#7A3FAD",
+  musgo: "#4F7F31",
+  alerta: "#94650A",
+  coral: "#8E2E24",
 };
 
 const F = {
-  disp: "'Archivo', 'Arial Black', sans-serif",
+  disp: "'Manrope', system-ui, sans-serif",
   mono: "'IBM Plex Mono', ui-monospace, monospace",
-  body: "'Archivo', 'Helvetica Neue', Arial, sans-serif",
+  body: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
 };
 
 const NIVEL_COLOR = { confirmado: C.musgo, reportado: C.alerta, estimado: C.coral };
@@ -286,7 +286,7 @@ function H({ children, size = 30 }) {
 }
 
 function P({ children, style }) {
-  return <p style={{ fontFamily: F.body, fontSize: 16, lineHeight: 1.62, color: "#d5d0e6", margin: "0 0 14px", ...style }}>{children}</p>;
+  return <p style={{ fontFamily: F.body, fontSize: 16, lineHeight: 1.62, color: "#4a3f36", margin: "0 0 14px", ...style }}>{children}</p>;
 }
 
 function Section({ children, style }) {
@@ -294,10 +294,10 @@ function Section({ children, style }) {
 }
 
 function Card({ children, style }) {
-  return <div style={{ background: C.panel, border: `1px solid ${C.line}`, borderRadius: 8, padding: 18, ...style }}>{children}</div>;
+  return <div style={{ background: C.panel, border: 0, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: 18, ...style }}>{children}</div>;
 }
 
-const tipStyle = { background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 4, fontFamily: F.mono, fontSize: 12, color: C.ink };
+const tipStyle = { background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", fontFamily: F.mono, fontSize: 12, color: "#fcf9f4" };
 
 /* ============================ HERO ============================ */
 function Hero({ meta }) {
@@ -310,7 +310,7 @@ function Hero({ meta }) {
       <h1 style={{ fontFamily: F.disp, fontWeight: 800, fontSize: "clamp(36px, 7.5vw, 68px)", lineHeight: 1.02, color: C.ink, margin: "0 0 8px", letterSpacing: -1 }}>
         {meta.titulo}
       </h1>
-      <p style={{ fontFamily: F.body, fontSize: 19, lineHeight: 1.5, color: "#cabfe0", maxWidth: 760, margin: "18px 0 0" }}>{meta.subtitulo}</p>
+      <p style={{ fontFamily: F.body, fontSize: 19, lineHeight: 1.5, color: "#4a3f36", maxWidth: 760, margin: "18px 0 0" }}>{meta.subtitulo}</p>
     </header>
   );
 }
@@ -473,7 +473,7 @@ function SeriePoblacion({ d }) {
             <CartesianGrid stroke={C.line} strokeDasharray="2 4" vertical={false} />
             <XAxis dataKey="anio" tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} axisLine={{ stroke: C.line }} tickLine={false} />
             <YAxis tick={{ fill: C.mut, fontSize: 10, fontFamily: F.mono }} axisLine={false} tickLine={false} tickFormatter={(v) => fmtM(v)} width={64} />
-            <Tooltip contentStyle={tipStyle} formatter={(v, k) => [fmtM(v), k === "solido" ? "ONEI (observado)" : k === "punteado" ? "ONEI (proyección)" : "Estimación independiente"]} labelFormatter={(l) => "Año " + l} />
+            <Tooltip contentStyle={tipStyle} itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} formatter={(v, k) => [fmtM(v), k === "solido" ? "ONEI (observado)" : k === "punteado" ? "ONEI (proyección)" : "Estimación independiente"]} labelFormatter={(l) => "Año " + l} />
             <Line type="monotone" dataKey="solido" stroke={C.violeta} strokeWidth={2.5} dot={{ r: 4 }} connectNulls={false} />
             <Line type="monotone" dataKey="punteado" stroke={C.violeta} strokeWidth={2.5} strokeDasharray="6 5" dot={{ r: 4 }} connectNulls={false} />
             <Line type="monotone" dataKey="independiente" stroke={C.mut} strokeWidth={2} strokeDasharray="2 3" dot={{ r: 4 }} connectNulls={false} />
@@ -502,7 +502,7 @@ function NatalidadMortalidad({ d }) {
           <BarChart data={data} margin={{ top: 20, right: 10, left: -10, bottom: 0 }}>
             <XAxis dataKey="anio" tick={{ fill: C.mut, fontSize: 11, fontFamily: F.mono }} axisLine={{ stroke: C.line }} tickLine={false} />
             <YAxis tick={{ fill: C.mut, fontSize: 10, fontFamily: F.mono }} axisLine={false} tickLine={false} tickFormatter={(v) => fmt(v)} width={54} />
-            <Tooltip contentStyle={tipStyle} formatter={(v) => fmt(v)} cursor={{ fill: "rgba(255,255,255,0.03)" }} />
+            <Tooltip contentStyle={tipStyle} itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} formatter={(v) => fmt(v)} cursor={{ fill: "rgba(60,40,20,0.05)" }} />
             <Bar dataKey="Nacimientos" fill={C.musgo} radius={[3, 3, 0, 0]}>
               <LabelList dataKey="Nacimientos" position="top" formatter={fmt} style={{ fill: C.musgo, fontFamily: F.mono, fontSize: 11 }} />
             </Bar>
@@ -611,7 +611,7 @@ function GaugeCobertura({ d }) {
       </P>
       <Card style={{ marginTop: 10, display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
         <svg viewBox="0 0 260 150" width="240" height="140" role="img" aria-label="Medidor de cobertura de la pensión mínima frente a la canasta básica">
-          <path d={arcoPath(100)} fill="none" stroke={C.bg2} strokeWidth="16" strokeLinecap="round" />
+          <path d={arcoPath(100)} fill="none" stroke="#e8ded1" strokeWidth="16" strokeLinecap="round" />
           <path d={arcoPath(pctMed)} fill="none" stroke={C.coral} strokeWidth="16" strokeLinecap="round" />
           <line x1={cx} y1={cy} x2={puntaX} y2={puntaY} stroke={C.ink} strokeWidth="2.5" />
           <circle cx={cx} cy={cy} r="5" fill={C.ink} />
@@ -739,7 +739,7 @@ function PreguntaEncuesta({ p, conteos, votoActual, onVotar }) {
                 padding: "10px 14px", fontFamily: F.body, fontSize: 13.5, color: C.ink,
               }}
             >
-              {total > 0 && <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: pct + "%", background: elegido ? "rgba(166,102,214,0.22)" : "rgba(255,255,255,0.05)", transition: "width .4s" }} />}
+              {total > 0 && <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: pct + "%", background: elegido ? "rgba(122,63,173,0.16)" : "rgba(60,40,20,0.06)", transition: "width .4s" }} />}
               <span style={{ position: "relative", display: "flex", justifyContent: "space-between", gap: 10 }}>
                 <span>{o.texto}</span>
                 {total > 0 && <span style={{ fontFamily: F.mono, color: C.mut }}>{pct}%</span>}
@@ -838,11 +838,11 @@ export default function Envejecimiento({ data: propData, supabase }) {
   }, [supabase]);
 
   if (!data) {
-    return <div style={{ background: C.bg, color: C.mut, fontFamily: F.mono, minHeight: "60vh", display: "grid", placeItems: "center" }}>Cargando…</div>;
+    return <div style={{ background: "transparent", color: C.mut, fontFamily: F.mono, minHeight: "60vh", display: "grid", placeItems: "center" }}>Cargando…</div>;
   }
 
   return (
-    <div style={{ background: C.bg, minHeight: "100vh" }}>
+    <div style={{ background: "transparent", minHeight: "100vh" }}>
       <Hero meta={data.meta} />
       <Contexto meta={data.meta} />
       <Piramide d={data.piramide} />

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
+import { cargarFuentes } from "../design/tokens";
 import {
   ResponsiveContainer,
   ComposedChart,
@@ -38,23 +39,23 @@ const DATA_URL =
 
 /* ════════ PALETA "BRASA" — una rampa de fuego, un solo frío ════════════════ */
 const C = {
-  bg: "#0A0D12",
-  bg2: "#0E1219",
-  surface: "#121823",
-  surface2: "#171F2B",
-  line: "#222C3A",
-  ink: "#ECEFF3",
-  sub: "#9AA7B4",
-  faint: "#677586",
+  bg: "#efe8df",
+  bg2: "#f5efe7",
+  surface: "#fcf9f4",
+  surface2: "#f5efe7",
+  line: "rgba(60,40,20,.15)",
+  ink: "#1f1a16",
+  sub: "#4a3f36",
+  faint: "#6b5d50",
   h1: "#5B0E2D",
-  h2: "#A52341",
-  h3: "#E04B3A",
-  h4: "#F2913B",
-  h5: "#F7CE4B",
-  hot: "#F2913B",
-  hotSoft: "#F2913B22",
-  cool: "#3FA7C9",
-  coolSoft: "#3FA7C922",
+  h2: "#8A1C3C",
+  h3: "#B5203A",
+  h4: "#D2701A",
+  h5: "#8C6A00",
+  hot: "#A8530C",
+  hotSoft: "#D2701A22",
+  cool: "#0A72A3",
+  coolSoft: "#0A72A31c",
   steel: "#5E7486",
 };
 const HEAT = [C.h1, C.h2, C.h3, C.h4, C.h5];
@@ -146,17 +147,11 @@ const EMBEDDED = {
 const fmt = (n) => (n == null ? "—" : n.toLocaleString("es-ES"));
 const pct = (n, d) => (d ? Math.round((n / d) * 1000) / 10 : 0);
 const tipoColor = (t) =>
-  ({ Calle: C.h4, Energía: C.cool, Salud: "#9DC8BF", Represión: C.h3, Escándalo: C.h5, Digital: C.steel }[t] || C.steel);
+  ({ Calle: C.h4, Energía: C.cool, Salud: "#3E8A7C", Represión: C.h3, Escándalo: C.h5, Digital: C.steel }[t] || C.steel);
 
 function useFonts() {
   useEffect(() => {
-    const id = "yamacoa-fonts-conflictos";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link");
-    l.id = id;
-    l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-    document.head.appendChild(l);
+    cargarFuentes();
   }, []);
 }
 
@@ -182,13 +177,13 @@ function Eyebrow({ children, color = C.hot }) {
   return <div style={{ font: "600 11px/1 'IBM Plex Mono', monospace", letterSpacing: "0.22em", textTransform: "uppercase", color, marginBottom: 14 }}>{children}</div>;
 }
 function Card({ children, style }) {
-  return <div style={{ background: C.surface, border: `1px solid ${C.line}`, borderRadius: 6, padding: "24px 26px 28px", ...style }}>{children}</div>;
+  return <div style={{ background: C.surface, border: 0, borderRadius: 24, boxShadow: "var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055))", padding: "24px 26px 28px", ...style }}>{children}</div>;
 }
 function H2({ kicker, title, kc }) {
   return (
     <div style={{ marginBottom: 20 }}>
       <Eyebrow color={kc}>{kicker}</Eyebrow>
-      <h2 style={{ font: "800 24px/1.12 Archivo, sans-serif", color: C.ink, margin: 0, letterSpacing: "-0.01em" }}>{title}</h2>
+      <h2 style={{ font: "800 24px/1.12 Manrope, sans-serif", color: C.ink, margin: 0, letterSpacing: "-0.01em" }}>{title}</h2>
     </div>
   );
 }
@@ -206,7 +201,7 @@ function Legend({ items }) {
 }
 function Pill({ active, color, children, onClick }) {
   return (
-    <button onClick={onClick} style={{ font: "600 12px 'IBM Plex Mono', monospace", padding: "7px 13px", borderRadius: 3, cursor: "pointer", border: `1px solid ${active ? color : C.line}`, background: active ? color + "22" : "transparent", color: active ? color : C.sub, transition: "all .15s" }}>
+    <button onClick={onClick} style={{ font: "600 12px 'IBM Plex Mono', monospace", padding: "7px 13px", borderRadius: 999, cursor: "pointer", border: `1px solid ${active ? color : C.line}`, background: active ? color + "22" : "transparent", color: active ? color : C.sub, transition: "all .15s" }}>
       {children}
     </button>
   );
@@ -222,7 +217,7 @@ function CubaMap({ mes }) {
     const feature = { type: "Feature", geometry: { type: "Polygon", coordinates: [CUBA_OUTLINE] } };
     const projection = d3.geoMercator().fitExtent([[18, 26], [W - 18, H - 40]], feature);
     const path = d3.geoPath(projection);
-    svg.append("path").attr("d", path(feature)).attr("fill", "#0C1218").attr("stroke", C.steel).attr("stroke-width", 1).attr("opacity", 0.9);
+    svg.append("path").attr("d", path(feature)).attr("fill", "#f5efe7").attr("stroke", "rgba(60,40,20,.35)").attr("stroke-width", 1).attr("opacity", 0.9);
     const max = d3.max(mes.provincias, (d) => d.v) || 1;
     const r = d3.scaleSqrt().domain([0, max]).range([3, 34]);
     const heat = d3.scaleLinear().domain([0, max]).range([0, 1]);
@@ -233,9 +228,9 @@ function CubaMap({ mes }) {
       const [x, y] = projection(coord);
       const col = d3.interpolateRgb(C.h3, C.h5)(heat(d.v));
       const node = g.append("g").attr("transform", `translate(${x},${y})`);
-      node.append("circle").attr("r", 0).attr("fill", col + "33").attr("stroke", col).attr("stroke-width", 1.25).transition().duration(650).attr("r", r(d.v));
+      node.append("circle").attr("r", 0).attr("fill", col).attr("fill-opacity", 0.2).attr("stroke", col).attr("stroke-width", 1.25).transition().duration(650).attr("r", r(d.v));
       node.append("circle").attr("r", 2.2).attr("fill", col);
-      node.append("text").attr("x", 0).attr("y", -r(d.v) - 6).attr("text-anchor", "middle").attr("fill", C.ink).style("font", "600 11px 'IBM Plex Mono', monospace").text(`${d.p} ${d.v}`);
+      node.append("text").attr("x", 0).attr("y", -r(d.v) - 6).attr("text-anchor", "middle").attr("fill", C.ink).attr("stroke", "#fcf9f4").attr("stroke-width", 3).attr("paint-order", "stroke").style("font", "600 11px 'IBM Plex Mono', monospace").text(`${d.p} ${d.v}`);
     });
     const hav = projection(PROV_GEO["La Habana"]);
     g.append("text").attr("x", hav[0]).attr("y", hav[1] + 4).attr("text-anchor", "middle").attr("fill", C.h5).style("font", "12px sans-serif").text("★");
@@ -248,12 +243,12 @@ function MonthlyTip({ active, payload, label }) {
   if (!active || !payload || !payload.length) return null;
   const r = payload[0].payload;
   return (
-    <div style={{ background: C.bg, border: `1px solid ${C.line}`, padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: C.ink }}>
-      <div style={{ color: C.hot, marginBottom: 4 }}>{label} 2026</div>
+    <div style={{ background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: "#fcf9f4" }}>
+      <div style={{ color: "#f2cdb8", marginBottom: 4 }}>{label} 2026</div>
       <div>Total: {fmt(r.total)}</div>
-      <div style={{ color: C.cool }}>D. Económicos y Sociales: {fmt(r.des)}</div>
-      <div style={{ color: C.h4 }}>D. Civiles y Políticos: {fmt(r.dcp)}</div>
-      <div style={{ color: C.h3 }}>Desafíos al Estado: {fmt(r.desafios)}</div>
+      <div style={{ color: "#8FD0EC" }}>D. Económicos y Sociales: {fmt(r.des)}</div>
+      <div style={{ color: "#F2A65E" }}>D. Civiles y Políticos: {fmt(r.dcp)}</div>
+      <div style={{ color: "#F59A9A" }}>Desafíos al Estado: {fmt(r.desafios)}</div>
     </div>
   );
 }
@@ -261,10 +256,10 @@ function AnnualTip({ active, payload, label }) {
   if (!active || !payload || !payload.length) return null;
   const r = payload[0].payload;
   return (
-    <div style={{ background: C.bg, border: `1px solid ${C.line}`, padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: C.ink, maxWidth: 240 }}>
-      <div style={{ color: C.hot, marginBottom: 4 }}>{label}</div>
+    <div style={{ background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: "#fcf9f4", maxWidth: 240 }}>
+      <div style={{ color: "#f2cdb8", marginBottom: 4 }}>{label}</div>
       <div>{fmt(r.v)} protestas y denuncias</div>
-      {r.caveat && <div style={{ color: C.faint, marginTop: 6, lineHeight: 1.5 }}>Parte del salto de 2023 refleja que el OCC amplió su definición para incluir expresiones virtuales.</div>}
+      {r.caveat && <div style={{ color: "#c9a893", marginTop: 6, lineHeight: 1.5 }}>Parte del salto de 2023 refleja que el OCC amplió su definición para incluir expresiones virtuales.</div>}
     </div>
   );
 }
@@ -272,13 +267,13 @@ function ForecastTip({ active, payload, label }) {
   if (!active || !payload || !payload.length) return null;
   const r = payload[0].payload;
   return (
-    <div style={{ background: C.bg, border: `1px solid ${C.line}`, padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: C.ink }}>
-      <div style={{ color: r.real != null ? C.h5 : C.cool, marginBottom: 4 }}>{label}{r.real != null ? "" : " · proyección"}</div>
+    <div style={{ background: "#3a2418", border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", padding: "10px 12px", font: "500 12px/1.6 'IBM Plex Mono', monospace", color: "#fcf9f4" }}>
+      <div style={{ color: r.real != null ? "#F2CF6B" : "#8FD0EC", marginBottom: 4 }}>{label}{r.real != null ? "" : " · proyección"}</div>
       {r.real != null && <div>Registrado: {fmt(r.real)}</div>}
       {r.central != null && r.real == null && (
         <>
-          <div style={{ color: C.h4 }}>Central: {fmt(r.central)}</div>
-          <div style={{ color: C.cool }}>Banda: {fmt(r.bajo)} – {fmt(r.alto)}</div>
+          <div style={{ color: "#F2A65E" }}>Central: {fmt(r.central)}</div>
+          <div style={{ color: "#8FD0EC" }}>Banda: {fmt(r.bajo)} – {fmt(r.alto)}</div>
         </>
       )}
     </div>
@@ -306,8 +301,8 @@ function Panorama({ data }) {
           { n: 70, l: "muertes por violencia", s: "en el trimestre", c: C.steel },
         ].map((k, i) => (
           <Card key={i} style={{ padding: "18px 20px 20px" }}>
-            <div style={{ font: "800 38px/1 Archivo, sans-serif", color: k.c, letterSpacing: "-0.02em" }}>{k.n}</div>
-            <div style={{ font: "600 13px/1.35 Archivo, sans-serif", color: C.ink, marginTop: 10 }}>{k.l}</div>
+            <div style={{ font: "800 38px/1 Manrope, sans-serif", color: k.c, letterSpacing: "-0.02em" }}>{k.n}</div>
+            <div style={{ font: "600 13px/1.35 Manrope, sans-serif", color: C.ink, marginTop: 10 }}>{k.l}</div>
             <div style={{ font: "400 11px/1.4 'IBM Plex Mono', monospace", color: C.faint, marginTop: 6 }}>{k.s}</div>
           </Card>
         ))}
@@ -322,7 +317,7 @@ function Panorama({ data }) {
                 <CartesianGrid stroke={C.line} vertical={false} />
                 <XAxis dataKey="nombre" tick={{ fill: C.sub, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} axisLine={{ stroke: C.line }} tickLine={false} />
                 <YAxis tick={{ fill: C.faint, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip content={<MonthlyTip />} cursor={{ fill: "#ffffff08" }} />
+                <Tooltip content={<MonthlyTip />} cursor={{ fill: "rgba(60,40,20,.05)" }} />
                 <Bar dataKey="des" stackId="a" fill={C.cool} />
                 <Bar dataKey="dcp" stackId="a" fill={C.h4} radius={[2, 2, 0, 0]} />
                 <Line type="monotone" dataKey="desafios" stroke={C.h3} strokeWidth={2.5} dot={{ r: 4, fill: C.h3 }} />
@@ -340,11 +335,11 @@ function Panorama({ data }) {
                 <Pie data={comp} dataKey="value" nameKey="name" innerRadius={62} outerRadius={92} paddingAngle={2} stroke="none" startAngle={90} endAngle={-270}>
                   {comp.map((c, i) => <Cell key={i} fill={c.color} />)}
                 </Pie>
-                <Tooltip contentStyle={{ background: C.bg, border: `1px solid ${C.line}`, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} />
+                <Tooltip contentStyle={{ background: C.surface, color: C.ink, border: `1px solid ${C.line}`, borderRadius: 12, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} />
               </PieChart>
             </ResponsiveContainer>
             <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-              <div style={{ font: "800 30px/1 Archivo, sans-serif", color: C.ink }}>{fmt(compTotal)}</div>
+              <div style={{ font: "800 30px/1 Manrope, sans-serif", color: C.ink }}>{fmt(compTotal)}</div>
               <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 4, letterSpacing: "0.1em" }}>EN EL TRIMESTRE</div>
             </div>
           </div>
@@ -353,7 +348,7 @@ function Panorama({ data }) {
               <div key={c.name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
                   <span style={{ width: 10, height: 10, borderRadius: 2, background: c.color, flexShrink: 0 }} />
-                  <span style={{ font: "500 12px/1.3 Archivo, sans-serif", color: C.sub }}>{c.name}</span>
+                  <span style={{ font: "500 12px/1.3 Manrope, sans-serif", color: C.sub }}>{c.name}</span>
                 </div>
                 <span style={{ font: "600 12px 'IBM Plex Mono', monospace", color: C.ink }}>{pct(c.value, compTotal)}%</span>
               </div>
@@ -413,7 +408,7 @@ function Territorio({ data }) {
         <div style={{ display: "grid", gap: 10 }}>
           {mesCat.categorias.map((c) => (
             <div key={c.k} style={{ display: "grid", gridTemplateColumns: "200px 1fr 44px", alignItems: "center", gap: 12 }} className="cat-row">
-              <span style={{ font: "500 13px/1.3 Archivo, sans-serif", color: C.sub }}>{c.k}</span>
+              <span style={{ font: "500 13px/1.3 Manrope, sans-serif", color: C.sub }}>{c.k}</span>
               <div style={{ height: 18, background: C.bg2, borderRadius: 2, overflow: "hidden", border: `1px solid ${C.line}` }}>
                 <div style={{ height: "100%", width: `${(c.v / catMax) * 100}%`, background: `linear-gradient(90deg, ${C.cool}, ${C.cool}aa)`, transition: "width .5s" }} />
               </div>
@@ -433,7 +428,7 @@ function Trayectoria({ data }) {
     <div style={{ display: "grid", gap: 22 }}>
       <Card>
         <H2 kicker="La inercia de la calle" title="Hacia dónde apunta la tendencia" kc={C.cool} />
-        <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 16px", maxWidth: 640 }}>
+        <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 16px", maxWidth: 640 }}>
           La línea cálida es lo que el OCC registró, año a año. A partir de 2025, el abanico muestra el
           rango de lo que daría la propia inercia de la serie: desde una desaceleración (+12 %) hasta una
           aceleración (+50 %). No es una predicción.
@@ -474,7 +469,7 @@ function Trayectoria({ data }) {
                 <CartesianGrid stroke={C.line} vertical={false} />
                 <XAxis dataKey="a" tick={{ fill: C.sub, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} axisLine={{ stroke: C.line }} tickLine={false} />
                 <YAxis tick={{ fill: C.faint, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip content={<AnnualTip />} cursor={{ fill: "#ffffff08" }} />
+                <Tooltip content={<AnnualTip />} cursor={{ fill: "rgba(60,40,20,.05)" }} />
                 <Bar dataKey="v" radius={[3, 3, 0, 0]}>
                   {data.anual.map((d, i) => <Cell key={i} fill={d.caveat ? C.steel : HEAT[Math.min(4, i)]} />)}
                   <LabelList dataKey="v" position="top" formatter={(v) => fmt(v)} style={{ fill: C.sub, font: "600 11px 'IBM Plex Mono', monospace" }} />
@@ -492,7 +487,7 @@ function Trayectoria({ data }) {
                 <CartesianGrid stroke={C.line} vertical={false} />
                 <XAxis dataKey="nombre" tick={{ fill: C.sub, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} axisLine={{ stroke: C.line }} tickLine={false} />
                 <YAxis tick={{ fill: C.faint, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <Tooltip cursor={{ fill: "#ffffff08" }} contentStyle={{ background: C.bg, border: `1px solid ${C.line}`, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} />
+                <Tooltip cursor={{ fill: "rgba(60,40,20,.05)" }} contentStyle={{ background: C.surface, color: C.ink, border: `1px solid ${C.line}`, borderRadius: 12, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} />
                 <Bar dataKey="2025" fill={C.steel} radius={[2, 2, 0, 0]} />
                 <Bar dataKey="2026" fill={C.h4} radius={[2, 2, 0, 0]} />
               </BarChart>
@@ -522,15 +517,15 @@ function Expediente({ data }) {
           ))}
         </div>
       </div>
-      <div style={{ display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 4, overflow: "hidden" }}>
+      <div style={{ display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 24, overflow: "hidden", boxShadow: "var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055))" }}>
         {list.map((e, i) => (
           <div key={i} style={{ background: C.surface, padding: "18px 20px" }}>
             <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8, flexWrap: "wrap" }}>
-              <span style={{ font: "600 10px 'IBM Plex Mono', monospace", letterSpacing: "0.1em", textTransform: "uppercase", color: C.bg, background: tipoColor(e.tipo), padding: "3px 8px", borderRadius: 2 }}>{e.tipo}</span>
+              <span style={{ font: "600 10px 'IBM Plex Mono', monospace", letterSpacing: "0.1em", textTransform: "uppercase", color: "#fcf9f4", background: tipoColor(e.tipo), padding: "3px 8px", borderRadius: 999 }}>{e.tipo}</span>
               <span style={{ font: "500 12px 'IBM Plex Mono', monospace", color: C.faint }}>{e.fecha} · {e.lugar}</span>
             </div>
-            <div style={{ font: "700 17px/1.3 Archivo, sans-serif", color: C.ink, marginBottom: 6 }}>{e.titulo}</div>
-            <div style={{ font: "400 14px/1.6 Archivo, sans-serif", color: C.sub }}>{e.texto}</div>
+            <div style={{ font: "700 17px/1.3 Manrope, sans-serif", color: C.ink, marginBottom: 6 }}>{e.titulo}</div>
+            <div style={{ font: "400 14px/1.6 Manrope, sans-serif", color: C.sub }}>{e.texto}</div>
           </div>
         ))}
       </div>
@@ -551,7 +546,7 @@ function Pulso({ data }) {
   return (
     <Card>
       <H2 kicker="Pulso ciudadano · encuesta abierta" title="¿Qué ves tú en estas cifras?" kc={C.h5} />
-      <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 24px", maxWidth: 640 }}>
+      <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 24px", maxWidth: 640 }}>
         No es un sondeo científico: es un termómetro. Tu voto se suma al agregado y se conserva mientras la página esté abierta.
       </p>
       <div style={{ display: "grid", gap: 30 }}>
@@ -559,16 +554,16 @@ function Pulso({ data }) {
           const t = total[qi], answered = !!elegido[qi];
           return (
             <div key={q.id}>
-              <div style={{ font: "700 16px/1.4 Archivo, sans-serif", color: C.ink, marginBottom: 14 }}>{q.pregunta}</div>
+              <div style={{ font: "700 16px/1.4 Manrope, sans-serif", color: C.ink, marginBottom: 14 }}>{q.pregunta}</div>
               <div style={{ display: "grid", gap: 9 }}>
                 {q.opciones.map((o) => {
                   const v = votos[qi][o.id], p = pct(v, t), isPick = elegido[qi] === o.id;
                   return (
                     <button key={o.id} onClick={() => votar(qi, o.id)} disabled={answered}
-                      style={{ position: "relative", textAlign: "left", border: `1px solid ${isPick ? C.h4 : C.line}`, background: C.surface2, borderRadius: 3, padding: "12px 14px", cursor: answered ? "default" : "pointer", overflow: "hidden" }}>
+                      style={{ position: "relative", textAlign: "left", border: `1px solid ${isPick ? C.h4 : C.line}`, background: C.surface2, borderRadius: 12, padding: "12px 14px", cursor: answered ? "default" : "pointer", overflow: "hidden" }}>
                       {answered && <div style={{ position: "absolute", inset: 0, width: `${p}%`, background: isPick ? C.hotSoft : C.coolSoft, transition: "width .6s cubic-bezier(.4,0,.2,1)" }} />}
                       <div style={{ position: "relative", display: "flex", justifyContent: "space-between", gap: 14, alignItems: "center" }}>
-                        <span style={{ font: "500 14px/1.4 Archivo, sans-serif", color: C.ink }}>{o.txt}</span>
+                        <span style={{ font: "500 14px/1.4 Manrope, sans-serif", color: C.ink }}>{o.txt}</span>
                         {answered && <span style={{ font: "600 13px 'IBM Plex Mono', monospace", color: isPick ? C.h4 : C.sub, whiteSpace: "nowrap" }}>{p}%</span>}
                       </div>
                     </button>
@@ -602,24 +597,24 @@ export default function App() {
   const { meta, trimestre } = data;
 
   return (
-    <div style={{ background: C.bg, minHeight: "100vh", color: C.ink, fontFamily: "Archivo, sans-serif" }}>
+    <div style={{ background: "transparent", color: C.ink, fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif" }}>
       <style>{`
         @media (max-width: 720px){
           .pano-grid,.tray-grid,.map-grid{grid-template-columns:1fr !important;}
           .cat-row{grid-template-columns:130px 1fr 38px !important;}
         }
         .tabrail::-webkit-scrollbar{height:0;}
-        button:focus-visible{outline:2px solid ${C.h5};outline-offset:2px;}
+        button:focus-visible{outline:2px solid #b8562e;outline-offset:2px;}
       `}</style>
 
       <header style={{ maxWidth: 980, margin: "0 auto", padding: "56px 22px 26px" }}>
         <div style={{ font: "600 11px/1 'IBM Plex Mono', monospace", letterSpacing: "0.24em", color: C.cool, textTransform: "uppercase", marginBottom: 20 }}>
           Yamacoa · Observatorio Cubano de Conflictos
         </div>
-        <h1 style={{ font: "900 clamp(44px,8.5vw,80px)/0.94 Archivo, sans-serif", letterSpacing: "-0.03em", margin: 0, color: C.ink }}>
+        <h1 style={{ font: "800 clamp(44px,8.5vw,80px)/0.94 Manrope, sans-serif", letterSpacing: "-0.03em", margin: 0, color: C.ink }}>
           La calle <span style={{ color: C.h4, fontStyle: "italic" }}>arde</span>
         </h1>
-        <p style={{ font: "400 17px/1.6 Archivo, sans-serif", color: C.sub, maxWidth: 600, margin: "22px 0 0" }}>
+        <p style={{ font: "400 17px/1.6 Manrope, sans-serif", color: C.sub, maxWidth: 600, margin: "22px 0 0" }}>
           {meta.subtitulo}. Tres semanas seguidas de cacerolazos nocturnos, fogatas y gritos de
           “¡Libertad!” encendieron la penumbra de los apagones, y el descontento económico se
           desplazó hacia el desafío abierto al régimen.
@@ -631,7 +626,7 @@ export default function App() {
             { n: "+" + trimestre.deltaMarzoYoYPct + "%", l: "marzo 2026 vs. marzo 2025", c: C.h3 },
           ].map((k, i) => (
             <div key={i}>
-              <div style={{ font: "800 36px/1 Archivo, sans-serif", color: k.c, letterSpacing: "-0.02em" }}>{k.n}</div>
+              <div style={{ font: "800 36px/1 Manrope, sans-serif", color: k.c, letterSpacing: "-0.02em" }}>{k.n}</div>
               <div style={{ font: "500 11px/1.4 'IBM Plex Mono', monospace", color: C.faint, marginTop: 7, textTransform: "uppercase", letterSpacing: "0.07em" }}>{k.l}</div>
             </div>
           ))}
@@ -644,7 +639,7 @@ export default function App() {
             const active = tab === t.id;
             return (
               <button key={t.id} role="tab" aria-selected={active} onClick={() => setTab(t.id)}
-                style={{ position: "relative", font: "600 13px Archivo, sans-serif", letterSpacing: "0.02em", padding: "16px 16px 14px", border: "none", background: "transparent", color: active ? C.ink : C.faint, cursor: "pointer", whiteSpace: "nowrap" }}>
+                style={{ position: "relative", font: "600 13px Manrope, sans-serif", letterSpacing: "0.02em", padding: "16px 16px 14px", border: "none", background: "transparent", color: active ? C.ink : C.faint, cursor: "pointer", whiteSpace: "nowrap" }}>
                 {t.label}
                 <span style={{ position: "absolute", left: 12, right: 12, bottom: 0, height: 2, background: active ? t.color : "transparent", borderRadius: 2 }} />
               </button>
@@ -660,15 +655,15 @@ export default function App() {
         {tab === "expediente" && <Expediente data={data} />}
         {tab === "pulso" && <Pulso data={data} />}
 
-        <div style={{ marginTop: 26, background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 6, padding: "24px 26px" }}>
+        <div style={{ marginTop: 26, background: C.surface, border: 0, borderRadius: 24, boxShadow: "var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055))", padding: "24px 26px" }}>
           <Eyebrow color={C.cool}>Cierre del informe</Eyebrow>
-          <p style={{ font: "400 18px/1.55 Archivo, sans-serif", color: C.ink, margin: 0, maxWidth: 680 }}>
+          <p style={{ font: "400 18px/1.55 Manrope, sans-serif", color: C.ink, margin: 0, maxWidth: 680 }}>
             Mientras el buque tanque ruso <em style={{ color: C.h4 }}>Anatoli Kolodkin</em> se acercaba a La
             Habana con 740.000 barriles de crudo, Trump suavizó su bloqueo petrolero. Según el experto
             Jorge Piñón, ese crudo dará unos 250.000 barriles de diésel: la demanda nacional por entre
             10 y 12 días.
           </p>
-          <p style={{ font: "700 18px/1.55 Archivo, sans-serif", color: C.h4, margin: "14px 0 0" }}>
+          <p style={{ font: "700 18px/1.55 Manrope, sans-serif", color: C.h4, margin: "14px 0 0" }}>
             Puede que el régimen tenga entonces 10 o 12 días sin cacerolazos.
           </p>
         </div>

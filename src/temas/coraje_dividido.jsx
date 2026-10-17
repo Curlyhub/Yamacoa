@@ -13,28 +13,28 @@ import {
 // =====================================================================
 
 const T = {
-  fondo: "#0F131B",
-  panel: "#171D28",
-  panelSuave: "#1C2432",
-  linea: "#28303F",
-  crema: "#EFE8D8",
-  cremaSuave: "#B9B2A2",
-  isla: "#8FB259",
+  fondo: "#fcf9f4",
+  panel: "#fcf9f4",
+  panelSuave: "#f5efe7",
+  linea: "rgba(60,40,20,.15)",
+  crema: "#1f1a16",
+  cremaSuave: "#4a3f36",
+  isla: "#3F6B16",
   islaOscuro: "#5C7A38",
-  exilio: "#C2497F",
-  exilioOscuro: "#8A2F58",
-  neutro: "#7C8496",
-  ambarCF: "#D9A13B",
-  ambarCFfondo: "rgba(217,161,59,0.07)",
-  display: "'Archivo Black', 'Arial Black', sans-serif",
+  exilio: "#A8346B",
+  exilioOscuro: "#7A2049",
+  neutro: "#6b5d50",
+  ambarCF: "#8F6208",
+  ambarCFfondo: "rgba(143,98,8,0.06)",
+  display: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
   mono: "'IBM Plex Mono', 'Courier New', monospace",
-  serif: "Georgia, 'Times New Roman', serif",
+  serif: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
 };
 
 const CONFIANZA = {
-  confirmado: { color: "#8FB259", texto: "confirmado" },
-  reportado: { color: "#D9A13B", texto: "reportado" },
-  estimado: { color: "#C2497F", texto: "estimado" },
+  confirmado: { color: "#3F6B16", texto: "confirmado" },
+  reportado: { color: "#8F6208", texto: "reportado" },
+  estimado: { color: "#A8346B", texto: "estimado" },
 };
 
 function ChipConfianza({ nivel }) {
@@ -67,7 +67,7 @@ function Cinta() {
   return (
     <div style={{
       background: `linear-gradient(90deg, ${T.islaOscuro}, ${T.exilioOscuro})`,
-      color: T.crema, fontFamily: T.mono, fontSize: 11, letterSpacing: 4,
+      color: "#fcf9f4", fontFamily: T.mono, fontSize: 11, letterSpacing: 4,
       textTransform: "uppercase", textAlign: "center", padding: "6px 12px",
     }}>
       Edición especial · Expediente comparado
@@ -80,7 +80,7 @@ function Seccion({ num, titulo, children, contrafactual }) {
     <section style={{ margin: "72px 0" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 6 }}>
         <span style={{ fontFamily: T.mono, color: contrafactual ? T.ambarCF : T.isla, fontSize: 13 }}>{num}</span>
-        <h2 style={{ fontFamily: T.display, color: T.crema, fontSize: "clamp(20px,3.2vw,30px)", margin: 0, lineHeight: 1.15 }}>{titulo}</h2>
+        <h2 style={{ fontFamily: T.display, fontWeight: 800, color: T.crema, fontSize: "clamp(20px,3.2vw,30px)", margin: 0, lineHeight: 1.15 }}>{titulo}</h2>
       </div>
       <div style={{ height: 2, background: contrafactual ? T.ambarCF : `linear-gradient(90deg, ${T.isla}, ${T.exilio})`, opacity: 0.5, marginBottom: 22 }} />
       {contrafactual && (
@@ -95,7 +95,7 @@ function Seccion({ num, titulo, children, contrafactual }) {
         </div>
       )}
       <div style={contrafactual ? {
-        border: `1.5px dashed ${T.ambarCF}`, borderRadius: 10, padding: "20px 18px", background: T.ambarCFfondo,
+        border: `1.5px dashed ${T.ambarCF}`, borderRadius: 20, padding: "20px 18px", background: T.ambarCFfondo,
       } : {}}>{children}</div>
     </section>
   );
@@ -131,7 +131,7 @@ function Cuadrante({ datos }) {
   const p = datos.paises.find((q) => q.id === sel);
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         <rect x={x(5)} y={M.t} width={W - M.r - x(5)} height={y(70) - M.t} fill={T.isla} opacity="0.06" />
         <rect x={M.l} y={M.t} width={x(5) - M.l} height={y(70) - M.t} fill={T.exilio} opacity="0.05" />
         {[0, 2.5, 5, 7.5, 10].map((v) => (
@@ -169,7 +169,7 @@ function Cuadrante({ datos }) {
         })}
       </svg>
       {p && (
-        <div style={{ marginTop: 12, background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${colRes[p.resultado]}`, borderRadius: 8, padding: "12px 16px" }}>
+        <div style={{ marginTop: 12, background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${colRes[p.resultado]}`, borderRadius: 16, padding: "12px 16px" }}>
           <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
             <b style={{ fontFamily: T.mono, color: T.crema }}>{p.nombre}</b>
             <span style={{ fontFamily: T.mono, fontSize: 11, color: colRes[p.resultado], textTransform: "uppercase", letterSpacing: 1 }}>{p.resultado}</span>
@@ -191,7 +191,7 @@ const DECADAS = ["1960s", "1980s", "1990s", "2000s", "2010s", "2020s"];
 function CajaOrg({ org, total }) {
   return (
     <div style={{ marginTop: 12, minHeight: 46, background: T.panelSuave, border: `1px solid ${org ? T.ambarCF : T.linea}`,
-      borderLeft: `4px solid ${org ? T.exilio : T.linea}`, borderRadius: 8, padding: "10px 14px",
+      borderLeft: `4px solid ${org ? T.exilio : T.linea}`, borderRadius: 16, padding: "10px 14px",
       fontFamily: T.mono, fontSize: 13.5, color: T.crema, lineHeight: 1.55 }}>
       {org ? (
         <>▸ <b style={{ color: T.exilio }}>{org.nombre}</b>
@@ -220,7 +220,7 @@ function ConstelacionMapa({ datos, orgSel, setOrgSel }) {
   const radios = 12;
   return (
     <div>
-      <svg viewBox="0 0 720 396" style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox="0 0 720 396" style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         <line x1="360" y1="16" x2="360" y2="360" stroke={T.linea} strokeWidth="1.5" strokeDasharray="3 5" />
         <text x="180" y="24" fill={T.exilio} fontSize="12.5" fontFamily={T.mono} textAnchor="middle" letterSpacing="2" fontWeight="700">EXILIO CUBANO · {orgs.length}+ ORGS.</text>
         <text x="540" y="24" fill={T.isla} fontSize="12.5" fontFamily={T.mono} textAnchor="middle" letterSpacing="2" fontWeight="700">ANC · MANDO ÚNICO</text>
@@ -295,7 +295,7 @@ function ConstelacionTiempo({ datos, orgSel, setOrgSel }) {
         <input type="range" min={0} max={100} step={5} value={k} onChange={(e) => setK(Number(e.target.value))}
           style={{ width: "100%", accentColor: T.ambarCF, marginTop: 4 }} />
       </label>
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         {DECADAS.map((d, i) => (
           <g key={d}>
             {i > 0 && <line x1={ml + i * bw} y1={30} x2={ml + i * bw} y2={H - 66} stroke={T.linea} strokeWidth="1" strokeDasharray="2 5" />}
@@ -379,10 +379,10 @@ function MatrizCalor({ datos }) {
                 </td>
                 {k.valores.map((v, i) => (
                   <td key={i} style={{ background: calorIFE(v), borderRadius: 4, textAlign: "center",
-                    fontFamily: T.mono, fontSize: 12, color: "#10131A", fontWeight: 700, padding: "8px 0",
+                    fontFamily: T.mono, fontSize: 12, color: "#1f1a16", fontWeight: 700, padding: "8px 0",
                     outline: k.id === "cuba" ? `1.5px solid ${T.crema}` : "none", opacity: compSel === i ? 1 : 0.82 }}>{v}</td>
                 ))}
-                <td style={{ fontFamily: T.display, fontSize: 16, color: k.ife >= 6 ? T.exilio : T.isla, textAlign: "center", padding: "6px 10px" }}>{k.ife.toFixed(1)}</td>
+                <td style={{ fontFamily: T.display, fontWeight: 800, fontSize: 16, color: k.ife >= 6 ? T.exilio : T.isla, textAlign: "center", padding: "6px 10px" }}>{k.ife.toFixed(1)}</td>
               </tr>
             ))}
           </tbody>
@@ -396,7 +396,7 @@ function MatrizCalor({ datos }) {
         <span style={{ fontFamily: T.mono, fontSize: 10.5, color: T.exilio }}>10 · fragmentación</span>
         <span style={{ fontFamily: T.mono, fontSize: 10.5, color: T.neutro }}>· recuadro crema = exilio cubano · cabeceras clicables = metodología</span>
       </div>
-      <div style={{ marginTop: 12, background: T.panelSuave, border: `1px solid ${T.linea}`, borderRadius: 8, padding: "12px 16px" }}>
+      <div style={{ marginTop: 12, background: T.panelSuave, border: `1px solid ${T.linea}`, borderRadius: 16, padding: "12px 16px" }}>
         <b style={{ fontFamily: T.mono, fontSize: 12.5, color: T.ambarCF }}>{datos.componentes[compSel].nombre}</b>
         <p style={{ fontFamily: T.serif, fontSize: 14.5, color: T.cremaSuave, lineHeight: 1.6, margin: "6px 0 0" }}>{datos.componentes[compSel].descripcion}</p>
       </div>
@@ -422,7 +422,7 @@ function GrafoCausal({ comparativa }) {
   return (
     <div>
       <Prosa texto={comparativa.texto} />
-      <svg viewBox="0 0 720 300" style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox="0 0 720 300" style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         <defs>
           <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0,0 L10,5 L0,10 z" fill={T.ambarCF} />
@@ -461,7 +461,7 @@ function GrafoCausal({ comparativa }) {
         </g>
       </svg>
       {msel && (
-        <div style={{ marginTop: 10, background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${T.ambarCF}`, borderRadius: 8, padding: "10px 14px", fontFamily: T.mono, fontSize: 12.5, color: T.crema, lineHeight: 1.65 }}>
+        <div style={{ marginTop: 10, background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${T.ambarCF}`, borderRadius: 16, padding: "10px 14px", fontFamily: T.mono, fontSize: 12.5, color: T.crema, lineHeight: 1.65 }}>
           <b style={{ color: T.ambarCF }}>{msel.componente}</b><br />
           Exilio cubano: <b style={{ color: T.exilio }}>{msel.cuba.puntuacion}</b> · {msel.cuba.unidades} {msel.cuba.etiqueta} → compuesto <b style={{ color: T.exilio }}>{msel.cuba.compuesto}</b><br />
           ANC: <b style={{ color: T.isla }}>{msel.anc.puntuacion}</b> · {msel.anc.unidades} {msel.anc.etiqueta} → compuesto <b style={{ color: T.isla }}>{msel.anc.compuesto}</b>
@@ -475,7 +475,7 @@ function GrafoCausal({ comparativa }) {
           <CartesianGrid strokeDasharray="3 3" stroke={T.linea} />
           <XAxis dataKey="name" tick={{ fill: T.cremaSuave, fontSize: 11.5, fontFamily: T.mono }} />
           <YAxis tick={{ fill: T.neutro, fontSize: 11, fontFamily: T.mono }} label={{ value: "índice compuesto", angle: -90, fill: T.neutro, fontFamily: T.mono, fontSize: 11 }} />
-          <Tooltip contentStyle={{ background: T.panelSuave, border: `1px solid ${T.linea}`, fontFamily: T.mono, fontSize: 12 }} />
+          <Tooltip itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} contentStyle={{ background: "#3a2418", color: "#fcf9f4", border: 0, borderRadius: 12, fontFamily: T.mono, fontSize: 12 }} />
           <Legend wrapperStyle={{ fontFamily: T.mono, fontSize: 12 }} />
           <Line type="monotone" dataKey="Exilio cubano" stroke={T.exilio} strokeWidth={2.6} dot={{ r: 4 }} />
           <Line type="monotone" dataKey="ANC" stroke={T.isla} strokeWidth={2.6} dot={{ r: 4 }} />
@@ -511,7 +511,7 @@ function SerieProtestas({ datos }) {
   const y = (v) => H - M.b - (Math.min(v, maxNormal) / maxNormal) * (H - M.t - M.b - 34);
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         {[0, 30, 60, 90, 120].map((v) => (
           <g key={v}>
             <line x1={M.l} y1={y(v)} x2={W - M.r} y2={y(v)} stroke={T.linea} strokeWidth="1" />
@@ -545,8 +545,8 @@ function SerieProtestas({ datos }) {
       <p style={{ fontFamily: T.mono, fontSize: 11, color: T.neutro, marginTop: 8 }}>{datos.nota_serie} Barras discontinuas = {"estimado"}.</p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10, marginTop: 14 }}>
         {datos.coste.map((c) => (
-          <div key={c.indicador} style={{ background: T.panelSuave, border: `1px solid ${T.linea}`, borderTop: `3px solid ${T.exilio}`, borderRadius: 8, padding: "10px 12px" }}>
-            <div style={{ fontFamily: T.display, fontSize: 20, color: T.crema }}>{c.valor}</div>
+          <div key={c.indicador} style={{ background: T.panelSuave, border: `1px solid ${T.linea}`, borderTop: `3px solid ${T.exilio}`, borderRadius: 16, padding: "10px 12px" }}>
+            <div style={{ fontFamily: T.display, fontWeight: 800, fontSize: 20, color: T.crema }}>{c.valor}</div>
             <div style={{ fontFamily: T.serif, fontSize: 13, color: T.cremaSuave, margin: "4px 0 6px" }}>{c.indicador}</div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
               <span style={{ fontFamily: T.mono, fontSize: 9.5, color: T.neutro }}>{c.fuente}</span>
@@ -569,7 +569,7 @@ function DumbbellBrechas({ datos }) {
   const notas = filas.filter((f) => f.nota);
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${filas.length * filaH + 44}`} style={{ width: "100%", background: T.panel, borderRadius: 10, border: `1px solid ${T.linea}` }}>
+      <svg viewBox={`0 0 ${W} ${filas.length * filaH + 44}`} style={{ width: "100%", background: T.panel, borderRadius: 20, border: `1px solid ${T.linea}` }}>
         <g fontFamily={T.mono} fontSize="11.5">
           <circle cx={310} cy={16} r={5} fill={T.isla} /><text x={320} y={20} fill={T.cremaSuave}>isla</text>
           <circle cx={372} cy={16} r={5} fill={T.exilio} /><text x={382} y={20} fill={T.cremaSuave}>exilio</text>
@@ -616,7 +616,7 @@ function DumbbellBrechas({ datos }) {
           <CartesianGrid strokeDasharray="3 3" stroke={T.linea} />
           <XAxis type="number" domain={[0, 100]} tick={{ fill: T.neutro, fontSize: 11, fontFamily: T.mono }} unit="%" />
           <YAxis type="category" dataKey="grupo" width={170} tick={{ fill: T.cremaSuave, fontSize: 12, fontFamily: T.mono }} />
-          <Tooltip formatter={(v) => `${v}%`} contentStyle={{ background: T.panelSuave, border: `1px solid ${T.linea}`, fontFamily: T.mono }} />
+          <Tooltip formatter={(v) => `${v}%`} itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} contentStyle={{ background: "#3a2418", color: "#fcf9f4", border: 0, borderRadius: 12, fontFamily: T.mono }} />
           <ReferenceLine x={50} stroke={T.neutro} strokeDasharray="4 4" />
           <Bar dataKey="apoyo" radius={[0, 4, 4, 0]}>
             {datos.embargo_generacional.map((e, i) => (
@@ -640,12 +640,12 @@ function RadarInternacional({ datos }) {
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12 }}>
         {datos.cobertura_internacional.map((c, i) => (
-          <div key={i} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderTop: `3px solid ${colorTipo[c.tipo] || T.neutro}`, borderRadius: 10, padding: "12px 15px", display: "flex", flexDirection: "column" }}>
+          <div key={i} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderTop: `3px solid ${colorTipo[c.tipo] || T.neutro}`, borderRadius: 20, boxShadow: "var(--y-shadow)", padding: "12px 15px", display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
               <span style={{ fontFamily: T.mono, fontSize: 10, letterSpacing: 1, textTransform: "uppercase", color: colorTipo[c.tipo] || T.neutro, border: `1px solid ${colorTipo[c.tipo] || T.neutro}`, borderRadius: 3, padding: "1px 6px" }}>{c.tipo}</span>
               <ChipConfianza nivel={c.confianza} />
             </div>
-            <div style={{ fontFamily: T.display, fontSize: 26, color: T.crema, margin: "8px 0 2px" }}>{c.dato}</div>
+            <div style={{ fontFamily: T.display, fontWeight: 800, fontSize: 26, color: T.crema, margin: "8px 0 2px" }}>{c.dato}</div>
             <b style={{ fontFamily: T.mono, fontSize: 12, color: T.cremaSuave }}>{c.fuente} · {c.fecha}</b>
             <p style={{ fontFamily: T.serif, fontSize: 13.5, color: T.cremaSuave, lineHeight: 1.6, margin: "8px 0 10px" }}>{c.detalle}</p>
             <a href={c.url} target="_blank" rel="noreferrer" style={{ fontFamily: T.mono, fontSize: 11, color: T.isla, marginTop: "auto" }}>ver fuente ↗</a>
@@ -680,7 +680,7 @@ function Genero({ datos }) {
           <CartesianGrid strokeDasharray="3 3" stroke={T.linea} />
           <XAxis dataKey="caso" tick={{ fill: T.cremaSuave, fontSize: 11.5, fontFamily: T.mono }} />
           <YAxis domain={[0, 100]} unit="%" tick={{ fill: T.neutro, fontSize: 11, fontFamily: T.mono }} />
-          <Tooltip formatter={(v, n, o) => [`${v}% · ${o.payload.confianza}`, "mujeres"]} contentStyle={{ background: T.panelSuave, border: `1px solid ${T.linea}`, fontFamily: T.mono, fontSize: 12 }} />
+          <Tooltip formatter={(v, n, o) => [`${v}% · ${o.payload.confianza}`, "mujeres"]} itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} contentStyle={{ background: "#3a2418", color: "#fcf9f4", border: 0, borderRadius: 12, fontFamily: T.mono, fontSize: 12 }} />
           <Bar dataKey="pct_mujeres" radius={[4, 4, 0, 0]}>
             {datos.participacion.map((p, i) => (
               <Cell key={i} fill={p.confianza === "confirmado" ? T.exilio : "transparent"}
@@ -695,9 +695,9 @@ function Genero({ datos }) {
       </p>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))", gap: 10 }}>
         {datos.casos_emblema.map((c) => (
-          <div key={c.nombre} style={{ background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${T.exilio}`, borderRadius: 8, padding: "10px 14px" }}>
+          <div key={c.nombre} style={{ background: T.panelSuave, border: `1px solid ${T.linea}`, borderLeft: `4px solid ${T.exilio}`, borderRadius: 16, padding: "10px 14px" }}>
             <b style={{ fontFamily: T.mono, fontSize: 13, color: T.crema }}>{c.nombre}</b>
-            <span style={{ fontFamily: T.display, fontSize: 15, color: T.exilio, marginLeft: 8 }}>{c.condena}</span>
+            <span style={{ fontFamily: T.display, fontWeight: 800, fontSize: 15, color: T.exilio, marginLeft: 8 }}>{c.condena}</span>
             <p style={{ fontFamily: T.serif, fontSize: 13, color: T.cremaSuave, margin: "5px 0 0", lineHeight: 1.5 }}>{c.detalle}</p>
           </div>
         ))}
@@ -716,10 +716,10 @@ function Financiacion({ datos }) {
         const contraste = p.concepto.includes("NUG");
         return (
           <div key={p.concepto} style={{
-            background: contraste ? "rgba(143,178,89,0.08)" : T.panelSuave,
-            border: `1px solid ${contraste ? T.isla : T.linea}`, borderRadius: 8, padding: "12px 14px",
+            background: contraste ? "rgba(63,107,22,0.07)" : T.panelSuave,
+            border: `1px solid ${contraste ? T.isla : T.linea}`, borderRadius: 16, padding: "12px 14px",
           }}>
-            <div style={{ fontFamily: T.display, fontSize: 22, color: contraste ? T.isla : T.exilio }}>{p.valor}</div>
+            <div style={{ fontFamily: T.display, fontWeight: 800, fontSize: 22, color: contraste ? T.isla : T.exilio }}>{p.valor}</div>
             <div style={{ fontFamily: T.serif, fontSize: 13.5, color: T.crema, margin: "4px 0" }}>{p.concepto}</div>
             <div style={{ display: "flex", justifyContent: "space-between", gap: 6, alignItems: "center" }}>
               <span style={{ fontFamily: T.mono, fontSize: 10, color: T.neutro }}>{p.detalle}</span>
@@ -753,13 +753,13 @@ function CF1Chenoweth({ cf }) {
   const mult = umbral / Math.max(actual, 1);
   const pct = Math.min(100, (actual / umbral) * 100);
   return (
-    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 10, padding: "16px 18px", marginBottom: 20 }}>
-      <h3 style={{ fontFamily: T.display, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
+    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "16px 18px", marginBottom: 20 }}>
+      <h3 style={{ fontFamily: T.display, fontWeight: 800, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
       <Prosa texto={cf.texto} />
       <Deslizador etiqueta="Participantes medios por protesta (supuesto)" min={cf.participantes_min} max={cf.participantes_max}
         paso={10} valor={porProtesta} onChange={setPorProtesta} formato={(v) => `${v} personas`} />
       <div style={{ margin: "14px 0 6px", background: T.fondo, borderRadius: 6, height: 26, position: "relative", overflow: "hidden", border: `1px solid ${T.linea}` }}>
-        <div style={{ position: "absolute", inset: 0, width: `${pct}%`, background: `linear-gradient(90deg, ${T.islaOscuro}, ${T.isla})`, transition: "width .3s" }} />
+        <div style={{ position: "absolute", inset: 0, width: `${pct}%`, background: "linear-gradient(90deg, rgba(63,107,22,.22), rgba(63,107,22,.42))", transition: "width .3s" }} />
         <span style={{ position: "absolute", left: 10, top: 4, fontFamily: T.mono, fontSize: 12, color: T.crema }}>
           ~{actual.toLocaleString("es-ES")} manifestantes/mes ({pct.toFixed(2)}% del umbral)
         </span>
@@ -773,15 +773,15 @@ function CF1Chenoweth({ cf }) {
 
 function CF2Mando({ cf }) {
   return (
-    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 10, padding: "16px 18px", marginBottom: 20 }}>
-      <h3 style={{ fontFamily: T.display, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
+    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "16px 18px", marginBottom: 20 }}>
+      <h3 style={{ fontFamily: T.display, fontWeight: 800, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
       <Prosa texto={cf.texto} />
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={cf.serie} margin={{ right: 24 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={T.linea} />
           <XAxis dataKey="anio" tick={{ fill: T.neutro, fontSize: 11, fontFamily: T.mono }} />
           <YAxis domain={[0, 10]} tick={{ fill: T.neutro, fontSize: 11, fontFamily: T.mono }} label={{ value: "IFE", angle: -90, fill: T.neutro, fontFamily: T.mono, fontSize: 11 }} />
-          <Tooltip contentStyle={{ background: T.panelSuave, border: `1px solid ${T.linea}`, fontFamily: T.mono, fontSize: 12 }} />
+          <Tooltip itemStyle={{ color: "#fcf9f4" }} labelStyle={{ color: "#f2cdb8" }} contentStyle={{ background: "#3a2418", color: "#fcf9f4", border: 0, borderRadius: 12, fontFamily: T.mono, fontSize: 12 }} />
           <Legend wrapperStyle={{ fontFamily: T.mono, fontSize: 12 }} />
           <ReferenceArea y1={0} y2={3} fill={T.isla} fillOpacity={0.08} label={{ value: "zona histórica de transiciones (IFE < 3)", position: "insideBottomLeft", fill: T.isla, fontSize: 10, fontFamily: T.mono }} />
           <Line type="monotone" dataKey="real" name="Trayectoria real" stroke={T.exilio} strokeWidth={2.6} dot={{ r: 3.5 }} />
@@ -798,15 +798,15 @@ function CF3Fondo({ cf }) {
   const anual = cf.diaspora * (frac / 100) * cuota * 12;
   const nug = 100000000;
   return (
-    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 10, padding: "16px 18px", marginBottom: 20 }}>
-      <h3 style={{ fontFamily: T.display, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
+    <div style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "16px 18px", marginBottom: 20 }}>
+      <h3 style={{ fontFamily: T.display, fontWeight: 800, color: T.crema, fontSize: 17, margin: "0 0 8px" }}>{cf.titulo}</h3>
       <Prosa texto={cf.texto} />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
         <Deslizador etiqueta="Fracción de la diáspora que contribuye" min={1} max={30} paso={1} valor={frac} onChange={setFrac} formato={(v) => `${v}%`} />
         <Deslizador etiqueta="Cuota mensual" min={1} max={50} paso={1} valor={cuota} onChange={setCuota} formato={(v) => `$${v}/mes`} />
       </div>
       <div style={{ marginTop: 8, fontFamily: T.mono, fontSize: 13, color: T.crema }}>
-        Fondo anual: <b style={{ color: T.isla, fontSize: 18, fontFamily: T.display }}>${(anual / 1e6).toFixed(0)}M</b>
+        Fondo anual: <b style={{ color: T.isla, fontSize: 18, fontFamily: T.display, fontWeight: 800 }}>${(anual / 1e6).toFixed(0)}M</b>
         <span style={{ color: T.neutro }}> · {anual >= nug ? "supera" : "equivale al " + ((anual / nug) * 100).toFixed(0) + "% de"} lo autofinanciado por el NUG birmano (&gt;$100M)</span>
       </div>
       <div style={{ margin: "10px 0 0", background: T.fondo, borderRadius: 6, height: 20, position: "relative", overflow: "hidden", border: `1px solid ${T.linea}` }}>
@@ -859,7 +859,7 @@ function Encuesta({ datos, supabase }) {
         const total = Object.values(conteo).reduce((a, b) => a + b, 0);
         const votado = miVoto[q.id] != null;
         return (
-          <div key={q.id} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 10, padding: "14px 16px" }}>
+          <div key={q.id} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "14px 16px" }}>
             <p style={{ fontFamily: T.serif, color: T.crema, fontSize: 15, margin: "0 0 12px", lineHeight: 1.5 }}>{q.pregunta}</p>
             {q.opciones.map((op) => {
               const n = conteo[op] || 0;
@@ -873,7 +873,7 @@ function Encuesta({ datos, supabase }) {
                     border: `1px solid ${elegida ? T.isla : T.linea}`, padding: 0,
                     cursor: votado ? "default" : "pointer", fontFamily: T.mono, fontSize: 12.5,
                   }}>
-                  <span style={{ position: "absolute", inset: 0, width: votado ? `${pct}%` : 0, background: elegida ? "rgba(143,178,89,0.25)" : "rgba(124,132,150,0.18)", transition: "width .4s" }} />
+                  <span style={{ position: "absolute", inset: 0, width: votado ? `${pct}%` : 0, background: elegida ? "rgba(63,107,22,0.18)" : "rgba(107,93,80,0.14)", transition: "width .4s" }} />
                   <span style={{ position: "relative", display: "flex", justifyContent: "space-between", padding: "8px 10px" }}>
                     <span>{elegida ? "✓ " : ""}{op}</span>
                     {votado && <span>{pct}%</span>}
@@ -925,14 +925,14 @@ export default function CorajeDividido({ data, datosUrl = "/data/coraje_dividido
 
   if (!datos) {
     return (
-      <div style={{ background: T.fondo, minHeight: "100vh", display: "grid", placeItems: "center" }}>
+      <div style={{ background: "transparent", minHeight: "100vh", display: "grid", placeItems: "center" }}>
         <span style={{ fontFamily: T.mono, color: T.neutro }}>cargando expediente…</span>
       </div>
     );
   }
 
   return (
-    <div style={{ background: T.fondo, minHeight: "100vh", color: T.crema }}>
+    <div style={{ background: "transparent", minHeight: "100vh", color: T.crema }}>
       <Cinta />
       <main style={{ maxWidth: 980, margin: "0 auto", padding: "0 20px 60px" }}>
 
@@ -942,19 +942,19 @@ export default function CorajeDividido({ data, datosUrl = "/data/coraje_dividido
             Yamacoa · {datos.meta.subtitulo}
           </p>
           <div style={{ display: "flex", alignItems: "stretch", gap: "clamp(8px,2vw,22px)", flexWrap: "wrap" }}>
-            <h1 style={{ fontFamily: T.display, fontSize: "clamp(38px,8vw,84px)", color: T.isla, margin: 0, lineHeight: 0.95 }}>CORAJE</h1>
+            <h1 style={{ fontFamily: T.display, fontWeight: 800, fontSize: "clamp(38px,8vw,84px)", color: T.isla, margin: 0, lineHeight: 0.95 }}>CORAJE</h1>
             <Grieta />
-            <h1 style={{ fontFamily: T.display, fontSize: "clamp(38px,8vw,84px)", color: T.exilio, margin: 0, lineHeight: 0.95 }}>DIVIDIDO</h1>
+            <h1 style={{ fontFamily: T.display, fontWeight: 800, fontSize: "clamp(38px,8vw,84px)", color: T.exilio, margin: 0, lineHeight: 0.95 }}>DIVIDIDO</h1>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 12, marginTop: 34 }}>
             {datos.cifras_clave.map((c) => (
               <div key={c.etiqueta} style={{
-                background: T.panel, borderRadius: 10, padding: "14px 16px",
+                background: T.panel, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "14px 16px",
                 border: `1px solid ${T.linea}`, borderTop: `3px solid ${c.lado === "isla" ? T.isla : T.exilio}`,
                 display: "flex", flexDirection: "column",
               }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                  <span style={{ fontFamily: T.display, fontSize: 30, color: c.lado === "isla" ? T.isla : T.exilio }}>{c.valor}</span>
+                  <span style={{ fontFamily: T.display, fontWeight: 800, fontSize: 30, color: c.lado === "isla" ? T.isla : T.exilio }}>{c.valor}</span>
                   <ChipConfianza nivel={c.confianza} />
                 </div>
                 <div style={{ fontFamily: T.serif, fontSize: 14, color: T.crema, margin: "6px 0 10px", lineHeight: 1.45 }}>{c.etiqueta}</div>
@@ -1013,8 +1013,8 @@ export default function CorajeDividido({ data, datosUrl = "/data/coraje_dividido
           <CF3Fondo cf={datos.contrafactuales.cf3_autofinanciacion} />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 14 }}>
             {datos.contrafactuales.cf4_textuales.map((c) => (
-              <div key={c.id} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 10, padding: "14px 16px" }}>
-                <h3 style={{ fontFamily: T.display, color: T.crema, fontSize: 15, margin: "0 0 8px" }}>{c.titulo}</h3>
+              <div key={c.id} style={{ background: T.panel, border: `1px solid ${T.linea}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "14px 16px" }}>
+                <h3 style={{ fontFamily: T.display, fontWeight: 800, color: T.crema, fontSize: 15, margin: "0 0 8px" }}>{c.titulo}</h3>
                 <p style={{ fontFamily: T.serif, fontSize: 14, color: T.cremaSuave, lineHeight: 1.65, margin: 0 }}>{c.texto}</p>
               </div>
             ))}

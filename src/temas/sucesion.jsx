@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { cargarFuentes } from "../design/tokens";
 
 /* ============================================================================
    YAMACOA · expediente "sucesion" — RENDERER CONGELADO
@@ -11,10 +12,10 @@ import { useEffect, useState } from "react";
    ========================================================================== */
 
 const C = {
-  bg: "#141410", panel: "#1E1D17", panel2: "#26241C",
-  line: "rgba(232,228,214,.10)", paper: "#ECE7DC", dim: "#948C78",
-  bronce: "#969933", jade: "#46A477",
-  corrob: "#5BAE9A", noconf: "#D9A13B",
+  bg: "#fcf9f4", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", paper: "#1f1a16", dim: "#6b5d50",
+  bronce: "#5E6210", jade: "#1A7F56",
+  corrob: "#1E7466", noconf: "#9A6410",
 };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/sucesion.json";
 
@@ -105,7 +106,7 @@ function Continuidad({ filas }) {
    (el marco del hilo viral); columna derecha las dispersa por año real. */
 function catColor(cat) {
   if (cat.includes("XIX")) return C.dim;
-  if (cat.includes("Populismo")) return "#C98A3A";
+  if (cat.includes("Populismo")) return "#B5652A";
   if (cat.includes("Neopopulismo")) return C.jade;
   return C.bronce;
 }
@@ -190,7 +191,7 @@ function SlopeCaudillismo({ figuras }) {
 
       <ul className="su-slope-legend">
         <li><i style={{ background: C.dim }} /> Caudillismo federal, s. XIX</li>
-        <li><i style={{ background: "#C98A3A" }} /> Populismo clásico</li>
+        <li><i style={{ background: "#B5652A" }} /> Populismo clásico</li>
         <li><i style={{ background: C.jade }} /> Neopopulismo</li>
         <li><i style={{ background: C.bronce }} /> Revolución/continuidad de partido único</li>
       </ul>
@@ -202,12 +203,7 @@ export default function App() {
   const [data, setData] = useState(EMBEDDED);
 
   useEffect(() => {
-    const id = "su-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
     let live = true;
     fetch(DATA_URL).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setData(j); }).catch(() => {});
     return () => { live = false; };
@@ -284,13 +280,13 @@ export default function App() {
 }
 
 const CSS = `
-.su-root{ background:${C.bg}; color:${C.paper}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; }
+.su-root{ background:transparent; color:${C.paper}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; }
 .su-root *{ box-sizing:border-box; }
 .su-hero{ padding:48px 20px 28px; max-width:920px; margin:0 auto; }
 .su-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:${C.bronce}; }
-.su-hero h1{ font-size:clamp(28px,5vw,44px); margin:10px 0 8px; line-height:1.1; }
+.su-hero h1{ font-size:clamp(28px,5vw,44px); margin:10px 0 8px; line-height:1.1; font-weight:800; letter-spacing:-.03em; }
 .su-subtitulo{ color:${C.dim}; font-size:16px; max-width:660px; line-height:1.5; }
-.su-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.bronce}; border-radius:8px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
+.su-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.bronce}; border-radius:16px; padding:12px 16px; box-shadow:var(--y-shadow); font-size:13.5px; line-height:1.5; }
 .su-main{ max-width:920px; margin:0 auto; padding:0 20px 80px; }
 .su-main section{ margin-top:52px; }
 .su-sec-head{ margin-bottom:16px; }
@@ -306,7 +302,7 @@ const CSS = `
 .su-eje-linea{ position:absolute; left:24px; top:0; bottom:0; width:2px; background:${C.bronce}; }
 .su-sello-row{ display:flex; gap:18px; margin-bottom:28px; position:relative; }
 .su-sello{ flex-shrink:0; width:48px; height:48px; border-radius:50%; border:2px solid; background:${C.bg}; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:700; z-index:1; color:${C.paper}; }
-.su-sello-card{ background:${C.panel}; border-radius:8px; padding:14px 18px; flex:1; }
+.su-sello-card{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 18px; flex:1; }
 .su-sello-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:16px; margin-bottom:4px; }
 .su-sello-periodo{ color:${C.dim}; font-size:12.5px; margin:0 0 10px; }
 .su-sello-cargos{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:10px; }
@@ -319,11 +315,11 @@ const CSS = `
 .su-barras{ display:flex; flex-direction:column; gap:12px; }
 .su-barra-row{ display:grid; grid-template-columns:160px 1fr 70px; gap:10px; align-items:center; }
 .su-barra-label{ font-size:13px; }
-.su-barra-track{ height:16px; border-radius:8px; background:${C.panel}; overflow:hidden; }
+.su-barra-track{ height:16px; border-radius:8px; background:${C.panel2}; overflow:hidden; }
 .su-barra-fill{ display:block; height:100%; background:${C.bronce}; border-radius:8px; transition:width .4s; }
 .su-barra-n{ font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right; }
 .su-continuidad-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
-.su-continuidad-card{ background:${C.panel}; border-left:3px solid; border-radius:8px; padding:14px 16px; }
+.su-continuidad-card{ background:${C.panel}; border-left:3px solid; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 16px; }
 .su-continuidad-top{ margin-bottom:6px; }
 .su-continuidad-badge{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; padding:2px 7px; border-radius:999px; }
 .su-badge-mantuvo{ color:${C.bronce}; border:1px solid ${C.bronce}; }
@@ -331,14 +327,14 @@ const CSS = `
 .su-continuidad-card b{ display:block; font-size:14px; margin-bottom:6px; }
 .su-continuidad-card p{ font-size:12.5px; color:${C.dim}; line-height:1.5; margin:0; }
 .su-coda{ border-top:1px solid ${C.line}; padding-top:36px; }
-.su-slope-wrap{ background:${C.panel}; border-radius:8px; padding:18px; margin-bottom:20px; }
+.su-slope-wrap{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow); padding:18px; margin-bottom:20px; }
 .su-slope-svg{ width:100%; height:auto; }
 .su-slope-label-left{ fill:${C.paper}; font-size:10.5px; font-family:'IBM Plex Mono',monospace; font-style:italic; }
 .su-slope-nodo{ cursor:pointer; outline:none; transition:opacity .2s; }
 .su-slope-nodo:focus-visible circle{ stroke:${C.paper}; stroke-width:2; }
-.su-slope-label-right-nombre{ fill:${C.paper}; font-size:11px; font-family:'Archivo',sans-serif; font-weight:600; }
+.su-slope-label-right-nombre{ fill:${C.paper}; font-size:11px; font-family:'Manrope',sans-serif; font-weight:600; }
 .su-slope-label-right-anios{ fill:${C.dim}; font-size:9.5px; font-family:'IBM Plex Mono',monospace; }
-.su-slope-detalle{ margin-top:14px; min-height:64px; background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:12px 16px; }
+.su-slope-detalle{ margin-top:14px; min-height:64px; background:${C.panel2}; border:1px solid ${C.line}; border-radius:16px; padding:12px 16px; }
 .su-slope-detalle-top{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
 .su-slope-detalle-top b{ font-size:14px; }
 .su-slope-detalle-top span{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; }
@@ -349,7 +345,7 @@ const CSS = `
 .su-slope-legend li{ display:flex; align-items:center; gap:6px; }
 .su-slope-legend i{ width:9px; height:9px; border-radius:50%; display:inline-block; }
 .su-meta-critica{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.su-mc-card{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:14px 16px; }
+.su-mc-card{ background:${C.panel}; border:1px solid ${C.line}; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 16px; }
 .su-mc-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; }
 .su-mc-top b{ font-size:13.5px; }
 .su-mc-card p{ font-size:12.5px; line-height:1.55; color:${C.paper}; margin:0 0 8px; }

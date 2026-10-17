@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { cargarFuentes } from "../design/tokens";
 
 /* ============================================================================
    YAMACOA · expediente "angel_veliz" — RENDERER CONGELADO
@@ -15,10 +16,10 @@ import { useEffect, useState } from "react";
    ========================================================================== */
 
 const C = {
-  bg: "#16121B", panel: "#211A28", panel2: "#2B2233",
-  line: "rgba(232,226,240,.10)", paper: "#ECE7F1", dim: "#9C93A8",
+  bg: "#fcf9f4", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", paper: "#1f1a16", dim: "#6b5d50",
   primario: "#71397F", contrapunto: "#6B717B",
-  corrob: "#5BAE9A", noconf: "#D9A13B",
+  corrob: "#127567", noconf: "#8A6410",
 };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/angel_veliz.json";
 
@@ -217,7 +218,7 @@ function Encuesta({ datos }) {
               const elegida = miVoto[q.id] === op;
               return (
                 <button key={op} className="av-opcion" disabled={votado} onClick={() => votar(q.id, op)}>
-                  <span className="av-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(113,57,127,.32)" : "rgba(156,147,168,.16)" }} />
+                  <span className="av-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(113,57,127,.22)" : "rgba(107,93,80,.14)" }} />
                   <span className="av-opcion-txt"><span>{elegida ? "✓ " : ""}{op}</span>{votado && <span>{pct}%</span>}</span>
                 </button>
               );
@@ -234,12 +235,7 @@ export default function App() {
   const [data, setData] = useState(EMBEDDED);
 
   useEffect(() => {
-    const id = "av-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
     let live = true;
     fetch(DATA_URL).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setData(j); }).catch(() => {});
     return () => { live = false; };
@@ -338,13 +334,13 @@ export default function App() {
 }
 
 const CSS = `
-.av-root{ background:${C.bg}; color:${C.paper}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; }
+.av-root{ background:transparent; color:${C.paper}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; --sh:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); }
 .av-root *{ box-sizing:border-box; }
 .av-hero{ padding:48px 20px 28px; max-width:920px; margin:0 auto; }
 .av-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:${C.primario}; }
 .av-hero h1{ font-size:clamp(28px,5vw,44px); margin:10px 0 8px; line-height:1.1; }
 .av-subtitulo{ color:${C.dim}; font-size:16px; max-width:680px; line-height:1.5; }
-.av-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:8px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
+.av-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:16px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
 .av-main{ max-width:920px; margin:0 auto; padding:0 20px 80px; }
 .av-main section{ margin-top:52px; }
 .av-sec-head{ margin-bottom:16px; }
@@ -355,16 +351,16 @@ const CSS = `
 .av-chip{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.07em; padding:2px 7px; border-radius:999px; white-space:nowrap; }
 .av-chip-ok{ color:${C.corrob}; border:1px solid ${C.corrob}; }
 .av-chip-no{ color:${C.noconf}; border:1px dashed ${C.noconf}; }
-.av-perfil{ background:${C.panel}; border-radius:8px; padding:14px 18px; margin-bottom:16px; }
+.av-perfil{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:14px 18px; margin-bottom:16px; }
 .av-perfil p{ color:${C.dim}; font-size:13px; margin:4px 0 0; }
 .av-perfil-madre{ color:${C.paper} !important; margin-top:8px !important; padding-top:8px; border-top:1px solid ${C.line}; }
 .av-hechos-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
-.av-hecho{ background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.av-hecho{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:12px 16px; }
 .av-hecho-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
 .av-hecho-fuente{ font-size:11px; color:${C.dim}; }
 .av-hecho p{ font-size:13.5px; line-height:1.5; margin:0; }
 .av-hecho-nota{ color:${C.dim}; font-size:12px; margin-top:6px !important; }
-.av-plano-wrap{ background:${C.panel}; border-radius:10px; padding:18px; }
+.av-plano-wrap{ background:${C.panel}; box-shadow:var(--sh); border-radius:24px; padding:18px; }
 .av-plano-svg{ width:100%; height:auto; }
 .av-plano-grid{ stroke:${C.line}; stroke-width:1; }
 .av-plano-eje{ font-family:'IBM Plex Mono',monospace; font-size:11px; fill:${C.dim}; }
@@ -394,7 +390,7 @@ const CSS = `
 .av-sello-org{ border:2px solid ${C.primario}; border-radius:4px; padding:12px 16px; display:flex; flex-direction:column; gap:4px; min-width:170px; max-width:240px; }
 .av-sello-org-nombre{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.05em; text-transform:uppercase; color:${C.primario}; }
 .av-sello-org-rol{ font-size:11.5px; color:${C.dim}; line-height:1.4; }
-.av-waffle-wrap{ display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start; background:${C.panel}; border-radius:10px; padding:18px; }
+.av-waffle-wrap{ display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start; background:${C.panel}; box-shadow:var(--sh); border-radius:24px; padding:18px; }
 .av-waffle{ display:grid; grid-template-columns:repeat(10,1fr); gap:3px; width:200px; flex-shrink:0; }
 .av-cell{ aspect-ratio:1; border-radius:2px; background:${C.panel2}; }
 .av-cell-11j{ background:${C.contrapunto}; }
@@ -403,23 +399,23 @@ const CSS = `
 .av-waffle-legend b{ font-family:'IBM Plex Mono',monospace; color:${C.paper}; }
 .av-waffle-nota{ font-size:12px !important; color:${C.dim}; }
 .av-barras{ display:flex; flex-direction:column; gap:10px; }
-.av-barra-row{ display:grid; grid-template-columns:220px 1fr auto; align-items:center; gap:12px; background:${C.panel}; border-radius:8px; padding:10px 14px; }
+.av-barra-row{ display:grid; grid-template-columns:220px 1fr auto; align-items:center; gap:12px; background:${C.panel}; box-shadow:var(--sh); border-radius:16px; padding:10px 14px; }
 .av-barra-label{ font-size:13px; display:flex; flex-direction:column; }
 .av-barra-label i{ font-style:normal; font-size:11px; color:${C.dim}; }
 .av-barra-track{ position:relative; height:24px; background:${C.panel2}; border-radius:6px; overflow:hidden; display:flex; align-items:center; }
 .av-barra-fill{ position:absolute; top:2px; bottom:2px; left:0; background:${C.primario}; border-radius:5px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; opacity:.75; }
 .av-barra-fill-indice{ background:${C.contrapunto}; opacity:1; }
-.av-barra-fill b{ font-family:'IBM Plex Mono',monospace; font-size:11px; white-space:nowrap; }
+.av-barra-fill b{ color:#fcf9f4; font-family:'IBM Plex Mono',monospace; font-size:11px; white-space:nowrap; }
 .av-barra-sindato{ padding-left:10px; }
 .av-barra-sindato b{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:${C.dim}; font-style:italic; font-weight:500; }
 .av-verif-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
-.av-verif-stats div{ background:${C.panel}; border-radius:8px; padding:14px 16px; text-align:center; }
+.av-verif-stats div{ background:${C.panel}; box-shadow:var(--sh); border-radius:20px; padding:14px 16px; text-align:center; }
 .av-verif-stats b{ font-family:'IBM Plex Mono',monospace; font-size:26px; display:block; color:${C.paper}; }
 .av-verif-stats span{ font-size:11px; color:${C.dim}; text-transform:uppercase; letter-spacing:.05em; }
 .av-encuesta{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.av-pregunta{ background:${C.panel}; border:1px solid ${C.line}; border-radius:10px; padding:14px 16px; }
+.av-pregunta{ background:${C.panel}; border:0; box-shadow:var(--sh); border-radius:24px; padding:14px 16px; }
 .av-pregunta p{ font-size:14px; line-height:1.5; margin:0 0 12px; }
-.av-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:6px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
+.av-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:12px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
 .av-opcion:disabled{ cursor:default; }
 .av-opcion-fill{ position:absolute; inset:0; transition:width .4s; }
 .av-opcion-txt{ position:relative; display:flex; justify-content:space-between; padding:8px 10px; }

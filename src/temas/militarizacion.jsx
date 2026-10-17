@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import * as d3 from "d3";
+import { cargarFuentes } from "../design/tokens";
 import {
   ResponsiveContainer, ComposedChart, Bar, Line, LineChart,
   XAxis, YAxis, CartesianGrid, Tooltip, Cell,
@@ -25,10 +26,10 @@ import {
    ========================================================================== */
 
 const C = {
-  bg: "#15121C", panel: "#211C2C", panel2: "#2A2438",
-  line: "rgba(231,224,240,.10)", paper: "#EDE7F2", dim: "#948BA3",
-  primario: "#4D4068", contrapunto: "#C7BEAE",
-  corrob: "#5FAE8F", noconf: "#D9A13B",
+  bg: "#fcf9f4", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", paper: "#1f1a16", dim: "#6b5d50",
+  primario: "#4D4068", contrapunto: "#7A6342",
+  corrob: "#2F7A5E", noconf: "#9A6512",
 };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/militarizacion.json";
 
@@ -159,10 +160,10 @@ function GraficaEventos({ serie, mesSel }) {
       <div className="mi-chart-sub">Barra clara: eventos totales. Barra intensa: los que son represión directa. Pasa el cursor por cualquier mes.</div>
       <ResponsiveContainer width="100%" height={250}>
         <ComposedChart data={serie} margin={{ top: 8, right: 10, left: -14, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="2 4" stroke="rgba(237,231,242,.06)" vertical={false} />
-          <XAxis dataKey="mes" tick={{ fill: "#948BA3", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
-          <YAxis tick={{ fill: "#948BA3", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
-          <Tooltip content={<TipEventos />} cursor={{ fill: "rgba(237,231,242,.05)" }} />
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(60,40,20,.10)" vertical={false} />
+          <XAxis dataKey="mes" tick={{ fill: "#6b5d50", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fill: "#6b5d50", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
+          <Tooltip content={<TipEventos />} cursor={{ fill: "rgba(60,40,20,.05)" }} />
           <Bar dataKey="eventos" radius={[4, 4, 0, 0]} maxBarSize={48}>
             {serie.map((d, i) => <Cell key={i} fill={C.primario} opacity={mesSel && d.mes === mesSel ? 1 : 0.55} />)}
           </Bar>
@@ -182,10 +183,10 @@ function GraficaProtestas({ serie, mesSel }) {
       <div className="mi-chart-sub">Serie propia de Cubalex. El punto hueco de julio marca un mes parcial (hasta el día 24).</div>
       <ResponsiveContainer width="100%" height={210}>
         <LineChart data={serie} margin={{ top: 8, right: 12, left: -14, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="2 4" stroke="rgba(237,231,242,.06)" vertical={false} />
-          <XAxis dataKey="mes" tick={{ fill: "#948BA3", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
-          <YAxis tick={{ fill: "#948BA3", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
-          <Tooltip content={<TipProtestas />} cursor={{ stroke: "rgba(237,231,242,.12)" }} />
+          <CartesianGrid strokeDasharray="2 4" stroke="rgba(60,40,20,.10)" vertical={false} />
+          <XAxis dataKey="mes" tick={{ fill: "#6b5d50", fontSize: 11, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} />
+          <YAxis tick={{ fill: "#6b5d50", fontSize: 10, fontFamily: "IBM Plex Mono" }} axisLine={false} tickLine={false} width={40} />
+          <Tooltip content={<TipProtestas />} cursor={{ stroke: "rgba(60,40,20,.22)" }} />
           <Line
             type="monotone" dataKey="valor" stroke={C.contrapunto} strokeWidth={2.4}
             dot={(props) => {
@@ -413,7 +414,7 @@ function Encuesta({ datos }) {
               const elegida = miVoto[q.id] === op;
               return (
                 <button key={op} className="mi-opcion" disabled={votado} onClick={() => votar(q.id, op)}>
-                  <span className="mi-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(77,64,104,.45)" : "rgba(148,139,163,.16)" }} />
+                  <span className="mi-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(77,64,104,.24)" : "rgba(107,93,80,.12)" }} />
                   <span className="mi-opcion-txt"><span>{elegida ? "✓ " : ""}{op}</span>{votado && <span>{pct}%</span>}</span>
                 </button>
               );
@@ -431,12 +432,7 @@ export default function App() {
   const [faseSel, setFaseSel] = useState(EMBEDDED.fases[0].id);
 
   useEffect(() => {
-    const id = "mi-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
     let live = true;
     fetch(DATA_URL).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setData(j); }).catch(() => {});
     return () => { live = false; };
@@ -555,13 +551,13 @@ export default function App() {
 }
 
 const CSS = `
-.mi-root{ background:${C.bg}; color:${C.paper}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; }
+.mi-root{ background:transparent; color:${C.paper}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; }
 .mi-root *{ box-sizing:border-box; }
 .mi-hero{ padding:48px 20px 28px; max-width:920px; margin:0 auto; }
 .mi-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:${C.contrapunto}; }
 .mi-hero h1{ font-size:clamp(28px,5vw,46px); margin:10px 0 8px; line-height:1.08; }
 .mi-subtitulo{ color:${C.dim}; font-size:16px; max-width:700px; line-height:1.55; }
-.mi-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:8px; padding:12px 16px; font-size:13.5px; line-height:1.5; }
+.mi-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.primario}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:12px 16px; font-size:13.5px; line-height:1.5; }
 .mi-main{ max-width:920px; margin:0 auto; padding:0 20px 80px; }
 .mi-main section{ margin-top:56px; }
 .mi-sec-head{ margin-bottom:16px; }
@@ -573,7 +569,7 @@ const CSS = `
 .mi-chip-ok{ color:${C.corrob}; border:1px solid ${C.corrob}; }
 .mi-chip-no{ color:${C.noconf}; border:1px dashed ${C.noconf}; }
 .mi-hechos-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
-.mi-hecho{ background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.mi-hecho{ background:${C.panel}; border-radius:16px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:12px 16px; }
 .mi-hecho-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
 .mi-hecho-fuente{ font-size:11px; color:${C.dim}; }
 .mi-hecho p{ font-size:13.5px; line-height:1.5; margin:0; }
@@ -594,7 +590,7 @@ const CSS = `
 .mi-rail-txt b{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:${C.contrapunto}; font-weight:500; }
 .mi-rail-txt i{ font-style:normal; font-size:13px; line-height:1.3; }
 .mi-estudio-panel{ display:flex; flex-direction:column; gap:16px; min-width:0; }
-.mi-fase-panel{ background:${C.panel}; border-radius:10px; padding:18px; border-left:3px solid ${C.contrapunto}; }
+.mi-fase-panel{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:18px; border-left:3px solid ${C.contrapunto}; }
 .mi-fase-periodo{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:${C.contrapunto}; letter-spacing:.08em; }
 .mi-fase-panel h3{ font-size:19px; margin:5px 0 8px; }
 .mi-fase-desc{ font-size:13.5px; line-height:1.6; color:${C.paper}; margin:0 0 10px; }
@@ -604,21 +600,21 @@ const CSS = `
 .mi-fase-cifras div{ text-align:center; }
 .mi-fase-cifras b{ display:block; font-family:'IBM Plex Mono',monospace; font-size:19px; color:${C.contrapunto}; }
 .mi-fase-cifras span{ font-size:9.5px; color:${C.dim}; text-transform:uppercase; letter-spacing:.04em; }
-.mi-chart-card{ background:${C.panel}; border-radius:10px; padding:16px 14px 10px; }
+.mi-chart-card{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:16px 14px 10px; }
 .mi-chart-h{ font-size:14px; font-weight:600; margin-bottom:3px; padding-left:4px; }
 .mi-chart-sub{ font-size:11.5px; color:${C.dim}; margin-bottom:10px; line-height:1.45; padding-left:4px; }
-.mi-tip{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:10px 12px; box-shadow:0 6px 22px rgba(0,0,0,.45); }
+.mi-tip{ background:#3a2418; color:#fcf9f4; border:0; border-radius:12px; padding:10px 12px; box-shadow:0 8px 24px rgba(40,25,10,.22); }
 .mi-tip-h{ font-size:12.5px; font-weight:700; margin-bottom:6px; }
-.mi-tip-r{ display:flex; justify-content:space-between; gap:18px; font-size:11.5px; color:${C.dim}; margin-bottom:2px; }
-.mi-tip-r b{ color:${C.paper}; font-family:'IBM Plex Mono',monospace; }
-.mi-tip-f{ font-size:10px; color:${C.dim}; margin-top:6px; border-top:1px solid ${C.line}; padding-top:5px; font-style:italic; }
+.mi-tip-r{ display:flex; justify-content:space-between; gap:18px; font-size:11.5px; color:#c9a893; margin-bottom:2px; }
+.mi-tip-r b{ color:#fcf9f4; font-family:'IBM Plex Mono',monospace; }
+.mi-tip-f{ font-size:10px; color:#c9a893; margin-top:6px; border-top:1px solid rgba(252,249,244,.18); padding-top:5px; font-style:italic; }
 .mi-cifras-adv{ font-size:11.5px; color:${C.dim}; line-height:1.55; background:${C.panel2}; border-radius:8px; padding:10px 14px; margin:0; }
 .mi-linea-nota{ font-size:11px; color:${C.dim}; margin:6px 0 0; padding-left:4px; }
 .mi-divergencia{ font-size:12.5px; line-height:1.55; color:${C.dim}; background:${C.panel2}; border-radius:8px; padding:12px 16px; margin-top:12px; }
-.mi-dial-wrap{ display:flex; flex-direction:column; align-items:center; background:${C.panel}; border-radius:10px; padding:22px 18px; }
+.mi-dial-wrap{ display:flex; flex-direction:column; align-items:center; background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:22px 18px; }
 .mi-dial-svg{ width:100%; max-width:340px; height:auto; }
-.mi-dial-arc-bg{ fill:none; stroke:${C.panel2}; stroke-width:10; stroke-linecap:round; }
-.mi-dial-arc-hot{ fill:none; stroke:${C.contrapunto}; stroke-width:10; stroke-linecap:round; filter:drop-shadow(0 0 6px rgba(199,190,174,.55)); }
+.mi-dial-arc-bg{ fill:none; stroke:#e8ded1; stroke-width:10; stroke-linecap:round; }
+.mi-dial-arc-hot{ fill:none; stroke:${C.contrapunto}; stroke-width:10; stroke-linecap:round; filter:drop-shadow(0 0 5px rgba(122,99,66,.30)); }
 .mi-dial-tick{ stroke:${C.dim}; stroke-width:1.5; }
 .mi-dial-ticklabel{ font-family:'IBM Plex Mono',monospace; font-size:9px; fill:${C.dim}; transition:fill .25s, font-size .25s; }
 .mi-dial-ticklabel.on{ fill:${C.contrapunto}; font-size:12px; font-weight:600; }
@@ -645,7 +641,7 @@ const CSS = `
 .mi-dial-trail-mes{ font-family:'IBM Plex Mono',monospace; font-size:10px; color:${C.dim}; margin-top:6px; }
 .mi-dial-trail-val{ font-size:9.5px; color:${C.paper}; margin-top:2px; text-align:center; }
 .mi-dial-nota{ font-size:11.5px; color:${C.dim}; line-height:1.5; margin-top:16px; text-align:center; max-width:560px; }
-.mi-cobertura{ display:flex; gap:12px; flex-wrap:wrap; background:${C.panel}; border-radius:10px; padding:18px; align-items:flex-start; }
+.mi-cobertura{ display:flex; gap:12px; flex-wrap:wrap; background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:18px; align-items:flex-start; }
 .mi-cob-item{ display:flex; flex-direction:column; align-items:center; flex:1; min-width:70px; background:none; border:1px solid transparent; border-radius:10px; padding:8px 4px; cursor:pointer; font-family:inherit; color:inherit; transition:background .18s, border-color .18s; }
 .mi-cob-item:hover{ background:${C.panel2}; }
 .mi-cob-item.on{ background:${C.panel2}; border-color:${C.contrapunto}; }
@@ -659,9 +655,9 @@ const CSS = `
 .mi-geo-pct{ font-size:14px; margin:14px 0; }
 .mi-geo-pct b{ font-family:'IBM Plex Mono',monospace; color:${C.contrapunto}; font-size:18px; }
 .mi-geo-lugares{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
-.mi-geo-lugares li{ font-size:13px; color:${C.paper}; line-height:1.5; background:${C.panel}; border-radius:6px; padding:8px 12px; }
+.mi-geo-lugares li{ font-size:13px; color:${C.paper}; line-height:1.5; background:${C.panel}; border-radius:16px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:8px 12px; }
 .mi-casos-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
-.mi-caso{ background:${C.panel}; border-radius:10px; padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
+.mi-caso{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:16px 18px; display:flex; flex-direction:column; gap:10px; }
 .mi-caso-head{ display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
 .mi-caso-head h3{ font-size:16px; margin:0; }
 .mi-caso-alias{ font-size:11px; color:${C.dim}; font-family:'IBM Plex Mono',monospace; }
@@ -673,17 +669,17 @@ const CSS = `
 .mi-caso-desenlace{ font-size:12.5px; color:${C.dim}; line-height:1.5; margin:0; font-style:italic; }
 .mi-checklist-wrap{ display:flex; flex-direction:column; gap:14px; }
 .mi-checklist{ display:flex; flex-direction:column; gap:10px; }
-.mi-req{ display:flex; gap:14px; align-items:flex-start; background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.mi-req{ display:flex; gap:14px; align-items:flex-start; background:${C.panel}; border-radius:16px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:12px 16px; }
 .mi-req-stamp{ flex-shrink:0; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.1em; border:2px solid ${C.contrapunto}; color:${C.contrapunto}; border-radius:3px; padding:4px 8px; transform:rotate(-3deg); white-space:nowrap; }
 .mi-req h4{ margin:0 0 4px; font-size:14px; }
 .mi-req p{ margin:0; font-size:12.5px; line-height:1.5; color:${C.dim}; }
 .mi-checklist-nota{ font-size:11.5px; color:${C.dim}; line-height:1.55; }
 .mi-verif-stats{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:14px; }
-.mi-verif-stats div{ background:${C.panel}; border-radius:8px; padding:14px 16px; text-align:center; }
+.mi-verif-stats div{ background:${C.panel}; border-radius:16px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:14px 16px; text-align:center; }
 .mi-verif-stats b{ font-family:'IBM Plex Mono',monospace; font-size:24px; display:block; color:${C.paper}; }
 .mi-verif-stats span{ font-size:10.5px; color:${C.dim}; text-transform:uppercase; letter-spacing:.05em; }
 .mi-encuesta{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.mi-pregunta{ background:${C.panel}; border:1px solid ${C.line}; border-radius:10px; padding:14px 16px; }
+.mi-pregunta{ background:${C.panel}; border:1px solid ${C.line}; border-radius:24px; box-shadow:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); padding:14px 16px; }
 .mi-pregunta p{ font-size:14px; line-height:1.5; margin:0 0 12px; }
 .mi-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:6px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
 .mi-opcion:disabled{ cursor:default; }

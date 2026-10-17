@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import * as d3 from "d3";
 import { CUBA_PATHS, CUBA_VIEWBOX } from "./electrica_geo.js";
+import { cargarFuentes } from "../design/tokens";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -37,23 +38,23 @@ const DATA_URL =
 
 /* ════════ PALETA "ARCO VOLTAICO" — azul de arco, filamento y ascua ═════════ */
 const C = {
-  bg: "#080B10",
-  bg2: "#0C1017",
-  surface: "#111722",
-  surface2: "#161E2B",
-  line: "#212B3A",
-  ink: "#EEF2F6",
-  sub: "#9AA6B4",
-  faint: "#65717F",
-  arc: "#3BA9E0", // azul de arco: corriente viva, disponible
-  arcSoft: "#3BA9E022",
-  arcBright: "#63C6F5",
-  filament: "#F5B841", // filamento incandescente
-  filamentSoft: "#F5B84122",
-  ember: "#E8503A", // ascua: déficit, sobrecarga, avería
-  emberSoft: "#E8503A22",
+  bg: "#efe8df",
+  bg2: "#f5efe7",
+  surface: "#fcf9f4",
+  surface2: "#f5efe7",
+  line: "#e2d8cc",
+  ink: "#1f1a16",
+  sub: "#6b5d50",
+  faint: "#8a7a68",
+  arc: "#1B76AD", // azul de arco: corriente viva, disponible
+  arcSoft: "#1B76AD1c",
+  arcBright: "#2A93CC",
+  filament: "#A87410", // filamento incandescente
+  filamentSoft: "#A874101c",
+  ember: "#A42A1E", // ascua: déficit, sobrecarga, avería
+  emberSoft: "#A42A1E1c",
   steel: "#5E7486",
-  ok: "#3BD6A6",
+  ok: "#12866A",
 };
 /* severidad de la señal por provincia (rampa de voltaje: corriente fría → ascua) */
 const SEV = { alta: C.ember, media: C.filament, baja: C.arc };
@@ -242,13 +243,7 @@ const estadoLabel = (e) => (e === "corroborado" ? "corroborado" : e === "inciert
 
 function useFonts() {
   useEffect(() => {
-    const id = "yamacoa-fonts-electrica";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link");
-    l.id = id;
-    l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-    document.head.appendChild(l);
+    cargarFuentes();
   }, []);
 }
 
@@ -274,13 +269,13 @@ function Eyebrow({ children, color = C.arc }) {
   return <div style={{ font: "600 11px/1 'IBM Plex Mono', monospace", letterSpacing: "0.22em", textTransform: "uppercase", color, marginBottom: 14 }}>{children}</div>;
 }
 function Card({ children, style }) {
-  return <div style={{ background: C.surface, border: `1px solid ${C.line}`, borderRadius: 6, padding: "24px 26px 28px", ...style }}>{children}</div>;
+  return <div style={{ background: C.surface, border: 0, boxShadow: "var(--y-shadow)", borderRadius: 24, padding: "24px 26px 28px", ...style }}>{children}</div>;
 }
 function H2({ kicker, title, kc = C.arc }) {
   return (
     <div style={{ marginBottom: 20 }}>
       <Eyebrow color={kc}>{kicker}</Eyebrow>
-      <h2 style={{ font: "800 24px/1.12 Archivo, sans-serif", color: C.ink, margin: 0, letterSpacing: "-0.01em" }}>{title}</h2>
+      <h2 style={{ font: "800 24px/1.12 Manrope, sans-serif", color: C.ink, margin: 0, letterSpacing: "-0.01em" }}>{title}</h2>
     </div>
   );
 }
@@ -336,7 +331,7 @@ function Gauge({ demanda, disponible }) {
           const x2 = cx + Math.cos(a) * (r1 + 10), y2 = cy + Math.sin(a) * (r1 + 10);
           return <line key={t} x1={x1} y1={y1} x2={x2} y2={y2} stroke={C.faint} strokeWidth={1} />;
         })}
-        <text x={cx} y={cy - 14} textAnchor="middle" style={{ font: "800 40px Archivo, sans-serif", fill: C.ember }}>{deficitPct}%</text>
+        <text x={cx} y={cy - 14} textAnchor="middle" style={{ font: "800 40px Manrope, sans-serif", fill: C.ember }}>{deficitPct}%</text>
         <text x={cx} y={cy + 6} textAnchor="middle" style={{ font: "600 11px 'IBM Plex Mono', monospace", fill: C.sub, letterSpacing: "0.08em" }}>DE LA DEMANDA</text>
         <text x={cx} y={cy + 22} textAnchor="middle" style={{ font: "600 11px 'IBM Plex Mono', monospace", fill: C.sub, letterSpacing: "0.08em" }}>SIN CUBRIR</text>
         <text x={cx - 78} y={cy + 40} textAnchor="middle" style={{ font: "500 10px 'IBM Plex Mono', monospace", fill: C.faint }}>0</text>
@@ -344,12 +339,12 @@ function Gauge({ demanda, disponible }) {
       </svg>
       <div style={{ display: "flex", gap: 22, marginTop: 4 }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ font: "800 22px Archivo, sans-serif", color: C.arc }}>{fmt(disponible)}</div>
+          <div style={{ font: "800 22px Manrope, sans-serif", color: C.arc }}>{fmt(disponible)}</div>
           <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 3 }}>MW disponibles</div>
         </div>
         <div style={{ width: 1, background: C.line }} />
         <div style={{ textAlign: "center" }}>
-          <div style={{ font: "800 22px Archivo, sans-serif", color: C.ember }}>{fmt(deficit)}</div>
+          <div style={{ font: "800 22px Manrope, sans-serif", color: C.ember }}>{fmt(deficit)}</div>
           <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 3 }}>MW de déficit</div>
         </div>
       </div>
@@ -376,7 +371,7 @@ function SlopeChart({ trayectoria }) {
       {cortes.map((c, i) => (
         <g key={c.anio}>
           <line x1={xs[i]} y1={mT - 8} x2={xs[i]} y2={H - mB} stroke={C.line} strokeWidth={1} />
-          <text x={xs[i]} y={H - mB + 20} textAnchor="middle" style={{ font: "700 13px Archivo, sans-serif", fill: C.ink }}>{c.anio}</text>
+          <text x={xs[i]} y={H - mB + 20} textAnchor="middle" style={{ font: "700 13px Manrope, sans-serif", fill: C.ink }}>{c.anio}</text>
           <text x={xs[i]} y={H - mB + 34} textAnchor="middle" style={{ font: "500 10px 'IBM Plex Mono', monospace", fill: C.faint }}>{c.label}</text>
         </g>
       ))}
@@ -393,7 +388,7 @@ function SlopeChart({ trayectoria }) {
                 <text x={p[0]} y={p[1] - 10} textAnchor="middle" style={{ font: "600 11px 'IBM Plex Mono', monospace", fill: col }}>{fmt(vals[i])}</text>
               </g>
             ))}
-            <text x={W - mR + 12} y={y(norm[norm.length - 1]) + 4} style={{ font: "600 12px Archivo, sans-serif", fill: col }}>{m.etiqueta}</text>
+            <text x={W - mR + 12} y={y(norm[norm.length - 1]) + 4} style={{ font: "600 12px Manrope, sans-serif", fill: col }}>{m.etiqueta}</text>
             <text x={W - mR + 12} y={y(norm[norm.length - 1]) + 19} style={{ font: "500 10px 'IBM Plex Mono', monospace", fill: C.faint }}>{m.unidad}</text>
           </g>
         );
@@ -421,7 +416,7 @@ function CubaMap({ provincias, periodo, onHover, activo }) {
           <path
             key={path.id}
             d={path.d}
-            fill={p ? (on ? base : sevFill(base, sev)) : "#151D28"}
+            fill={p ? (on ? base : sevFill(base, sev)) : "#e6ddd1"}
             stroke={on ? C.ink : planta ? C.ink + "aa" : C.bg}
             strokeWidth={on ? 1.5 : planta ? 1.1 : 0.7}
             strokeDasharray={planta && !on ? "2.5 2" : "0"}
@@ -480,10 +475,10 @@ function Ridgeline({ apagones }) {
         const line = "M" + pts.map((p) => p[0] + "," + p[1]).join(" L");
         return (
           <g key={r.label}>
-            <path d={area} fill={col + "3a"} />
+            <path d={area} fill={col} fillOpacity={0.23} />
             <path d={line} fill="none" stroke={col} strokeWidth={1.7} />
             <line x1={mL} y1={baseY} x2={W - mR} y2={baseY} stroke={C.line} strokeWidth={0.5} />
-            <text x={mL - 12} y={baseY - 4} textAnchor="end" style={{ font: "600 11px Archivo, sans-serif", fill: C.ink }}>{r.label}</text>
+            <text x={mL - 12} y={baseY - 4} textAnchor="end" style={{ font: "600 11px Manrope, sans-serif", fill: C.ink }}>{r.label}</text>
             <text x={xScale(r.median) + 4} y={baseY - (d3.max(r.dens) / globalMax) * peakScale - 5} textAnchor="middle" style={{ font: "600 10px 'IBM Plex Mono', monospace", fill: col }}>~{Math.round(r.median)}h</text>
           </g>
         );
@@ -519,7 +514,7 @@ function Parallel({ radar }) {
       {ejes.map((e, i) => (
         <g key={e.clave}>
           <line x1={axX[i]} y1={mT} x2={axX[i]} y2={H - mB} stroke={C.line} strokeWidth={1} />
-          <text x={axX[i]} y={mT - 22} textAnchor={i === 0 ? "start" : i === ejes.length - 1 ? "end" : "middle"} style={{ font: "600 10.5px Archivo, sans-serif", fill: C.sub }}>{e.etiqueta}</text>
+          <text x={axX[i]} y={mT - 22} textAnchor={i === 0 ? "start" : i === ejes.length - 1 ? "end" : "middle"} style={{ font: "600 10.5px Manrope, sans-serif", fill: C.sub }}>{e.etiqueta}</text>
           <text x={axX[i]} y={mT - 9} textAnchor={i === 0 ? "start" : i === ejes.length - 1 ? "end" : "middle"} style={{ font: "500 9px 'IBM Plex Mono', monospace", fill: C.faint }}>{e.unidad}</text>
           <text x={axX[i]} y={H - mB + 15} textAnchor={i === 0 ? "start" : i === ejes.length - 1 ? "end" : "middle"} style={{ font: "500 9px 'IBM Plex Mono', monospace", fill: C.faint }}>{fmt0(domains[i][0])}</text>
           <text x={axX[i]} y={mT + 10} textAnchor={i === 0 ? "start" : i === ejes.length - 1 ? "end" : "middle"} style={{ font: "500 9px 'IBM Plex Mono', monospace", fill: C.faint }}>{fmt0(domains[i][1])}</text>
@@ -573,7 +568,7 @@ function PairedRow({ label, unidad, pre, post, maxV, fmtV, ganaPre, nota }) {
   return (
     <div style={{ marginBottom: 16 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 }}>
-        <span style={{ font: "600 13px Archivo, sans-serif", color: C.ink }}>{label}</span>
+        <span style={{ font: "600 13px Manrope, sans-serif", color: C.ink }}>{label}</span>
         <span style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint }}>{unidad}</span>
       </div>
       {[{ v: pre, c: C.filament, l: "Antes de 1959", win: ganaPre }, { v: post, c: C.arc, l: "Después de 1959", win: !ganaPre }].map((b) => (
@@ -602,7 +597,7 @@ function Velocidad({ velocidad }) {
         <H2 kicker="El ritmo antes y después de 1959" title={velocidad.titular} kc={C.filament} />
         <Badge estado="reconstruido" />
       </div>
-      <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 20px", maxWidth: 700 }}>{velocidad.nota}</p>
+      <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 20px", maxWidth: 700 }}>{velocidad.nota}</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 26 }} className="vel-grid">
         <div>
           <PairedRow label="Ritmo de la capacidad instalada" unidad="% anual compuesto" pre={pre.cagrPct} post={post.cagrPct} maxV={Math.max(pre.cagrPct, post.cagrPct)} fmtV={(v) => "+" + v.toLocaleString("es-ES") + "%"} ganaPre={pre.cagrPct > post.cagrPct} nota={`${pre.anios} vs ${post.anios} — el ritmo del 50 fue MÁS rápido.`} />
@@ -610,10 +605,10 @@ function Velocidad({ velocidad }) {
         </div>
         <div>
           <PairedRow label="Clientes conectados" unidad="% anual compuesto" pre={preCli.cagrPct} post={postCli.cagrPct} maxV={Math.max(preCli.cagrPct, postCli.cagrPct)} fmtV={(v) => "+" + v.toLocaleString("es-ES") + "%"} ganaPre={preCli.cagrPct >= postCli.cagrPct} nota={`${preCli.anios} vs ${postCli.anios} — prácticamente el mismo ritmo.`} />
-          <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 5, padding: "14px 16px", marginTop: 4 }}>
+          <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "14px 16px", marginTop: 4 }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
-              <span style={{ font: "800 30px/1 Archivo, sans-serif", color: C.filament }}>2,1×</span>
-              <span style={{ font: "500 12px/1.4 Archivo, sans-serif", color: C.sub }}>creció la capacidad en <b style={{ color: C.ink }}>solo 7 años</b> (1951→1958), antes de la Revolución.</span>
+              <span style={{ font: "800 30px/1 Manrope, sans-serif", color: C.filament }}>2,1×</span>
+              <span style={{ font: "500 12px/1.4 Manrope, sans-serif", color: C.sub }}>creció la capacidad en <b style={{ color: C.ink }}>solo 7 años</b> (1951→1958), antes de la Revolución.</span>
             </div>
           </div>
         </div>
@@ -632,7 +627,7 @@ function Genesis({ data }) {
     <div style={{ display: "grid", gap: 22 }}>
       <Card>
         <H2 kicker="Setenta años en tres cortes" title="Lo que se construyó y lo que se perdió" />
-        <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 8px", maxWidth: 680 }}>
+        <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 8px", maxWidth: 680 }}>
           Cada línea está normalizada a su propio recorrido para poder leer las tres juntas: lo que
           importa es la <em style={{ color: C.ink }}>forma</em>. La electrificación sube y se queda
           arriba; la capacidad disponible sube nueve veces… y vuelve a caer por debajo de sí misma.
@@ -645,16 +640,16 @@ function Genesis({ data }) {
 
       <Card>
         <H2 kicker="Cronología, sin épica" title="Cómo se llegó hasta aquí" kc={C.filament} />
-        <div style={{ display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 4, overflow: "hidden" }}>
+        <div style={{ display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 16, overflow: "hidden" }}>
           {data.historia.map((h) => (
             <div key={h.anio + h.hito} style={{ background: C.surface, padding: "16px 18px", display: "grid", gridTemplateColumns: "76px 1fr", gap: 14, alignItems: "start" }} className="tl-row">
               <div>
-                <div style={{ font: "800 22px/1 Archivo, sans-serif", color: C.ink }}>{h.anio}</div>
+                <div style={{ font: "800 22px/1 Manrope, sans-serif", color: C.ink }}>{h.anio}</div>
                 {h.fase && <div style={{ font: "600 9px 'IBM Plex Mono', monospace", letterSpacing: "0.06em", textTransform: "uppercase", color: FASE_COLOR[h.fase], marginTop: 6 }}>{FASE_LABEL[h.fase]}</div>}
               </div>
               <div>
-                <div style={{ font: "700 15px/1.3 Archivo, sans-serif", color: C.ink, marginBottom: 5 }}>{h.hito}</div>
-                {h.detalle && <div style={{ font: "400 13px/1.6 Archivo, sans-serif", color: C.sub }}>{h.detalle}</div>}
+                <div style={{ font: "700 15px/1.3 Manrope, sans-serif", color: C.ink, marginBottom: 5 }}>{h.hito}</div>
+                {h.detalle && <div style={{ font: "400 13px/1.6 Manrope, sans-serif", color: C.sub }}>{h.detalle}</div>}
                 {(h.capacidadMW != null || h.electrificacionPct != null) && (
                   <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
                     {h.capacidadMW != null && <span style={{ font: "600 11px 'IBM Plex Mono', monospace", color: C.arc }}>{fmt(h.capacidadMW)} MW</span>}
@@ -674,7 +669,7 @@ function Genesis({ data }) {
 function Estado({ data }) {
   const cap = data.capacidad;
   const gen = data.generacion;
-  const genData = gen.map((g) => ({ ...g, color: g.fosil ? (g.fuente.includes("vapor") ? C.ember : g.fuente.includes("diésel") ? C.filament : "#D98B4A") : (g.fuente.includes("Solar") ? C.arc : C.ok) }));
+  const genData = gen.map((g) => ({ ...g, color: g.fosil ? (g.fuente.includes("vapor") ? C.ember : g.fuente.includes("diésel") ? C.filament : "#D2691E") : (g.fuente.includes("Solar") ? C.arc : C.ok) }));
   const fosilPct = gen.filter((g) => g.fosil).reduce((a, g) => a + g.pct, 0);
   const serie = cap.produccionSerie || [];
   return (
@@ -700,7 +695,7 @@ function Estado({ data }) {
                 <CartesianGrid stroke={C.line} vertical={false} />
                 <XAxis dataKey="anio" tick={{ fill: C.sub, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} axisLine={{ stroke: C.line }} tickLine={false} />
                 <YAxis tick={{ fill: C.faint, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11 }} axisLine={false} tickLine={false} domain={[12000, 20000]} tickFormatter={(v) => v / 1000 + "k"} />
-                <Tooltip cursor={{ stroke: C.line }} contentStyle={{ background: C.bg, border: `1px solid ${C.line}`, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} formatter={(v) => [fmt(v) + " GWh", "Producción"]} />
+                <Tooltip cursor={{ stroke: C.line }} contentStyle={{ background: "#3a2418", border: "none", borderRadius: 12, color: "#fcf9f4", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} labelStyle={{ color: "#fcf9f4" }} itemStyle={{ color: "#fcf9f4" }} formatter={(v) => [fmt(v) + " GWh", "Producción"]} />
                 <ReferenceLine y={19071} stroke={C.faint} strokeDasharray="3 4" label={{ value: "2020: 19.071", fill: C.faint, fontSize: 10, fontFamily: "'IBM Plex Mono', monospace", position: "insideTopRight" }} />
                 <Area type="monotone" dataKey="gwh" stroke={C.arc} strokeWidth={2.5} fill="url(#prodFill)" dot={{ r: 3, fill: C.arc }} />
               </AreaChart>
@@ -722,11 +717,11 @@ function Estado({ data }) {
                 <Pie data={genData} dataKey="pct" nameKey="fuente" innerRadius={62} outerRadius={92} paddingAngle={2} stroke="none" startAngle={90} endAngle={-270}>
                   {genData.map((c, i) => <Cell key={i} fill={c.color} />)}
                 </Pie>
-                <Tooltip contentStyle={{ background: C.bg, border: `1px solid ${C.line}`, fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} formatter={(v, n) => [v + "%", n]} />
+                <Tooltip contentStyle={{ background: "#3a2418", border: "none", borderRadius: 12, color: "#fcf9f4", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12 }} labelStyle={{ color: "#fcf9f4" }} itemStyle={{ color: "#fcf9f4" }} formatter={(v, n) => [v + "%", n]} />
               </PieChart>
             </ResponsiveContainer>
             <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-              <div style={{ font: "800 30px/1 Archivo, sans-serif", color: C.ember }}>{Math.round(fosilPct)}%</div>
+              <div style={{ font: "800 30px/1 Manrope, sans-serif", color: C.ember }}>{Math.round(fosilPct)}%</div>
               <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 4, letterSpacing: "0.1em" }}>FÓSIL</div>
             </div>
           </div>
@@ -736,7 +731,7 @@ function Estado({ data }) {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
                     <span style={{ width: 10, height: 10, borderRadius: 2, background: g.color, flexShrink: 0 }} />
-                    <span style={{ font: "500 13px/1.3 Archivo, sans-serif", color: C.sub }}>{g.fuente}</span>
+                    <span style={{ font: "500 13px/1.3 Manrope, sans-serif", color: C.sub }}>{g.fuente}</span>
                   </div>
                   <span style={{ font: "600 13px 'IBM Plex Mono', monospace", color: C.ink }}>{g.pct}%</span>
                 </div>
@@ -771,7 +766,7 @@ function Territorio({ data }) {
           <H2 kicker="La geografía del apagón" title="Severidad por provincia" />
           <div style={{ display: "flex", gap: 6 }}>
             {periodos.map((p) => (
-              <button key={p} onClick={() => setPeriodo(p)} style={{ font: "600 12px 'IBM Plex Mono', monospace", padding: "7px 13px", borderRadius: 3, cursor: "pointer", border: `1px solid ${periodo === p ? C.arc : C.line}`, background: periodo === p ? C.arcSoft : "transparent", color: periodo === p ? C.arc : C.sub }}>{p}</button>
+              <button key={p} onClick={() => setPeriodo(p)} style={{ font: "600 12px 'IBM Plex Mono', monospace", padding: "7px 13px", borderRadius: 999, cursor: "pointer", border: `1px solid ${periodo === p ? C.arc : C.line}`, background: periodo === p ? C.arcSoft : "transparent", color: periodo === p ? C.arc : C.sub }}>{p}</button>
             ))}
           </div>
         </div>
@@ -783,13 +778,13 @@ function Territorio({ data }) {
           <div>
             <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
               {[["alta", "Alta"], ["media", "Media"], ["baja", "Baja"]].map(([k, l]) => (
-                <div key={k} style={{ flex: 1, background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 4, padding: "10px 8px", textAlign: "center" }}>
-                  <div style={{ font: "800 22px Archivo, sans-serif", color: sevColor(k) }}>{conteo[k]}</div>
+                <div key={k} style={{ flex: 1, background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 12, padding: "10px 8px", textAlign: "center" }}>
+                  <div style={{ font: "800 22px Manrope, sans-serif", color: sevColor(k) }}>{conteo[k]}</div>
                   <div style={{ font: "500 9px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 3, textTransform: "uppercase", letterSpacing: "0.06em" }}>{l}</div>
                 </div>
               ))}
             </div>
-            <div style={{ maxHeight: 300, overflowY: "auto", display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 4 }}>
+            <div style={{ maxHeight: 300, overflowY: "auto", display: "grid", gap: 1, background: C.line, border: `1px solid ${C.line}`, borderRadius: 12 }}>
               {sorted.map((p) => {
                 const sev = p.senal[periodo];
                 const on = hover && hover.id === p.id;
@@ -797,7 +792,7 @@ function Territorio({ data }) {
                   <div key={p.id} onMouseEnter={() => setHover(p)} onMouseLeave={() => setHover(null)}
                     style={{ background: on ? C.surface2 : C.surface, padding: "9px 12px", display: "flex", alignItems: "center", gap: 10, cursor: "default" }}>
                     <span style={{ width: 8, height: 8, borderRadius: 2, background: sevColor(sev), flexShrink: 0 }} />
-                    <span style={{ font: "500 12.5px Archivo, sans-serif", color: C.ink, flex: 1 }}>{p.nombre}</span>
+                    <span style={{ font: "500 12.5px Manrope, sans-serif", color: C.ink, flex: 1 }}>{p.nombre}</span>
                     {p.plantas && <span style={{ font: "500 9px 'IBM Plex Mono', monospace", color: C.filament }}>◆ planta</span>}
                     <span style={{ font: "600 10px 'IBM Plex Mono', monospace", color: sevColor(sev), textTransform: "uppercase" }}>{sev}</span>
                   </div>
@@ -807,9 +802,9 @@ function Territorio({ data }) {
           </div>
         </div>
         {hover && (hover.nota || hover.plantas) && (
-          <div style={{ marginTop: 14, background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 5, padding: "14px 16px" }}>
-            <div style={{ font: "700 13px Archivo, sans-serif", color: C.ink, marginBottom: 6 }}>{hover.nombre}</div>
-            {hover.nota && <div style={{ font: "400 13px/1.55 Archivo, sans-serif", color: C.sub }}>{hover.nota}</div>}
+          <div style={{ marginTop: 14, background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "14px 16px" }}>
+            <div style={{ font: "700 13px Manrope, sans-serif", color: C.ink, marginBottom: 6 }}>{hover.nombre}</div>
+            {hover.nota && <div style={{ font: "400 13px/1.55 Manrope, sans-serif", color: C.sub }}>{hover.nota}</div>}
             {hover.plantas && hover.plantas.map((pl) => (
               <div key={pl.nombre} style={{ font: "500 11.5px/1.5 'IBM Plex Mono', monospace", color: C.filament, marginTop: 6 }}>
                 {pl.nombre} · {fmt(pl.mw)} MW{pl.anio ? ` · ${new Date().getFullYear() - pl.anio} años` : ""}{pl.estado ? ` — ${pl.estado}` : ""}
@@ -831,7 +826,7 @@ function Apagones({ data }) {
           <H2 kicker="Horas sin electricidad al día" title="La forma del apagón" kc={C.ember} />
           <Badge estado={data.apagones.estado} />
         </div>
-        <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 12px", maxWidth: 680 }}>
+        <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 12px", maxWidth: 680 }}>
           Cada cresta es una distribución de horas de apagón diario. La Habana, priorizada en el reparto,
           concentra su masa a la izquierda; el oriente se desplaza a la derecha; Matanzas arrastra una
           cola larguísima hasta el pico documentado de 87 horas continuas.
@@ -851,7 +846,7 @@ function Contrafactual({ data }) {
     <div style={{ display: "grid", gap: 22 }}>
       <Card>
         <H2 kicker="Cinco ejes, tres países y un escenario" title="Cuba frente a quien no rompió en 1959" />
-        <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 16px", maxWidth: 680 }}>
+        <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 16px", maxWidth: 680 }}>
           República Dominicana y Costa Rica partieron a mediados del siglo XX de una electrificación
           parecida a la cubana. Hoy están muy por delante en casi todos los ejes. La línea de puntos es
           un <em style={{ color: C.filament }}>escenario</em>, no un dato: dónde estaría Cuba con la
@@ -867,14 +862,14 @@ function Contrafactual({ data }) {
           {paises.map((p) => (
             <div key={p.pais} style={{ display: "grid", gridTemplateColumns: "170px 1fr", gap: 14, alignItems: "center" }} className="cmp-row">
               <div>
-                <div style={{ font: "600 13px Archivo, sans-serif", color: C.ink }}>{p.pais}</div>
+                <div style={{ font: "600 13px Manrope, sans-serif", color: C.ink }}>{p.pais}</div>
                 <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint }}>{p.electrificacionPct}% cobertura · {p.renovablePct}% renov.</div>
               </div>
               <div>
                 <div style={{ height: 26, background: C.bg2, borderRadius: 3, overflow: "hidden", border: `1px solid ${C.line}`, position: "relative" }}>
                   <div style={{ height: "100%", width: `${((p.capacidadMW || 0) / maxCap) * 100}%`, background: p.pais === "Cuba" ? `linear-gradient(90deg, ${C.ember}, ${C.filament})` : `linear-gradient(90deg, ${C.arc}, ${C.arcBright})`, transition: "width .6s" }} />
                   {p.pais === "Cuba" && p.disponibleMW && (
-                    <div style={{ position: "absolute", top: 0, bottom: 0, left: `${(p.disponibleMW / maxCap) * 100}%`, width: 2, background: C.ink }} title="disponible real" />
+                    <div style={{ position: "absolute", top: 0, bottom: 0, left: `${(p.disponibleMW / maxCap) * 100}%`, width: 2, background: "#fcf9f4" }} title="disponible real" />
                   )}
                   <div style={{ position: "absolute", top: 0, right: 8, height: "100%", display: "flex", alignItems: "center", font: "600 12px 'IBM Plex Mono', monospace", color: C.ink }}>{fmt(p.capacidadMW)} MW</div>
                 </div>
@@ -885,9 +880,9 @@ function Contrafactual({ data }) {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 12, marginTop: 20 }}>
           {paises.map((p) => (
-            <div key={p.pais} style={{ background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 5, padding: "14px 16px" }}>
-              <div style={{ font: "600 11px Archivo, sans-serif", color: C.sub, marginBottom: 8 }}>{p.pais}</div>
-              <div style={{ font: "800 24px/1 Archivo, sans-serif", color: p.pais === "Cuba" ? C.ember : C.arc }}>{fmt(p.kwhPerCapita)}</div>
+            <div key={p.pais} style={{ background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "14px 16px" }}>
+              <div style={{ font: "600 11px Manrope, sans-serif", color: C.sub, marginBottom: 8 }}>{p.pais}</div>
+              <div style={{ font: "800 24px/1 Manrope, sans-serif", color: p.pais === "Cuba" ? C.ember : C.arc }}>{fmt(p.kwhPerCapita)}</div>
               <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginTop: 4 }}>kWh por habitante</div>
             </div>
           ))}
@@ -918,17 +913,17 @@ function YSi({ data }) {
           <H2 kicker="Un ejercicio, no una contabilidad" title="Lo que una red fiable podría alojar" kc={C.filament} />
           <Badge estado="estimacion" />
         </div>
-        <p style={{ color: C.sub, font: "400 14px/1.65 Archivo, sans-serif", margin: "0 0 20px", maxWidth: 680 }}>
+        <p style={{ color: C.sub, font: "400 14px/1.65 Manrope, sans-serif", margin: "0 0 20px", maxWidth: 680 }}>
           Los centros de datos exigen exactamente lo que hoy falta: corriente continua, sin interrupciones.
           Mueve el control para imaginar una Cuba con red estable y ver el orden de magnitud de lo que un
           puñado de instalaciones movería. Es un <em style={{ color: C.ink }}>escenario</em>: no se afirma
           que ese dinero exista ni que Cuba lo haya perdido.
         </p>
 
-        <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 6, padding: "20px 24px", marginBottom: 20 }}>
+        <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "20px 24px", marginBottom: 20 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
-            <span style={{ font: "600 13px Archivo, sans-serif", color: C.sub }}>Centros de datos hipotéticos</span>
-            <span style={{ font: "800 30px Archivo, sans-serif", color: C.filament }}>{n}</span>
+            <span style={{ font: "600 13px Manrope, sans-serif", color: C.sub }}>Centros de datos hipotéticos</span>
+            <span style={{ font: "800 30px Manrope, sans-serif", color: C.filament }}>{n}</span>
           </div>
           <input type="range" min={1} max={20} value={n} onChange={(e) => setN(+e.target.value)}
             style={{ width: "100%", accentColor: C.filament, cursor: "pointer" }} />
@@ -944,9 +939,9 @@ function YSi({ data }) {
             { n: usd(totalInv), l: "inversión de capital", s: `~${usd(inv)} por centro (rango ${usd(cd.inversionPorDataCenterUSD.min)}–${usd(cd.inversionPorDataCenterUSD.max)})`, c: C.arcBright },
             { n: pctDemanda + "%", l: "de la demanda pico actual", s: "que hoy la red no puede ni cubrir para los hogares", c: C.ember },
           ].map((k, i) => (
-            <div key={i} style={{ background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 5, padding: "16px 18px" }}>
-              <div style={{ font: "800 26px/1.05 Archivo, sans-serif", color: k.c, letterSpacing: "-0.01em" }}>{k.n}</div>
-              <div style={{ font: "600 12px/1.35 Archivo, sans-serif", color: C.ink, marginTop: 8 }}>{k.l}</div>
+            <div key={i} style={{ background: C.surface2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "16px 18px" }}>
+              <div style={{ font: "800 26px/1.05 Manrope, sans-serif", color: k.c, letterSpacing: "-0.01em" }}>{k.n}</div>
+              <div style={{ font: "600 12px/1.35 Manrope, sans-serif", color: C.ink, marginTop: 8 }}>{k.l}</div>
               <div style={{ font: "400 10px/1.45 'IBM Plex Mono', monospace", color: C.faint, marginTop: 5 }}>{k.s}</div>
             </div>
           ))}
@@ -954,19 +949,19 @@ function YSi({ data }) {
 
         {/* Parámetros del cálculo, con su referencia explícita */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginTop: 18 }} className="ysi-grid">
-          <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 5, padding: "16px 18px" }}>
+          <div style={{ background: C.bg2, border: `1px solid ${C.line}`, borderRadius: 16, padding: "16px 18px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-              <span style={{ font: "600 12px Archivo, sans-serif", color: C.ink }}>Precio del kWh industrial</span>
+              <span style={{ font: "600 12px Manrope, sans-serif", color: C.ink }}>Precio del kWh industrial</span>
               <span style={{ font: "700 15px 'IBM Plex Mono', monospace", color: C.filament }}>US${price}/kWh</span>
             </div>
             <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginBottom: 8 }}>rango US${cd.precioKWhIndustrialUSD.min}–{cd.precioKWhIndustrialUSD.max} · {estadoLabel(cd.precioKWhIndustrialUSD.estado)}</div>
             <div style={{ font: "400 11px/1.5 'IBM Plex Mono', monospace", color: C.sub }}>{cd.precioKWhIndustrialUSD.nota}</div>
           </div>
           {cd.costeSolar && (
-            <div style={{ background: C.bg2, border: `1px solid ${C.arc}44`, borderRadius: 5, padding: "16px 18px" }}>
+            <div style={{ background: C.bg2, border: `1px solid ${C.arc}44`, borderRadius: 16, padding: "16px 18px" }}>
               <div style={{ display: "flex", alignItems: "baseline", gap: 10, marginBottom: 6 }}>
-                <span style={{ font: "800 30px/1 Archivo, sans-serif", color: C.arc }}>−{cd.costeSolar.caidaPct}%</span>
-                <span style={{ font: "600 12px/1.35 Archivo, sans-serif", color: C.ink }}>cayó el coste de la solar<br />({cd.costeSolar.anioInicial}→{cd.costeSolar.anioActual})</span>
+                <span style={{ font: "800 30px/1 Manrope, sans-serif", color: C.arc }}>−{cd.costeSolar.caidaPct}%</span>
+                <span style={{ font: "600 12px/1.35 Manrope, sans-serif", color: C.ink }}>cayó el coste de la solar<br />({cd.costeSolar.anioInicial}→{cd.costeSolar.anioActual})</span>
               </div>
               <div style={{ font: "500 10px 'IBM Plex Mono', monospace", color: C.faint, marginBottom: 8 }}>LCOE ~US${cd.costeSolar.lcoeInicialUSD} → ~US${cd.costeSolar.lcoeActualUSD}/kWh</div>
               <div style={{ font: "400 11px/1.5 'IBM Plex Mono', monospace", color: C.sub }}>{cd.costeSolar.nota}</div>
@@ -981,8 +976,8 @@ function YSi({ data }) {
           <div style={{ display: "grid", gap: 12 }}>
             {cd.referenciasRegion.map((r) => (
               <div key={r.lugar} style={{ borderLeft: `2px solid ${C.arc}`, paddingLeft: 14 }}>
-                <div style={{ font: "700 14px Archivo, sans-serif", color: C.ink }}>{r.lugar}{r.mw ? ` · ${r.mw} MW` : ""}</div>
-                <div style={{ font: "400 12.5px/1.55 Archivo, sans-serif", color: C.sub, marginTop: 3 }}>{r.nota}</div>
+                <div style={{ font: "700 14px Manrope, sans-serif", color: C.ink }}>{r.lugar}{r.mw ? ` · ${r.mw} MW` : ""}</div>
+                <div style={{ font: "400 12.5px/1.55 Manrope, sans-serif", color: C.sub, marginTop: 3 }}>{r.nota}</div>
               </div>
             ))}
           </div>
@@ -991,7 +986,7 @@ function YSi({ data }) {
           <H2 kicker="Lo que este cálculo NO dice" title="Supuestos y límites" kc={C.ember} />
           <ul style={{ margin: 0, paddingLeft: 18, display: "grid", gap: 10 }}>
             {cd.supuestos.map((s, i) => (
-              <li key={i} style={{ font: "400 12.5px/1.6 Archivo, sans-serif", color: C.sub }}>{s}</li>
+              <li key={i} style={{ font: "400 12.5px/1.6 Manrope, sans-serif", color: C.sub }}>{s}</li>
             ))}
           </ul>
           {cd.fuentesCalculo && cd.fuentesCalculo.length > 0 && (
@@ -1027,7 +1022,7 @@ export default function App() {
   const { meta, kpis } = data;
 
   return (
-    <div style={{ background: C.bg, minHeight: "100vh", color: C.ink, fontFamily: "Archivo, sans-serif" }}>
+    <div style={{ background: "transparent", minHeight: "100vh", color: C.ink, fontFamily: "Manrope, system-ui, -apple-system, 'Segoe UI', sans-serif" }}>
       <style>{`
         @media (max-width: 760px){
           .est-grid,.gen-grid,.map-grid,.cmp-row,.ysi-grid,.vel-grid{grid-template-columns:1fr !important;}
@@ -1040,17 +1035,17 @@ export default function App() {
         <div style={{ font: "600 11px/1 'IBM Plex Mono', monospace", letterSpacing: "0.24em", color: C.arc, textTransform: "uppercase", marginBottom: 20 }}>
           Yamacoa · Sistema Electroenergético Nacional
         </div>
-        <h1 style={{ font: "900 clamp(42px,8vw,78px)/0.95 Archivo, sans-serif", letterSpacing: "-0.03em", margin: 0, color: C.ink }}>
+        <h1 style={{ font: "800 clamp(42px,8vw,78px)/0.95 Manrope, sans-serif", letterSpacing: "-0.03em", margin: 0, color: C.ink }}>
           La corriente <span style={{ color: C.ember, fontStyle: "italic" }}>interrumpida</span>
         </h1>
-        <p style={{ font: "400 17px/1.6 Archivo, sans-serif", color: C.sub, maxWidth: 620, margin: "22px 0 0" }}>
+        <p style={{ font: "400 17px/1.6 Manrope, sans-serif", color: C.sub, maxWidth: 620, margin: "22px 0 0" }}>
           {meta.subtitulo}. De la isla casi electrificada de 1992 al apagón como estado permanente:
           lo que se construyó, lo que se perdió y lo que una red fiable todavía podría ser.
         </p>
         <div style={{ display: "flex", gap: 26, flexWrap: "wrap", marginTop: 30 }}>
           {kpis.map((k) => (
             <div key={k.id}>
-              <div style={{ font: "800 34px/1 Archivo, sans-serif", color: k.id === "solar" ? C.arc : k.id === "deficit" || k.id === "apagon" ? C.ember : C.filament, letterSpacing: "-0.02em" }}>
+              <div style={{ font: "800 34px/1 Manrope, sans-serif", color: k.id === "solar" ? C.arc : k.id === "deficit" || k.id === "apagon" ? C.ember : C.filament, letterSpacing: "-0.02em" }}>
                 {typeof k.valor === "number" ? fmt(k.valor) : k.valor}{k.sufijo || ""}
               </div>
               <div style={{ font: "500 11px/1.4 'IBM Plex Mono', monospace", color: C.faint, marginTop: 7, textTransform: "uppercase", letterSpacing: "0.06em", maxWidth: 190 }}>{k.etiqueta}</div>
@@ -1065,7 +1060,7 @@ export default function App() {
             const active = tab === t.id;
             return (
               <button key={t.id} role="tab" aria-selected={active} onClick={() => setTab(t.id)}
-                style={{ position: "relative", font: "600 13px Archivo, sans-serif", letterSpacing: "0.02em", padding: "16px 16px 14px", border: "none", background: "transparent", color: active ? C.ink : C.faint, cursor: "pointer", whiteSpace: "nowrap" }}>
+                style={{ position: "relative", font: "600 13px Manrope, sans-serif", letterSpacing: "0.02em", padding: "16px 16px 14px", border: "none", background: "transparent", color: active ? C.ink : C.faint, cursor: "pointer", whiteSpace: "nowrap" }}>
                 {t.label}
                 <span style={{ position: "absolute", left: 12, right: 12, bottom: 0, height: 2, background: active ? t.color : "transparent", borderRadius: 2 }} />
               </button>

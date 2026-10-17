@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { cargarFuentes } from "../design/tokens";
 
 /* ─── paleta editorial neutra (no reservada) ────────────────────────────── */
 const COL = {
-  bg: "#0C0E14", panel: "#141820", panel2: "#0E1018",
-  accent: "#7AAFC7", accentGlow: "rgba(122,175,199,.12)",
-  outAccent: "#42C9A8", outBg: "rgba(66,201,168,.08)", outBorder: "rgba(66,201,168,.32)",
-  node: "#161D2B", nodeBorder: "#253040",
-  arrow: "#2E4060",
-  text: "#EDEFF5", muted: "#8A93A8", faint: "#536070",
-  line: "rgba(255,255,255,.07)",
+  bg: "transparent", panel: "#fcf9f4", panel2: "#f5efe7",
+  accent: "#2E6580", accentGlow: "rgba(46,101,128,.10)",
+  outAccent: "#127567", outBg: "rgba(18,117,103,.07)", outBorder: "rgba(18,117,103,.30)",
+  node: "#fcf9f4", nodeBorder: "rgba(60,40,20,.15)",
+  arrow: "#6b5d50",
+  text: "#1f1a16", muted: "#4a3f36", faint: "#6b5d50",
+  line: "rgba(60,40,20,.15)",
 };
 
 /* ─── dataset embebido (respaldo) ──────────────────────────────────────── */
@@ -61,20 +62,13 @@ export default function App() {
     return () => { live = false; };
   }, []);
 
-  useEffect(() => {
-    const id = "yamacoa-fonts-met2";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link");
-    l.id = id; l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-    document.head.appendChild(l);
-  }, []);
+  useEffect(() => { cargarFuentes(); }, []);
 
   const v = data.validacion || {};
   const cambios = data.cambios || [];
 
   return (
-    <div style={{ background: COL.bg, color: COL.text, minHeight: "100vh", fontFamily: "Archivo, system-ui, sans-serif" }}>
+    <div style={{ background: COL.bg, color: COL.text, minHeight: "100vh", fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif" }}>
       <style>{CSS}</style>
       <div className="met-wrap">
 
@@ -199,7 +193,7 @@ const CSS = `
 .met-flow-wrap{overflow-x:auto;padding-bottom:8px}
 .met-flow{display:flex;align-items:stretch;gap:0;min-width:820px}
 
-.met-fnode{flex:1;background:${COL.node};border:1px solid ${COL.nodeBorder};border-radius:12px;
+.met-fnode{flex:1;background:${COL.node};border:1px solid ${COL.nodeBorder};border-radius:20px;
   padding:14px 13px;min-width:140px;display:flex;flex-direction:column;gap:8px}
 .met-fnode.out{background:${COL.outBg};border-color:${COL.outBorder}}
 .met-fnode-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.22em;
@@ -210,12 +204,12 @@ const CSS = `
 
 /* estadística */
 .met-prose-card{background:${COL.panel};border:1px solid ${COL.nodeBorder};
-  border-left:3px solid ${COL.accent};border-radius:12px;padding:18px 20px}
+  border-left:3px solid ${COL.accent};border-radius:24px;box-shadow:var(--y-shadow);padding:18px 20px}
 .met-prose{margin:0;font-size:14.5px;line-height:1.72;color:${COL.text};opacity:.88}
 
 /* validación */
 .met-val-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.met-val-col{background:${COL.panel};border:1px solid ${COL.nodeBorder};border-radius:12px;padding:16px 18px}
+.met-val-col{background:${COL.panel};border:1px solid ${COL.nodeBorder};border-radius:24px;box-shadow:var(--y-shadow);padding:16px 18px}
 .met-val-head{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
   letter-spacing:.12em;color:${COL.accent};margin-bottom:12px;font-weight:600}
 .met-crit{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -223,7 +217,7 @@ const CSS = `
 .met-crit li::before{content:"·";position:absolute;left:0;color:${COL.accent};font-weight:700}
 
 /* cambios metodológicos — disclosure */
-.met-cambios{border:1px solid ${COL.nodeBorder};border-radius:12px;overflow:hidden}
+.met-cambios{border:1px solid ${COL.nodeBorder};border-radius:24px;box-shadow:var(--y-shadow);overflow:hidden}
 .met-cambios[open] .met-cambios-tri{transform:rotate(90deg)}
 .met-cambios-sum{
   display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;
@@ -236,7 +230,7 @@ const CSS = `
 .met-cambios-body{padding:0 16px 14px;display:flex;flex-direction:column;gap:12px;
   background:${COL.panel}}
 .met-cambio{padding:12px 14px;background:${COL.panel2};border:1px solid ${COL.line};
-  border-radius:9px}
+  border-radius:14px}
 .met-cambio-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
 .met-cambio-tema{font-weight:700;font-size:14px;color:${COL.accent};text-decoration:none}
 .met-cambio-tema:hover{text-decoration:underline}

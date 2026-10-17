@@ -14,11 +14,11 @@ import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 const DATA_URL = (typeof process !== "undefined" && process.env && process.env.PUBLIC_URL ? process.env.PUBLIC_URL : "") + "/data/angola.json";
 
 const COL = {
-  bg: "#0C0E14", panel: "#141824", panel2: "#10141D",
-  line: "rgba(237,239,245,.12)", text: "#EDEFF5", dim: "#8A93A8",
-  oliva: "#6E9537", olivaHi: "#93BC55", olivaSoft: "rgba(110,149,55,.16)",
-  azul: "#3987C6", azulHi: "#63A9DE", azulSoft: "rgba(57,135,198,.16)",
-  oro: "#D9A93F",
+  bg: "#fcf9f4", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", text: "#1f1a16", dim: "#6b5d50",
+  oliva: "#557A1E", olivaHi: "#46661A", olivaSoft: "rgba(85,122,30,.14)",
+  azul: "#2A70AE", azulHi: "#1F5E94", azulSoft: "rgba(42,112,174,.14)",
+  oro: "#946A0A",
 };
 
 const ACTO = {
@@ -108,8 +108,8 @@ const fmt = (n) => n.toLocaleString("es-ES");
 
 function Chapa({ estado, delay, reduced }) {
   // estado: "oro" (llega al medico), "media" (rango 125-200), "gris" (retenido)
-  const fill = estado === "oro" ? COL.oro : estado === "media" ? "url(#angMediaChapa)" : "#2A3040";
-  const stroke = estado === "gris" ? "rgba(237,239,245,.18)" : COL.oro;
+  const fill = estado === "oro" ? COL.oro : estado === "media" ? "url(#angMediaChapa)" : "#e6dccf";
+  const stroke = estado === "gris" ? "rgba(60,40,20,.25)" : COL.oro;
   return (
     <svg viewBox="0 0 34 22" className="chapa" aria-hidden="true"
       style={reduced ? undefined : { animationDelay: `${delay}ms` }}>
@@ -149,8 +149,8 @@ function Costura({ reduced }) {
           <linearGradient id="angMediaChapa" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor={COL.oro} />
             <stop offset="60%" stopColor={COL.oro} />
-            <stop offset="60%" stopColor="#2A3040" />
-            <stop offset="100%" stopColor="#2A3040" />
+            <stop offset="60%" stopColor="#e6dccf" />
+            <stop offset="100%" stopColor="#e6dccf" />
           </linearGradient>
         </defs>
       </svg>
@@ -868,9 +868,9 @@ export default function App() {
 /* ════════ CSS ═══════════════════════════════════════════════════════════════ */
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-.angola { background:${COL.bg}; color:${COL.text}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; line-height:1.55; }
+.angola { background:transparent; color:${COL.text}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; line-height:1.55; }
 .angola .mono { font-family:'IBM Plex Mono',monospace; }
 .angola .wrap { max-width:1140px; margin:0 auto; padding:0 20px 72px; }
 .angola .srcline { font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:${COL.dim}; margin-top:6px; }
@@ -881,10 +881,10 @@ const CSS = `
 .angola .hero-half { position:absolute; top:0; bottom:0; width:50%; }
 .angola .hero-guerra { left:0; background:
   radial-gradient(120% 90% at 15% 10%, ${COL.olivaSoft}, transparent 60%),
-  radial-gradient(60% 40% at 40% 90%, rgba(110,149,55,.07), transparent 70%); }
+  radial-gradient(60% 40% at 40% 90%, rgba(85,122,30,.07), transparent 70%); }
 .angola .hero-negocio { right:0; background:
   radial-gradient(120% 90% at 85% 10%, ${COL.azulSoft}, transparent 60%),
-  radial-gradient(60% 40% at 60% 90%, rgba(57,135,198,.07), transparent 70%); }
+  radial-gradient(60% 40% at 60% 90%, rgba(42,112,174,.07), transparent 70%); }
 .angola .hero::after { content:""; position:absolute; top:0; bottom:0; left:50%; width:1px;
   background:linear-gradient(${COL.oliva}, ${COL.oro}, ${COL.azul}); opacity:.55; }
 .angola .hero-inner { position:relative; z-index:1; max-width:900px; margin:0 auto; padding:72px 20px 56px; text-align:center; }
@@ -896,14 +896,14 @@ const CSS = `
 
 /* kpis */
 .angola .kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:26px 0 18px; }
-.angola .kpi { background:${COL.panel}; border:1px solid ${COL.line}; border-top:3px solid; border-radius:10px; padding:14px 15px; }
+.angola .kpi { background:${COL.panel}; border:0; border-top:3px solid; border-radius:20px; box-shadow:var(--y-shadow); padding:14px 15px; }
 .angola .kpi-v { font-size:clamp(20px,2.6vw,30px); font-weight:600; }
 .angola .kpi-l { font-size:12.5px; color:${COL.dim}; margin-top:5px; }
-.angola .registro { font-size:13px; color:${COL.dim}; border-left:3px solid ${COL.oro}; padding:8px 14px; background:${COL.panel2}; border-radius:0 8px 8px 0; margin:14px 0 34px; }
+.angola .registro { font-size:13px; color:${COL.dim}; border-left:3px solid ${COL.oro}; padding:8px 14px; background:${COL.panel2}; border-radius:0 16px 16px 0; margin:14px 0 34px; }
 
 /* costura (firma) */
-.angola .costura { text-align:center; padding:36px 12px 30px; border:1px solid ${COL.line}; border-radius:14px; background:
-  linear-gradient(90deg, rgba(110,149,55,.05), transparent 32%, transparent 68%, rgba(57,135,198,.05)), ${COL.panel2}; margin-bottom:44px; }
+.angola .costura { text-align:center; padding:36px 12px 30px; border:0; border-radius:24px; box-shadow:var(--y-shadow); background:
+  linear-gradient(90deg, rgba(85,122,30,.07), transparent 32%, transparent 68%, rgba(42,112,174,.07)), ${COL.panel}; margin-bottom:44px; }
 .angola .costura-km { font-size:12px; letter-spacing:.14em; color:${COL.dim}; }
 .angola .costura-h { font-size:clamp(19px,2.6vw,26px); font-weight:800; margin:10px auto 20px; max-width:640px; }
 .angola .waffle { display:grid; grid-template-columns:repeat(10,34px); gap:7px; justify-content:center; }
@@ -925,7 +925,7 @@ const CSS = `
 .angola .crono-dot { position:absolute; top:8px; width:11px; height:11px; border-radius:50%; border:2px solid ${COL.bg}; }
 .angola .crono-item.guerra .crono-dot { right:-6px; }
 .angola .crono-item.negocio .crono-dot { left:-5px; }
-.angola .crono-card { display:inline-block; text-align:left; background:${COL.panel}; border:1px solid; border-radius:10px; padding:13px 16px; max-width:430px; }
+.angola .crono-card { display:inline-block; text-align:left; background:${COL.panel}; border:1px solid; border-radius:16px; box-shadow:var(--y-shadow); padding:13px 16px; max-width:430px; }
 .angola .crono-fecha { font-size:11px; letter-spacing:.1em; }
 .angola .crono-tit { font-weight:700; margin:3px 0 5px; }
 .angola .crono-txt { font-size:13px; color:${COL.dim}; margin:0; }
@@ -937,7 +937,7 @@ const CSS = `
 .angola .acto-guerra { padding-left:0; }
 .angola .acto-negocio { padding-right:0; }
 .angola .acto-h { font-size:15px; letter-spacing:.14em; text-transform:uppercase; font-weight:800; margin:0 0 18px; }
-.angola .fig { margin:0 0 26px; background:${COL.panel}; border:1px solid ${COL.line}; border-radius:10px; padding:14px; }
+.angola .fig { margin:0 0 26px; background:${COL.panel}; border:0; border-radius:24px; box-shadow:var(--y-shadow); padding:14px; }
 .angola .fig-h { font-weight:700; font-size:14.5px; margin-bottom:10px; }
 .angola .plot { width:100%; height:auto; display:block; }
 .angola .tick { fill:${COL.dim}; font-size:10px; font-family:'IBM Plex Mono',monospace; }
@@ -945,7 +945,7 @@ const CSS = `
 .angola .sub { fill:${COL.dim}; font-size:10px; font-family:'IBM Plex Mono',monospace; }
 .angola .val { font-size:12px; font-family:'IBM Plex Mono',monospace; font-weight:600; }
 .angola .fig-note { font-size:12px; color:${COL.dim}; margin:10px 0 0; }
-.angola .salario { border:1px solid; border-radius:10px; padding:14px 16px; margin-bottom:26px; background:${COL.panel2}; }
+.angola .salario { border:1px solid; border-radius:20px; padding:14px 16px; margin-bottom:26px; background:${COL.panel2}; }
 .angola .salario-h { font-weight:800; letter-spacing:.05em; margin-bottom:8px; }
 .angola .salario-big { font-family:'IBM Plex Mono',monospace; font-size:clamp(19px,2.4vw,26px); font-weight:600; }
 .angola .salario-det { font-size:12.5px; color:${COL.dim}; margin:3px 0 12px; }
@@ -953,10 +953,10 @@ const CSS = `
 .angola .salario-rol { font-size:13px; font-weight:600; }
 .angola .salario-pago { font-size:13px; }
 .angola .salario-nota { font-size:12px; color:${COL.dim}; flex-basis:100%; }
-.angola .salario-nota-global { font-size:13px; color:${COL.dim}; border-left:3px solid ${COL.oro}; padding:8px 14px; background:${COL.panel2}; border-radius:0 8px 8px 0; margin:6px 0 52px; }
+.angola .salario-nota-global { font-size:13px; color:${COL.dim}; border-left:3px solid ${COL.oro}; padding:8px 14px; background:${COL.panel2}; border-radius:0 16px 16px 0; margin:6px 0 52px; }
 .angola .badge { font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:20px; border:1px solid ${COL.line}; color:${COL.dim}; }
 .angola .badge-est { border-color:${COL.oro}; color:${COL.oro}; margin-left:6px; }
-.angola .panelbox { background:${COL.panel}; border:1px solid ${COL.line}; border-radius:10px; padding:14px 16px; margin-bottom:26px; }
+.angola .panelbox { background:${COL.panel}; border:0; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 16px; margin-bottom:26px; }
 .angola .box-h { font-size:14.5px; font-weight:700; margin:0 0 8px; }
 .angola .box-txt { font-size:13px; color:${COL.dim}; margin:0 0 10px; }
 .angola .costo-row { display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; padding:6px 0; border-top:1px dashed ${COL.line}; }
@@ -964,25 +964,25 @@ const CSS = `
 .angola .costo-v { font-size:15px; font-weight:600; color:${COL.olivaHi}; }
 .angola .costo-l { font-size:12.5px; color:${COL.dim}; }
 .angola .est-pair { font-size:13px; margin-right:14px; }
-.angola .veteranos { margin:0 0 26px; background:${COL.panel2}; border:1px solid ${COL.line}; border-left:3px solid ${COL.oliva}; border-radius:8px; padding:14px 16px; }
+.angola .veteranos { margin:0 0 26px; background:${COL.panel2}; border:1px solid ${COL.line}; border-left:3px solid ${COL.oliva}; border-radius:16px; padding:14px 16px; }
 .angola .veteranos p { font-size:13.5px; color:${COL.text}; margin:0; }
 
 /* no corroborado */
 .angola .nc { margin-bottom:52px; }
 .angola .nc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px; }
-.angola .nc-card { background:${COL.panel}; border:1px solid ${COL.line}; border-radius:10px; padding:14px 16px; }
+.angola .nc-card { background:${COL.panel}; border:0; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 16px; }
 .angola .nc-af { font-weight:700; font-size:14px; margin:9px 0 6px; }
 .angola .nc-det { font-size:12.5px; color:${COL.dim}; margin:0; }
 .angola .nc-alegacion_de_epoca { border-color:${COL.oro}; color:${COL.oro}; }
 .angola .nc-testimonio_unico { border-color:${COL.olivaHi}; color:${COL.olivaHi}; }
-.angola .nc-descartada { border-color:#C46A5A; color:#C46A5A; }
+.angola .nc-descartada { border-color:#A8392B; color:#A8392B; }
 .angola .nc-no_corroborada { color:${COL.dim}; }
 
 /* encuesta */
-.angola .poll { margin-bottom:52px; background:${COL.panel2}; border:1px solid ${COL.line}; border-radius:14px; padding:22px; }
+.angola .poll { margin-bottom:52px; background:${COL.panel}; border:0; border-radius:24px; box-shadow:var(--y-shadow); padding:22px; }
 .angola .poll-opts { display:grid; gap:9px; margin-top:8px; }
 .angola .poll-opt { position:relative; overflow:hidden; text-align:left; background:${COL.panel}; color:${COL.text};
-  border:1px solid ${COL.line}; border-radius:9px; padding:11px 14px; font-size:13.5px; cursor:pointer; font-family:inherit; }
+  border:1px solid ${COL.line}; border-radius:14px; padding:11px 14px; font-size:13.5px; cursor:pointer; font-family:inherit; }
 .angola .poll-opt:hover:not(:disabled) { border-color:${COL.azul}; }
 .angola .poll-opt:disabled { cursor:default; }
 .angola .poll-opt.mine { border-color:${COL.oro}; }
@@ -993,7 +993,7 @@ const CSS = `
 
 /* metodología */
 .angola .metodo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-bottom:18px; }
-.angola .metodo-card { background:${COL.panel}; border:1px solid ${COL.line}; border-radius:10px; padding:12px 14px; }
+.angola .metodo-card { background:${COL.panel}; border:0; border-radius:20px; box-shadow:var(--y-shadow); padding:12px 14px; }
 .angola .metodo-et { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:${COL.oro}; margin-bottom:5px; }
 .angola .metodo-desc { font-size:12.5px; color:${COL.dim}; margin:0; }
 .angola .fuentes { font-size:12px; color:${COL.dim}; border-top:1px solid ${COL.line}; padding-top:14px; }

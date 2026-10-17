@@ -30,20 +30,20 @@ import {
 // Tokens
 // ---------------------------------------------------------------------
 const T = {
-  fondo: "#101C26",
-  panel: "#162733",
-  panelBorde: "#1F3545",
-  texto: "#E8ECEF",
-  textoSuave: "#9FB0BC",
-  apertura: "#35C4A6",
-  reversion: "#F2545B",
-  anuncio: "#F5B841",
-  comparador: "#7E9CD8",
-  frontera: "#8A93A0",
-  display: "'Archivo Black', system-ui, sans-serif",
+  fondo: "#fcf9f4",
+  panel: "#fcf9f4",
+  panelBorde: "rgba(60,40,20,.15)",
+  texto: "#1f1a16",
+  textoSuave: "#6b5d50",
+  apertura: "#0E9479",
+  reversion: "#B8263A",
+  anuncio: "#B98500",
+  comparador: "#4A6BD0",
+  frontera: "#858B95",
+  display: "'Manrope', system-ui, sans-serif",
   mono: "'IBM Plex Mono', ui-monospace, monospace",
   cuerpo:
-    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
 };
 
 const PAISES = [
@@ -79,8 +79,8 @@ const ETIQUETA_TIPO = {
 // ---------------------------------------------------------------------
 function SelloConfianza({ nivel }) {
   const colores = {
-    confirmado: T.apertura,
-    reportado: T.anuncio,
+    confirmado: "#0B7F68",
+    reportado: "#8A6400",
     estimado: T.textoSuave,
   };
   return (
@@ -92,7 +92,7 @@ function SelloConfianza({ nivel }) {
         textTransform: "uppercase",
         color: colores[nivel] || T.textoSuave,
         border: `1px solid ${colores[nivel] || T.textoSuave}`,
-        borderRadius: 3,
+        borderRadius: 6,
         padding: "1px 6px",
         whiteSpace: "nowrap",
       }}
@@ -111,7 +111,7 @@ function Seccion({ kicker, titulo, children }) {
           fontSize: 12,
           letterSpacing: 3,
           textTransform: "uppercase",
-          color: T.anuncio,
+          color: "#8A6400",
           marginBottom: 8,
         }}
       >
@@ -155,8 +155,9 @@ function Panel({ children, pad = 20 }) {
     <div
       style={{
         background: T.panel,
-        border: `1px solid ${T.panelBorde}`,
-        borderRadius: 10,
+        border: 0,
+        boxShadow: "var(--y-shadow)",
+        borderRadius: 24,
         padding: pad,
       }}
     >
@@ -193,11 +194,11 @@ function Convergencia({ series }) {
               fontFamily: T.mono,
               fontSize: 12,
               padding: "6px 12px",
-              borderRadius: 6,
+              borderRadius: 999,
               cursor: "pointer",
-              background: modo === m ? T.anuncio : "transparent",
+              background: modo === m ? "#3a2418" : "transparent",
               color: modo === m ? T.fondo : T.textoSuave,
-              border: `1px solid ${modo === m ? T.anuncio : T.panelBorde}`,
+              border: `1px solid ${modo === m ? "#3a2418" : T.panelBorde}`,
             }}
           >
             {etiqueta}
@@ -220,13 +221,15 @@ function Convergencia({ series }) {
           />
           <Tooltip
             contentStyle={{
-              background: T.fondo,
-              border: `1px solid ${T.panelBorde}`,
-              borderRadius: 8,
+              background: "#3a2418",
+              border: 0,
+              borderRadius: 12,
+              boxShadow: "0 8px 24px rgba(40,25,10,.22)",
               fontFamily: T.mono,
               fontSize: 12,
             }}
-            labelStyle={{ color: T.anuncio }}
+            itemStyle={{ color: "#fcf9f4" }}
+            labelStyle={{ color: "#f2cdb8" }}
             formatter={(v, nombre) => [
               esIndice ? v.toFixed(0) : `$${Math.round(v).toLocaleString("es")}`,
               nombre,
@@ -436,8 +439,8 @@ function TimelineCiclos({ episodios }) {
           minHeight: 74,
           marginTop: 6,
           padding: "12px 14px",
-          borderRadius: 8,
-          background: T.fondo,
+          borderRadius: 16,
+          background: "#f5efe7",
           border: `1px solid ${T.panelBorde}`,
         }}
       >
@@ -560,7 +563,7 @@ function EventStudy({ paquetes }) {
 // ---------------------------------------------------------------------
 // 4. Treemap de ejes 2026 por dependencia normativa
 // ---------------------------------------------------------------------
-const COLOR_DEP = { alta: "#F2545B", media: "#F5B841", baja: "#35C4A6" };
+const COLOR_DEP = { alta: "#B8263A", media: "#B98500", baja: "#0E9479" };
 
 function CeldaTreemap(props) {
   const { x, y, width, height, nombre, dependencia_normativa, medidas_destacadas } = props;
@@ -702,11 +705,11 @@ function Encuesta({ encuesta }) {
                 fontFamily: T.cuerpo,
                 fontSize: 15,
                 padding: "12px 16px",
-                borderRadius: 8,
+                borderRadius: 12,
                 cursor: "pointer",
-                background: elegido ? T.anuncio : "transparent",
+                background: elegido ? "#3a2418" : "transparent",
                 color: elegido ? T.fondo : T.texto,
-                border: `1px solid ${elegido ? T.anuncio : T.panelBorde}`,
+                border: `1px solid ${elegido ? "#3a2418" : T.panelBorde}`,
                 transition: "background 120ms ease",
               }}
             >
@@ -716,7 +719,7 @@ function Encuesta({ encuesta }) {
         })}
       </div>
       {voto && (
-        <div style={{ fontFamily: T.mono, fontSize: 12, color: T.apertura, marginTop: 12 }}>
+        <div style={{ fontFamily: T.mono, fontSize: 12, color: "#0B7F68", marginTop: 12 }}>
           Respuesta guardada en este dispositivo.
         </div>
       )}
@@ -766,7 +769,7 @@ export default function Medidas176({ datosUrl = (process.env.PUBLIC_URL || "") +
 
   if (!datos) {
     return (
-      <div style={{ background: T.fondo, minHeight: "100vh", padding: 40 }}>
+      <div style={{ background: "transparent", minHeight: "100vh", padding: 40 }}>
         <div style={{ fontFamily: T.mono, color: T.textoSuave }}>Cargando expediente…</div>
       </div>
     );
@@ -777,7 +780,7 @@ export default function Medidas176({ datosUrl = (process.env.PUBLIC_URL || "") +
   const s2025 = series_convergencia[series_convergencia.length - 1];
 
   return (
-    <div style={{ background: T.fondo, minHeight: "100vh", color: T.texto }}>
+    <div style={{ background: "transparent", minHeight: "100vh", color: T.texto, fontFamily: T.cuerpo }}>
       <div style={{ maxWidth: 980, margin: "0 auto", padding: "56px 20px 80px" }}>
         {/* ------------------------------------------------ Hero */}
         <header style={{ marginBottom: 24 }}>
@@ -787,7 +790,7 @@ export default function Medidas176({ datosUrl = (process.env.PUBLIC_URL || "") +
               fontSize: 12,
               letterSpacing: 3,
               textTransform: "uppercase",
-              color: T.anuncio,
+              color: "#8A6400",
               marginBottom: 12,
             }}
           >

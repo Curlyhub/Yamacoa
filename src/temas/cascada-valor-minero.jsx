@@ -23,26 +23,26 @@ import {
 const RUTA_DATOS = "/data/cascada-valor-minero.json";
 
 const C = {
-  fondo: "#111218",
-  panel: "#1A1C23",
-  borde: "#2A2D38",
-  texto: "#E8E9ED",
-  tenue: "#8B8FA3",
-  acero: "#7479B4",
+  fondo: "#fcf9f4",
+  panel: "#fcf9f4",
+  borde: "rgba(60,40,20,.15)",
+  texto: "#1f1a16",
+  tenue: "#6b5d50",
+  acero: "#666CAE",
   aceroProfundo: "#4A5096",
   aceroTenue: "#44476A",
   laterita: "#B1723E",
-  lateritaClara: "#CE9464",
-  ambar: "#C98A17",
-  hueso: "#D8D2C6"
+  lateritaClara: "#9A5B26",
+  ambar: "#9A6A0E",
+  hueso: "#6b5d50"
 };
 
 const CONFIANZA = {
-  confirmado: { etiqueta: "confirmado", color: "#7479B4", fondo: "rgba(116,121,180,0.14)" },
-  calculado: { etiqueta: "calculado", color: "#9AA0C4", fondo: "rgba(154,160,196,0.12)" },
-  reportado: { etiqueta: "reportado", color: "#CE9464", fondo: "rgba(206,148,100,0.13)" },
-  estimado: { etiqueta: "estimado", color: "#C98A17", fondo: "rgba(201,138,23,0.14)" },
-  no_cuantificado: { etiqueta: "no cuantificado", color: "#8B8FA3", fondo: "rgba(139,143,163,0.12)" }
+  confirmado: { etiqueta: "confirmado", color: "#4A5096", fondo: "rgba(116,121,180,0.14)" },
+  calculado: { etiqueta: "calculado", color: "#5F6699", fondo: "rgba(154,160,196,0.16)" },
+  reportado: { etiqueta: "reportado", color: "#94572A", fondo: "rgba(206,148,100,0.16)" },
+  estimado: { etiqueta: "estimado", color: "#8A6410", fondo: "rgba(201,138,23,0.14)" },
+  no_cuantificado: { etiqueta: "no cuantificado", color: "#6b5d50", fondo: "rgba(139,143,163,0.14)" }
 };
 
 const DATOS_EMBEBIDOS = {
@@ -227,7 +227,7 @@ function Chip({ nivel }) {
         color: c.color,
         background: c.fondo,
         border: "1px solid " + c.color + "44",
-        borderRadius: 2,
+        borderRadius: 6,
         padding: "2px 7px",
         whiteSpace: "nowrap"
       }}
@@ -243,7 +243,7 @@ function Aviso({ children }) {
       style={{
         border: "1px dashed " + C.ambar,
         background: "rgba(201,138,23,0.07)",
-        borderRadius: 3,
+        borderRadius: 16,
         padding: "12px 14px",
         margin: "18px 0",
         display: "flex",
@@ -252,7 +252,7 @@ function Aviso({ children }) {
       }}
     >
       <span style={{ color: C.ambar, fontSize: 15, lineHeight: 1.2 }}>⚠</span>
-      <div style={{ fontSize: 13.5, lineHeight: 1.62, color: "#D6D2C4" }}>{children}</div>
+      <div style={{ fontSize: 13.5, lineHeight: 1.62, color: "#4a3f36" }}>{children}</div>
     </div>
   );
 }
@@ -273,7 +273,7 @@ function Seccion({ n, titulo, children }) {
         </span>
         <h2
           style={{
-            fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+            fontFamily: "'Manrope', system-ui, sans-serif",
             fontSize: "clamp(19px, 3.1vw, 25px)",
             margin: 0,
             letterSpacing: "-0.014em",
@@ -335,15 +335,16 @@ function Cascada({ tramos }) {
             <Tooltip
               cursor={{ fill: "rgba(116,121,180,0.07)" }}
               contentStyle={{
-                background: C.panel,
-                border: "1px solid " + C.borde,
-                borderRadius: 3,
+                background: "#3a2418",
+                border: 0,
+                borderRadius: 12,
+                boxShadow: "0 8px 24px rgba(40,25,10,.22)",
                 fontFamily: "'IBM Plex Mono', monospace",
                 fontSize: 12,
-                color: C.texto
+                color: "#fcf9f4"
               }}
-              itemStyle={{ color: C.texto }}
-              labelStyle={{ color: C.tenue }}
+              itemStyle={{ color: "#fcf9f4" }}
+              labelStyle={{ color: "#c9a893" }}
               labelFormatter={() => ""}
               formatter={(v, name, p) => {
                 if (name !== "visible") return null;
@@ -475,15 +476,16 @@ function Sensibilidad({ series, umbral }) {
           <ReferenceLine y={0} stroke={C.ambar} strokeDasharray="5 4" />
           <Tooltip
             contentStyle={{
-              background: C.panel,
-              border: "1px solid " + C.borde,
-              borderRadius: 3,
+              background: "#3a2418",
+              border: 0,
+              borderRadius: 12,
+              boxShadow: "0 8px 24px rgba(40,25,10,.22)",
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: 12,
-              color: C.texto
+              color: "#fcf9f4"
             }}
-            itemStyle={{ color: C.texto }}
-            labelStyle={{ color: C.tenue }}
+            itemStyle={{ color: "#fcf9f4" }}
+            labelStyle={{ color: "#c9a893" }}
             formatter={(v) => fmt(v) + " M USD"}
             labelFormatter={(l) => l + "% del caso base"}
           />
@@ -633,7 +635,7 @@ function Encuesta({ encuesta, slug }) {
 
   return (
     <div>
-      <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6", marginBottom: 24 }}>
+      <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36", marginBottom: 24 }}>
         {encuesta.intro}
       </p>
       <div style={{ display: "grid", gap: 20 }}>
@@ -648,8 +650,9 @@ function Encuesta({ encuesta, slug }) {
               key={pr.id}
               style={{
                 background: C.panel,
-                border: "1px solid " + C.borde,
-                borderRadius: 3,
+                border: 0,
+                boxShadow: "var(--y-shadow)",
+                borderRadius: 24,
                 padding: "19px 20px"
               }}
             >
@@ -674,7 +677,7 @@ function Encuesta({ encuesta, slug }) {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                    fontFamily: "'Manrope', system-ui, sans-serif",
                     fontSize: 16,
                     lineHeight: 1.42,
                     color: C.texto,
@@ -703,7 +706,7 @@ function Encuesta({ encuesta, slug }) {
                         textAlign: "left",
                         background: C.fondo,
                         border: "1px solid " + (elegida ? C.acero : C.borde),
-                        borderRadius: 2,
+                        borderRadius: 12,
                         padding: "12px 14px",
                         cursor: votada ? "default" : "pointer",
                         color: C.texto,
@@ -817,10 +820,10 @@ export default function CascadaValorMinero() {
   return (
     <div
       style={{
-        background: C.fondo,
+        background: "transparent",
         color: C.texto,
         minHeight: "100vh",
-        fontFamily: "'Inter', system-ui, sans-serif",
+        fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif",
         padding: "clamp(22px, 5vw, 72px) clamp(16px, 5vw, 40px) 110px"
       }}
     >
@@ -840,7 +843,7 @@ export default function CascadaValorMinero() {
           </div>
           <h1
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif",
               fontSize: "clamp(30px, 6.2vw, 52px)",
               lineHeight: 1.05,
               letterSpacing: "-0.028em",
@@ -855,14 +858,14 @@ export default function CascadaValorMinero() {
         </header>
 
         <Seccion n={1} titulo="La magnitud equivocada">
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6" }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36" }}>
             Las cifras de riqueza mineral que circulan sobre Cuba miden el{" "}
             <strong style={{ color: C.texto }}>valor bruto de contenido metalico in situ</strong>:
             toneladas de metal en el subsuelo multiplicadas por su precio de mercado. No es valor de
             activo. Entre una magnitud y la otra median la recuperacion metalurgica, el coste
             operativo, el capital, el descuento temporal y la titularidad.
           </p>
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6" }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36" }}>
             Moa es el unico yacimiento cubano con estudio de factibilidad auditado bajo estandar
             internacional. Permite medir esa distancia en lugar de suponerla.
           </p>
@@ -875,7 +878,7 @@ export default function CascadaValorMinero() {
         </Seccion>
 
         <Seccion n={2} titulo="La cascada">
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6", marginBottom: 26 }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36", marginBottom: 26 }}>
             Reservas probadas y probables del Moa JV, base 100%, a precios del caso base del informe.
             Cada tramo en laterita es valor que no llega al final. Las lineas discontinuas marcan el
             pasivo externo cubano.
@@ -903,14 +906,15 @@ export default function CascadaValorMinero() {
                 key={i}
                 style={{
                   background: C.panel,
-                  border: "1px solid " + C.borde,
-                  borderRadius: 3,
+                  border: 0,
+                  boxShadow: "var(--y-shadow)",
+                  borderRadius: 20,
                   padding: "17px 16px"
                 }}
               >
                 <div
                   style={{
-                    fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                    fontFamily: "'Manrope', system-ui, sans-serif",
                     fontSize: 33,
                     color: v.concepto ? C.acero : C.lateritaClara,
                     letterSpacing: "-0.03em"
@@ -926,7 +930,7 @@ export default function CascadaValorMinero() {
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6" }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36" }}>
             Rango recomendado para trasladar cualquier tabla de riqueza in situ a valor realizable:{" "}
             <strong style={{ color: C.texto }}>
               {String(d.multiplicador.rango_recomendado_pct.min).replace(".", ",")}% a{" "}
@@ -956,7 +960,7 @@ export default function CascadaValorMinero() {
                 >
                   sesgo {s.direccion}
                 </div>
-                <div style={{ fontSize: 14.5, lineHeight: 1.62, color: "#C8CAD6" }}>
+                <div style={{ fontSize: 14.5, lineHeight: 1.62, color: "#4a3f36" }}>
                   {s.descripcion}
                 </div>
               </li>
@@ -972,7 +976,8 @@ export default function CascadaValorMinero() {
                 background: C.panel,
                 border: "1px solid " + C.borde,
                 borderLeft: "2px solid " + C.acero,
-                borderRadius: 3,
+                borderRadius: 16,
+                boxShadow: "var(--y-shadow)",
                 padding: "17px 19px",
                 marginTop: 26
               }}
@@ -991,7 +996,7 @@ export default function CascadaValorMinero() {
               </div>
               <div
                 style={{
-                  fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+                  fontFamily: "'Manrope', system-ui, sans-serif",
                   fontSize: 17,
                   color: C.texto,
                   letterSpacing: "-0.014em",
@@ -1000,7 +1005,7 @@ export default function CascadaValorMinero() {
               >
                 {d.referencia_interna.titulo} ↗
               </div>
-              <div style={{ fontSize: 14.5, lineHeight: 1.62, color: "#C8CAD6", marginBottom: 11 }}>
+              <div style={{ fontSize: 14.5, lineHeight: 1.62, color: "#4a3f36", marginBottom: 11 }}>
                 {d.referencia_interna.texto}
               </div>
               <div
@@ -1022,7 +1027,7 @@ export default function CascadaValorMinero() {
         </Seccion>
 
         <Seccion n={4} titulo="El acantilado">
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6", marginBottom: 22 }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36", marginBottom: 22 }}>
             Sensibilidad del VAN al 8% a variaciones sobre el caso base. La linea ambar es el valor
             cero.
           </p>
@@ -1037,7 +1042,7 @@ export default function CascadaValorMinero() {
         </Seccion>
 
         <Seccion n={5} titulo="Que se puede valorar y que no">
-          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#C8CAD6", marginBottom: 20 }}>
+          <p style={{ fontSize: 15.5, lineHeight: 1.72, color: "#4a3f36", marginBottom: 20 }}>
             {inv.nota_critica}
           </p>
           <div style={{ overflowX: "auto" }}>
@@ -1114,7 +1119,7 @@ export default function CascadaValorMinero() {
         <Seccion n={6} titulo="Lo que implica para el fondo">
           <p
             style={{
-              fontFamily: "'Archivo Black', 'Archivo', sans-serif",
+              fontFamily: "'Manrope', system-ui, sans-serif",
               fontSize: "clamp(18px, 3vw, 23px)",
               lineHeight: 1.36,
               letterSpacing: "-0.016em",
@@ -1135,7 +1140,7 @@ export default function CascadaValorMinero() {
                   marginBottom: 15,
                   fontSize: 15.5,
                   lineHeight: 1.66,
-                  color: "#C8CAD6"
+                  color: "#4a3f36"
                 }}
               >
                 <span
@@ -1173,7 +1178,7 @@ export default function CascadaValorMinero() {
           }}
         >
           <div style={{ marginBottom: 10 }}>
-            <strong style={{ color: "#B6B9C8" }}>Fuente primaria.</strong>{" "}
+            <strong style={{ color: "#1f1a16" }}>Fuente primaria.</strong>{" "}
             {d.fuente_primaria.titulo}. {d.fuente_primaria.autor_independiente},{" "}
             {d.fuente_primaria.estandar}. Fecha efectiva {d.fuente_primaria.fecha_efectiva}, informe{" "}
             {d.fuente_primaria.fecha_informe}.

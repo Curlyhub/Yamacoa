@@ -10,6 +10,7 @@ import {
   ReferenceLine,
   Legend,
 } from "recharts";
+import { FUENTES_URL } from "../design/tokens";
 
 /* ──────────────────────────────────────────────────────────────
    PARÁMETROS BASE (auditables y editables)
@@ -36,16 +37,16 @@ const MWH_TERMICOS_POR_TON = 11.63; // contenido energético del crudo
 
 /* ── Paleta ── */
 const C = {
-  ink: "#0A0D16",
-  surface: "#141926",
-  raised: "#1B2233",
-  line: "#28324A",
-  text: "#EDEFF5",
-  muted: "#8A93A8",
-  solar: "#FFC542",
-  wind: "#38D6C9",
-  oil: "#FF6B4A",
-  bench: "#F5F7FF",
+  ink: "#3a2418",
+  surface: "#fcf9f4",
+  raised: "#f5efe7",
+  line: "rgba(60,40,20,.15)",
+  text: "#1f1a16",
+  muted: "#6b5d50",
+  solar: "#A97300",
+  wind: "#127A72",
+  oil: "#A8301C",
+  bench: "#1f1a16",
 };
 
 /* ── Formato ── */
@@ -367,7 +368,7 @@ function ThrBar({ name, mw, color, scaleMax, demanda }) {
       <div style={S.thrName}>{name}</div>
       <div style={S.thrTrack}>
         <div style={{ width: `${wCover}%`, background: hexA(color, 0.5), height: "100%", position: "absolute", left: 0, borderRadius: "6px 0 0 6px" }} />
-        <div className="thr-glow" style={{ width: `${wTotal}%`, height: "100%", position: "absolute", left: 0, borderRadius: 6, border: `1.5px solid ${color}`, boxShadow: surplus > 0 ? `0 0 16px ${hexA(color, 0.6)}` : "none" }} />
+        <div className="thr-glow" style={{ width: `${wTotal}%`, height: "100%", position: "absolute", left: 0, borderRadius: 6, border: `1.5px solid ${color}`, boxShadow: surplus > 0 ? `0 0 12px ${hexA(color, 0.35)}` : "none" }} />
         <div style={{ ...S.thrVal, color }}>{fmt(mw)} MW</div>
       </div>
       <div style={S.thrBadge}>
@@ -397,7 +398,7 @@ function TT({ active, payload, label }) {
     <div style={S.tt}>
       <div style={S.ttTitle}>Año {label}</div>
       {payload.map((p) => (
-        <div key={p.name} style={{ color: p.color, fontSize: 13 }}>
+        <div key={p.name} style={{ color: "#fcf9f4", fontSize: 13 }}>
           {p.name}: {fmt1(p.value)} TWh
         </div>
       ))}
@@ -417,64 +418,64 @@ function hexA(hex, a) {
 
 /* ── estilos ── */
 const S = {
-  page: { background: C.ink, color: C.text, fontFamily: "'Inter', system-ui, sans-serif", minHeight: "100%", padding: "0 0 48px", lineHeight: 1.5 },
+  page: { background: "transparent", color: C.text, fontFamily: "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif", minHeight: "100%", padding: "0 0 48px", lineHeight: 1.5 },
   hero: { position: "relative", padding: "44px 20px 28px", maxWidth: 1040, margin: "0 auto", overflow: "hidden" },
   glow: { position: "absolute", top: -180, left: "50%", transform: "translateX(-50%)", width: 600, height: 380, background: `radial-gradient(ellipse at center, ${hexA(C.solar, 0.16)}, transparent 70%)`, pointerEvents: "none" },
-  eyebrow: { position: "relative", fontFamily: "'JetBrains Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: C.solar, marginBottom: 14 },
-  h1: { position: "relative", fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(28px, 5.5vw, 46px)", lineHeight: 1.05, fontWeight: 700, margin: "0 0 16px", letterSpacing: "-0.02em" },
+  eyebrow: { position: "relative", fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: C.solar, marginBottom: 14 },
+  h1: { position: "relative", fontFamily: "'Manrope', sans-serif", fontSize: "clamp(28px, 5.5vw, 46px)", lineHeight: 1.05, fontWeight: 700, margin: "0 0 16px", letterSpacing: "-0.02em" },
   lede: { position: "relative", color: C.muted, fontSize: "clamp(15px, 2.2vw, 17px)", maxWidth: 620, margin: 0 },
-  capitalBox: { position: "relative", marginTop: 28, padding: 22, background: C.surface, border: `1px solid ${C.line}`, borderRadius: 16, maxWidth: 520 },
-  capitalLabel: { fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: C.muted },
-  capitalValue: { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(34px, 7vw, 52px)", fontWeight: 700, color: C.solar, margin: "2px 0 14px", letterSpacing: "-0.02em" },
-  sliderEnds: { display: "flex", justifyContent: "space-between", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.muted, marginTop: 6 },
+  capitalBox: { position: "relative", marginTop: 28, padding: 22, background: C.surface, border: `1px solid ${C.line}`, borderRadius: 24, boxShadow: "var(--y-shadow)", maxWidth: 520 },
+  capitalLabel: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: C.muted },
+  capitalValue: { fontFamily: "'Manrope', sans-serif", fontSize: "clamp(34px, 7vw, 52px)", fontWeight: 700, color: C.solar, margin: "2px 0 14px", letterSpacing: "-0.02em" },
+  sliderEnds: { display: "flex", justifyContent: "space-between", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: C.muted, marginTop: 6 },
   hint: { fontSize: 12.5, color: C.muted, marginTop: 12 },
 
   cardGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(248px, 1fr))", gap: 16, maxWidth: 1040, margin: "12px auto 0", padding: "0 20px" },
-  card: { background: C.surface, border: `1px solid ${C.line}`, borderRadius: 16, padding: 20 },
-  cardTag: { fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 },
+  card: { background: C.surface, border: `1px solid ${C.line}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: 20 },
+  cardTag: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 },
   bigWrap: { display: "flex", flexDirection: "column", marginBottom: 14 },
-  big: { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(30px, 6vw, 40px)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em" },
+  big: { fontFamily: "'Manrope', sans-serif", fontSize: "clamp(30px, 6vw, 40px)", fontWeight: 700, lineHeight: 1, letterSpacing: "-0.02em" },
   bigUnit: { fontSize: 13, color: C.muted, marginTop: 5 },
   kv: { display: "flex", justifyContent: "space-between", padding: "7px 0", borderTop: `1px solid ${C.line}`, fontSize: 13.5 },
   kvK: { color: C.muted },
-  kvV: { fontFamily: "'JetBrains Mono', monospace", color: C.text },
+  kvV: { fontFamily: "'IBM Plex Mono', monospace", color: C.text },
   pill: { marginTop: 14, padding: "8px 12px", borderRadius: 10, border: "1px solid", fontSize: 13, fontWeight: 600 },
   noteText: { marginTop: 10, fontSize: 12, color: C.muted, fontStyle: "italic" },
 
   block: { maxWidth: 1040, margin: "40px auto 0", padding: "0 20px" },
-  h2: { fontFamily: "'Space Grotesk', sans-serif", fontSize: "clamp(20px, 3.5vw, 26px)", fontWeight: 700, margin: "0 0 6px", letterSpacing: "-0.01em" },
+  h2: { fontFamily: "'Manrope', sans-serif", fontSize: "clamp(20px, 3.5vw, 26px)", fontWeight: 700, margin: "0 0 6px", letterSpacing: "-0.01em" },
   sub: { color: C.muted, fontSize: 14.5, margin: "0 0 22px", maxWidth: 640 },
 
-  thresholdWrap: { position: "relative", background: C.surface, border: `1px solid ${C.line}`, borderRadius: 16, padding: "44px 20px 20px" },
+  thresholdWrap: { position: "relative", background: C.surface, border: `1px solid ${C.line}`, borderRadius: 24, boxShadow: "var(--y-shadow)", padding: "44px 20px 20px" },
   thrRow: { display: "flex", alignItems: "center", gap: 12, margin: "14px 0" },
   thrName: { width: 64, fontSize: 13.5, fontWeight: 600, flexShrink: 0 },
   thrTrack: { position: "relative", flex: 1, height: 38, background: C.raised, borderRadius: 6 },
-  thrVal: { position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", fontFamily: "'JetBrains Mono', monospace", fontSize: 13, fontWeight: 700 },
-  thrBadge: { width: 132, textAlign: "right", fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5, color: C.muted, flexShrink: 0 },
-  thrLabel: { position: "absolute", top: -26, left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: C.bench, background: C.ink, padding: "2px 6px", borderRadius: 4 },
+  thrVal: { position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", fontFamily: "'IBM Plex Mono', monospace", fontSize: 13, fontWeight: 700 },
+  thrBadge: { width: 132, textAlign: "right", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11.5, color: C.muted, flexShrink: 0 },
+  thrLabel: { position: "absolute", top: -26, left: "50%", transform: "translateX(-50%)", whiteSpace: "nowrap", fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: C.bench, background: C.surface, padding: "2px 6px", borderRadius: 4 },
 
   projHead: { display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "space-between", alignItems: "flex-start" },
   toggle: { display: "flex", gap: 4, background: C.raised, padding: 4, borderRadius: 10, border: `1px solid ${C.line}` },
   toggleBtn: { background: "transparent", border: "none", color: C.muted, fontSize: 12.5, fontWeight: 600, padding: "7px 12px", borderRadius: 7, cursor: "pointer", fontFamily: "inherit" },
-  toggleOn: { background: C.solar, color: C.ink },
+  toggleOn: { background: C.ink, color: "#fcf9f4" },
 
-  tableWrap: { overflowX: "auto", border: `1px solid ${C.line}`, borderRadius: 16 },
+  tableWrap: { overflowX: "auto", border: `1px solid ${C.line}`, borderRadius: 24, background: C.surface, boxShadow: "var(--y-shadow)" },
   table: { width: "100%", borderCollapse: "collapse", minWidth: 560, fontSize: 13.5 },
-  th: { textAlign: "left", padding: "13px 16px", color: C.muted, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", background: C.raised },
-  thR: { textAlign: "right", padding: "13px 16px", color: C.muted, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", background: C.raised },
+  th: { textAlign: "left", padding: "13px 16px", color: C.muted, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", background: C.raised },
+  thR: { textAlign: "right", padding: "13px 16px", color: C.muted, fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, letterSpacing: "0.08em", textTransform: "uppercase", background: C.raised },
   td: { padding: "13px 16px", borderTop: `1px solid ${C.line}`, fontWeight: 600 },
-  tdR: { padding: "13px 16px", borderTop: `1px solid ${C.line}`, textAlign: "right", fontFamily: "'JetBrains Mono', monospace", color: C.text },
+  tdR: { padding: "13px 16px", borderTop: `1px solid ${C.line}`, textAlign: "right", fontFamily: "'IBM Plex Mono', monospace", color: C.text },
   dot: { display: "inline-block", width: 9, height: 9, borderRadius: "50%", marginRight: 8 },
 
-  tt: { background: C.ink, border: `1px solid ${C.line}`, borderRadius: 10, padding: "10px 12px" },
-  ttTitle: { fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: C.muted, marginBottom: 4 },
+  tt: { background: C.ink, border: 0, borderRadius: 12, boxShadow: "0 8px 24px rgba(40,25,10,.22)", padding: "10px 12px" },
+  ttTitle: { fontFamily: "'IBM Plex Mono', monospace", fontSize: 12, color: "#f2cdb8", marginBottom: 4 },
 
   footer: { maxWidth: 1040, margin: "36px auto 0", padding: "0 20px" },
   foot: { fontSize: 12, color: C.muted, lineHeight: 1.6 },
 };
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('${FUENTES_URL}');
 * { box-sizing: border-box; }
 .cap-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; background: ${C.line}; outline: none; }
 .cap-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: ${C.solar}; cursor: pointer; box-shadow: 0 0 0 4px ${hexA(C.solar, 0.2)}; border: none; }

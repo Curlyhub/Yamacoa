@@ -1298,20 +1298,20 @@ const DATOS_EMBEBIDOS = {
    Ámbar #C98A17 permanece RESERVADO en toda la plataforma para contrafactuales.
    -------------------------------------------------------------------------- */
 const P = {
-  fondo: "#0A0B0F",
-  superficie: "#141720",
-  superficieAlt: "#1C2029",
-  borde: "#2A2F3C",
-  bordeVivo: "#3D4455",
-  tinta: "#F2F0EA",
-  tintaTenue: "#98A2B3",
-  tintaDebil: "#6B7585",
-  bermellon: "#E8462C",
-  cian: "#2FC2D6",
-  violeta: "#8B7BE8",
-  musgo: "#67AE7B",
-  magenta: "#C765A8",
-  ambar: "#C98A17"
+  fondo: "#fcf9f4",
+  superficie: "#fcf9f4",
+  superficieAlt: "#f5efe7",
+  borde: "#e0d6c9",
+  bordeVivo: "#c4b6a6",
+  tinta: "#1f1a16",
+  tintaTenue: "#6b5d50",
+  tintaDebil: "#8a7a68",
+  bermellon: "#C2381E",
+  cian: "#138A9C",
+  violeta: "#5B4BC4",
+  musgo: "#2F7A45",
+  magenta: "#8A2A6A",
+  ambar: "#A06A00"
 };
 
 const COLOR_CONFIANZA = { confirmado: P.cian, reportado: P.musgo, estimado: P.magenta };
@@ -1320,7 +1320,7 @@ const COLOR_PRIORIDAD = { critica: P.bermellon, alta: P.violeta, media: P.tintaT
 const COLOR_CASO = { chile: P.bermellon, corea: P.cian, costarica: P.musgo, singapur: P.violeta };
 
 const MONO = "'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
-const TITULAR = "'Archivo Black', 'Arial Black', system-ui, sans-serif";
+const TITULAR = "'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 const nf = (dec) => new Intl.NumberFormat("es-ES", { minimumFractionDigits: dec, maximumFractionDigits: dec });
 const fmt = (n, dec) => (n === null || n === undefined ? "—" : nf(dec === undefined ? 1 : dec).format(n));
@@ -1448,7 +1448,7 @@ function Seccion({ id, numero, etapa, titulo, sumario, children }) {
       </div>
       <h2
         style={{
-          fontFamily: TITULAR,
+          fontFamily: TITULAR, fontWeight: 800,
           fontSize: "clamp(26px, 4.6vw, 46px)",
           lineHeight: 1.05,
           margin: "0 0 14px 0",
@@ -1475,7 +1475,8 @@ function Tarjeta({ children, acento, fondo, estilo }) {
         background: fondo || P.superficie,
         border: `1px solid ${P.borde}`,
         borderLeft: `3px solid ${acento || P.borde}`,
-        borderRadius: 3,
+        borderRadius: 16,
+        boxShadow: "var(--y-shadow)",
         padding: "20px 22px",
         ...(estilo || {})
       }}
@@ -1554,7 +1555,7 @@ function Deslizador({ etiqueta, valor, min, max, paso, color, onChange, formatea
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 14, marginBottom: 7 }}>
         <span style={{ fontFamily: MONO, fontSize: 12, color: P.tintaTenue, lineHeight: 1.5 }}>{etiqueta}</span>
-        <span style={{ fontFamily: TITULAR, fontSize: 18, color: color, whiteSpace: "nowrap" }}>{formateado}</span>
+        <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 18, color: color, whiteSpace: "nowrap" }}>{formateado}</span>
       </div>
       <input
         type="range"
@@ -1611,7 +1612,7 @@ function Embudo({ activa, onIr }) {
         position: "sticky",
         top: 0,
         zIndex: 40,
-        background: "rgba(10,11,15,0.94)",
+        background: "rgba(239,232,223,0.94)",
         backdropFilter: "blur(8px)",
         borderBottom: `1px solid ${P.borde}`,
         margin: "0 -22px",
@@ -1684,14 +1685,14 @@ function RelojDemografico({ salidasDia }) {
     <div
       style={{
         border: `1px solid ${P.bermellon}`,
-        background: "rgba(232, 70, 44, 0.06)",
-        borderRadius: 3,
+        background: "rgba(194, 56, 30, 0.06)",
+        borderRadius: 16,
         padding: "22px 24px"
       }}
     >
       <Rotulo color={P.bermellon}>Desde que abriste esta página</Rotulo>
       <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
-        <span style={{ fontFamily: TITULAR, fontSize: "clamp(46px, 11vw, 88px)", color: P.bermellon, lineHeight: 0.95 }}>
+        <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(46px, 11vw, 88px)", color: P.bermellon, lineHeight: 0.95 }}>
           {fmt(personas, 2)}
         </span>
         <span style={{ fontFamily: MONO, fontSize: 14, color: P.tintaTenue, lineHeight: 1.5 }}>
@@ -1758,14 +1759,14 @@ function SeriePoblacion({ serie }) {
       <div style={{ display: "flex", gap: 30, flexWrap: "wrap", marginTop: 16 }}>
         <div>
           <Rotulo>Año seleccionado</Rotulo>
-          <div style={{ fontFamily: TITULAR, fontSize: 30, color: P.tinta, lineHeight: 1 }}>{actual.anio}</div>
+          <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 30, color: P.tinta, lineHeight: 1 }}>{actual.anio}</div>
           <div style={{ fontFamily: MONO, fontSize: 14, color: P.tintaTenue, marginTop: 8 }}>
             {fmtEntero(actual.valor)} habitantes
           </div>
         </div>
         <div>
           <Rotulo>Variación desde {primero.anio}</Rotulo>
-          <div style={{ fontFamily: TITULAR, fontSize: 30, color: P.bermellon, lineHeight: 1 }}>
+          <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 30, color: P.bermellon, lineHeight: 1 }}>
             {fmtEntero(actual.valor - primero.valor)}
           </div>
           <div style={{ fontFamily: MONO, fontSize: 14, color: P.tintaTenue, marginTop: 8 }}>
@@ -1823,12 +1824,12 @@ function EfectoDenominador({ datos, aviso }) {
               marginTop: 24,
               padding: "18px 20px",
               border: `1px solid ${variacion > 0.5 ? P.bermellon : P.borde}`,
-              borderRadius: 3,
+              borderRadius: 16,
               background: P.superficie
             }}
           >
             <Rotulo color={variacion > 0.5 ? P.bermellon : P.tintaDebil}>Mejora automática, sin que mejore nada</Rotulo>
-            <div style={{ fontFamily: TITULAR, fontSize: 42, color: variacion > 0.5 ? P.bermellon : P.tintaTenue, lineHeight: 1 }}>
+            <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 42, color: variacion > 0.5 ? P.bermellon : P.tintaTenue, lineHeight: 1 }}>
               {variacion >= 0 ? "+" : ""}
               {fmt(variacion, 1)} %
             </div>
@@ -1933,7 +1934,7 @@ function BalanzaAnexo({ anexo }) {
               x={px(row.v.poblacion_implicita)}
               y={row.y - 22}
               textAnchor="middle"
-              style={{ fontFamily: TITULAR, fontSize: 19, fill: row.color }}
+              style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 19, fill: row.color }}
             >
               {fmt(row.v.poblacion_implicita, 3)} M
             </text>
@@ -1960,14 +1961,14 @@ function BalanzaAnexo({ anexo }) {
               <br />
               {i === 0 ? "÷" : "×"} {fmtEntero(v.denominador)} {v.unidad_den}
             </div>
-            <div style={{ fontFamily: TITULAR, fontSize: 26, color: i === 0 ? P.violeta : P.cian, marginTop: 12 }}>
+            <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 26, color: i === 0 ? P.violeta : P.cian, marginTop: 12 }}>
               {fmt(v.poblacion_implicita, 3)} M
             </div>
           </Tarjeta>
         ))}
-        <Tarjeta acento={P.bermellon} fondo="rgba(232,70,44,0.07)">
+        <Tarjeta acento={P.bermellon} fondo="rgba(194,56,30,0.07)">
           <Rotulo color={P.bermellon}>Discrepancia</Rotulo>
-          <div style={{ fontFamily: TITULAR, fontSize: 38, color: P.bermellon, lineHeight: 1 }}>{fmt(anexo.discrepancia_pct, 2)} %</div>
+          <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 38, color: P.bermellon, lineHeight: 1 }}>{fmt(anexo.discrepancia_pct, 2)} %</div>
           <div style={{ fontFamily: MONO, fontSize: 13, color: P.tintaTenue, marginTop: 12, lineHeight: 1.7 }}>
             Más de {fmtEntero(anexo.discrepancia_personas)} personas de diferencia entre dos celdas de la misma tabla.
           </div>
@@ -1998,9 +1999,9 @@ function Contrafactual({ cf, abiertoInicial }) {
     <div
       style={{
         border: `2px dashed ${P.ambar}`,
-        borderRadius: 3,
+        borderRadius: 16,
         padding: "18px 22px",
-        background: "rgba(201, 138, 23, 0.05)"
+        background: "rgba(160, 106, 0, 0.05)"
       }}
     >
       <div
@@ -2023,7 +2024,7 @@ function Contrafactual({ cf, abiertoInicial }) {
           ⚠ Contrafactual · no es evidencia
         </span>
         <span style={{ fontFamily: MONO, fontSize: 12.5, color: P.ambar, fontWeight: 700 }}>{cf.codigo}</span>
-        <h3 style={{ fontFamily: TITULAR, fontSize: 18, color: P.tinta, margin: 0, flex: "1 1 220px", lineHeight: 1.3 }}>
+        <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 18, color: P.tinta, margin: 0, flex: "1 1 220px", lineHeight: 1.3 }}>
           {cf.titulo}
         </h3>
         <span style={{ display: "inline-flex", gap: 4, alignItems: "center" }}>
@@ -2077,10 +2078,10 @@ function Caso({ caso }) {
   return (
     <div>
       <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "baseline", marginBottom: 10 }}>
-        <h3 style={{ fontFamily: TITULAR, fontSize: 30, color: color, margin: 0, lineHeight: 1.1 }}>{caso.nombre}</h3>
+        <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 30, color: color, margin: 0, lineHeight: 1.1 }}>{caso.nombre}</h3>
         <span style={{ fontFamily: MONO, fontSize: 13, color: P.tintaTenue }}>{caso.periodo}</span>
       </div>
-      <div style={{ fontFamily: TITULAR, fontSize: 19, color: P.tinta, marginBottom: 14, lineHeight: 1.3 }}>{caso.titular}</div>
+      <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 19, color: P.tinta, marginBottom: 14, lineHeight: 1.3 }}>{caso.titular}</div>
       <p style={{ fontSize: 16, lineHeight: 1.7, color: P.tintaTenue, maxWidth: 780, marginTop: 0 }}>{caso.narrativa}</p>
 
       <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", margin: "22px 0" }}>
@@ -2098,9 +2099,9 @@ function Caso({ caso }) {
         {caso.fases.map((f) => {
           const cf = f.signo === "positivo" ? P.musgo : P.bermellon;
           return (
-            <div key={f.id} style={{ border: `1px solid ${P.borde}`, borderTop: `3px solid ${cf}`, borderRadius: 3, padding: "18px 20px", background: P.superficie }}>
+            <div key={f.id} style={{ border: `1px solid ${P.borde}`, borderTop: `3px solid ${cf}`, borderRadius: 16, padding: "18px 20px", background: P.superficie }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
-                <span style={{ fontFamily: TITULAR, fontSize: 16, color: cf }}>{f.etiqueta}</span>
+                <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16, color: cf }}>{f.etiqueta}</span>
                 <span style={{ fontFamily: MONO, fontSize: 12.5, color: P.tintaTenue }}>{f.rango}</span>
               </div>
               <div style={{ marginTop: 16 }}>
@@ -2133,7 +2134,7 @@ function Caso({ caso }) {
       </div>
 
       <div style={{ marginTop: 20 }}>
-        <Tarjeta acento={P.ambar} fondo="rgba(201,138,23,0.05)">
+        <Tarjeta acento={P.ambar} fondo="rgba(160,106,0,0.05)">
           <Rotulo color={P.ambar}>Lección para el documento cubano</Rotulo>
           <div style={{ fontSize: 16, lineHeight: 1.7 }}>{caso.leccion}</div>
         </Tarjeta>
@@ -2200,7 +2201,7 @@ function MatrizMecanismos({ mecanismos, casos }) {
                 background: P.superficie,
                 border: `1px solid ${P.borde}`,
                 borderLeft: `3px solid ${c}`,
-                borderRadius: 3,
+                borderRadius: 16,
                 padding: "16px 18px"
               }}
             >
@@ -2281,12 +2282,12 @@ function ReglaUnica({ regla }) {
                 background: P.superficie,
                 border: `1px solid ${P.borde}`,
                 borderLeft: `3px solid ${c}`,
-                borderRadius: 3,
+                borderRadius: 16,
                 padding: "18px 20px"
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "baseline" }}>
-                <span style={{ fontFamily: TITULAR, fontSize: 17, color: P.tinta }}>{inv.medida}</span>
+                <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 17, color: P.tinta }}>{inv.medida}</span>
                 <span style={{ fontFamily: MONO, fontSize: 12, color: P.tintaDebil }}>{inv.referencia}</span>
               </div>
 
@@ -2425,7 +2426,7 @@ function Valoracion({ valoracion }) {
             <Tarjeta key={g.id} acento={baja ? P.bermellon : P.cian}>
               <Rotulo>{g.etiqueta}</Rotulo>
               <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-                <span style={{ fontFamily: TITULAR, fontSize: 46, color: baja ? P.bermellon : P.cian, lineHeight: 1 }}>
+                <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 46, color: baja ? P.bermellon : P.cian, lineHeight: 1 }}>
                   {fmt(g.revisada, 1)}
                 </span>
                 <span style={{ fontFamily: MONO, fontSize: 14, color: P.tintaDebil }}>
@@ -2543,12 +2544,12 @@ function Encuesta({ encuesta, slug }) {
           const votada = votos[pr.id];
           const total = pr.opciones.reduce((acc, o) => acc + (conteos[claveVoto(slug, pr.id, o.id)] || 0), 0);
           return (
-            <div key={pr.id} style={{ border: `1px solid ${P.borde}`, borderRadius: 3, padding: "20px 22px", background: P.superficie }}>
+            <div key={pr.id} style={{ border: `1px solid ${P.borde}`, borderRadius: 16, padding: "20px 22px", background: P.superficie }}>
               <div style={{ display: "flex", gap: 12, alignItems: "baseline", marginBottom: 16, flexWrap: "wrap" }}>
                 <span style={{ fontFamily: MONO, fontSize: 12, color: P.cian, letterSpacing: "0.1em" }}>
                   {String(idx + 1).padStart(2, "0")}
                 </span>
-                <span style={{ fontFamily: TITULAR, fontSize: 17, color: P.tinta, lineHeight: 1.4, flex: "1 1 240px" }}>
+                <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 17, color: P.tinta, lineHeight: 1.4, flex: "1 1 240px" }}>
                   {pr.texto}
                 </span>
               </div>
@@ -2674,7 +2675,7 @@ export default function PropuestaEconomicaAuditoria() {
 
   if (!datos) {
     return (
-      <div style={{ background: P.fondo, color: P.tintaTenue, fontFamily: MONO, padding: 44, minHeight: "60vh" }}>
+      <div style={{ background: "transparent", color: P.tintaTenue, fontFamily: MONO, padding: 44, minHeight: "60vh" }}>
         Cargando dataset…
       </div>
     );
@@ -2683,7 +2684,7 @@ export default function PropuestaEconomicaAuditoria() {
   const d = datos;
 
   return (
-    <div style={{ background: P.fondo, color: P.tinta, minHeight: "100vh" }}>
+    <div style={{ background: "transparent", color: P.tinta, minHeight: "100vh" }}>
       <div style={{ maxWidth: 1060, margin: "0 auto", padding: "0 22px 100px" }}>
         {/* ------------------------------------------------------------ hero */}
         <header style={{ padding: "78px 0 40px" }}>
@@ -2701,7 +2702,7 @@ export default function PropuestaEconomicaAuditoria() {
           </div>
           <h1
             style={{
-              fontFamily: TITULAR,
+              fontFamily: TITULAR, fontWeight: 800,
               fontSize: "clamp(44px, 9.5vw, 104px)",
               lineHeight: 0.94,
               margin: 0,
@@ -2756,7 +2757,7 @@ export default function PropuestaEconomicaAuditoria() {
             <div>
               <Tarjeta acento={P.cian}>
                 <Rotulo color={P.cian}>El documento auditado</Rotulo>
-                <div style={{ fontFamily: TITULAR, fontSize: 19, lineHeight: 1.35, marginBottom: 14 }}>{d.propuesta.titulo}</div>
+                <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 19, lineHeight: 1.35, marginBottom: 14 }}>{d.propuesta.titulo}</div>
                 <div style={{ fontFamily: MONO, fontSize: 12.5, color: P.tintaTenue, lineHeight: 1.9 }}>
                   {d.propuesta.version_doc} · {d.propuesta.fecha} · {d.propuesta.paginas} pp.
                 </div>
@@ -2784,7 +2785,7 @@ export default function PropuestaEconomicaAuditoria() {
               margin: "34px 0 0",
               borderLeft: `4px solid ${P.bermellon}`,
               paddingLeft: 24,
-              fontFamily: TITULAR,
+              fontFamily: TITULAR, fontWeight: 800,
               fontSize: "clamp(20px, 3.4vw, 32px)",
               lineHeight: 1.32,
               color: P.tinta,
@@ -2804,7 +2805,7 @@ export default function PropuestaEconomicaAuditoria() {
                     background: P.superficie,
                     border: `1px solid ${P.borde}`,
                     borderTop: `3px solid ${s.critico ? P.bermellon : P.tintaDebil}`,
-                    borderRadius: 3,
+                    borderRadius: 16,
                     padding: "15px 17px"
                   }}
                 >
@@ -2837,7 +2838,7 @@ export default function PropuestaEconomicaAuditoria() {
           <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
             {d.aciertos.map((a) => (
               <Tarjeta key={a.id} acento={P.musgo}>
-                <div style={{ fontFamily: TITULAR, fontSize: 16.5, marginBottom: 11, lineHeight: 1.3, color: P.musgo }}>
+                <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 16.5, marginBottom: 11, lineHeight: 1.3, color: P.musgo }}>
                   {a.titulo}
                 </div>
                 <div style={{ fontSize: 14.5, lineHeight: 1.68, color: P.tinta }}>{a.detalle}</div>
@@ -2868,7 +2869,7 @@ export default function PropuestaEconomicaAuditoria() {
                 style={{
                   background: P.superficie,
                   border: `1px solid ${P.borde}`,
-                  borderRadius: 3,
+                  borderRadius: 16,
                   padding: "20px 22px",
                   display: "grid",
                   gap: 16,
@@ -2952,7 +2953,7 @@ export default function PropuestaEconomicaAuditoria() {
               <Rotulo>Conclusión que extrae</Rotulo>
               <div style={{ fontSize: 15, lineHeight: 1.68, color: P.tintaTenue }}>{d.demografia.argumento.conclusion_documento}</div>
             </Tarjeta>
-            <Tarjeta acento={P.bermellon} fondo="rgba(232,70,44,0.06)">
+            <Tarjeta acento={P.bermellon} fondo="rgba(194,56,30,0.06)">
               <Rotulo color={P.bermellon}>La objeción</Rotulo>
               <div style={{ fontSize: 15, lineHeight: 1.68 }}>{d.demografia.argumento.objecion}</div>
             </Tarjeta>
@@ -2987,8 +2988,8 @@ export default function PropuestaEconomicaAuditoria() {
             <Rotulo color={P.cian}>Las identidades que sostienen esta sección</Rotulo>
             <div style={{ display: "grid", gap: 16 }}>
               {d.formulas.map((f) => (
-                <div key={f.id} style={{ border: `1px solid ${P.borde}`, borderRadius: 3, padding: "22px 24px", background: P.superficie }}>
-                  <div style={{ fontFamily: TITULAR, fontSize: 18, color: P.tinta, marginBottom: 4 }}>{f.titulo}</div>
+                <div key={f.id} style={{ border: `1px solid ${P.borde}`, borderRadius: 16, padding: "22px 24px", background: P.superficie }}>
+                  <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 18, color: P.tinta, marginBottom: 4 }}>{f.titulo}</div>
                   <Mate html={f.mathml} />
                   <div style={{ fontSize: 15, lineHeight: 1.72, color: P.tintaTenue, maxWidth: 800 }}>{f.lectura}</div>
                   <div style={{ marginTop: 18, paddingTop: 14, borderTop: `1px solid ${P.borde}` }}>
@@ -3009,7 +3010,7 @@ export default function PropuestaEconomicaAuditoria() {
 
           {/* efecto denominador */}
           <div style={{ marginTop: 44 }}>
-            <h3 style={{ fontFamily: TITULAR, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 10px", lineHeight: 1.2 }}>
+            <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 10px", lineHeight: 1.2 }}>
               {d.denominador.titulo}
             </h3>
             <p style={{ color: P.tintaTenue, fontSize: 16, lineHeight: 1.7, maxWidth: 780, marginTop: 0, marginBottom: 24 }}>
@@ -3020,7 +3021,7 @@ export default function PropuestaEconomicaAuditoria() {
 
           {/* carencias */}
           <div style={{ marginTop: 48 }}>
-            <h3 style={{ fontFamily: TITULAR, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 20px", lineHeight: 1.2 }}>
+            <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 20px", lineHeight: 1.2 }}>
               {d.carencias.titulo}
             </h3>
             <div style={{ display: "grid", gap: 8 }}>
@@ -3037,7 +3038,7 @@ export default function PropuestaEconomicaAuditoria() {
                       background: P.superficie,
                       border: `1px solid ${P.borde}`,
                       borderLeft: `3px solid ${c}`,
-                      borderRadius: 3,
+                      borderRadius: 16,
                       padding: "14px 18px"
                     }}
                   >
@@ -3110,7 +3111,7 @@ export default function PropuestaEconomicaAuditoria() {
                   alignItems: "flex-start",
                   background: P.superficieAlt,
                   border: `1px solid ${P.borde}`,
-                  borderRadius: 3,
+                  borderRadius: 16,
                   padding: "14px 18px"
                 }}
               >
@@ -3131,7 +3132,7 @@ export default function PropuestaEconomicaAuditoria() {
           <Caso caso={d.comparacion.casos[caso]} />
 
           <div style={{ marginTop: 52 }}>
-            <h3 style={{ fontFamily: TITULAR, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 10px", lineHeight: 1.2 }}>
+            <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 10px", lineHeight: 1.2 }}>
               Mecanismo, condición, estado en Cuba
             </h3>
             <p style={{ color: P.tintaTenue, fontSize: 16, lineHeight: 1.7, maxWidth: 780, marginTop: 0, marginBottom: 24 }}>
@@ -3153,7 +3154,7 @@ export default function PropuestaEconomicaAuditoria() {
           <ReglaUnica regla={d.regla_unica} />
 
           <div style={{ marginTop: 52 }}>
-            <h3 style={{ fontFamily: TITULAR, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 20px", lineHeight: 1.2 }}>
+            <h3 style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: "clamp(20px, 3vw, 28px)", margin: "0 0 20px", lineHeight: 1.2 }}>
               {d.valoracion.titulo}
             </h3>
             <Valoracion valoracion={d.valoracion} />
@@ -3178,15 +3179,15 @@ export default function PropuestaEconomicaAuditoria() {
                   alignItems: "flex-start",
                   background: P.superficie,
                   border: `1px solid ${P.borde}`,
-                  borderRadius: 3,
+                  borderRadius: 16,
                   padding: "20px 22px"
                 }}
               >
-                <span style={{ fontFamily: TITULAR, fontSize: 38, color: P.cian, lineHeight: 0.9, minWidth: 42 }}>
+                <span style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 38, color: P.cian, lineHeight: 0.9, minWidth: 42 }}>
                   {e.numero}
                 </span>
                 <div>
-                  <div style={{ fontFamily: TITULAR, fontSize: 17, color: P.tinta, marginBottom: 9, lineHeight: 1.35 }}>
+                  <div style={{ fontFamily: TITULAR, fontWeight: 800, fontSize: 17, color: P.tinta, marginBottom: 9, lineHeight: 1.35 }}>
                     {e.titulo}
                   </div>
                   <div style={{ fontSize: 15, lineHeight: 1.7, color: P.tintaTenue }}>{e.detalle}</div>
@@ -3213,7 +3214,7 @@ export default function PropuestaEconomicaAuditoria() {
               margin: "36px 0 0",
               borderLeft: `4px solid ${P.cian}`,
               paddingLeft: 24,
-              fontFamily: TITULAR,
+              fontFamily: TITULAR, fontWeight: 800,
               fontSize: "clamp(20px, 3.6vw, 34px)",
               lineHeight: 1.3,
               color: P.tinta,

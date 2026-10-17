@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { cargarFuentes } from "../design/tokens";
 
 /* ============================================================================
    YAMACOA · expediente "desacreditacion" — RENDERER CONGELADO
@@ -12,10 +13,10 @@ import { useEffect, useState } from "react";
    ========================================================================== */
 
 const C = {
-  bg: "#14101B", panel: "#1E1830", panel2: "#261F38",
-  line: "rgba(230,224,240,.10)", paper: "#ECE6F0", dim: "#948AA3",
-  violeta: "#AB69A8", bilis: "#62B276",
-  corrob: "#5BAE9A", noconf: "#D9A13B",
+  bg: "#efe8df", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", paper: "#1f1a16", dim: "#6b5d50",
+  violeta: "#8E4A8B", bilis: "#2F7D4A",
+  corrob: "#127567", noconf: "#8A6410",
 };
 const TOK = { violeta: C.violeta, bilis: C.bilis, paper: C.paper };
 const DATA_URL = ((typeof process !== "undefined" && process.env && process.env.PUBLIC_URL) || "") + "/data/desacreditacion.json";
@@ -200,7 +201,7 @@ function Encuesta({ datos }) {
               const elegida = miVoto[q.id] === op;
               return (
                 <button key={op} className="dc-opcion" disabled={votado} onClick={() => votar(q.id, op)}>
-                  <span className="dc-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(171,105,168,.28)" : "rgba(148,138,163,.18)" }} />
+                  <span className="dc-opcion-fill" style={{ width: votado ? pct + "%" : 0, background: elegida ? "rgba(142,74,139,.22)" : "rgba(107,93,80,.14)" }} />
                   <span className="dc-opcion-txt"><span>{elegida ? "✓ " : ""}{op}</span>{votado && <span>{pct}%</span>}</span>
                 </button>
               );
@@ -217,12 +218,7 @@ export default function App() {
   const [data, setData] = useState(EMBEDDED);
 
   useEffect(() => {
-    const id = "dc-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
     let live = true;
     fetch(DATA_URL).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j) setData(j); }).catch(() => {});
     return () => { live = false; };
@@ -335,13 +331,13 @@ export default function App() {
 }
 
 const CSS = `
-.dc-root{ background:${C.bg}; color:${C.paper}; font-family:'Archivo',system-ui,sans-serif; min-height:100vh; }
+.dc-root{ background:transparent; color:${C.paper}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; min-height:100vh; }
 .dc-root *{ box-sizing:border-box; }
 .dc-hero{ padding:48px 20px 28px; max-width:920px; margin:0 auto; }
 .dc-eyebrow{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; color:${C.violeta}; }
-.dc-hero h1{ font-size:clamp(28px,5vw,44px); margin:10px 0 8px; line-height:1.1; }
+.dc-hero h1{ font-size:clamp(28px,5vw,44px); margin:10px 0 8px; line-height:1.1; font-weight:800; letter-spacing:-.02em; }
 .dc-subtitulo{ color:${C.dim}; font-size:16px; max-width:640px; line-height:1.5; }
-.dc-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.violeta}; border-radius:8px; padding:12px 16px; font-size:13.5px; line-height:1.5; color:${C.paper}; }
+.dc-advertencia{ margin-top:18px; background:${C.panel}; border:1px solid ${C.violeta}; border-radius:16px; padding:12px 16px; font-size:13.5px; line-height:1.5; color:${C.paper}; }
 .dc-main{ max-width:920px; margin:0 auto; padding:0 20px 80px; }
 .dc-main section{ margin-top:52px; }
 .dc-sec-head{ margin-bottom:16px; }
@@ -354,10 +350,10 @@ const CSS = `
 .dc-chip-no{ color:${C.noconf}; border:1px dashed ${C.noconf}; }
 .dc-frente-tag{ font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; padding:2px 7px; border-radius:999px; border:1px solid; }
 .dc-tacticas-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.dc-tactica{ background:${C.panel}; border-radius:8px; padding:14px 16px; }
+.dc-tactica{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow); padding:14px 16px; }
 .dc-tactica-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; }
 .dc-tactica p{ font-size:13px; color:${C.dim}; line-height:1.5; margin:0; }
-.dc-matriz{ background:${C.panel}; border-radius:8px; padding:10px 16px; }
+.dc-matriz{ background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow); padding:10px 16px; }
 .dc-matriz-row{ display:grid; grid-template-columns:1fr 110px 130px; align-items:center; padding:9px 0; border-bottom:1px solid ${C.line}; gap:8px; }
 .dc-matriz-row:last-of-type{ border-bottom:none; }
 .dc-matriz-head{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:${C.dim}; text-transform:uppercase; letter-spacing:.06em; }
@@ -373,20 +369,20 @@ const CSS = `
 .dc-evento p{ font-size:13.5px; line-height:1.5; margin:0 0 6px; }
 .dc-evento-meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .dc-evento-fuente{ font-size:11px; color:${C.dim}; }
-.dc-caso-advertencia{ background:${C.panel}; border:1px solid ${C.violeta}; border-radius:8px; padding:12px 16px; font-size:13px; line-height:1.5; margin-bottom:18px; }
+.dc-caso-advertencia{ background:${C.panel}; border:1px solid ${C.violeta}; border-radius:16px; padding:12px 16px; font-size:13px; line-height:1.5; margin-bottom:18px; }
 .dc-caso-hechos{ display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
-.dc-hecho{ background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.dc-hecho{ background:${C.panel}; border-radius:20px; box-shadow:var(--y-shadow); padding:12px 16px; }
 .dc-hecho-top{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
 .dc-hecho-fuente{ font-size:11px; color:${C.dim}; }
 .dc-hecho p{ font-size:13.5px; line-height:1.5; margin:0; }
 .dc-hecho-nota{ color:${C.dim}; font-size:12px; margin-top:6px !important; }
-.dc-artefacto{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:8px; padding:16px 18px; }
+.dc-artefacto{ background:${C.panel2}; border:1px solid ${C.line}; border-radius:20px; padding:16px 18px; }
 .dc-artefacto h3{ font-size:14px; margin:0 0 10px; color:${C.dim}; text-transform:uppercase; letter-spacing:.05em; font-family:'IBM Plex Mono',monospace; }
 .dc-artefacto p{ font-size:13.5px; line-height:1.6; margin:0 0 10px; }
 .dc-artefacto-nota{ color:${C.dim}; font-size:12px; margin:0 !important; }
 .dc-rango{ font-size:14px; margin:0 0 14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .dc-casos-historicos{ display:flex; flex-direction:column; gap:10px; }
-.dc-caso-hist{ background:${C.panel}; border-radius:8px; padding:12px 16px; }
+.dc-caso-hist{ background:${C.panel}; border-radius:20px; box-shadow:var(--y-shadow); padding:12px 16px; }
 .dc-caso-hist-top{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
 .dc-caso-hist-top span{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:${C.dim}; }
 .dc-caso-hist p{ font-size:13px; color:${C.dim}; line-height:1.5; margin:0; }
@@ -396,9 +392,9 @@ const CSS = `
 .dc-hbar-track{ height:14px; border-radius:7px; background:${C.panel}; overflow:hidden; }
 .dc-hbar-fill{ display:block; height:100%; border-radius:7px; transition:width .4s; }
 .dc-hbar-n{ font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right; }
-.dc-eltoque{ background:${C.panel}; border-radius:8px; padding:12px 16px; display:flex; gap:10px; align-items:flex-start; }
+.dc-eltoque{ background:${C.panel}; border-radius:20px; box-shadow:var(--y-shadow); padding:12px 16px; display:flex; gap:10px; align-items:flex-start; }
 .dc-eltoque p{ font-size:13.5px; line-height:1.5; margin:0; }
-.dc-muro{ display:flex; flex-wrap:wrap; gap:8px 14px; background:${C.panel}; border-radius:8px; padding:22px; align-items:baseline; }
+.dc-muro{ display:flex; flex-wrap:wrap; gap:8px 14px; background:${C.panel}; border-radius:24px; box-shadow:var(--y-shadow); padding:22px; align-items:baseline; }
 .dc-etiqueta{ font-family:'IBM Plex Mono',monospace; font-weight:600; letter-spacing:.02em; border-bottom:2px solid; padding-bottom:2px; cursor:default; }
 .dc-etiqueta-no{ opacity:.72; border-bottom-style:dashed; }
 .dc-donut-wrap{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
@@ -410,9 +406,9 @@ const CSS = `
 .dc-donut-legend li{ display:flex; align-items:center; gap:8px; }
 .dc-donut-legend i{ width:10px; height:10px; border-radius:50%; display:inline-block; flex-shrink:0; }
 .dc-encuesta{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
-.dc-pregunta{ background:${C.panel}; border:1px solid ${C.line}; border-radius:10px; padding:14px 16px; }
+.dc-pregunta{ background:${C.panel}; border:0; box-shadow:var(--y-shadow); border-radius:24px; padding:14px 16px; }
 .dc-pregunta p{ font-size:14px; line-height:1.5; margin:0 0 12px; }
-.dc-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:6px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
+.dc-opcion{ display:block; width:100%; text-align:left; margin-bottom:8px; position:relative; overflow:hidden; background:${C.panel2}; color:${C.paper}; border-radius:10px; border:1px solid ${C.line}; padding:0; cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:12.5px; }
 .dc-opcion:disabled{ cursor:default; }
 .dc-opcion-fill{ position:absolute; inset:0; transition:width .4s; }
 .dc-opcion-txt{ position:relative; display:flex; justify-content:space-between; padding:8px 10px; }

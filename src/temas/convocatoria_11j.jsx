@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import { cargarFuentes } from "../design/tokens";
 import "leaflet/dist/leaflet.css";
 
 /* ──────────────────────────────────────────────────────────────────────────
@@ -24,11 +25,11 @@ const DATA_URL = (typeof process !== "undefined" && process.env && process.env.P
 
 // Paleta "Luz verde" (ficha de diseño jul-2026): verde señal + violeta eléctrico.
 const COL = {
-  bg: "#0B100D", panel: "#121A15", panel2: "#0E1511",
-  line: "rgba(226,244,232,.12)", text: "#ECF4EE", dim: "#8FA396",
-  green: "#32BD4E", greenHi: "#4ADE68", greenDim: "#1F7A36", greenSoft: "rgba(50,189,78,.16)",
-  violet: "#AE5AD8", violetSoft: "rgba(174,90,216,.16)",
-  desat: "#7FA88B",
+  bg: "transparent", panel: "#fcf9f4", panel2: "#f5efe7",
+  line: "rgba(60,40,20,.15)", text: "#1f1a16", dim: "#6b5d50",
+  green: "#1A7F35", greenHi: "#17732F", greenDim: "#15602A", greenSoft: "rgba(26,127,53,.12)",
+  violet: "#8A3BB5", violetSoft: "rgba(138,59,181,.09)",
+  desat: "#5E8A6B",
 };
 
 // Leaflet en bundlers: las rutas de los PNG del icono por defecto no resuelven.
@@ -1130,12 +1131,12 @@ const EMBEDDED = {
 const PIN_SVG = {
   // Confirmada: círculo relleno, opacidad plena, halo.
   confirmado: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-    <circle cx="14" cy="14" r="12" fill="rgba(50,189,78,.22)"/>
-    <circle cx="14" cy="14" r="7.5" fill="#32BD4E" stroke="#0B100D" stroke-width="1.5"/>
+    <circle cx="14" cy="14" r="12" fill="rgba(30,154,64,.22)"/>
+    <circle cx="14" cy="14" r="7.5" fill="#1E9A40" stroke="#0B100D" stroke-width="1.5"/>
   </svg>`,
   // Celebrada: círculo relleno atenuado con marca de hecho.
   celebrado: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" opacity=".8">
-    <circle cx="14" cy="14" r="7.5" fill="#1F7A36" stroke="#0B100D" stroke-width="1.5"/>
+    <circle cx="14" cy="14" r="7.5" fill="#15602A" stroke="#0B100D" stroke-width="1.5"/>
     <path d="M10.5 14.2l2.4 2.4 4.6-5" fill="none" stroke="#ECF4EE" stroke-width="1.8" stroke-linecap="round"/>
   </svg>`,
   // Reportada sin verificar: círculo relleno con anillo blanco, 70 %. El aro
@@ -1143,11 +1144,11 @@ const PIN_SVG = {
   reportado_no_verificado: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" opacity=".7">
     <circle cx="14" cy="14" r="11.2" fill="none" stroke="rgba(11,16,13,.55)" stroke-width="1.4"/>
     <circle cx="14" cy="14" r="10" fill="none" stroke="#ECF4EE" stroke-width="1.6"/>
-    <circle cx="14" cy="14" r="6" fill="#32BD4E"/>
+    <circle cx="14" cy="14" r="6" fill="#1E9A40"/>
   </svg>`,
   // Plausible: círculo hueco de trazo discontinuo.
   plausible_no_confirmado: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
-    <circle cx="14" cy="14" r="8" fill="rgba(50,189,78,.08)" stroke="#32BD4E" stroke-width="2" stroke-dasharray="4 3"/>
+    <circle cx="14" cy="14" r="8" fill="rgba(30,154,64,.08)" stroke="#1E9A40" stroke-width="2" stroke-dasharray="4 3"/>
   </svg>`,
   // Especulativa: rombo hueco punteado, verde desaturado, 40 %.
   especulativo: `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" opacity=".4">
@@ -1385,14 +1386,14 @@ function CubaMap({ propagacion, reduced }) {
         aria-label="Mapa provincial de Cuba con la propagación de las protestas del 11 y 12 de julio de 2021">
         <defs>
           <radialGradient id="c11jGlow" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stopColor="rgba(174,90,216,.20)" />
-            <stop offset="100%" stopColor="rgba(174,90,216,0)" />
+            <stop offset="0%" stopColor="rgba(138,59,181,.10)" />
+            <stop offset="100%" stopColor="rgba(138,59,181,0)" />
           </radialGradient>
         </defs>
         <rect x="0" y="0" width={MW} height={MH} fill="url(#c11jGlow)" />
         <g transform={`translate(${CMAP.tx},${CMAP.ty}) scale(${CMAP.k})`}>
           {CUBA_PROV.map((prov) => (
-            <path key={prov.id} d={prov.d} fill="#26402F" stroke="rgba(226,244,232,.30)" strokeWidth={1.2 / CMAP.k}>
+            <path key={prov.id} d={prov.d} fill="#e2e9dd" stroke="rgba(60,40,20,.30)" strokeWidth={1.2 / CMAP.k}>
               <title>{prov.nombre}</title>
             </path>
           ))}
@@ -1404,10 +1405,10 @@ function CubaMap({ propagacion, reduced }) {
           return (
             <g key={h.id} transform={`translate(${h.xy[0]},${h.xy[1]})`}
               onClick={() => { setPlaying(false); setPaso(i); }} style={{ cursor: "pointer" }}>
-              {es && <circle r={22} fill="rgba(50,189,78,.18)" />}
+              {es && <circle r={22} fill="rgba(26,127,53,.16)" />}
               <circle r={r}
                 fill={on ? (es ? COL.greenHi : COL.green) : "none"}
-                stroke={on ? "#0B100D" : COL.desat} strokeWidth={on ? 1.5 : 1.2}
+                stroke={on ? "#fcf9f4" : COL.desat} strokeWidth={on ? 1.5 : 1.2}
                 opacity={on ? 1 : 0.55} />
               <text y={-r - 7} textAnchor="middle" className="cuba-lbl"
                 opacity={es ? 1 : on ? 0.65 : 0}>{h.orden}. {h.nombre.split(" (")[0]}</text>
@@ -1437,13 +1438,7 @@ export default function App() {
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    const id = "c11j-fonts";
-    if (!document.getElementById(id)) {
-      const l = document.createElement("link");
-      l.id = id; l.rel = "stylesheet";
-      l.href = "https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
-      document.head.appendChild(l);
-    }
+    cargarFuentes();
   }, []);
 
   useEffect(() => {
@@ -1738,43 +1733,43 @@ export default function App() {
 /* ════════ ESTILOS ══════════════════════════════════════════════════════════ */
 
 const CSS = `
-.c11j { background:${COL.bg}; color:${COL.text}; min-height:100vh; font-family:'Archivo',system-ui,sans-serif; line-height:1.5; }
+.c11j { background:${COL.bg}; color:${COL.text}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; line-height:1.5; --sh:var(--y-shadow,0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055)); }
 .c11j .mono { font-family:'IBM Plex Mono',ui-monospace,monospace; }
 .c11j a { color:${COL.greenHi}; }
 .c11j .dim { color:${COL.dim}; }
-.c11j :focus-visible { outline:2px solid ${COL.greenHi}; outline-offset:2px; border-radius:3px; }
+.c11j :focus-visible { outline:2px solid #b8562e; outline-offset:2px; border-radius:6px; }
 .c11j button { font-family:inherit; }
 
 .c11j .hd { max-width:1080px; margin:0 auto; padding:56px 20px 28px; text-align:center; }
 .c11j .eyebrow { color:${COL.green}; font-size:12px; letter-spacing:.14em; margin-bottom:14px; }
-.c11j .title { font-size:clamp(44px,9vw,96px); font-weight:900; letter-spacing:-.02em; margin:0 0 12px; text-transform:uppercase; }
-.c11j .sub { max-width:760px; margin:0 auto 26px; color:${COL.dim}; font-size:17px; }
+.c11j .title { font-size:clamp(44px,9vw,96px); font-weight:800; letter-spacing:-.02em; margin:0 0 12px; text-transform:uppercase; }
+.c11j .sub { max-width:760px; margin:0 auto 26px; color:#4a3f36; font-size:17px; }
 
 .c11j .count { display:flex; gap:12px; justify-content:center; margin:10px 0 26px; }
-.c11j .count-cell { background:${COL.panel}; border:1px solid ${COL.line}; border-top:3px solid ${COL.green}; border-radius:8px; padding:10px 14px; min-width:76px; }
+.c11j .count-cell { background:${COL.panel}; border:0; border-top:3px solid ${COL.green}; box-shadow:var(--sh); border-radius:16px; padding:10px 14px; min-width:76px; }
 .c11j .count-n { font-family:'IBM Plex Mono',monospace; font-size:clamp(28px,5vw,44px); font-weight:600; color:${COL.greenHi}; }
 .c11j .count-l { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:${COL.dim}; }
-.c11j .count-today .count-big, .c11j .count-past .count-big { font-size:clamp(30px,6vw,52px); font-weight:900; color:${COL.greenHi}; letter-spacing:.04em; }
+.c11j .count-today .count-big, .c11j .count-past .count-big { font-size:clamp(30px,6vw,52px); font-weight:800; color:${COL.greenHi}; letter-spacing:.04em; }
 .c11j .count-sub { color:${COL.dim}; font-size:14px; }
 .c11j .count-today, .c11j .count-past { flex-direction:column; align-items:center; gap:4px; }
 
 .c11j .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; max-width:980px; margin:0 auto 22px; }
-.c11j .kpi { background:${COL.panel}; border:1px solid ${COL.line}; border-radius:8px; padding:14px; text-align:left; }
+.c11j .kpi { background:${COL.panel}; border:0; box-shadow:var(--sh); border-radius:20px; padding:14px; text-align:left; }
 .c11j .kpi-n { font-family:'IBM Plex Mono',monospace; font-size:30px; font-weight:600; color:${COL.greenHi}; }
 .c11j .kpi-l { font-size:13px; color:${COL.text}; margin-top:2px; }
 .c11j .kpi-f { font-size:11px; color:${COL.dim}; margin-top:6px; }
 
-.c11j .registro { max-width:820px; margin:6px auto 0; text-align:left; background:${COL.violetSoft}; border:1px solid rgba(174,90,216,.4); border-radius:8px; padding:14px 16px; }
+.c11j .registro { max-width:820px; margin:6px auto 0; text-align:left; background:${COL.violetSoft}; border:1px solid rgba(138,59,181,.35); border-radius:16px; padding:14px 16px; }
 .c11j .registro-tag { color:${COL.violet}; font-size:11px; letter-spacing:.14em; }
 .c11j .registro p { margin:6px 0 0; font-size:14px; }
 
-.c11j .anchors { position:sticky; top:0; z-index:1200; display:flex; gap:4px; justify-content:center; flex-wrap:wrap; padding:10px 8px; background:rgba(11,16,13,.92); backdrop-filter:blur(6px); border-top:1px solid ${COL.line}; border-bottom:1px solid ${COL.line}; }
+.c11j .anchors { position:sticky; top:0; z-index:1200; display:flex; gap:4px; justify-content:center; flex-wrap:wrap; padding:10px 8px; background:rgba(239,232,223,.92); backdrop-filter:blur(6px); border-top:1px solid ${COL.line}; border-bottom:1px solid ${COL.line}; }
 .c11j .anchor { color:${COL.text}; text-decoration:none; font-size:12.5px; letter-spacing:.06em; padding:7px 13px; border-radius:999px; border:1px solid transparent; }
 .c11j .anchor:hover { border-color:${COL.green}; color:${COL.greenHi}; }
 
 .c11j .panel { max-width:1080px; margin:0 auto; padding:48px 20px 8px; }
 .c11j .sec-h { font-size:clamp(24px,4vw,36px); font-weight:800; margin:0 0 8px; }
-.c11j .sec-sub { color:${COL.dim}; max-width:820px; margin:0 0 20px; }
+.c11j .sec-sub { color:#4a3f36; max-width:820px; margin:0 0 20px; }
 
 .c11j .filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
 .c11j .filter { display:inline-flex; align-items:center; gap:6px; background:${COL.panel2}; color:${COL.dim}; border:1px solid ${COL.line}; border-radius:999px; padding:6px 14px 6px 8px; font-size:13px; cursor:pointer; }
@@ -1782,14 +1777,14 @@ const CSS = `
 .c11j .glyph { display:inline-flex; width:22px; height:22px; vertical-align:middle; flex:none; }
 .c11j .glyph svg { width:22px; height:22px; }
 
-.c11j .mapwrap { position:relative; border:1px solid ${COL.line}; border-radius:10px; overflow:hidden; }
+.c11j .mapwrap { position:relative; border:0; box-shadow:var(--sh); border-radius:24px; overflow:hidden; }
 .c11j .worldmap { height:480px; width:100%; background:#cfd8d3; }
-.c11j .legend { position:absolute; left:10px; bottom:10px; z-index:1000; background:rgba(11,16,13,.9); border:1px solid ${COL.line}; border-radius:8px; padding:10px 12px; font-size:12px; max-width:230px; }
+.c11j .legend { position:absolute; left:10px; bottom:10px; z-index:1000; background:rgba(252,249,244,.95); border:1px solid ${COL.line}; border-radius:14px; padding:10px 12px; font-size:12px; max-width:230px; }
 .c11j .legend-h { font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:${COL.dim}; margin-bottom:6px; }
 .c11j .legend-row { display:flex; align-items:center; gap:6px; margin:3px 0; }
 .c11j .mapnote { color:${COL.dim}; font-size:13px; max-width:860px; margin:12px 0 0; }
 .c11j .c11j-pin { background:none; border:none; }
-.c11j .leaflet-popup-content-wrapper { background:${COL.panel}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:8px; }
+.c11j .leaflet-popup-content-wrapper { background:${COL.panel}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:14px; box-shadow:0 8px 24px rgba(40,25,10,.16); }
 .c11j .leaflet-popup-tip { background:${COL.panel}; }
 .c11j .leaflet-container a.leaflet-popup-close-button { color:${COL.dim}; }
 .c11j .pop { font-size:13px; }
@@ -1797,14 +1792,14 @@ const CSS = `
 .c11j .pop-h { font-weight:700; font-size:15px; }
 .c11j .pop-city { color:${COL.dim}; margin-bottom:6px; }
 .c11j .pop-row { margin:3px 0; }
-.c11j .pop-warn { margin-top:7px; padding:7px 9px; background:rgba(174,90,216,.12); border-left:3px solid ${COL.violet}; font-size:12px; color:${COL.text}; }
+.c11j .pop-warn { margin-top:7px; padding:7px 9px; background:rgba(138,59,181,.08); border-left:3px solid ${COL.violet}; font-size:12px; color:${COL.text}; }
 .c11j .pop-src { display:inline-block; margin-top:7px; font-weight:600; }
 .c11j .pop-precision { margin-top:5px; font-size:11px; color:${COL.dim}; }
 
 .c11j .endudas { margin-top:24px; }
 .c11j .endudas-h { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:${COL.dim}; margin-bottom:10px; }
 .c11j .endudas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; }
-.c11j .enduda { background:${COL.panel2}; border:1px dashed ${COL.line}; border-radius:8px; padding:10px 12px; }
+.c11j .enduda { background:${COL.panel2}; border:1px dashed rgba(60,40,20,.28); border-radius:14px; padding:10px 12px; }
 .c11j .enduda-c { font-weight:600; font-size:14px; }
 .c11j .enduda-n { color:${COL.dim}; font-size:12.5px; margin-top:3px; }
 
@@ -1817,48 +1812,48 @@ const CSS = `
 .c11j .ev-hora { margin-left:auto; color:${COL.greenHi}; font-size:13px; }
 .c11j .ev-nombre { font-size:14px; margin-top:2px; }
 .c11j .ev-org { font-size:12.5px; margin-top:2px; }
-.c11j .ev-warn { margin-top:6px; padding:6px 9px; background:rgba(174,90,216,.10); border-left:3px solid ${COL.violet}; font-size:12.5px; color:${COL.dim}; }
+.c11j .ev-warn { margin-top:6px; padding:6px 9px; background:rgba(138,59,181,.07); border-left:3px solid ${COL.violet}; font-size:12.5px; color:${COL.dim}; }
 .c11j .ev-src { font-size:12.5px; font-weight:600; }
 
-.c11j .cubawrap { border:1px solid ${COL.line}; border-radius:10px; padding:14px; background:${COL.panel2}; }
+.c11j .cubawrap { border:0; box-shadow:var(--sh); border-radius:24px; padding:14px; background:${COL.panel}; }
 .c11j .cuba-controls { display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
-.c11j .ctl { background:${COL.panel}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:6px; padding:6px 12px; cursor:pointer; font-size:14px; }
+.c11j .ctl { background:${COL.panel}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:999px; padding:6px 12px; cursor:pointer; font-size:14px; }
 .c11j .ctl.play { color:${COL.greenHi}; border-color:${COL.green}; }
 .c11j .ctl:disabled { opacity:.35; cursor:default; }
 .c11j .cuba-step { color:${COL.dim}; font-size:12px; margin-left:auto; }
 .c11j .cubamap { width:100%; height:auto; display:block; }
-.c11j .cuba-lbl { fill:${COL.text}; font-size:13px; font-family:'IBM Plex Mono',monospace; paint-order:stroke; stroke:${COL.bg}; stroke-width:3px; }
+.c11j .cuba-lbl { fill:${COL.text}; font-size:13px; font-family:'IBM Plex Mono',monospace; paint-order:stroke; stroke:#fcf9f4; stroke-width:3px; }
 .c11j .cuba-card { border-top:1px solid ${COL.line}; margin-top:10px; padding-top:12px; }
 .c11j .cuba-card-h { font-weight:700; font-size:16px; }
-.c11j .cuba-orden { display:inline-block; background:${COL.green}; color:${COL.bg}; border-radius:4px; padding:0 7px; font-weight:600; margin-right:4px; }
+.c11j .cuba-orden { display:inline-block; background:${COL.green}; color:#fcf9f4; border-radius:6px; padding:0 7px; font-weight:600; margin-right:4px; }
 .c11j .cuba-hora { color:${COL.dim}; font-size:13px; }
 .c11j .cuba-card-t { margin:8px 0 6px; max-width:900px; }
 .c11j .srcline { font-family:'IBM Plex Mono',monospace; font-size:11px; color:${COL.dim}; margin-top:8px; }
 
 .c11j .hist-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; margin-top:16px; }
-.c11j .hist-card { background:${COL.panel}; border:1px solid ${COL.line}; border-radius:8px; padding:14px 16px; }
+.c11j .hist-card { background:${COL.panel}; border:0; box-shadow:var(--sh); border-radius:20px; padding:14px 16px; }
 .c11j .hist-h { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:${COL.green}; margin-bottom:6px; }
 .c11j .hist-h.violet-h { color:${COL.violet}; }
 .c11j .hist-card p { margin:0; font-size:14px; }
 
 .c11j .cifras-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
-.c11j .cifra { background:${COL.panel}; border:1px solid ${COL.line}; border-left:3px solid ${COL.green}; border-radius:8px; padding:14px 16px; }
+.c11j .cifra { background:${COL.panel}; border:0; border-left:3px solid ${COL.green}; box-shadow:var(--sh); border-radius:20px; padding:14px 16px; }
 .c11j .cifra-n { font-family:'IBM Plex Mono',monospace; font-size:34px; font-weight:600; color:${COL.greenHi}; }
 .c11j .cifra-l { font-size:13.5px; margin-top:2px; }
 .c11j .cifra-d { font-size:12.5px; margin-top:6px; }
 .c11j .cifra-f { font-size:11px; color:${COL.dim}; margin-top:8px; }
 
-.c11j .otero { margin-top:22px; background:${COL.panel}; border:1px solid rgba(174,90,216,.45); border-radius:10px; padding:18px 20px; }
+.c11j .otero { margin-top:22px; background:${COL.panel}; border:1px solid rgba(138,59,181,.40); box-shadow:var(--sh); border-radius:24px; padding:18px 20px; }
 .c11j .otero-tag { color:${COL.violet}; font-size:11px; letter-spacing:.14em; }
 .c11j .otero-h { margin:6px 0 2px; font-size:24px; }
 .c11j .otero-quien { margin:0 0 10px; font-size:13.5px; }
 .c11j .otero-tl { margin:0; padding-left:18px; }
 .c11j .otero-tl li { margin:7px 0; font-size:14px; }
 .c11j .otero-f { color:${COL.violet}; margin-right:6px; }
-.c11j .otero-estado { margin-top:10px; padding:9px 12px; background:${COL.violetSoft}; border-radius:6px; font-weight:600; font-size:14px; }
+.c11j .otero-estado { margin-top:10px; padding:9px 12px; background:${COL.violetSoft}; border-radius:12px; font-weight:600; font-size:14px; }
 
 .c11j .muro { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px; }
-.c11j .ficha { display:block; background:${COL.panel2}; border:1px solid ${COL.line}; border-radius:8px; padding:11px 13px; text-decoration:none; color:${COL.text}; }
+.c11j .ficha { display:block; background:${COL.panel}; border:1px solid ${COL.line}; border-radius:16px; padding:11px 13px; text-decoration:none; color:${COL.text}; }
 .c11j .ficha:hover { border-color:${COL.green}; }
 .c11j .ficha.preso { border-left:3px solid ${COL.green}; }
 .c11j .ficha-n { font-weight:700; font-size:14.5px; }
@@ -1867,14 +1862,14 @@ const CSS = `
 .c11j .ficha-conf { font-size:11px; color:${COL.violet}; margin-top:4px; }
 
 .c11j .cta-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
-.c11j .cta-card { background:${COL.greenSoft}; border:1px solid rgba(50,189,78,.4); border-radius:8px; padding:14px 16px; }
+.c11j .cta-card { background:${COL.greenSoft}; border:1px solid rgba(26,127,53,.35); border-radius:20px; padding:14px 16px; }
 .c11j .cta-h { font-weight:800; font-size:17px; color:${COL.greenHi}; margin-bottom:4px; }
 .c11j .cta-card p { margin:0; font-size:14px; }
 .c11j .aviso { margin:16px 0 0; padding:12px 14px; border-left:3px solid ${COL.green}; background:${COL.panel2}; color:${COL.dim}; font-size:13.5px; }
 
-.c11j .survey { margin-top:26px; background:${COL.panel}; border:1px solid ${COL.line}; border-radius:10px; padding:16px 18px; max-width:680px; }
+.c11j .survey { margin-top:26px; background:${COL.panel}; border:0; box-shadow:var(--sh); border-radius:24px; padding:16px 18px; max-width:680px; }
 .c11j .survey-q { font-weight:700; margin-bottom:10px; }
-.c11j .opt { position:relative; display:flex; width:100%; align-items:center; gap:8px; background:${COL.panel2}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:6px; padding:9px 12px; margin:6px 0; cursor:pointer; overflow:hidden; text-align:left; font-size:14px; }
+.c11j .opt { position:relative; display:flex; width:100%; align-items:center; gap:8px; background:${COL.panel2}; color:${COL.text}; border:1px solid ${COL.line}; border-radius:12px; padding:9px 12px; margin:6px 0; cursor:pointer; overflow:hidden; text-align:left; font-size:14px; }
 .c11j .opt:disabled { cursor:default; }
 .c11j .opt.mine { border-color:${COL.green}; }
 .c11j .opt-bar { position:absolute; left:0; top:0; bottom:0; background:${COL.greenSoft}; transition:width .5s ease; }
@@ -1885,7 +1880,7 @@ const CSS = `
 .c11j .foot { max-width:1080px; margin:36px auto 0; padding:28px 20px 48px; border-top:1px solid ${COL.line}; }
 .c11j .foot-blk { max-width:860px; margin-bottom:20px; }
 .c11j .foot-h { font-size:11.5px; letter-spacing:.14em; color:${COL.green}; margin-bottom:6px; }
-.c11j .foot-blk p, .c11j .foot-blk li { font-size:13.5px; color:${COL.dim}; }
+.c11j .foot-blk p, .c11j .foot-blk li { font-size:13.5px; color:#4a3f36; }
 .c11j .foot-niveles { list-style:none; padding:0; }
 .c11j .foot-niveles li { display:flex; gap:7px; align-items:flex-start; margin:6px 0; }
 .c11j .foot-niveles .glyph { margin-top:-1px; }
