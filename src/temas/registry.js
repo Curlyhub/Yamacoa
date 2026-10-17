@@ -1,7 +1,7 @@
 // Manifiesto de temas: la única fuente de verdad del proyecto.
 //
 // Añadir un análisis nuevo es una entrada en este array (ver SKILLS.md): la
-// portada (components/Landing.jsx) lo mapea a una tarjeta y el router (App.js)
+// portada (periodico/Portada.jsx) y el archivo (periodico/Expedientes.jsx) lo mapean a una tarjeta y el router (App.js)
 // lo mapea a una ruta con React.lazy(load). No se editan a mano ni la landing
 // ni el router para sumar, quitar o reordenar temas: solo se toca este archivo.
 //

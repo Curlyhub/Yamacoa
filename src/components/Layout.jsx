@@ -1,83 +1,58 @@
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import Narrador from "./Narrador"; // DESACTIVADO (2026-07-07): descarga de wasm de Kokoro y
-// reproducción demasiado lentas; además pendiente de revisión editorial exhaustiva del
-// contenido en inglés (meta.narracion_en) generado en todos los expedientes. Reactivar
-// descomentando este import y el <Narrador /> más abajo cuando ambos se resuelvan.
+import { Link, NavLink, useLocation } from "react-router-dom";
+import Narrador from "./Narrador";
 import temas from "../temas/registry.js";
+import { TOKENS_CSS, cargarFuentes } from "../design/tokens";
+import { ReproductorProvider } from "../periodico/Reproductor";
+import { fechaLarga } from "../periodico/feed";
 
-/* Tipografías de la portada y la cabecera. Cada tema carga las suyas; aquí se
-   carga el juego compartido del shell de forma encapsulada (igual que hacen los
-   temas). Si la red no está disponible, cae a la pila del sistema sin error. */
-const FUENTE_SHELL =
-  "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap";
+/* Carcasa unificada del periódico (handoff 2026-10, dirección 1a).
+   Barra de fecha + cabecera (masthead grande en portada, compacta en el resto) +
+   navegación por tipología. En un expediente añade la franja con su etiqueta,
+   compartir y volver. Tokens en design/tokens.js. */
 
-/* Tokens del sistema de diseño compartido (AGENTS.md). El acento es por tema. */
+const NAV = [
+  { to: "/noticias", t: "Noticias" },
+  { to: "/estudios", t: "Estudios" },
+  { to: "/expedientes", t: "Expedientes" },
+  { to: "/podcast", t: "Podcast" },
+];
+
 const CSS = `
-.ym-app{
-  --ym-bg:#0C0E14; --ym-panel:#161A26; --ym-line:rgba(237,239,245,.12);
-  --ym-text:#EDEFF5; --ym-dim:#8A93A8;
-  --ym-display:'Space Grotesk',system-ui,sans-serif;
-  --ym-body:'Inter',system-ui,sans-serif;
-  --ym-mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  min-height:100vh; display:flex; flex-direction:column;
-  background:var(--ym-bg); color:var(--ym-text); font-family:var(--ym-body);
-}
-.ym-app *{box-sizing:border-box;}
-
-.ym-header{
-  border-bottom:1px solid var(--ym-line);
-  background:rgba(12,14,20,.78);
-}
-.ym-header-in{
-  max-width:1080px; margin:0 auto; padding:16px 22px;
-  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
-}
-.ym-brand{
-  display:inline-flex; align-items:baseline; gap:10px;
-  text-decoration:none; color:var(--ym-text);
-}
-.ym-brand-mark{
-  font-family:var(--ym-display); font-weight:700; font-size:18px;
-  letter-spacing:.18em;
-}
-.ym-brand-mark span{ color:var(--ym-accent,#38D6C9); }
-.ym-brand-sub{
-  font-family:var(--ym-mono); font-size:10.5px; letter-spacing:.22em;
-  text-transform:uppercase; color:var(--ym-dim);
-}
-.ym-nav{ margin-left:auto; display:flex; align-items:center; gap:14px; }
-.ym-tema-tag{
-  font-family:var(--ym-mono); font-size:10.5px; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--ym-accent,#8A93A8);
-}
-.ym-back{
-  font-family:var(--ym-mono); font-size:12px; letter-spacing:.04em;
-  text-decoration:none; color:var(--ym-dim);
-  border:1px solid var(--ym-line); border-radius:999px; padding:6px 13px;
-}
-.ym-back:hover{ color:var(--ym-text); border-color:var(--ym-accent,var(--ym-line)); }
-
-.ym-share{
-  font-family:var(--ym-mono); font-size:12px; letter-spacing:.04em;
-  text-decoration:none; color:var(--ym-dim);
-  border:1px solid var(--ym-line); border-radius:999px; padding:6px 13px;
-}
-.ym-share:hover{ color:var(--ym-text); border-color:var(--ym-accent,var(--ym-line)); }
-
-.ym-main{ flex:1; width:100%; }
-
-a:focus-visible, .ym-app [tabindex]:focus-visible{
-  outline:2px solid var(--ym-accent,#38D6C9); outline-offset:3px;
-  border-radius:6px;
-}
-
-@media (max-width:560px){
-  .ym-header-in{ padding:13px 16px; }
-  .ym-brand-sub{ display:none; }
-}
-@media (prefers-reduced-motion:no-preference){
-  .ym-back{ transition:color .18s ease, border-color .18s ease; }
+.yl-app{min-height:100vh; display:flex; flex-direction:column; color:var(--y-ink); font-family:var(--y-font);}
+.yl-top{display:flex; justify-content:space-between; gap:16px; padding:14px 0 12px; border-bottom:1px solid var(--y-rule);
+  font:500 10.5px var(--y-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--y-muted);}
+.yl-top span:nth-child(2){text-align:center;}
+.yl-head{display:flex; align-items:flex-end; gap:24px; flex-wrap:wrap; padding:22px 0 18px; border-bottom:3px solid var(--y-ink);}
+.yl-brand{text-decoration:none; color:var(--y-ink); display:block;}
+.yl-brand small{display:block; font:500 10.5px var(--y-mono); letter-spacing:.14em; text-transform:uppercase;
+  color:var(--y-accent); margin-bottom:6px;}
+.yl-brand b{display:block; font-weight:800; letter-spacing:-.04em; line-height:.9; font-size:clamp(46px,7vw,72px);}
+.yl-app[data-compacta="1"] .yl-head{padding:14px 0 12px; align-items:center;}
+.yl-app[data-compacta="1"] .yl-brand small{display:none;}
+.yl-app[data-compacta="1"] .yl-brand b{font-size:30px; letter-spacing:-.035em;}
+.yl-nav{margin-left:auto; display:flex; align-items:center; gap:clamp(10px,2vw,22px); flex-wrap:wrap;}
+.yl-nav a:not(.y-btn){font-size:15px; font-weight:500; color:var(--y-ink); text-decoration:none; padding:4px 0;
+  border-bottom:2px solid transparent;}
+.yl-nav a:not(.y-btn):hover{color:var(--y-accent);}
+.yl-nav a.active{border-bottom-color:var(--y-accent);}
+.yl-nav .y-btn{color:var(--y-surface); border:0;}
+.yl-nav .y-btn:hover{color:var(--y-surface); background:var(--y-accent);}
+.yl-exp{display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:12px 0; border-bottom:1px solid var(--y-rule);}
+.yl-exp-tag{font:500 10.5px var(--y-mono); letter-spacing:.12em; text-transform:uppercase;}
+.yl-exp-acc{margin-left:auto; display:flex; gap:8px;}
+.yl-exp-acc a{font:500 11.5px var(--y-mono); color:var(--y-muted); text-decoration:none; padding:6px 13px;
+  border-radius:999px; box-shadow:inset 0 0 0 1px var(--y-rule);}
+.yl-exp-acc a:hover{color:var(--y-ink); box-shadow:inset 0 0 0 1px var(--y-accent);}
+.yl-main{flex:1; width:100%; padding-bottom:96px;}
+.yl-pie{border-top:3px solid var(--y-ink); padding:22px 0 40px; display:flex; gap:20px; flex-wrap:wrap;
+  justify-content:space-between; font:500 11px var(--y-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--y-muted);}
+.yl-pie a{color:inherit;}
+.yl-pie a:hover{color:var(--y-accent);}
+@media (max-width:720px){
+  .yl-top span:nth-child(2), .yl-top span:nth-child(3){display:none;}
+  .yl-nav{margin-left:0; width:100%;}
+  .yl-nav a:not(.y-btn){font-size:14px;}
 }
 `;
 
@@ -85,61 +60,69 @@ export default function Layout({ children }) {
   const { pathname } = useLocation();
   const path = pathname.replace(/\/+$/, "") || "/";
   const temaActivo = temas.find((t) => t.path === path);
-  const shareHref =
-  temaActivo && typeof window !== "undefined"
-    ? "https://twitter.com/intent/tweet?text=" +
-      encodeURIComponent(`${temaActivo.titulo} — Yamacoa`) +
-      "&url=" + encodeURIComponent(window.location.href)
-      // + "&via=yamacoa"   // descomenta si tienes cuenta @yamacoa
-      // + "&hashtags=Cuba" // opcional
-    : null;
+  const portada = path === "/";
 
-  // Carga encapsulada del juego de tipografías del shell (una sola vez).
+  useEffect(cargarFuentes, []);
   useEffect(() => {
-    const id = "ym-fuente-shell";
-    if (document.getElementById(id)) return;
-    const link = document.createElement("link");
-    link.id = id;
-    link.rel = "stylesheet";
-    link.href = FUENTE_SHELL;
-    document.head.appendChild(link);
-  }, []);
+    window.scrollTo(0, 0);
+  }, [path]);
 
-  const accentStyle = temaActivo ? { "--ym-accent": temaActivo.accent } : undefined;
+  const shareHref =
+    temaActivo && typeof window !== "undefined"
+      ? "https://twitter.com/intent/tweet?text=" +
+        encodeURIComponent(`${temaActivo.titulo} · Yamacoa`) +
+        "&url=" + encodeURIComponent(window.location.href)
+      : null;
 
   return (
-    <div className="ym-app" style={accentStyle}>
-      <style>{CSS}</style>
-
-      <header className="ym-header">
-        <div className="ym-header-in">
-          <Link to="/" className="ym-brand" aria-label="Yamacoa, ir a la portada">
-            <span className="ym-brand-mark">
-              YAMA<span>COA</span>
-            </span>
-            <span className="ym-brand-sub">Observatorio</span>
-          </Link>
-          {temaActivo && (
-            <nav className="ym-nav" aria-label="Navegación del tema">
-              <span className="ym-tema-tag">{temaActivo.etiqueta}</span>
-              <a className="ym-share"
-                href={shareHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Compartir ${temaActivo.titulo} en X`}
-              >
-                Compartir en X
-              </a>
-              <Link to="/" className="ym-back">
-                ← Volver a la portada
-              </Link>
+    <ReproductorProvider>
+      <style>{TOKENS_CSS + CSS}</style>
+      <div className="yl-app" data-compacta={portada ? "0" : "1"}>
+        <div className="y-wrap">
+          {portada && (
+            <div className="yl-top">
+              <span>{fechaLarga(new Date())}</span>
+              <span>Observatorio independiente · Cuba</span>
+              <span>Datos abiertos y verificados</span>
+            </div>
+          )}
+          <header className="yl-head">
+            <Link to="/" className="yl-brand" aria-label="Yamacoa, ir a la portada">
+              <small>Observatorio independiente</small>
+              <b>Yamacoa</b>
+            </Link>
+            <nav className="yl-nav" aria-label="Secciones">
+              {NAV.map((n) => (
+                <NavLink key={n.to} to={n.to}>{n.t}</NavLink>
+              ))}
+              <Link to="/suscribete" className="y-btn">Suscríbete</Link>
             </nav>
+          </header>
+          {temaActivo && (
+            <div className="yl-exp">
+              <span className="y-badge y-badge--dir">Expediente dirigido</span>
+              <span className="yl-exp-tag" style={{ color: "var(--y-dir-ink)" }}>{temaActivo.etiqueta}</span>
+              <span className="yl-exp-acc">
+                <a href={shareHref} target="_blank" rel="noopener noreferrer"
+                  aria-label={`Compartir ${temaActivo.titulo} en X`}>Compartir en X</a>
+                <Link to="/expedientes">← Todos los expedientes</Link>
+              </span>
+            </div>
           )}
         </div>
-      </header>
 
-      <main className="ym-main">{children}</main>
-      {<Narrador /> }
-    </div>
+        <main className="yl-main">{children}</main>
+
+        <div className="y-wrap">
+          <footer className="yl-pie">
+            <span>Yamacoa · Observatorio independiente sobre Cuba</span>
+            <span>
+              <Link to="/metodologia">Metodología</Link> · <Link to="/expedientes">Archivo</Link>
+            </span>
+          </footer>
+        </div>
+      </div>
+      <Narrador />
+    </ReproductorProvider>
   );
 }

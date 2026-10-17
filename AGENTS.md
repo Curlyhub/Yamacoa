@@ -56,11 +56,18 @@ afirmación sobre personas conserva su fuente y su estado (`estructura`, `presun
 visibles. Un vínculo no se eleva a `confirmado` desde el front.
 
 ## Sistema de diseño compartido
-Estética común: fondo oscuro, tipografía monoespaciada para datos, un acento por tema.
-Tokens base que usa la landing (cada tema conserva su paleta propia):
-- fondo `#0C0E14`, panel `#161A26`, línea `rgba(237,239,245,.12)`, texto `#EDEFF5`,
-  atenuado `#8A93A8`.
-- El acento de cada tema se define en su entrada del registry (`accent`).
+Desde 2026-10-17 el sitio usa el sistema **unificado "periódico"** (claro, cálido). Fuente única:
+`src/design/tokens.js`. Ya no hay estética oscura: los expedientes antiguos se migran con
+`/unificar-estilo`.
+- Fondo `#efe8df` (con resplandores melocotón `#f6d9c6` y salvia `#d5e3da`), tarjeta `#fcf9f4`,
+  tarjeta interna `#f5efe7`, texto `#1f1a16`, párrafo `#4a3f36`, atenuado `#6b5d50`, metadatos
+  `#8a7a68`, acento terracota `#b8562e`, oscuro `#3a2418`, regla `rgba(60,40,20,.15)`.
+- Origen del contenido: automático salvia (`#dfe9e1` / `#2f5640`), dirigido melocotón
+  (`#f2cdb8` / `#6b2f16`), podcast marrón (`#3a2418` / `#fcf9f4`, acento `#f2cdb8`).
+- Tipografía: Manrope (400–800) para todo; IBM Plex Mono en mayúsculas para eyebrows y metadatos.
+- Radios: 28–32px en tarjetas grandes, 24px en tarjetas, 14–20px en las internas, 999px en chips.
+- Cada expediente conserva solo sus **colores de datos** (series, mapas). El `accent` del registry
+  queda como color de datos del tema.
 Mantén el suelo de calidad: responsive a móvil, foco de teclado visible y
 `prefers-reduced-motion` respetado.
 

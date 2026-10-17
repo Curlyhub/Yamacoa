@@ -1,0 +1,479 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/feed/noticias.schema.json",
+  "title": "Feed de noticias automáticas de Yamacoa",
+  "description": "Contrato del feed de noticias automáticas. Lo genera ops/noticias/ciclo.mjs desde la base de datos en cada ciclo (00:00 y 18:00). Una noticia vive 3 días (caduca = publicado + 3 d) y se BORRA al caducar. Sin resumen hablado y sin fuentes citadas por párrafo, la noticia NO se publica.",
+  "type": "object",
+  "required": [
+    "version",
+    "actualizado",
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "actualizado": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/noticia"
+      }
+    }
+  },
+  "definitions": {
+    "noticia": {
+      "type": "object",
+      "required": [
+        "id",
+        "slug",
+        "plantilla",
+        "seccion",
+        "titulo",
+        "entradilla",
+        "cuerpo",
+        "fuentes",
+        "confianza",
+        "publicado",
+        "caduca",
+        "relevancia",
+        "audio"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^n-[a-z0-9-]+$"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]{4,90}$"
+        },
+        "plantilla": {
+          "type": "string",
+          "enum": [
+            "cronica",
+            "breve",
+            "datos",
+            "contraste"
+          ],
+          "description": "cronica: hecho desarrollado (3-8 párrafos). breve: última hora, 1-3 párrafos y lo que aún no se sabe. datos: la noticia es una cifra (cifra destacada + gráfico opcional). contraste: versión oficial frente a lo documentado por otras fuentes."
+        },
+        "seccion": {
+          "type": "string",
+          "enum": [
+            "Energía",
+            "Economía",
+            "Migración",
+            "Salud",
+            "Sociedad",
+            "Derechos",
+            "Política",
+            "Cultura",
+            "Historia",
+            "Internacional"
+          ]
+        },
+        "titulo": {
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 140
+        },
+        "entradilla": {
+          "type": "string",
+          "minLength": 40,
+          "maxLength": 400
+        },
+        "cuerpo": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "type": "object",
+            "required": [
+              "texto",
+              "citas"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "texto": {
+                "type": "string",
+                "minLength": 20,
+                "maxLength": 1400
+              },
+              "citas": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "Índices 1-based en `fuentes`. Todo párrafo cita al menos una fuente."
+              }
+            }
+          }
+        },
+        "fuentes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "nombre",
+              "tipo"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "nombre": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "tipo": {
+                "type": "string",
+                "enum": [
+                  "primaria",
+                  "medio",
+                  "red_social"
+                ]
+              },
+              "verificacion": {
+                "type": "string",
+                "enum": [
+                  "replicada",
+                  "directa"
+                ],
+                "description": "Obligatoria si tipo = red_social."
+              },
+              "origen": {
+                "type": "string",
+                "description": "Cluster de origen: dos fuentes con el mismo origen NO cuentan como independientes."
+              }
+            },
+            "if": {
+              "properties": {
+                "tipo": {
+                  "const": "red_social"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "verificacion"
+              ]
+            }
+          }
+        },
+        "confianza": {
+          "type": "string",
+          "enum": [
+            "corroborada",
+            "no_confirmada",
+            "en_desarrollo"
+          ]
+        },
+        "publicado": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "actualizado": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Si un ciclo posterior actualizó la pieza. No mueve la caducidad."
+        },
+        "caduca": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "relevancia": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "imagen": {
+          "type": "object",
+          "required": [
+            "url",
+            "tipo",
+            "alt"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "alt": {
+              "type": "string"
+            },
+            "tipo": {
+              "type": "string",
+              "enum": [
+                "foto",
+                "grafico",
+                "ilustracion_ia"
+              ],
+              "description": "ilustracion_ia: nunca fotorrealista de hechos reales; se rotula siempre en la UI."
+            },
+            "credito": {
+              "type": "string"
+            }
+          }
+        },
+        "audio": {
+          "type": "object",
+          "required": [
+            "url",
+            "duracion"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "duracion": {
+              "type": "number",
+              "minimum": 1
+            },
+            "voz": {
+              "type": "string"
+            },
+            "texto": {
+              "type": "string",
+              "maxLength": 900,
+              "description": "Guion leído por la voz sintética (transcripción accesible)."
+            }
+          }
+        },
+        "estudio": {
+          "type": "string",
+          "description": "slug del estudio automático al que alimenta"
+        },
+        "pendiente": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 200
+          },
+          "description": "breve: lo que aún no se sabe. Preguntas abiertas, no afirmaciones."
+        },
+        "cifra": {
+          "type": "object",
+          "required": [
+            "valor",
+            "etiqueta",
+            "citas"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "valor": {
+              "type": "string",
+              "maxLength": 24,
+              "description": "Tal como se lee: «1.880», «al menos 47», «-12 %»."
+            },
+            "unidad": {
+              "type": "string",
+              "maxLength": 40
+            },
+            "etiqueta": {
+              "type": "string",
+              "maxLength": 160
+            },
+            "citas": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "grafico": {
+          "$ref": "#/definitions/grafico"
+        },
+        "versiones": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "lado",
+              "texto",
+              "citas"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "lado": {
+                "type": "string",
+                "enum": [
+                  "oficial",
+                  "independiente",
+                  "internacional",
+                  "testimonio"
+                ]
+              },
+              "texto": {
+                "type": "string",
+                "minLength": 20,
+                "maxLength": 700
+              },
+              "citas": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "expediente": {
+          "type": "string",
+          "pattern": "^/[a-z0-9_-]+$",
+          "description": "Ruta de un expediente de Yamacoa relacionado (registry). La noticia informa; el expediente desarrolla el análisis y las salidas."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "plantilla": {
+                "const": "breve"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cuerpo": {
+                "maxItems": 3,
+                "type": "array"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "plantilla": {
+                "const": "cronica"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cuerpo": {
+                "minItems": 3,
+                "type": "array"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "plantilla": {
+                "const": "datos"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "cifra"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "plantilla": {
+                "const": "contraste"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "versiones"
+            ]
+          }
+        }
+      ]
+    },
+    "grafico": {
+      "type": "object",
+      "required": [
+        "tipo",
+        "datos",
+        "fuente"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "serie",
+            "barras",
+            "cifra"
+          ]
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "unidadCorta": {
+          "type": "string"
+        },
+        "ejeX": {
+          "type": "string"
+        },
+        "fuente": {
+          "type": "string"
+        },
+        "nota": {
+          "type": "string"
+        },
+        "datos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "etiqueta"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "etiqueta": {
+                "type": "string"
+              },
+              "valor": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "prefijo": {
+                "type": "string"
+              },
+              "sufijo": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

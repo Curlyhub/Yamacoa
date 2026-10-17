@@ -41,3 +41,12 @@ yarn-error.log*
 .env
 ops/_inbox/
 ops/_import/
+
+# Borradores de podcast: transcripciones privadas antes de aprobación
+ops/podcast/borradores/
+
+# Ciclo de noticias: estado local, capturas (material de terceros) y audio en caché
+ops/noticias/estado/
+ops/noticias/ciclos/
+public/audio/
+public/data/feed/noticias.json

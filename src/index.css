@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  /* Fondo oscuro del sistema de diseño compartido para evitar destellos en
+  /* Fondo del sistema de diseño unificado (periódico) para evitar destellos en
      blanco alrededor del shell y de los temas (cada tema pinta el suyo encima). */
-  background-color: #0c0e14;
+  background-color: #efe8df;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/data/feed/podcast.schema.json",
+  "title": "Episodios de podcast de Yamacoa",
+  "description": "Índice de episodios. El audio vive en R2 (media.yamacoa.com), nunca en el build de Pages (límite 25 MiB por fichero). Toda voz sintética o clonada se declara con voces_sinteticas = true.",
+  "type": "object",
+  "required": ["version", "actualizado", "items"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "string" },
+    "actualizado": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "slug", "titulo", "tipo", "formato", "duracion", "audio", "publicado", "descripcion", "voces_sinteticas"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^p-[a-z0-9-]+$" },
+          "slug": { "type": "string", "pattern": "^[a-z0-9-]{4,90}$" },
+          "titulo": { "type": "string", "minLength": 6, "maxLength": 140 },
+          "tipo": { "type": "string", "enum": ["Automático", "Elaborado"] },
+          "formato": { "type": "string", "enum": ["edicion_hablada", "noticias", "conversacion", "directo"] },
+          "duracion": { "type": "number", "minimum": 1 },
+          "audio": {
+            "type": "object", "required": ["url"], "additionalProperties": false,
+            "properties": { "url": { "type": "string", "format": "uri" }, "bytes": { "type": "integer" }, "mime": { "type": "string" } }
+          },
+          "publicado": { "type": "string", "format": "date-time" },
+          "descripcion": { "type": "string", "minLength": 20, "maxLength": 1200 },
+          "voces_sinteticas": { "type": "boolean" },
+          "participantes": {
+            "type": "array",
+            "items": {
+              "type": "object", "required": ["nombre"], "additionalProperties": false,
+              "properties": { "nombre": { "type": "string" }, "rol": { "type": "string" } }
+            }
+          },
+          "capitulos": {
+            "type": "array",
+            "items": {
+              "type": "object", "required": ["titulo", "inicio"], "additionalProperties": false,
+              "properties": { "titulo": { "type": "string" }, "inicio": { "type": "number", "minimum": 0 }, "noticia": { "type": "string" } }
+            }
+          },
+          "transcripcion": { "type": "boolean", "description": "Si true, existe podcast/<slug>.transcripcion.json" },
+          "portada": {
+            "type": "object", "required": ["url"], "additionalProperties": false,
+            "properties": { "url": { "type": "string", "format": "uri" }, "tipo": { "type": "string", "enum": ["foto", "grafico", "ilustracion_ia"] } }
+          },
+          "relacionados": { "type": "array", "items": { "type": "string" } },
+          "grabacion_id": { "type": "string", "description": "uuid de la grabación origen en Supabase (episodios Elaborados)" }
+        }
+      }
+    }
+  }
+}

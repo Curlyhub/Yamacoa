@@ -238,33 +238,33 @@ const IcoPausa = () => (
 
 const CSS = `
 .ym-narrador{position:fixed;right:18px;bottom:18px;z-index:60;font-family:'IBM Plex Mono',monospace}
-.ymn-fab{display:inline-flex;align-items:center;gap:8px;background:#161A26;color:#EDEFF5;
-  border:1px solid rgba(237,239,245,.18);border-radius:24px;padding:9px 15px;font-size:12px;
-  letter-spacing:.04em;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);
+.ymn-fab{display:inline-flex;align-items:center;gap:8px;background:#3a2418;color:#fcf9f4;
+  border:1px solid rgba(252,249,244,.18);border-radius:24px;padding:9px 15px;font-size:12px;
+  letter-spacing:.04em;cursor:pointer;box-shadow:0 6px 20px rgba(40,25,10,.22);
   transition:transform .18s,border-color .18s}
-.ymn-fab:hover{transform:translateY(-1px);border-color:rgba(237,239,245,.4)}
-.ymn-fab:focus-visible,.ymn-btn:focus-visible,.ymn-retry:focus-visible{outline:2px solid #7AAFC7;outline-offset:2px}
-.ymn-dock{position:relative;overflow:hidden;background:#161A26;border:1px solid rgba(237,239,245,.18);
-  border-radius:12px;padding:10px 12px;min-width:230px;box-shadow:0 10px 30px rgba(0,0,0,.4);color:#EDEFF5}
+.ymn-fab:hover{transform:translateY(-1px);border-color:rgba(252,249,244,.4)}
+.ymn-fab:focus-visible,.ymn-btn:focus-visible,.ymn-retry:focus-visible{outline:2px solid #f2cdb8;outline-offset:2px}
+.ymn-dock{position:relative;overflow:hidden;background:#3a2418;border:1px solid rgba(252,249,244,.18);
+  border-radius:12px;padding:10px 12px;min-width:230px;box-shadow:0 10px 30px rgba(40,25,10,.28);color:#fcf9f4}
 .ymn-dock--progreso{padding-bottom:16px}
 .ymn-fila{display:flex;align-items:center;gap:10px}
 .ymn-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;
-  border-radius:50%;border:1px solid rgba(237,239,245,.22);background:transparent;color:#EDEFF5;
+  border-radius:50%;border:1px solid rgba(252,249,244,.22);background:transparent;color:#fcf9f4;
   cursor:pointer;flex:none}
-.ymn-btn:hover{border-color:rgba(237,239,245,.5)}
-.ymn-x{border:none;font-size:12px;color:#8A93A8;margin-left:auto}
-.ymn-txt{font-size:11.5px;color:#C7CDCE}
-.ymn-tiempo{font-size:10px;color:#8A93A8;letter-spacing:.02em;flex:none}
+.ymn-btn:hover{border-color:rgba(252,249,244,.5)}
+.ymn-x{border:none;font-size:12px;color:#c9a893;margin-left:auto}
+.ymn-txt{font-size:11.5px;color:#e8d9cc}
+.ymn-tiempo{font-size:10px;color:#c9a893;letter-spacing:.02em;flex:none}
 .ymn-progreso-track{position:absolute;left:0;right:0;bottom:0;height:10px;cursor:pointer}
 .ymn-progreso-track::before{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;
-  background:rgba(237,239,245,.15)}
+  background:rgba(252,249,244,.15)}
 .ymn-progreso-fill{position:absolute;left:0;bottom:4px;height:2px;
-  background:#7AAFC7;transition:width .15s linear;display:block}
-.ymn-carga{display:flex;align-items:center;gap:8px;font-size:11px;color:#8A93A8;flex:1}
-.ymn-err{color:#E06056}
-.ymn-retry{font-size:10.5px;color:#7AAFC7;background:transparent;border:1px solid rgba(122,175,199,.4);
+  background:#f2cdb8;transition:width .15s linear;display:block}
+.ymn-carga{display:flex;align-items:center;gap:8px;font-size:11px;color:#c9a893;flex:1}
+.ymn-err{color:#ff9a7a}
+.ymn-retry{font-size:10.5px;color:#f2cdb8;background:transparent;border:1px solid rgba(242,205,184,.4);
   border-radius:14px;padding:3px 9px;cursor:pointer;flex:none}
-.ymn-spin{width:12px;height:12px;border:2px solid rgba(237,239,245,.2);border-top-color:#7AAFC7;
+.ymn-spin{width:12px;height:12px;border:2px solid rgba(252,249,244,.2);border-top-color:#f2cdb8;
   border-radius:50%;animation:ymnspin .8s linear infinite;flex:none}
 @keyframes ymnspin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.ymn-spin{animation:none}.ymn-fab{transition:none}.ymn-progreso-fill{transition:none}}

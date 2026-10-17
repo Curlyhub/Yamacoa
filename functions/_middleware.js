@@ -26,6 +26,10 @@ const EXTRAS = {
     t: "Metodología",
     d: "Estadística observacional sobre eventos medibles documentados en fuentes públicas.",
   },
+  "/noticias": { t: "Noticias", d: "Cuba, los últimos tres días: noticias automáticas verificadas, con sus fuentes y su nivel de confianza." },
+  "/estudios": { t: "Estudios", d: "Estudios automáticos: de los grupos de noticias más relevantes de la semana, al dato." },
+  "/expedientes": { t: "Expedientes", d: "Investigaciones dirigidas con método y datos verificados sobre Cuba." },
+  "/podcast": { t: "Podcast", d: "Cuba, para escuchar: ediciones habladas, episodios automáticos y conversaciones grabadas." },
 };
 
 // Sustituye el atributo content de una metaetiqueta.
@@ -89,11 +93,47 @@ function articuloHTML(tema, title, pageUrl, img) {
   );
 }
 
+// Noticias automáticas: viven 3 días en data/feed/noticias.json (lo regenera cada
+// ciclo desde la base de datos). Una noticia viva recibe su tarjeta y su texto; una
+// caducada o inexistente responde 410 Gone para que los buscadores la retiren.
+async function noticiaDe(context, slug) {
+  try {
+    const r = await context.env.ASSETS.fetch(new URL("/data/feed/noticias.json", context.request.url));
+    if (!r.ok) return null;
+    const feed = await r.json();
+    const n = (feed.items || []).find((x) => x.slug === slug);
+    return n && Date.parse(n.caduca) > Date.now() ? n : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
   const key = url.pathname.replace(/\/+$/, "") || "/";
-  const tema = TEMAS[key] || EXTRAS[key];
+  let tema = TEMAS[key] || EXTRAS[key];
+
+  const mNoticia = key.match(/^\/noticias\/([a-z0-9-]{4,90})$/);
+  if (mNoticia) {
+    const n = await noticiaDe(context, mNoticia[1]);
+    if (!n) {
+      const res = await next();
+      return new HTMLRewriter()
+        .on("head", { element(el) { el.append('<meta name="robots" content="noindex">', { html: true }); } })
+        .transform(new Response(res.body, { status: 410, headers: res.headers }));
+    }
+    tema = {
+      t: n.titulo,
+      d: n.entradilla,
+      body: {
+        etiqueta: `Noticia · ${n.seccion}`,
+        parrafos: (n.cuerpo || []).map((p) => p.texto),
+        fuentes: (n.fuentes || []).map((f) => f.nombre).join(" · "),
+        fecha: n.publicado,
+      },
+    };
+  }
 
   const res = await next();
   const ct = res.headers.get("content-type") || "";
