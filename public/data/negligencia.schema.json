@@ -1,0 +1,425 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/negligencia-o-genocidio.schema.json",
+  "title": "Negligencia criminal o genocidio silencioso",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "meta",
+    "slug", "titulo", "version", "fecha_datos", "resumen", "tesis", "paleta",
+    "correcciones", "series_demografia", "contrafactual", "mortalidad_infantil",
+    "did", "comparados", "politica_economica", "test_juridico", "encuesta",
+    "referencias", "metodologia_global"
+  ],
+  "definitions": {
+    "confianza": {
+      "type": "string",
+      "enum": ["confirmado", "reportado", "estimado", "calculado", "no_cuantificado"]
+    },
+    "estadoElemento": {
+      "type": "string",
+      "enum": ["cumple", "parcial", "no_cumple", "incumple"]
+    },
+    "hex": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+  },
+  "properties": {
+    "meta": {
+      "description": "Capa descriptiva de plataforma. `descripcion` la sirve scripts/gen-social-meta.mjs dentro de #root como cuerpo indexable; `narracion` la lee src/components/Narrador.jsx como guion del servidor TTS (tope duro de 1500 caracteres en el componente). El renderer NO lee este bloque: sigue leyendo slug/titulo/subtitulo de la raiz.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "titulo", "subtitulo", "descripcion", "narracion", "version", "fecha_datos"],
+      "properties": {
+        "slug": { "const": "negligencia-o-genocidio" },
+        "titulo": { "type": "string" },
+        "subtitulo": { "type": "string" },
+        "descripcion": { "type": "string", "minLength": 400 },
+        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "fecha_datos": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+      }
+    },
+    "slug": { "type": "string", "const": "negligencia-o-genocidio" },
+    "titulo": { "type": "string", "minLength": 5 },
+    "subtitulo": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "fecha_publicacion": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "fecha_datos": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "resumen": { "type": "string", "minLength": 100 },
+    "tesis": { "type": "string", "minLength": 20 },
+
+    "paleta": {
+      "type": "object",
+      "required": ["fondo", "superficie", "tinta", "petroleo", "ciruela", "oliva", "violeta", "ambar"],
+      "properties": {
+        "fondo": { "$ref": "#/definitions/hex" },
+        "superficie": { "$ref": "#/definitions/hex" },
+        "tinta": { "$ref": "#/definitions/hex" },
+        "tintaSuave": { "$ref": "#/definitions/hex" },
+        "regla": { "$ref": "#/definitions/hex" },
+        "petroleo": { "$ref": "#/definitions/hex" },
+        "ciruela": { "$ref": "#/definitions/hex" },
+        "oliva": { "$ref": "#/definitions/hex" },
+        "violeta": { "$ref": "#/definitions/hex" },
+        "ambar": { "$ref": "#/definitions/hex", "const": "#C98A17" },
+        "arena": { "$ref": "#/definitions/hex" },
+        "nota_ambar": { "type": "string" }
+      }
+    },
+
+    "correcciones": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["afirmacion", "veredicto", "confianza", "razon", "correccion"],
+        "properties": {
+          "afirmacion": { "type": "string" },
+          "veredicto": { "type": "string" },
+          "confianza": { "$ref": "#/definitions/confianza" },
+          "razon": { "type": "string", "minLength": 40 },
+          "correccion": { "type": "string", "minLength": 20 }
+        }
+      }
+    },
+
+    "series_demografia": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["anio", "defunciones", "nacimientos", "poblacion", "conf_def", "conf_nac"],
+        "properties": {
+          "anio": { "type": "integer", "minimum": 2000, "maximum": 2030 },
+          "defunciones": { "type": "integer", "minimum": 0 },
+          "nacimientos": { "type": "integer", "minimum": 0 },
+          "poblacion": { "type": "integer", "minimum": 1000000 },
+          "conf_def": { "$ref": "#/definitions/confianza" },
+          "conf_nac": { "$ref": "#/definitions/confianza" }
+        }
+      }
+    },
+
+    "contrafactual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "metodo", "tasa_base_2019", "deriva_base_pct", "deriva_min_pct", "deriva_max_pct", "advertencia", "limitaciones"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "metodo": { "type": "string", "minLength": 80 },
+        "tasa_base_2019": { "type": "number", "exclusiveMinimum": 0 },
+        "deriva_base_pct": { "type": "number" },
+        "deriva_min_pct": { "type": "number" },
+        "deriva_max_pct": { "type": "number" },
+        "justificacion_deriva": { "type": "string" },
+        "advertencia": { "type": "string", "minLength": 30 },
+        "limitaciones": { "type": "array", "minItems": 2, "items": { "type": "string" } }
+      }
+    },
+
+    "mortalidad_infantil": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "unidad", "por_que_importa", "cuba", "comparadores", "objecion_central"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "unidad": { "type": "string" },
+        "por_que_importa": { "type": "string", "minLength": 80 },
+        "cuba": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["anio", "valor", "conf"],
+            "properties": {
+              "anio": { "type": "integer" },
+              "valor": { "type": "number", "minimum": 0 },
+              "conf": { "$ref": "#/definitions/confianza" }
+            }
+          }
+        },
+        "comparadores": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pais", "regimen_sancion", "serie", "conf"],
+            "properties": {
+              "pais": { "type": "string" },
+              "regimen_sancion": { "type": "string" },
+              "conf": { "$ref": "#/definitions/confianza" },
+              "serie": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["anio", "valor"],
+                  "properties": {
+                    "anio": { "type": "integer" },
+                    "valor": { "type": "number", "minimum": 0 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "objecion_central": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titulo", "texto", "efecto_sobre_tesis"],
+          "properties": {
+            "titulo": { "type": "string" },
+            "texto": { "type": "string", "minLength": 80 },
+            "efecto_sobre_tesis": { "type": "string", "minLength": 30 }
+          }
+        }
+      }
+    },
+
+    "did": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "advertencia_metodologica", "unidad_tratada", "tratamiento", "grupo_control", "resultado", "estimador_did_ln", "razon_implicada", "lectura", "supuestos_que_pueden_fallar", "prueba_placebo"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "advertencia_metodologica": { "type": "string", "minLength": 100 },
+        "unidad_tratada": { "type": "string" },
+        "tratamiento": { "type": "string", "minLength": 40 },
+        "grupo_control": { "type": "string" },
+        "resultado": { "type": "string" },
+        "pre": { "type": "string" },
+        "post": { "type": "string" },
+        "delta_ln_cuba": { "type": "number" },
+        "delta_ln_control": { "type": "number" },
+        "estimador_did_ln": { "type": "number" },
+        "razon_implicada": { "type": "number", "exclusiveMinimum": 0 },
+        "lectura": { "type": "string" },
+        "supuestos_que_pueden_fallar": { "type": "array", "minItems": 3, "items": { "type": "string" } },
+        "prueba_placebo": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titulo", "texto"],
+          "properties": {
+            "titulo": { "type": "string" },
+            "texto": { "type": "string", "minLength": 80 }
+          }
+        }
+      }
+    },
+
+    "comparados": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "nota_taxonomica", "casos", "hallazgo", "caso_espana"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "nota_taxonomica": { "type": "string", "minLength": 60 },
+        "hallazgo": { "type": "string", "minLength": 80 },
+        "casos": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["pais", "periodo", "tipo", "intensidad", "cambio_pob_pct_anual", "poblacion_mm", "resultado", "destacar"],
+            "properties": {
+              "pais": { "type": "string" },
+              "periodo": { "type": "string" },
+              "tipo": { "type": "string" },
+              "intensidad": { "type": "number", "minimum": 0, "maximum": 10 },
+              "cambio_pob_pct_anual": { "type": "number" },
+              "poblacion_mm": { "type": "number", "exclusiveMinimum": 0 },
+              "resultado": { "type": "string" },
+              "destacar": { "type": "boolean" }
+            }
+          }
+        },
+        "caso_espana": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titulo", "texto"],
+          "properties": {
+            "titulo": { "type": "string" },
+            "texto": { "type": "string", "minLength": 100 }
+          }
+        }
+      }
+    },
+
+    "politica_economica": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "hitos", "inversion_2024"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "hitos": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["anio", "mes", "evento", "signo", "detalle"],
+            "properties": {
+              "anio": { "type": "integer", "minimum": 2000, "maximum": 2030 },
+              "mes": { "type": "integer", "minimum": 1, "maximum": 12 },
+              "evento": { "type": "string" },
+              "signo": {
+                "type": "string",
+                "enum": ["aperturista", "restrictivo_interno", "restrictivo_externo", "consecuencia", "neutro"]
+              },
+              "detalle": { "type": "string" }
+            }
+          }
+        },
+        "inversion_2024": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["titulo", "fuente", "total_mm_pesos", "ocupacion_hotelera_pct", "partidas", "lectura", "confianza"],
+          "properties": {
+            "titulo": { "type": "string" },
+            "fuente": { "type": "string" },
+            "total_mm_pesos": { "type": "number", "exclusiveMinimum": 0 },
+            "ocupacion_hotelera_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+            "lectura": { "type": "string", "minLength": 80 },
+            "confianza": { "$ref": "#/definitions/confianza" },
+            "partidas": {
+              "type": "array",
+              "minItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["rubro", "pct_2023", "pct_2024", "mm_2024", "grupo"],
+                "properties": {
+                  "rubro": { "type": "string" },
+                  "pct_2023": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "pct_2024": { "type": "number", "minimum": 0, "maximum": 100 },
+                  "mm_2024": { "type": "number", "minimum": 0 },
+                  "grupo": { "type": "string", "enum": ["turismo", "social", "otros"] }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "test_juridico": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "advertencia", "estandares", "conclusion", "por_que_importa_la_precision"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "advertencia": { "type": "string", "minLength": 60 },
+        "conclusion": { "type": "string", "minLength": 100 },
+        "por_que_importa_la_precision": { "type": "string", "minLength": 100 },
+        "estandares": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["figura", "norma", "veredicto", "color", "elementos"],
+            "properties": {
+              "figura": { "type": "string" },
+              "norma": { "type": "string" },
+              "veredicto": { "type": "string" },
+              "color": { "type": "string", "enum": ["fallo", "abierto", "incumplido"] },
+              "elementos": {
+                "type": "array",
+                "minItems": 3,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["elemento", "estado", "razon"],
+                  "properties": {
+                    "elemento": { "type": "string" },
+                    "estado": { "$ref": "#/definitions/estadoElemento" },
+                    "razon": { "type": "string", "minLength": 30 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "encuesta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["titulo", "preguntas"],
+      "properties": {
+        "titulo": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "preguntas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "texto", "opciones"],
+            "properties": {
+              "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+              "texto": { "type": "string", "minLength": 10 },
+              "opciones": {
+                "description": "La clave de voto es <meta.slug>::<pregunta.id>::<opcion.id>. Va por id y NO por texto: asi un /refrescar que reescriba el enunciado de una opcion conserva los votos acumulados. Sembrar en ops/negligencia/poll_supabase.sql solo al anadir o renombrar un id.",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 8,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["id", "texto"],
+                  "properties": {
+                    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+                    "texto": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "referencias": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "fuente", "titulo", "fecha", "url", "uso", "tipo"],
+        "properties": {
+          "id": { "type": "integer", "minimum": 1 },
+          "fuente": { "type": "string" },
+          "titulo": { "type": "string" },
+          "autor": { "type": "string" },
+          "fecha": { "type": "string" },
+          "url": { "type": "string", "pattern": "^https?://" },
+          "uso": { "type": "string", "minLength": 10 },
+          "tipo": {
+            "type": "string",
+            "enum": ["primaria_oficial", "academica", "academica_revisada", "prensa", "prensa_independiente", "ong"]
+          }
+        }
+      }
+    },
+
+    "metodologia_global": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nota_de_integridad", "vulnerabilidad_reconocida", "regla_de_no_fusion"],
+      "properties": {
+        "nota_de_integridad": { "type": "string", "minLength": 60 },
+        "vulnerabilidad_reconocida": { "type": "string", "minLength": 60 },
+        "regla_de_no_fusion": { "type": "string", "minLength": 40 }
+      }
+    }
+  }
+}

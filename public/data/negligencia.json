@@ -1,0 +1,896 @@
+{
+  "slug": "negligencia-o-genocidio",
+  "titulo": "Negligencia criminal o genocidio silencioso",
+  "subtitulo": "Qué categoría resiste los datos cuando se audita la mortalidad cubana 2006-2026",
+  "version": "1.0.0",
+  "fecha_publicacion": "2026-08-17",
+  "fecha_datos": "2026-08-17",
+  "resumen": "Entre 2020 y 2025 murieron en Cuba entre 107.000 y 151.000 personas por encima de lo que predice su propia trayectoria de envejecimiento. La mortalidad infantil pasó de 4,0 a 9,9 por mil nacidos vivos, un indicador que ni la emigración ni el envejecimiento pueden explicar. Esta ficha somete tres hipótesis causales a prueba —embargo, pandemia, política económica interna— y después somete el resultado a los tres tests jurídicos que se invocan en el debate público: genocidio, exterminio como crimen de lesa humanidad, y el artículo 72 de la Constitución cubana de 2019.",
+  "tesis": "El término genocidio falla dos de sus tres elementos constitutivos y su uso debilita la exigencia de responsabilidad al ofrecer una refutación fácil. El estándar que Cuba sí incumple de forma documentable es el que su propio Estado se impuso por escrito.",
+  "paleta": {
+    "fondo": "#E9EEEC",
+    "superficie": "#FBFCFB",
+    "tinta": "#12181A",
+    "tintaSuave": "#5A6A6C",
+    "regla": "#C6D2CE",
+    "petroleo": "#14494F",
+    "ciruela": "#7A2B3F",
+    "oliva": "#63763F",
+    "violeta": "#4C4478",
+    "ambar": "#C98A17",
+    "arena": "#A8A08C",
+    "nota_ambar": "El ámbar #C98A17 está reservado en toda la plataforma exclusivamente para contenido contrafactual."
+  },
+  "correcciones": [
+    {
+      "afirmacion": "Cuba perdió por muerte el 19,19% de su población de 2006, más que España (18,87%) o Francia (18,82%).",
+      "veredicto": "Indicador inservible",
+      "confianza": "calculado",
+      "razon": "Dividir defunciones acumuladas de 20 años entre la población inicial mide sobre todo estructura de edad y crecimiento poblacional, no deterioro sanitario. El propio resultado se autorrefuta: una diferencia de 0,32 puntos frente a España no distingue nada, y los insumos del cálculo original eran cifras redondeadas de forma aproximada, no series oficiales.",
+      "correccion": "Sustituido por dos indicadores válidos: exceso de mortalidad frente a la propia tendencia de envejecimiento del país, y mortalidad infantil, que es insensible tanto a la migración como a la estructura etaria."
+    },
+    {
+      "afirmacion": "El embargo estadounidense explica el colapso demográfico.",
+      "veredicto": "No identificable como causa del cambio",
+      "confianza": "calculado",
+      "razon": "El embargo es una constante desde 1962. Su fase más restrictiva documentada (Torricelli 1992, Helms-Burton 1996) coincidió con un periodo en que la esperanza de vida cubana siguió subiendo y la mortalidad infantil siguió bajando. El deterioro se fecha en 2019-2025. Una variable constante no puede explicar un cambio de nivel.",
+      "correccion": "El embargo funciona en el análisis como restricción presupuestaria de fondo, no como tratamiento. La variable que sí cambia en la ventana relevante es la asignación interna de recursos."
+    }
+  ],
+  "series_demografia": [
+    {
+      "anio": 2019,
+      "defunciones": 109089,
+      "nacimientos": 108000,
+      "poblacion": 11193470,
+      "conf_def": "confirmado",
+      "conf_nac": "estimado"
+    },
+    {
+      "anio": 2020,
+      "defunciones": 112439,
+      "nacimientos": 105038,
+      "poblacion": 11181595,
+      "conf_def": "confirmado",
+      "conf_nac": "estimado"
+    },
+    {
+      "anio": 2021,
+      "defunciones": 167675,
+      "nacimientos": 99096,
+      "poblacion": 11113215,
+      "conf_def": "confirmado",
+      "conf_nac": "confirmado"
+    },
+    {
+      "anio": 2022,
+      "defunciones": 120098,
+      "nacimientos": 95403,
+      "poblacion": 11089511,
+      "conf_def": "confirmado",
+      "conf_nac": "confirmado"
+    },
+    {
+      "anio": 2023,
+      "defunciones": 117739,
+      "nacimientos": 90392,
+      "poblacion": 10055968,
+      "conf_def": "confirmado",
+      "conf_nac": "confirmado"
+    },
+    {
+      "anio": 2024,
+      "defunciones": 128098,
+      "nacimientos": 71374,
+      "poblacion": 9748007,
+      "conf_def": "confirmado",
+      "conf_nac": "confirmado"
+    },
+    {
+      "anio": 2025,
+      "defunciones": 136214,
+      "nacimientos": 68064,
+      "poblacion": 9434593,
+      "conf_def": "confirmado",
+      "conf_nac": "confirmado"
+    }
+  ],
+  "contrafactual": {
+    "titulo": "Defunciones esperadas si Cuba solo hubiera envejecido",
+    "metodo": "Se toma la tasa bruta de mortalidad de 2019 (9,746 por mil, la última prepandemia) y se la hace crecer a una deriva anual constante que representa el envejecimiento puro. Esa tasa contrafactual se aplica a la población realmente observada de cada año, no a una población proyectada. Aplicarla a la población real es lo que hace el ejercicio conservador: al reconocer que el país tiene cada año menos habitantes, se reduce mecanicamente el número de muertes esperadas.",
+    "tasa_base_2019": 9.746,
+    "deriva_base_pct": 1.7,
+    "deriva_min_pct": 1,
+    "deriva_max_pct": 3,
+    "justificacion_deriva": "Entre 2014 y 2019 la tasa bruta de mortalidad cubana creció a un ritmo compuesto de 2,6% anual por envejecimiento. Se fija 1,7% como base por ser deliberadamente conservador: sobreestima el contrafactual y por tanto subestima el exceso.",
+    "advertencia": "Todo el rango de este contrafactual es material contrafactual y se marca en ambar. No es una medición; es una comparación contra un mundo que no ocurrió.",
+    "limitaciones": [
+      "La deriva por envejecimiento se modela como constante; en la realidad se acelera cuando emigra masivamente la población en edad laboral, lo que sesga el contrafactual al alza y el exceso a la baja.",
+      "La serie de población 2022-2023 incorpora una revisión metodológica de la ONEI hacia 'población efectiva' que produce un salto no demográfico entre ambos años.",
+      "El exceso calculado no se atribuye a ninguna causa por si solo: es la magnitud a explicar, no la explicación."
+    ]
+  },
+  "mortalidad_infantil": {
+    "titulo": "El indicador que no admite coartada",
+    "unidad": "defunciones de menores de un año por cada 1.000 nacidos vivos",
+    "por_que_importa": "La mortalidad infantil es insensible a las dos explicaciones que el Estado ofrece para el resto de los indicadores. La emigración no la altera, porque el denominador son los nacidos vivos en el país ese mismo año. El envejecimiento no la altera, porque mide exclusivamente a menores de un año. Lo que mide es capacidad operativa del sistema de salud.",
+    "cuba": [
+      {
+        "anio": 2015,
+        "valor": 4.3,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2016,
+        "valor": 4.3,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2017,
+        "valor": 4,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2018,
+        "valor": 4,
+        "conf": "confirmado"
+      },
+      {
+        "anio": 2019,
+        "valor": 5,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2020,
+        "valor": 4.9,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2021,
+        "valor": 7.6,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2022,
+        "valor": 7.5,
+        "conf": "reportado"
+      },
+      {
+        "anio": 2023,
+        "valor": 7.1,
+        "conf": "confirmado"
+      },
+      {
+        "anio": 2024,
+        "valor": 7.4,
+        "conf": "confirmado"
+      },
+      {
+        "anio": 2025,
+        "valor": 9.9,
+        "conf": "confirmado"
+      }
+    ],
+    "comparadores": [
+      {
+        "pais": "Irán",
+        "regimen_sancion": "Sancionado severamente desde 2012, reimpuesto 2018",
+        "serie": [
+          {
+            "anio": 2015,
+            "valor": 13.4
+          },
+          {
+            "anio": 2018,
+            "valor": 12.5
+          },
+          {
+            "anio": 2021,
+            "valor": 11.9
+          },
+          {
+            "anio": 2025,
+            "valor": 11
+          }
+        ],
+        "conf": "estimado"
+      },
+      {
+        "pais": "Vietnam",
+        "regimen_sancion": "Embargo estadounidense total 1975-1994",
+        "serie": [
+          {
+            "anio": 2015,
+            "valor": 17.2
+          },
+          {
+            "anio": 2018,
+            "valor": 16.5
+          },
+          {
+            "anio": 2021,
+            "valor": 15.8
+          },
+          {
+            "anio": 2025,
+            "valor": 15.2
+          }
+        ],
+        "conf": "estimado"
+      },
+      {
+        "pais": "Venezuela",
+        "regimen_sancion": "Sancionado desde 2017, sector petrolero 2019",
+        "serie": [
+          {
+            "anio": 2015,
+            "valor": 19.8
+          },
+          {
+            "anio": 2018,
+            "valor": 21.4
+          },
+          {
+            "anio": 2021,
+            "valor": 23.1
+          },
+          {
+            "anio": 2025,
+            "valor": 24
+          }
+        ],
+        "conf": "estimado"
+      },
+      {
+        "pais": "Taiwán",
+        "regimen_sancion": "Exclusión diplomática desde 1971, sin bloqueo económico",
+        "serie": [
+          {
+            "anio": 2015,
+            "valor": 4
+          },
+          {
+            "anio": 2018,
+            "valor": 4
+          },
+          {
+            "anio": 2021,
+            "valor": 3.9
+          },
+          {
+            "anio": 2025,
+            "valor": 3.8
+          }
+        ],
+        "conf": "estimado"
+      },
+      {
+        "pais": "España",
+        "regimen_sancion": "Bloqueo diplomático ONU 1946-1950, sin sanción actual",
+        "serie": [
+          {
+            "anio": 2015,
+            "valor": 2.7
+          },
+          {
+            "anio": 2018,
+            "valor": 2.7
+          },
+          {
+            "anio": 2021,
+            "valor": 2.6
+          },
+          {
+            "anio": 2025,
+            "valor": 2.6
+          }
+        ],
+        "conf": "estimado"
+      }
+    ],
+    "objecion_central": {
+      "titulo": "La objeción que hay que conceder",
+      "texto": "La linea base cubana de 4,0 por mil ha sido cuestionada en literatura revisada por pares. Berdine, Geloso y Powell (Health Policy and Planning, 2018) argumentaron que Cuba reclasificaba muertes neonatales tempranas como defunciones fetales tardías y ejercía presión sobre embarazos de riesgo, deprimiendo artificialmente el indicador. Si esa crítica es correcta, el punto de partida real era superior a 4,0 y el aumento proporcional del 148% está sobreestimado.",
+      "efecto_sobre_tesis": "Debilita la magnitud, no la dirección. El salto de 7,4 a 9,9 ocurrió en un solo año y dentro del mismo régimen de registro, por lo que no puede explicarse por un cambio de definiciones anterior."
+    }
+  },
+  "did": {
+    "titulo": "Diseno de identificación",
+    "advertencia_metodologica": "Este no es un estimador inferencial. Con una sola unidad tratada no existen errores estándar validos ni contraste de hipótesis posible. Lo que sigue es una comparación estructurada de trayectorias, presentada con la aritmética de diferencias en diferencias porque esa aritmética hace explicitos los supuestos. Un control sintético ponderado sería más defendible y requiere series completas que esta ficha aún no incorpora.",
+    "unidad_tratada": "Cuba",
+    "tratamiento": "El paquete de política 2019-2021: reversión del ciclo reformista de 2010-2016, Tarea Ordenamiento (1 de enero de 2021) y colapso del suministro eléctrico. No el embargo, que es constante.",
+    "grupo_control": "Estados sancionados sin colapso institucional simultaneo: Irán, Vietnam, Corea del Norte",
+    "resultado": "Logaritmo de la tasa de mortalidad infantil",
+    "pre": "2010-2018",
+    "post": "2019-2025",
+    "delta_ln_cuba": 0.9063,
+    "delta_ln_control": -0.101,
+    "estimador_did_ln": 1.0073,
+    "razon_implicada": 2.74,
+    "lectura": "La mortalidad infantil cubana de 2025 es aproximadamente 2,7 veces la que habría correspondido si Cuba hubiera seguido la trayectoria media de otros estados fuertemente sancionados.",
+    "supuestos_que_pueden_fallar": [
+      "Tendencias paralelas: Cuba partía de un nivel muy inferior al del grupo de control, y los cambios proporcionales desde bases bajas se mueven más facilmente. En términos absolutos Cuba sumo 5,9 puntos y Venezuela 2,6; en términos proporcionales Cuba supera a Venezuela. Ambas lecturas son correctas y deben presentarse juntas.",
+      "El tratamiento es un paquete, no una política. No es posible aislar el efecto de la Tarea Ordenamiento del efecto del colapso eléctrico o de la pandemia.",
+      "Integridad del registro: si Cuba subregistraba antes, el pre está sesgado a la baja; si subregistra ahora, el post lo está también.",
+      "Composición: los nacimientos cayeron un 25% entre 2023 y 2025, lo que altera el perfil de riesgo del denominador."
+    ],
+    "prueba_placebo": {
+      "titulo": "Placebo en el tiempo",
+      "texto": "Si el embargo fuera la causa, el deterioro debería aparecer cuando el embargo se endurece. La Ley Torricelli (1992) y la Helms-Burton (1996) constituyen el endurecimiento más severo documentado, coincidiendo además con la perdida del subsidio soviético. En ese periodo la mortalidad infantil cubana continuo descendiendo y la esperanza de vida continuo subiendo. El test placebo no detecta efecto donde la hipótesis del embargo predice el mayor efecto."
+    }
+  },
+  "comparados": {
+    "titulo": "Estados aislados, resultados divergentes",
+    "nota_taxonomica": "Taiwán y España no son casos de bloqueo económico y se incluyen precisamente por eso: Taiwán sufre exclusión diplomática sin restricción comercial, y España sufrió un bloqueo diplomático de la ONU (Resolución 39(I), 1946) con exclusión del Plan Marshall. Sirven para separar aislamiento político de restricción material.",
+    "casos": [
+      {
+        "pais": "Cuba",
+        "periodo": "1962-presente",
+        "tipo": "Embargo comercial unilateral",
+        "intensidad": 8,
+        "cambio_pob_pct_anual": -3.3,
+        "poblacion_mm": 9.4,
+        "resultado": "Contracción de 1,6 millones en cinco años sin guerra",
+        "destacar": true
+      },
+      {
+        "pais": "Venezuela",
+        "periodo": "2017-presente",
+        "tipo": "Sanciones sectoriales y financieras",
+        "intensidad": 7,
+        "cambio_pob_pct_anual": -1.2,
+        "poblacion_mm": 28.4,
+        "resultado": "Exodo de unos 7,9 millones; mortalidad infantil al alza",
+        "destacar": false
+      },
+      {
+        "pais": "Irán",
+        "periodo": "2012-presente",
+        "tipo": "Sanciones financieras y petroleras",
+        "intensidad": 8,
+        "cambio_pob_pct_anual": 0.6,
+        "poblacion_mm": 90.6,
+        "resultado": "Población creciente; mortalidad infantil descendente",
+        "destacar": false
+      },
+      {
+        "pais": "Corea del Norte",
+        "periodo": "1950-presente",
+        "tipo": "Sanciones multilaterales integrales",
+        "intensidad": 10,
+        "cambio_pob_pct_anual": 0.4,
+        "poblacion_mm": 26.5,
+        "resultado": "Hambruna documentada 1994-1998; población aún creciente",
+        "destacar": false
+      },
+      {
+        "pais": "Vietnam",
+        "periodo": "1975-1994",
+        "tipo": "Embargo estadounidense total",
+        "intensidad": 9,
+        "cambio_pob_pct_anual": 2.1,
+        "poblacion_mm": 100.3,
+        "resultado": "Crecimiento sostenido bajo embargo; despegue tras Doi Moi",
+        "destacar": false
+      },
+      {
+        "pais": "Serbia (RFY)",
+        "periodo": "1992-1996",
+        "tipo": "Bloqueo integral ONU",
+        "intensidad": 9,
+        "cambio_pob_pct_anual": -0.1,
+        "poblacion_mm": 6.6,
+        "resultado": "Hiperinflación; población prácticamente estable",
+        "destacar": false
+      },
+      {
+        "pais": "Irak",
+        "periodo": "1990-2003",
+        "tipo": "Sanciones integrales ONU",
+        "intensidad": 10,
+        "cambio_pob_pct_anual": 2.7,
+        "poblacion_mm": 24,
+        "resultado": "Exceso de mortalidad infantil real pero muy inferior al alegado por el gobierno de la epoca",
+        "destacar": false
+      },
+      {
+        "pais": "España",
+        "periodo": "1946-1950",
+        "tipo": "Bloqueo diplomático ONU y exclusión del Plan Marshall",
+        "intensidad": 5,
+        "cambio_pob_pct_anual": 0.8,
+        "poblacion_mm": 28,
+        "resultado": "Estancamiento bajo autarquía; despegue tras el Plan de Estabilización de 1959",
+        "destacar": false
+      },
+      {
+        "pais": "Taiwán",
+        "periodo": "1971-presente",
+        "tipo": "Exclusión diplomática sin restricción comercial",
+        "intensidad": 2,
+        "cambio_pob_pct_anual": -0.2,
+        "poblacion_mm": 23.4,
+        "resultado": "Fecundidad más baja del mundo y población en descenso, pero sin exceso de mortalidad",
+        "destacar": false
+      }
+    ],
+    "hallazgo": "La intensidad de sanción no ordena los resultados demográficos. Los dos casos con contracción poblacional acelerada, Cuba y Venezuela, no son los más sancionados; son los que combinan sanción con colapso de capacidad estatal interna. Irak y Corea del Norte, más sancionados, crecieron. Taiwán demuestra que envejecimiento y baja fecundidad por si solos producen descenso lento, no colapso.",
+    "caso_espana": {
+      "titulo": "El contrafactual histórico más incomodo",
+      "texto": "España estuvo diplomaticamente bloqueada por la Resolución 39(I) de la Asamblea General de la ONU en diciembre de 1946: retirada de embajadores, exclusión de los organismos especializados y del Plan Marshall. Respondio con dos décadas de autarquía y estancamiento. En 1959 el régimen mantuvo intacta su naturaleza política pero cambio por completo su política económica con el Plan de Estabilización. El resultado fue el segundo mayor crecimiento del mundo en la década siguiente. El caso demuestra que el aislamiento externo no determina el resultado material: lo determina la respuesta de política interna, y esa respuesta no exige democratización previa."
+    }
+  },
+  "politica_economica": {
+    "titulo": "Veinte años de decisiones, medidas contra defunciones",
+    "hitos": [
+      {
+        "anio": 2006,
+        "mes": 7,
+        "evento": "Raul Castro asume el poder de forma provisional",
+        "signo": "neutro",
+        "detalle": "Inicio de la ventana de análisis."
+      },
+      {
+        "anio": 2008,
+        "mes": 7,
+        "evento": "Decreto-Ley 259: entrega de tierras ociosas en usufructo",
+        "signo": "aperturista",
+        "detalle": "Primera reforma estructural del periodo."
+      },
+      {
+        "anio": 2011,
+        "mes": 4,
+        "evento": "Lineamientos del VI Congreso; expansión del trabajo por cuenta propia",
+        "signo": "aperturista",
+        "detalle": "Se anuncia el recorte de 500.000 plazas estatales."
+      },
+      {
+        "anio": 2014,
+        "mes": 12,
+        "evento": "Deshielo con Estados Unidos; Ley 118 de inversión extranjera",
+        "signo": "aperturista",
+        "detalle": "Auge turístico y expansión de remesas."
+      },
+      {
+        "anio": 2017,
+        "mes": 6,
+        "evento": "NSPM-5: reversión de la política estadounidense",
+        "signo": "restrictivo_externo",
+        "detalle": "Congelación de nuevas licencias."
+      },
+      {
+        "anio": 2019,
+        "mes": 2,
+        "evento": "Nueva Constitución; freno interno al ciclo reformista",
+        "signo": "restrictivo_interno",
+        "detalle": "El articulo 72 consagra la salud como derecho garantizado por el Estado."
+      },
+      {
+        "anio": 2020,
+        "mes": 11,
+        "evento": "Cierre de Western Union; tope a remesas",
+        "signo": "restrictivo_externo",
+        "detalle": "Corte del principal canal formal de divisas familiares."
+      },
+      {
+        "anio": 2021,
+        "mes": 1,
+        "evento": "Tarea Ordenamiento: unificación monetaria y devaluación 1:24",
+        "signo": "restrictivo_interno",
+        "detalle": "Shock inflacionario. Punto de inflexion del análisis."
+      },
+      {
+        "anio": 2021,
+        "mes": 8,
+        "evento": "Decretos-Ley 46 y 47: autorización de mipymes",
+        "signo": "aperturista",
+        "detalle": "Liberalización parcial y tardía, siete meses después del shock."
+      },
+      {
+        "anio": 2022,
+        "mes": 3,
+        "evento": "Inicio de la mayor ola migratoria de la historia cubana",
+        "signo": "consecuencia",
+        "detalle": "Salida neta sostenida por encima de 200.000 personas anuales."
+      },
+      {
+        "anio": 2024,
+        "mes": 10,
+        "evento": "Primer apagon nacional total del sistema electroenergético",
+        "signo": "consecuencia",
+        "detalle": "Se repite en diciembre de 2024 y marzo de 2025."
+      },
+      {
+        "anio": 2025,
+        "mes": 8,
+        "evento": "Epidemia declarada de arbovirosis: dengue, chikungunya y oropouche",
+        "signo": "consecuencia",
+        "detalle": "El MINSAP reconoció contagio en torno a un tercio de la población."
+      }
+    ],
+    "inversion_2024": {
+      "titulo": "La prueba documental de la asignación",
+      "fuente": "ONEI, Indicadores Seleccionados de Inversiones, diciembre 2024",
+      "total_mm_pesos": 98569.5,
+      "ocupacion_hotelera_pct": 23,
+      "partidas": [
+        {
+          "rubro": "Servicios empresariales e inmobiliarias",
+          "pct_2023": 24.6,
+          "pct_2024": 25.3,
+          "mm_2024": 24907.3,
+          "grupo": "turismo"
+        },
+        {
+          "rubro": "Hoteles y restaurantes",
+          "pct_2023": 8.9,
+          "pct_2024": 12.1,
+          "mm_2024": 11936.5,
+          "grupo": "turismo"
+        },
+        {
+          "rubro": "Industria manufacturera",
+          "pct_2023": 17.4,
+          "pct_2024": 17.4,
+          "mm_2024": 17151.1,
+          "grupo": "otros"
+        },
+        {
+          "rubro": "Electricidad, gas y agua",
+          "pct_2023": 10,
+          "pct_2024": 12.9,
+          "mm_2024": 12715.5,
+          "grupo": "otros"
+        },
+        {
+          "rubro": "Transporte y comunicaciones",
+          "pct_2023": 14.1,
+          "pct_2024": 9.7,
+          "mm_2024": 9543.5,
+          "grupo": "otros"
+        },
+        {
+          "rubro": "Agricultura y ganadería",
+          "pct_2023": 3.1,
+          "pct_2024": 2.7,
+          "mm_2024": 2671.4,
+          "grupo": "social"
+        },
+        {
+          "rubro": "Administración pública y defensa",
+          "pct_2023": 3.4,
+          "pct_2024": 2.7,
+          "mm_2024": 2645.5,
+          "grupo": "otros"
+        },
+        {
+          "rubro": "Salud pública y asistencia social",
+          "pct_2023": 1.8,
+          "pct_2024": 2,
+          "mm_2024": 1977.4,
+          "grupo": "social"
+        },
+        {
+          "rubro": "Educación",
+          "pct_2023": 1.4,
+          "pct_2024": 1,
+          "mm_2024": 993.9,
+          "grupo": "social"
+        }
+      ],
+      "lectura": "El 37,4% de toda la inversión nacional de 2024 se dirigió a infraestructura turística operando al 23% de ocupación. Salud pública recibió el 2,0%. Educación cayó de 1,4% a 1,0%. Ese mismo año se registraron 128.098 defunciones y la mortalidad infantil subió a 7,4 por mil.",
+      "confianza": "confirmado"
+    }
+  },
+  "test_juridico": {
+    "titulo": "Tres estándares, tres resultados distintos",
+    "advertencia": "Yamacoa no es un tribunal y esta sección no constituye una imputación penal. Lo que se hace aquí es aplicar los elementos constitutivos de cada figura al expediente factico disponible y señalar cuales se cumplen y cuales no.",
+    "estandares": [
+      {
+        "figura": "Genocidio",
+        "norma": "Convención de 1948, articulo II; Estatuto de Roma, articulo 6",
+        "veredicto": "No se sostiene",
+        "color": "fallo",
+        "elementos": [
+          {
+            "elemento": "Grupo protegido: nacional, etnico, racial o religioso",
+            "estado": "no_cumple",
+            "razon": "El colectivo afectado es la población general. Los grupos políticos y económicos fueron excluidos deliberadamente del texto de 1948 durante su negociación."
+          },
+          {
+            "elemento": "Actus reus: matanza o sometimiento a condiciones de existencia destructivas",
+            "estado": "parcial",
+            "razon": "La privación de acceso a medicamentos e insumos está documentada. Su calificación como sometimiento deliberado no lo está."
+          },
+          {
+            "elemento": "Dolus specialis: intención de destruir al grupo como tal",
+            "estado": "no_cumple",
+            "razon": "La facilitación estatal de la emigración masiva es contraprueba directa. Un Estado que permite y tramita la salida de su población no está ejecutando un plan de destrucción in situ."
+          }
+        ]
+      },
+      {
+        "figura": "Exterminio como crimen de lesa humanidad",
+        "norma": "Estatuto de Roma, articulo 7.1.b y 7.2.b",
+        "veredicto": "No acreditado, pero es la figura estructuralmente más próxima",
+        "color": "abierto",
+        "elementos": [
+          {
+            "elemento": "Privación de acceso a alimentos y medicinas",
+            "estado": "cumple",
+            "razon": "Documentada por la CIDH, por organizaciones independientes y por las propias cifras de abastecimiento del MINSAP."
+          },
+          {
+            "elemento": "Ataque generalizado o sistematico contra población civil",
+            "estado": "parcial",
+            "razon": "La generalidad está acreditada; el carácter de ataque dirigido no."
+          },
+          {
+            "elemento": "Politica de Estado dirigida a cometer el ataque",
+            "estado": "no_cumple",
+            "razon": "El elemento de política exige dirección, no solo resultado. La asignación presupuestaria acredita prioridades incompatibles con la vida, no una política de causar muertes."
+          },
+          {
+            "elemento": "Calculo dirigido a la destrucción de parte de la población",
+            "estado": "no_cumple",
+            "razon": "La norma exige que las condiciones esten calculadas para destruir. La evidencia sostiene previsibilidad e indiferencia, no cálculo."
+          }
+        ]
+      },
+      {
+        "figura": "Articulo 72 de la Constitución de la República de Cuba (2019)",
+        "norma": "Texto aprobado en referendo el 24 de febrero de 2019 y redactado por el propio Estado",
+        "veredicto": "Incumplido de forma documentable",
+        "color": "incumplido",
+        "elementos": [
+          {
+            "elemento": "La salud pública es un derecho de todas las personas",
+            "estado": "cumple",
+            "razon": "Obligación vigente, autoimpuesta, no derivada de tratado alguno. Cuba firmo el PIDESC en 2008 pero nunca lo ratifico, de modo que este es el estándar exigible más fuerte."
+          },
+          {
+            "elemento": "El Estado garantiza el acceso a los servicios",
+            "estado": "incumple",
+            "razon": "Desabastecimiento crónico del cuadro básico de medicamentos y cierre de servicios por falta de insumos y de personal."
+          },
+          {
+            "elemento": "El Estado garantiza la calidad de los servicios",
+            "estado": "incumple",
+            "razon": "La mortalidad infantil paso de 4,0 a 9,9 por mil entre 2018 y 2025. La mortalidad materna subió de 38,7 a 44,1 por cien mil entre 2023 y 2025."
+          },
+          {
+            "elemento": "Asignación del máximo de recursos disponibles",
+            "estado": "incumple",
+            "razon": "Con el 37,4% de la inversión nacional dirigida a turismo al 23% de ocupación y el 2,0% a salud, la restricción presupuestaria externa no explica la distribución interna."
+          }
+        ]
+      }
+    ],
+    "conclusion": "La categoría correcta no es genocidio. Tampoco es negligencia, porque negligencia implica un resultado no previsto, y el deterioro fue advertido, medido y publicado por los propios organos estadísticos del Estado antes de agravarse. Lo que el expediente sostiene es una decisión sostenida de asignación de recursos, mantenida durante siete años consecutivos frente a indicadores de mortalidad que empeoraban de forma pública y verificable.",
+    "por_que_importa_la_precision": "Invocar genocidio no eleva la exigencia de responsabilidad: la reduce. Ofrece a cualquier interlocutor una refutación de un solo paso, la ausencia de grupo protegido y de dolo especial, que permite descartar todo el expediente junto con el término. La imputación que resiste es la que se construye sobre el articulo 72 y sobre las cifras de inversión de la ONEI, porque ambas son documentos del propio Estado."
+  },
+  "encuesta": {
+    "titulo": "Participa",
+    "descripcion": "Los resultados se publican en agregado y son anonimos. Un voto por pregunta y navegador.",
+    "preguntas": [
+      {
+        "id": "categoria",
+        "texto": "Tras revisar los tres estándares, cual describe mejor la responsabilidad del Estado cubano por la mortalidad de la ultima década?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "Genocidio en sentido jurídico estricto"
+          },
+          {
+            "id": "o2",
+            "texto": "Crimen de lesa humanidad, aún no acreditado"
+          },
+          {
+            "id": "o3",
+            "texto": "Incumplimiento sostenido de obligaciones propias"
+          },
+          {
+            "id": "o4",
+            "texto": "Negligencia sin intencionalidad"
+          },
+          {
+            "id": "o5",
+            "texto": "La responsabilidad principal es del embargo"
+          }
+        ]
+      },
+      {
+        "id": "factor",
+        "texto": "Que factor considera determinante en el exceso de mortalidad 2020-2025?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "La asignación interna de recursos"
+          },
+          {
+            "id": "o2",
+            "texto": "El embargo estadounidense"
+          },
+          {
+            "id": "o3",
+            "texto": "La pandemia y sus secuelas"
+          },
+          {
+            "id": "o4",
+            "texto": "El envejecimiento y la emigración de personal sanitario"
+          },
+          {
+            "id": "o5",
+            "texto": "Una combinación sin factor dominante"
+          }
+        ]
+      },
+      {
+        "id": "terminologia",
+        "texto": "Usar la palabra genocidio en este caso, ayuda o perjudica la exigencia de responsabilidad?",
+        "opciones": [
+          {
+            "id": "o1",
+            "texto": "Ayuda: nombra la gravedad real"
+          },
+          {
+            "id": "o2",
+            "texto": "Perjudica: ofrece una refutación fácil"
+          },
+          {
+            "id": "o3",
+            "texto": "Es indiferente al resultado político"
+          },
+          {
+            "id": "o4",
+            "texto": "No tengo posición formada"
+          }
+        ]
+      }
+    ]
+  },
+  "referencias": [
+    {
+      "id": 1,
+      "fuente": "ONEI",
+      "titulo": "Indicadores Demograficos de Cuba y sus Territorios 2025",
+      "fecha": "2026-07-21",
+      "url": "http://www.cubadebate.cu/noticias/2026/07/21/cuba-cerro-2025-con-9-434-593-habitantes-y-mantiene-tendencia-al-decrecimiento-poblacional/",
+      "uso": "Población 9.434.593; defunciones 136.214; nacimientos 68.064; saldo migratorio -245.264; TGF 1,29; envejecimiento 26,7%; población en edad laboral 5.606.541",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 2,
+      "fuente": "ONEI",
+      "titulo": "Indicadores Seleccionados de Inversiones, diciembre 2024",
+      "fecha": "2025-03",
+      "url": "http://www.onei.gob.cu/sites/default/files/publicaciones/2025-03/inversiones-diciembre-2024.pdf",
+      "uso": "Distribución de la inversión 2023 y 2024 por rubro; base del argumento de asignación",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 3,
+      "fuente": "MINSAP",
+      "titulo": "Datos preliminares del Programa de Atención Materno Infantil, cierre 2025",
+      "fecha": "2026-01-02",
+      "url": "https://www.lahabana.gob.cu/post_detalles/es/26474/cuba-cerro-2025-con-tasa-de-mortalidad-infantil-de-9-9",
+      "uso": "Mortalidad infantil 9,9 por mil; mortalidad materna 44,1 por cien mil; 68.051 nacimientos",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 4,
+      "fuente": "Granma",
+      "titulo": "Cuba mantiene la tasa de mortalidad infantil en 7,1 por cada mil nacidos vivos",
+      "fecha": "2025-01-03",
+      "url": "https://www.granma.cu/cuba/2025-01-03/cuba-mantiene-la-tasa-de-mortalidad-infantil-en-71-por-cada-mil-nacidos-vivos-03-01-2025-21-01-07",
+      "uso": "Nacimientos 2024: 71.374; mortalidad materna 2023 y 2024",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 5,
+      "fuente": "14ymedio",
+      "titulo": "Las autoridades admiten que Cuba registro en 2025 la mayor cifra de muertes desde la pandemia",
+      "fecha": "2026-07-12",
+      "url": "https://www.14ymedio.com/cuba/autoridades-admiten-cuba-registro-2025_1_1128708.html",
+      "uso": "Serie de defunciones 2019-2025 y contraste con 2021",
+      "tipo": "prensa_independiente"
+    },
+    {
+      "id": 6,
+      "fuente": "OnCubaNews",
+      "titulo": "Más muertes que nacimientos: Cuba enfrenta un acelerado declive demográfico",
+      "fecha": "2026-07-13",
+      "url": "https://oncubanews.com/cuba/más-muertes-que-nacimientos-cuba-enfrenta-un-acelerado-declive-demográfico-entre-la-baja-fecundidad-y-el-éxodo-juvenil/",
+      "uso": "Defunciones 2021-2024 según registros ONEI",
+      "tipo": "prensa"
+    },
+    {
+      "id": 7,
+      "fuente": "Diario de Cuba",
+      "titulo": "El mito de la baja mortalidad infantil en Cuba se derrumba",
+      "fecha": "2026-01-03",
+      "url": "https://diariodecuba.com/cuba/1767441225_64645.html",
+      "uso": "Trayectoria de la mortalidad infantil y proyección oficial a 7,7 millones",
+      "tipo": "prensa_independiente"
+    },
+    {
+      "id": 8,
+      "fuente": "Diario de Cuba",
+      "titulo": "La torcida prioridad del régimen cubano: 11 veces más inversiones para el turismo que para Educación y Salud",
+      "fecha": "2025-03-25",
+      "url": "https://diariodecuba.com/economía/1742888102_60435.html",
+      "uso": "37,4% de inversión en turismo; ocupación hotelera 23%; análisis de Pedro Monreal",
+      "tipo": "prensa_independiente"
+    },
+    {
+      "id": 9,
+      "fuente": "Horizonte Cubano, Columbia Law School",
+      "titulo": "Cuba. Una rapida mirada a la emigración y la población",
+      "autor": "Juan Carlos Albizu-Campos Espineira",
+      "fecha": "2024-07-15",
+      "url": "https://horizontecubano.law.columbia.edu/news/cuba-una-rapida-mirada-la-emigración-y-la-población",
+      "uso": "Estimación independiente de población residente real: 8,62 millones al cierre de 2023",
+      "tipo": "academica"
+    },
+    {
+      "id": 10,
+      "fuente": "Diario de Cuba",
+      "titulo": "ONEI: Cuba cerro 2025 con su tasa de fecundidad más baja desde 1958",
+      "fecha": "2026-07-21",
+      "url": "https://diariodecuba.com/cuba/1784677326_68129.html",
+      "uso": "Definición de población efectiva; estimación Albizu-Campos de 8.025.624 al cierre de 2024",
+      "tipo": "prensa_independiente"
+    },
+    {
+      "id": 11,
+      "fuente": "Health Policy and Planning",
+      "titulo": "Cuban infant mortality and longevity: health care or repressión?",
+      "autor": "Berdine G., Geloso V., Powell B.",
+      "fecha": "2018",
+      "url": "https://academic.oup.com/heapol/article/33/6/755/5017435",
+      "uso": "Objeción revisada por pares a la linea base cubana de mortalidad infantil",
+      "tipo": "academica_revisada"
+    },
+    {
+      "id": 12,
+      "fuente": "Naciones Unidas",
+      "titulo": "Resolución 39(I) de la Asamblea General sobre las relaciones de los Miembros con España",
+      "fecha": "1946-12-12",
+      "url": "https://docs.un.org/es/A/RES/39(I)",
+      "uso": "Base documental del caso comparado español de bloqueo diplomático",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 13,
+      "fuente": "Naciones Unidas",
+      "titulo": "Estatuto de Roma de la Corte Penal Internacional, articulos 6 y 7",
+      "fecha": "1998-07-17",
+      "url": "https://www.icc-cpi.int/sites/default/files/RS-Esp.pdf",
+      "uso": "Elementos constitutivos de genocidio y de exterminio como crimen de lesa humanidad",
+      "tipo": "primaria_oficial"
+    },
+    {
+      "id": 14,
+      "fuente": "República de Cuba",
+      "titulo": "Constitución de la República de Cuba, articulo 72",
+      "fecha": "2019-04-10",
+      "url": "https://www.gacetaoficial.gob.cu/sites/default/files/goc-2019-ex5.pdf",
+      "uso": "Obligación estatal autoimpuesta de garantizar acceso, gratuidad y calidad de los servicios de salud",
+      "tipo": "primaria_oficial"
+    }
+  ],
+  "metodologia_global": {
+    "nota_de_integridad": "Esta ficha corrige tres afirmaciones que circulaban en los materiales de partida y que no resistieron verificación. Se documentan en la sección de correcciones en lugar de eliminarse en silencio, porque el lector tiene derecho a saber que se descarto y con que criterio.",
+    "vulnerabilidad_reconocida": "Las series de mortalidad infantil de los países comparadores están etiquetadas como estimadas y proceden de compilaciones internacionales, no de registros nacionales consultados directamente. El estimador de diferencias en diferencias hereda esa incertidumbre y debe leerse como orden de magnitud.",
+    "regla_de_no_fusion": "Un patron documentado a nivel agregado no eleva la confianza de ningun caso individual. Las cifras de exceso de mortalidad no implican atribución de causa para ninguna muerte concreta."
+  },
+  "meta": {
+    "slug": "negligencia-o-genocidio",
+    "titulo": "Negligencia criminal o genocidio silencioso",
+    "subtitulo": "Qué categoría resiste los datos cuando se audita la mortalidad cubana 2006-2026",
+    "descripcion": "Entre 2020 y 2025 murieron en Cuba entre 107.000 y 151.000 personas por encima de lo que predice la propia trayectoria de envejecimiento del país. Este expediente parte de esa magnitud y hace dos cosas con ella: primero somete a prueba las hipótesis causales que se disputan el fenómeno en el debate público, y después somete el resultado a los tres estándares jurídicos que se invocan para nombrarlo. La conclusión es que la palabra genocidio no resiste el examen, y que el estándar que Cuba sí incumple de forma documentable es el que su propio Estado se impuso por escrito en 2019.\n\nEl expediente arranca corrigiendo dos afirmaciones que circulaban en los materiales de partida y que no resistieron verificación, en lugar de descartarlas en silencio. La primera es el cálculo según el cual Cuba habría perdido por muerte el 19,19% de su población de 2006, más que España (18,87%) o Francia (18,82%): dividir veinte años de defunciones acumuladas entre la población inicial mide sobre todo estructura de edad y crecimiento poblacional, no deterioro sanitario, y una diferencia de 0,32 puntos frente a España no distingue nada. La segunda es la atribución del colapso demográfico al embargo estadounidense: el embargo es una constante desde 1962, y su fase más restrictiva documentada, la Ley Torricelli de 1992 y la Helms-Burton de 1996, coincidió con un periodo en que la esperanza de vida cubana siguió subiendo y la mortalidad infantil siguió bajando. Una variable constante no puede explicar un cambio de nivel fechado en 2019-2025.\n\nEn sustitución se usan dos indicadores que sí resisten. El primero es el exceso de mortalidad frente a la propia tendencia de envejecimiento del país: se toma la tasa bruta de mortalidad de 2019 (9,746 por mil, la última prepandemia), se la hace crecer a una deriva anual constante del 1,7% —deliberadamente conservadora, cuando entre 2014 y 2019 el ritmo real fue del 2,6%— y se aplica esa tasa a la población realmente observada de cada año, no a una proyectada. El segundo es la mortalidad infantil, insensible a las dos explicaciones que ofrece el Estado: la emigración no la altera, porque el denominador son los nacidos vivos en el país ese mismo año, y el envejecimiento tampoco, porque mide exclusivamente a menores de un año. Lo que mide es capacidad operativa del sistema de salud. Pasó de 4,0 por mil en 2018 a 9,9 en 2025.\n\nSobre esa serie se construye una comparación estructurada de trayectorias con la aritmética de diferencias en diferencias, presentada de forma explícita como lo que es y no como lo que no es: con una sola unidad tratada no existen errores estándar válidos ni contraste de hipótesis posible. El tratamiento no es el embargo, sino el paquete de política de 2019-2021 —reversión del ciclo reformista de 2010-2016, Tarea Ordenamiento del 1 de enero de 2021 y colapso del suministro eléctrico—, y el grupo de control lo forman estados sancionados sin colapso institucional simultáneo: Irán, Vietnam y Corea del Norte. El estimador implica que la mortalidad infantil cubana de 2025 es unas 2,7 veces la que habría correspondido siguiendo la trayectoria media de esos estados. El expediente enumera los supuestos que pueden fallar, entre ellos que Cuba partía de un nivel muy inferior al del grupo de control y que los nacimientos cayeron un 25% entre 2023 y 2025, lo que altera el perfil de riesgo del denominador.\n\nLa prueba documental de la asignación interna de recursos son los Indicadores Seleccionados de Inversiones de la ONEI de diciembre de 2024. Sobre un total de 98.569,5 millones de pesos, los rubros asociados al turismo se llevaron el 37,4% —25,3% en servicios empresariales e inmobiliarias y 12,1% en hoteles y restaurantes— con una ocupación hotelera del 23%. Salud pública y asistencia social recibieron el 2,0%, es decir 1.977,4 millones; educación, el 1,0%; agricultura y ganadería, el 2,7%. Una restricción presupuestaria externa explica cuánto hay para repartir, no cómo se reparte.\n\nLa última sección aplica tres estándares jurídicos al expediente fáctico, sin constituir imputación penal alguna. El genocidio, según la Convención de 1948 y el artículo 6 del Estatuto de Roma, falla dos de sus tres elementos: el colectivo afectado es la población general, y los grupos políticos y económicos fueron excluidos deliberadamente del texto de 1948 durante su negociación; y el dolo específico de destruir al grupo como tal tiene una contraprueba directa en la facilitación estatal de la emigración masiva. El exterminio como crimen de lesa humanidad (artículos 7.1.b y 7.2.b) es la figura estructuralmente más próxima, pero tampoco está acreditada: la evidencia sostiene previsibilidad e indiferencia, no el cálculo dirigido que la norma exige. El estándar que sí se incumple de forma documentable es el artículo 72 de la Constitución cubana de 2019, aprobado en referendo el 24 de febrero de ese año y redactado por el propio Estado, que obliga a garantizar el acceso y la calidad de los servicios de salud y la asignación del máximo de recursos disponibles. Cuba firmó el PIDESC en 2008 pero nunca lo ratificó, de modo que su propia Constitución es el estándar exigible más fuerte que existe sobre ella.\n\nAdvertencias del expediente: las series de mortalidad infantil de los países comparadores están etiquetadas como estimadas y proceden de compilaciones internacionales, no de registros nacionales consultados directamente, y el estimador hereda esa incertidumbre. Todo el rango del contrafactual se marca en ámbar porque no es una medición, sino una comparación contra un mundo que no ocurrió. Y rige la regla de no fusión: un patrón documentado a nivel agregado no eleva la confianza de ningún caso individual, de modo que las cifras de exceso de mortalidad no implican atribución de causa para ninguna muerte concreta.",
+    "narracion": "Entre 2020 y 2025 Cuba registró entre ciento siete mil y ciento cincuenta y un mil muertes por encima de su tendencia de envejecimiento. Este expediente pregunta qué palabra resiste los datos. Descarta dos atajos. El primero, el diecinueve por ciento de población perdida por muerte: mide estructura de edad, no deterioro sanitario. El segundo, el embargo. Es constante desde 1962, y en su fase más dura la esperanza de vida subía y la mortalidad infantil bajaba. Una constante no explica un cambio. El indicador que no admite coartada es la mortalidad infantil: ni la emigración ni el envejecimiento la alteran. Pasó de cuatro por mil en 2018 a nueve coma nueve en 2025. Es unas dos coma siete veces la trayectoria de otros estados sancionados. La prueba de la asignación la da la Oficina Nacional de Estadística e Información. En 2024 el turismo se llevó el treinta y siete coma cuatro por ciento de la inversión. Los hoteles estaban al veintitrés por ciento de ocupación. La salud recibió el dos por ciento. Al final, tres estándares jurídicos. Genocidio no se sostiene: falla el grupo protegido y falla la intención. Exterminio como crimen de lesa humanidad es la figura más próxima, pero no está acreditada. El estándar que Cuba sí incumple de forma documentable es el artículo setenta y dos de su propia Constitución, que escribió el propio Estado.",
+    "version": "1.0.0",
+    "fecha_datos": "2026-08-17"
+  }
+}

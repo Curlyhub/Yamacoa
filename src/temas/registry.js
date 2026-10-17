@@ -469,6 +469,24 @@ const temas = [
     publicado: "2026-08-15",
     load: () => import("./cerco_julio.jsx"),
   },
+  {
+    id: "negligencia",
+    slug: "negligencia",
+    path: "/negligencia",
+    titulo: "Negligencia criminal o genocidio silencioso",
+    subtitulo:
+      "Qué categoría resiste los datos cuando se audita la mortalidad cubana 2006-2026",
+    etiqueta: "SALUD PÚBLICA · TEST JURÍDICO",
+    // Ciruela #7A2B3F, color editorial dominante del renderer (eyebrow, cifras
+    // clave, filete de tesis). El círculo está saturado: quedan 6° con
+    // racismo-estructural (#A33B4A, h353), del que se separa por 12 puntos de
+    // luminosidad (L32 frente a L44). El ámbar #C98A17 de la paleta NO puede
+    // salir a portada: el propio dataset lo reserva para lo contrafactual.
+    accent: "#7A2B3F",
+    fuentes: "ONEI · MINSAP · Horizonte Cubano (Columbia Law) · Health Policy and Planning · Naciones Unidas · prensa independiente",
+    publicado: "2026-08-17",
+    load: () => import("./negligencia-o-genocidio.jsx"),
+  },
 ];
 
 export default temas;
