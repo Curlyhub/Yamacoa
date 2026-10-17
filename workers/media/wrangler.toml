@@ -1,0 +1,21 @@
+# Worker de ingesta del estudio de grabación. Despliegue (una vez, y tras cambios):
+#   cd workers/media && npx wrangler deploy
+# Antes, crear los buckets (ver ops/podcast/NOTAS.md):
+#   npx wrangler r2 bucket create yamacoa-grabaciones   # PRIVADO: nunca dominio público
+#   npx wrangler r2 bucket create yamacoa-media         # público vía media.yamacoa.com
+name = "yamacoa-media"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+routes = [{ pattern = "subida.yamacoa.com", custom_domain = true }]
+
+[[r2_buckets]]
+binding = "GRABACIONES"
+bucket_name = "yamacoa-grabaciones"
+
+[vars]
+SUPABASE_URL = "https://qsajkrppuaikyzmuipru.supabase.co"
+# Clave publicable (anon): la misma que ya usa portal/index.html. NUNCA la service_role.
+SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ"
+# Orígenes desde los que se abre el estudio (separados por coma).
+ORIGENES = "https://portal.yamacoa.com,http://localhost:8788"

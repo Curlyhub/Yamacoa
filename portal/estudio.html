@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#efe8df">
+<title>Yamacoa · Estudio de grabación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Tokens: src/design/tokens.js (sistema unificado "periódico"). */
+:root{
+  --bg:#efe8df; --surface:#fcf9f4; --surface2:#f5efe7; --ink:#1f1a16; --ink2:#4a3f36;
+  --muted:#6b5d50; --subtle:#8a7a68; --accent:#b8562e; --dark:#3a2418; --rule:rgba(60,40,20,.15);
+  --auto-bg:#dfe9e1; --auto-ink:#2f5640; --pod-acc:#f2cdb8; --pod-sec:#c9a893;
+  --err:#a8321e; --font:'Manrope',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0; font-family:var(--font); color:var(--ink); min-height:100vh;
+  background:radial-gradient(ellipse 70% 50% at 0% 0%,#f6d9c6 0%,transparent 60%),
+             radial-gradient(ellipse 60% 45% at 100% 0%,#d5e3da 0%,transparent 60%),var(--bg);
+  background-repeat:no-repeat; background-color:var(--bg);
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);}
+.wrap{max-width:760px; margin:0 auto; padding:0 16px 80px;}
+header{display:flex; align-items:center; gap:14px; padding:16px 0 12px; border-bottom:3px solid var(--ink); margin-bottom:22px;}
+header b{font-size:26px; font-weight:800; letter-spacing:-.035em;}
+header span{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
+header .quien{margin-left:auto; color:var(--muted); letter-spacing:.04em; text-transform:none;}
+h1{font-size:30px; font-weight:800; letter-spacing:-.03em; margin:0 0 6px;}
+.sub{color:var(--muted); margin:0 0 20px; font-size:15px; line-height:1.5;}
+.card{background:var(--surface); border-radius:24px; padding:20px; margin-bottom:16px;
+  box-shadow:0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055);}
+.eyebrow{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin:0 0 12px;}
+label{display:block; font:500 10.5px var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:14px 0 6px;}
+input[type=text], select{width:100%; background:var(--surface2); border:1px solid transparent; border-radius:12px;
+  padding:12px; font:500 16px var(--font); color:var(--ink);}
+input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
+.part{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:center; margin-bottom:8px;}
+.part .consiente{display:flex; gap:6px; align-items:center; font-size:12.5px; color:var(--ink2); text-transform:none; letter-spacing:0; margin:0; font-family:var(--font);}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:999px; cursor:pointer;
+  background:var(--dark); color:var(--surface); font:600 15px var(--font); padding:12px 20px;}
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px var(--rule);}
+.btn:disabled{opacity:.45; cursor:not-allowed;}
+.mini{font:500 12px var(--mono); padding:8px 12px;}
+.legal{font-size:12.5px; color:var(--muted); line-height:1.5; margin-top:10px;}
+/* consola de grabación */
+.consola{background:var(--dark); color:var(--surface); border-radius:32px; padding:24px; text-align:center;}
+.reloj{font:600 52px var(--mono); letter-spacing:.02em; margin:6px 0 2px; font-variant-numeric:tabular-nums;}
+.estado{font:500 11px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--pod-sec);}
+.estado.on{color:#ff9a7a;}
+.vu{height:10px; border-radius:6px; background:rgba(252,249,244,.12); overflow:hidden; margin:18px 0 6px;}
+.vu i{display:block; height:100%; width:0; background:linear-gradient(90deg,#8fc4a0,#f2cdb8 70%,#e0603e); transition:width .06s linear;}
+.vu-txt{font:500 10px var(--mono); color:var(--pod-sec); text-align:left;}
+.rec{width:88px; height:88px; border-radius:50%; border:4px solid var(--surface); background:#d8452b; cursor:pointer; margin:18px auto 8px; display:block;}
+.rec.on{border-radius:22px; width:72px; height:72px; margin:26px auto 16px; background:var(--surface);}
+.fila{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px;}
+.consola .btn.ghost{color:var(--surface); box-shadow:inset 0 0 0 1px rgba(252,249,244,.3);}
+.subida{display:flex; justify-content:space-between; font:500 11px var(--mono); color:var(--pod-sec); margin-top:16px;}
+.marcas{text-align:left; margin-top:12px; font-size:13px; color:var(--pod-acc);}
+.lista{list-style:none; margin:0; padding:0;}
+.lista li{display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:14.5px;}
+.lista small{font:500 10.5px var(--mono); color:var(--subtle);}
+.badge{font:500 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:999px; background:var(--surface2); color:var(--muted); white-space:nowrap; align-self:center;}
+.badge.ok{background:var(--auto-bg); color:var(--auto-ink);}
+.badge.err{background:#f6d5cc; color:var(--err);}
+.aviso{background:#f6e3c4; color:#6b3f08; border-radius:16px; padding:12px 14px; font-size:14px; line-height:1.45; margin-bottom:14px;}
+.aviso.err{background:#f6d5cc; color:var(--err);}
+[hidden]{display:none!important}
+@media (max-width:560px){ .part{grid-template-columns:1fr 1fr;} .part .consiente{grid-column:1/-1;} .reloj{font-size:44px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><b>Yamacoa</b><span>Estudio</span><span class="quien" id="quien"></span></header>
+
+  <div id="v-cargando"><p class="sub">Comprobando sesión…</p></div>
+
+  <div id="v-sin-sesion" hidden>
+    <h1>Inicia sesión</h1>
+    <p class="sub">El estudio usa la misma cuenta que el portal de contribuciones.</p>
+    <a class="btn" href="./index.html">Ir al portal</a>
+  </div>
+
+  <div id="v-sin-permiso" hidden>
+    <h1>Sin permiso de grabación</h1>
+    <p class="sub">Tu cuenta existe, pero no está habilitada para grabar. Pídelo a la redacción.</p>
+  </div>
+
+  <div id="v-estudio" hidden>
+    <div id="avisos"></div>
+
+    <section class="card" id="preparar">
+      <p class="eyebrow">1 · Preparar</p>
+      <label for="titulo">Título provisional</label>
+      <input type="text" id="titulo" maxlength="200" placeholder="p. ej. Conversación sobre la crisis eléctrica">
+      <label>Voces que se grabarán</label>
+      <div id="participantes"></div>
+      <button type="button" class="btn ghost mini" id="b-mas">+ Añadir voz</button>
+      <p class="legal">Cada persona debe aceptar, antes de empezar, que su voz se grabe, se procese
+        (limpieza de ruido y transcripción automática) y se publique en Yamacoa. Sin el consentimiento
+        de todas las voces no se puede abrir la grabación.</p>
+      <label for="mic">Micrófono</label>
+      <select id="mic"></select>
+      <label style="display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font:500 14px var(--font);color:var(--ink2)">
+        <input type="checkbox" id="proc-nav"> Usar la reducción de ruido del navegador (solo si el lugar es muy ruidoso; la limpieza buena se hace después)
+      </label>
+    </section>
+
+    <section class="consola" aria-live="polite">
+      <div class="estado" id="estado">Listo para grabar</div>
+      <div class="reloj" id="reloj">00:00:00</div>
+      <div class="vu" aria-hidden="true"><i id="vu"></i></div>
+      <div class="vu-txt" id="vu-txt">Nivel de entrada · habla para probar</div>
+      <button type="button" class="rec" id="b-rec" aria-label="Empezar a grabar"></button>
+      <div class="fila">
+        <button type="button" class="btn ghost mini" id="b-pausa" disabled>Pausar</button>
+        <button type="button" class="btn ghost mini" id="b-marca" disabled>Marcar capítulo</button>
+        <button type="button" class="btn mini" id="b-fin" disabled style="background:var(--surface);color:var(--dark)">Terminar</button>
+      </div>
+      <div class="subida"><span id="subida">Sin trozos pendientes</span><span id="formato"></span></div>
+      <div class="marcas" id="marcas"></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <p class="eyebrow">Mis grabaciones</p>
+      <ul class="lista" id="mis"></ul>
+    </section>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+
+// Misma configuración que portal/index.html (anon key pública; NUNCA la service_role).
+const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
+const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ";
+// Worker de ingesta (workers/media). Guarda en el bucket R2 PRIVADO.
+const SUBIDA = "https://subida.yamacoa.com";
+const TROZO_MS = 10000;           // un trozo cada 10 s: si el teléfono muere, se pierden <10 s
+const BITRATE = 128000;           // opus 128 kbps ≈ 58 MB/hora: margen para limpiar sin artefactos
+
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
+const $ = (id) => document.getElementById(id);
+const vista = (id) => ["v-cargando","v-sin-sesion","v-sin-permiso","v-estudio"].forEach((v) => $(v).hidden = v !== id);
+const fmt = (s) => [Math.floor(s/3600), Math.floor(s%3600/60), Math.floor(s%60)].map((n) => String(n).padStart(2,"0")).join(":");
+const ESTADOS = { grabando:"grabando", subida:"subida · en cola", procesando:"limpiando", procesada:"lista para editar",
+  publicada:"publicada", descartada:"descartada", error:"error" };
+
+function aviso(texto, err = false) {
+  const d = document.createElement("div");
+  d.className = "aviso" + (err ? " err" : "");
+  d.textContent = texto;
+  $("avisos").prepend(d);
+  setTimeout(() => d.remove(), 12000);
+}
+
+/* ───────────── cola persistente de trozos (IndexedDB) ─────────────
+   Cada trozo se escribe en disco ANTES de intentar subirlo. Si se corta la red
+   o se cierra la pestaña, al volver se suben los que falten. */
+const db = await new Promise((ok, ko) => {
+  const r = indexedDB.open("yamacoa-estudio", 1);
+  r.onupgradeneeded = () => r.result.createObjectStore("trozos", { keyPath: "k" });
+  r.onsuccess = () => ok(r.result);
+  r.onerror = () => ko(r.error);
+});
+const tx = (modo, fn) => new Promise((ok, ko) => {
+  const t = db.transaction("trozos", modo); const s = t.objectStore("trozos");
+  const r = fn(s); t.oncomplete = () => ok(r?.result); t.onerror = () => ko(t.error);
+});
+const guardarTrozo = (g, n, blob, mime) => tx("readwrite", (s) => s.put({ k: `${g}:${String(n).padStart(5,"0")}`, g, n, blob, mime }));
+const borrarTrozo = (k) => tx("readwrite", (s) => s.delete(k));
+const pendientes = () => tx("readonly", (s) => s.getAll());
+
+let subiendo = false;
+async function vaciarCola() {
+  if (subiendo) return;
+  subiendo = true;
+  try {
+    for (;;) {
+      const lista = (await pendientes()).sort((a, b) => a.k.localeCompare(b.k));
+      $("subida").textContent = lista.length ? `${lista.length} trozo(s) por subir` : "Todo subido";
+      if (!lista.length) break;
+      const t = lista[0];
+      const { data:{ session } } = await sb.auth.getSession();
+      if (!session) { aviso("La sesión caducó. Vuelve a entrar en el portal; los trozos siguen guardados.", true); break; }
+      let r;
+      try {
+        r = await fetch(`${SUBIDA}/grabacion/${t.g}/${t.n}`, {
+          method: "PUT", body: t.blob,
+          headers: { Authorization: `Bearer ${session.access_token}`, "Content-Type": t.mime.split(";")[0] },
+        });
+      } catch { r = null; }
+      if (r && (r.status === 201 || r.status === 200)) { await borrarTrozo(t.k); continue; }
+      if (r && r.status === 403) { await borrarTrozo(t.k); aviso(`Trozo ${t.n} rechazado: la grabación ya está cerrada.`, true); continue; }
+      $("subida").textContent = `Sin conexión: ${lista.length} trozo(s) guardados en el teléfono, reintentando…`;
+      await new Promise((ok) => setTimeout(ok, 5000));
+    }
+  } finally { subiendo = false; }
+}
+addEventListener("online", vaciarCola);
+
+/* ───────────── sesión y permiso ───────────── */
+const { data:{ session } } = await sb.auth.getSession();
+if (!session) { vista("v-sin-sesion"); }
+else {
+  const { data: perfil } = await sb.from("perfiles").select("email,puede_grabar,bloqueado").eq("id", session.user.id).single();
+  $("quien").textContent = perfil?.email || "";
+  if (!perfil?.puede_grabar || perfil.bloqueado) vista("v-sin-permiso");
+  else { vista("v-estudio"); iniciar(); }
+}
+
+/* ───────────── estudio ───────────── */
+let stream, rec, ctx, analizador, grabId = null, n = 0, marcas = [];
+let t0 = 0, acumulado = 0, enPausa = false, tick, lock;
+
+function filaParticipante(nombre = "", rol = "") {
+  const d = document.createElement("div");
+  d.className = "part";
+  d.innerHTML = `<input type="text" placeholder="Nombre" maxlength="80" aria-label="Nombre">
+    <input type="text" placeholder="Rol (conduce, invitada…)" maxlength="60" aria-label="Rol">
+    <label class="consiente"><input type="checkbox"> Consiente</label>`;
+  d.querySelectorAll("input")[0].value = nombre; d.querySelectorAll("input")[1].value = rol;
+  $("participantes").append(d);
+}
+function participantes() {
+  return [...$("participantes").children].map((d) => {
+    const i = d.querySelectorAll("input");
+    return { nombre: i[0].value.trim(), rol: i[1].value.trim(), consiente: i[2].checked };
+  }).filter((p) => p.nombre);
+}
+
+function elegirMime() {
+  for (const m of ["audio/webm;codecs=opus", "audio/mp4;codecs=mp4a.40.2", "audio/mp4", "audio/ogg;codecs=opus"]) {
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported(m)) return m;
+  }
+  return "";
+}
+
+async function abrirMicro() {
+  const proc = $("proc-nav").checked;
+  if (stream) stream.getTracks().forEach((t) => t.stop());
+  stream = await navigator.mediaDevices.getUserMedia({ audio: {
+    deviceId: $("mic").value ? { exact: $("mic").value } : undefined,
+    channelCount: 1, sampleRate: 48000,
+    echoCancellation: false, autoGainControl: false, noiseSuppression: proc,
+  }});
+  ctx ??= new AudioContext();
+  analizador = ctx.createAnalyser(); analizador.fftSize = 1024;
+  ctx.createMediaStreamSource(stream).connect(analizador);
+  const buf = new Float32Array(analizador.fftSize);
+  const pintar = () => {
+    if (!analizador) return;
+    analizador.getFloatTimeDomainData(buf);
+    let pico = 0; for (const v of buf) pico = Math.max(pico, Math.abs(v));
+    const db = 20 * Math.log10(pico || 1e-6);
+    $("vu").style.width = `${Math.max(0, Math.min(100, (db + 60) / 60 * 100))}%`;
+    $("vu-txt").textContent = db > -3 ? "Demasiado alto: aleja el micrófono" : db < -45 ? "Muy bajo: acerca el micrófono" : "Nivel correcto";
+    requestAnimationFrame(pintar);
+  };
+  pintar();
+  const devs = (await navigator.mediaDevices.enumerateDevices()).filter((d) => d.kind === "audioinput");
+  const actual = stream.getAudioTracks()[0]?.getSettings().deviceId;
+  $("mic").innerHTML = devs.map((d, i) => `<option value="${d.deviceId}" ${d.deviceId === actual ? "selected" : ""}>${d.label || "Micrófono " + (i + 1)}</option>`).join("");
+}
+
+async function iniciar() {
+  filaParticipante(); filaParticipante();
+  $("b-mas").onclick = () => filaParticipante();
+  $("formato").textContent = elegirMime().split(";")[0] || "formato no soportado";
+  $("mic").onchange = abrirMicro; $("proc-nav").onchange = abrirMicro;
+  $("b-rec").onclick = () => (rec && rec.state !== "inactive" ? null : empezar());
+  $("b-pausa").onclick = pausar;
+  $("b-marca").onclick = marcar;
+  $("b-fin").onclick = terminar;
+  try { await abrirMicro(); } catch { aviso("No hay acceso al micrófono. Revisa los permisos del navegador.", true); }
+  vaciarCola();
+  listar();
+  addEventListener("beforeunload", (e) => { if (rec && rec.state !== "inactive") { e.preventDefault(); e.returnValue = ""; } });
+}
+
+async function empezar() {
+  const titulo = $("titulo").value.trim();
+  const ps = participantes();
+  if (titulo.length < 4) return aviso("Pon un título provisional (mínimo 4 caracteres).", true);
+  if (!ps.length) return aviso("Añade al menos una voz.", true);
+  if (ps.some((p) => !p.consiente)) return aviso("Todas las voces deben marcar su consentimiento antes de grabar.", true);
+  const mime = elegirMime();
+  if (!mime) return aviso("Este navegador no puede grabar audio. Prueba con Chrome, Firefox o Safari actualizado.", true);
+  if (!stream) { try { await abrirMicro(); } catch { return aviso("Sin micrófono.", true); } }
+
+  const { data, error } = await sb.rpc("abrir_grabacion", {
+    p_titulo: titulo, p_participantes: ps, p_mime: mime, p_dispositivo: navigator.userAgent,
+  });
+  if (error) return aviso(`No se pudo abrir la grabación: ${error.message}`, true);
+  grabId = data; n = 0; marcas = []; acumulado = 0; enPausa = false;
+
+  rec = new MediaRecorder(stream, { mimeType: mime, audioBitsPerSecond: BITRATE });
+  rec.ondataavailable = async (e) => {
+    if (!e.data?.size) return;
+    await guardarTrozo(grabId, n++, e.data, mime);
+    vaciarCola();
+  };
+  rec.start(TROZO_MS);
+  t0 = performance.now();
+  tick = setInterval(() => { $("reloj").textContent = fmt(segundos()); }, 250);
+  try { lock = await navigator.wakeLock?.request("screen"); } catch { /* sin wake lock: avisar */ aviso("Mantén la pantalla encendida: este navegador no puede impedir que se bloquee."); }
+  $("preparar").querySelectorAll("input,select,button").forEach((el) => el.disabled = true);
+  $("b-rec").classList.add("on"); $("b-rec").setAttribute("aria-label", "Grabando");
+  $("estado").textContent = "● Grabando"; $("estado").classList.add("on");
+  ["b-pausa","b-marca","b-fin"].forEach((b) => $(b).disabled = false);
+}
+
+function segundos() {
+  return Math.floor((acumulado + (enPausa ? 0 : performance.now() - t0)) / 1000);
+}
+
+function pausar() {
+  if (!rec) return;
+  if (!enPausa) { rec.pause(); acumulado += performance.now() - t0; enPausa = true;
+    $("b-pausa").textContent = "Reanudar"; $("estado").textContent = "En pausa"; $("estado").classList.remove("on"); }
+  else { rec.resume(); t0 = performance.now(); enPausa = false;
+    $("b-pausa").textContent = "Pausar"; $("estado").textContent = "● Grabando"; $("estado").classList.add("on"); }
+}
+
+function marcar() {
+  const t = segundos();
+  marcas.push({ t, titulo: `Capítulo ${marcas.length + 1}` });
+  $("marcas").textContent = "Marcas: " + marcas.map((m) => fmt(m.t)).join(" · ");
+}
+
+async function terminar() {
+  if (!rec) return;
+  const dur = segundos();
+  await new Promise((ok) => { rec.addEventListener("stop", ok, { once: true }); rec.stop(); });
+  clearInterval(tick); lock?.release?.();
+  // Esperar a que el último trozo entre en la cola y se suba antes de cerrar.
+  await new Promise((ok) => setTimeout(ok, 300));
+  $("estado").textContent = "Subiendo los últimos trozos…"; $("estado").classList.remove("on");
+  await vaciarCola();
+  const quedan = (await pendientes()).filter((t) => t.g === grabId).length;
+  if (quedan) {
+    aviso(`Quedan ${quedan} trozos sin subir (sin conexión). Se subirán solos al volver la red; luego pulsa "Cerrar" en Mis grabaciones.`, true);
+  } else {
+    const { error } = await sb.rpc("cerrar_grabacion", { p_id: grabId, p_trozos: n, p_duracion: dur, p_marcas: marcas });
+    if (error) aviso(`No se pudo cerrar: ${error.message}`, true);
+    else aviso("Grabación entregada. La limpieza de audio y la transcripción se hacen en el servidor.");
+  }
+  rec = null; grabId = null;
+  $("b-rec").classList.remove("on"); $("b-rec").setAttribute("aria-label", "Empezar a grabar");
+  $("estado").textContent = "Listo para grabar"; $("reloj").textContent = "00:00:00"; $("marcas").textContent = "";
+  ["b-pausa","b-marca","b-fin"].forEach((b) => $(b).disabled = true);
+  $("preparar").querySelectorAll("input,select,button").forEach((el) => el.disabled = false);
+  listar();
+}
+
+async function listar() {
+  const { data } = await sb.from("grabaciones").select("id,titulo,estado,duracion_seg,trozos,creado,motivo_error")
+    .order("creado", { ascending: false }).limit(20);
+  const locales = await pendientes();
+  $("mis").innerHTML = "";
+  for (const g of data || []) {
+    const li = document.createElement("li");
+    const cola = locales.filter((t) => t.g === g.id).length;
+    const cls = g.estado === "publicada" || g.estado === "procesada" ? "ok" : g.estado === "error" ? "err" : "";
+    li.innerHTML = `<div><div></div><small></small></div><span class="badge ${cls}"></span>`;
+    li.querySelector("div > div").textContent = g.titulo;
+    li.querySelector("small").textContent = `${new Date(g.creado).toLocaleString("es-ES")} · ${g.duracion_seg ? fmt(g.duracion_seg) : "—"}${cola ? ` · ${cola} trozos en el teléfono` : ""}${g.motivo_error ? ` · ${g.motivo_error}` : ""}`;
+    li.querySelector(".badge").textContent = ESTADOS[g.estado] || g.estado;
+    if (g.estado === "grabando" && g.id !== grabId && !cola) {
+      const b = document.createElement("button");
+      b.className = "btn ghost mini"; b.textContent = "Cerrar";
+      b.title = "Entregar lo que se llegó a subir (p. ej. si el teléfono se apagó)";
+      b.onclick = async () => {
+        const { error } = await sb.rpc("cerrar_grabacion", { p_id: g.id, p_trozos: -1, p_duracion: null, p_marcas: [] });
+        if (error) aviso(error.message, true); listar();
+      };
+      li.append(b);
+    }
+    $("mis").append(li);
+  }
+  if (!data?.length) $("mis").innerHTML = `<li><small>Aún no has grabado nada.</small></li>`;
+}
+</script>
+</body>
+</html>
