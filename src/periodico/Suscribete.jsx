@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { supabase, useCuenta, mensajeError } from "./cuenta";
 
 /* Inscripción de lectores (2026-10-18): gratuita, con correo y contraseña (escrita dos veces y
@@ -58,7 +58,8 @@ function Formulario() {
     let r;
     if (modo === "alta") r = await sb.auth.signUp({ email: f.email.trim(), password: f.pass, options: { emailRedirectTo: `${window.location.origin}/suscribete` } });
     else if (modo === "entrar") r = await sb.auth.signInWithPassword({ email: f.email.trim(), password: f.pass });
-    else r = await sb.auth.resetPasswordForEmail(f.email.trim(), { redirectTo: `${window.location.origin}/suscribete` });
+    // El enlace del correo vuelve a una ruta propia: con PKCE el evento PASSWORD_RECOVERY no es fiable.
+    else r = await sb.auth.resetPasswordForEmail(f.email.trim(), { redirectTo: `${window.location.origin}/suscribete/nueva-contrasena` });
     setOcupado(false);
     if (r.error) return setMsg(["err", mensajeError(r.error)]);
     if (modo === "alta") setMsg(["ok", "Casi está: te hemos enviado un correo para confirmar la cuenta. Abre el enlace y volverás aquí ya inscrito."]);
@@ -103,34 +104,42 @@ function Formulario() {
   );
 }
 
-function NuevaContrasena() {
-  const [p, setP] = useState(["", ""]); const [msg, setMsg] = useState(null);
+function NuevaContrasena({ alTerminar }) {
+  const [p, setP] = useState(["", ""]); const [msg, setMsg] = useState(null); const [ocupado, setOcupado] = useState(false);
   return (
     <form onSubmit={async (e) => {
-      e.preventDefault();
-      if (p[0].length < 8) return setMsg(["err", "Mínimo 8 caracteres."]);
+      e.preventDefault(); setMsg(null);
+      if (p[0].length < 8) return setMsg(["err", "La contraseña necesita al menos 8 caracteres."]);
       if (p[0] !== p[1]) return setMsg(["err", "Las dos contraseñas no coinciden."]);
+      setOcupado(true);
       const { error } = await (await supabase()).auth.updateUser({ password: p[0] });
-      setMsg(error ? ["err", mensajeError(error)] : ["ok", "Contraseña cambiada."]);
-    }}>
-      <p className="y-eyebrow">Nueva contraseña</p>
-      <input type="password" autoComplete="new-password" placeholder="Nueva contraseña" value={p[0]} onChange={(e) => setP([e.target.value, p[1]])} />
-      <input type="password" autoComplete="new-password" placeholder="Repítela" value={p[1]} onChange={(e) => setP([p[0], e.target.value])} />
-      <button className="y-btn" type="submit">Guardar</button>
-      {msg && <p className={`ysu-msg ${msg[0]}`}>{msg[1]}</p>}
+      setOcupado(false);
+      if (error) return setMsg(["err", mensajeError(error)]);
+      setP(["", ""]); alTerminar();
+    }} noValidate>
+      <p className="y-eyebrow" style={{ color: "var(--y-ink)" }}>Elige una contraseña nueva</p>
+      <div><label htmlFor="su-nueva">Contraseña nueva (mínimo 8 caracteres)</label>
+        <input id="su-nueva" type="password" autoComplete="new-password" required value={p[0]} onChange={(e) => setP([e.target.value, p[1]])} /></div>
+      <div><label htmlFor="su-nueva2">Repite la contraseña</label>
+        <input id="su-nueva2" type="password" autoComplete="new-password" required value={p[1]} onChange={(e) => setP([p[0], e.target.value])} /></div>
+      <button className="y-btn" type="submit" disabled={ocupado}>{ocupado ? "Un momento…" : "Guardar la contraseña"}</button>
+      {msg && <p className={`ysu-msg ${msg[0]}`} role="status">{msg[1]}</p>}
     </form>
   );
 }
 
 function MiCuenta({ sesion, recuperando }) {
   const [baja, setBaja] = useState(0); const [msg, setMsg] = useState(null);
+  const navigate = useNavigate();
   return (
     <div className="y-card" style={{ marginTop: 24 }}>
       <p className="y-eyebrow" style={{ color: "var(--y-ink)" }}>Tu cuenta</p>
       <p style={{ fontSize: 18, fontWeight: 700, margin: "8px 0 4px" }}>{sesion.user.email}</p>
       <p className="y-card-p">Inscripción gratuita. Ya puedes descargar los episodios del{" "}
         <Link className="y-link" to="/podcast">podcast</Link>.</p>
-      {recuperando && <div style={{ marginTop: 18 }}><NuevaContrasena /></div>}
+      {recuperando && <div style={{ marginTop: 18 }}><NuevaContrasena alTerminar={() => {
+        navigate("/suscribete", { replace: true }); setMsg(["ok", "Contraseña cambiada. Ya puedes entrar con ella."]);
+      }} /></div>}
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 18 }}>
         <button className="y-btn y-btn--ghost" type="button" onClick={async () => { await (await supabase()).auth.signOut(); }}>Salir</button>
         <button className="y-btn y-btn--ghost" type="button" onClick={async () => {
@@ -148,6 +157,8 @@ function MiCuenta({ sesion, recuperando }) {
 
 export default function Suscribete() {
   const { sesion, cargando, evento } = useCuenta();
+  const { pathname } = useLocation();
+  const recuperando = evento === "PASSWORD_RECOVERY" || pathname.endsWith("/nueva-contrasena");
   return (
     <div className="y-wrap">
       <style>{CSS}</style>
@@ -156,7 +167,8 @@ export default function Suscribete() {
         <h1 className="y-h1" style={{ margin: "12px 0 14px" }}>{sesion ? "Ya formas parte de Yamacoa." : "Tu cuenta en Yamacoa."}</h1>
         <p className="y-lede">Con una cuenta puedes descargar los episodios del podcast para escucharlos sin conexión. Todo
           el contenido sigue siendo abierto para leer y escuchar.</p>
-        {cargando ? null : sesion ? <MiCuenta sesion={sesion} recuperando={evento === "PASSWORD_RECOVERY"} /> : <Formulario />}
+        {cargando ? null : !sesion && recuperando ? <p className="ysu-msg err">Este enlace ya no es válido o ha caducado. Pide otro desde «Entrar» → «¿Olvidaste la contraseña?».</p> : null}
+        {cargando ? null : sesion ? <MiCuenta sesion={sesion} recuperando={recuperando} /> : <Formulario />}
       </div>
     </div>
   );

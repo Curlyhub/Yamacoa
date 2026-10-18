@@ -52,6 +52,7 @@ export default function App() {
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/podcast/:slug" element={<Episodio />} />
             <Route path="/suscribete" element={<Suscribete />} />
+            <Route path="/suscribete/nueva-contrasena" element={<Suscribete />} />
             <Route path="/opinion" element={<Opinion />} />
             <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/opinion/:slug" element={<Articulo />} />
