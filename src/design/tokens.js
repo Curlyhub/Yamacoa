@@ -8,8 +8,8 @@
      melocotón = dirigido (expedientes)
      marrón    = podcast */
 
-export const FUENTES_URL =
-  "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap";
+// Alojadas en Yamacoa (public/fonts/), no en Google Fonts: el lector no comunica su IP a terceros.
+export const FUENTES_URL = `${process.env.PUBLIC_URL || ""}/fonts/fuentes.css`;
 
 export const T = {
   bg: "#efe8df",

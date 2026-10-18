@@ -18,6 +18,7 @@ const Podcast = React.lazy(() => import("./periodico/Podcast.jsx"));
 const Episodio = React.lazy(() => import("./periodico/Podcast.jsx").then((m) => ({ default: m.Episodio })));
 const Suscribete = React.lazy(() => import("./periodico/Suscribete.jsx"));
 const Opinion = React.lazy(() => import("./periodico/Opinion.jsx"));
+const Privacidad = React.lazy(() => import("./periodico/Privacidad.jsx"));
 const Articulo = React.lazy(() => import("./periodico/Opinion.jsx").then((m) => ({ default: m.Articulo })));
 
 // Cada expediente se carga en diferido desde su `load` del registry. React.lazy se
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/podcast/:slug" element={<Episodio />} />
             <Route path="/suscribete" element={<Suscribete />} />
             <Route path="/opinion" element={<Opinion />} />
+            <Route path="/privacidad" element={<Privacidad />} />
             <Route path="/opinion/:slug" element={<Articulo />} />
             <Route path="/metodologia" element={<Metodologia />} />
             {temasLazy.map(({ id, path, Componente }) => (

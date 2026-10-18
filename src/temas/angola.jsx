@@ -868,7 +868,7 @@ export default function App() {
 /* ════════ CSS ═══════════════════════════════════════════════════════════════ */
 
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('${process.env.PUBLIC_URL || ""}/fonts/fuentes.css');
 
 .angola { background:transparent; color:${COL.text}; font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif; line-height:1.55; }
 .angola .mono { font-family:'IBM Plex Mono',monospace; }

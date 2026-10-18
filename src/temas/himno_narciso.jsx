@@ -149,12 +149,7 @@ export default function App() {
 
   // tipografías
   useEffect(() => {
-    cargarFuentes();
-    const id = "yamacoa-fonts-himno";
-    if (document.getElementById(id)) return;
-    const l = document.createElement("link"); l.id = id; l.rel = "stylesheet";
-    l.href = "https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap";
-    document.head.appendChild(l);
+    cargarFuentes(); // incluye Spectral (public/fonts/fuentes.css)
   }, []);
 
   const T = {

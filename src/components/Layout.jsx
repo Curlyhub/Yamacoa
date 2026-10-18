@@ -69,7 +69,7 @@ const CSS = `
 // Sección de cada ruta interior, para la línea de ruta. El detalle (noticia, episodio,
 // estudio) enlaza a su sección; la sección es la página actual.
 const SECCIONES = { noticias: "Noticias", estudios: "Estudios", expedientes: "Expedientes", podcast: "Podcast",
-  metodologia: "Metodología", suscribete: "Suscríbete", opinion: "Opinión" };
+  metodologia: "Metodología", suscribete: "Suscríbete", opinion: "Opinión", privacidad: "Privacidad" };
 
 function Migas({ path }) {
   const [, sec, detalle] = path.split("/");
@@ -148,7 +148,7 @@ export default function Layout({ children }) {
           <footer className="yl-pie">
             <span>Yamacoa · Observatorio independiente sobre Cuba</span>
             <span>
-              <Link to="/metodologia">Metodología</Link> · <Link to="/expedientes">Archivo</Link>
+              <Link to="/metodologia">Metodología</Link> · <Link to="/expedientes">Archivo</Link> · <Link to="/privacidad">Privacidad</Link>
             </span>
           </footer>
         </div>

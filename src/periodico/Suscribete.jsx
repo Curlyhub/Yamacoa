@@ -86,7 +86,8 @@ function Formulario() {
             <div><label htmlFor="su-pass2">Repite la contraseña</label>
               <input id="su-pass2" type="password" autoComplete="new-password" required value={f.pass2} onChange={cambia("pass2")} /></div>
             <label className="ysu-check"><input type="checkbox" checked={f.acepto} onChange={cambia("acepto")} />
-              <span>Acepto que Yamacoa guarde mi correo solo para gestionar mi cuenta. No se comparte ni se publica, y puedo darme de baja cuando quiera.</span></label>
+              <span>Acepto que Yamacoa guarde mi correo solo para gestionar mi cuenta, según la{" "}
+                <Link className="y-link" to="/privacidad" target="_blank">política de privacidad</Link>. No se comparte ni se publica, y puedo darme de baja cuando quiera.</span></label>
           </>
         )}
         <button className="y-btn" type="submit" disabled={ocupado}>
