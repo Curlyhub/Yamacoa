@@ -29,8 +29,15 @@ export function reglas(n) {
   n.cuerpo.forEach((p, i) => { if (fuera(p.citas)) fallos.push(`párrafo ${i + 1} cita una fuente inexistente`); });
   if (n.cifra && fuera(n.cifra.citas)) fallos.push("la cifra cita una fuente inexistente");
   (n.versiones || []).forEach((v, i) => { if (fuera(v.citas)) fallos.push(`versión ${i + 1} cita una fuente inexistente`); });
+  (n.analisis || []).forEach((p, i) => { if (fuera(p.citas)) fallos.push(`análisis ${i + 1} cita una fuente inexistente`); });
+  // Los hechos no se sostienen solo en series: el cuerpo cita al menos una fuente que no lo es.
+  if (n.cuerpo.some((p) => p.citas.every((c) => n.fuentes[c - 1]?.tipo === "dataset"))) fallos.push("un párrafo de hechos cita solo series");
+  if (n.grafico?.tipo === "proporcion" && n.grafico.datos.reduce((a, d) => a + (d.valor || 0), 0) > n.grafico.total * 1.001) {
+    fallos.push("proporción: las partes suman más que el total");
+  }
 
-  const origenes = new Set(n.fuentes.map((f) => f.origen || f.nombre));
+  // Una serie de referencia no es un origen independiente del hecho de hoy.
+  const origenes = new Set(n.fuentes.filter((f) => f.tipo !== "dataset").map((f) => f.origen || f.nombre));
   const hayPrimaria = n.fuentes.some((f) => f.tipo === "primaria");
   if (n.confianza === "corroborada" && origenes.size < 2 && !hayPrimaria) {
     fallos.push("«corroborada» exige dos orígenes independientes o una fuente primaria");

@@ -201,8 +201,8 @@ origen en todo el sitio: **salvia = automático**, **melocotón = dirigido**, **
 ### 11.2 Plantillas por tipología (no un `.jsx` por noticia)
 - Noticias, estudios automáticos y episodios **no generan código**: son JSON que una plantilla
   congelada pinta. Los estudios automáticos usan una biblioteca CERRADA de gráficos
-  (`src/periodico/Graficos.jsx`: `serie` | `barras` | `cifra`). Un tipo nuevo de gráfico es
-  decisión humana.
+  (`src/periodico/Graficos.jsx`: `serie` | `barras` | `cifra` | `comparacion` | `proporcion` |
+  `mapa`; ampliada el 2026-10-18). Un tipo nuevo de gráfico es decisión humana.
 - Contratos: `public/data/feed/{noticias,estudios,podcast}.schema.json`. Se valida con
   `npx ajv validate --spec=draft7 -c ajv-formats -s <schema> -d <json>`.
 
@@ -233,6 +233,13 @@ origen en todo el sitio: **salvia = automático**, **melocotón = dirigido**, **
   la hora del ciclo, así que la caducidad cae en un ciclo, que borra y redespliega al empezar;
   pg_cron borra cada 15 min como red de seguridad y la plantilla oculta la pieza en el segundo
   exacto. No hace falta Redis.
+- **Análisis y series (2026-10-18):** la noticia (salvo `breve`) puede llevar `analisis`: qué
+  significa el hecho, en un bloque rotulado y separado de los hechos, con cita por párrafo y sin
+  causas que ninguna fuente atribuya. El dato de hoy se pone en su historia con las **series de
+  referencia** (`ops/noticias/series.json`, catálogo cerrado: una serie nueva es decisión humana).
+  Sus puntos salen del expediente (semilla) o de las capturas, y la verja solo los acepta si el
+  número está en el texto citado. El gráfico de una serie lo construye el código, no el modelo.
+  Los puntos son permanentes (`noticias_series_puntos`), aunque la noticia caduque.
 - **Voces sintéticas** siempre declaradas (`voces_sinteticas: true`) y rotuladas en la UI.
 
 ### 11.5 Línea editorial (decisión 2026-10-17)

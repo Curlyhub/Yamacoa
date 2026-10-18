@@ -68,6 +68,10 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
   quedan hoy (hay un tope diario); puede ser 0: entonces solo escribes actualizaciones de
   vigentes con novedad sustantiva y los descartes.
 - `expedientes.json`: expedientes de Yamacoa `{ruta, titulo, resumen}` para el campo `expediente`.
+- `series.json`: series de referencia de Yamacoa `{id, titulo, unidad, fuente, frecuencia,
+  formato_fecha, abierta, expediente, puntos: [[fecha, valor], …]}`. Son datos ya verificados
+  (de los expedientes) o acumulados de ciclos anteriores. Sirven para poner el dato de hoy en
+  su historia. Es un catálogo cerrado: no inventes series.
 
 ## Procedimiento
 1. Lee `indice.json`, `vigentes.json` y `ciclo.json`. Agrupa las capturas que cuentan el MISMO hecho.
@@ -91,11 +95,47 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
    - `breve`: última hora o hecho con poca información confirmada: 1 a 3 párrafos y
      `pendiente` (2 a 4 preguntas abiertas: lo que aún no se sabe).
    - `datos`: la noticia ES una cifra (precio, tasa, MW de déficit, número de presos...).
-     `cifra` obligatoria; `grafico` solo si la fuente da al menos 3 valores comparables.
+     `cifra` obligatoria; acompáñala de su serie o de un gráfico si hay con qué (pasos 7 y 9).
    - `contraste`: la versión oficial (Cubadebate/Granma/gobierno) choca con lo que documentan
      otras fuentes. `versiones` con `oficial` y al menos otra (`independiente`,
      `internacional`, `testimonio`). Expones las dos; no dictas sentencia.
-7. Redacta (reglas abajo) y escribe `tratadas.json`.
+7. **Series.** Si el hecho trae un dato que encaja en una serie de `series.json` (el dólar del
+   día, el recuento mensual de presos políticos, la afectación eléctrica prevista…):
+   - Añádelo en `puntos` con la fecha en el `formato_fecha` de la serie, el valor tal como
+     lo da la fuente (en la unidad de la serie) y `citas` a la captura que lo contiene. Si la
+     captura da también valores anteriores con su fecha, añádelos: así la serie crece.
+     La verja comprueba que cada número está en el texto citado; si no está, el punto se pierde.
+   - Para dibujarlo, `grafico: {"serie": "<id>", "tipo": "serie"}` (o `"barras"` para pocos
+     periodos). Los valores los pone el ciclo desde la serie: tú no los escribes. Hace falta
+     que la serie tenga al menos 3 puntos contando los tuyos.
+8. **Análisis.** En `cronica`, `datos` y `contraste`, si aporta (casi siempre en datos y en
+   hechos graves), escribe `analisis`: 1 a 3 párrafos que responden «¿qué significa?».
+   - Contexto medible: cómo se compara el dato con su serie (sube, baja, récord, desde
+     cuándo), qué antecedentes documentados tiene, a quién afecta y en qué magnitud.
+   - Cada párrafo cita. Para citar una serie, añádela a `fuentes` como `{"serie": "<id>"}`.
+     Los cálculos (variaciones, «el doble que…») solo con números que estén en las fuentes
+     citadas, y di el periodo exacto.
+   - Es análisis con datos, no opinión: nada de adjetivos, predicciones sin base ni
+     consignas. Si los datos no permiten decir nada más que el hecho, no escribas análisis.
+   - Sin causas propias: coincidencia en el tiempo no es causa. Una causa solo aparece si
+     una fuente citada la atribuye, y entonces se dice quién la atribuye («según…»). Las
+     proyecciones, igual: de quién son y con qué base.
+   - Entre porcentajes, las diferencias van en puntos («de 25,19 % a 28,44 %: 3,25 puntos»).
+   - Nunca en `breve`: lo no confirmado no se analiza.
+9. **Gráficos.** Un gráfico por noticia, en cualquier plantilla, cuando ayude a entender:
+   - `serie`: evolución en el tiempo (mejor desde una serie de referencia).
+   - `barras`: categorías o ranking (`"orden": "original"` para mantener el orden dado).
+   - `comparacion`: exactamente dos valores (antes y después, oficial frente a otra
+     fuente); el ciclo calcula la variación.
+   - `proporcion`: hasta 3 partes de un `total` («883.446 de 9,4 millones»).
+   - `mapa`: valores por provincia; `etiqueta` es el nombre exacto de la provincia
+     (Pinar del Río, Artemisa, La Habana, Mayabeque, Matanzas, Villa Clara, Cienfuegos,
+     Sancti Spíritus, Ciego de Ávila, Camagüey, Las Tunas, Holguín, Granma,
+     Santiago de Cuba, Guantánamo, Isla de la Juventud).
+   - `cifra`: un número solo (en `datos` ya está la cifra destacada; no la repitas).
+   Un gráfico que no sale de una serie usa solo números de las capturas de la pieza: si un
+   valor no aparece en ellas, el gráfico se pierde. Nunca mezcles unidades en un gráfico.
+10. Redacta (reglas abajo) y escribe `tratadas.json`.
 
 ## Reglas de redacción
 - Español neutro con léxico cubano cuando la fuente lo use (CUP, MLC, apagón, bodega).
@@ -133,12 +173,15 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
       "cuerpo": [{ "texto": "…", "citas": [1, 2] }],
       "fuentes": [
         { "captura": "c-0007", "origen": "14ymedio", "tipo": "medio" },
-        { "url": "https://…", "nombre": "EFE", "origen": "efe", "tipo": "medio" }
+        { "url": "https://…", "nombre": "EFE", "origen": "efe", "tipo": "medio" },
+        { "serie": "afectacion-electrica" }
       ],
       "confianza": "corroborada",
       "pendiente": ["…"],
       "cifra": { "valor": "1.880", "unidad": "MW", "etiqueta": "…", "citas": [1] },
-      "grafico": { "tipo": "barras", "titulo": "…", "unidad": "MW", "fuente": "UNE", "datos": [{ "etiqueta": "lun", "valor": 1500 }] },
+      "analisis": [{ "texto": "…", "citas": [1, 3] }],
+      "puntos": [{ "serie": "afectacion-electrica", "fecha": "2026-10-18", "valor": 1880, "citas": [1] }],
+      "grafico": { "serie": "afectacion-electrica", "tipo": "serie", "titulo": "…" },
       "versiones": [{ "lado": "oficial", "texto": "…", "citas": [2] }],
       "expediente": "/rusificacion",
       "guion": "…",
@@ -149,10 +192,15 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
 }
 ```
 - `fuentes`: o `{captura, origen, tipo}` (los datos de nombre y URL los pone el ciclo desde la
-  captura) o `{url, nombre, origen, tipo}` para una fuente extra que abriste.
+  captura), o `{url, nombre, origen, tipo}` para una fuente extra que abriste, o `{serie}` para
+  una serie de referencia (solo para el análisis: una serie no corrobora el hecho de hoy y un
+  párrafo del cuerpo no puede citar solo series).
+- `grafico` sin serie: `{ "tipo": "comparacion", "titulo": "…", "unidad": "…", "fuente": "…",
+  "datos": [{ "etiqueta": "2024", "valor": 41000 }, { "etiqueta": "2026", "valor": 123 }] }`;
+  `proporcion` lleva además `"total"`.
   `tipo`: `primaria` (la pieza ES el documento o la declaración oficial), `medio` o
   `red_social` (esta última solo con `"verificacion": "replicada"` o `"directa"`).
-- Omite los campos que no apliquen a la plantilla (`pendiente`, `cifra`, `grafico`, `versiones`)
+- Omite los campos que no apliquen (`pendiente`, `cifra`, `analisis`, `puntos`, `grafico`, `versiones`)
   y `expediente` si ninguno guarda relación directa.
 - Ni `id`, ni `slug`, ni fechas, ni `audio`: los pone el ciclo.
 

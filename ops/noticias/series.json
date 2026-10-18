@@ -1,0 +1,26 @@
+{
+  "_nota": "Catálogo CERRADO de series de referencia de las noticias automáticas (decisión humana: una serie nueva se añade aquí). semilla: puntos ya verificados en un expediente (se leen del dataset en cada ciclo, así respiran con él). abierta: el motor puede añadir puntos desde las capturas del ciclo; la verja exige que el valor aparezca en el texto citado. Los puntos nuevos viven en la BD (noticias_series_puntos). fecha: AAAA (anual), AAAA-MM (mensual), AAAA-MM-DD (diaria).",
+  "series": [
+    { "id": "presos-politicos", "titulo": "Presos políticos en Cuba", "unidad": "personas", "fuente": "Prisoners Defenders", "frecuencia": "mensual", "expediente": "/represion", "abierta": true,
+      "semilla": { "fichero": "represion.json", "ruta": "presos.serie", "x": "periodo", "y": "n" } },
+    { "id": "represion-mensual", "titulo": "Acciones represivas documentadas por mes", "unidad": "acciones", "fuente": "OCDH", "frecuencia": "mensual", "expediente": "/represion", "abierta": true,
+      "semilla": { "fichero": "represion.json", "ruta": "serieMensual", "x": "periodo", "y": "total" } },
+    { "id": "protestas-occ-anual", "titulo": "Protestas registradas por año", "unidad": "protestas", "fuente": "Observatorio Cubano de Conflictos (OCC)", "frecuencia": "anual", "expediente": "/conflictos", "abierta": true,
+      "nota": "2023 con cambio de método del OCC.",
+      "semilla": { "fichero": "conflictos.json", "ruta": "anual", "x": "a", "y": "v" } },
+    { "id": "protestas-occ-mensual", "titulo": "Protestas y expresiones de descontento por mes", "unidad": "protestas", "fuente": "Observatorio Cubano de Conflictos (OCC)", "frecuencia": "mensual", "expediente": "/conflictos", "abierta": true },
+    { "id": "mortalidad-infantil", "titulo": "Mortalidad infantil", "unidad": "por cada 1.000 nacidos vivos", "unidadCorta": "‰", "fuente": "ONEI / MINSAP", "frecuencia": "anual", "expediente": "/negligencia", "abierta": true,
+      "semilla": { "fichero": "negligencia.json", "ruta": "mortalidad_infantil.cuba", "x": "anio", "y": "valor" } },
+    { "id": "defunciones", "titulo": "Defunciones por año", "unidad": "defunciones", "fuente": "ONEI", "frecuencia": "anual", "expediente": "/negligencia", "abierta": true,
+      "semilla": { "fichero": "negligencia.json", "ruta": "series_demografia", "x": "anio", "y": "defunciones" } },
+    { "id": "nacimientos", "titulo": "Nacimientos por año", "unidad": "nacimientos", "fuente": "ONEI", "frecuencia": "anual", "expediente": "/negligencia", "abierta": true,
+      "semilla": { "fichero": "negligencia.json", "ruta": "series_demografia", "x": "anio", "y": "nacimientos" } },
+    { "id": "poblacion", "titulo": "Población efectiva de Cuba", "unidad": "habitantes", "fuente": "ONEI", "frecuencia": "anual", "expediente": "/negligencia", "abierta": true,
+      "semilla": { "fichero": "negligencia.json", "ruta": "series_demografia", "x": "anio", "y": "poblacion" } },
+
+    { "id": "dolar-informal", "titulo": "Dólar en el mercado informal", "unidad": "pesos cubanos (CUP) por dólar", "unidadCorta": "CUP", "fuente": "elTOQUE (tasa representativa)", "frecuencia": "diaria", "abierta": true },
+    { "id": "euro-informal", "titulo": "Euro en el mercado informal", "unidad": "pesos cubanos (CUP) por euro", "unidadCorta": "CUP", "fuente": "elTOQUE (tasa representativa)", "frecuencia": "diaria", "abierta": true },
+    { "id": "mlc-informal", "titulo": "MLC en el mercado informal", "unidad": "pesos cubanos (CUP) por MLC", "unidadCorta": "CUP", "fuente": "elTOQUE (tasa representativa)", "frecuencia": "diaria", "abierta": true },
+    { "id": "afectacion-electrica", "titulo": "Afectación eléctrica máxima prevista en el horario pico", "unidad": "megavatios (MW)", "unidadCorta": "MW", "fuente": "Unión Eléctrica (UNE)", "frecuencia": "diaria", "expediente": "/electrica", "abierta": true }
+  ]
+}

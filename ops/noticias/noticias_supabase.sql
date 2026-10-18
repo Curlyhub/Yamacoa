@@ -76,7 +76,21 @@ create table if not exists noticias_capturas (
 );
 create index if not exists noticias_capturas_capturada_idx on noticias_capturas (capturada);
 
+-- Series de referencia: puntos permanentes (catálogo en ops/noticias/series.json).
+create table if not exists noticias_series_puntos (
+  serie    text not null,                 -- id del catálogo (series.json)
+  fecha    text not null,                 -- AAAA | AAAA-MM | AAAA-MM-DD según la frecuencia
+  valor    numeric not null,
+  fuente   text not null,                 -- medio que publicó el dato
+  url      text,                          -- pieza original
+  noticia  text,                          -- id de la noticia que lo aportó (sin FK: caduca)
+  ciclo    text,
+  creado   timestamptz not null default now(),
+  primary key (serie, fecha)
+);
+
 alter table noticias          enable row level security;
+alter table noticias_series_puntos enable row level security;
 alter table noticias_capturas enable row level security;
 alter table noticias_ciclos   enable row level security;
 -- Sin políticas: anon y authenticated no leen ni escriben. La service role salta RLS.

@@ -117,6 +117,35 @@
             }
           }
         },
+        "analisis": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "description": "Análisis Yamacoa: qué significa el hecho, con su contexto y su serie. Separado de los hechos y rotulado en la UI. Cada párrafo cita. Nunca en breve.",
+          "items": {
+            "type": "object",
+            "required": [
+              "texto",
+              "citas"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "texto": {
+                "type": "string",
+                "minLength": 40,
+                "maxLength": 900
+              },
+              "citas": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
         "fuentes": {
           "type": "array",
           "minItems": 1,
@@ -140,8 +169,10 @@
                 "enum": [
                   "primaria",
                   "medio",
-                  "red_social"
-                ]
+                  "red_social",
+                  "dataset"
+                ],
+                "description": "dataset: serie de referencia de Yamacoa (series.json), con enlace al expediente que la documenta. No cuenta como origen independiente."
               },
               "verificacion": {
                 "type": "string",
@@ -299,7 +330,8 @@
           }
         },
         "grafico": {
-          "$ref": "#/definitions/grafico"
+          "$ref": "#/definitions/grafico",
+          "description": "En cualquier plantilla. En datos, bajo la cifra; en las demás, en el análisis o tras el cuerpo."
         },
         "versiones": {
           "type": "array",
@@ -407,6 +439,22 @@
               "versiones"
             ]
           }
+        },
+        {
+          "if": {
+            "properties": {
+              "plantilla": {
+                "const": "breve"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "analisis"
+              ]
+            }
+          }
         }
       ]
     },
@@ -424,8 +472,12 @@
           "enum": [
             "serie",
             "barras",
-            "cifra"
-          ]
+            "cifra",
+            "comparacion",
+            "proporcion",
+            "mapa"
+          ],
+          "description": "serie: evolución en el tiempo. barras: ranking o categorías. cifra: un número. comparacion: dos valores (antes y después, oficial frente a otra fuente) con su variación. proporcion: partes de un total (total obligatorio). mapa: valores por provincia (etiqueta = nombre de la provincia)."
         },
         "titulo": {
           "type": "string"
@@ -472,8 +524,107 @@
               }
             }
           }
+        },
+        "serie": {
+          "type": "string",
+          "description": "id de la serie de referencia (series.json) de la que sale: los datos los pone el ciclo."
+        },
+        "destacar": {
+          "type": "string",
+          "description": "etiqueta del punto que se destaca (el dato de hoy)."
+        },
+        "total": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "proporcion: el total del que los datos son partes."
+        },
+        "orden": {
+          "type": "string",
+          "enum": [
+            "valor",
+            "original"
+          ],
+          "description": "barras: por valor (defecto) o en el orden dado (cronológico)."
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "comparacion"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "datos": {
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "proporcion"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "total"
+            ],
+            "properties": {
+              "datos": {
+                "maxItems": 3
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "mapa"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "datos": {
+                "maxItems": 16,
+                "items": {
+                  "properties": {
+                    "etiqueta": {
+                      "enum": [
+                        "Pinar del Río",
+                        "Artemisa",
+                        "La Habana",
+                        "Mayabeque",
+                        "Matanzas",
+                        "Villa Clara",
+                        "Cienfuegos",
+                        "Sancti Spíritus",
+                        "Ciego de Ávila",
+                        "Camagüey",
+                        "Las Tunas",
+                        "Holguín",
+                        "Granma",
+                        "Santiago de Cuba",
+                        "Guantánamo",
+                        "Isla de la Juventud"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
     }
   }
 }

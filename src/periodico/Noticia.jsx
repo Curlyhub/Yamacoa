@@ -12,10 +12,13 @@ import temas from "../temas/registry.js";
      datos     la noticia es una cifra: cifra destacada y gráfico opcional
      contraste versión oficial frente a lo documentado por otras fuentes
    Cabecera, resumen hablado, citas por párrafo y fuentes son comunes: cambian los
-   bloques, no el estilo. La confianza y el tipo de imagen van a la vista. */
+   bloques, no el estilo. La confianza y el tipo de imagen van a la vista.
+   `analisis` (todas menos breve) va DESPUÉS de los hechos, en un bloque rotulado: la
+   interpretación nunca se mezcla con lo que pasó. El `grafico` puede ir en cualquier
+   plantilla: en datos bajo la cifra; en las demás dentro del análisis o tras el cuerpo. */
 
 const TIPO_IMG = { foto: "Fotografía", grafico: "Gráfico Yamacoa", ilustracion_ia: "Ilustración generada por IA" };
-const TIPO_FUENTE = { primaria: "Fuente primaria", medio: "Medio", red_social: "Red social" };
+const TIPO_FUENTE = { primaria: "Fuente primaria", medio: "Medio", red_social: "Red social", dataset: "Serie de datos" };
 
 const CSS = `
 .ynd{max-width:760px; margin:0 auto; padding-top:34px;}
@@ -48,6 +51,13 @@ const CSS = `
 .ynd-ver[data-lado="oficial"]{background:var(--y-surface-2); box-shadow:none; border:1px solid var(--y-rule);}
 .ynd-ver p:not(.y-eyebrow){font-size:15.5px; line-height:1.55; color:var(--y-ink-2); margin:10px 0 0;}
 .ynd[data-plantilla="breve"] h1{font-size:clamp(26px,3.6vw,36px) !important;}
+.ynd-anal{margin:30px 0 8px; padding:24px 26px 8px; border-radius:28px; background:var(--y-surface);
+  box-shadow:var(--y-shadow); border-left:6px solid var(--y-auto-ink);}
+.ynd-anal header{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
+.ynd-anal h2{font-size:22px; letter-spacing:-.02em; margin:0; color:var(--y-auto-head);}
+.ynd-anal > p{font-size:16.5px; line-height:1.6; color:var(--y-ink-2); margin:0 0 16px;}
+.ynd-anal .y-card{box-shadow:none; background:var(--y-bg); margin:4px 0 20px;}
+@media (max-width:560px){.ynd-anal{padding:20px 18px 6px; border-left-width:4px;}}
 `;
 
 const LADO = { oficial: "Versión oficial", independiente: "Lo que documentan medios independientes",
@@ -136,6 +146,23 @@ export default function Noticia() {
             <p key={i}>{p.texto}<Citas citas={p.citas} /></p>
           ))}
         </div>
+
+        {n.plantilla !== "datos" && n.grafico && !(n.analisis || []).length && (
+          <div className="y-card" style={{ margin: "8px 0 26px" }}><Grafico g={n.grafico} /></div>
+        )}
+
+        {n.plantilla !== "breve" && (n.analisis || []).length > 0 && (
+          <section className="ynd-anal" aria-labelledby="ynd-a">
+            <header>
+              <h2 id="ynd-a">Análisis</h2>
+              <span className="y-meta">Interpretación de Yamacoa con los datos citados · separada de los hechos</span>
+            </header>
+            {n.plantilla !== "datos" && n.grafico && <div className="y-card"><Grafico g={n.grafico} /></div>}
+            {n.analisis.map((p, i) => (
+              <p key={i}>{p.texto}<Citas citas={p.citas} /></p>
+            ))}
+          </section>
+        )}
 
         {n.plantilla === "breve" && (n.pendiente || []).length > 0 && (
           <div className="ynd-pend">

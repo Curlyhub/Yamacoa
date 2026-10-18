@@ -26,7 +26,20 @@ function n(id, seccion, titulo, haceDias, relevancia, extra = {}) {
 
 const noticias = [
   n("apagon-14-horas", "Energía", "Apagón de 14 horas afecta a seis provincias del occidente", 0, 92, { estudio: "apagones-2024-2026" }),
-  n("dolar-informal-410", "Economía", "El dólar informal toca los 410 CUP en los grupos de Telegram", 1, 80),
+  n("dolar-informal-410", "Economía", "El dólar informal toca los 410 CUP en los grupos de Telegram", 1, 80, {
+    plantilla: "datos",
+    cifra: { valor: "410", unidad: "CUP por dólar", etiqueta: "[DEMO] Tasa representativa del mercado informal.", citas: [1] },
+    fuentes: [{ nombre: "Medio de ejemplo", tipo: "medio", url: "https://example.org" },
+      { nombre: "Serie Yamacoa: Dólar en el mercado informal (datos de ejemplo)", tipo: "dataset", url: "https://example.org" }],
+    grafico: { tipo: "serie", titulo: "[DEMO] Dólar en el mercado informal", unidad: "pesos cubanos (CUP) por dólar", unidadCorta: "CUP",
+      fuente: "Datos de ejemplo · serie Yamacoa", serie: "dolar-informal", destacar: "17 oct",
+      datos: [["4 oct", 372], ["5 oct", null], ["6 oct", 375], ["7 oct", 380], ["8 oct", 384], ["9 oct", 383], ["10 oct", 390], ["11 oct", null],
+        ["12 oct", null], ["13 oct", 396], ["14 oct", 398], ["15 oct", 402], ["16 oct", 405], ["17 oct", 410]].map(([etiqueta, valor]) => ({ etiqueta, valor })) },
+    analisis: [
+      { texto: "[DEMO] Primer párrafo de análisis: cómo se compara el dato de hoy con su serie (sube un 10 % en dos semanas) y desde cuándo no estaba tan alto.", citas: [1, 2] },
+      { texto: "[DEMO] Segundo párrafo: a quién afecta y en qué magnitud, con números de las fuentes citadas.", citas: [2] },
+    ],
+  }),
   n("llegadas-frontera-sur", "Migración", "Llegadas por la frontera sur repuntan un 18% en septiembre", 2, 71, {
     plantilla: "datos",
     cifra: { valor: "+18 %", unidad: "llegadas en septiembre", etiqueta: "[DEMO] Variación mensual de llegadas registradas por la frontera sur.", citas: [1] },
@@ -40,12 +53,26 @@ const noticias = [
   n("turnos-lena", "Sociedad", "Vecinos de Centro Habana organizan turnos para cocinar con leña", 4, 52, { estudio: "apagones-2024-2026" }),
   n("precios-topados", "Economía", "Nuevo esquema de precios topados para el arroz y el aceite", 5, 48, {
     plantilla: "contraste", expediente: "/medidas-176",
+    grafico: { tipo: "proporcion", titulo: "[DEMO] Personas en «situación de vulnerabilidad»", unidad: "personas", fuente: "Datos de ejemplo",
+      total: 9434593, datos: [{ etiqueta: "Reconocidas por el Gobierno", valor: 883446 }] },
+    analisis: [{ texto: "[DEMO] Análisis del contraste: qué parte de la población representa la cifra oficial y qué miden otras fuentes.", citas: [1, 2] }],
     versiones: [
       { lado: "oficial", texto: "[DEMO] El Ministerio de Finanzas y Precios presenta el tope como una protección al consumidor.", citas: [2] },
       { lado: "independiente", texto: "[DEMO] Vendedores consultados por medios independientes anticipan desabastecimiento en los mercados.", citas: [1] },
     ],
   }),
-  n("deficit-mw", "Energía", "La Unión Eléctrica reconoce un déficit de 1.650 MW en el pico", 6, 60, { estudio: "apagones-2024-2026" }),
+  n("deficit-mw", "Energía", "La Unión Eléctrica reconoce un déficit de 1.650 MW en el pico", 6, 60, {
+    estudio: "apagones-2024-2026",
+    grafico: { tipo: "comparacion", titulo: "[DEMO] Afectación máxima prevista", unidad: "megavatios (MW)", unidadCorta: "MW", fuente: "Datos de ejemplo",
+      datos: [{ etiqueta: "Octubre 2025", valor: 1180 }, { etiqueta: "Octubre 2026", valor: 1650 }] },
+    analisis: [{ texto: "[DEMO] Análisis con comparación: el déficit de hoy frente al mismo mes del año anterior, citando ambas fuentes.", citas: [1, 2] }],
+  }),
+  n("protestas-provincias", "Derechos", "El OCC registra protestas en las 15 provincias durante septiembre", 2, 70, {
+    grafico: { tipo: "mapa", titulo: "[DEMO] Protestas por provincia, septiembre", unidad: "protestas", fuente: "Datos de ejemplo",
+      datos: [["La Habana", 474], ["Santiago de Cuba", 160], ["Holguín", 120], ["Matanzas", 95], ["Villa Clara", 88], ["Camagüey", 70],
+        ["Pinar del Río", 52], ["Granma", 61], ["Guantánamo", 40], ["Cienfuegos", 33], ["Las Tunas", 38], ["Artemisa", 30],
+        ["Mayabeque", 25], ["Sancti Spíritus", 29], ["Ciego de Ávila", 27], ["Isla de la Juventud", 6]].map(([etiqueta, valor]) => ({ etiqueta, valor })) },
+  }),
 ];
 
 const grafico = {

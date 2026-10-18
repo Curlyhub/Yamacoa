@@ -5,7 +5,9 @@
 //                redespliega ya para que la página desaparezca del sitio a su hora
 //   2. capturar  RSS de ops/noticias/fuentes.json -> ciclos/<id>/indice.json + capturas/
 //   3. tratar    Claude en modo headless (motor.md) -> ciclos/<id>/tratadas.json
-//   4. verja     schema + reglas editoriales; lo que no pasa va a descartes
+//   4. verja     schema + reglas editoriales; lo que no pasa va a descartes. Los puntos
+//                nuevos de las series de referencia (series.json) solo entran si el valor
+//                está en el texto citado, y los gráficos de serie los construye el código
 //   5. audio     Kokoro -> MP3; sin resumen hablado la pieza queda «retenida»
 //   6. exportar  vigentes de la BD -> <destino>/data/feed/noticias.json + audio
 //   7. publicar  ops/publicar.sh (build de la rama `publicacion` + wrangler)
@@ -15,21 +17,26 @@
 //   node ops/noticias/ciclo.mjs --sin-desplegar       ensayo: exporta a public/ del repo y no sube
 //   node ops/noticias/ciclo.mjs --solo-exportar --destino <dir>   (lo usa publicar.sh)
 //   node ops/noticias/ciclo.mjs --reusar <ciclo-id>   repite verja+audio sobre un tratadas.json existente
+//   … --sin-desplegar --sin-audio                     ensayo de maqueta: audio mudo (solo con la BD local)
 
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { abrir, VIDA_MS } from "./lib/db.mjs";
-import { leerRss, cuerpoArticulo, hashUrl } from "./lib/rss.mjs";
+import { leerRss, cuerpoArticulo, hashUrl, descargar, texto } from "./lib/rss.mjs";
 import { cargarValidador, reglas, sinRayas } from "./lib/validar.mjs";
 import { sintetizar, VOZ } from "./lib/audio.mjs";
+import { cargarSeries, paraMotor, fechaValida, numeroEnTexto, graficoDeSerie, ordenados } from "./lib/series.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(AQUI, "../..");
 const ESTADO = path.join(AQUI, "estado");
-const AUDIO = path.join(ESTADO, "audio");
+// Caché de audio separada por BD: la limpieza de un ensayo (BD local) nunca toca la de producción.
+const AUDIO_DE = (tipo) => path.join(ESTADO, tipo === "local" ? "audio-ensayo" : "audio");
 const SCHEMA = path.join(REPO, "public/data/feed/noticias.schema.json");
+const CATALOGO = path.join(AQUI, "series.json");
+const series = async () => cargarSeries({ catalogo: CATALOGO, datos: path.join(REPO, "public/data"), puntos: await db.puntosSeries() });
 const SITE = (process.env.YAMACOA_SITE || "https://yamacoa.com").replace(/\/+$/, "");
 const MAX_NOTICIAS = Number(process.env.YAMACOA_MAX_NOTICIAS || 10); // por ciclo
 const MAX_DIA = Number(process.env.YAMACOA_MAX_DIA || 20);           // nuevas por día natural (hora local)
@@ -41,6 +48,7 @@ const valor = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : 
 const log = (...m) => console.log(new Date().toISOString().slice(11, 19), ...m);
 
 const db = abrir({ estadoDir: ESTADO });
+const AUDIO = AUDIO_DE(db.tipo);
 const validador = cargarValidador(SCHEMA);
 
 /* ---------- utilidades ---------- */
@@ -136,7 +144,6 @@ async function capturar(dir) {
   indice.sort((a, b) => a.id.localeCompare(b.id));
   escribir(path.join(dir, "indice.json"), indice.map(({ url, hash, ...r }) => r));
   escribir(path.join(dir, "capturas.privado.json"), indice); // con URL y hash: lo usa la verja, no el motor
-  await db.registrarCapturas(indice.map((c) => ({ hash: c.hash, url: c.url, fuente: c.fuente, titulo: c.titulo, fecha_fuente: c.fecha, ciclo: path.basename(dir) })));
   log(`capturas nuevas: ${indice.length} de ${todos.length}`);
   return indice;
 }
@@ -159,6 +166,7 @@ async function tratar(dir, cicloId) {
     id: n.id, titulo: n.titulo, seccion: n.seccion, publicado: n.publicado,
     urls: (n.pieza.fuentes || []).map((f) => f.url).filter(Boolean),
   })));
+  escribir(path.join(dir, "series.json"), paraMotor(await series()));
   escribir(path.join(dir, "expedientes.json"), Object.entries(expedientes()).map(([ruta, e]) => ({ ruta, titulo: e.t, resumen: e.d })));
   const prompt = fs.readFileSync(path.join(AQUI, "motor.md"), "utf8");
   log("motor: Claude headless…");
@@ -189,6 +197,8 @@ async function verja(dir, cicloId) {
   const vivas = new Map((await db.vigentes()).map((n) => [n.id, n]));
   const slugs = await db.slugs();
   const descartes = [...(tratadas.descartes || [])];
+  const ser = await series();
+  const textoCaptura = (id) => { try { return fs.readFileSync(path.join(dir, "capturas", `${id}.txt`), "utf8"); } catch { return ""; } };
   const publicado = horaCiclo().toISOString();
   let aceptadas = 0;
   let libres = await cupo();
@@ -200,8 +210,16 @@ async function verja(dir, cicloId) {
     const usadas = [];
     try {
       const fuentes = [];
+      const textos = []; // texto de cada fuente que es captura (para comprobar números)
       for (const f of t.fuentes || []) {
-        if (f.captura) {
+        textos.push(f.captura ? textoCaptura(f.captura) : null);
+        if (f.serie) {
+          // Serie de referencia: la cita el análisis; nombre y enlace los pone el código.
+          const sr = ser.get(f.serie);
+          if (!sr) throw new Error(`serie ${f.serie} no existe en el catálogo`);
+          fuentes.push({ nombre: `Serie Yamacoa: ${sr.titulo} (${sr.fuente})`, url: `${SITE}${sr.expediente || "/metodologia"}`,
+            tipo: "dataset", origen: `serie:${sr.id}` });
+        } else if (f.captura) {
           const c = capt.get(f.captura);
           if (!c) throw new Error(`fuente ${f.captura} no existe en el ciclo`);
           if (c.solo_descubrimiento) throw new Error(`fuente ${f.captura} es solo de descubrimiento`);
@@ -209,10 +227,11 @@ async function verja(dir, cicloId) {
           fuentes.push({ nombre: nombres.get(c.fuente)?.nombre || c.nombre, url: c.url, tipo: f.tipo || "medio",
             origen: f.origen || c.origen, ...(f.verificacion ? { verificacion: f.verificacion } : {}) });
         } else if (f.url) {
-          // Fuente extra: la URL tiene que existir de verdad (nada de enlaces inventados).
-          const ok = await fetch(f.url, { redirect: "follow", signal: AbortSignal.timeout(15000),
-            headers: { "User-Agent": "Mozilla/5.0 (compatible; YamacoaBot/1.0)" } }).then((r) => r.ok).catch(() => false);
-          if (!ok) throw new Error(`fuente extra inaccesible: ${f.url}`);
+          // Fuente extra: la URL tiene que existir de verdad (nada de enlaces inventados). Su
+          // texto sirve también para comprobar los números que se le atribuyen.
+          const html = await descargar(f.url, 15000).catch(() => null);
+          if (html == null) throw new Error(`fuente extra inaccesible: ${f.url}`);
+          textos[textos.length - 1] = texto(html);
           fuentes.push({ nombre: f.nombre, url: f.url, tipo: f.tipo || "medio", origen: f.origen || f.nombre,
             ...(f.verificacion ? { verificacion: f.verificacion } : {}) });
         } else throw new Error("fuente sin captura ni url");
@@ -227,11 +246,47 @@ async function verja(dir, cicloId) {
         slug = base; for (let k = 2; slugs.has(slug); k++) slug = `${base}-${k}`;
       }
       const id = previa?.id || `n-${slug}`;
+
+      // Puntos nuevos de series: cada valor tiene que estar en el texto de una captura citada.
+      const nuevos = [];
+      for (const p of t.puntos || []) {
+        const sr = ser.get(p.serie);
+        const cit = (p.citas || []).filter((c) => textos[c - 1]); // capturas y fuentes extra, no series
+        const previo = sr && ordenados(sr).filter((x) => x.fecha < p.fecha).pop();
+        const motivo = !sr ? "serie inexistente" : !sr.abierta ? "serie cerrada" : !fechaValida(sr, p.fecha) ? `fecha ${p.fecha} no es ${sr.frecuencia}`
+          : !Number.isFinite(Number(p.valor)) ? "valor no numérico" : !cit.length ? "sin cita a un texto comprobable"
+          : !cit.some((c) => numeroEnTexto(p.valor, textos[c - 1])) ? `el valor ${p.valor} no está en el texto citado`
+          : previo && (p.valor / previo.valor > 5 || p.valor / previo.valor < 0.2) ? `salto anómalo frente a ${previo.valor}` : null;
+        if (motivo) { log(`serie NO  ${p.serie} ${p.fecha}=${p.valor}: ${motivo}`); continue; }
+        const f = fuentes[cit[0] - 1];
+        nuevos.push({ serie: sr.id, fecha: p.fecha, valor: Number(p.valor), fuente: f.nombre, url: f.url });
+      }
+      // Gráfico: de una serie (lo construye el código con los puntos ya validados) o propio
+      // de la pieza (cada valor tiene que estar en alguna de sus capturas).
+      let grafico = null;
+      if (t.grafico?.serie) {
+        const sr = ser.get(t.grafico.serie);
+        if (sr) {
+          const copia = { ...sr, puntos: new Map(sr.puntos) };
+          for (const p of nuevos.filter((x) => x.serie === sr.id)) copia.puntos.set(p.fecha, { ...p, origen: "noticia" });
+          grafico = graficoDeSerie(copia, { tipo: t.grafico.tipo, titulo: t.grafico.titulo, nuevas: nuevos.filter((x) => x.serie === sr.id).map((x) => x.fecha) });
+        }
+        if (!grafico) log(`gráfico fuera: la serie ${t.grafico.serie} no existe o tiene menos de 3 puntos`);
+      } else if (t.grafico) {
+        const todo = textos.filter(Boolean).join("\n");
+        const sin = (t.grafico.datos || []).filter((d) => d.valor != null && !numeroEnTexto(d.valor, todo));
+        if (sin.length) log(`gráfico fuera: ${sin.map((d) => d.valor).join(", ")} no están en las capturas`);
+        else grafico = t.grafico;
+      }
+      let analisis = t.analisis?.length ? t.analisis : null;
+      if (analisis && t.plantilla === "breve") { analisis = null; log("análisis fuera: no va en breve"); }
+
       const pieza = {
         titulo: t.titulo, entradilla: t.entradilla, cuerpo: t.cuerpo, fuentes, confianza: t.confianza,
         ...(t.pendiente?.length ? { pendiente: t.pendiente } : {}),
         ...(t.cifra ? { cifra: t.cifra } : {}),
-        ...(t.grafico ? { grafico: t.grafico } : {}),
+        ...(analisis ? { analisis } : {}),
+        ...(grafico ? { grafico } : {}),
         ...(t.versiones?.length ? { versiones: t.versiones } : {}),
         ...(t.expediente && expedientes()[t.expediente] ? { expediente: t.expediente } : {}),
       };
@@ -255,6 +310,13 @@ async function verja(dir, cicloId) {
         capturas: usadas, ciclo: cicloId, estado: "retenida", audio: null };
       if (previa) await db.actualizar(id, { ...fila, actualizado: new Date().toISOString() });
       else { await db.insertar({ id, slug, publicado, ...fila }); slugs.add(slug); libres--; }
+      if (nuevos.length) {
+        try {
+          await db.insertarPuntos(nuevos.map((p) => ({ ...p, noticia: id, ciclo: cicloId })));
+          for (const p of nuevos) ser.get(p.serie).puntos.set(p.fecha, { ...p, origen: "noticia" });
+          log(`serie OK  ${nuevos.map((p) => `${p.serie} ${p.fecha}=${p.valor}`).join(", ")}`);
+        } catch (e) { log(`serie: ${e.message}`); }
+      }
       aceptadas++;
       log(`verja OK  [${t.plantilla}] ${t.titulo}`);
     } catch (e) {
@@ -268,9 +330,15 @@ async function verja(dir, cicloId) {
 /* ---------- 5. audio ---------- */
 async function audio() {
   let ok = 0, fallos = 0;
+  const mudo = (f) => { // ensayo de maqueta: 1 s de silencio en lugar de Kokoro
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    const r = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono", "-t", "1", "-q:a", "9", f]);
+    if (r.status !== 0) throw new Error("ffmpeg no generó el audio mudo");
+    return 1;
+  };
   for (const n of await db.retenidas()) {
     try {
-      const dur = sintetizar(n.guion, path.join(AUDIO, `${n.id}.mp3`));
+      const dur = flag("--sin-audio") ? mudo(path.join(AUDIO, `${n.id}.mp3`)) : sintetizar(n.guion, path.join(AUDIO, `${n.id}.mp3`));
       await db.actualizar(n.id, { estado: "publicada", audio: { url: `/audio/noticias/${n.id}.mp3`, duracion: dur, voz: VOZ, texto: n.guion } });
       ok++; log(`audio OK  ${n.id} (${dur} s)`);
     } catch (e) { fallos++; log(`audio NO  ${n.id}: ${e.message}`); }
@@ -283,6 +351,7 @@ async function main() {
   if (flag("--solo-exportar")) { await exportar(valor("--destino") || path.join(REPO, "public")); return; }
   const desplegar = !flag("--sin-desplegar");
   if (desplegar && db.tipo !== "supabase") throw new Error("sin SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY no se publica (la BD local es solo de ensayo); usa --sin-desplegar");
+  if (flag("--sin-audio") && (desplegar || db.tipo !== "local")) throw new Error("--sin-audio es solo para ensayos con la BD local y --sin-desplegar");
   const reusar = valor("--reusar");
   const cicloId = reusar || idCiclo();
   const dir = path.join(AQUI, "ciclos", cicloId);
@@ -300,6 +369,12 @@ async function main() {
       const indice = await capturar(dir);
       resumen.capturadas = indice.length;
       if (indice.length) await tratar(dir, cicloId);
+    }
+    // Vistas solo cuando el motor las trató: si falla, el ciclo siguiente las vuelve a ver.
+    const privado = path.join(dir, "capturas.privado.json");
+    if (fs.existsSync(path.join(dir, "tratadas.json")) && fs.existsSync(privado)) {
+      const indice = JSON.parse(fs.readFileSync(privado, "utf8"));
+      await db.registrarCapturas(indice.map((c) => ({ hash: c.hash, url: c.url, fuente: c.fuente, titulo: c.titulo, fecha_fuente: c.fecha, ciclo: cicloId })));
     }
     if (fs.existsSync(path.join(dir, "tratadas.json"))) {
       const v = await verja(dir, cicloId);

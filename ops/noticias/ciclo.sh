@@ -7,8 +7,8 @@ REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 export PATH="$HOME/.local/bin:$(dirname "$(ls -d "$HOME"/.nvm/versions/node/*/bin/node 2>/dev/null | tail -1)"):/usr/local/bin:/usr/bin:/bin"
 # Secretos en ~/.config/yamacoa/ de root o del dueño del repo (el cron corre como root).
 DUENO_HOME="$(getent passwd "$(stat -c %U "$REPO")" | cut -d: -f6)"
-for f in "$HOME/.config/yamacoa/cf.env" "$HOME/.config/yamacoa/noticias.env" \
-         "$DUENO_HOME/.config/yamacoa/cf.env" "$DUENO_HOME/.config/yamacoa/noticias.env"; do
+for f in "$HOME/.config/yamacoa/cf.env" "$HOME/.config/yamacoa/noticias.env" "$HOME/.config/yamacoa/claude.env" \
+         "$DUENO_HOME/.config/yamacoa/cf.env" "$DUENO_HOME/.config/yamacoa/noticias.env" "$DUENO_HOME/.config/yamacoa/claude.env"; do
   # shellcheck disable=SC1090
   [ -f "$f" ] && { set -a; . "$f"; set +a; }
 done

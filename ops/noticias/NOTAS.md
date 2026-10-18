@@ -33,6 +33,9 @@ entra en git.
    ```
    Sin este fichero el ciclo usa la BD local `ops/noticias/estado/db.json` (para ensayos).
    Cloudflare: `~/.config/yamacoa/cf.env` (ya existe).
+   Motor: `~/.config/yamacoa/claude.env` con `CLAUDE_CODE_OAUTH_TOKEN=…` (de `claude setup-token`,
+   dura un año). Sin él el motor usa la sesión interactiva, que caduca y deja el ciclo sin noticias
+   («OAuth session expired» en `motor.log.json`).
 3. **Rama de publicación:** commitear el rediseño y `ops/publicar.sh --mover` (primer deploy).
 4. **Cron.** WSL no tiene systemd y el servicio cron está parado. Recomendado: Programador de
    tareas de Windows, que arranca WSL aunque esté cerrado. En PowerShell (como administrador):
@@ -59,6 +62,24 @@ entra en git.
   una vigente no cuentan). Si el motor propone más, entran las de mayor `importancia`.
 - Variables: `YAMACOA_MAX_NOTICIAS` (10, por ciclo), `YAMACOA_MAX_DIA` (20), `YAMACOA_MODELO` (opus), `YAMACOA_MOTOR_MIN` (45),
   `YAMACOA_SITE` (https://yamacoa.com).
+
+## Análisis, series y gráficos (2026-10-18)
+- **Series de referencia:** `series.json` (catálogo cerrado). Cada una tiene semilla (los datos ya
+  verificados de un expediente, leídos en cada ciclo) y/o puntos que añade la verja desde las
+  capturas. La verja solo acepta un punto si el número está en el texto de la captura o de la fuente
+  extra citada, si la fecha va en el formato de la serie y si el salto frente al punto anterior no
+  es absurdo (×5). Los puntos viven en `noticias_series_puntos` (ejecutar `series_supabase.sql`).
+  Sin la tabla, el ciclo sigue con la semilla y avisa en el registro.
+- **Añadir una serie:** entrada nueva en `series.json` (id, título, unidad, fuente, frecuencia,
+  expediente, `abierta`, `semilla` opcional) y commit. El motor la ve en el ciclo siguiente.
+- **Corregir un punto:** `update noticias_series_puntos set valor=… where serie='…' and fecha='…';`
+  o borrarlo. Lo publicado no cambia hasta que otra noticia use la serie.
+- **Gráficos** (`src/periodico/Graficos.jsx`): `serie`, `barras`, `cifra`, `comparacion`,
+  `proporcion`, `mapa`. Uno que no sale de una serie se descarta si alguno de sus números no está
+  en las capturas de la pieza (la noticia se publica sin él).
+- **Ensayo de maqueta** sin Kokoro ni Supabase: `env -u SUPABASE_URL -u SUPABASE_SERVICE_ROLE_KEY
+  node ops/noticias/ciclo.mjs --sin-desplegar --sin-audio` (audio mudo; caché `estado/audio-ensayo/`,
+  separada de la de producción). Con `?demo` en `npm start` hay una pieza de cada tipo de gráfico.
 
 ## Pendiente
 - Imágenes: hoy las noticias salen sin imagen (las fotos de los medios tienen derechos). Opciones:

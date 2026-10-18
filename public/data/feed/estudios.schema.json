@@ -61,28 +61,172 @@
       "properties": { "url": { "type": "string", "format": "uri" }, "duracion": { "type": "number", "minimum": 1 }, "voz": { "type": "string" } }
     },
     "grafico": {
-      "type": "object", "required": ["tipo", "datos", "fuente"], "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "tipo",
+        "datos",
+        "fuente"
+      ],
+      "additionalProperties": false,
       "properties": {
-        "tipo": { "type": "string", "enum": ["serie", "barras", "cifra"] },
-        "titulo": { "type": "string" },
-        "unidad": { "type": "string" },
-        "unidadCorta": { "type": "string" },
-        "ejeX": { "type": "string" },
-        "fuente": { "type": "string" },
-        "nota": { "type": "string" },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "serie",
+            "barras",
+            "cifra",
+            "comparacion",
+            "proporcion",
+            "mapa"
+          ],
+          "description": "serie: evolución en el tiempo. barras: ranking o categorías. cifra: un número. comparacion: dos valores (antes y después, oficial frente a otra fuente) con su variación. proporcion: partes de un total (total obligatorio). mapa: valores por provincia (etiqueta = nombre de la provincia)."
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "unidadCorta": {
+          "type": "string"
+        },
+        "ejeX": {
+          "type": "string"
+        },
+        "fuente": {
+          "type": "string"
+        },
+        "nota": {
+          "type": "string"
+        },
         "datos": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
-            "type": "object", "required": ["etiqueta"], "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "etiqueta"
+            ],
+            "additionalProperties": false,
             "properties": {
-              "etiqueta": { "type": "string" },
-              "valor": { "type": ["number", "null"] },
-              "prefijo": { "type": "string" },
-              "sufijo": { "type": "string" }
+              "etiqueta": {
+                "type": "string"
+              },
+              "valor": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "prefijo": {
+                "type": "string"
+              },
+              "sufijo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "serie": {
+          "type": "string",
+          "description": "id de la serie de referencia (series.json) de la que sale: los datos los pone el ciclo."
+        },
+        "destacar": {
+          "type": "string",
+          "description": "etiqueta del punto que se destaca (el dato de hoy)."
+        },
+        "total": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "proporcion: el total del que los datos son partes."
+        },
+        "orden": {
+          "type": "string",
+          "enum": [
+            "valor",
+            "original"
+          ],
+          "description": "barras: por valor (defecto) o en el orden dado (cronológico)."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "comparacion"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "datos": {
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "proporcion"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "total"
+            ],
+            "properties": {
+              "datos": {
+                "maxItems": 3
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tipo": {
+                "const": "mapa"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "datos": {
+                "maxItems": 16,
+                "items": {
+                  "properties": {
+                    "etiqueta": {
+                      "enum": [
+                        "Pinar del Río",
+                        "Artemisa",
+                        "La Habana",
+                        "Mayabeque",
+                        "Matanzas",
+                        "Villa Clara",
+                        "Cienfuegos",
+                        "Sancti Spíritus",
+                        "Ciego de Ávila",
+                        "Camagüey",
+                        "Las Tunas",
+                        "Holguín",
+                        "Granma",
+                        "Santiago de Cuba",
+                        "Guantánamo",
+                        "Isla de la Juventud"
+                      ]
+                    }
+                  }
+                }
+              }
             }
           }
         }
-      }
+      ]
     }
   }
 }

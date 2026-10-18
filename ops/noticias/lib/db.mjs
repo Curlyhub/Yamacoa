@@ -17,8 +17,15 @@ export function abrir({ estadoDir }) {
 
 /* ---------- Supabase (PostgREST) ---------- */
 function supabase(base, key) {
+  // Errores de red (conexión reutilizada que el servidor cerró tras la larga espera del motor): se reintenta.
+  async function pedir(url, opciones, intentos = 4) {
+    for (let i = 1; ; i++) {
+      try { return await fetch(url, { ...opciones, signal: AbortSignal.timeout(30000) }); }
+      catch (e) { if (i >= intentos) throw e; await new Promise((ok) => setTimeout(ok, 2000 * i)); }
+    }
+  }
   async function q(ruta, { method = "GET", body, prefer } = {}) {
-    const r = await fetch(`${base}/rest/v1/${ruta}`, {
+    const r = await pedir(`${base}/rest/v1/${ruta}`, {
       method,
       headers: {
         // Clave nueva (sb_secret_…): solo en apikey. Clave heredada service_role (JWT eyJ…): también como Bearer.
@@ -57,6 +64,16 @@ function supabase(base, key) {
     async slugs() { return new Set((await q("noticias?select=slug")).map((f) => f.slug)); },
     insertar: (fila) => q("noticias", { method: "POST", body: fila }),
     actualizar: (id, campos) => q(`noticias?id=eq.${encodeURIComponent(id)}`, { method: "PATCH", body: campos }),
+    // Series: si la tabla aún no existe (SQL sin ejecutar), el ciclo sigue solo con la semilla.
+    async puntosSeries() {
+      try { return await q("noticias_series_puntos?select=serie,fecha,valor,fuente,url&order=fecha.asc"); }
+      catch (e) { if (/404|PGRST205|does not exist/.test(e.message)) return []; throw e; }
+    },
+    async insertarPuntos(filas) {
+      if (!filas.length) return;
+      try { await q("noticias_series_puntos?on_conflict=serie,fecha", { method: "POST", body: filas, prefer: "resolution=merge-duplicates" }); }
+      catch (e) { if (/404|PGRST205|does not exist/.test(e.message)) throw new Error("falta la tabla noticias_series_puntos (ops/noticias/noticias_supabase.sql)"); throw e; }
+    },
   };
 }
 
@@ -109,6 +126,11 @@ function local(fichero) {
       const db = leer(); const n = db.noticias.find((x) => x.id === id);
       if (n) Object.assign(n, campos);
       guardar(db);
+    },
+    async puntosSeries() { return leer().series || []; },
+    async insertarPuntos(filas) {
+      const db = leer(); db.series = (db.series || []).filter((p) => !filas.some((f) => f.serie === p.serie && f.fecha === p.fecha));
+      db.series.push(...filas); guardar(db);
     },
   };
 }
