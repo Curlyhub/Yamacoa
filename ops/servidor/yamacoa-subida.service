@@ -1,0 +1,19 @@
+# Subida de trozos del estudio de grabación (ops/servidor/subida_estudio.py), 2026-10-18.
+[Unit]
+Description=Yamacoa: subida de trozos del estudio de grabacion
+After=network-online.target
+
+[Service]
+User=ubuntu
+EnvironmentFile=/etc/yamacoa/subida.env
+ExecStart=/usr/bin/python3 /usr/local/lib/yamacoa/subida_estudio.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/yamacoa-grabaciones
+
+[Install]
+WantedBy=multi-user.target

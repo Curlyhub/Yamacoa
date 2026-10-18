@@ -9,12 +9,12 @@
 //                los pone el código, no el modelo
 //   5. mezcla    ffmpeg: pausas, música si la hay (musica/entrada.*, musica/salida.*),
 //                −16 LUFS, MP3 mono 96 kbps; capítulos y transcripción con tiempos exactos
-//   6. estado    ensayo (voces no definitivas) · revision (conversación: verja humana) ·
+//   6. estado    ensayo (voces no definitivas) · revision (solo si YAMACOA_CONVERSACION_REVISION=1) ·
 //                listo (sin destino de subida) · publicado (MP3 en tts.yamacoa.com/podcast + feed)
 //
 // Uso:
 //   node ops/podcast/auto/episodio.mjs --formato al-dia            (cron, tras el ciclo de las 18:00)
-//   node ops/podcast/auto/episodio.mjs --formato conversacion      (domingos)
+//   node ops/podcast/auto/episodio.mjs --formato conversacion      (domingos, se publica sola)
 //   … --ensayo        no guarda en la BD ni sube nada: exporta a public/ para verlo en npm start
 //   … --reusar <id>   rehace lo que falte (guion, voces o mezcla) de un episodio existente
 //   … --sin-voz       se para tras la verja (revisar el guion)
@@ -311,7 +311,10 @@ async function main() {
     log(`ensayo listo: http://localhost:3123/podcast/${slug}`);
     return;
   }
-  let estado = !vocesListas ? "ensayo" : formato === "conversacion" ? "revision" : "listo";
+  // Desde 2026-10-18 la conversación también se publica sola (decisión del editor); con
+  // YAMACOA_CONVERSACION_REVISION=1 vuelve a esperar a --aprobar.
+  const revisar = formato === "conversacion" && process.env.YAMACOA_CONVERSACION_REVISION === "1";
+  let estado = !vocesListas ? "ensayo" : revisar ? "revision" : "listo";
   if (estado === "listo" && subir(dir, slug)) estado = "publicado";
   await db.guardarEpisodio({ id, slug, formato, estado, titulo: guion.titulo, pieza, guion, transcripcion,
     ...(estado === "publicado" ? { publicado: pieza.publicado } : {}) });

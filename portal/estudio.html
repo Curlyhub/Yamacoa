@@ -136,8 +136,9 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 // Misma configuración que portal/index.html (anon key pública; NUNCA la service_role).
 const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
 const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ";
-// Worker de ingesta (workers/media). Guarda en el bucket R2 PRIVADO.
-const SUBIDA = "https://subida.yamacoa.com";
+// Servicio de subida en el servidor propio (ops/servidor/subida_estudio.py, 2026-10-18): guarda
+// los trozos en una carpeta PRIVADA (nginx no la sirve). Sustituye al Worker + R2.
+const SUBIDA = "https://tts.yamacoa.com";
 const TROZO_MS = 10000;           // un trozo cada 10 s: si el teléfono muere, se pierden <10 s
 const BITRATE = 128000;           // opus 128 kbps ≈ 58 MB/hora: margen para limpiar sin artefactos
 

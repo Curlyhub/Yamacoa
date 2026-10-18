@@ -96,3 +96,23 @@ En el servidor propio de `tts.yamacoa.com` (Oracle, Ubuntu 20.04, el mismo que K
 - Mantenimiento del servidor: con tu acceso habitual, no con esta clave.
 - Riesgo asumido: si cae el servidor, caen a la vez Kokoro y el archivo de podcasts. Para pasar a
   R2: `YAMACOA_R2_BUCKET` + `YAMACOA_MEDIA=https://media.yamacoa.com` y volver a subir los MP3.
+
+## Estudio de grabación: subidas al servidor propio (2026-10-18)
+
+Sustituye al Worker `workers/media` + R2 (que nunca llegó a existir; el Worker queda en desuso):
+```
+estudio.html → PUT https://tts.yamacoa.com/grabacion/<id>/<n>  (JWT de Supabase)
+  └─ nginx → yamacoa-subida (systemd, ops/servidor/subida_estudio.py, 127.0.0.1:8091)
+       └─ comprueba con Supabase (RLS) que la grabación es de quien sube y está «grabando»
+       └─ /var/lib/yamacoa-grabaciones/<id>/trozos/NNNNN.webm   (privada: nginx no la sirve)
+ciclo.sh (PC, cada ciclo) → ops/podcast/procesar.sh
+  └─ rsync con la clave ~/.ssh/yamacoa_grabaciones (orden forzada /usr/local/bin/yamacoa-grabaciones:
+     solo rsync dentro de esa carpeta) → máster + limpio.flac + escucha.mp3 + transcripcion.json
+     de vuelta al servidor; trozos borrados solo si el máster llegó entero; copia del máster en
+     ~/bohio/yamacoa-grabaciones/<id>/
+```
+- Instalación: `ops/servidor/instalar-estudio.sh` (idempotente; copias de nginx y authorized_keys
+  con sufijo `.bak-estudio-20261018`). Servicio: `sudo systemctl status yamacoa-subida`.
+- Transcripción: faster-whisper (`ops/podcast/transcribir.py`, modelo `medium`, GPU); whisper.cpp si
+  está instalado y hay `WHISPER_MODEL`. Ruido: RNNoise `sh.rnnn` (somnolent-hogwash, sin derechos de
+  autor según su repositorio) en `~/bohio/yamacoa-tts/modelos/`.

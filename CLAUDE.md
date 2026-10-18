@@ -274,10 +274,12 @@ Retirar una noticia a mano: `estado = 'retirada'` en la BD; sale en el siguiente
 ### 11.7 Podcast elaborado (grabación humana)
 - Estudio interno: `portal/estudio.html` (misma cuenta que el portal; permiso
   `perfiles.puede_grabar`). Graba en el navegador del teléfono o del portátil en trozos de 10 s
-  con cola persistente, y los sube vía Worker (`workers/media`) al R2 **privado**.
+  con cola persistente, y los sube al servicio `ops/servidor/subida_estudio.py` del servidor propio
+  (`tts.yamacoa.com/grabacion/`, carpeta **privada**; desde 2026-10-18 sustituye al Worker + R2).
 - **Consentimiento** de todas las voces antes de grabar, registrado en la base de datos con fecha.
   Sin él, la RPC `abrir_grabacion` lo rechaza.
-- Procesado: `ops/podcast/procesar.sh` (limpieza, −16 LUFS, whisper). Publicación:
+- Procesado: `ops/podcast/procesar.sh` en el PC, en cada ciclo (limpieza, −16 LUFS, faster-whisper en
+  la GPU; el máster queda en el servidor y en `~/bohio/yamacoa-grabaciones`). Publicación:
   `/podcast-publicar` (borrador → verja humana → `--publicar`). El máster crudo no se borra nunca.
 - Detalles y almacenamiento: `ops/podcast/NOTAS.md`.
 

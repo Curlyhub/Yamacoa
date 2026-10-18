@@ -1,0 +1,17 @@
+#!/bin/sh
+# Orden forzada de la clave «yamacoa-grabaciones» (procesado del estudio, 2026-10-18): solo
+# permite rsync (leer o escribir) dentro de /var/lib/yamacoa-grabaciones, con rutas relativas
+# y sin «..». Cualquier otra orden se rechaza.
+set -f
+cmd="$SSH_ORIGINAL_COMMAND"
+case "$cmd" in "rsync --server "*) ;; *) echo "denegado: solo rsync" >&2; exit 1 ;; esac
+case "$cmd" in *";"*|*"&"*|*"|"*|*'`'*|*'$'*|*".."*|*"<"*|*">"*) echo "denegado" >&2; exit 1 ;; esac
+for t in $cmd; do
+  case "$t" in
+    rsync|--server|--sender|-*|.) ;;
+    /*) echo "denegado: ruta absoluta" >&2; exit 1 ;;
+    *[!A-Za-z0-9._/-]*) echo "denegado: ruta no válida" >&2; exit 1 ;;
+  esac
+done
+cd /var/lib/yamacoa-grabaciones || exit 1
+exec $cmd

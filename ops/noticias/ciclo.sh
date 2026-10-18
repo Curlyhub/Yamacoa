@@ -22,12 +22,14 @@ if ! flock -n 9; then
 fi
 cd "$REPO"
 node ops/noticias/ciclo.mjs "$@" >> "$LOGS/$(date +%F).log" 2>&1
+# Estudio: une, limpia y transcribe las grabaciones entregadas (quedan «procesada» para editar).
+bash ops/podcast/procesar.sh >> "$LOGS/$(date +%F).log" 2>&1 || true
 # Opinión: analiza los artículos recibidos (quedan en revisión para el editor). Sin envíos, no gasta nada.
 node ops/opinion/opinion.mjs >> "$LOGS/$(date +%F).log" 2>&1
-# Tras el ciclo de la tarde: «Yamacoa al día»; los domingos, además, la conversación (queda en revisión).
+# Tras el ciclo de la tarde: «Yamacoa al día»; los domingos, además, la conversación. Ambos se publican solos.
 # Sin voces definitivas (ops/podcast/auto/voces.json) no se genera nada.
 if [ $# -eq 0 ] && [ "$(date +%H)" -ge 17 ]; then
   node ops/podcast/auto/episodio.mjs --formato al-dia --desplegar >> "$LOGS/$(date +%F).log" 2>&1
-  [ "$(date +%u)" = 7 ] && node ops/podcast/auto/episodio.mjs --formato conversacion >> "$LOGS/$(date +%F).log" 2>&1
+  [ "$(date +%u)" = 7 ] && node ops/podcast/auto/episodio.mjs --formato conversacion --desplegar >> "$LOGS/$(date +%F).log" 2>&1
 fi
 exit 0
