@@ -225,7 +225,7 @@ origen en todo el sitio: **salvia = automático**, **melocotón = dirigido**, **
   `redactor-noticias`.
 - **Cita por párrafo** obligatoria; `confianza` visible en la UI.
 - **Resumen hablado obligatorio:** ninguna noticia ni estudio automático se publica sin
-  `audio` (Kokoro, `tts.yamacoa.com`). El schema lo exige; si el TTS falla, la pieza espera.
+  `audio` (Kokoro en el PC, `ops/noticias/kokoro_local.py`; respaldo `tts.yamacoa.com`). El schema lo exige; si el TTS falla, la pieza espera.
 - **Imágenes:** en noticias, fotografía con crédito o gráfico de datos. Las ilustraciones
   generadas por IA (FLUX.1-schnell local, desde 2026-10-18) nunca son fotorrealistas de hechos reales,
   no muestran personas reconocibles ni texto, y se rotulan siempre «Ilustración generada por IA»
@@ -261,9 +261,9 @@ régimen: se le persuade con evidencia y respeto.
 - Nunca se incita a la violencia ni se expone a personas dentro de Cuba.
 - Texto operativo: `ops/noticias/motor.md` (§ Línea editorial). Aplica también a `/crear-tema`.
 
-### 11.6 Ciclo automático de noticias (cron 00:00 y 18:00, hora local)
+### 11.6 Ciclo automático de noticias (cron 06:00 y 18:00, hora local)
 `ops/noticias/ciclo.sh` → `ciclo.mjs`: caducar → capturar (RSS de `ops/noticias/fuentes.json`)
-(prensa cubana, Miami, España y EE UU) → tratar (**Claude headless** con `ops/noticias/motor.md`, sin Bash ni MCP, solo escribe en la
+(prensa cubana, Miami, España y EE UU; el ciclo de las 06:00 prioriza las fuentes de fuera y el de las 18:00 la prensa cubana: campo `ambito`) → tratar (**Claude headless** con `ops/noticias/motor.md`, sin Bash ni MCP, solo escribe en la
 carpeta del ciclo) → verja (schema + reglas; las URL las pone el código, no el modelo) → audio
 (Kokoro; sin audio, `retenida`) → `ops/publicar.sh`. Tope: 10 nuevas por ciclo y
 **20 por día**. Ensayo sin subir:

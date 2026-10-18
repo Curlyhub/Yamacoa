@@ -1,6 +1,6 @@
 # Noticias automáticas: notas de operador
 
-## Qué hace cada ciclo (00:00 y 18:00, hora local del PC)
+## Qué hace cada ciclo (06:00 y 18:00, hora local del PC)
 `ops/noticias/ciclo.sh` → `ciclo.mjs`:
 1. **Caducar.** Borra de la BD lo que cumplió 3 días (y lo retirado a mano). Si borró algo,
    redespliega en el acto: la página desaparece del sitio a su hora y su URL responde 410.
@@ -41,7 +41,7 @@ entra en git.
    tareas de Windows, que arranca WSL aunque esté cerrado. En PowerShell (como administrador):
    ```
    $a = New-ScheduledTaskAction -Execute "wsl.exe" -Argument "-d Ubuntu-24.04 -u <usuario> -- /home/<usuario>/bohio/yamacoa/ops/noticias/ciclo.sh"
-   $t1 = New-ScheduledTaskTrigger -Daily -At 00:00
+   $t1 = New-ScheduledTaskTrigger -Daily -At 06:00
    $t2 = New-ScheduledTaskTrigger -Daily -At 18:00
    $s = New-ScheduledTaskSettingsSet -WakeToRun -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 4)
    Register-ScheduledTask -TaskName "Yamacoa noticias" -Action $a -Trigger $t1,$t2 -Settings $s

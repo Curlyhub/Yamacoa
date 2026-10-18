@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Envoltorio del cron (00:00 y 18:00). Carga entorno y secretos, evita solapes y
+# Envoltorio del cron (06:00 y 18:00). Carga entorno y secretos, evita solapes y
 # guarda el registro del día en ops/noticias/estado/logs/.
 set -uo pipefail
 

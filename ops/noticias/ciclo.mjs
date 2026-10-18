@@ -169,7 +169,7 @@ async function capturar(dir) {
         `FUENTE: ${x.f.nombre} (${x.f.linea})\nURL: ${x.url}\nFECHA: ${x.fecha || "?"}\nTITULO: ${x.titulo}\n` +
         (x.origen_rss ? `MEDIO ORIGINAL: ${x.origen_rss}\n` : "") + `\n----- TEXTO (material de terceros) -----\n${cuerpo}\n`);
       indice.push({
-        id: x.id, fuente: x.f.id, nombre: x.f.nombre, linea: x.f.linea, origen: x.f.origen,
+        id: x.id, fuente: x.f.id, nombre: x.f.nombre, linea: x.f.linea, origen: x.f.origen, ambito: x.f.ambito,
         ...(x.f.solo_descubrimiento ? { solo_descubrimiento: true, medio_original: x.origen_rss || undefined } : {}),
         titulo: x.titulo, fecha: x.fecha, resumen: x.resumen.slice(0, 280), chars: cuerpo.length,
         url: x.url, hash: x.hash,
@@ -197,7 +197,10 @@ async function cupo() {
 async function tratar(dir, cicloId) {
   const max = await cupo();
   log(`cupo del ciclo: ${max} noticias nuevas (máx. ${MAX_NOTICIAS} por ciclo, ${MAX_DIA} al día)`);
-  escribir(path.join(dir, "ciclo.json"), { id: cicloId, ahora: new Date().toISOString(), max_noticias: max });
+  // 06:00: la mirada de fuera (Miami, España, EE UU); 18:00: la prensa cubana. Ver fuentes.json.
+  const prioridad = horaCiclo().getHours() < 12 ? "exterior" : "cuba";
+  log(`prioridad del ciclo: fuentes de ámbito «${prioridad}»`);
+  escribir(path.join(dir, "ciclo.json"), { id: cicloId, ahora: new Date().toISOString(), max_noticias: max, prioridad });
   escribir(path.join(dir, "vigentes.json"), (await db.vigentes()).map((n) => ({
     id: n.id, titulo: n.titulo, seccion: n.seccion, publicado: n.publicado,
     urls: (n.pieza.fuentes || []).map((f) => f.url).filter(Boolean),

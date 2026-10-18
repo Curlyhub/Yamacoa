@@ -4,36 +4,249 @@
   "max_por_fuente": 25,
   "filtro_cuba": "\\bcuba|cuban|habana|havana|d[ií]az-canel|guant[aá]namo|gaesa|castro\\b|balsero|ley de ajuste",
   "fuentes": [
-    { "id": "14ymedio",        "nombre": "14ymedio",          "rss": "https://www.14ymedio.com/rss/",              "linea": "independiente", "origen": "14ymedio" },
-    { "id": "cibercuba",       "nombre": "CiberCuba",         "rss": "https://www.cibercuba.com/rss.xml",          "linea": "independiente", "origen": "cibercuba" },
-    { "id": "ddc",             "nombre": "Diario de Cuba",    "rss": "https://diariodecuba.com/rss.xml",           "linea": "independiente", "origen": "ddc" },
-    { "id": "eltoque",         "nombre": "elTOQUE",           "rss": "https://eltoque.com/feed",                   "linea": "independiente", "origen": "eltoque" },
-    { "id": "cubanet",         "nombre": "Cubanet",           "rss": "https://www.cubanet.org/feed/",              "linea": "independiente", "origen": "cubanet" },
-    { "id": "periodicocubano", "nombre": "Periódico Cubano",  "rss": "https://www.periodicocubano.com/feed/",      "linea": "independiente", "origen": "periodicocubano" },
-    { "id": "cubadebate",      "nombre": "Cubadebate",        "rss": "http://www.cubadebate.cu/feed/",             "linea": "oficial",       "origen": "estado-cubano" },
-    { "id": "granma",          "nombre": "Granma",            "rss": "https://www.granma.cu/feed",                 "linea": "oficial",       "origen": "estado-cubano" },
-
-    { "id": "marti",           "nombre": "Martí Noticias",    "rss": "https://www.martinoticias.com/api/",         "linea": "internacional", "origen": "gobierno-eeuu" },
-    { "id": "nbcmiami",        "nombre": "NBC 6 Miami",       "rss": "https://www.nbcmiami.com/?rss=y",            "linea": "internacional", "origen": "nbc", "filtro": true },
-    { "id": "telemundo51",     "nombre": "Telemundo 51",      "rss": "https://www.telemundo51.com/?rss=y",         "linea": "internacional", "origen": "nbc", "filtro": true },
-    { "id": "local10",         "nombre": "Local 10 (WPLG)",   "rss": "https://www.local10.com/arc/outboundfeeds/rss/?outputType=xml", "linea": "internacional", "origen": "wplg", "filtro": true },
-    { "id": "cbsmiami",        "nombre": "CBS News Miami",    "rss": "https://www.cbsnews.com/miami/latest/rss/main", "linea": "internacional", "origen": "cbs", "filtro": true },
-
-    { "id": "bbcmundo",        "nombre": "BBC Mundo",         "rss": "https://feeds.bbci.co.uk/mundo/rss.xml",     "linea": "internacional", "origen": "bbc", "filtro": true },
-    { "id": "bbclatam",        "nombre": "BBC News",          "rss": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml", "linea": "internacional", "origen": "bbc", "filtro": true },
-    { "id": "elpais",          "nombre": "El País",           "rss": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada", "linea": "internacional", "origen": "elpais", "filtro": true },
-    { "id": "elmundo",         "nombre": "El Mundo",          "rss": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml", "linea": "internacional", "origen": "elmundo", "filtro": true },
-    { "id": "abc",             "nombre": "ABC",               "rss": "https://www.abc.es/rss/2.0/internacional/",  "linea": "internacional", "origen": "abc-es", "filtro": true },
-    { "id": "infobae",         "nombre": "Infobae",           "rss": "https://www.infobae.com/arc/outboundfeeds/rss/category/america/", "linea": "internacional", "origen": "infobae", "filtro": true },
-    { "id": "nyt",             "nombre": "The New York Times", "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Americas.xml", "linea": "internacional", "origen": "nyt", "filtro": true },
-    { "id": "cbsnews",         "nombre": "CBS News",          "rss": "https://www.cbsnews.com/latest/rss/world",   "linea": "internacional", "origen": "cbs", "filtro": true },
-    { "id": "abcnews",         "nombre": "ABC News",          "rss": "https://abcnews.go.com/abcnews/internationalheadlines", "linea": "internacional", "origen": "abc-news", "filtro": true },
-    { "id": "npr",             "nombre": "NPR",               "rss": "https://feeds.npr.org/1004/rss.xml",         "linea": "internacional", "origen": "npr", "filtro": true },
-    { "id": "fox",             "nombre": "Fox News",          "rss": "https://moxie.foxnews.com/google-publisher/world.xml", "linea": "internacional", "origen": "fox", "filtro": true },
-
-    { "id": "gnews",           "nombre": "Google Noticias (Cuba)", "rss": "https://news.google.com/rss/search?q=Cuba+when:1d&hl=es-419&gl=US&ceid=US:es-419", "linea": "internacional", "origen": "agregador", "solo_descubrimiento": true },
-    { "id": "gnews-miami",     "nombre": "Google Noticias (Miami)", "rss": "https://news.google.com/rss/search?q=Cuba+(site:elnuevoherald.com+OR+site:miamiherald.com+OR+site:univision.com+OR+site:americateve.com+OR+site:wsvn.com)+when:2d&hl=es-419&gl=US&ceid=US:es-419", "linea": "internacional", "origen": "agregador", "solo_descubrimiento": true },
-    { "id": "gnews-eeuu",      "nombre": "Google Noticias (EE UU)", "rss": "https://news.google.com/rss/search?q=Cuba+(site:nytimes.com+OR+site:apnews.com+OR+site:reuters.com+OR+site:cnn.com+OR+site:washingtonpost.com+OR+site:wsj.com+OR+site:nbcnews.com)+when:2d&hl=en-US&gl=US&ceid=US:en", "linea": "internacional", "origen": "agregador", "solo_descubrimiento": true },
-    { "id": "gnews-espana",    "nombre": "Google Noticias (España)", "rss": "https://news.google.com/rss/search?q=Cuba+(site:elpais.com+OR+site:elmundo.es+OR+site:abc.es+OR+site:bbc.com+OR+site:efe.com)+when:2d&hl=es&gl=ES&ceid=ES:es", "linea": "internacional", "origen": "agregador", "solo_descubrimiento": true }
-  ]
+    {
+      "id": "14ymedio",
+      "nombre": "14ymedio",
+      "rss": "https://www.14ymedio.com/rss/",
+      "linea": "independiente",
+      "origen": "14ymedio",
+      "ambito": "cuba"
+    },
+    {
+      "id": "cibercuba",
+      "nombre": "CiberCuba",
+      "rss": "https://www.cibercuba.com/rss.xml",
+      "linea": "independiente",
+      "origen": "cibercuba",
+      "ambito": "cuba"
+    },
+    {
+      "id": "ddc",
+      "nombre": "Diario de Cuba",
+      "rss": "https://diariodecuba.com/rss.xml",
+      "linea": "independiente",
+      "origen": "ddc",
+      "ambito": "cuba"
+    },
+    {
+      "id": "eltoque",
+      "nombre": "elTOQUE",
+      "rss": "https://eltoque.com/feed",
+      "linea": "independiente",
+      "origen": "eltoque",
+      "ambito": "cuba"
+    },
+    {
+      "id": "cubanet",
+      "nombre": "Cubanet",
+      "rss": "https://www.cubanet.org/feed/",
+      "linea": "independiente",
+      "origen": "cubanet",
+      "ambito": "cuba"
+    },
+    {
+      "id": "periodicocubano",
+      "nombre": "Periódico Cubano",
+      "rss": "https://www.periodicocubano.com/feed/",
+      "linea": "independiente",
+      "origen": "periodicocubano",
+      "ambito": "cuba"
+    },
+    {
+      "id": "cubadebate",
+      "nombre": "Cubadebate",
+      "rss": "http://www.cubadebate.cu/feed/",
+      "linea": "oficial",
+      "origen": "estado-cubano",
+      "ambito": "cuba"
+    },
+    {
+      "id": "granma",
+      "nombre": "Granma",
+      "rss": "https://www.granma.cu/feed",
+      "linea": "oficial",
+      "origen": "estado-cubano",
+      "ambito": "cuba"
+    },
+    {
+      "id": "marti",
+      "nombre": "Martí Noticias",
+      "rss": "https://www.martinoticias.com/api/",
+      "linea": "internacional",
+      "origen": "gobierno-eeuu",
+      "ambito": "cuba"
+    },
+    {
+      "id": "nbcmiami",
+      "nombre": "NBC 6 Miami",
+      "rss": "https://www.nbcmiami.com/?rss=y",
+      "linea": "internacional",
+      "origen": "nbc",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "telemundo51",
+      "nombre": "Telemundo 51",
+      "rss": "https://www.telemundo51.com/?rss=y",
+      "linea": "internacional",
+      "origen": "nbc",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "local10",
+      "nombre": "Local 10 (WPLG)",
+      "rss": "https://www.local10.com/arc/outboundfeeds/rss/?outputType=xml",
+      "linea": "internacional",
+      "origen": "wplg",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "cbsmiami",
+      "nombre": "CBS News Miami",
+      "rss": "https://www.cbsnews.com/miami/latest/rss/main",
+      "linea": "internacional",
+      "origen": "cbs",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "bbcmundo",
+      "nombre": "BBC Mundo",
+      "rss": "https://feeds.bbci.co.uk/mundo/rss.xml",
+      "linea": "internacional",
+      "origen": "bbc",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "bbclatam",
+      "nombre": "BBC News",
+      "rss": "https://feeds.bbci.co.uk/news/world/latin_america/rss.xml",
+      "linea": "internacional",
+      "origen": "bbc",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "elpais",
+      "nombre": "El País",
+      "rss": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/america/portada",
+      "linea": "internacional",
+      "origen": "elpais",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "elmundo",
+      "nombre": "El Mundo",
+      "rss": "https://e00-elmundo.uecdn.es/elmundo/rss/internacional.xml",
+      "linea": "internacional",
+      "origen": "elmundo",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "abc",
+      "nombre": "ABC",
+      "rss": "https://www.abc.es/rss/2.0/internacional/",
+      "linea": "internacional",
+      "origen": "abc-es",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "infobae",
+      "nombre": "Infobae",
+      "rss": "https://www.infobae.com/arc/outboundfeeds/rss/category/america/",
+      "linea": "internacional",
+      "origen": "infobae",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "nyt",
+      "nombre": "The New York Times",
+      "rss": "https://rss.nytimes.com/services/xml/rss/nyt/Americas.xml",
+      "linea": "internacional",
+      "origen": "nyt",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "cbsnews",
+      "nombre": "CBS News",
+      "rss": "https://www.cbsnews.com/latest/rss/world",
+      "linea": "internacional",
+      "origen": "cbs",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "abcnews",
+      "nombre": "ABC News",
+      "rss": "https://abcnews.go.com/abcnews/internationalheadlines",
+      "linea": "internacional",
+      "origen": "abc-news",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "npr",
+      "nombre": "NPR",
+      "rss": "https://feeds.npr.org/1004/rss.xml",
+      "linea": "internacional",
+      "origen": "npr",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "fox",
+      "nombre": "Fox News",
+      "rss": "https://moxie.foxnews.com/google-publisher/world.xml",
+      "linea": "internacional",
+      "origen": "fox",
+      "filtro": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "gnews",
+      "nombre": "Google Noticias (Cuba)",
+      "rss": "https://news.google.com/rss/search?q=Cuba+when:1d&hl=es-419&gl=US&ceid=US:es-419",
+      "linea": "internacional",
+      "origen": "agregador",
+      "solo_descubrimiento": true,
+      "ambito": "cuba"
+    },
+    {
+      "id": "gnews-miami",
+      "nombre": "Google Noticias (Miami)",
+      "rss": "https://news.google.com/rss/search?q=Cuba+(site:elnuevoherald.com+OR+site:miamiherald.com+OR+site:univision.com+OR+site:americateve.com+OR+site:wsvn.com)+when:2d&hl=es-419&gl=US&ceid=US:es-419",
+      "linea": "internacional",
+      "origen": "agregador",
+      "solo_descubrimiento": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "gnews-eeuu",
+      "nombre": "Google Noticias (EE UU)",
+      "rss": "https://news.google.com/rss/search?q=Cuba+(site:nytimes.com+OR+site:apnews.com+OR+site:reuters.com+OR+site:cnn.com+OR+site:washingtonpost.com+OR+site:wsj.com+OR+site:nbcnews.com)+when:2d&hl=en-US&gl=US&ceid=US:en",
+      "linea": "internacional",
+      "origen": "agregador",
+      "solo_descubrimiento": true,
+      "ambito": "exterior"
+    },
+    {
+      "id": "gnews-espana",
+      "nombre": "Google Noticias (España)",
+      "rss": "https://news.google.com/rss/search?q=Cuba+(site:elpais.com+OR+site:elmundo.es+OR+site:abc.es+OR+site:bbc.com+OR+site:efe.com)+when:2d&hl=es&gl=ES&ceid=ES:es",
+      "linea": "internacional",
+      "origen": "agregador",
+      "solo_descubrimiento": true,
+      "ambito": "exterior"
+    }
+  ],
+  "_nota_ambito": "ambito: «cuba» = prensa cubana (de dentro, del exilio y Martí Noticias); «exterior» = Miami, España, EE UU y agregadores generales. El ciclo de las 06:00 prioriza «exterior» y el de las 18:00 «cuba» (ciclo.json → prioridad)."
 }

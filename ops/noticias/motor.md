@@ -64,9 +64,14 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
   lo que dice Washington, con la misma cautela que la prensa estatal cubana para lo demás.
 - `capturas/<id>.txt`: texto completo de cada captura (lee solo las que vayas a usar).
 - `vigentes.json`: noticias ya publicadas y vivas `{id, titulo, seccion, publicado, urls}`.
-- `ciclo.json`: `{id, ahora, max_noticias}`. `max_noticias` es el cupo de noticias NUEVAS que
+- `ciclo.json`: `{id, ahora, max_noticias, prioridad}`. `max_noticias` es el cupo de noticias NUEVAS que
   quedan hoy (hay un tope diario); puede ser 0: entonces solo escribes actualizaciones de
   vigentes con novedad sustantiva y los descartes.
+  `prioridad` (`exterior` o `cuba`) dice qué ámbito de fuentes (campo `ambito` del índice) manda
+  en este ciclo: el de la mañana cuenta cómo se ve Cuba desde fuera (Miami, España, EE UU) y el
+  de la tarde lo que publica la prensa cubana. Elige primero entre las capturas de ese ámbito;
+  las del otro entran si son lo más importante del día o para corroborar. La prioridad nunca
+  rebaja las reglas de verificación ni de independencia.
 - `expedientes.json`: expedientes de Yamacoa `{ruta, titulo, resumen}` para el campo `expediente`.
 - `series.json`: series de referencia de Yamacoa `{id, titulo, unidad, fuente, frecuencia,
   formato_fecha, abierta, expediente, puntos: [[fecha, valor], …]}`. Son datos ya verificados
