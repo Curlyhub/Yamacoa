@@ -55,3 +55,7 @@ public/data/feed/noticias.json
 ops/podcast/auto/episodios/
 public/data/feed/podcast/
 public/data/feed/podcast.json
+
+# Opinión: material del análisis y feed exportado desde la BD
+ops/opinion/trabajo/
+public/data/feed/opinion.json

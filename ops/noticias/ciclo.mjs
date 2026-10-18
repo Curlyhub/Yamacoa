@@ -68,7 +68,10 @@ const horaCiclo = () => { const d = new Date(); d.setSeconds(0, 0); d.setMinutes
 const expedientes = () => { try { return JSON.parse(fs.readFileSync(path.join(REPO, "functions/social-meta.json"), "utf8")); } catch { return {}; } };
 
 /* ---------- 6. exportar ---------- */
+// Ensayo (public/ del repo, npm start): el audio se sirve en local; en el build, desde el sitio.
+const ENSAYO_BASE = process.env.YAMACOA_ENSAYO_BASE || "http://localhost:3123";
 async function exportar(destino) {
+  const base = path.resolve(destino) === path.join(REPO, "public") ? ENSAYO_BASE : SITE;
   const vivas = await db.vigentes();
   const items = vivas.map((n) => ({
     ...n.pieza,
@@ -77,7 +80,7 @@ async function exportar(destino) {
     caduca: new Date(Date.parse(n.publicado) + VIDA_MS).toISOString(),
     ...(n.actualizado ? { actualizado: new Date(n.actualizado).toISOString() } : {}),
     relevancia: Number(n.relevancia),
-    audio: { ...n.audio, url: SITE + n.audio.url },
+    audio: { ...n.audio, url: base + n.audio.url },
   }));
   const feed = { version: "1", actualizado: new Date().toISOString(), items };
   const err = validador.feed(feed);

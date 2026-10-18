@@ -4,7 +4,7 @@ import Narrador from "./Narrador";
 import temas from "../temas/registry.js";
 import { TOKENS_CSS, cargarFuentes } from "../design/tokens";
 import { ReproductorProvider } from "../periodico/Reproductor";
-import { fechaLarga } from "../periodico/feed";
+import { fechaLarga, useFeed } from "../periodico/feed";
 
 /* Carcasa unificada del periódico (handoff 2026-10, dirección 1a).
    Barra de fecha + cabecera (masthead grande en portada, compacta en el resto) +
@@ -19,6 +19,8 @@ const NAV = [
   { to: "/expedientes", t: "Expedientes" },
   { to: "/podcast", t: "Podcast" },
 ];
+// «Opinión» solo aparece cuando hay artículos publicados (feed opinion.json con items).
+const OPINION = { to: "/opinion", t: "Opinión" };
 
 const CSS = `
 .yl-app{min-height:100vh; display:flex; flex-direction:column; color:var(--y-ink); font-family:var(--y-font);}
@@ -85,6 +87,8 @@ export default function Layout({ children }) {
   const path = pathname.replace(/\/+$/, "") || "/";
   const temaActivo = temas.find((t) => t.path === path);
   const portada = path === "/";
+  const opinion = useFeed("opinion.json");
+  const nav = opinion.datos?.items?.length ? [...NAV.slice(0, 2), OPINION, ...NAV.slice(2)] : NAV;
 
   useEffect(cargarFuentes, []);
   useEffect(() => {
@@ -116,7 +120,7 @@ export default function Layout({ children }) {
               <b>Yamacoa</b>
             </Link>
             <nav className="yl-nav" aria-label="Secciones">
-              {NAV.map((n) => (
+              {nav.map((n) => (
                 <NavLink key={n.to} to={n.to} end={n.end}>{n.t}</NavLink>
               ))}
               <Link to="/suscribete" className="y-btn">Suscríbete</Link>

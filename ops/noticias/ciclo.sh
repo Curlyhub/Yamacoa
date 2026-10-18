@@ -22,6 +22,8 @@ if ! flock -n 9; then
 fi
 cd "$REPO"
 node ops/noticias/ciclo.mjs "$@" >> "$LOGS/$(date +%F).log" 2>&1
+# Opinión: analiza los artículos recibidos (quedan en revisión para el editor). Sin envíos, no gasta nada.
+node ops/opinion/opinion.mjs >> "$LOGS/$(date +%F).log" 2>&1
 # Tras el ciclo de la tarde: «Yamacoa al día»; los domingos, además, la conversación (queda en revisión).
 # Sin voces definitivas (ops/podcast/auto/voces.json) no se genera nada.
 if [ $# -eq 0 ] && [ "$(date +%H)" -ge 17 ]; then

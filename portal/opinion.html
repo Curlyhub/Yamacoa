@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#efe8df">
+<title>Yamacoa · Opinión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Tokens: src/design/tokens.js (sistema unificado "periódico"). Mismo estilo que estudio.html. */
+:root{
+  --bg:#efe8df; --surface:#fcf9f4; --surface2:#f5efe7; --ink:#1f1a16; --ink2:#4a3f36;
+  --muted:#6b5d50; --subtle:#8a7a68; --accent:#b8562e; --dark:#3a2418; --rule:rgba(60,40,20,.15);
+  --auto-bg:#dfe9e1; --auto-ink:#2f5640; --err:#a8321e;
+  --font:'Manrope',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0; font-family:var(--font); color:var(--ink); min-height:100vh;
+  background:radial-gradient(ellipse 70% 50% at 0% 0%,#f6d9c6 0%,transparent 60%),
+             radial-gradient(ellipse 60% 45% at 100% 0%,#d5e3da 0%,transparent 60%),var(--bg);
+  background-repeat:no-repeat; background-color:var(--bg);
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);}
+.wrap{max-width:820px; margin:0 auto; padding:0 16px 80px;}
+header{display:flex; align-items:center; gap:14px; padding:16px 0 12px; border-bottom:3px solid var(--ink); margin-bottom:22px;}
+header b{font-size:26px; font-weight:800; letter-spacing:-.035em;}
+header span{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
+header .quien{margin-left:auto; color:var(--muted); letter-spacing:.04em; text-transform:none;}
+header a{font:500 11px var(--mono); color:var(--muted);}
+h1{font-size:30px; font-weight:800; letter-spacing:-.03em; margin:0 0 6px;}
+.sub{color:var(--muted); margin:0 0 20px; font-size:15px; line-height:1.5;}
+.card{background:var(--surface); border-radius:24px; padding:20px; margin-bottom:16px;
+  box-shadow:0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055);}
+.eyebrow{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin:0 0 12px;}
+label{display:block; font:500 10.5px var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:14px 0 6px;}
+input[type=text], textarea{width:100%; background:var(--surface2); border:1px solid transparent; border-radius:12px;
+  padding:12px; font:500 16px var(--font); color:var(--ink);}
+textarea{min-height:360px; line-height:1.6; font-weight:400; resize:vertical;}
+input[type=text]:focus, textarea:focus{outline:none; border-color:var(--accent);}
+.opc{display:flex; gap:10px; flex-wrap:wrap;}
+.opc label{display:flex; gap:8px; align-items:center; text-transform:none; letter-spacing:0; font:600 14.5px var(--font);
+  color:var(--ink2); background:var(--surface2); padding:10px 14px; border-radius:999px; margin:0; cursor:pointer;}
+.opc input:checked + span{color:var(--accent);}
+.pestanas{display:flex; gap:6px; margin:14px 0 4px;}
+.pestanas button{font:500 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:8px 14px; border-radius:999px;
+  border:0; background:var(--surface2); color:var(--muted); cursor:pointer;}
+.pestanas button[aria-pressed="true"]{background:var(--dark); color:var(--surface);}
+.soltar{border:1.5px dashed var(--rule); border-radius:18px; padding:26px; text-align:center; color:var(--muted); font-size:14.5px; cursor:pointer;}
+.soltar.sobre{border-color:var(--accent); color:var(--accent);}
+.cuenta{font:500 11px var(--mono); color:var(--subtle); margin-top:6px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:999px; cursor:pointer;
+  background:var(--dark); color:var(--surface); font:600 15px var(--font); padding:12px 20px; text-decoration:none;}
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px var(--rule);}
+.btn:disabled{opacity:.45; cursor:not-allowed;}
+.mini{font:500 12px var(--mono); padding:8px 12px;}
+.legal{font-size:13px; color:var(--muted); line-height:1.5; margin-top:10px;}
+.confirma{display:flex; gap:10px; align-items:flex-start; text-transform:none; letter-spacing:0; font:500 14.5px/1.5 var(--font);
+  color:var(--ink2); margin:16px 0;}
+.confirma input{margin-top:4px;}
+.lista{list-style:none; margin:0; padding:0;}
+.lista li{display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:14.5px; align-items:center;}
+.lista small{display:block; font:500 10.5px var(--mono); color:var(--subtle); margin-top:3px;}
+.badge{font:500 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:999px; background:var(--surface2); color:var(--muted); white-space:nowrap;}
+.badge.ok{background:var(--auto-bg); color:var(--auto-ink);}
+.badge.err{background:#f6d5cc; color:var(--err);}
+.aviso{background:#f6e3c4; color:#6b3f08; border-radius:16px; padding:12px 14px; font-size:14px; line-height:1.45; margin:10px 0 0;}
+.aviso.err{background:#f6d5cc; color:var(--err);}
+.aviso.ok{background:var(--auto-bg); color:var(--auto-ink);}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><b>Yamacoa</b><span>Opinión</span><span class="quien" id="quien"></span><a href="./index.html">Portal</a></header>
+
+  <div id="v-cargando"><p class="sub">Comprobando sesión…</p></div>
+
+  <div id="v-sin-sesion" hidden>
+    <h1>Inicia sesión</h1>
+    <p class="sub">La sección de opinión usa la misma cuenta que el portal de contribuciones.</p>
+    <a class="btn" href="./index.html">Ir al portal</a>
+  </div>
+
+  <div id="v-sin-permiso" hidden>
+    <h1>Sin permiso para opinión</h1>
+    <p class="sub">Tu cuenta existe, pero no está habilitada para enviar artículos de opinión. La sección es por invitación: pídelo a la redacción.</p>
+  </div>
+
+  <div id="v-editor" hidden>
+    <h1>Enviar un artículo de opinión</h1>
+    <p class="sub">Tu texto se publica <b>tal cual lo envías</b>: Yamacoa no lo corrige ni lo edita. Aparte, en un
+      bloque señalado, la redacción puede añadir datos de contexto y gráficos. Antes de publicarse, la redacción
+      lo revisa. Puedes retirarlo cuando quieras.</p>
+
+    <section class="card">
+      <p class="eyebrow">1 · Firma</p>
+      <div class="opc" role="radiogroup" aria-label="Cómo firmas">
+        <label><input type="radio" name="firma_tipo" value="nombre" checked><span>Con mi nombre</span></label>
+        <label><input type="radio" name="firma_tipo" value="seudonimo"><span>Con seudónimo</span></label>
+      </div>
+      <label for="firma" id="l-firma">Nombre con el que firmas</label>
+      <input type="text" id="firma" maxlength="80" autocomplete="name">
+      <p class="aviso" id="aviso-nombre"><b>Si vives en Cuba o tienes familia allí, piénsalo bien.</b> Firmar con tu
+        nombre en un medio independiente puede tener consecuencias. Con seudónimo, Yamacoa sabe quién eres (tu cuenta),
+        pero nunca lo publica.</p>
+      <label for="presentacion">Una línea sobre ti (opcional)</label>
+      <input type="text" id="presentacion" maxlength="240" placeholder="p. ej. Economista. Escribe sobre la economía cubana.">
+      <p class="legal">Si firmas con seudónimo, no pongas aquí nada que te identifique (lugar de trabajo, barrio…).</p>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">2 · El artículo</p>
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" maxlength="160">
+      <div class="pestanas" role="tablist">
+        <button type="button" id="p-fichero" aria-pressed="true">Subir Word o PDF</button>
+        <button type="button" id="p-escribir" aria-pressed="false">Escribir aquí</button>
+      </div>
+      <div id="zona-fichero">
+        <div class="soltar" id="soltar" tabindex="0" role="button">Arrastra aquí tu .docx o .pdf, o pulsa para elegirlo<br>
+          <small id="fichero-nombre"></small></div>
+        <input type="file" id="fichero" accept=".docx,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+        <p class="legal">Del documento se toma solo el texto (sin imágenes ni formato). Revísalo abajo: lo que ves es lo que se publicará.
+          Guardamos además el original, solo como respaldo.</p>
+      </div>
+      <label for="texto">Texto que se publicará, tal cual</label>
+      <textarea id="texto" placeholder="Separa los párrafos con una línea en blanco."></textarea>
+      <div class="cuenta"><span id="palabras">0 palabras</span><span>Entre 400 y 40.000 caracteres</span></div>
+      <div id="aviso-extraccion"></div>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">3 · Enviar</p>
+      <label class="confirma"><input type="checkbox" id="confirmo">
+        <span>Soy autor o autora de este texto. Confirmo que es exactamente lo que quiero publicar y entiendo que, una vez
+          enviado, <b>no se modifica</b>: Yamacoa solo puede publicarlo tal cual, con sus datos de contexto aparte, o no publicarlo.</span></label>
+      <button type="button" class="btn" id="b-enviar" disabled>Enviar a la redacción</button>
+      <div id="avisos"></div>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">Mis artículos</p>
+      <ul class="lista" id="mis"></ul>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+
+// Misma configuración que portal/index.html (clave publicable; NUNCA la service_role).
+const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
+const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ";
+const PDFJS = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.4.168/build/";
+const ESTADOS = { enviado: ["recibido", ""], revision: ["en revisión", ""], publicado: ["publicado", "ok"],
+  rechazado: ["no publicado", "err"], retirado: ["retirado", ""] };
+
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
+const $ = (id) => document.getElementById(id);
+const vista = (id) => ["v-cargando", "v-sin-sesion", "v-sin-permiso", "v-editor"].forEach((v) => $(v).hidden = v !== id);
+let session, original = null; // { blob, tipo: 'docx'|'pdf', nombre }
+
+function aviso(donde, texto, tipo = "") {
+  const d = document.createElement("p"); d.className = `aviso ${tipo}`; d.textContent = texto;
+  $(donde).replaceChildren(d);
+}
+
+// Normaliza sin cambiar palabras: saltos de línea, espacios sobrantes y párrafos separados por una línea en blanco.
+const normalizar = (t) => t.replace(/\r\n?/g, "\n").replace(/[ \t ]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+
+/* ───────── firma ───────── */
+document.querySelectorAll("input[name=firma_tipo]").forEach((r) => r.addEventListener("change", () => {
+  const seud = document.querySelector("input[name=firma_tipo]:checked").value === "seudonimo";
+  $("l-firma").textContent = seud ? "Seudónimo" : "Nombre con el que firmas";
+  $("firma").autocomplete = seud ? "off" : "name";
+  $("aviso-nombre").hidden = seud;
+  validar();
+}));
+
+/* ───────── pestañas ───────── */
+$("p-fichero").onclick = () => { $("p-fichero").setAttribute("aria-pressed", "true"); $("p-escribir").setAttribute("aria-pressed", "false"); $("zona-fichero").hidden = false; };
+$("p-escribir").onclick = () => { $("p-escribir").setAttribute("aria-pressed", "true"); $("p-fichero").setAttribute("aria-pressed", "false"); $("zona-fichero").hidden = true; original = null; $("fichero-nombre").textContent = ""; };
+
+/* ───────── extraer texto de Word / PDF (en el navegador: el archivo no sale hasta enviar) ───────── */
+async function textoDocx(buf) {
+  const r = await window.mammoth.extractRawText({ arrayBuffer: buf });
+  return r.value;
+}
+async function textoPdf(buf) {
+  const pdfjs = await import(PDFJS + "pdf.min.mjs");
+  pdfjs.GlobalWorkerOptions.workerSrc = PDFJS + "pdf.worker.min.mjs";
+  const doc = await pdfjs.getDocument({ data: buf }).promise;
+  const lineas = [];
+  for (let i = 1; i <= doc.numPages; i++) {
+    const { items } = await (await doc.getPage(i)).getTextContent();
+    let actual = null;
+    for (const it of items) {
+      const y = it.transform[5], h = Math.abs(it.transform[3]) || 10;
+      if (!actual || Math.abs(y - actual.y) > h * 0.5) { actual = { y, h, t: "", pagina: i }; lineas.push(actual); }
+      actual.t += it.str;
+      if (it.hasEOL) actual = null;
+    }
+  }
+  // Párrafos: un salto vertical mayor que el interlineado normal (o cambio de página con punto final).
+  const saltos = lineas.slice(1).map((l, k) => (l.pagina === lineas[k].pagina ? lineas[k].y - l.y : 0)).filter((g) => g > 0).sort((a, b) => a - b);
+  const normal = saltos[Math.floor(saltos.length / 2)] || 14;
+  let out = "";
+  lineas.forEach((l, k) => {
+    const t = l.t.trim(); if (!t) return;
+    if (!out) { out = t; return; }
+    const prev = lineas[k - 1];
+    const gap = prev && prev.pagina === l.pagina ? prev.y - l.y : (/[.!?»"]$/.test(out) ? normal * 2 : normal);
+    if (gap > normal * 1.45) out += "\n\n" + t;
+    else if (/[a-záéíóúñ]-$/i.test(out)) out = out.slice(0, -1) + t;   // palabra partida con guion
+    else out += " " + t;
+  });
+  return out;
+}
+async function cargarFichero(f) {
+  if (!f) return;
+  const ext = f.name.toLowerCase().split(".").pop();
+  if (!["docx", "pdf"].includes(ext)) return aviso("aviso-extraccion", "Solo .docx (Word) o .pdf. Si tienes un .doc antiguo, guárdalo como .docx.", "err");
+  if (f.size > 15e6) return aviso("aviso-extraccion", "El archivo pasa de 15 MB.", "err");
+  $("fichero-nombre").textContent = f.name;
+  aviso("aviso-extraccion", "Leyendo el documento…");
+  try {
+    const buf = await f.arrayBuffer();
+    const t = normalizar(ext === "docx" ? await textoDocx(buf) : await textoPdf(buf));
+    if (t.length < 100) throw new Error("vacío");
+    $("texto").value = t; original = { blob: f, tipo: ext, nombre: f.name };
+    aviso("aviso-extraccion", ext === "pdf"
+      ? "Texto extraído del PDF. Revisa con calma los saltos de párrafo y las palabras partidas: los PDF no guardan bien la estructura."
+      : "Texto extraído del Word. Revísalo: es lo que se publicará.", "ok");
+  } catch {
+    aviso("aviso-extraccion", "No se pudo leer el texto del documento (¿es un PDF escaneado como imagen?). Copia y pega el texto en «Escribir aquí».", "err");
+  }
+  validar();
+}
+$("soltar").onclick = () => $("fichero").click();
+$("soltar").onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("fichero").click(); } };
+$("fichero").onchange = (e) => cargarFichero(e.target.files[0]);
+["dragover", "dragenter"].forEach((ev) => $("soltar").addEventListener(ev, (e) => { e.preventDefault(); $("soltar").classList.add("sobre"); }));
+["dragleave", "drop"].forEach((ev) => $("soltar").addEventListener(ev, () => $("soltar").classList.remove("sobre")));
+$("soltar").addEventListener("drop", (e) => { e.preventDefault(); cargarFichero(e.dataTransfer.files[0]); });
+
+/* ───────── validar y enviar ───────── */
+function validar() {
+  const t = normalizar($("texto").value);
+  const pal = t ? t.split(/\s+/).length : 0;
+  $("palabras").textContent = `${pal.toLocaleString("es-ES")} palabras · ${t.length.toLocaleString("es-ES")} caracteres`;
+  const ok = $("titulo").value.trim().length >= 8 && $("firma").value.trim().length >= 2 && t.length >= 400 && t.length <= 40000 && $("confirmo").checked;
+  $("b-enviar").disabled = !ok;
+}
+["titulo", "firma", "texto", "confirmo"].forEach((id) => $(id).addEventListener("input", validar));
+$("confirmo").addEventListener("change", validar);
+
+$("b-enviar").onclick = async () => {
+  $("b-enviar").disabled = true;
+  const texto = normalizar($("texto").value);
+  try {
+    let ruta = null;
+    if (original) {
+      ruta = `${session.user.id}/${Date.now()}.${original.tipo}`;
+      const { error } = await sb.storage.from("opinion-originales").upload(ruta, original.blob, { contentType: original.blob.type || undefined });
+      if (error) throw new Error(`No se pudo guardar el original: ${error.message}`);
+    }
+    const { error } = await sb.rpc("enviar_opinion", {
+      p_titulo: $("titulo").value, p_firma: $("firma").value,
+      p_firma_tipo: document.querySelector("input[name=firma_tipo]:checked").value,
+      p_presentacion: $("presentacion").value, p_texto: texto,
+      p_original_path: ruta, p_original_tipo: original ? original.tipo : "texto",
+    });
+    if (error) throw new Error(/CUOTA/.test(error.message) ? "Ya enviaste 3 artículos hoy. Vuelve mañana." : error.message);
+    aviso("avisos", "Recibido. La redacción lo revisará; verás aquí abajo en qué punto está.", "ok");
+    ["titulo", "texto", "presentacion"].forEach((id) => $(id).value = ""); $("confirmo").checked = false; original = null;
+    $("fichero-nombre").textContent = ""; $("aviso-extraccion").replaceChildren();
+    await listar();
+  } catch (e) { aviso("avisos", e.message, "err"); }
+  validar();
+};
+
+/* ───────── mis artículos ───────── */
+async function listar() {
+  const { data } = await sb.from("opinion_articulos").select("id,titulo,firma,estado,motivo,creado,slug").order("creado", { ascending: false });
+  const ul = $("mis"); ul.replaceChildren();
+  if (!data?.length) { const li = document.createElement("li"); li.textContent = "Aún no has enviado ningún artículo."; ul.append(li); return; }
+  for (const a of data) {
+    const li = document.createElement("li");
+    const izq = document.createElement("div");
+    const t = document.createElement("b"); t.textContent = a.titulo;
+    const s = document.createElement("small");
+    s.textContent = `${new Date(a.creado).toLocaleDateString("es-ES")} · firma: ${a.firma}${a.motivo ? ` · ${a.motivo}` : ""}`;
+    izq.append(t, s);
+    if (a.estado === "publicado" && a.slug) {
+      const v = document.createElement("a"); v.href = `https://yamacoa.com/opinion/${a.slug}`; v.textContent = "Ver publicado"; v.target = "_blank";
+      v.style.cssText = "display:block;font-size:13px;margin-top:4px;color:var(--accent)"; izq.append(v);
+    }
+    const der = document.createElement("div"); der.style.cssText = "display:flex;gap:8px;align-items:center";
+    const b = document.createElement("span"); const [txt, cls] = ESTADOS[a.estado] || [a.estado, ""];
+    b.className = `badge ${cls}`; b.textContent = txt; der.append(b);
+    if (a.estado !== "retirado" && a.estado !== "rechazado") {
+      const r = document.createElement("button"); r.type = "button"; r.className = "btn ghost mini"; r.textContent = "Retirar";
+      r.onclick = async () => {
+        if (r.dataset.seguro !== "1") { r.dataset.seguro = "1"; r.textContent = "¿Seguro? Pulsa otra vez"; return; }
+        const { error } = await sb.rpc("retirar_opinion", { p_id: a.id });
+        if (error) aviso("avisos", error.message, "err"); else { aviso("avisos", "Retirado. Si estaba publicado, sale del sitio en la próxima actualización.", "ok"); listar(); }
+      };
+      der.append(r);
+    }
+    li.append(izq, der); ul.append(li);
+  }
+}
+
+/* ───────── sesión y permiso ───────── */
+({ data: { session } } = await sb.auth.getSession());
+if (!session) vista("v-sin-sesion");
+else {
+  const { data: perfil } = await sb.from("perfiles").select("email,puede_opinar,bloqueado").eq("id", session.user.id).single();
+  $("quien").textContent = perfil?.email || "";
+  if (!perfil?.puede_opinar || perfil.bloqueado) vista("v-sin-permiso");
+  else { vista("v-editor"); listar(); validar(); }
+}
+</script>
+</body>
+</html>

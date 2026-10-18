@@ -188,6 +188,7 @@ origen en todo el sitio: **salvia = automático**, **melocotón = dirigido**, **
 | Estudio automático | `/estudios`, `/estudios/:slug` | `src/periodico/Estudios.jsx` | `feed/estudios.json` + `feed/estudios/<slug>.json` | permanente |
 | Expediente dirigido | `/expedientes`, `/<slug>` | `src/temas/<tema>.jsx` (uno por tema) | `public/data/<tema>.json` | permanente |
 | Podcast | `/podcast`, `/podcast/:slug` | `src/periodico/Podcast.jsx` | `feed/podcast.json` | permanente |
+| Opinión (firmas invitadas) | `/opinion`, `/opinion/:slug` | `src/periodico/Opinion.jsx` | BD → `feed/opinion.json` en el build | permanente |
 
 ### 11.1 Diseño unificado
 - Tokens: `src/design/tokens.js` (fuente única; handoff en `../design_handoff_yamacoa_periodico/`).
@@ -278,6 +279,15 @@ Retirar una noticia a mano: `estado = 'retirada'` en la BD; sale en el siguiente
 - Procesado: `ops/podcast/procesar.sh` (limpieza, −16 LUFS, whisper). Publicación:
   `/podcast-publicar` (borrador → verja humana → `--publicar`). El máster crudo no se borra nunca.
 - Detalles y almacenamiento: `ops/podcast/NOTAS.md`.
+
+### 11.8 Opinión (desde 2026-10-18)
+- Colaboradores **invitados** (`perfiles.puede_opinar`) envían desde `portal/opinion.html` (Word, PDF
+  o texto). Firma con nombre o seudónimo; Yamacoa conoce la cuenta, no la publica.
+- El **texto del autor es invariante** (sha256 visible; un trigger impide modificarlo). Yamacoa solo
+  añade, aparte y rotulado («Los datos»), contexto con fuentes, gráfico y **notas de datos neutrales**
+  ancladas a palabras literales del autor; nunca juzga su tesis.
+- Revisión humana antes de publicar; el autor puede retirar su artículo en cualquier momento.
+  Sin artículos publicados, la sección no aparece. Detalles: `ops/opinion/NOTAS.md`.
 
 ## 12. Referencias
 

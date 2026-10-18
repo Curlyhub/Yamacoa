@@ -56,6 +56,8 @@ ln -sfn "$REPO/node_modules" "$WT/node_modules"
 node "$REPO/ops/noticias/ciclo.mjs" --solo-exportar --destino "$WT/public"
 # Episodios de podcast publicados (BD) y sus transcripciones; el MP3 está en R2.
 node "$REPO/ops/podcast/auto/episodio.mjs" --solo-exportar --destino "$WT/public"
+# Artículos de opinión publicados (BD); vacío si no hay, y entonces la sección no se muestra.
+node "$REPO/ops/opinion/opinion.mjs" --solo-exportar --destino "$WT/public"
 
 (cd "$WT" && CI=false npm run build --silent)
 test -s "$WT/build/index.html"
