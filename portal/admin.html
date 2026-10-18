@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#efe8df">
+<title>Yamacoa · Administración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Tokens: src/design/tokens.js. Mismo estilo que estudio.html y opinion.html. */
+:root{
+  --bg:#efe8df; --surface:#fcf9f4; --surface2:#f5efe7; --ink:#1f1a16; --ink2:#4a3f36;
+  --muted:#6b5d50; --subtle:#8a7a68; --accent:#b8562e; --dark:#3a2418; --rule:rgba(60,40,20,.15);
+  --auto-bg:#dfe9e1; --auto-ink:#2f5640; --err:#a8321e;
+  --font:'Manrope',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0; font-family:var(--font); color:var(--ink); min-height:100vh;
+  background:radial-gradient(ellipse 70% 50% at 0% 0%,#f6d9c6 0%,transparent 60%),
+             radial-gradient(ellipse 60% 45% at 100% 0%,#d5e3da 0%,transparent 60%),var(--bg);
+  background-repeat:no-repeat; background-color:var(--bg);
+  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);}
+.wrap{max-width:900px; margin:0 auto; padding:0 16px 80px;}
+header{display:flex; align-items:center; gap:14px; padding:16px 0 12px; border-bottom:3px solid var(--ink); margin-bottom:22px; flex-wrap:wrap;}
+header b{font-size:26px; font-weight:800; letter-spacing:-.035em;}
+header span{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
+header .quien{margin-left:auto; color:var(--muted); letter-spacing:.04em; text-transform:none;}
+header a{font:500 11px var(--mono); color:var(--muted);}
+h1{font-size:30px; font-weight:800; letter-spacing:-.03em; margin:0 0 6px;}
+.sub{color:var(--muted); margin:0 0 20px; font-size:15px; line-height:1.5;}
+.card{background:var(--surface); border-radius:24px; padding:20px; margin-bottom:16px;
+  box-shadow:0 1px 2px rgba(40,25,10,.04),0 10px 30px rgba(40,25,10,.055);}
+.eyebrow{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin:0 0 6px;}
+.lista{list-style:none; margin:0; padding:0;}
+.lista li{display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:14.5px; align-items:center; flex-wrap:wrap;}
+.lista li:last-child{border-bottom:0;}
+.lista .t{flex:1 1 320px; min-width:0;}
+.lista a{color:var(--ink); font-weight:600; text-decoration:none;}
+.lista a:hover{color:var(--accent);}
+.lista small{display:block; font:500 10.5px var(--mono); color:var(--subtle); margin-top:3px;}
+.acc{display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
+.acc input{background:var(--surface2); border:1px solid transparent; border-radius:10px; padding:8px 10px; font:500 13.5px var(--font); width:220px;}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:999px; cursor:pointer;
+  background:var(--dark); color:var(--surface); font:600 15px var(--font); padding:12px 20px; text-decoration:none;}
+.btn.ghost{background:transparent; color:var(--ink); box-shadow:inset 0 0 0 1px var(--rule);}
+.btn.peligro{background:var(--err); color:#fff;}
+.mini{font:500 12px var(--mono); padding:8px 12px;}
+.vacio{color:var(--subtle); font-size:14px; padding:6px 0;}
+.aviso{border-radius:16px; padding:12px 14px; font-size:14px; line-height:1.45; margin:0 0 14px;}
+.aviso.ok{background:var(--auto-bg); color:var(--auto-ink);}
+.aviso.err{background:#f6d5cc; color:var(--err);}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><b>Yamacoa</b><span>Administración</span><span class="quien" id="quien"></span><a href="./index.html">Portal</a></header>
+
+  <div id="v-cargando"><p class="sub">Comprobando sesión…</p></div>
+  <div id="v-sin-sesion" hidden>
+    <h1>Inicia sesión</h1>
+    <p class="sub">La administración usa la misma cuenta que el portal.</p>
+    <a class="btn" href="./index.html">Ir al portal</a>
+  </div>
+  <div id="v-sin-permiso" hidden>
+    <h1>Solo para la redacción</h1>
+    <p class="sub">Tu cuenta no tiene permisos de administración.</p>
+  </div>
+
+  <div id="v-admin" hidden>
+    <h1>Lo publicado</h1>
+    <p class="sub">Retirar quita la pieza de yamacoa.com en un minuto, sin esperar al siguiente ciclo. Se puede
+      reponer si fue un error (salvo noticias: el ciclo borra las retiradas en cuanto pasa).</p>
+    <div id="avisos"></div>
+    <section class="card"><p class="eyebrow">Noticias vigentes</p><ul class="lista" id="l-noticia"></ul></section>
+    <section class="card"><p class="eyebrow">Podcast</p><ul class="lista" id="l-podcast"></ul></section>
+    <section class="card"><p class="eyebrow">Opinión</p><ul class="lista" id="l-opinion"></ul></section>
+    <section class="card"><p class="eyebrow">Retirado recientemente</p><ul class="lista" id="l-retiradas"></ul></section>
+  </div>
+</div>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+
+// Misma configuración que el resto del portal (clave publicable; NUNCA la service_role).
+const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
+const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ";
+const RUTA = { noticia: "noticias", podcast: "podcast", opinion: "opinion" };
+const NOMBRE = { noticia: "Noticia", podcast: "Podcast", opinion: "Opinión" };
+
+const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
+const $ = (id) => document.getElementById(id);
+const vista = (id) => ["v-cargando", "v-sin-sesion", "v-sin-permiso", "v-admin"].forEach((v) => $(v).hidden = v !== id);
+const fecha = (f) => (f ? new Date(f).toLocaleString("es-ES", { dateStyle: "medium", timeStyle: "short" }) : "");
+
+function aviso(texto, tipo = "ok") {
+  const p = document.createElement("p"); p.className = `aviso ${tipo}`; p.textContent = texto;
+  $("avisos").replaceChildren(p); scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function fila(tipo, it) {
+  const li = document.createElement("li");
+  const t = document.createElement("div"); t.className = "t";
+  const a = document.createElement("a"); a.href = `https://yamacoa.com/${RUTA[tipo]}/${it.slug}`; a.target = "_blank"; a.textContent = it.titulo;
+  const s = document.createElement("small"); s.textContent = `${fecha(it.fecha)} · ${it.slug}`;
+  t.append(a, s);
+  const acc = document.createElement("div"); acc.className = "acc";
+  const motivo = document.createElement("input"); motivo.placeholder = "Motivo (opcional, interno)"; motivo.hidden = true;
+  const b = document.createElement("button"); b.type = "button"; b.className = "btn ghost mini"; b.textContent = "Retirar";
+  b.onclick = async () => {
+    if (b.dataset.paso !== "1") { b.dataset.paso = "1"; motivo.hidden = false; motivo.focus(); b.className = "btn peligro mini"; b.textContent = "Confirmar retirada"; return; }
+    b.disabled = true;
+    const { error } = await sb.rpc("admin_retirar", { p_tipo: tipo, p_slug: it.slug, p_motivo: motivo.value });
+    if (error) { aviso(error.message, "err"); b.disabled = false; return; }
+    aviso(`Retirado: «${it.titulo}». Desaparece de la web en un minuto.`);
+    cargar();
+  };
+  acc.append(motivo, b);
+  li.append(t, acc);
+  return li;
+}
+
+function filaRetirada(r) {
+  const li = document.createElement("li");
+  const t = document.createElement("div"); t.className = "t";
+  t.textContent = `${NOMBRE[r.tipo] || r.tipo} · ${r.slug}`;
+  const s = document.createElement("small"); s.textContent = `${fecha(r.en)}${r.motivo ? ` · ${r.motivo}` : ""}`; t.append(s);
+  const b = document.createElement("button"); b.type = "button"; b.className = "btn ghost mini"; b.textContent = "Reponer";
+  b.onclick = async () => {
+    if (b.dataset.paso !== "1") { b.dataset.paso = "1"; b.textContent = "¿Reponer? Pulsa otra vez"; return; }
+    const { error } = await sb.rpc("admin_reponer", { p_tipo: r.tipo, p_slug: r.slug });
+    if (error) return aviso(error.message, "err");
+    aviso(`Repuesto: ${r.slug}. Vuelve a la web en un minuto${r.tipo === "noticia" ? " (si no se borró ya)" : ""}.`);
+    cargar();
+  };
+  li.append(t, b);
+  return li;
+}
+
+async function cargar() {
+  const { data, error } = await sb.rpc("admin_publicado");
+  if (error) return aviso(/SIN_PERMISO/.test(error.message) ? "Sin permisos de administración." : error.message, "err");
+  for (const [tipo, lista] of [["noticia", data.noticias], ["podcast", data.podcast], ["opinion", data.opinion]]) {
+    const ul = $(`l-${tipo}`); ul.replaceChildren();
+    if (!lista.length) { const li = document.createElement("li"); li.className = "vacio"; li.textContent = "Nada publicado."; ul.append(li); }
+    lista.forEach((it) => ul.append(fila(tipo, it)));
+  }
+  const ul = $("l-retiradas"); ul.replaceChildren();
+  if (!data.retiradas.length) { const li = document.createElement("li"); li.className = "vacio"; li.textContent = "Nada retirado."; ul.append(li); }
+  data.retiradas.forEach((r) => ul.append(filaRetirada(r)));
+}
+
+const { data: { session } } = await sb.auth.getSession();
+if (!session) vista("v-sin-sesion");
+else {
+  $("quien").textContent = session.user.email || "";
+  const { data: admin } = await sb.rpc("es_admin");
+  if (!admin) vista("v-sin-permiso");
+  else { vista("v-admin"); cargar(); }
+}
+</script>
+</body>
+</html>

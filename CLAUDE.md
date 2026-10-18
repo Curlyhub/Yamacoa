@@ -268,8 +268,8 @@ carpeta del ciclo) → verja (schema + reglas; las URL las pone el código, no e
 (Kokoro; sin audio, `retenida`) → `ops/publicar.sh`. Tope: 10 nuevas por ciclo y
 **20 por día**. Ensayo sin subir:
 `node ops/noticias/ciclo.mjs --sin-desplegar` (exporta a `public/` y se ve en `npm start`).
-Retirar una noticia a mano: `estado = 'retirada'` en la BD; sale en el siguiente ciclo o con
-`ops/publicar.sh`. Detalles: `ops/noticias/NOTAS.md`.
+Retirar una noticia, un episodio o un artículo de opinión: `portal.yamacoa.com/admin` (perfiles con
+`es_admin`); desaparece en ~1 minuto (middleware + tabla `retiradas`). Detalles: `ops/noticias/NOTAS.md`.
 
 ### 11.7 Podcast elaborado (grabación humana)
 - Estudio interno: `portal/estudio.html` (misma cuenta que el portal; permiso

@@ -108,15 +108,56 @@ async function noticiaDe(context, slug) {
   }
 }
 
+// Retiradas (ops/admin/admin_supabase.sql): lista PÚBLICA de (tipo, slug) que la redacción o un
+// autor de opinión retiró. Se quitan de los feeds en ~1 minuto, sin esperar al despliegue.
+// Clave publicable (la misma del portal). Si Supabase no responde, se sirve lo publicado.
+const SUPABASE = "https://qsajkrppuaikyzmuipru.supabase.co";
+const SUPABASE_PUBLICA = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ";
+const FEED_TIPO = { "/data/feed/noticias.json": "noticia", "/data/feed/podcast.json": "podcast", "/data/feed/opinion.json": "opinion" };
+
+async function retiradas(context) {
+  const cache = caches.default;
+  const clave = new Request("https://yamacoa.com/__retiradas");
+  const guardada = await cache.match(clave);
+  if (guardada) return guardada.json();
+  try {
+    const r = await fetch(`${SUPABASE}/rest/v1/retiradas?select=tipo,slug`, {
+      headers: { apikey: SUPABASE_PUBLICA }, signal: AbortSignal.timeout(2500),
+    });
+    if (!r.ok) return [];
+    const lista = await r.json();
+    context.waitUntil(cache.put(clave, new Response(JSON.stringify(lista), { headers: { "Cache-Control": "max-age=60" } })));
+    return lista;
+  } catch {
+    return [];
+  }
+}
+const retirada = (lista, tipo, slug) => lista.some((x) => x.tipo === tipo && x.slug === slug);
+
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
   const key = url.pathname.replace(/\/+$/, "") || "/";
+
+  // Feeds: fuera lo retirado.
+  if (FEED_TIPO[url.pathname]) {
+    const res = await next();
+    const lista = await retiradas(context);
+    if (!res.ok || !lista.length) return res;
+    try {
+      const feed = await res.clone().json();
+      feed.items = (feed.items || []).filter((x) => !retirada(lista, FEED_TIPO[url.pathname], x.slug));
+      const h = new Headers(res.headers); h.delete("content-length"); h.set("cache-control", "public, max-age=0, must-revalidate");
+      return new Response(JSON.stringify(feed), { status: 200, headers: h });
+    } catch {
+      return res;
+    }
+  }
   let tema = TEMAS[key] || EXTRAS[key];
 
   const mNoticia = key.match(/^\/noticias\/([a-z0-9-]{4,90})$/);
   if (mNoticia) {
-    const n = await noticiaDe(context, mNoticia[1]);
+    const n = retirada(await retiradas(context), "noticia", mNoticia[1]) ? null : await noticiaDe(context, mNoticia[1]);
     if (!n) {
       const res = await next();
       return new HTMLRewriter()

@@ -54,8 +54,9 @@ entra en git.
 - **Ensayo sin subir:** `node ops/noticias/ciclo.mjs --sin-desplegar` (exporta a `public/`; se
   ve en `npm start` → `/noticias`).
 - **Repetir verja y audio** de un ciclo: `node ops/noticias/ciclo.mjs --reusar <id> --sin-desplegar`.
-- **Retirar una noticia:** en Supabase, `update noticias set estado='retirada', actualizado=now() where slug='…';`
-  y `ops/publicar.sh` para que salga ya (si no, sale en el siguiente ciclo).
+- **Retirar una noticia, un episodio o un artículo de opinión:** https://portal.yamacoa.com/admin
+  (cuenta con `es_admin`). Sale de la web en ~1 minuto: el middleware filtra los feeds con la tabla
+  pública `retiradas` (ops/admin/admin_supabase.sql); el siguiente despliegue ya no la exporta.
 - **Publicar código o expedientes:** commit y `ops/publicar.sh --mover`. Nunca `npm run build` +
   `wrangler` a mano: ese build no lleva las noticias.
 - **Tope:** como mucho 10 noticias nuevas por ciclo y 20 por día natural (las actualizaciones de

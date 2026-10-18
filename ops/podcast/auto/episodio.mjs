@@ -267,7 +267,12 @@ async function main() {
   if (!MINUTOS[formato]) throw new Error(`formato desconocido: ${formato}`);
   const ensayo = flag("--ensayo");
   const fecha = hoy();
-  const id = valor("--reusar") || `p-${formato}-${fecha}`;
+  // Un episodio por día y formato; si ese día ya hay uno (p. ej. uno hecho a mano), el nuevo
+  // lleva la hora: nunca se reutiliza un guion viejo ni se sobrescribe un MP3 ya publicado
+  // (nginx lo sirve como inmutable y los navegadores lo guardan en caché).
+  const base = `p-${formato}-${fecha}`;
+  const hhmm = new Date().toTimeString().slice(0, 5).replace(":", "");
+  const id = valor("--reusar") || (fs.existsSync(path.join(EPISODIOS, base)) ? `${base}-${hhmm}` : base);
   const slug = id.replace(/^p-/, formato === "al-dia" ? "yamacoa-" : "");
   const dir = path.join(EPISODIOS, id);
   fs.mkdirSync(dir, { recursive: true });
