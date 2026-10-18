@@ -110,6 +110,7 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
 
     <section class="consola" aria-live="polite">
       <div class="estado" id="estado">Listo para grabar</div>
+      <div class="aviso err" id="estado-aviso" role="alert" hidden style="margin:10px 0 0;text-align:left"></div>
       <div class="reloj" id="reloj">00:00:00</div>
       <div class="vu" aria-hidden="true"><i id="vu"></i></div>
       <div class="vu-txt" id="vu-txt">Nivel de entrada · habla para probar</div>
@@ -143,6 +144,10 @@ const TROZO_MS = 10000;           // un trozo cada 10 s: si el teléfono muere, 
 const BITRATE = 128000;           // opus 128 kbps ≈ 58 MB/hora: margen para limpiar sin artefactos
 
 const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
+// Estado del estudio: declarado ANTES del arranque (más abajo, la comprobación de sesión llama a
+// iniciar() con top-level await; si se declarase después, abrirMicro() fallaría al cargar).
+let stream, rec, ctx, analizador, grabId = null, n = 0, marcas = [];
+let t0 = 0, acumulado = 0, enPausa = false, tick, lock;
 const $ = (id) => document.getElementById(id);
 const vista = (id) => ["v-cargando","v-sin-sesion","v-sin-permiso","v-estudio"].forEach((v) => $(v).hidden = v !== id);
 const fmt = (s) => [Math.floor(s/3600), Math.floor(s%3600/60), Math.floor(s%60)].map((n) => String(n).padStart(2,"0")).join(":");
@@ -155,6 +160,12 @@ function aviso(texto, err = false) {
   d.textContent = texto;
   $("avisos").prepend(d);
   setTimeout(() => d.remove(), 12000);
+  // También junto al botón de grabar: el aviso de arriba no se ve si la consola está más abajo.
+  if (err) {
+    $("estado-aviso").textContent = texto; $("estado-aviso").hidden = false;
+    clearTimeout(aviso.t); aviso.t = setTimeout(() => { $("estado-aviso").hidden = true; }, 12000);
+    $("estado-aviso").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 }
 
 /* ───────────── cola persistente de trozos (IndexedDB) ─────────────
@@ -213,8 +224,6 @@ else {
 }
 
 /* ───────────── estudio ───────────── */
-let stream, rec, ctx, analizador, grabId = null, n = 0, marcas = [];
-let t0 = 0, acumulado = 0, enPausa = false, tick, lock;
 
 function filaParticipante(nombre = "", rol = "") {
   const d = document.createElement("div");
@@ -248,6 +257,12 @@ async function abrirMicro() {
     echoCancellation: false, autoGainControl: false, noiseSuppression: proc,
   }});
   ctx ??= new AudioContext();
+  // Chrome y Safari arrancan el audio «suspendido» hasta el primer toque: sin esto el medidor
+  // solo ve silencio y dice «muy bajo» aunque el micrófono funcione.
+  if (ctx.state === "suspended") {
+    const despertar = () => ctx.resume();
+    ["pointerdown", "keydown", "touchstart"].forEach((ev) => addEventListener(ev, despertar, { once: true, capture: true }));
+  }
   analizador = ctx.createAnalyser(); analizador.fftSize = 1024;
   ctx.createMediaStreamSource(stream).connect(analizador);
   const buf = new Float32Array(analizador.fftSize);
@@ -257,7 +272,8 @@ async function abrirMicro() {
     let pico = 0; for (const v of buf) pico = Math.max(pico, Math.abs(v));
     const db = 20 * Math.log10(pico || 1e-6);
     $("vu").style.width = `${Math.max(0, Math.min(100, (db + 60) / 60 * 100))}%`;
-    $("vu-txt").textContent = db > -3 ? "Demasiado alto: aleja el micrófono" : db < -45 ? "Muy bajo: acerca el micrófono" : "Nivel correcto";
+    $("vu-txt").textContent = ctx.state !== "running" ? "Toca la pantalla para activar el medidor"
+      : db > -3 ? "Demasiado alto: aleja el micrófono" : db < -45 ? "Muy bajo: acerca el micrófono o habla" : "Nivel correcto";
     requestAnimationFrame(pintar);
   };
   pintar();
@@ -282,11 +298,12 @@ async function iniciar() {
 }
 
 async function empezar() {
+  await ctx?.resume?.();
   const titulo = $("titulo").value.trim();
   const ps = participantes();
   if (titulo.length < 4) return aviso("Pon un título provisional (mínimo 4 caracteres).", true);
-  if (!ps.length) return aviso("Añade al menos una voz.", true);
-  if (ps.some((p) => !p.consiente)) return aviso("Todas las voces deben marcar su consentimiento antes de grabar.", true);
+  if (!ps.length) return aviso("Escribe el nombre de al menos una voz (arriba, en «Voces que se grabarán»).", true);
+  if (ps.some((p) => !p.consiente)) return aviso("Marca «Consiente» en cada voz antes de grabar (arriba, en «Voces que se grabarán»).", true);
   const mime = elegirMime();
   if (!mime) return aviso("Este navegador no puede grabar audio. Prueba con Chrome, Firefox o Safari actualizado.", true);
   if (!stream) { try { await abrirMicro(); } catch { return aviso("Sin micrófono.", true); } }
