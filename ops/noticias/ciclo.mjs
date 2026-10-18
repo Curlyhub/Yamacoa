@@ -467,7 +467,9 @@ async function main() {
     process.exitCode = 1;
   } finally {
     escribir(path.join(dir, "resumen.json"), resumen);
-    if (!reusar) await db.cerrarCiclo(cicloId, resumen).catch((e) => log(`cerrarCiclo: ${e.message}`));
+    // `ilustradas` solo va al log: noticias_ciclos no tiene esa columna.
+    const { ilustradas, ...campos } = resumen; // eslint-disable-line no-unused-vars
+    if (!reusar) await db.cerrarCiclo(cicloId, campos).catch((e) => log(`cerrarCiclo: ${e.message}`));
     log(`fin: ${JSON.stringify({ ...resumen, descartes: resumen.descartes.length })}`);
   }
 }

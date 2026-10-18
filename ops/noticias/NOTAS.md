@@ -43,7 +43,7 @@ entra en git.
    $a = New-ScheduledTaskAction -Execute "wsl.exe" -Argument "-d Ubuntu-24.04 -u <usuario> -- /home/<usuario>/bohio/yamacoa/ops/noticias/ciclo.sh"
    $t1 = New-ScheduledTaskTrigger -Daily -At 00:00
    $t2 = New-ScheduledTaskTrigger -Daily -At 18:00
-   $s = New-ScheduledTaskSettingsSet -WakeToRun -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 2)
+   $s = New-ScheduledTaskSettingsSet -WakeToRun -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Hours 4)
    Register-ScheduledTask -TaskName "Yamacoa noticias" -Action $a -Trigger $t1,$t2 -Settings $s
    ```
    Alternativa dentro de WSL: `service cron start` (hay que repetirlo en cada arranque) y
