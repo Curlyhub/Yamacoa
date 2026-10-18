@@ -65,7 +65,8 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
 .subida{display:flex; justify-content:space-between; font:500 11px var(--mono); color:var(--pod-sec); margin-top:16px;}
 .marcas{text-align:left; margin-top:12px; font-size:13px; color:var(--pod-acc);}
 .lista{list-style:none; margin:0; padding:0;}
-.lista li{display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:14.5px;}
+.lista li{display:flex; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px solid var(--rule); font-size:14.5px; flex-wrap:wrap;}
+.lista li audio{flex-basis:100%;}
 .lista small{font:500 10.5px var(--mono); color:var(--subtle);}
 .badge{font:500 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:999px; background:var(--surface2); color:var(--muted); white-space:nowrap; align-self:center;}
 .badge.ok{background:var(--auto-bg); color:var(--auto-ink);}
@@ -129,6 +130,17 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
       <div class="marcas" id="marcas"></div>
     </section>
 
+    <section class="card" id="recien" hidden style="margin-top:16px">
+      <p class="eyebrow">Escucha lo que acabas de grabar</p>
+      <audio id="recien-audio" controls preload="auto" style="width:100%"></audio>
+      <p class="legal">Es la grabación tal cual, sin limpiar. La versión limpia estará en «Mis grabaciones» cuando se procese.
+        Si no te convence, descártala: se borra entera.</p>
+      <div class="fila" style="justify-content:flex-start">
+        <button type="button" class="btn ghost mini" id="recien-descartar">Descartar esta grabación</button>
+        <button type="button" class="btn mini" id="recien-ok">Quedármela</button>
+      </div>
+    </section>
+
     <section class="card" style="margin-top:16px">
       <p class="eyebrow">Mis grabaciones</p>
       <ul class="lista" id="mis"></ul>
@@ -152,6 +164,7 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
 // Estado del estudio: declarado ANTES del arranque (más abajo, la comprobación de sesión llama a
 // iniciar() con top-level await; si se declarase después, abrirMicro() fallaría al cargar).
 let stream, rec, ctx, analizador, grabId = null, n = 0, marcas = [];
+let enMemoria = [], ultima = null; // trozos de la grabación en curso (para escucharla al terminar)
 let t0 = 0, acumulado = 0, enPausa = false, tick, lock;
 const ROLES = ["Conduce", "Invitado/a", "Entrevistado/a", "Colaborador/a"];
 const $ = (id) => document.getElementById(id);
@@ -324,11 +337,13 @@ async function empezar() {
     p_titulo: titulo, p_participantes: ps, p_mime: mime, p_dispositivo: navigator.userAgent,
   });
   if (error) return aviso(`No se pudo abrir la grabación: ${error.message}`, true);
-  grabId = data; n = 0; marcas = []; acumulado = 0; enPausa = false;
+  grabId = data; n = 0; marcas = []; acumulado = 0; enPausa = false; enMemoria = [];
+  $("recien").hidden = true;
 
   rec = new MediaRecorder(stream, { mimeType: mime, audioBitsPerSecond: BITRATE });
   rec.ondataavailable = async (e) => {
     if (!e.data?.size) return;
+    enMemoria.push(e.data);
     await guardarTrozo(grabId, n++, e.data, mime);
     vaciarCola();
   };
@@ -377,12 +392,47 @@ async function terminar() {
     if (error) aviso(`No se pudo cerrar: ${error.message}`, true);
     else aviso("Grabación entregada. La limpieza de audio y la transcripción se hacen en el servidor.");
   }
+  // Escucha inmediata (en el propio dispositivo, sin red): los trozos unidos forman un fichero válido.
+  if (enMemoria.length) {
+    const a = $("recien-audio");
+    if (a.src) URL.revokeObjectURL(a.src);
+    a.src = URL.createObjectURL(new Blob(enMemoria, { type: enMemoria[0].type }));
+    // El WebM de MediaRecorder no trae duración (Chrome dice «Infinity» y la barra no sirve):
+    // se busca al final para que el navegador la calcule y se vuelve al principio.
+    a.addEventListener("loadedmetadata", () => {
+      if (a.duration !== Infinity) return;
+      a.addEventListener("timeupdate", () => { a.currentTime = 0; }, { once: true });
+      a.currentTime = 1e101;
+    }, { once: true });
+    ultima = grabId; $("recien").hidden = false;
+    $("recien").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
   rec = null; grabId = null;
   $("b-rec").classList.remove("on"); $("b-rec").setAttribute("aria-label", "Empezar a grabar");
   $("estado").textContent = "Listo para grabar"; $("reloj").textContent = "00:00:00"; $("marcas").textContent = "";
   ["b-pausa","b-marca","b-fin"].forEach((b) => $(b).disabled = true);
   $("preparar").querySelectorAll("input,select,button").forEach((el) => el.disabled = false);
   listar();
+}
+
+$("recien-ok").onclick = () => { $("recien").hidden = true; };
+$("recien-descartar").onclick = async (ev) => {
+  const b = ev.currentTarget;
+  if (b.dataset.seguro !== "1") { b.dataset.seguro = "1"; b.textContent = "¿Borrar? Pulsa otra vez"; return; }
+  const { error } = await sb.rpc("descartar_grabacion", { p_id: ultima });
+  b.dataset.seguro = ""; b.textContent = "Descartar esta grabación";
+  if (error) return aviso(error.message, true);
+  $("recien-audio").pause(); $("recien").hidden = true; aviso("Descartada: se borra entera en el próximo procesado.");
+  listar();
+};
+
+// Escucha de la versión limpia (solo su autor: almacén privado con permisos por carpeta).
+async function escuchar(g, li, boton) {
+  boton.disabled = true; boton.textContent = "Cargando…";
+  const { data, error } = await sb.storage.from("grabaciones-escucha").download(`${session.user.id}/${g.id}.mp3`);
+  if (error || !data) { boton.disabled = false; boton.textContent = "Escuchar"; return aviso("Aún no está disponible la versión limpia.", true); }
+  const a = document.createElement("audio"); a.controls = true; a.style.cssText = "width:100%;margin-top:8px";
+  a.src = URL.createObjectURL(data); li.append(a); boton.remove(); a.play().catch(() => {});
 }
 
 async function listar() {
@@ -398,6 +448,12 @@ async function listar() {
     li.querySelector("div > div").textContent = g.titulo;
     li.querySelector("small").textContent = `${new Date(g.creado).toLocaleString("es-ES")} · ${g.duracion_seg ? fmt(g.duracion_seg) : "—"}${cola ? ` · ${cola} trozos en el teléfono` : ""}${g.motivo_error ? ` · ${g.motivo_error}` : ""}`;
     li.querySelector(".badge").textContent = ESTADOS[g.estado] || g.estado;
+    if (g.estado === "procesada") {
+      const e = document.createElement("button");
+      e.className = "btn mini"; e.textContent = "Escuchar";
+      e.onclick = () => escuchar(g, li, e);
+      li.append(e);
+    }
     // Descartar: lo suyo y no publicado. Los ficheros se borran en el siguiente procesado.
     if (["subida", "procesada", "error"].includes(g.estado) || (g.estado === "grabando" && g.id !== grabId && !cola)) {
       const d = document.createElement("button");

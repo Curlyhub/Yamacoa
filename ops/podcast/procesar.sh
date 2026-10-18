@@ -46,8 +46,14 @@ estado() { # estado ID ESTADO [MOTIVO]
     '{estado:$e, actualizado:(now|todate)} + (if $m == "" then {} else {motivo_error:$m} end)')"
 }
 
+# Escucha privada para el autor (bucket grabaciones-escucha de Supabase, ver escucha_supabase.sql).
+almacen() { # almacen METODO RUTA [FICHERO]
+  curl -fsS -X "$1" "$SUPABASE_URL/storage/v1/object/grabaciones-escucha/$2" "${AUTH[@]}" \
+    ${3:+-H "Content-Type: audio/mpeg" -H "x-upsert: true" --data-binary "@$3"} >/dev/null
+}
+
 procesar() {
-  local id="$1" trozos="$2" mime="$3"
+  local id="$1" trozos="$2" mime="$3" autor="$4"
   local dir="$TRABAJO/$id" ext="webm"
   [[ "$mime" == audio/mp4* ]] && ext="m4a"
   [[ "$mime" == audio/ogg* ]] && ext="ogg"
@@ -108,6 +114,8 @@ procesar() {
     mkdir -p "$dir/borrar"
     rsync -a --remove-source-files -e "$SSH_GRAB" "$ORIGEN$id/trozos/" "$dir/borrar/" >/dev/null
   fi
+  # Para que su autor la escuche en el estudio (si falla, no se bloquea el procesado).
+  almacen POST "$autor/$id.mp3" "$dir/escucha.mp3" || echo "aviso: no se pudo dejar la escucha de $id en el almacén"
   # Copia local del máster (segunda copia del original, fuera del servidor).
   mkdir -p "$HOME/bohio/yamacoa-grabaciones/$id" && cp "$dir/master.$ext" "$HOME/bohio/yamacoa-grabaciones/$id/"
   api PATCH "grabaciones?id=eq.$id" "$(jq -nc --argjson d "${dur:-0}" '{estado:"procesada", duracion_seg:$d, actualizado:(now|todate)}')"
@@ -117,21 +125,25 @@ procesar() {
 
 # Descartadas por su autor: se borran sus ficheros (servidor y copia local) y se marca `purgada`.
 # rsync --remove-source-files es lo único que permite la clave restringida para borrar.
-purgar() {
+purgar() { # purgar ID AUTOR
   local id="$1" tmp="$TRABAJO/purga-$1"
   mkdir -p "$tmp"
   rsync -a --remove-source-files -e "$SSH_GRAB" "$ORIGEN$id/" "$tmp/" >/dev/null 2>&1 || true
   rm -rf "$tmp" "$HOME/bohio/yamacoa-grabaciones/$id"
+  almacen DELETE "$2/$id.mp3" 2>/dev/null || true
   api PATCH "grabaciones?id=eq.$id" "$(jq -nc '{purgada:(now|todate)}')"
   echo "purgada $id"
 }
-descartadas=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.descartada&purgada=is.null&select=id" "${AUTH[@]}" 2>/dev/null || echo "[]")
-jq -r '.[].id' <<<"$descartadas" | while read -r id; do [[ -n "$id" ]] && purgar "$id"; done
+descartadas=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.descartada&purgada=is.null&select=id,autor_id" "${AUTH[@]}" 2>/dev/null || echo "[]")
+jq -r '.[] | "\(.id) \(.autor_id)"' <<<"$descartadas" | while read -r id autor; do [[ -n "$id" ]] && purgar "$id" "$autor"; done
+# Publicadas: la escucha privada ya no hace falta (el episodio está en la web).
+publicadas=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.publicada&select=id,autor_id" "${AUTH[@]}" 2>/dev/null || echo "[]")
+jq -r '.[] | "\(.id) \(.autor_id)"' <<<"$publicadas" | while read -r id autor; do almacen DELETE "$autor/$id.mp3" 2>/dev/null || true; done
 
-lista=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.subida&select=id,trozos,mime&order=creado" "${AUTH[@]}") \
+lista=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.subida&select=id,trozos,mime,autor_id&order=creado" "${AUTH[@]}") \
   || { echo "procesar.sh: sin acceso a grabaciones (¿tabla sin crear?)"; exit 0; }
 jq -c '.[]' <<<"$lista" | while read -r g; do
-  id=$(jq -r .id <<<"$g"); tr=$(jq -r .trozos <<<"$g"); mi=$(jq -r .mime <<<"$g")
+  id=$(jq -r .id <<<"$g"); tr=$(jq -r .trozos <<<"$g"); mi=$(jq -r .mime <<<"$g"); au=$(jq -r .autor_id <<<"$g")
   estado "$id" procesando
-  ( procesar "$id" "$tr" "$mi" ) || estado "$id" error "fallo inesperado del procesador"
+  ( procesar "$id" "$tr" "$mi" "$au" ) || estado "$id" error "fallo inesperado del procesador"
 done
