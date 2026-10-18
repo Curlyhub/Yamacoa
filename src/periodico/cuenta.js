@@ -10,12 +10,18 @@ const SUPABASE_PUBLICA = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ"; // pu
 const CLAVE_SESION = "sb-qsajkrppuaikyzmuipru-auth-token";
 
 let cliente = null;
+let cargandoCliente = null;
+const oyentes = new Set(); // useCuenta montados que esperan a que exista el cliente
 export async function supabase() {
   if (!cliente) {
-    const { createClient } = await import("@supabase/supabase-js");
-    cliente = createClient(SUPABASE_URL, SUPABASE_PUBLICA, {
-      auth: { flowType: "pkce", persistSession: true, detectSessionInUrl: true, autoRefreshToken: true },
+    cargandoCliente ||= import("@supabase/supabase-js").then(({ createClient }) => {
+      cliente = createClient(SUPABASE_URL, SUPABASE_PUBLICA, {
+        auth: { flowType: "pkce", persistSession: true, detectSessionInUrl: true, autoRefreshToken: true },
+      });
+      oyentes.forEach((f) => f(cliente));
+      return cliente;
     });
+    await cargandoCliente;
   }
   return cliente;
 }
@@ -28,19 +34,24 @@ export function haySesionGuardada() {
 // Vuelta de Google o de un enlace de correo: la URL trae ?code= o #access_token.
 const vieneDeAuth = () => /[?&#](code|access_token|error_description)=/.test(window.location.search + window.location.hash);
 
-/* { sesion, cargando, evento } — carga el cliente solo si hay sesión guardada o se vuelve de
-   un flujo de autenticación. `evento` es el último de onAuthStateChange (p. ej. PASSWORD_RECOVERY). */
+/* { sesion, cargando, evento } — carga el cliente al montar solo si hay sesión guardada o se
+   vuelve de un flujo de autenticación; si no, se engancha en cuanto alguien lo cargue (al entrar
+   o inscribirse sin sesión previa, p. ej. tras una baja). `evento` es el último de
+   onAuthStateChange (p. ej. PASSWORD_RECOVERY). */
 export function useCuenta() {
   const [estado, setEstado] = useState({ sesion: null, cargando: haySesionGuardada() || vieneDeAuth(), evento: null });
   useEffect(() => {
-    if (!haySesionGuardada() && !vieneDeAuth()) return undefined;
-    let vivo = true; let sub;
-    supabase().then(async (sb) => {
-      const { data } = await sb.auth.getSession();
-      if (vivo) setEstado({ sesion: data.session, cargando: false, evento: null });
+    let vivo = true; let sub = null;
+    const enganchar = async (sb) => {
+      if (sub || !vivo) return;
       sub = sb.auth.onAuthStateChange((evento, sesion) => vivo && setEstado({ sesion, cargando: false, evento })).data.subscription;
-    });
-    return () => { vivo = false; sub?.unsubscribe(); };
+      const { data } = await sb.auth.getSession();
+      if (vivo) setEstado((e) => ({ ...e, sesion: data.session, cargando: false }));
+    };
+    oyentes.add(enganchar);
+    if (cliente) enganchar(cliente);
+    else if (haySesionGuardada() || vieneDeAuth()) supabase();
+    return () => { vivo = false; oyentes.delete(enganchar); sub?.unsubscribe(); };
   }, []);
   return estado;
 }

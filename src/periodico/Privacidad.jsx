@@ -48,7 +48,7 @@ export default function Privacidad() {
         </ul>
 
         <h2>3. Si te inscribes como lector</h2>
-        <p>La inscripción es gratuita y sirve para descargar los episodios del podcast.</p>
+        <p>La inscripción es gratuita y sirve para descargar los episodios del podcast y, si lo pides aparte, recibir el boletín semanal.</p>
         <div style={{ overflowX: "auto" }}><table style={{ minWidth: 560 }}>
           <thead><tr><th>Dato</th><th>Para qué</th><th>Base legal</th><th>Cuánto tiempo</th></tr></thead>
           <tbody>
@@ -56,10 +56,12 @@ export default function Privacidad() {
             <tr><td>Contraseña</td><td>Entrar. Se guarda cifrada por nuestro proveedor de cuentas: nadie en Yamacoa puede verla</td><td>Ídem</td><td>Hasta la baja</td></tr>
             <tr><td>Si entras con Google: nombre y foto de tu cuenta de Google</td><td>Los envía Google al iniciar sesión; no los usamos para nada más</td><td>Tu consentimiento</td><td>Hasta la baja</td></tr>
             <tr><td>Fecha de alta y tipo de acceso (correo o Google)</td><td>Gestionar la cuenta</td><td>Ídem</td><td>Hasta la baja</td></tr>
+            <tr><td>Si lo activas: que quieres el boletín y desde cuándo</td><td>Enviarte un correo a la semana con lo publicado</td><td>Tu consentimiento, aparte del de la cuenta</td><td>Hasta que lo desactives o te des de baja</td></tr>
           </tbody>
         </table></div>
-        <p>No te enviaremos boletines ni comunicaciones comerciales sin pedirte antes un consentimiento aparte.
-          Puedes <b>darte de baja</b> cuando quieras desde <Link className="y-link" to="/suscribete">Mi cuenta</Link>:
+        <p>El <b>boletín</b> es opcional: solo lo recibes si marcas la casilla al inscribirte o lo activas en tu cuenta.
+          Llega una vez a la semana, no lleva publicidad ni píxeles de seguimiento, y cada correo trae un enlace para
+          dejar de recibirlo con un clic. Nunca te enviaremos comunicaciones comerciales. Puedes <b>darte de baja</b> cuando quieras desde <Link className="y-link" to="/suscribete">Mi cuenta</Link>:
           la cuenta y sus datos se borran en ese momento.</p>
 
         <h2>4. Si colaboras con Yamacoa</h2>
@@ -88,13 +90,15 @@ export default function Privacidad() {
         <ul>
           <li><b>Supabase</b>: base de datos y cuentas de usuario. Sus servidores están en Londres (Reino Unido).</li>
           <li><b>Cloudflare</b>: alojamiento y distribución del sitio.</li>
+          <li><b>Resend</b>: envío de los correos de la cuenta (confirmación, contraseña) y del boletín. Solo recibe
+            tu dirección y el contenido del correo. Envía desde Irlanda.</li>
           <li><b>Oracle Cloud</b>: nuestro servidor de audio y de grabaciones. Está en Londres (Reino Unido).</li>
           <li><b>Google</b>: solo si eliges «Continuar con Google». Las tipografías del sitio están alojadas en Yamacoa:
             leer no comunica tu IP a Google.</li>
         </ul>
         <p>Los datos de las cuentas y las grabaciones se guardan en el Reino Unido, que cuenta con una decisión de
-          adecuación de la Unión Europea. Cloudflare sirve el sitio desde su red mundial, y Supabase, Cloudflare y
-          Google son empresas de Estados Unidos: cuando tratan datos fuera del Espacio Económico Europeo lo hacen
+          adecuación de la Unión Europea. Cloudflare sirve el sitio desde su red mundial, y Supabase, Cloudflare,
+          Resend y Google son empresas de Estados Unidos: cuando tratan datos fuera del Espacio Económico Europeo lo hacen
           con las garantías previstas por la ley (Marco de Privacidad de Datos UE-EE. UU. o cláusulas contractuales tipo).</p>
         <p>Los enlaces a otros sitios (por ejemplo, vídeos de YouTube o las fuentes de cada noticia) te llevan fuera de
           Yamacoa; allí rigen sus propias políticas.</p>

@@ -60,3 +60,4 @@ public/data/feed/podcast.json
 # Opinión: material del análisis y feed exportado desde la BD
 ops/opinion/trabajo/
 public/data/feed/opinion.json
+ops/boletin/vista.html

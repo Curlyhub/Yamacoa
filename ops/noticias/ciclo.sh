@@ -8,7 +8,8 @@ export PATH="$HOME/.local/bin:$(dirname "$(ls -d "$HOME"/.nvm/versions/node/*/bi
 # Secretos en ~/.config/yamacoa/ de root o del dueño del repo (el cron corre como root).
 DUENO_HOME="$(getent passwd "$(stat -c %U "$REPO")" | cut -d: -f6)"
 for f in "$HOME/.config/yamacoa/cf.env" "$HOME/.config/yamacoa/noticias.env" "$HOME/.config/yamacoa/claude.env" \
-         "$DUENO_HOME/.config/yamacoa/cf.env" "$DUENO_HOME/.config/yamacoa/noticias.env" "$DUENO_HOME/.config/yamacoa/claude.env"; do
+         "$DUENO_HOME/.config/yamacoa/cf.env" "$DUENO_HOME/.config/yamacoa/noticias.env" "$DUENO_HOME/.config/yamacoa/claude.env" \
+         "$HOME/.config/yamacoa/boletin.env" "$DUENO_HOME/.config/yamacoa/boletin.env"; do
   # shellcheck disable=SC1090
   [ -f "$f" ] && { set -a; . "$f"; set +a; }
 done
@@ -31,5 +32,8 @@ node ops/opinion/opinion.mjs >> "$LOGS/$(date +%F).log" 2>&1
 if [ $# -eq 0 ] && [ "$(date +%H)" -ge 17 ]; then
   node ops/podcast/auto/episodio.mjs --formato al-dia --desplegar >> "$LOGS/$(date +%F).log" 2>&1
   [ "$(date +%u)" = 7 ] && node ops/podcast/auto/episodio.mjs --formato conversacion --desplegar >> "$LOGS/$(date +%F).log" 2>&1
+  # Domingo: el boletín a los lectores que lo pidieron, tras la conversación. Solo si boletin.env
+  # trae YAMACOA_BOLETIN_AUTO=1 (si no, se envía a mano: ops/boletin/boletin.mjs --enviar).
+  [ "$(date +%u)" = 7 ] && [ "${YAMACOA_BOLETIN_AUTO:-}" = 1 ] && node ops/boletin/boletin.mjs --enviar >> "$LOGS/$(date +%F).log" 2>&1
 fi
 exit 0
