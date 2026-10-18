@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
 <meta name="theme-color" content="#efe8df">
 <title>Yamacoa · Estudio de grabación</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +27,10 @@ body{margin:0; font-family:var(--font); color:var(--ink); min-height:100vh;
 .wrap{max-width:760px; margin:0 auto; padding:0 16px 80px;}
 header{display:flex; align-items:center; gap:14px; padding:16px 0 12px; border-bottom:3px solid var(--ink); margin-bottom:22px;}
 header b{font-size:26px; font-weight:800; letter-spacing:-.035em;}
+header a{font:500 11px var(--mono); color:var(--muted);}
+header .marca{font:800 26px var(--font); letter-spacing:-.035em; color:var(--ink); text-decoration:none;}
+@media (max-width:480px){ header .quien{display:none;} header{flex-wrap:wrap;} }
+header .quien{pointer-events:none;}
 header span{font:500 10.5px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent);}
 header .quien{margin-left:auto; color:var(--muted); letter-spacing:.04em; text-transform:none;}
 h1{font-size:30px; font-weight:800; letter-spacing:-.03em; margin:0 0 6px;}
@@ -73,7 +78,7 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
 </head>
 <body>
 <div class="wrap">
-  <header><b>Yamacoa</b><span>Estudio</span><span class="quien" id="quien"></span></header>
+  <header><a class="marca" href="./index.html" aria-label="Yamacoa, inicio del portal">Yamacoa</a><span>Estudio</span><span class="quien" id="quien"></span><a href="https://yamacoa.com">yamacoa.com</a></header>
 
   <div id="v-cargando"><p class="sub">Comprobando sesión…</p></div>
 
