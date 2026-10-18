@@ -30,3 +30,21 @@ internos (`public.perfiles`). Está preparado un campo `plan` para una suscripci
   baja desde ahí.
 - Los correos de los lectores son datos personales: solo los ve la service role. Falta una página
   de política de privacidad enlazada desde el formulario (pendiente de redactar).
+
+## Correos de la cuenta (plantillas y remitente)
+
+Plantillas con el estilo de Yamacoa en `ops/suscriptores/correos/` (el asunto va en la primera
+línea de cada fichero). Se pegan en Supabase → Authentication → Emails → Templates:
+
+| Plantilla de Supabase | Fichero |
+|---|---|
+| Confirm signup | `confirmar.html` |
+| Reset password | `recuperar.html` |
+| Magic link | `enlace.html` |
+| Change email address | `cambio_correo.html` |
+
+El servicio de correo que Supabase trae de serie es solo para pruebas: envía a las direcciones
+del equipo del proyecto y muy pocos correos por hora. Para que lleguen a los lectores hace falta
+un SMTP propio (Authentication → Emails → SMTP Settings), por ejemplo Resend o Brevo con el dominio
+yamacoa.com verificado (registros SPF/DKIM en el DNS de Cloudflare). Remitente:
+`Yamacoa <cuentas@yamacoa.com>`. La clave SMTP se pega solo en el panel de Supabase.
