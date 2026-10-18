@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFeed, duracion, minutos, fechaLarga } from "./feed";
 import { expedientesOrdenados } from "./Portada";
 import { Vacio, pistaDe, rutaEpisodio, rutaEstudio } from "./piezas";
 import { BotonPlay, useReproductor } from "./Reproductor";
+import { supabase, haySesionGuardada } from "./cuenta";
 
 /* Landing de podcast (handoff 1e, "Radio-periódico") y plantilla congelada de
    episodio. Tipos: Automático (voz sintética, siempre declarada) y Elaborado
@@ -151,6 +153,40 @@ const CSS_E = `
 .yep-trans b{font:600 11px var(--y-mono); letter-spacing:.06em; text-transform:uppercase; color:var(--y-accent); margin-right:8px;}
 `;
 
+/* Descarga del episodio: solo para personas inscritas (lectores o internos). Escuchar sigue
+   siendo libre; el botón ofrece el fichero con su nombre, no impide copiar el audio público. */
+function Descargar({ p }) {
+  const [estado, setEstado] = useState(null); // null | "bajando" | "inscribete" | "error"
+  async function descargar() {
+    setEstado("bajando");
+    const sesion = haySesionGuardada() ? (await (await supabase()).auth.getSession()).data.session : null;
+    if (!sesion) return setEstado("inscribete");
+    try {
+      const r = await fetch(p.audio.url);
+      if (!r.ok) throw new Error(String(r.status));
+      const url = URL.createObjectURL(await r.blob());
+      const a = document.createElement("a"); a.href = url; a.download = `${p.slug}.mp3`; document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+      setEstado(null);
+    } catch { setEstado("error"); }
+  }
+  return (
+    <div style={{ marginTop: 14 }}>
+      <button type="button" className="y-chip" onClick={descargar} disabled={estado === "bajando"}
+        style={{ background: "rgba(252,249,244,.12)", color: "var(--y-pod-ink)" }}>
+        {estado === "bajando" ? "Preparando…" : "↓ Descargar MP3"}
+      </button>
+      {estado === "inscribete" && (
+        <p className="y-meta" role="status" style={{ color: "var(--y-pod-acc)", marginTop: 10, fontSize: 12 }}>
+          La descarga es solo para personas inscritas.{" "}
+          <Link to="/suscribete" style={{ color: "var(--y-pod-ink)", fontWeight: 700 }}>Inscríbete gratis o entra →</Link>
+        </p>
+      )}
+      {estado === "error" && <p className="y-meta" role="alert" style={{ color: "var(--y-pod-acc)", marginTop: 10 }}>No se pudo descargar. Inténtalo más tarde.</p>}
+    </div>
+  );
+}
+
 export function Episodio() {
   const { slug } = useParams();
   const { datos, cargando } = useFeed("podcast.json");
@@ -174,6 +210,7 @@ export function Episodio() {
             <span className="y-meta" style={{ color: "var(--y-pod-sec)" }}>{minutos(p.duracion)}</span>
             {p.voces_sinteticas && <span className="y-badge" style={{ background: "rgba(252,249,244,.12)", color: "var(--y-pod-acc)" }}>Voces sintéticas</span>}
           </div>
+          <Descargar p={p} />
         </section>
 
         {p.descripcion && <p className="y-lede" style={{ marginTop: 24 }}>{p.descripcion}</p>}

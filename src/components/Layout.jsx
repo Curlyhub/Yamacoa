@@ -5,6 +5,7 @@ import temas from "../temas/registry.js";
 import { TOKENS_CSS, cargarFuentes } from "../design/tokens";
 import { ReproductorProvider } from "../periodico/Reproductor";
 import { fechaLarga, useFeed } from "../periodico/feed";
+import { haySesionGuardada } from "../periodico/cuenta";
 
 /* Carcasa unificada del periódico (handoff 2026-10, dirección 1a).
    Barra de fecha + cabecera (masthead grande en portada, compacta en el resto) +
@@ -123,7 +124,7 @@ export default function Layout({ children }) {
               {nav.map((n) => (
                 <NavLink key={n.to} to={n.to} end={n.end}>{n.t}</NavLink>
               ))}
-              <Link to="/suscribete" className="y-btn">Suscríbete</Link>
+              <Link to="/suscribete" className="y-btn">{haySesionGuardada() ? "Mi cuenta" : "Suscríbete"}</Link>
             </nav>
           </header>
           {!portada && !temaActivo && <Migas path={path} />}
