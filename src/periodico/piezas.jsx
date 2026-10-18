@@ -40,14 +40,16 @@ export function Confianza({ valor }) {
   return <span className={`y-confianza y-confianza--${valor}`}>{txt}</span>;
 }
 
+// En la portada van tres en fila: la barra de vida se ancla al pie (margin-top:auto) para que
+// las tres queden alineadas aunque los títulos tengan distinto número de líneas.
 export function NoticiaColumna({ n }) {
   return (
-    <article>
+    <article style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <p className="y-eyebrow">{n.seccion}</p>
       <h3 style={{ fontSize: 19, fontWeight: 700, lineHeight: 1.22, letterSpacing: "-.01em", margin: "8px 0 0" }}>
         <Link className="y-link" to={rutaNoticia(n)}>{n.titulo}</Link>
       </h3>
-      <Vida caduca={n.caduca} />
+      <div style={{ marginTop: "auto", paddingTop: 4 }}><Vida caduca={n.caduca} /></div>
     </article>
   );
 }
