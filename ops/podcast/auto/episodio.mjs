@@ -180,7 +180,9 @@ function mezclar(dir, turnos) {
   if (ent) { pon(ent); t += duracionDe(ent); silencio(0.4); }
   turnos.forEach((x, i) => {
     if (i > 0) silencio(x.bloque !== turnos[i - 1].bloque ? PAUSA.bloque : PAUSA.turno);
-    marcas.push(t); pon(path.join(dir, "voces", `${x.id}.wav`)); t += duraciones[x.id];
+    // Si una pasada anterior se cortó, sus voces existen pero no constan en duraciones.json: se miden.
+    const wav = path.join(dir, "voces", `${x.id}.wav`);
+    marcas.push(t); pon(wav); t += duraciones[x.id] ?? duracionDe(wav);
   });
   if (sal) { silencio(0.6); pon(sal); }
   const grafo = `${filtros.join(";")};${Array.from({ length: n }, (_, i) => `[a${i}]`).join("")}concat=n=${n}:v=0:a=1,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100[out]`;
