@@ -115,6 +115,19 @@ procesar() {
   echo "procesada $id (${dur}s)"
 }
 
+# Descartadas por su autor: se borran sus ficheros (servidor y copia local) y se marca `purgada`.
+# rsync --remove-source-files es lo único que permite la clave restringida para borrar.
+purgar() {
+  local id="$1" tmp="$TRABAJO/purga-$1"
+  mkdir -p "$tmp"
+  rsync -a --remove-source-files -e "$SSH_GRAB" "$ORIGEN$id/" "$tmp/" >/dev/null 2>&1 || true
+  rm -rf "$tmp" "$HOME/bohio/yamacoa-grabaciones/$id"
+  api PATCH "grabaciones?id=eq.$id" "$(jq -nc '{purgada:(now|todate)}')"
+  echo "purgada $id"
+}
+descartadas=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.descartada&purgada=is.null&select=id" "${AUTH[@]}" 2>/dev/null || echo "[]")
+jq -r '.[].id' <<<"$descartadas" | while read -r id; do [[ -n "$id" ]] && purgar "$id"; done
+
 lista=$(curl -fsS "$SUPABASE_URL/rest/v1/grabaciones?estado=eq.subida&select=id,trozos,mime&order=creado" "${AUTH[@]}") \
   || { echo "procesar.sh: sin acceso a grabaciones (¿tabla sin crear?)"; exit 0; }
 jq -c '.[]' <<<"$lista" | while read -r g; do

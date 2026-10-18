@@ -153,7 +153,7 @@ const $ = (id) => document.getElementById(id);
 const vista = (id) => ["v-cargando","v-sin-sesion","v-sin-permiso","v-estudio"].forEach((v) => $(v).hidden = v !== id);
 const fmt = (s) => [Math.floor(s/3600), Math.floor(s%3600/60), Math.floor(s%60)].map((n) => String(n).padStart(2,"0")).join(":");
 const ESTADOS = { grabando:"grabando", subida:"subida · en cola", procesando:"limpiando", procesada:"lista para editar",
-  publicada:"publicada", descartada:"descartada", error:"error" };
+  publicada:"publicada", descartada:"descartada · se borra", error:"error" };
 
 function aviso(texto, err = false) {
   const d = document.createElement("div");
@@ -393,6 +393,20 @@ async function listar() {
     li.querySelector("div > div").textContent = g.titulo;
     li.querySelector("small").textContent = `${new Date(g.creado).toLocaleString("es-ES")} · ${g.duracion_seg ? fmt(g.duracion_seg) : "—"}${cola ? ` · ${cola} trozos en el teléfono` : ""}${g.motivo_error ? ` · ${g.motivo_error}` : ""}`;
     li.querySelector(".badge").textContent = ESTADOS[g.estado] || g.estado;
+    // Descartar: lo suyo y no publicado. Los ficheros se borran en el siguiente procesado.
+    if (["subida", "procesada", "error"].includes(g.estado) || (g.estado === "grabando" && g.id !== grabId && !cola)) {
+      const d = document.createElement("button");
+      d.className = "btn ghost mini"; d.textContent = "Descartar";
+      d.title = "Borra esta grabación y su audio (no se puede deshacer)";
+      d.onclick = async () => {
+        if (d.dataset.seguro !== "1") { d.dataset.seguro = "1"; d.textContent = "¿Borrar? Pulsa otra vez"; return; }
+        const { error } = await sb.rpc("descartar_grabacion", { p_id: g.id });
+        if (error) aviso(/NO_DESCARTABLE/.test(error.message) ? "No se puede descartar: ya está publicada." : error.message, true);
+        else aviso("Descartada. El audio se borra del servidor en el próximo procesado.");
+        listar();
+      };
+      li.append(d);
+    }
     if (g.estado === "grabando" && g.id !== grabId && !cola) {
       const b = document.createElement("button");
       b.className = "btn ghost mini"; b.textContent = "Cerrar";
