@@ -37,7 +37,7 @@ label{display:block; font:500 10.5px var(--mono); letter-spacing:.08em; text-tra
 input[type=text], select{width:100%; background:var(--surface2); border:1px solid transparent; border-radius:12px;
   padding:12px; font:500 16px var(--font); color:var(--ink);}
 input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
-.part{display:grid; grid-template-columns:1fr 1fr auto; gap:8px; align-items:center; margin-bottom:8px;}
+.part{display:grid; grid-template-columns:1fr 1fr auto auto; gap:8px; align-items:center; margin-bottom:8px;}
 .part .consiente{display:flex; gap:6px; align-items:center; font-size:12.5px; color:var(--ink2); text-transform:none; letter-spacing:0; margin:0; font-family:var(--font);}
 .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:999px; cursor:pointer;
   background:var(--dark); color:var(--surface); font:600 15px var(--font); padding:12px 20px;}
@@ -68,7 +68,7 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
 .aviso{background:#f6e3c4; color:#6b3f08; border-radius:16px; padding:12px 14px; font-size:14px; line-height:1.45; margin-bottom:14px;}
 .aviso.err{background:#f6d5cc; color:var(--err);}
 [hidden]{display:none!important}
-@media (max-width:560px){ .part{grid-template-columns:1fr 1fr;} .part .consiente{grid-column:1/-1;} .reloj{font-size:44px;} }
+@media (max-width:560px){ .part{grid-template-columns:1fr 1fr;} .part .consiente{grid-column:1/2;} .part .quitar{justify-self:end;} .reloj{font-size:44px;} }
 </style>
 </head>
 <body>
@@ -148,6 +148,7 @@ const sb = createClient(SUPABASE_URL, SUPABASE_ANON);
 // iniciar() con top-level await; si se declarase después, abrirMicro() fallaría al cargar).
 let stream, rec, ctx, analizador, grabId = null, n = 0, marcas = [];
 let t0 = 0, acumulado = 0, enPausa = false, tick, lock;
+const ROLES = ["Conduce", "Invitado/a", "Entrevistado/a", "Colaborador/a"];
 const $ = (id) => document.getElementById(id);
 const vista = (id) => ["v-cargando","v-sin-sesion","v-sin-permiso","v-estudio"].forEach((v) => $(v).hidden = v !== id);
 const fmt = (s) => [Math.floor(s/3600), Math.floor(s%3600/60), Math.floor(s%60)].map((n) => String(n).padStart(2,"0")).join(":");
@@ -225,20 +226,25 @@ else {
 
 /* ───────────── estudio ───────────── */
 
+// Una fila por persona que hablará. El rol es una lista cerrada; el consentimiento, obligatorio
+// para cada voz con nombre (las filas vacías no cuentan).
 function filaParticipante(nombre = "", rol = "") {
   const d = document.createElement("div");
   d.className = "part";
-  d.innerHTML = `<input type="text" placeholder="Nombre" maxlength="80" aria-label="Nombre">
-    <input type="text" placeholder="Rol (conduce, invitada…)" maxlength="60" aria-label="Rol">
-    <label class="consiente"><input type="checkbox"> Consiente</label>`;
-  d.querySelectorAll("input")[0].value = nombre; d.querySelectorAll("input")[1].value = rol;
+  d.innerHTML = `<input type="text" placeholder="Nombre de quien habla" maxlength="80" aria-label="Nombre">
+    <select aria-label="Rol">${ROLES.map((r) => `<option>${r}</option>`).join("")}</select>
+    <label class="consiente" title="Acepta que su voz se grabe, se procese y se publique en Yamacoa"><input type="checkbox"> Consiente</label>
+    <button type="button" class="btn ghost mini quitar" aria-label="Quitar esta voz">✕</button>`;
+  d.querySelector("input").value = nombre;
+  d.querySelector("select").value = rol || ($("participantes").children.length ? "Invitado/a" : "Conduce");
+  d.querySelector(".quitar").onclick = () => { if ($("participantes").children.length > 1) d.remove(); };
   $("participantes").append(d);
 }
 function participantes() {
-  return [...$("participantes").children].map((d) => {
-    const i = d.querySelectorAll("input");
-    return { nombre: i[0].value.trim(), rol: i[1].value.trim(), consiente: i[2].checked };
-  }).filter((p) => p.nombre);
+  return [...$("participantes").children].map((d) => ({
+    nombre: d.querySelector("input[type=text]").value.trim(), rol: d.querySelector("select").value,
+    consiente: d.querySelector("input[type=checkbox]").checked,
+  })).filter((p) => p.nombre);
 }
 
 function elegirMime() {
@@ -283,7 +289,7 @@ async function abrirMicro() {
 }
 
 async function iniciar() {
-  filaParticipante(); filaParticipante();
+  filaParticipante();
   $("b-mas").onclick = () => filaParticipante();
   $("formato").textContent = elegirMime().split(";")[0] || "formato no soportado";
   $("mic").onchange = abrirMicro; $("proc-nav").onchange = abrirMicro;
@@ -303,7 +309,8 @@ async function empezar() {
   const ps = participantes();
   if (titulo.length < 4) return aviso("Pon un título provisional (mínimo 4 caracteres).", true);
   if (!ps.length) return aviso("Escribe el nombre de al menos una voz (arriba, en «Voces que se grabarán»).", true);
-  if (ps.some((p) => !p.consiente)) return aviso("Marca «Consiente» en cada voz antes de grabar (arriba, en «Voces que se grabarán»).", true);
+  const sin = ps.filter((p) => !p.consiente).map((p) => p.nombre);
+  if (sin.length) return aviso(`Falta el consentimiento de: ${sin.join(", ")}. Marca «Consiente» en su fila (arriba, en «Voces que se grabarán»).`, true);
   const mime = elegirMime();
   if (!mime) return aviso("Este navegador no puede grabar audio. Prueba con Chrome, Firefox o Safari actualizado.", true);
   if (!stream) { try { await abrirMicro(); } catch { return aviso("Sin micrófono.", true); } }
