@@ -88,6 +88,7 @@ h1{font-size:30px; font-weight:800; letter-spacing:-.03em; margin:0 0 6px;}
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+import { montarNav } from "./nav.js";
 
 // Misma configuración que el resto del portal (clave publicable; NUNCA la service_role).
 const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
@@ -163,7 +164,7 @@ else {
   $("quien").textContent = session.user.email || "";
   const { data: admin } = await sb.rpc("es_admin");
   if (!admin) vista("v-sin-permiso");
-  else { vista("v-admin"); cargar(); }
+  else { vista("v-admin"); cargar(); montarNav(sb, "admin"); }
 }
 </script>
 </body>

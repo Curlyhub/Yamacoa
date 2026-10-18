@@ -4,33 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
 <title>Yamacoa · Portal de contribuciones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
-/* Tokens tomados de src/components/Layout.jsx (fuente de verdad, no AGENTS.md). */
+/* Tokens: src/design/tokens.js (sistema unificado "periódico", 2026-10-18; antes, tema oscuro). */
 :root{
-  --bg:#0C0E14; --panel:#161A26; --panel2:#10141E;
-  --line:rgba(237,239,245,.12); --line2:rgba(237,239,245,.2);
-  --txt:#EDEFF5; --dim:#8A93A8; --acc:#38D6C9;
-  --ok:#42C9A8; --warn:#E8A13C; --err:#E06056;
-  --display:'Space Grotesk',system-ui,sans-serif;
-  --body:'Inter',system-ui,sans-serif;
+  --bg:#efe8df; --panel:#fcf9f4; --panel2:#f5efe7;
+  --line:rgba(60,40,20,.15); --line2:rgba(60,40,20,.28);
+  --txt:#1f1a16; --dim:#6b5d50; --acc:#b8562e;
+  --ok:#2f5640; --warn:#8a5a10; --err:#a8321e;
+  --display:'Manrope',system-ui,sans-serif;
+  --body:'Manrope',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--body);
+body{margin:0;color:var(--txt);font-family:var(--body);
+  background:radial-gradient(ellipse 70% 50% at 0% 0%,#f6d9c6 0%,transparent 60%),
+             radial-gradient(ellipse 60% 45% at 100% 0%,#d5e3da 0%,transparent 60%),var(--bg);
+  background-repeat:no-repeat;background-color:var(--bg);
   line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
 
 /* ── cabecera de marca (espejo de .ym-header) ─────────────────────────────── */
-.hdr{border-bottom:1px solid var(--line);background:rgba(12,14,20,.78)}
+.hdr{border-bottom:3px solid var(--txt)}
 .hdr-in{max-width:1080px;margin:0 auto;padding:16px 22px;
   display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .brand{display:inline-flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--txt)}
-.brand-mark{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.18em}
-.brand-mark span{color:var(--acc)}
+.brand-mark{font:800 26px var(--display);letter-spacing:-.035em}
 .brand-sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;
   text-transform:uppercase;color:var(--dim)}
 .hdr-nav{margin-left:auto;display:flex;align-items:center;gap:14px}
@@ -61,7 +64,7 @@ textarea{min-height:150px;resize:vertical;line-height:1.6}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:8px}
 input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
 
-button{background:var(--acc);color:#08131A;border:0;border-radius:8px;padding:11px 20px;
+button{background:#3a2418;color:#fcf9f4;border:0;border-radius:8px;padding:11px 20px;
   font:inherit;font-weight:600;font-size:14px;cursor:pointer;
   display:inline-flex;align-items:center;gap:9px;justify-content:center}
 button:hover:not(:disabled){filter:brightness(1.08)}
@@ -73,22 +76,22 @@ button.enlace{background:none;border:0;color:var(--dim);padding:4px 6px;font-siz
   text-decoration:underline;font-weight:400}
 button.enlace:hover:not(:disabled){color:var(--err);filter:none}
 
-.spinner{width:14px;height:14px;border:2px solid rgba(8,19,26,.3);border-top-color:#08131A;
+.spinner{width:14px;height:14px;border:2px solid rgba(252,249,244,.35);border-top-color:#fcf9f4;
   border-radius:50%;animation:giro .6s linear infinite}
 @keyframes giro{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.spinner{animation-duration:2s}}
 
 /* ── mensaje inline (base conservada del borrador) ────────────────────────── */
 .msg{font-size:13px;margin-top:14px;padding:10px 12px;border-radius:8px;display:none}
-.msg.err{display:block;background:rgba(224,96,86,.1);color:var(--err);border:1px solid rgba(224,96,86,.3)}
-.msg.ok{display:block;background:rgba(66,201,168,.1);color:var(--ok);border:1px solid rgba(66,201,168,.3)}
+.msg.err{display:block;background:rgba(168,50,30,.1);color:var(--err);border:1px solid rgba(168,50,30,.3)}
+.msg.ok{display:block;background:rgba(47,86,64,.1);color:var(--ok);border:1px solid rgba(47,86,64,.3)}
 
 /* ── toast ────────────────────────────────────────────────────────────────── */
 #toasts{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;
   flex-direction:column;gap:10px;max-width:min(380px,calc(100vw - 36px))}
 .toast{background:var(--panel);border:1px solid var(--line);border-left-width:3px;
   border-radius:10px;padding:12px 14px;font-size:13px;color:var(--txt);
-  box-shadow:0 10px 30px rgba(0,0,0,.45);animation:entra .22s ease}
+  box-shadow:0 10px 30px rgba(40,25,10,.18);animation:entra .22s ease}
 .toast.ok{border-left-color:var(--ok)} .toast.err{border-left-color:var(--err)}
 .toast .t-tit{font-family:var(--mono);font-size:10px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--dim);margin-bottom:3px}
@@ -99,14 +102,14 @@ button.enlace:hover:not(:disabled){color:var(--err);filter:none}
 @media (max-width:560px){#toasts{left:18px;right:18px;bottom:14px;max-width:none}}
 
 /* ── banner de configuración ──────────────────────────────────────────────── */
-.banner{background:rgba(232,161,60,.1);border:1px solid rgba(232,161,60,.35);
+.banner{background:rgba(138,90,16,.1);border:1px solid rgba(138,90,16,.35);
   border-radius:10px;padding:14px 16px;margin-bottom:22px;font-size:13.5px;color:var(--warn)}
 .banner code{font-family:var(--mono);font-size:12px;color:var(--txt)}
 
 /* ── zona de PDF ──────────────────────────────────────────────────────────── */
 .dropzone{border:1.5px dashed var(--line2);border-radius:10px;background:var(--panel2);
   padding:22px 16px;text-align:center;cursor:pointer;transition:border-color .16s ease,background .16s ease}
-.dropzone:hover,.dropzone.sobre{border-color:var(--acc);background:rgba(56,214,201,.05)}
+.dropzone:hover,.dropzone.sobre{border-color:var(--acc);background:rgba(184,86,46,.06)}
 .dropzone p{margin:0;font-size:13.5px;color:var(--dim)}
 .dropzone .dz-fuerte{color:var(--txt);font-weight:500}
 .dropzone .dz-nota{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
@@ -128,7 +131,7 @@ button.enlace:hover:not(:disabled){color:var(--err);filter:none}
   text-transform:uppercase;color:var(--dim)}
 .cuota-txt b{color:var(--txt);font-weight:500}
 .segmentos{display:flex;gap:5px;flex:1;min-width:120px}
-.seg{height:5px;flex:1;border-radius:3px;background:rgba(237,239,245,.1)}
+.seg{height:5px;flex:1;border-radius:3px;background:rgba(60,40,20,.1)}
 .seg.on{background:var(--acc)}
 .seg.lleno{background:var(--err)}
 .cuota-caja .accion{margin-left:auto;display:flex;align-items:center;gap:14px}
@@ -142,11 +145,11 @@ td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:0}
 .est{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
   padding:3px 8px;border-radius:12px;white-space:nowrap}
-.est-pendiente{background:rgba(138,147,168,.15);color:var(--dim)}
-.est-en_proceso{background:rgba(232,161,60,.14);color:var(--warn)}
-.est-procesado{background:rgba(66,201,168,.14);color:var(--ok)}
-.est-error{background:rgba(224,96,86,.14);color:var(--err)}
-.est-eliminado{background:rgba(224,96,86,.08);color:var(--dim);text-decoration:line-through}
+.est-pendiente{background:rgba(60,40,20,.08);color:var(--dim)}
+.est-en_proceso{background:rgba(138,90,16,.14);color:var(--warn)}
+.est-procesado{background:rgba(47,86,64,.14);color:var(--ok)}
+.est-error{background:rgba(168,50,30,.14);color:var(--err)}
+.est-eliminado{background:rgba(168,50,30,.08);color:var(--dim);text-decoration:line-through}
 
 /* ── estado vacío ─────────────────────────────────────────────────────────── */
 .vacio{text-align:center;padding:34px 18px;border:1px dashed var(--line);border-radius:10px}
@@ -169,7 +172,7 @@ a{color:var(--acc)}
 <header class="hdr">
   <div class="hdr-in">
     <a class="brand" href="./" aria-label="Yamacoa, portal de contribuciones">
-      <span class="brand-mark">YAMA<span>COA</span></span>
+      <span class="brand-mark">Yamacoa</span>
       <span class="brand-sub">Portal de contribuciones</span>
     </a>
     <nav class="hdr-nav" id="nav-sesion" hidden>
@@ -290,6 +293,7 @@ a{color:var(--acc)}
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+import { montarNav } from "./nav.js";
 
 const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
 const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ"; // anon key publica; NUNCA la service_role
@@ -356,6 +360,7 @@ async function cargarPerfil(user){
   $("nav-sesion").hidden = false;
   $("f-fecha").value = new Date().toLocaleDateString("es-ES");
   vista("v-app");
+  if (!document.querySelector(".ypn")) montarNav(sb, "envios");
   await refrescarLista();
 }
 

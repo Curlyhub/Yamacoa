@@ -150,6 +150,7 @@ input[type=text]:focus, select:focus{outline:none; border-color:var(--accent);}
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+import { montarNav } from "./nav.js";
 
 // Misma configuración que portal/index.html (anon key pública; NUNCA la service_role).
 const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
@@ -239,7 +240,7 @@ else {
   const { data: perfil } = await sb.from("perfiles").select("email,puede_grabar,bloqueado").eq("id", session.user.id).single();
   $("quien").textContent = perfil?.email || "";
   if (!perfil?.puede_grabar || perfil.bloqueado) vista("v-sin-permiso");
-  else { vista("v-estudio"); iniciar(); }
+  else { vista("v-estudio"); iniciar(); montarNav(sb, "podcast"); }
 }
 
 /* ───────────── estudio ───────────── */
