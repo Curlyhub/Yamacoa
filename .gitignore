@@ -49,6 +49,7 @@ ops/podcast/borradores/
 ops/noticias/estado/
 ops/noticias/ciclos/
 public/audio/
+public/imagen/
 public/data/feed/noticias.json
 
 # Podcast automático: material de cada episodio (MP3, voces, guion) y transcripciones exportadas

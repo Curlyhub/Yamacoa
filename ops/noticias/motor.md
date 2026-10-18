@@ -135,7 +135,15 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
    - `cifra`: un número solo (en `datos` ya está la cifra destacada; no la repitas).
    Un gráfico que no sale de una serie usa solo números de las capturas de la pieza: si un
    valor no aparece en ellas, el gráfico se pierde. Nunca mezcles unidades en un gráfico.
-10. Redacta (reglas abajo) y escribe `tratadas.json`.
+10. **Ilustración.** Para cada noticia, `ilustracion`: `escena` (en INGLÉS, 1 frase de hasta 300
+    caracteres) y `alt` (en español, hasta 200: qué se ve, para lectores de pantalla). El estilo y la
+    paleta los pone el ciclo; tú describes solo QUÉ se ve, de forma simbólica: objetos, lugares,
+    paisaje, luz (p. ej. «an empty plate and a tin cup on a bare table beside barred window light»,
+    «a transmission tower against a dusk sky above a row of unlit houses»). Prohibido: personas
+    reconocibles o caras (como mucho, siluetas pequeñas y anónimas), recrear el hecho como si fuera
+    una foto, sangre o violencia explícita, banderas, símbolos de partidos, texto o carteles. Es una
+    ilustración editorial rotulada como generada por IA, no un documento.
+11. Redacta (reglas abajo) y escribe `tratadas.json`.
 
 ## Reglas de redacción
 - Español neutro con léxico cubano cuando la fuente lo use (CUP, MLC, apagón, bodega).
@@ -185,6 +193,7 @@ aparezcan en las capturas salvo para comprobar un hecho concreto de la pieza que
       "versiones": [{ "lado": "oficial", "texto": "…", "citas": [2] }],
       "expediente": "/rusificacion",
       "guion": "…",
+      "ilustracion": { "escena": "…", "alt": "…" },
       "importancia": 4
     }
   ],

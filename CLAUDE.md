@@ -227,8 +227,9 @@ origen en todo el sitio: **salvia = automático**, **melocotón = dirigido**, **
 - **Resumen hablado obligatorio:** ninguna noticia ni estudio automático se publica sin
   `audio` (Kokoro, `tts.yamacoa.com`). El schema lo exige; si el TTS falla, la pieza espera.
 - **Imágenes:** en noticias, fotografía con crédito o gráfico de datos. Las ilustraciones
-  generadas por IA (Workers AI / FLUX) nunca son fotorrealistas de hechos reales y se rotulan
-  siempre «Ilustración generada por IA» (`imagen.tipo = "ilustracion_ia"`).
+  generadas por IA (FLUX.1-schnell local, desde 2026-10-18) nunca son fotorrealistas de hechos reales,
+  no muestran personas reconocibles ni texto, y se rotulan siempre «Ilustración generada por IA»
+  (`imagen.tipo = "ilustracion_ia"`). El motor describe la escena; el estilo lo fija el código.
 - **Caducidad (decisión 2026-10-17: borrar; 2026-10-18: 3 días):** `caduca = publicado + 3 días`, columna de la BD.
   A los 3 días la noticia se BORRA de la base de datos y del sitio (sin archivo). `publicado` es
   la hora del ciclo, así que la caducidad cae en un ciclo, que borra y redespliega al empezar;

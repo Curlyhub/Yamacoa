@@ -99,6 +99,14 @@ export default function Noticia() {
         <h1 className="y-h1" style={{ fontSize: "clamp(30px,4.6vw,46px)" }}>{n.titulo}</h1>
         <p className="y-lede">{n.entradilla}</p>
 
+        {/* Ilustración de cabecera: siempre rotulada con su tipo (§11.4). */}
+        {n.imagen?.url && (
+          <figure className="ynd-fig">
+            <img src={n.imagen.url} alt={n.imagen.alt || ""} />
+            <figcaption>{TIPO_IMG[n.imagen.tipo] || "Imagen"}{n.imagen.credito ? ` · ${n.imagen.credito}` : ""}</figcaption>
+          </figure>
+        )}
+
         {n.audio?.url && (
           <div className="ynd-audio">
             <BotonPlay pista={pistaDe(n, "Resumen hablado")} oscuro etiqueta={`resumen de ${n.titulo}`} />
@@ -132,13 +140,6 @@ export default function Noticia() {
               </section>
             ))}
           </div>
-        )}
-
-        {n.imagen?.url && (
-          <figure className="ynd-fig">
-            <img src={n.imagen.url} alt={n.imagen.alt || ""} />
-            <figcaption>{TIPO_IMG[n.imagen.tipo] || "Imagen"}{n.imagen.credito ? ` · ${n.imagen.credito}` : ""}</figcaption>
-          </figure>
         )}
 
         <div className="ynd-cuerpo">

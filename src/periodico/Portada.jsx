@@ -119,7 +119,9 @@ function Principal({ n }) {
       {n.imagen?.url && (
         <figure className="yp-img" style={{ margin: "24px 0 0" }}>
           <img src={n.imagen.url} alt={n.imagen.alt || ""} loading="eager" />
-          {n.imagen.credito && <figcaption>{n.imagen.credito}</figcaption>}
+          {/* El tipo va siempre a la vista: una ilustración de IA se rotula como tal (§11.4). */}
+          <figcaption>{{ foto: "Fotografía", grafico: "Gráfico Yamacoa", ilustracion_ia: "Ilustración generada por IA" }[n.imagen.tipo] || "Imagen"}
+            {n.imagen.credito ? ` · ${n.imagen.credito}` : ""}</figcaption>
         </figure>
       )}
     </article>

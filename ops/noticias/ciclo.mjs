@@ -9,6 +9,9 @@
 //                nuevos de las series de referencia (series.json) solo entran si el valor
 //                está en el texto citado, y los gráficos de serie los construye el código
 //   5. audio     Kokoro -> MP3; sin resumen hablado la pieza queda «retenida»
+//   5b. imagen   FLUX.1-schnell local (imagen.py): ilustración editorial rotulada «generada por
+//                IA». El motor describe la escena; estilo y prohibiciones los pone el código.
+//                Si falla, la noticia sale sin imagen (nunca bloquea)
 //   6. exportar  vigentes de la BD -> <destino>/data/feed/noticias.json + audio
 //   7. publicar  ops/publicar.sh (build de la rama `publicacion` + wrangler)
 //
@@ -18,6 +21,8 @@
 //   node ops/noticias/ciclo.mjs --solo-exportar --destino <dir>   (lo usa publicar.sh)
 //   node ops/noticias/ciclo.mjs --reusar <ciclo-id>   repite verja+audio sobre un tratadas.json existente
 //   … --sin-desplegar --sin-audio                     ensayo de maqueta: audio mudo (solo con la BD local)
+//   node ops/noticias/ciclo.mjs --reusar <id> --solo-imagen   reintenta las ilustraciones de ese ciclo
+//   … --sin-imagen                                    ciclo sin ilustraciones
 
 import fs from "node:fs";
 import path from "node:path";
@@ -49,6 +54,17 @@ const log = (...m) => console.log(new Date().toISOString().slice(11, 19), ...m);
 
 const db = abrir({ estadoDir: ESTADO });
 const AUDIO = AUDIO_DE(db.tipo);
+const IMAGEN = path.join(ESTADO, db.tipo === "local" ? "imagen-ensayo" : "imagen");
+const PY = process.env.YAMACOA_TTS_PY || "/home/<usuario>/bohio/yamacoa-tts/.venv/bin/python";
+// Identidad visual común (paleta de Yamacoa) y límites de §11.4: ilustración, nunca foto; sin
+// personas reconocibles, sin texto, sin banderas ni símbolos políticos.
+// La escena va DELANTE: CLIP solo lee 77 tokens (T5 lee todo).
+const ESTILO = ". Editorial illustration for a news website, flat geometric shapes with soft risograph grain, " +
+  "limited palette of terracotta orange, sage green, warm cream and deep brown, calm balanced composition, " +
+  "symbolic and slightly abstract, generous negative space, clearly an illustration and not a photograph, " +
+  "no text, no letters, no numbers, no price tags, no currency symbols, no logos, no flags, no recognizable people, " +
+  "any human figure only as a small faceless silhouette.";
+const semilla = (id) => [...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % 2147483647;
 const validador = cargarValidador(SCHEMA);
 
 /* ---------- utilidades ---------- */
@@ -73,8 +89,16 @@ const ENSAYO_BASE = process.env.YAMACOA_ENSAYO_BASE || "http://localhost:3123";
 async function exportar(destino) {
   const base = path.resolve(destino) === path.join(REPO, "public") ? ENSAYO_BASE : SITE;
   const vivas = await db.vigentes();
+  // Una ilustración cuyo fichero no está en la caché no se enlaza (nada de imágenes rotas).
+  const img = (n) => {
+    const i = n.pieza.imagen;
+    if (!i) return {};
+    if (!i.url.startsWith("/")) return { imagen: i };
+    return fs.existsSync(path.join(IMAGEN, `${n.id}.webp`)) ? { imagen: { ...i, url: base + i.url } } : {};
+  };
   const items = vivas.map((n) => ({
-    ...n.pieza,
+    ...(({ imagen, ...p }) => p)(n.pieza),
+    ...img(n),
     id: n.id, slug: n.slug, plantilla: n.plantilla, seccion: n.seccion,
     publicado: new Date(n.publicado).toISOString(),
     caduca: new Date(Date.parse(n.publicado) + VIDA_MS).toISOString(),
@@ -91,6 +115,15 @@ async function exportar(destino) {
   fs.rmSync(dirAudio, { recursive: true, force: true });
   fs.mkdirSync(dirAudio, { recursive: true });
   for (const n of vivas) fs.copyFileSync(path.join(AUDIO, `${n.id}.mp3`), path.join(dirAudio, `${n.id}.mp3`));
+  // Ilustraciones (≈100 KB, efímeras como el audio): solo las de las vigentes.
+  const dirImg = path.join(destino, "imagen/noticias");
+  fs.rmSync(dirImg, { recursive: true, force: true });
+  fs.mkdirSync(dirImg, { recursive: true });
+  for (const n of vivas) {
+    const f = path.join(IMAGEN, `${n.id}.webp`);
+    if (n.pieza.imagen && fs.existsSync(f)) fs.copyFileSync(f, path.join(dirImg, `${n.id}.webp`));
+  }
+  for (const f of fs.existsSync(IMAGEN) ? fs.readdirSync(IMAGEN) : []) if (!vivas.some((n) => `${n.id}.webp` === f)) fs.rmSync(path.join(IMAGEN, f));
   // Caché local de audio: fuera lo que ya no está vivo ni retenido.
   const conservar = new Set([...vivas, ...(await db.retenidas())].map((n) => `${n.id}.mp3`));
   for (const f of fs.existsSync(AUDIO) ? fs.readdirSync(AUDIO) : []) if (!conservar.has(f)) fs.rmSync(path.join(AUDIO, f));
@@ -204,6 +237,7 @@ async function verja(dir, cicloId) {
   const textoCaptura = (id) => { try { return fs.readFileSync(path.join(dir, "capturas", `${id}.txt`), "utf8"); } catch { return ""; } };
   const publicado = horaCiclo().toISOString();
   let aceptadas = 0;
+  const escenas = {}; // id -> { escena, alt } para el paso de imagen
   let libres = await cupo();
   // Si el motor se pasa del cupo, entran las más importantes.
   const lista = [...(tratadas.noticias || [])].sort((a, b) => (Number(b.importancia) || 0) - (Number(a.importancia) || 0));
@@ -321,13 +355,43 @@ async function verja(dir, cicloId) {
         } catch (e) { log(`serie: ${e.message}`); }
       }
       aceptadas++;
+      const il = t.ilustracion;
+      if (il?.escena && il?.alt && String(il.escena).length <= 400) escenas[id] = { escena: String(il.escena), alt: String(il.alt).slice(0, 200) };
       log(`verja OK  [${t.plantilla}] ${t.titulo}`);
     } catch (e) {
       descartes.push({ titulo: t.titulo, motivo: `verja: ${e.message}`.slice(0, 600) });
       log(`verja NO  ${t.titulo}: ${e.message.slice(0, 200)}`);
     }
   }
+  escribir(path.join(dir, "escenas.json"), escenas);
   return { aceptadas, descartes };
+}
+
+/* ---------- 5b. imagen ---------- */
+// Ilustra las vigentes sin imagen que tienen escena (de este ciclo o de uno reusado).
+async function imagenes(dir) {
+  const escenas = (() => { try { return JSON.parse(fs.readFileSync(path.join(dir, "escenas.json"), "utf8")); } catch { return {}; } })();
+  const sin = (await db.vigentes()).filter((n) => !n.pieza.imagen && escenas[n.id]);
+  if (!sin.length) return 0;
+  const salida = path.join(dir, "imagenes");
+  escribir(path.join(dir, "imagen.json"), { salida, items: sin.map((n) => ({ id: n.id, prompt: escenas[n.id].escena.replace(/[.\s]+$/, "") + ESTILO, seed: semilla(n.id) })) });
+  log(`imagen: FLUX, ${sin.length} ilustraciones…`);
+  const r = spawnSync(PY, [path.join(AQUI, "imagen.py"), path.join(dir, "imagen.json")],
+    { stdio: ["ignore", "inherit", "inherit"], timeout: 40 * 60000, env: { ...process.env, TQDM_DISABLE: "1", HF_HUB_DISABLE_PROGRESS_BARS: "1" } });
+  if (r.status !== 0) { log(`imagen: imagen.py terminó con ${r.status}; las noticias salen sin ilustración`); return 0; }
+  let ok = 0;
+  const hechas = (() => { try { return JSON.parse(fs.readFileSync(path.join(salida, "imagenes.json"), "utf8")); } catch { return {}; } })();
+  for (const n of sin) {
+    if (!hechas[n.id]) continue;
+    fs.mkdirSync(IMAGEN, { recursive: true });
+    fs.copyFileSync(path.join(salida, hechas[n.id]), path.join(IMAGEN, `${n.id}.webp`));
+    const imagen = { url: `/imagen/noticias/${n.id}.webp`, alt: escenas[n.id].alt, tipo: "ilustracion_ia",
+      credito: "FLUX.1-schnell · Yamacoa" }; // la plantilla antepone «Ilustración generada por IA»
+    await db.actualizar(n.id, { pieza: { ...n.pieza, imagen } });
+    ok++;
+  }
+  log(`imagen: ${ok} de ${sin.length} ilustradas`);
+  return ok;
 }
 
 /* ---------- 5. audio ---------- */
@@ -368,6 +432,12 @@ async function main() {
       log(`caducadas: ${fuera.join(", ")}`);
       if (desplegar) { publicar("caducidad"); resumen.desplegado = true; }
     }
+    if (flag("--solo-imagen")) { // reintentar ilustraciones de un ciclo (--reusar <id>)
+      resumen.ilustradas = await imagenes(dir);
+      if (desplegar) { if (resumen.ilustradas) { publicar("imagenes"); resumen.desplegado = true; } }
+      else await exportar(path.join(REPO, "public"));
+      return;
+    }
     if (!reusar) {
       const indice = await capturar(dir);
       resumen.capturadas = indice.length;
@@ -385,6 +455,7 @@ async function main() {
     }
     const a = await audio();
     resumen.publicadas = a.ok; resumen.retenidas = a.fallos;
+    if (!flag("--sin-imagen")) resumen.ilustradas = await imagenes(dir).catch((e) => { log(`imagen: ${e.message}`); return 0; });
     if (desplegar) {
       if (a.ok) { publicar("ciclo"); resumen.desplegado = true; }
     } else {

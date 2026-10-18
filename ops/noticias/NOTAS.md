@@ -81,8 +81,20 @@ entra en git.
   node ops/noticias/ciclo.mjs --sin-desplegar --sin-audio` (audio mudo; caché `estado/audio-ensayo/`,
   separada de la de producción). Con `?demo` en `npm start` hay una pieza de cada tipo de gráfico.
 
+## Ilustraciones (2026-10-18)
+- FLUX.1-schnell (Apache-2.0) en la GPU local: `ops/noticias/imagen.py`, con el entorno de las voces
+  (`~/bohio/yamacoa-tts/.venv`). Transformador GGUF **Q3_K_S** (≈5,4 GiB de VRAM, 17-18 s por imagen;
+  la Q4 desborda la VRAM que deja Windows y tarda 2 min): `YAMACOA_FLUX_GGUF` para cambiarlo. Los
+  textos se codifican en CPU y el VAE decodifica en CPU. Modelos en la caché de Hugging Face (cuenta
+  con las condiciones de FLUX aceptadas).
+- El motor escribe `ilustracion: {escena (inglés), alt (español)}`; el estilo, la paleta de Yamacoa y
+  las prohibiciones (sin personas reconocibles, sin texto, sin banderas, nunca fotografía) los añade
+  `ciclo.mjs` (ESTILO). Siempre rotulada «Ilustración generada por IA» (§11.4).
+- Va tras el audio; si falla, la noticia sale sin imagen. WebP 1200×675 (10-25 KB) en
+  `estado/imagen/`, exportada con el audio al build y borrada con la noticia.
+- Reintentar las de un ciclo: `node ops/noticias/ciclo.mjs --reusar <id> --solo-imagen`.
+  Ciclo sin imágenes: `--sin-imagen`.
+
 ## Pendiente
-- Imágenes: hoy las noticias salen sin imagen (las fotos de los medios tienen derechos). Opciones:
-  gráfico de datos propio o ilustración IA rotulada (Workers AI / FLUX), §11.4.
 - Fuentes que exigen JavaScript o redes sociales verificadas: navegador headless (Obscura).
 - Cuentas de agencias (EFE, AP) por RSS directo en vez de vía Google Noticias.
