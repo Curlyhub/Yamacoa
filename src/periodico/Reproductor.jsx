@@ -31,6 +31,7 @@ export function ReproductorProvider({ children }) {
   const [cola, setCola] = useState([]);
   const [sonando, setSonando] = useState(false);
   const [t, setT] = useState({ actual: 0, total: 0 });
+  const [fallo, setFallo] = useState(false);
 
   const reproducir = useCallback((nueva, siguientes = []) => {
     const a = audio.current;
@@ -41,9 +42,12 @@ export function ReproductorProvider({ children }) {
       return;
     }
     setPista(nueva);
+    setFallo(false);
     a.src = nueva.audio;
-    a.currentTime = leerPos(nueva.id);
-    a.play().catch(() => {});
+    // Posición guardada; si ya estaba al final (o fuera del audio), desde el principio.
+    const pos = leerPos(nueva.id);
+    a.addEventListener("loadedmetadata", () => { if (pos > 0 && pos < (a.duration || 0) - 2) a.currentTime = pos; }, { once: true });
+    a.play().catch((e) => { if (e?.name !== "AbortError" && e?.name !== "NotAllowedError") setFallo(true); });
   }, [pista]);
 
   const alternar = useCallback(() => {
@@ -83,7 +87,8 @@ export function ReproductorProvider({ children }) {
         guardarPos(pista.id, a.currentTime);
       }
     };
-    const on = () => setSonando(true);
+    const error = () => { setFallo(true); setSonando(false); };
+    const on = () => { setSonando(true); setFallo(false); };
     const off = () => setSonando(false);
     const fin = () => {
       if (pista) guardarPos(pista.id, 0);
@@ -95,7 +100,9 @@ export function ReproductorProvider({ children }) {
     a.addEventListener("play", on);
     a.addEventListener("pause", off);
     a.addEventListener("ended", fin);
+    a.addEventListener("error", error);
     return () => {
+      a.removeEventListener("error", error);
       a.removeEventListener("timeupdate", tick);
       a.removeEventListener("loadedmetadata", tick);
       a.removeEventListener("play", on);
@@ -104,7 +111,7 @@ export function ReproductorProvider({ children }) {
     };
   }, [pista, cola, reproducir]);
 
-  const valor = { pista, cola, sonando, t, reproducir, alternar, saltar, buscar, cerrar };
+  const valor = { pista, cola, sonando, t, fallo, reproducir, alternar, saltar, buscar, cerrar };
   return (
     <Ctx.Provider value={valor}>
       {children}
@@ -200,6 +207,7 @@ function BarraReproductor() {
       <div className="yr-info">
         <div className="yr-tipo">{pista.tipo || "Audio"}</div>
         <div className="yr-tit">{pista.titulo}</div>
+        {r.fallo && <div className="yr-tiempo" role="alert" style={{ color: "var(--y-pod-acc)" }}>No se pudo cargar el audio. Inténtalo más tarde.</div>}
         <div className="yr-prog">
           <input type="range" min={0} max={t.total || 0} step={1} value={Math.min(t.actual, t.total || 0)}
             onChange={(e) => r.buscar(Number(e.target.value))} aria-label="Posición" />
