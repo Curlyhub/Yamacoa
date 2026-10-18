@@ -352,7 +352,11 @@ async function arrancar(){
 
 async function cargarPerfil(user){
   const { data, error } = await sb.from("perfiles").select("*").eq("id", user.id).single();
-  if (error || !data) { await sb.auth.signOut(); return vista("v-login"); }
+  // Sin fila en perfiles = cuenta de LECTOR (yamacoa.com/suscribete): el portal es de la redacción.
+  if (error || !data) {
+    await sb.auth.signOut(); vista("v-login");
+    return toast("Esta cuenta es de lector de yamacoa.com. El portal es solo para la redacción y colaboradores invitados.", "err");
+  }
   perfil = data;
   const dias = (Date.now() - new Date(data.pwd_actualizada).getTime()) / 86400000;
   if (data.bloqueado || dias > 30) { $("nav-sesion").hidden = true; return vista("v-rotar"); }
