@@ -8,10 +8,12 @@ import { fechaLarga } from "../periodico/feed";
 
 /* Carcasa unificada del periódico (handoff 2026-10, dirección 1a).
    Barra de fecha + cabecera (masthead grande en portada, compacta en el resto) +
-   navegación por tipología. En un expediente añade la franja con su etiqueta,
-   compartir y volver. Tokens en design/tokens.js. */
+   navegación por tipología. Fuera de la portada, una línea de ruta (Portada › sección)
+   para volver siempre; en un expediente, la franja con su etiqueta, compartir y volver.
+   Tokens en design/tokens.js. */
 
 const NAV = [
+  { to: "/", t: "Portada", end: true },
   { to: "/noticias", t: "Noticias" },
   { to: "/estudios", t: "Estudios" },
   { to: "/expedientes", t: "Expedientes" },
@@ -44,6 +46,11 @@ const CSS = `
 .yl-exp-acc a{font:500 11.5px var(--y-mono); color:var(--y-muted); text-decoration:none; padding:6px 13px;
   border-radius:999px; box-shadow:inset 0 0 0 1px var(--y-rule);}
 .yl-exp-acc a:hover{color:var(--y-ink); box-shadow:inset 0 0 0 1px var(--y-accent);}
+.yl-migas{display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:12px 0; border-bottom:1px solid var(--y-rule);
+  font:500 11px var(--y-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--y-subtle);}
+.yl-migas a{color:var(--y-muted); text-decoration:none;}
+.yl-migas a:hover{color:var(--y-accent);}
+.yl-migas [aria-current]{color:var(--y-ink);}
 .yl-main{flex:1; width:100%; padding-bottom:96px;}
 .yl-pie{border-top:3px solid var(--y-ink); padding:22px 0 40px; display:flex; gap:20px; flex-wrap:wrap;
   justify-content:space-between; font:500 11px var(--y-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--y-muted);}
@@ -55,6 +62,23 @@ const CSS = `
   .yl-nav a:not(.y-btn){font-size:14px;}
 }
 `;
+
+// Sección de cada ruta interior, para la línea de ruta. El detalle (noticia, episodio,
+// estudio) enlaza a su sección; la sección es la página actual.
+const SECCIONES = { noticias: "Noticias", estudios: "Estudios", expedientes: "Expedientes", podcast: "Podcast",
+  metodologia: "Metodología", suscribete: "Suscríbete", opinion: "Opinión" };
+
+function Migas({ path }) {
+  const [, sec, detalle] = path.split("/");
+  if (!SECCIONES[sec]) return null;
+  return (
+    <nav className="yl-migas" aria-label="Estás en">
+      <Link to="/">← Portada</Link>
+      <span aria-hidden="true">›</span>
+      {detalle ? <Link to={`/${sec}`}>{SECCIONES[sec]}</Link> : <span aria-current="page">{SECCIONES[sec]}</span>}
+    </nav>
+  );
+}
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
@@ -93,13 +117,15 @@ export default function Layout({ children }) {
             </Link>
             <nav className="yl-nav" aria-label="Secciones">
               {NAV.map((n) => (
-                <NavLink key={n.to} to={n.to}>{n.t}</NavLink>
+                <NavLink key={n.to} to={n.to} end={n.end}>{n.t}</NavLink>
               ))}
               <Link to="/suscribete" className="y-btn">Suscríbete</Link>
             </nav>
           </header>
+          {!portada && !temaActivo && <Migas path={path} />}
           {temaActivo && (
             <div className="yl-exp">
+              <Link to="/" className="yl-exp-tag" style={{ color: "var(--y-muted)", textDecoration: "none" }}>← Portada</Link>
               <span className="y-badge y-badge--dir">Expediente dirigido</span>
               <span className="yl-exp-tag" style={{ color: "var(--y-dir-ink)" }}>{temaActivo.etiqueta}</span>
               <span className="yl-exp-acc">
