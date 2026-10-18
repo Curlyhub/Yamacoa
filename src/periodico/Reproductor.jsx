@@ -125,6 +125,8 @@ export function BotonPlay({ pista, cola, oscuro = false, tam = 44, etiqueta }) {
   const activa = r?.pista?.id === pista.id;
   const sonando = activa && r.sonando;
   return (
+    <span className="y-play-caja">
+      {activa && <Anillo t={r.t} />}
     <button
       type="button"
       className={"y-play" + (oscuro ? " y-play--dark" : "")}
@@ -138,7 +140,15 @@ export function BotonPlay({ pista, cola, oscuro = false, tam = 44, etiqueta }) {
     >
       <Icono pausa={sonando} />
     </button>
+    </span>
   );
+}
+
+// Progreso alrededor del botón (tokens --y-prog-a/b). Decorativo: la posición exacta
+// la da la barra del reproductor, con su control accesible.
+function Anillo({ t }) {
+  const p = t.total ? Math.min(1, t.actual / t.total) : 0;
+  return <span className="y-play-anillo" style={{ "--p": p }} aria-hidden="true" />;
 }
 
 function Icono({ pausa }) {
@@ -164,7 +174,7 @@ const CSS = `
 .yr-tipo{font:500 9.5px var(--y-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--y-pod-acc);}
 .yr-tit{font-size:14px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .yr-prog{display:flex; align-items:center; gap:8px; margin-top:4px;}
-.yr-prog input{flex:1; accent-color:var(--y-pod-acc); height:3px;}
+.yr-prog input{flex:1; accent-color:var(--y-prog-a); height:3px;}
 .yr-tiempo{font:500 10px var(--y-mono); color:var(--y-pod-sec); white-space:nowrap;}
 .yr-skip{background:none; border:0; color:var(--y-pod-sec); font:600 11px var(--y-mono); cursor:pointer; padding:6px;}
 .yr-skip:hover{color:var(--y-pod-ink);}
@@ -179,10 +189,13 @@ function BarraReproductor() {
   return (
     <div className="yr-barra" role="region" aria-label="Reproductor">
       <style>{CSS}</style>
-      <button type="button" className="y-play" style={{ width: 40, height: 40 }} onClick={r.alternar}
-        aria-label={sonando ? "Pausar" : "Reanudar"}>
-        <Icono pausa={sonando} />
-      </button>
+      <span className="y-play-caja">
+        <Anillo t={t} />
+        <button type="button" className="y-play" style={{ width: 40, height: 40 }} onClick={r.alternar}
+          aria-label={sonando ? "Pausar" : "Reanudar"}>
+          <Icono pausa={sonando} />
+        </button>
+      </span>
       <button type="button" className="yr-skip" onClick={() => r.saltar(-15)} aria-label="Retroceder 15 segundos">↺15</button>
       <div className="yr-info">
         <div className="yr-tipo">{pista.tipo || "Audio"}</div>

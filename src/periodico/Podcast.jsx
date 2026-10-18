@@ -14,7 +14,7 @@ const CSS = `
 .ypo-on h1{color:var(--y-pod-ink); margin:12px 0 20px;}
 .ypo-onda{display:flex; align-items:center; gap:3px; height:64px; margin:8px 0 18px;}
 .ypo-onda i{flex:1; border-radius:2px; background:rgba(252,249,244,.25);}
-.ypo-onda i.on{background:var(--y-pod-acc);}
+.ypo-onda i.on{background:color-mix(in oklch, var(--y-prog-a), var(--y-prog-b) var(--k));}
 .ypo-caps{background:var(--y-surface); border-radius:28px; padding:22px; box-shadow:var(--y-shadow);}
 .ypo-cap{display:grid; grid-template-columns:26px 1fr auto; gap:10px; width:100%; text-align:left; background:none; border:0;
   border-bottom:1px solid var(--y-rule); padding:12px 0; cursor:pointer; font:600 14px var(--y-font); color:var(--y-ink);}
@@ -45,7 +45,12 @@ export function Onda({ p }) {
   const frac = activa && r.t.total ? r.t.actual / r.t.total : 0;
   return (
     <div className="ypo-onda" aria-hidden="true">
-      {barras.map((v, i) => <i key={i} className={i / barras.length < frac ? "on" : ""} style={{ height: `${v * 100}%` }} />)}
+      {/* Lo escuchado se tiñe naranja → turquesa, como el anillo del botón: turquesa en el frente. */}
+      {barras.map((v, i) => {
+        const on = i / barras.length < frac;
+        const k = on ? Math.round((i / Math.max(1, Math.ceil(frac * barras.length) - 1)) * 100) : 0;
+        return <i key={i} className={on ? "on" : ""} style={{ height: `${v * 100}%`, "--k": `${k}%` }} />;
+      })}
     </div>
   );
 }

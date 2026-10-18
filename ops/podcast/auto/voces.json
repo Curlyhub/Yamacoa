@@ -1,0 +1,26 @@
+{
+  "_nota": "Voces de los podcasts automáticos (VoxCPM2). Los WAV de referencia, su transcripción y el detalle del consentimiento viven FUERA del repo (~/bohio/yamacoa-tts/voces/: referencias.json y CONSENTIMIENTO.md): son audio y texto privados de personas reales y nunca se versionan. Una voz clonada necesita constancia de origen y consentimiento (CLAUDE.md §11.7): `origen` y `definitivas: true` solo entonces. Sin referencia se usa `diseno` (voz descrita, sin clonar a nadie), solo para ensayos.",
+  "definitivas": true,
+  "voces": {
+    "A": {
+      "etiqueta": "Presentadora",
+      "referencia": "~/bohio/yamacoa-tts/voces/mujer_1.wav",
+      "texto_referencia_de": {
+        "fichero": "~/bohio/yamacoa-tts/voces/referencias.json",
+        "clave": "mujer_1"
+      },
+      "origen": "Persona con consentimiento comunicado por el editor el 2026-10-18; detalle en CONSENTIMIENTO.md (fuera del repo).",
+      "diseno": "(Mujer cubana de La Habana, de unos treinta y cinco años, voz cálida y clara, acento cubano habanero, ritmo de locutora de radio, tono sereno)"
+    },
+    "B": {
+      "etiqueta": "Presentador",
+      "referencia": "~/bohio/yamacoa-tts/voces/hombre_1.wav",
+      "texto_referencia_de": {
+        "fichero": "~/bohio/yamacoa-tts/voces/referencias.json",
+        "clave": "hombre_1"
+      },
+      "origen": "Persona con consentimiento comunicado por el editor el 2026-10-18; detalle en CONSENTIMIENTO.md (fuera del repo).",
+      "diseno": "(Hombre cubano de Santiago de Cuba, de unos cuarenta y cinco años, voz grave y pausada, acento cubano oriental, tono de presentador de noticias)"
+    }
+  }
+}

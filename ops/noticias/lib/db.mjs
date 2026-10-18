@@ -69,6 +69,12 @@ function supabase(base, key) {
       try { return await q("noticias_series_puntos?select=serie,fecha,valor,fuente,url&order=fecha.asc"); }
       catch (e) { if (/404|PGRST205|does not exist/.test(e.message)) return []; throw e; }
     },
+    // Podcast automático (ops/podcast/auto). Sin la tabla, el feed sale vacío.
+    async episodios(estado) {
+      try { return await q(`podcast_episodios?order=publicado.desc.nullslast,creado.desc${estado ? `&estado=eq.${estado}` : ""}`); }
+      catch (e) { if (/404|PGRST205|does not exist/.test(e.message)) return []; throw e; }
+    },
+    guardarEpisodio: (fila) => q("podcast_episodios?on_conflict=id", { method: "POST", body: fila, prefer: "resolution=merge-duplicates" }),
     async insertarPuntos(filas) {
       if (!filas.length) return;
       try { await q("noticias_series_puntos?on_conflict=serie,fecha", { method: "POST", body: filas, prefer: "resolution=merge-duplicates" }); }
@@ -128,6 +134,14 @@ function local(fichero) {
       guardar(db);
     },
     async puntosSeries() { return leer().series || []; },
+    async episodios(estado) {
+      return (leer().episodios || []).filter((e) => !estado || e.estado === estado)
+        .sort((a, b) => String(b.publicado || b.creado).localeCompare(String(a.publicado || a.creado)));
+    },
+    async guardarEpisodio(fila) {
+      const db = leer(); db.episodios = (db.episodios || []).filter((e) => e.id !== fila.id);
+      db.episodios.push({ creado: new Date().toISOString(), ...fila }); guardar(db);
+    },
     async insertarPuntos(filas) {
       const db = leer(); db.series = (db.series || []).filter((p) => !filas.some((f) => f.serie === p.serie && f.fecha === p.fecha));
       db.series.push(...filas); guardar(db);

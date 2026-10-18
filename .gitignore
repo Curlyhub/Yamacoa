@@ -50,3 +50,8 @@ ops/noticias/estado/
 ops/noticias/ciclos/
 public/audio/
 public/data/feed/noticias.json
+
+# Podcast automático: material de cada episodio (MP3, voces, guion) y transcripciones exportadas
+ops/podcast/auto/episodios/
+public/data/feed/podcast/
+public/data/feed/podcast.json

@@ -15,6 +15,10 @@ export const T = {
   bg: "#efe8df",
   glowPeach: "#f6d9c6",
   glowSage: "#d5e3da",
+  // Progreso de audio: el degradado del fondo (melocotón → salvia), saturado para que se lea
+  // como trazo fino sobre cualquier superficie. Solo para interacción, nunca para datos.
+  progA: "#e07a45",
+  progB: "#2fa596",
   surface: "#fcf9f4",
   surface2: "#f5efe7",
   ink: "#1f1a16",
@@ -44,6 +48,7 @@ export const TOKENS_CSS = `
   --y-bg:${T.bg}; --y-surface:${T.surface}; --y-surface-2:${T.surface2};
   --y-ink:${T.ink}; --y-ink-2:${T.ink2}; --y-muted:${T.muted}; --y-subtle:${T.subtle};
   --y-accent:${T.accent}; --y-dark:${T.dark}; --y-rule:${T.rule};
+  --y-prog-a:${T.progA}; --y-prog-b:${T.progB};
   --y-auto-bg:${T.autoBg}; --y-auto-ink:${T.autoInk}; --y-auto-head:${T.autoHead};
   --y-dir-bg:${T.dirBg}; --y-dir-ink:${T.dirInk}; --y-dir-head:${T.dirHead};
   --y-pod-bg:${T.podBg}; --y-pod-ink:${T.podInk}; --y-pod-acc:${T.podAcc}; --y-pod-sec:${T.podSec};
@@ -106,6 +111,13 @@ a.y-card:hover{box-shadow:var(--y-shadow-hover); transform:translateY(-1px);}
 .y-play{flex-shrink:0; width:44px; height:44px; border-radius:50%; border:0; cursor:pointer;
   display:grid; place-items:center; background:var(--y-surface); color:var(--y-dark);}
 .y-play--dark{background:var(--y-dark); color:var(--y-surface);}
+/* Anillo de progreso del botón: naranja → turquesa a medida que avanza el audio. */
+.y-play-caja{position:relative; display:inline-grid; place-items:center; flex-shrink:0; border-radius:50%;}
+.y-play-anillo{position:absolute; inset:-5px; border-radius:50%; pointer-events:none;
+  background:conic-gradient(in oklch, var(--y-prog-a) 0deg, var(--y-prog-b) calc(var(--p, 0) * 360deg),
+    rgba(150,125,100,.25) calc(var(--p, 0) * 360deg));
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));
+  mask:radial-gradient(farthest-side, transparent calc(100% - 3.5px), #000 calc(100% - 3px));}
 
 .y-vida{height:3px; border-radius:2px; background:rgba(60,40,20,.1); overflow:hidden; margin-top:10px;}
 .y-vida > i{display:block; height:100%; background:var(--y-accent);}

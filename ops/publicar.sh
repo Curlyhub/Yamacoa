@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Publica Yamacoa en Cloudflare Pages (Direct Upload) con las noticias vigentes.
+# Publica Yamacoa en Cloudflare Pages (Direct Upload) con las noticias vigentes y los episodios de podcast.
 #
 # El build NUNCA sale del árbol de trabajo (puede tener cambios a medias): sale de la
 # rama `publicacion`, en un worktree aparte, más el feed de noticias exportado desde
@@ -54,6 +54,8 @@ ln -sfn "$REPO/node_modules" "$WT/node_modules"
 # Noticias vigentes (desde la BD) + su audio, dentro de public/ del worktree.
 : "${SUPABASE_SERVICE_ROLE_KEY:?falta SUPABASE_SERVICE_ROLE_KEY (~/.config/yamacoa/noticias.env): sin ella se exportaría la BD local de ensayo}"
 node "$REPO/ops/noticias/ciclo.mjs" --solo-exportar --destino "$WT/public"
+# Episodios de podcast publicados (BD) y sus transcripciones; el MP3 está en R2.
+node "$REPO/ops/podcast/auto/episodio.mjs" --solo-exportar --destino "$WT/public"
 
 (cd "$WT" && CI=false npm run build --silent)
 test -s "$WT/build/index.html"
