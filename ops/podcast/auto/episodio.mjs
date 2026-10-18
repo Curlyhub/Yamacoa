@@ -10,7 +10,7 @@
 //   5. mezcla    ffmpeg: pausas, música si la hay (musica/entrada.*, musica/salida.*),
 //                −16 LUFS, MP3 mono 96 kbps; capítulos y transcripción con tiempos exactos
 //   6. estado    ensayo (voces no definitivas) · revision (conversación: verja humana) ·
-//                listo (falta R2) · publicado (MP3 en R2 + feed en el siguiente despliegue)
+//                listo (sin destino de subida) · publicado (MP3 en tts.yamacoa.com/podcast + feed)
 //
 // Uso:
 //   node ops/podcast/auto/episodio.mjs --formato al-dia            (cron, tras el ciclo de las 18:00)
@@ -33,9 +33,15 @@ import { paraOido, cifras } from "./lib/oral.mjs";
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(AQUI, "../../..");
 const EPISODIOS = path.join(AQUI, "episodios");
-const MEDIA = (process.env.YAMACOA_MEDIA || "https://media.yamacoa.com").replace(/\/+$/, "");
+// Dónde viven los MP3: el servidor propio de tts.yamacoa.com (nginx sirve /podcast/), al que
+// el ciclo sube por rsync con una clave dedicada. Para pasar a R2 basta YAMACOA_R2_BUCKET y
+// YAMACOA_MEDIA=https://media.yamacoa.com (la web solo ve la URL).
+const MEDIA = (process.env.YAMACOA_MEDIA || "https://tts.yamacoa.com").replace(/\/+$/, "");
+// La clave solo puede escribir .mp3 en /var/www/yamacoa-media/podcast (orden forzada en el servidor).
+const DESTINO = process.env.YAMACOA_MEDIA_DESTINO ?? "<usuario>@<servidor>:";
+const CLAVE = process.env.YAMACOA_MEDIA_CLAVE || `${process.env.HOME}/.ssh/yamacoa_media`;
 const PY = process.env.YAMACOA_TTS_PY || "/home/<usuario>/bohio/yamacoa-tts/.venv/bin/python";
-const BUCKET = process.env.YAMACOA_R2_BUCKET || ""; // vacío = R2 sin configurar: el episodio queda «listo»
+const BUCKET = process.env.YAMACOA_R2_BUCKET || ""; // alternativa: R2
 const MINUTOS = { "al-dia": Number(process.env.YAMACOA_PODCAST_MIN || 6), conversacion: 12 };
 
 const args = process.argv.slice(2);
@@ -206,8 +212,20 @@ function construir(dir, { id, slug, formato, guion, turnos, marcas, voces, fecha
   return { pieza, transcripcion };
 }
 
+// Sube el MP3 y comprueba que se sirve. Sin destino configurado, el episodio queda «listo».
+function subir(dir, slug) {
+  if (BUCKET) return subirR2(dir, slug);
+  if (!DESTINO) return false;
+  const ssh = `ssh -i ${CLAVE} -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20`;
+  const r = spawnSync("rsync", ["-t", "--chmod=F644", "-e", ssh, path.join(dir, "episodio.mp3"), `${DESTINO}${slug}.mp3`], { encoding: "utf8", timeout: 10 * 60000 });
+  if (r.status !== 0) throw new Error(`subida por rsync: ${(r.stderr || "").slice(-400)}`);
+  const c = spawnSync("curl", ["-sI", "-o", "/dev/null", "-w", "%{http_code}", `${MEDIA}/podcast/${slug}.mp3`], { encoding: "utf8" });
+  if (c.stdout !== "200") throw new Error(`subido, pero ${MEDIA}/podcast/${slug}.mp3 responde ${c.stdout}`);
+  log(`subido: ${MEDIA}/podcast/${slug}.mp3`);
+  return true;
+}
+
 function subirR2(dir, slug) {
-  if (!BUCKET) return false;
   const r = spawnSync("npx", ["--no-install", "wrangler", "r2", "object", "put", `${BUCKET}/podcast/${slug}.mp3`,
     "--file", path.join(dir, "episodio.mp3"), "--content-type", "audio/mpeg", "--remote"], { cwd: REPO, encoding: "utf8" });
   if (r.status !== 0) throw new Error(`subida a R2: ${(r.stderr || r.stdout || "").slice(-400)}`);
@@ -239,9 +257,9 @@ async function main() {
     const e = (await db.episodios()).find((x) => x.id === aprobar || x.slug === aprobar);
     if (!e) throw new Error(`no existe el episodio ${aprobar}`);
     if (e.estado !== "revision" && e.estado !== "listo") throw new Error(`el episodio está en «${e.estado}», no en revisión`);
-    const subido = subirR2(path.join(EPISODIOS, e.id), e.slug);
+    const subido = subir(path.join(EPISODIOS, e.id), e.slug);
     await db.guardarEpisodio({ ...e, estado: subido ? "publicado" : "listo", ...(subido ? { publicado: new Date().toISOString() } : {}) });
-    log(subido ? `publicado ${e.id}: redespliega con ops/publicar.sh` : `aprobado ${e.id}: queda «listo» hasta configurar R2 (YAMACOA_R2_BUCKET)`);
+    log(subido ? `publicado ${e.id}: redespliega con ops/publicar.sh` : `aprobado ${e.id}: queda «listo» (sin destino de subida configurado)`);
     return;
   }
 
@@ -294,10 +312,10 @@ async function main() {
     return;
   }
   let estado = !vocesListas ? "ensayo" : formato === "conversacion" ? "revision" : "listo";
-  if (estado === "listo" && subirR2(dir, slug)) estado = "publicado";
+  if (estado === "listo" && subir(dir, slug)) estado = "publicado";
   await db.guardarEpisodio({ id, slug, formato, estado, titulo: guion.titulo, pieza, guion, transcripcion,
     ...(estado === "publicado" ? { publicado: pieza.publicado } : {}) });
-  log(`estado: ${estado}${estado === "listo" ? " (falta R2: YAMACOA_R2_BUCKET)" : estado === "revision" ? ` (aprobar: --aprobar ${id})` : ""}`);
+  log(`estado: ${estado}${estado === "listo" ? " (sin destino de subida)" : estado === "revision" ? ` (aprobar: --aprobar ${id})` : ""}`);
   if (estado === "publicado" && flag("--desplegar")) {
     const r = spawnSync("bash", [path.join(REPO, "ops/publicar.sh"), "--motivo", `podcast ${id}`], { stdio: "inherit" });
     if (r.status !== 0) throw new Error(`publicar.sh terminó con ${r.status}`);

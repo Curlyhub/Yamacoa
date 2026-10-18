@@ -82,3 +82,17 @@ ops/podcast/procesar.sh (cron 15 min, Oracle o local)
   sobre el original.
 - La transcripción de whisper no separa hablantes. En `/podcast-publicar` se asignan
   con ayuda del agente `productor-podcast` y confirmación humana.
+
+## Podcast automático: dónde viven los MP3 (2026-10-18)
+
+En el servidor propio de `tts.yamacoa.com` (Oracle, Ubuntu 20.04, el mismo que Kokoro):
+- nginx sirve `/podcast/` desde `/var/www/yamacoa-media/podcast/` (bloque añadido a
+  `/etc/nginx/sites-available/yamacoa-tts`; copia previa en `yamacoa-tts.bak-20261018`). Rangos
+  (saltos de capítulo) y CORS solo para `https://yamacoa.com`.
+- El ciclo sube cada episodio con `rsync` usando la clave dedicada `~/.ssh/yamacoa_media` (sin
+  contraseña, para el cron). En `~ubuntu/.ssh/authorized_keys` esa clave lleva
+  `command="/usr/local/bin/yamacoa-subida",restrict`: solo puede ESCRIBIR un `.mp3` en esa carpeta
+  (ni sesión, ni lectura, ni otras rutas). Copia previa: `authorized_keys.bak-20261018`.
+- Mantenimiento del servidor: con tu acceso habitual, no con esta clave.
+- Riesgo asumido: si cae el servidor, caen a la vez Kokoro y el archivo de podcasts. Para pasar a
+  R2: `YAMACOA_R2_BUCKET` + `YAMACOA_MEDIA=https://media.yamacoa.com` y volver a subir los MP3.
