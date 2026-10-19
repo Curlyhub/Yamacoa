@@ -1,3 +1,6 @@
+// SUSTITUIDO (2026-10-19) por scripts/og-tarjeta.mjs (piel del periódico, tipografías reales).
+// No ejecutar: rehace TODAS las tarjetas con el tema oscuro de julio.
+//
 // Genera public/og-<slug>.png (1200x630) por tema, a partir de src/temas/registry.js
 // (fuente única). Ejecutar a mano tras añadir o editar temas:
 //

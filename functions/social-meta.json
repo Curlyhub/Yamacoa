@@ -2,6 +2,7 @@
   "/convocatoria-11j": {
     "t": "Mañana es 11J",
     "d": "Quinto aniversario del 11J: dónde y a qué hora sale el mundo a la calle por Cuba, con cada convocatoria en su nivel de verificación",
+    "img": "https://yamacoa.com/og-convocatoria-11j.png",
     "body": {
       "parrafos": [
         "Página especial de convocatoria por el quinto aniversario de las protestas del 11 de julio de 2021 en Cuba. Reúne las manifestaciones convocadas para el 11 de julio de 2026 en ciudades de América y Europa, cada una con su nivel de verificación explícito: cuatro confirmadas por prensa independiente (dos en Miami, una en Madrid y una en Washington D. C.), cuatro reportadas por usuarios sin confirmación independiente de prensa (Montevideo, West New York, West Palm Beach y Barcelona, la segunda y la tercera con volante del convocante), tres plausibles sin confirmar (Houston, Santiago de Chile y Montreal) y dos especulativas (Gijón y un Kornmarkt alemán sin ciudad identificada). Incluye la reconstrucción de la propagación de las protestas originales del 11 y 12 de julio de 2021, desde San Antonio de los Baños hasta más de cincuenta localidades de las quince provincias y la Isla de la Juventud; las cifras de represión al cierre del primer semestre de 2026 según Prisoners Defenders, el Consorcio Justicia, Justicia 11J y el OCDH; el caso de Luis Manuel Otero Alcántara, con condena vencida y paradero desconocido, denunciado como desaparición forzada por Amnistía Internacional; y una primera cohorte nominal de treinta personas que siguen presas o bajo medidas penales cinco años después del 11J."
@@ -27,6 +28,7 @@
   "/angola": {
     "t": "Cuba en Angola: la sangre y el negocio",
     "d": "Medio siglo de una misma operación: el ejército (1975-1991) y los médicos (2007-hoy); quién cobró, quién pagó y cuántos no volvieron",
+    "img": "https://yamacoa.com/og-angola.png",
     "body": {
       "parrafos": [
         "Expediente sobre la presencia cubana en Angola en sus dos actos: la intervención militar de 1975 a 1991 (Operación Carlota: 377.033 militares y unos 50.000 cooperantes civiles según la cifra oficial dada por Raúl Castro en 1991) y el negocio de exportación de servicios profesionales reactivado desde 2007 y todavía activo (1.243 colaboradores de salud en octubre de 2024 según el ministro de Salud cubano). Documenta la divergencia entre las cifras oficiales de muertos (2.016, 2.077 y 2.289 según el recuento y la fecha) y los estimados independientes (1.400 según la CIA ya en 1978; alrededor de 10.000 según el general desertor Rafael del Pino y estimados estadounidenses de 1987); la economía de la intervención (pagos estimados de 300 a 600 millones de dólares anuales a La Habana mientras el recluta cobraba 7 pesos cubanos al mes); y la economía de la misión médica (Angola paga unos 5.000 dólares mensuales por médico, confirmado por la ministra de Salud angoleña en 2020, mientras el profesional recibe una fracción mínima y el resto lo retiene el Estado cubano vía Antex S.A., empresa del conglomerado militar GAESA). Incluye la dimensión angoleña (más de 500.000 muertos de guerra civil, decenas de miles de amputados por minas) y una sección explícita de alegaciones no corroboradas (armas químicas, saqueo de marfil y diamantes, trueque petróleo por servicios) que la verificación no permitió asentar como hechos."
@@ -208,6 +210,7 @@
   "/medidas-176": {
     "t": "Las 176 medidas: anatomía de un ciclo",
     "d": "Sesenta y seis años de aperturas anunciadas y reversiones ejecutadas, medidos contra los países que no revirtieron",
+    "img": "https://yamacoa.com/og-medidas-176.png",
     "body": {
       "parrafos": [
         "Análisis contrafactual del paquete de 176 transformaciones aprobado en junio de 2026: cada eje tiene un antecedente homólogo desde 1959 con resultado observable, y la trayectoria cubana se contrasta con Vietnam, Costa Rica y Singapur."
@@ -220,6 +223,7 @@
   "/triana": {
     "t": "Triana en cifras",
     "d": "Anatomía de una entrevista reformista: dónde acierta, dónde falla la aritmética y a quién se deja de nombrar",
+    "img": "https://yamacoa.com/og-triana.png",
     "body": {
       "parrafos": [
         "Disección de una entrevista de ~67 minutos con el economista Juan Triana sobre el paquete de reformas cubano. Diagnóstico general sólido; precisión cuantitativa y atribución causal, mucho más débiles."
@@ -232,6 +236,7 @@
   "/envejecimiento": {
     "t": "El rápido envejecimiento poblacional y la diáspora en Cuba",
     "d": "Cómo el éxodo migratorio deformó la pirámide poblacional cubana, comparado con un escenario sin él",
+    "img": "https://yamacoa.com/og-envejecimiento.png",
     "body": {
       "parrafos": [
         "Cuba atraviesa la crisis demográfica más aguda de América Latina: envejecimiento acelerado, natalidad en mínimos históricos y un éxodo migratorio que golpea, sobre todo, a la población en edad laboral y reproductiva. Según la Oficina Nacional de Estadísticas e Información (ONEI), la población residente cayó a 9.748.532 habitantes a finales de 2024, y a un estimado de alrededor de 9,4 millones hacia finales de 2025: un descenso sostenido por cuarto año consecutivo. El demógrafo independiente Juan Carlos Albizu-Campos sitúa la población efectiva muy por debajo de esa cifra oficial: 8,62 millones en 2023 y 8,025 millones en 2024, una divergencia de método (población de derecho frente a población efectivamente presente en la isla) que conviene no leer como un error, sino como dos formas distintas de contar.",
@@ -248,6 +253,7 @@
   "/cayo-romano": {
     "t": "Cayo Romano vs Fondo Soberano Minero",
     "d": "Qué vale de verdad el subsuelo cubano, y qué se cede a perpetuidad: el plan C40 medido contra un fondo soberano",
+    "img": "https://yamacoa.com/og-cayo-romano.png",
     "body": {
       "parrafos": [
         "El expediente contrasta dos estrategias para financiar una hipotética transición cubana: el proyecto Cayo Romano, difundido por MovimientoC40, que propone ceder territorio y recursos a Estados Unidos, y la alternativa de retener el subsuelo bajo un fondo soberano. El plan C40 contempla entregar a perpetuidad el cayo de 777 km², equivalente al 0,71% de los 109.884 km² de superficie terrestre del país, y conservar el 30% de la producción petrolera de forma indefinida una vez saldada la deuda, con derechos exclusivos de explotación. El núcleo del análisis es la revisión de las cifras del propio proyecto. C40 declara un valor total de 635.660 millones de dólares. El contraste con fuentes geológicas sitúa el bruto verificable en torno a 170.660 millones, un factor de inflación de 3,7. La distorsión es doble y contradictoria: el petróleo aparece inflado unas 56 veces, porque se valoran 7.000 millones de barriles a 80 dólares como si fueran reservas cuando solo unos 124 millones están probados, mientras el níquel queda subestimado unas 5 veces (1 Mt frente a los 5,5 Mt estimados por el USGS) y el cobalto a la mitad (250 kt frente a 500 kt, tercera reserva mundial). Zinc, cromo y oro se mantienen en órdenes de magnitud plausibles. Esa incoherencia interna, que exagera en una dirección y minimiza en la otra, sugiere que la tabla no procede de una valoración geológica. A ello se suma un error metodológico de fondo: multiplicar reservas por precio spot ignora costes de extracción, recuperación metalúrgica y descuento temporal. El recurso offshore de la Cuenca Norte —4.600 millones de barriles técnicamente recuperables según el USGS en 2004, unos 368.000 millones de dólares— es condicional y no descubierto: los pozos perforados por Repsol en 2012 resultaron secos. La cascada de valoración desciende del bruto teórico al valor presente neto de los proyectos comercialmente viables (50.000 a 180.000 millones) y de ahí a la renta soberana efectivamente capturable en 30 a 50 años: entre 20.000 y 80.000 millones. El expediente inventaria nueve proyectos con su estado real, desde los que producen (Moa JV de Sherritt y GeoMinera, Che Guevara de Cubaníquel, Castellanos de Emincar, la franja petrolera Habana-Matanzas) hasta los que solo están en desarrollo o exploración (La Demajagua, El Cobre, las cromitas de Camagüey). Cuantifica además las pérdidas de la cesión: unos 24.000 millones por el 30% petrolero perpetuo, 9.000 millones por la pérdida de competencia en subastas mineras y 12.000 millones de base fiscal por exenciones. Y confronta los costes de transición declarados por C40 —15.000 millones de intervención militar, 75.000 de reconstrucción, 35.000 de deuda externa— con referencias históricas: Irak superó los 2 billones y una reconstrucción realista a 10-15 años se situaría entre 150.000 y 300.000 millones. Un modelo de diferencias en diferencias proyecta tres trayectorias del PIB entre 2026 y 2041 bajo el supuesto de una transición democrática en 2027, con el statu quo como grupo de control. Todas las proyecciones son escenarios contrafactuales parametrizados, no predicciones."
@@ -260,6 +266,7 @@
   "/coraje-dividido": {
     "t": "Coraje dividido",
     "d": "El valor de un pueblo y la fragmentación de su exilio, medidos",
+    "img": "https://yamacoa.com/og-coraje-dividido.png",
     "body": {
       "parrafos": [
         "Cuba combina un rechazo al régimen que roza la unanimidad medible con una oposición que carece de estructura para canalizarlo. La mayor encuesta independiente realizada en la isla —coalición de más de veinte medios, 42.263 respuestas, del 24 de abril al 1 de mayo de 2026, no probabilística— registró más del 94% de insatisfacción con el sistema político. En junio de 2026 el Observatorio Cubano de Conflictos documentó 107 protestas presenciales, récord absoluto de la serie (+38,2% interanual), y el 89% de quienes participaron no pertenecía a ninguna organización. Este expediente mide las dos mitades de esa paradoja: el valor, operacionalizado como protesta bajo coste represivo, y la desunión, operacionalizada mediante el Índice de Fragmentación del Exilio (IFE), una elaboración propia con metodología explícita. Cuba puntúa 8,8 sobre 10 en el IFE, más cerca del exilio iraní que de cualquier transición lograda. El contraste comparado —Polonia 1989, Chile 1988, Sudáfrica 1994, frente a Myanmar, Irán y Eritrea— señala la unidad del exilio como la variable que separa las transiciones logradas de las autocracias que persisten: todas las del cuadrante ganador compartieron mando único, financiación disciplinada y un puente operativo entre isla y exilio. En el lado del exilio, el 79% de los cubanoamericanos de Florida apoya una intervención militar (Bendixen & Amandi + Tarrance para Miami Herald, n=800, ±3,5), mientras el precedente del Concilio Cubano —más de 130 organizaciones agrupadas en 1995 y aplastadas en cuatro meses— marca el techo histórico de la coordinación interna. Los bloques contrafactuales son escenarios parametrizados, no predicciones."
@@ -272,6 +279,7 @@
   "/desacreditacion": {
     "t": "La maquinaria de desacreditar",
     "d": "Cómo se fabrica el descrédito de un opositor cubano: etiquetado coordinado, patologización pseudo-clínica y hostigamiento mediático, desde el oficialismo y desde el propio exilio.",
+    "img": "https://yamacoa.com/og-desacreditacion.png",
     "body": {
       "parrafos": [
         "Este expediente documenta un patrón, no un diagnóstico: la desacreditación coordinada de opositores cubanos que no se alinean con la ideología dominante de su entorno, ya sea el oficialismo dentro de la isla o sectores del propio exilio y la diáspora. No es un fenómeno nuevo ni exclusivo de un bando: es una táctica con historia documentada y con vocabulario reconocible que se repite contra blancos distintos por la misma razón, restarles agencia y credibilidad para que su testimonio deje de pesar políticamente.",
@@ -288,6 +296,7 @@
   "/sucesion": {
     "t": "Sucesión sin urnas",
     "d": "Tres hombres, un aparato: cómo se ha transferido el poder en Cuba desde 1959 — y por qué un hilo viral que lo explica con teología y psicología usa la herramienta equivocada.",
+    "img": "https://yamacoa.com/og-sucesion.png",
     "body": {
       "parrafos": [
         "Este expediente documenta un hecho institucional, no una tesis psicológica: cómo se ha transferido el poder en Cuba en tres ocasiones desde 1959, y qué se mantuvo intacto cada vez que cambió el nombre en la cúpula. Nace de un hilo viral que intentaba explicar el \"caudillismo\" latinoamericano —agrupando a Fidel Castro junto a Perón, Chávez, Maduro, Rosas y Santa Anna bajo una sola categoría psicológica— mediante el \"Locus de Control\" de Julian Rotter y la tesis de Max Weber sobre protestantismo y capitalismo. Ninguna de esas dos herramientas explica lo que de verdad ocurrió en Cuba, y este expediente lo demuestra con los hechos, no con el armazón teórico.",
@@ -304,6 +313,7 @@
   "/protesta-solitaria": {
     "t": "Protestar solo",
     "d": "El caso de Javier Ernesto Martín Gutiérrez, campeón cubano de MMA encarcelado tras nueve días de protesta pacífica frente a su casa, y el cargo de \"desórdenes públicos\" usado contra manifestantes solitarios en Cuba entre 2024 y 2026.",
+    "img": "https://yamacoa.com/og-protesta-solitaria.png",
     "body": {
       "parrafos": [
         "Javier Ernesto Martín Gutiérrez, conocido como \"Spiderman\" por su carrera como campeón cubano de artes marciales mixtas, permanece en prisión provisional en el Combinado del Este, la prisión de máxima seguridad de La Habana. Su caso arrancó el 24 de abril de 2026, cuando fue detenido tras protestar en solitario, día tras día, frente a su vivienda en el municipio de Marianao. Según las fuentes consultadas —14ymedio, Martí Noticias y CiberCuba— la protesta se extendió entre ocho y nueve días según la fuente, y denunciaba de forma explícita los apagones, la escasez y el deterioro de la vida cotidiana en Cuba.",
@@ -320,6 +330,7 @@
   "/sulmira": {
     "t": "La voz que le prestaron",
     "d": "Sulmira Martínez Pérez, \"Salem Cuba\", 21-22 años, condenada a 5 años de prisión por memes y llamados pacíficos a protestar en Facebook: la autoinculpación forzada que la televisión estatal transmitió como si fuera su propia voz.",
+    "img": "https://yamacoa.com/og-sulmira.png",
     "body": {
       "parrafos": [
         "Sulmira Martínez Pérez, conocida en redes como \"Salem Cuba\" o \"Salem Cuba Censura\", tenía entre 21 y 22 años cuando fue detenida en La Habana. Usaba su cuenta de Facebook para publicar memes, mensajes críticos del gobierno cubano, llamados pacíficos a protestar y opiniones disidentes; ninguno de los cargos formales que enfrenta incluye un solo acto de violencia.",
@@ -338,6 +349,7 @@
   "/normas": {
     "t": "Reconstruir la norma",
     "d": "Marginalidad, desciudadanización y las condiciones materiales del cambio cívico en Cuba",
+    "img": "https://yamacoa.com/og-normas.png",
     "body": {
       "parrafos": [
         "Este expediente somete a examen una frase de circulación amplia sobre Cuba: que al cubano se le perdió la cultura cívica. La rechaza como explicación y propone en su lugar una formulación operativa. Un entorno donde decir la verdad tiene coste, cooperar con desconocidos es arriesgado, el oportunismo es rentable, la participación no produce consecuencias visibles y el discurso público contradice la experiencia cotidiana, produce un repertorio conductual adaptativo: doble moral, cinismo defensivo, desconfianza fuera del círculo familiar, repliegue en la supervivencia privada y percepción de nula eficacia colectiva. La diferencia entre ambas formulaciones no es retórica: la primera señala un defecto de carácter y la segunda señala un conjunto de incentivos, que es lo único sobre lo que se puede intervenir.",
@@ -356,6 +368,7 @@
   "/auditar": {
     "t": "Auditar a los aliados",
     "d": "Evaluación crítica de la Propuesta para transformar la economía cubana",
+    "img": "https://yamacoa.com/og-auditar.png",
     "body": {
       "parrafos": [
         "Auditar a los aliados es una evaluación crítica de la Propuesta para transformar la economía cubana, un documento de 118 páginas publicado en versión 1 el 20 de julio de 2026 por cinco economistas cubanos: Mauricio De Miranda Parrondo, Pedro Monreal González, Omar Everleny Pérez Villanueva, Ricardo Torres Pérez y Pavel Vidal Alejandro. La propuesta plantea una economía social de mercado sustentada en un Estado democrático de derecho y organiza una primera fase de 3 años con 20 objetivos repartidos en 6 bloques: estabilización fiscal, monetaria, de precios y cambiaria; emergencia energética; agricultura y turismo; empresa privada, empresas estatales y GAESA; apertura comercial, inversión y reinserción financiera; y protección social, reforma laboral, administración pública y seguridad. Descansa sobre cuatro supuestos, tres de ellos declarados críticos: avance en la negociación con Estados Unidos, financiamiento internacional de emergencia y condiciones políticas internas para sustituir el modelo.",
@@ -374,6 +387,7 @@
   "/cascada": {
     "t": "Del subsuelo al fondo: cuánto vale realmente el níquel cubano",
     "d": "Anclaje empírico del multiplicador VAN/in-situ a partir del único activo minero cubano con estudio de factibilidad auditado",
+    "img": "https://yamacoa.com/og-cascada.png",
     "body": {
       "parrafos": [
         "Este expediente mide la distancia entre dos magnitudes que el debate público suele tratar como si fueran la misma: el valor bruto del contenido metálico que hay en el subsuelo y el valor que ese subsuelo puede llegar a producir de verdad. La primera se obtiene multiplicando toneladas de metal por su precio de mercado y no es un valor de activo. Entre una y otra median la recuperación metalúrgica, el coste operativo, el capital, el descuento temporal y la titularidad.",
@@ -394,6 +408,7 @@
   "/fondo": {
     "t": "El fondo que aún no existe",
     "d": "Marco para la creación de cualquier fondo soberano en una Cuba democrática",
+    "img": "https://yamacoa.com/og-fondo.png",
     "body": {
       "parrafos": [
         "Este expediente no propone un fondo soberano para Cuba. Formula el conjunto de condiciones que cualquier fondo soberano cubano debería satisfacer para merecer ese nombre, con independencia de qué recurso lo alimente, qué gobierno lo cree o qué mayoría lo apruebe. Es un marco normativo y no un informe de datos: las cifras que contiene ilustran el argumento institucional y no constituyen estimación patrimonial.",
@@ -414,6 +429,7 @@
   "/angel-veliz": {
     "t": "Movido tres veces, aliviado ninguna",
     "d": "Ángel Jesús Véliz Marcano, preso del 11J en Camagüey, condenado a 6 años de prisión: tres traslados carcelarios entre 2021 y 2024, ninguno hacia el régimen de mínima severidad que le habría acercado a la libertad condicional, mientras su madre, exiliada desde 2024, ya no puede comunicarse con él por teléfono.",
+    "img": "https://yamacoa.com/og-angel-veliz.png",
     "body": {
       "parrafos": [
         "Ángel Jesús Véliz Marcano es un preso político cubano de la provincia de Camagüey. Participó en las protestas populares del 11 de julio de 2021 (11J), las mayores manifestaciones antigubernamentales en décadas en Cuba. La Policía Nacional Revolucionaria lo detuvo el 18 de julio de 2021 en su propio domicilio, sin tutela judicial.",
@@ -433,6 +449,7 @@
   "/militarizacion": {
     "t": "Guerra sin declarar",
     "d": "Desde el 17 de enero de 2026, estructuras militares gobiernan funciones civiles en Cuba sin que el Estado haya proclamado ninguna de las situaciones excepcionales que prevé su propia Constitución: 215 eventos documentados por Cubalex entre febrero y julio, un civil procesado por espionaje ante un tribunal militar y amenazas de muerte contra presos políticos.",
+    "img": "https://yamacoa.com/og-militarizacion.png",
     "body": {
       "parrafos": [
         "El 17 de enero de 2026, el Consejo de Defensa Nacional de Cuba celebró una sesión presentada por la prensa oficial como una actividad rutinaria del Día de la Defensa. En ella aprobó \"los planes y medidas para el paso al Estado de Guerra\". Dos días después, los principales voceros del sistema estatal de medios negaron por su cuenta que se hubiera declarado un estado de guerra, calificando lo aprobado de \"acto administrativo y preventivo\". Ningún órgano del Estado ha proclamado formalmente una situación excepcional desde entonces. Ninguna medida tiene fecha de terminación. Ningún tribunal supervisa lo que se decide.",
@@ -449,6 +466,7 @@
   "/derechos_sociales": {
     "t": "Julio sin tregua",
     "d": "En julio de 2026, zonas periféricas de La Habana cumplieron tres meses sin agua potable, el sistema eléctrico colapsó por completo al menos tres veces y Cubalex contó nueve feminicidios, la cifra más alta de su serie mensual. El propio informe describe julio como el mes de mayor violencia ciudadana desde 2022 — pero, a diferencia de los feminicidios, esa cifra total no ha sido confirmada por una segunda fuente.",
+    "img": "https://yamacoa.com/og-derechos_sociales.png",
     "body": {
       "parrafos": [
         "El informe mensual de Cubalex sobre derechos humanos en Cuba correspondiente a julio de 2026 documenta dos crisis que avanzan en paralelo: el colapso sostenido de las condiciones materiales de vida (derechos económicos, sociales y culturales) y un repunte agudo de violencia ciudadana. Este expediente separa ambos hilos y verifica cada uno por su cuenta, sin fusionarlos en una sola narrativa de \"todo empeora igual\".",
@@ -465,6 +483,7 @@
   "/cerco_julio": {
     "t": "El cerco de julio",
     "d": "El 2 de julio de 2026, la Seguridad del Estado desplegó un operativo simultáneo contra activistas en varias provincias para impedirles asistir a un acto de la Embajada de Estados Unidos. Tres defensores de derechos humanos fueron incomunicados, golpeados y amenazados de muerte el mismo día. En paralelo, cuatro presos políticos salieron libres tras cumplir condena, mientras otros no sobrevivieron bajo custodia.",
+    "img": "https://yamacoa.com/og-cerco_julio.png",
     "body": {
       "parrafos": [
         "El 2 de julio de 2026, según el informe mensual de Cubalex y confirmado por al menos cuatro medios de prensa independiente, la Seguridad del Estado cubano ejecutó un operativo coordinado contra activistas y opositores en distintas provincias del país. El objetivo declarado por las propias fuentes: impedir su asistencia a una recepción organizada por la Embajada de Estados Unidos en La Habana por el 250 aniversario de la independencia estadounidense. Cubalex cifra en \"al menos 25\" el número de personas afectadas; ese número exacto no aparece verbatim en la prensa independiente consultada, aunque el fenómeno del operativo sí está ampliamente documentado, con más de una decena de nombres propios reportados por distintos medios: Marthadela Tamayo, Osvaldo Navarro, Lisandra Orraca, Irina León, Dagoberto Valdés, Yoandy Izquierdo, Rosa María Rodríguez Gil, Esteban Ajete y Katia Hernández, entre otros.",
@@ -481,6 +500,7 @@
   "/negligencia": {
     "t": "Negligencia criminal o genocidio silencioso",
     "d": "Qué categoría resiste los datos cuando se audita la mortalidad cubana 2006-2026",
+    "img": "https://yamacoa.com/og-negligencia.png",
     "body": {
       "parrafos": [
         "Entre 2020 y 2025 murieron en Cuba entre 107.000 y 151.000 personas por encima de lo que predice la propia trayectoria de envejecimiento del país. Este expediente parte de esa magnitud y hace dos cosas con ella: primero somete a prueba las hipótesis causales que se disputan el fenómeno en el debate público, y después somete el resultado a los tres estándares jurídicos que se invocan para nombrarlo. La conclusión es que la palabra genocidio no resiste el examen, y que el estándar que Cuba sí incumple de forma documentable es el que su propio Estado se impuso por escrito en 2019.",
