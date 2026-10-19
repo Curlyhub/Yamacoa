@@ -1,9 +1,11 @@
-// Barra común del portal (2026-10-18): Estudio automático · Opinión · Podcast · Administración.
+// Barra común del portal (2026-10-18): Inicio · Estudio automático · Opinión · Podcast · Administración.
 // Cada página la monta tras comprobar la sesión. Solo se ven las opciones que la cuenta tiene
-// permitidas (perfiles.puede_opinar, puede_grabar, es_admin); «Estudio automático» (el envío de
-// documentos, index.html) es la opción por defecto. «Salir» cierra la sesión y vuelve al inicio.
-const OPCIONES = [
-  { id: "envios", href: "./index.html", texto: "Estudio automático", permiso: () => true },
+// permitidas (perfiles.puede_opinar, puede_grabar, es_admin). Al entrar se ve «Inicio» (index.html,
+// resumen y accesos); «Estudio automático» (el envío de documentos) es index.html#enviar.
+// «Salir» cierra la sesión y vuelve al inicio.
+export const OPCIONES = [
+  { id: "inicio", href: "./index.html#inicio", texto: "Inicio", permiso: () => true },
+  { id: "envios", href: "./index.html#enviar", texto: "Estudio automático", permiso: () => true },
   { id: "opinion", href: "./opinion.html", texto: "Opinión", permiso: (p) => p.puede_opinar },
   { id: "podcast", href: "./estudio.html", texto: "Podcast", permiso: (p) => p.puede_grabar },
   { id: "admin", href: "./admin.html", texto: "Administración", permiso: (p) => p.es_admin },
@@ -30,7 +32,7 @@ export async function montarNav(sb, actual) {
   nav.className = "ypn"; nav.setAttribute("aria-label", "Secciones del portal");
   const estilo = document.createElement("style"); estilo.textContent = CSS; document.head.append(estilo);
   for (const o of visibles) {
-    const a = document.createElement("a"); a.href = o.href; a.textContent = o.texto;
+    const a = document.createElement("a"); a.href = o.href; a.textContent = o.texto; a.dataset.id = o.id;
     if (o.id === actual) a.setAttribute("aria-current", "page");
     nav.append(a);
   }

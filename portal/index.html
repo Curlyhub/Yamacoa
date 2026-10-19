@@ -154,6 +154,18 @@ tr:last-child td{border-bottom:0}
 .vacio .v-tit{font-size:14px;color:var(--txt);margin-bottom:5px}
 .vacio .v-sub{font-size:13px;color:var(--dim);margin:0}
 
+/* ── inicio del portal ───────────────────────────────────────────────────── */
+.accesos{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:18px}
+.acceso{display:flex;flex-direction:column;gap:6px;background:var(--panel);border:1px solid var(--line);
+  border-radius:12px;padding:20px;text-decoration:none;color:var(--txt);transition:border-color .16s ease,transform .16s ease}
+.acceso:hover{border-color:var(--acc);transform:translateY(-1px)}
+.acceso .a-tit{font:700 16px var(--display)}
+.acceso .a-txt{font-size:13.5px;color:var(--dim);margin:0;flex:1}
+.acceso .a-dato{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--dim);margin-top:6px}
+.acceso .a-ir{font-size:13px;font-weight:600;color:var(--acc);margin-top:8px}
+.cab-lista{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.cab-lista a{font-size:13px;color:var(--acc);font-weight:600;text-decoration:none}
+@media (prefers-reduced-motion:reduce){.acceso{transition:none}.acceso:hover{transform:none}}
 .hidden{display:none !important}
 a{color:var(--acc)}
 @media (max-width:560px){
@@ -227,6 +239,33 @@ a{color:var(--acc)}
     </div>
   </div>
 
+  <!-- INICIO (tras entrar) -->
+  <div id="v-inicio" class="wrap hidden">
+    <div class="eyebrow">Portal de contribuciones</div>
+    <h1>Inicio</h1>
+    <p class="sub" id="ini-sub">Elige qué quieres hacer.</p>
+    <div id="ini-aviso" class="banner hidden" role="status"></div>
+
+    <div class="accesos" id="accesos"></div>
+
+    <div class="card">
+      <div class="cab-lista">
+        <h2>Tus últimos envíos</h2>
+        <a href="#enviar">Ver todos</a>
+      </div>
+      <div id="ini-vacio" class="vacio hidden">
+        <div class="v-tit">Todavía no has enviado nada.</div>
+        <p class="v-sub">Desde «Estudio automático» puedes enviar un hecho con su PDF de fuente.</p>
+      </div>
+      <div class="tabla-scroll" id="ini-tabla">
+        <table>
+          <thead><tr><th>Fecha</th><th>Título</th><th>Estado</th></tr></thead>
+          <tbody id="ini-lista"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <!-- APP -->
   <div id="v-app" class="wrap hidden">
     <div class="eyebrow">Nueva contribución</div>
@@ -291,13 +330,13 @@ a{color:var(--acc)}
 
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-import { montarNav } from "./nav.js";
+import { montarNav, OPCIONES } from "./nav.js";
 
 const SUPABASE_URL  = "https://qsajkrppuaikyzmuipru.supabase.co";
 const SUPABASE_ANON = "sb_publishable_iuMth2MYSMZ2Y6-pN5gF8Q_Okq9CwWJ"; // anon key publica; NUNCA la service_role
 
 const $ = (id) => document.getElementById(id);
-const VISTAS = ["v-config","v-login","v-rotar","v-app"];
+const VISTAS = ["v-config","v-login","v-rotar","v-inicio","v-app"];
 const vista = (v) => VISTAS.forEach(x => $(x).classList.toggle("hidden", x!==v));
 const msg = (id, txt, tipo) => { const e=$(id); e.textContent=txt||""; e.className="msg "+(tipo||""); };
 
@@ -361,9 +400,42 @@ async function cargarPerfil(user){
   $("quien").textContent = data.email;
   $("nav-sesion").hidden = false;
   $("f-fecha").value = new Date().toLocaleDateString("es-ES");
-  vista("v-app");
-  if (!document.querySelector(".ypn")) montarNav(sb, "envios");
+  if (!document.querySelector(".ypn")) await montarNav(sb, seccion());
+  pintarInicio(dias);
+  mostrarSeccion();
   await refrescarLista();
+}
+
+/* ── inicio / envío: misma página, la sección va en el hash (#enviar) ───── */
+const seccion = () => location.hash === "#enviar" ? "envios" : "inicio";
+function mostrarSeccion(){
+  if (!perfil) return;
+  const s = seccion();
+  vista(s === "envios" ? "v-app" : "v-inicio");
+  document.querySelectorAll(".ypn a[data-id]").forEach(a =>
+    a.dataset.id === s ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current"));
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", mostrarSeccion);
+
+const ACCESOS = {
+  envios:  { txt: "Envía un hecho con su PDF de fuente. Se procesa en el ciclo de las 03:00 y se convierte en dato o noticia.", ir: "Enviar contenido" },
+  opinion: { txt: "Sube un artículo de opinión. Tu texto se publica tal cual; Yamacoa añade los datos aparte.", ir: "Ir a Opinión" },
+  podcast: { txt: "Graba tu voz para los podcasts desde el navegador.", ir: "Ir al estudio" },
+  admin:   { txt: "Cuentas, permisos y revisión de lo que llega al portal.", ir: "Ir a Administración" },
+};
+function pintarInicio(dias){
+  $("ini-sub").textContent = `Has entrado como ${perfil.email}. Elige qué quieres hacer.`;
+  const quedan = Math.ceil(30 - dias);
+  $("ini-aviso").classList.toggle("hidden", quedan > 7);
+  $("ini-aviso").textContent = `Tu contraseña caduca en ${quedan} ${quedan === 1 ? "día" : "días"}. Al caducar tendrás que elegir otra para seguir enviando.`;
+  $("accesos").innerHTML = OPCIONES.filter(o => o.id !== "inicio" && o.permiso(perfil)).map(o =>
+    `<a class="acceso" href="${o.href}">
+       <span class="a-tit">${escapar(o.texto)}</span>
+       <p class="a-txt">${ACCESOS[o.id].txt}</p>
+       ${o.id === "envios" ? '<span class="a-dato" id="ini-cuota"></span>' : ""}
+       <span class="a-ir">${ACCESOS[o.id].ir} →</span>
+     </a>`).join("");
 }
 
 $("f-login").onsubmit = async (ev) => {
@@ -452,6 +524,7 @@ function pintarCuota(n){
   $("segmentos").innerHTML = Array.from({ length: CUOTA }, (_, i) =>
     `<span class="seg ${i < n ? (n >= CUOTA ? "lleno" : "on") : ""}"></span>`).join("");
   $("segmentos").setAttribute("aria-label", `Cuota diaria: ${n} de ${CUOTA} envíos usados`);
+  if ($("ini-cuota")) $("ini-cuota").textContent = `Hoy: ${n}/${CUOTA} envíos`;
   $("b-enviar").disabled = n >= CUOTA;
   $("b-enviar").title = n >= CUOTA ? "Has alcanzado el máximo de 5 envíos hoy." : "";
 }
@@ -468,10 +541,13 @@ async function refrescarLista(){
   const filas = data || [];
   $("lista-vacia").classList.toggle("hidden", filas.length > 0);
   $("lista-tabla").classList.toggle("hidden", filas.length === 0);
-  $("lista").innerHTML = filas.map(e =>
+  const fila = (e) =>
     `<tr><td>${escapar(e.fecha)}</td><td>${escapar(e.titulo)}</td>
-     <td><span class="est est-${escapar(e.estado)}">${escapar(e.estado).replace("_"," ")}</span></td></tr>`
-  ).join("");
+     <td><span class="est est-${escapar(e.estado)}">${escapar(e.estado).replace("_"," ")}</span></td></tr>`;
+  $("lista").innerHTML = filas.map(fila).join("");
+  $("ini-vacio").classList.toggle("hidden", filas.length > 0);
+  $("ini-tabla").classList.toggle("hidden", filas.length === 0);
+  $("ini-lista").innerHTML = filas.slice(0, 3).map(fila).join("");
 }
 
 /* ── envio ──────────────────────────────────────────────────────────────── */
