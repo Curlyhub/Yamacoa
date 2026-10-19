@@ -8,6 +8,7 @@
 
 import { readFile, writeFile, access } from "node:fs/promises";
 import { constants } from "node:fs";
+import { createHash } from "node:crypto";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { dirname, resolve } from "node:path";
 import { tmpdir } from "node:os";
@@ -36,8 +37,11 @@ async function loadRegistry() {
 
 async function imgFor(slug) {
   for (const ext of IMG_EXTS) {
-    if (await exists(resolve(PUBLIC, `og-${slug}.${ext}`))) {
-      return `${SITE}/og-${slug}.${ext}`;
+    const f = resolve(PUBLIC, `og-${slug}.${ext}`);
+    if (await exists(f)) {
+      // ?v=<huella>: las redes guardan en caché la imagen por URL; al rehacer la tarjeta cambia.
+      const v = createHash("sha1").update(await readFile(f)).digest("hex").slice(0, 8);
+      return `${SITE}/og-${slug}.${ext}?v=${v}`;
     }
   }
   return undefined;
