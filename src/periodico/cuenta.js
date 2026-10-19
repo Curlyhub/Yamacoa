@@ -31,6 +31,16 @@ export function haySesionGuardada() {
   try { return !!localStorage.getItem(CLAVE_SESION); } catch { return false; }
 }
 
+/* ¿Está activo un proveedor externo (p. ej. "google") en Supabase Auth? Sin esto, si el proveedor
+   está apagado en el panel, el botón lleva al lector a una página con el JSON crudo
+   «Unsupported provider: provider is not enabled». Ante cualquier fallo de red se asume que no. */
+let ajustesAuth = null;
+export async function proveedorActivo(nombre) {
+  ajustesAuth ||= fetch(`${SUPABASE_URL}/auth/v1/settings`, { headers: { apikey: SUPABASE_PUBLICA } })
+    .then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+  return !!(await ajustesAuth).external?.[nombre];
+}
+
 // Vuelta de Google o de un enlace de correo: la URL trae ?code= o #access_token.
 const vieneDeAuth = () => /[?&#](code|access_token|error_description)=/.test(window.location.search + window.location.hash);
 

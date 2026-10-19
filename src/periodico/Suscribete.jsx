@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { supabase, useCuenta, mensajeError } from "./cuenta";
+import { supabase, useCuenta, mensajeError, proveedorActivo } from "./cuenta";
 
 /* Inscripción de lectores (2026-10-18): gratuita, con correo y contraseña (escrita dos veces y
    confirmada por correo) o con Google. Con cuenta se descargan los podcasts y, si el lector lo
@@ -123,6 +123,8 @@ function Formulario() {
   const [modo, setModo] = useState("alta"); // alta | entrar | olvido
   const [msg, setMsg] = useState(null);
   const [ocupado, setOcupado] = useState(false);
+  const [conGoogle, setConGoogle] = useState(false); // solo si Google está activo en Supabase Auth
+  useEffect(() => { let vivo = true; proveedorActivo("google").then((v) => vivo && setConGoogle(v)); return () => { vivo = false; }; }, []);
   const [f, setF] = useState({ email: "", pass: "", pass2: "", acepto: false, boletin: false });
   const cambia = (k) => (e) => setF({ ...f, [k]: e.target.type === "checkbox" ? e.target.checked : e.target.value });
 
@@ -181,8 +183,10 @@ function Formulario() {
           onClick={() => { setModo("olvido"); setMsg(null); }}>¿Olvidaste la contraseña?</button>}
       </form>
       {msg && <p className={`ysu-msg ${msg[0]}`} role="status">{msg[1]}</p>}
-      <div className="ysu-o">o</div>
-      <Google onError={(m) => setMsg(["err", m])} />
+      {conGoogle && <>
+        <div className="ysu-o">o</div>
+        <Google onError={(m) => setMsg(["err", m])} />
+      </>}
     </div>
   );
 }
