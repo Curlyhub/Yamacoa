@@ -13,7 +13,7 @@
 # y ~/.config/yamacoa/noticias.env (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY).
 set -euo pipefail
 
-REPO="$(cd "$(dirname "$0")/.." && pwd)"
+REPO="$(cd "$(dirname "$0")/.." && pwd -P)"  # -P: ruta real aunque se llame por ~/bohio/yamacoa (enlace)
 WT="${YAMACOA_PUBLICACION:-$(dirname "$REPO")/yamacoa-publicacion}"
 RAMA=publicacion
 MOVER=0; SUBIR=1; MOTIVO=manual
