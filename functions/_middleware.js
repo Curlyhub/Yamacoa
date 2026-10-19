@@ -96,16 +96,25 @@ function articuloHTML(tema, title, pageUrl, img) {
 // Noticias automáticas: viven 3 días en data/feed/noticias.json (lo regenera cada
 // ciclo desde la base de datos). Una noticia viva recibe su tarjeta y su texto; una
 // caducada o inexistente responde 410 Gone para que los buscadores la retiren.
-async function noticiaDe(context, slug) {
+async function deFeed(context, feed, slug) {
   try {
-    const r = await context.env.ASSETS.fetch(new URL("/data/feed/noticias.json", context.request.url));
+    const r = await context.env.ASSETS.fetch(new URL(`/data/feed/${feed}.json`, context.request.url));
     if (!r.ok) return null;
-    const feed = await r.json();
-    const n = (feed.items || []).find((x) => x.slug === slug);
-    return n && Date.parse(n.caduca) > Date.now() ? n : null;
+    return ((await r.json()).items || []).find((x) => x.slug === slug) || null;
   } catch {
     return null;
   }
+}
+async function noticiaDe(context, slug) {
+  const n = await deFeed(context, "noticias", slug);
+  return n && Date.parse(n.caduca) > Date.now() ? n : null;
+}
+
+// Primeras frases de un texto largo, para og:description (≤ ~220 caracteres, sin cortar palabras).
+function extracto(texto, max = 220) {
+  const t = String(texto || "").replace(/\s+/g, " ").trim();
+  if (t.length <= max) return t;
+  return t.slice(0, t.lastIndexOf(" ", max)).replace(/[,;:.\s]+$/, "") + "…";
 }
 
 // Retiradas (ops/admin/admin_supabase.sql): lista PÚBLICA de (tipo, slug) que la redacción o un
@@ -174,6 +183,18 @@ export async function onRequest(context) {
         fecha: n.publicado,
       },
     };
+    // La ilustración de la noticia (WebP, rotulada «generada por IA» en la página) como imagen
+    // de la tarjeta; sin ella, la genérica.
+    if (n.imagen?.url) tema.img = new URL(n.imagen.url, SITE).href;
+  }
+
+  // Episodios y artículos de opinión: tarjeta propia al compartirlos (sin cuerpo indexable).
+  const mPieza = key.match(/^\/(podcast|opinion)\/([a-z0-9-]{4,90})$/);
+  if (mPieza) {
+    const [, tipo, slug] = mPieza;
+    const x = retirada(await retiradas(context), tipo, slug) ? null : await deFeed(context, tipo, slug);
+    if (x && tipo === "podcast") tema = { t: x.titulo, d: extracto(x.descripcion || `Podcast de Yamacoa · ${x.tipo || ""}`) };
+    if (x && tipo === "opinion") tema = { t: x.titulo, d: extracto(`Opinión · ${x.firma}. ${x.presentacion || x.texto || ""}`) };
   }
 
   const res = await next();
@@ -197,6 +218,12 @@ export async function onRequest(context) {
     .on('meta[name="twitter:title"]', new SetContent(title))
     .on('meta[name="twitter:description"]', new SetContent(tema.d))
     .on('meta[name="twitter:image"]', new SetContent(img));
+  // index.html declara la tarjeta genérica (PNG 1200x630); otra imagen no tiene por qué cumplirlo.
+  if (!/\.png(\?|$)/.test(img)) {
+    rw = rw.on('meta[property="og:image:type"]', new SetContent(/\.webp(\?|$)/.test(img) ? "image/webp" : "image/jpeg"))
+      .on('meta[property="og:image:width"]', { element(el) { el.remove(); } })
+      .on('meta[property="og:image:height"]', { element(el) { el.remove(); } });
+  }
 
   // Cuerpo indexable solo si el generador pudo extraerlo del dataset.
   if (tema.body && Array.isArray(tema.body.parrafos) && tema.body.parrafos.length) {

@@ -6,6 +6,7 @@ import { Vacio, pistaDe, rutaEpisodio, rutaEstudio } from "./piezas";
 import { BotonPlay, useReproductor } from "./Reproductor";
 import { supabase, haySesionGuardada } from "./cuenta";
 
+import Compartir from "../components/Compartir";
 /* Landing de podcast (handoff 1e, "Radio-periódico") y plantilla congelada de
    episodio. Tipos: Automático (voz sintética, siempre declarada) y Elaborado
    (grabado por personas en el estudio interno). */
@@ -209,6 +210,7 @@ export function Episodio() {
             <BotonPlay pista={pista} tam={58} />
             <span className="y-meta" style={{ color: "var(--y-pod-sec)" }}>{minutos(p.duracion)}</span>
             {p.voces_sinteticas && <span className="y-badge" style={{ background: "rgba(252,249,244,.12)", color: "var(--y-pod-acc)" }}>Voces sintéticas</span>}
+            <span style={{ marginLeft: "auto" }}><Compartir titulo={p.titulo} oscuro /></span>
           </div>
           <Descargar p={p} />
         </section>

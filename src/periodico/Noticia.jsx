@@ -5,6 +5,7 @@ import { BotonPlay } from "./Reproductor";
 import Grafico from "./Graficos";
 import temas from "../temas/registry.js";
 
+import Compartir from "../components/Compartir";
 /* Plantillas CONGELADAS de noticia automática. Una sola página, cuatro variantes
    según `plantilla` (contrato noticias.schema.json):
      cronica   hecho desarrollado
@@ -95,6 +96,7 @@ export default function Noticia() {
           <span className="y-meta">{n.seccion} · {fechaLarga(n.publicado)}, {hora(n.publicado)}
             {n.actualizado ? ` · actualizada ${hora(n.actualizado)}` : ""}</span>
           <Confianza valor={n.confianza} />
+          <span style={{ marginLeft: "auto" }}><Compartir titulo={n.titulo} /></span>
         </div>
         <h1 className="y-h1" style={{ fontSize: "clamp(30px,4.6vw,46px)" }}>{n.titulo}</h1>
         <p className="y-lede">{n.entradilla}</p>

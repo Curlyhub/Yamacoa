@@ -4,6 +4,7 @@ import { Vacio, recorta } from "./piezas";
 import Grafico from "./Graficos";
 import temas from "../temas/registry.js";
 
+import Compartir from "../components/Compartir";
 /* Opinión (2026-10-18): artículos firmados por colaboradores invitados. Plantilla CONGELADA.
    - El texto del autor se pinta TAL CUAL (párrafos separados por línea en blanco), sin
      reescritura ni formato añadido. Su sha256 va a la vista: cualquiera puede comprobarlo.
@@ -91,6 +92,7 @@ export function Articulo() {
         <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
           <span className="y-badge y-badge--neutro">Opinión</span>
           <span className="y-meta">{fechaLarga(a.publicado)}</span>
+          <span style={{ marginLeft: "auto" }}><Compartir titulo={a.titulo} /></span>
         </div>
         <h1 className="y-h1" style={{ fontSize: "clamp(30px,4.6vw,46px)" }}>{a.titulo}</h1>
         <p className="yop-firma">Por <b>{a.firma}</b>{a.firma_tipo === "seudonimo" && <span className="y-meta"> · firma con seudónimo</span>}</p>

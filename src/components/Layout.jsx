@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Narrador from "./Narrador";
+import Compartir from "./Compartir";
 import temas from "../temas/registry.js";
 import { TOKENS_CSS, cargarFuentes } from "../design/tokens";
 import { ReproductorProvider } from "../periodico/Reproductor";
@@ -49,6 +50,18 @@ const CSS = `
 .yl-exp-acc a{font:500 11.5px var(--y-mono); color:var(--y-muted); text-decoration:none; padding:6px 13px;
   border-radius:999px; box-shadow:inset 0 0 0 1px var(--y-rule);}
 .yl-exp-acc a:hover{color:var(--y-ink); box-shadow:inset 0 0 0 1px var(--y-accent);}
+.yl-comp{position:relative; display:inline-flex;}
+.yl-comp-btn{font:500 11.5px var(--y-mono); color:var(--y-muted); background:none; border:0; cursor:pointer; padding:6px 13px;
+  border-radius:999px; box-shadow:inset 0 0 0 1px var(--y-rule);}
+.yl-comp-btn:hover,.yl-comp-btn[aria-expanded="true"]{color:var(--y-ink); box-shadow:inset 0 0 0 1px var(--y-accent);}
+.yl-comp--osc .yl-comp-btn{color:var(--y-pod-acc); box-shadow:inset 0 0 0 1px rgba(252,249,244,.28);}
+.yl-comp--osc .yl-comp-btn:hover,.yl-comp--osc .yl-comp-btn[aria-expanded="true"]{color:var(--y-pod-ink); box-shadow:inset 0 0 0 1px var(--y-pod-acc);}
+.yl-comp-menu{position:absolute; right:0; top:calc(100% + 6px); z-index:30; min-width:190px; display:flex; flex-direction:column;
+  padding:6px; background:var(--y-surface); border-radius:12px; box-shadow:var(--y-shadow-hover), inset 0 0 0 1px var(--y-rule);}
+.yl-comp .yl-comp-menu a, .yl-comp-menu button{font:500 13px var(--y-font); color:var(--y-ink); text-align:left; background:none;
+  border:0; box-shadow:none; border-radius:8px; padding:9px 12px; cursor:pointer; text-decoration:none;}
+.yl-comp .yl-comp-menu a:hover, .yl-comp-menu button:hover{background:var(--y-surface-2); box-shadow:none;}
+@media (max-width:720px){ .yl-comp-menu{left:0; right:auto;} }
 .yl-migas{display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:12px 0; border-bottom:1px solid var(--y-rule);
   font:500 11px var(--y-mono); letter-spacing:.08em; text-transform:uppercase; color:var(--y-subtle);}
 .yl-migas a{color:var(--y-muted); text-decoration:none;}
@@ -96,13 +109,6 @@ export default function Layout({ children }) {
     window.scrollTo(0, 0);
   }, [path]);
 
-  const shareHref =
-    temaActivo && typeof window !== "undefined"
-      ? "https://twitter.com/intent/tweet?text=" +
-        encodeURIComponent(`${temaActivo.titulo} · Yamacoa`) +
-        "&url=" + encodeURIComponent(window.location.href)
-      : null;
-
   return (
     <ReproductorProvider>
       <style>{TOKENS_CSS + CSS}</style>
@@ -134,8 +140,7 @@ export default function Layout({ children }) {
               <span className="y-badge y-badge--dir">Expediente dirigido</span>
               <span className="yl-exp-tag" style={{ color: "var(--y-dir-ink)" }}>{temaActivo.etiqueta}</span>
               <span className="yl-exp-acc">
-                <a href={shareHref} target="_blank" rel="noopener noreferrer"
-                  aria-label={`Compartir ${temaActivo.titulo} en X`}>Compartir en X</a>
+                <Compartir titulo={temaActivo.titulo} />
                 <Link to="/expedientes">← Todos los expedientes</Link>
               </span>
             </div>
