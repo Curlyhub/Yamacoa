@@ -987,5 +987,45 @@
     "firma": "tres lineas de tiempo verticales -Gonzalez Aguero, Diaz Rodriguez, Hernandez Leyva- alineadas en un unico marcador horizontal (2 de julio, mismo operativo) con los mismos glifos de ruptura (incomunicacion, golpiza, desnudez forzada, amenaza de muerte) estampados en la misma cota vertical en las tres pistas; a partir de ahi las pistas se desalinean y cada una sigue su propio hostigamiento de julio en dias distintos. La sincronia inicial es la prueba visual de un operativo centralizado, y coincide honestamente con el corte real entre lo corroborado (2 de julio, prensa independiente) y lo no confirmado (todo lo posterior, solo Cubalex).",
     "procedencia": "Tercer expediente construido en la sesion desde informes de Cubalex sobre Cuba en 2026 (militarizacion, derechos_sociales, ahora cerco_julio). Procesado el 2026-08-15 via /procesar-inbox desde ops/_inbox/situacion-0626/Informe Mensual sobre la Situacion de los Derechos Humanos en Cuba - Julio 2026 - Cubalex.pdf: este PDF resulto ser byte a byte identico (MD5 f1d8acaf69b7f3fa49c835948ecf3f01) al usado en derechos_sociales; se detecto la duplicacion antes de procesar y se consulto al administrador, que pidio extraer un angulo distinto del mismo informe. Angulo elegido: la campana de represion selectiva/individualizada de julio (operativo del 2 de julio contra defensores, muertes bajo custodia, excarcelaciones), contenido no usado por derechos_sociales (DESC + violencia ciudadana) ni por militarizacion (caso Otero Alcantara, estado de excepcion). Subagente verificador: 13 afirmaciones evaluadas, 6 corroboradas por fuentes independientes de Cubalex (el operativo del 2 de julio como fenomeno, con mas de una decena de nombres propios reportados por prensa; los hechos centrales de Gonzalez Aguero, Diaz Rodriguez y Hernandez Leyva; el interrogatorio de Anna Sofia Benitez; el caso del adolescente de 13 anos golpeado en Boyeros, identificado por prensa independiente como Alex Javier Hernandez Gonzalez; la muerte de Rolando Yunior Rodriguez Torres; las cuatro excarcelaciones), 3 parcialmente corroboradas (la cifra 'al menos 25' del operativo, sin respaldo textual exacto; el caso Acosta Gomez, con traslado carcelario y fianzas que divergen entre el informe original y la prensa independiente; la muerte de Jorge Luis Iglesia Rodriguez, confirmada pero con causa distinta -infeccion de prostata segun prensa independiente, no solo tuberculosis como cita Cubalex-) y 4 no confirmadas (el hostigamiento continuado tras el 2 de julio, el caso Lopez Canino, dos menores adicionales en Regla y Arroyo Naranjo, y la muerte de Osviel Rivero Viera, sin ninguna fuente independiente localizada). Gates ejecutados: ajv draft-07 OK, bracket-balance OK. Entregado sin --auto: pendiente de npm run build y revision editorial humana antes de publicar.",
     "unificado": "2026-10-17"
+  },
+  {
+    "tema": "precio-de-los-cinco",
+    "fecha": "2026-10-19",
+    "paleta": {
+      "nombre": "Dos libros",
+      "acentos": [
+        {
+          "hex": "#0B7FA0",
+          "rol": "primario",
+          "h": 193,
+          "nota": "Libro EE. UU. (oscuro de origen #3AA0BC, sin uso: el sitio es claro). Vecinos: auditar h187, electrica h200."
+        },
+        {
+          "hex": "#B84A2E",
+          "rol": "contrapunto",
+          "h": 12,
+          "nota": "Libro Cuba (oscuro de origen #E0704E). Coincide en tono con protestas_cuba h12 e iclep h14 y queda a 8 grados de represion h4; casi igual al acento del sitio #b8562e. Pendiente de confirmacion humana."
+        }
+      ],
+      "fondo": "claro (tokens del periodico)",
+      "ambar_reservado_usado": false,
+      "validacion": "CVD protan ΔE 17,1 (claro) y 15,7 (oscuro); contraste ≥ 3:1 sobre la superficie en ambos modos"
+    },
+    "tipografia": {
+      "display": "Manrope",
+      "datos": "IBM Plex Mono",
+      "extra": null,
+      "origen": "Archivo Black + IBM Plex Sans, sustituidas al importar"
+    },
+    "layout": "libro-de-cuentas-a-tres-columnas-y-secciones-apiladas",
+    "graficos": [
+      "rangos horizontales (mediana y P5-P95) agrupados por libro",
+      "barras de cuota de varianza",
+      "tabla completa con chips de confianza",
+      "tarjetas de anios-persona"
+    ],
+    "firma": "rangos horizontales (mediana y percentil 5-95) agrupados por libro",
+    "procedencia": "Importado de ops/_import/tema-precio-de-los-cinco el 2026-10-19: modelo Monte Carlo (semilla 1998, 200.000 iteraciones) en ops/precio-de-los-cinco/.",
+    "unificado": "2026-10-19"
   }
 ]

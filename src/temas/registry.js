@@ -487,6 +487,21 @@ const temas = [
     publicado: "2026-08-17",
     load: () => import("./negligencia-o-genocidio.jsx"),
   },
+  {
+    id: "precio-de-los-cinco",
+    slug: "precio-de-los-cinco",
+    path: "/precio-de-los-cinco",
+    titulo: "El precio de los Cinco",
+    subtitulo:
+      "Cuánto costó, a cada gobierno, detener, juzgar y encarcelar a cinco agentes de la Red Avispa, y cuánto gastó La Habana en la campaña para traerlos de vuelta. Un modelo con dos libros de cuentas, cada partida con su fuente y su grado de confianza.",
+    etiqueta: "RED AVISPA · COSTE DEL CASO",
+    // Azul petróleo #0B7FA0 (h193), el color del «libro EE. UU.» del renderer. El óxido del libro
+    // Cuba (#B84A2E, h12) no sale a portada: casi coincide con el acento del sitio (#b8562e).
+    accent: "#0B7FA0",
+    fuentes: "Tribunal federal S.D. Florida · 11.º Circuito · Federal Register (BOP) · Miami Herald · JURIST",
+    publicado: "2026-10-19",
+    load: () => import("./precio-de-los-cinco.jsx"),
+  },
 ];
 
 export default temas;

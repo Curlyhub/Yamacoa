@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://yamacoa.com/schemas/precio-de-los-cinco.schema.json",
+  "title": "El precio de los Cinco",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "titulo", "subtitulo", "version_datos", "expediente", "totales", "partidas", "sensibilidad", "encarcelamiento", "correcciones", "borrador_original", "conexos", "sin_precio", "textos", "leyendas", "metodologia", "fuentes"],
+  "definitions": {
+    "confianza": { "type": "string", "enum": ["confirmado", "reportado", "estimado", "calculado", "no_cuantificado"] },
+    "texto": { "type": "string", "minLength": 1 },
+    "usd": { "type": "number", "minimum": 0 },
+    "anio": { "type": "integer", "minimum": 1959, "maximum": 2030 },
+    "fecha": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "idFuente": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "listaFuentes": { "type": "array", "items": { "$ref": "#/definitions/idFuente" }, "uniqueItems": true },
+    "rango": {
+      "type": "object", "additionalProperties": false,
+      "required": ["p5", "p50", "p95"],
+      "properties": { "p5": { "$ref": "#/definitions/usd" }, "p50": { "$ref": "#/definitions/usd" }, "p95": { "$ref": "#/definitions/usd" } }
+    },
+    "total": {
+      "type": "object", "additionalProperties": false,
+      "required": ["p5", "p50", "p95", "confianza"],
+      "properties": { "p5": { "$ref": "#/definitions/usd" }, "p50": { "$ref": "#/definitions/usd" }, "p95": { "$ref": "#/definitions/usd" }, "confianza": { "$ref": "#/definitions/confianza" } }
+    }
+  },
+  "properties": {
+    "slug": { "type": "string", "const": "precio-de-los-cinco" },
+    "titulo": { "$ref": "#/definitions/texto" },
+    "subtitulo": { "$ref": "#/definitions/texto" },
+    "version_datos": { "$ref": "#/definitions/fecha" },
+    "expediente": {
+      "type": "object", "additionalProperties": false,
+      "required": ["caso", "tribunal", "hitos"],
+      "properties": {
+        "caso": { "$ref": "#/definitions/texto" },
+        "tribunal": { "$ref": "#/definitions/texto" },
+        "hitos": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["fecha", "evento", "confianza"],
+            "properties": { "fecha": { "$ref": "#/definitions/fecha" }, "evento": { "$ref": "#/definitions/texto" }, "confianza": { "$ref": "#/definitions/confianza" } }
+          }
+        }
+      }
+    },
+    "totales": {
+      "type": "object", "additionalProperties": false,
+      "required": ["eeuu", "cuba", "total", "total_nominal"],
+      "properties": {
+        "eeuu": { "$ref": "#/definitions/total" }, "cuba": { "$ref": "#/definitions/total" },
+        "total": { "$ref": "#/definitions/total" }, "total_nominal": { "$ref": "#/definitions/total" }
+      }
+    },
+    "partidas": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "libro", "nombre", "confianza", "periodo", "en_total", "usd2025", "nominal", "factor_2025", "nota", "fuentes"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^(us|cu)_[a-z0-9_]+$" },
+          "libro": { "type": "string", "enum": ["eeuu", "cuba"] },
+          "nombre": { "$ref": "#/definitions/texto" },
+          "confianza": { "$ref": "#/definitions/confianza" },
+          "periodo": { "type": "array", "items": { "$ref": "#/definitions/anio" }, "minItems": 2, "maxItems": 2 },
+          "en_total": { "type": "boolean" },
+          "usd2025": { "$ref": "#/definitions/rango" },
+          "nominal": { "$ref": "#/definitions/rango" },
+          "factor_2025": { "type": "number", "minimum": 1, "maximum": 3 },
+          "nota": { "$ref": "#/definitions/texto" },
+          "fuentes": { "$ref": "#/definitions/listaFuentes" }
+        }
+      }
+    },
+    "sensibilidad": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "cuota_varianza"],
+        "properties": { "id": { "type": "string" }, "cuota_varianza": { "type": "number", "minimum": 0, "maximum": 1 } }
+      }
+    },
+    "encarcelamiento": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coif_anclas", "personas", "total_persona_anios", "base_nominal_usd", "base_usd2025", "multiplicador_alta_seguridad"],
+      "properties": {
+        "coif_anclas": {
+          "type": "array", "minItems": 2,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["anio", "usd", "confianza", "fuente"],
+            "properties": { "anio": { "$ref": "#/definitions/anio" }, "usd": { "$ref": "#/definitions/usd" }, "confianza": { "$ref": "#/definitions/confianza" }, "fuente": { "$ref": "#/definitions/idFuente" } }
+          }
+        },
+        "personas": {
+          "type": "array", "minItems": 5, "maxItems": 5,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["nombre", "condena", "salida", "motivo_salida", "anios_custodia", "confianza"],
+            "properties": {
+              "nombre": { "$ref": "#/definitions/texto" }, "condena": { "$ref": "#/definitions/texto" },
+              "salida": { "$ref": "#/definitions/fecha" }, "motivo_salida": { "$ref": "#/definitions/texto" },
+              "anios_custodia": { "type": "number", "minimum": 0, "maximum": 20 }, "confianza": { "$ref": "#/definitions/confianza" }
+            }
+          }
+        },
+        "total_persona_anios": { "type": "number", "minimum": 0 },
+        "base_nominal_usd": { "$ref": "#/definitions/usd" },
+        "base_usd2025": { "$ref": "#/definitions/usd" },
+        "multiplicador_alta_seguridad": { "type": "array", "items": { "type": "number", "minimum": 1 }, "minItems": 3, "maxItems": 3 }
+      }
+    },
+    "correcciones": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["confianza", "antes", "ahora", "fuentes"],
+        "properties": { "confianza": { "$ref": "#/definitions/confianza" }, "antes": { "$ref": "#/definitions/texto" }, "ahora": { "$ref": "#/definitions/texto" }, "fuentes": { "$ref": "#/definitions/listaFuentes" } }
+      }
+    },
+    "borrador_original": {
+      "type": "object", "additionalProperties": false,
+      "required": ["campana_cuba_usd", "red_avispa_usd", "confianza"],
+      "properties": {
+        "campana_cuba_usd": { "type": "array", "items": { "$ref": "#/definitions/usd" }, "minItems": 2, "maxItems": 2 },
+        "red_avispa_usd": { "type": "array", "items": { "$ref": "#/definitions/usd" }, "minItems": 2, "maxItems": 2 },
+        "confianza": { "$ref": "#/definitions/confianza" }
+      }
+    },
+    "conexos": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "nombre", "confianza", "valor_usd", "anio", "nota", "fuentes"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^cx_[a-z0-9_]+$" },
+          "nombre": { "$ref": "#/definitions/texto" },
+          "confianza": { "$ref": "#/definitions/confianza" },
+          "valor_usd": { "type": ["number", "null"], "minimum": 0 },
+          "anio": { "type": ["integer", "null"] },
+          "nota": { "$ref": "#/definitions/texto" },
+          "fuentes": { "$ref": "#/definitions/listaFuentes" }
+        }
+      }
+    },
+    "sin_precio": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["titulo", "texto"],
+        "properties": { "titulo": { "$ref": "#/definitions/texto" }, "texto": { "$ref": "#/definitions/texto" } }
+      }
+    },
+    "textos": {
+      "type": "object", "additionalProperties": false,
+      "required": ["intro_correcciones", "intro_sensibilidad", "carcel", "intro_conexos"],
+      "properties": {
+        "intro_correcciones": { "$ref": "#/definitions/texto" },
+        "intro_sensibilidad": { "$ref": "#/definitions/texto" },
+        "carcel": { "type": "array", "items": { "$ref": "#/definitions/texto" }, "minItems": 1 },
+        "intro_conexos": { "$ref": "#/definitions/texto" }
+      }
+    },
+    "leyendas": {
+      "type": "object", "additionalProperties": false,
+      "required": ["totales", "partidas", "sensibilidad", "tabla"],
+      "properties": {
+        "totales": { "$ref": "#/definitions/texto" }, "partidas": { "$ref": "#/definitions/texto" },
+        "sensibilidad": { "$ref": "#/definitions/texto" }, "tabla": { "$ref": "#/definitions/texto" }
+      }
+    },
+    "metodologia": {
+      "type": "object", "additionalProperties": false,
+      "required": ["iteraciones", "semilla", "deflactor", "notas", "falsacion", "pendientes"],
+      "properties": {
+        "iteraciones": { "type": "integer", "minimum": 1000 },
+        "semilla": { "type": "integer" },
+        "deflactor": { "$ref": "#/definitions/texto" },
+        "notas": { "type": "array", "items": { "$ref": "#/definitions/texto" } },
+        "falsacion": { "$ref": "#/definitions/texto" },
+        "pendientes": { "type": "array", "items": { "$ref": "#/definitions/texto" } }
+      }
+    },
+    "fuentes": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false, "required": ["id", "titulo", "url"],
+        "properties": { "id": { "$ref": "#/definitions/idFuente" }, "titulo": { "$ref": "#/definitions/texto" }, "url": { "type": "string", "pattern": "^https://" } }
+      }
+    }
+  }
+}

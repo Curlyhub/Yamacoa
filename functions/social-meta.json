@@ -495,5 +495,9 @@
       "fecha": "2026-08-17",
       "etiqueta": "SALUD PÚBLICA · TEST JURÍDICO"
     }
+  },
+  "/precio-de-los-cinco": {
+    "t": "El precio de los Cinco",
+    "d": "Cuánto costó, a cada gobierno, detener, juzgar y encarcelar a cinco agentes de la Red Avispa, y cuánto gastó La Habana en la campaña para traerlos de vuelta. Un modelo con dos libros de cuentas, cada partida con su fuente y su grado de confianza."
   }
 }
