@@ -61,3 +61,6 @@ public/data/feed/podcast.json
 ops/opinion/trabajo/
 public/data/feed/opinion.json
 ops/boletin/vista.html
+
+# generado en prebuild (scripts/gen-sitemap.mjs)
+/public/sitemap.xml

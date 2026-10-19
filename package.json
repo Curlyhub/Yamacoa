@@ -22,7 +22,7 @@
   "scripts": {
     "gen:social": "node scripts/gen-social-meta.mjs",
     "start": "react-scripts start",
-    "prebuild": "node scripts/gen-social-meta.mjs",
+    "prebuild": "node scripts/gen-social-meta.mjs && node scripts/gen-sitemap.mjs",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
