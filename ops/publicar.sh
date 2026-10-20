@@ -14,6 +14,7 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd -P)"  # -P: ruta real aunque se llame por ~/bohio/yamacoa (enlace)
+. "$REPO/ops/dueno.sh" "$0" "$@"  # como root: devuelve los ficheros y se relanza como el dueño
 WT="${YAMACOA_PUBLICACION:-$(dirname "$REPO")/yamacoa-publicacion}"
 RAMA=publicacion
 MOVER=0; SUBIR=1; MOTIVO=manual

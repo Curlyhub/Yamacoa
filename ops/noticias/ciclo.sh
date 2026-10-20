@@ -4,6 +4,7 @@
 set -uo pipefail
 
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
+. "$REPO/ops/dueno.sh" "$0" "$@"  # como root: devuelve los ficheros y se relanza como el dueño
 export PATH="$HOME/.local/bin:$(dirname "$(ls -d "$HOME"/.nvm/versions/node/*/bin/node 2>/dev/null | tail -1)"):/usr/local/bin:/usr/bin:/bin"
 # Secretos en ~/.config/yamacoa/ de root o del dueño del repo (el cron corre como root).
 DUENO_HOME="$(getent passwd "$(stat -c %U "$REPO")" | cut -d: -f6)"
