@@ -9,6 +9,14 @@
 //   revisar    lista lo pendiente, con alertas         ver <id>      texto + lo que añade Yamacoa
 //   ensayo <id>  vista previa en public/ (npm start)    aprobar <id> [--sin-datos]  -> publicado
 //   rechazar <id> --motivo "…"                          solo-exportar --destino <dir> (publicar.sh)
+//   video <id> --url <x.com|youtube> [--tras <n>]       vídeo citado por el autor, tras el párrafo n
+//              (por defecto al final); se carga al pulsar. --quitar lo retira.
+//   importar <carpeta>   envío del editor en nombre de un colaborador invitado, desde
+//              ops/opinion/contenido/<carpeta>/: el original (.pdf o .docx), texto.txt (el texto
+//              confirmado, párrafos con línea en blanco) y ficha.json (autor = email de un perfil
+//              con puede_opinar; titulo, firma, firma_tipo, presentacion?, video?, grafico?).
+//              El gráfico del editor pasa la misma verja (cada valor en su `fuente_url`) y
+//              sustituye al del analista; vídeo y gráfico sobreviven al análisis.
 //   prueba <fichero.txt> --titulo "…"   análisis de un texto local, sin BD, con vista previa
 //
 // Requiere SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY (noticias.env) salvo en --prueba.
@@ -147,6 +155,55 @@ async function verja(an, texto, ser) {
   return { datos, alertas: an.alertas || [], descartes };
 }
 
+/* ---------- lo que pone el editor (vídeo, gráfico): sobrevive al análisis ---------- */
+function conEditor(r, previo) {
+  const ed = previo?.editor;
+  if (!ed) return r;
+  return { ...r, editor: ed, ...(ed.video ? { video: ed.video } : {}),
+    datos: { ...(r.datos || {}), ...(ed.grafico ? { grafico: ed.grafico } : {}) } };
+}
+async function graficoEditor(g) {
+  const { fuente_url, ...grafico } = g;
+  if (!fuente_url) throw new Error("ficha.grafico necesita fuente_url (la página de la que salen los valores)");
+  const html = await descargar(fuente_url, 30000);
+  if (html == null) throw new Error(`gráfico: no se puede descargar ${fuente_url}`);
+  const t = textoHtml(html);
+  const sin = (grafico.datos || []).filter((d) => d.valor != null && !numeroEnTexto(d.valor, t));
+  if (sin.length) throw new Error(`gráfico: ${sin.map((d) => `${d.etiqueta} ${d.valor}`).join(", ")} no están en ${fuente_url}`);
+  return grafico;
+}
+async function importar(q, carpeta) {
+  const dir = path.resolve(carpeta);
+  const ficha = leerJson(path.join(dir, "ficha.json"));
+  if (fs.existsSync(path.join(dir, "importado.json"))) throw new Error(`ya importado: ${fs.readFileSync(path.join(dir, "importado.json"), "utf8")}`);
+  const original = fs.readdirSync(dir).find((f) => /\.(pdf|docx)$/i.test(f));
+  if (!original) throw new Error("falta el original (.pdf o .docx) en la carpeta");
+  if (!fs.existsSync(path.join(dir, "texto.txt"))) throw new Error("falta texto.txt: el texto confirmado del autor, párrafos separados por una línea en blanco");
+  const texto = fs.readFileSync(path.join(dir, "texto.txt"), "utf8").replace(/\r\n?/g, "\n").replace(/[ \t\u00a0]+\n/g, "\n").replace(/\n{3,}/g, "\n\n").trim();
+  const [perfil] = await q(`perfiles?select=id,puede_opinar,bloqueado&email=eq.${encodeURIComponent(ficha.autor || "")}`);
+  if (!perfil?.puede_opinar || perfil.bloqueado) throw new Error(`«${ficha.autor}» no es un colaborador invitado (perfiles.puede_opinar) o está bloqueado`);
+  const editor = {
+    ...(ficha.video ? { video: ficha.video } : {}),
+    ...(ficha.grafico ? { grafico: await graficoEditor(ficha.grafico) } : {}),
+  };
+  if (editor.video && !(Number.isInteger(editor.video.tras) && editor.video.tras >= 1 && editor.video.tras <= parrafos(texto).length))
+    throw new Error(`ficha.video.tras tiene que estar entre 1 y ${parrafos(texto).length}`);
+  // el original, a la carpeta privada del autor, como lo dejaría el portal
+  const tipo = original.toLowerCase().endsWith(".pdf") ? "pdf" : "docx";
+  const ruta = `${perfil.id}/${Date.now()}.${tipo}`;
+  const base = process.env.SUPABASE_URL.replace(/\/+$/, "").replace(/\/rest\/v1$/, ""), key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const sub = await fetch(`${base}/storage/v1/object/opinion-originales/${ruta}`, { method: "POST", body: fs.readFileSync(path.join(dir, original)),
+    headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": tipo === "pdf" ? "application/pdf" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document" } });
+  if (!sub.ok) throw new Error(`subida del original: ${sub.status} ${(await sub.text()).slice(0, 200)}`);
+  const [a] = await q("opinion_articulos", { method: "POST", body: {
+    autor_id: perfil.id, titulo: ficha.titulo, firma: ficha.firma, firma_tipo: ficha.firma_tipo,
+    ...(ficha.presentacion ? { presentacion: ficha.presentacion } : {}),
+    texto, texto_sha256: sha256(texto), original_path: ruta, original_tipo: tipo,
+    ...(Object.keys(editor).length ? { analisis: { editor } } : {}) } });
+  escribir(path.join(dir, "importado.json"), { id: a.id, sha256: a.texto_sha256, original: ruta, fecha: new Date().toISOString() });
+  log(`importado «${a.titulo}» -> ${a.id} (enviado). Analizar: node ops/opinion/opinion.mjs`);
+}
+
 /* ---------- feed ---------- */
 function validador() {
   const Ajv = createRequire(import.meta.url)("ajv");
@@ -162,6 +219,7 @@ function item(a) {
     ...(a.presentacion ? { presentacion: a.presentacion } : {}),
     publicado: new Date(a.publicado || Date.now()).toISOString(), texto: a.texto, texto_sha256: a.texto_sha256,
     ...(datos && Object.keys(datos).length ? { datos } : {}),
+    ...(a.analisis?.video ? { video: a.analisis.video } : {}),
   };
 }
 function exportarLista(destino, lista) {
@@ -227,6 +285,24 @@ async function main() {
     log(`publicado «${a.titulo}» -> /opinion/${slug}. Sale con el próximo despliegue (ops/publicar.sh).`);
     return;
   }
+  if (valor("--importar")) return importar(q, valor("--importar"));
+  if (valor("--video")) {
+    const a = await uno(valor("--video"));
+    let video = null;
+    if (!flag("--quitar")) {
+      const url = valor("--url");
+      if (!/^https:\/\/(x\.com|twitter\.com)\/\w+\/status\/\d+|^https:\/\/(www\.youtube\.com\/(watch\?v=|shorts\/)|youtu\.be\/)[\w-]{11}/.test(url || ""))
+        throw new Error("--url tiene que ser un post de X (x.com/<cuenta>/status/<id>) o un vídeo de YouTube");
+      const n = parrafos(a.texto).length, tras = valor("--tras") ? Number(valor("--tras")) : n;
+      if (!Number.isInteger(tras) || tras < 1 || tras > n) throw new Error(`--tras tiene que estar entre 1 y ${n}`);
+      video = { url, tras };
+    }
+    const { video: _, editor: { video: __, ...ed } = {}, ...resto } = a.analisis || {};
+    const editor = video ? { ...ed, video } : ed;
+    await q(`opinion_articulos?id=eq.${a.id}`, { method: "PATCH", body: { analisis: { ...resto, ...(video ? { video } : {}), ...(Object.keys(editor).length ? { editor } : {}) } } });
+    log(video ? `vídeo tras el párrafo ${video.tras} de ${parrafos(a.texto).length}` : "vídeo retirado");
+    return;
+  }
   if (valor("--rechazar")) {
     const motivo = valor("--motivo");
     if (!motivo) throw new Error("--rechazar necesita --motivo \"…\" (lo verá el autor)");
@@ -239,7 +315,7 @@ async function main() {
   for (const a of await q(`opinion_articulos?select=${CAMPOS}&estado=eq.enviado&order=creado.asc`)) {
     try {
       const r = await analizar(a);
-      await q(`opinion_articulos?id=eq.${a.id}`, { method: "PATCH", body: { estado: "revision", analisis: r } });
+      await q(`opinion_articulos?id=eq.${a.id}`, { method: "PATCH", body: { estado: "revision", analisis: conEditor(r, a.analisis) } });
       log(`en revisión: «${a.titulo}»${r.alertas.length ? ` · ${r.alertas.length} alertas` : ""}`);
     } catch (e) { log(`ERROR «${a.titulo}»: ${e.message}`); }
   }

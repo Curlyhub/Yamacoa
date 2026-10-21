@@ -29,8 +29,24 @@ editor:
   node ops/opinion/opinion.mjs --ensayo <id>        vista previa en npm start (/opinion/<slug>)
   node ops/opinion/opinion.mjs --aprobar <id> [--sin-datos]
   node ops/opinion/opinion.mjs --rechazar <id> --motivo "…"   (el autor ve el motivo)
+  node ops/opinion/opinion.mjs --video <id> --url <x.com|youtube> [--tras <n>]   vídeo citado
   ops/publicar.sh                                    sale al sitio (exporta opinion.json)
 ```
+
+## Envío desde el repo (editor, en nombre de un colaborador invitado)
+Cuando el extractor del portal estropea el texto (párrafos fundidos, texto oculto del PDF),
+el editor deja el material en `ops/opinion/contenido/<carpeta>/` (fuera de git):
+- el original (`.pdf` o `.docx`), que se sube al bucket privado como lo haría el portal;
+- `texto.txt`: el texto CONFIRMADO, párrafos separados por una línea en blanco. Los ladillos
+  («II. …») van en su propio párrafo y la plantilla los pinta como subtítulo;
+- `ficha.json`: `autor` (email de un perfil con `puede_opinar`), `titulo`, `firma`, `firma_tipo`,
+  `presentacion?`, `video?` `{url, tras}` y `grafico?` (formato de `Graficos.jsx` + `fuente_url`:
+  cada valor tiene que aparecer en esa página o no se importa).
+
+`node ops/opinion/opinion.mjs --importar ops/opinion/contenido/<carpeta>` crea el envío
+(«enviado»; deja `importado.json` para no duplicarlo) y el flujo sigue igual: análisis, revisión,
+`--aprobar`, `ops/publicar.sh`. El vídeo y el gráfico del editor sobreviven al análisis; el
+gráfico sustituye al del analista. El vídeo no se carga hasta que el lector pulsa.
 - **Verja:** cada cifra del contexto y de las notas tiene que estar en la fuente citada (serie de
   Yamacoa o URL que se descarga); cada nota se ancla a un fragmento LITERAL del autor; los
   gráficos de serie los construye el código. Lo que no pasa se descarta (el artículo sigue).

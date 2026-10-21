@@ -26,6 +26,16 @@
         "publicado": { "type": "string", "format": "date-time" },
         "texto": { "type": "string", "minLength": 400, "description": "Texto del autor, tal cual. Párrafos separados por una línea en blanco." },
         "texto_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "video": {
+          "type": "object",
+          "required": ["url", "tras"],
+          "additionalProperties": false,
+          "description": "Vídeo citado por el autor (post de X o YouTube), incrustado tras el párrafo `tras` (1 = el primero). Se carga al pulsar.",
+          "properties": {
+            "url": { "type": "string", "format": "uri", "pattern": "^https://(x\\.com|twitter\\.com|www\\.youtube\\.com|youtu\\.be)/" },
+            "tras": { "type": "integer", "minimum": 1 }
+          }
+        },
         "datos": {
           "type": "object",
           "additionalProperties": false,

@@ -1,3 +1,4 @@
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFeed, fechaLarga } from "./feed";
 import { Vacio, recorta } from "./piezas";
@@ -11,7 +12,10 @@ import Compartir from "../components/Compartir";
    - Lo que añade Yamacoa va APARTE, en «Los datos», con el color de lo automático: contexto
      con fuentes, gráfico y notas de datos neutrales. Cada nota se ancla a las palabras exactas
      del autor con una marca discreta (subrayado de puntos + número): las palabras no cambian.
-   - Firma con nombre o seudónimo; la sección no aparece en el menú si no hay artículos. */
+   - Firma con nombre o seudónimo; la sección no aparece en el menú si no hay artículos.
+   - (2026-10-21) Un párrafo corto que empieza por número romano («II. …») se pinta como
+     ladillo: es el del autor, solo cambia el tamaño. El vídeo que cita el autor (X o YouTube)
+     va tras el párrafo que indica `video.tras` y no se carga hasta que se pulsa. */
 
 const CSS = `
 .yop{max-width:760px; margin:0 auto; padding-top:34px;}
@@ -23,6 +27,13 @@ const CSS = `
 .yop-texto p{font-size:18.5px; line-height:1.7; color:var(--y-ink); margin:0 0 20px; white-space:pre-line;}
 .yop-texto mark{background:none; color:inherit; text-decoration:underline dotted var(--y-auto-ink) 2px; text-underline-offset:4px;}
 .yop-texto sup a{font:600 10px var(--y-mono); color:var(--y-auto-ink); text-decoration:none; margin-left:2px;}
+.yop-texto h2{font-size:22px; line-height:1.25; letter-spacing:-.02em; color:var(--y-ink); margin:34px 0 14px;}
+.yop-video{margin:8px 0 28px; padding:20px 22px; border-radius:24px; background:var(--y-surface); box-shadow:var(--y-shadow);}
+.yop-video p{font-size:14.5px; line-height:1.5; color:var(--y-muted); margin:6px 0 14px;}
+.yop-video button{font:700 15px inherit; font-family:inherit; padding:11px 20px; border:0; border-radius:999px; background:var(--y-ink); color:var(--y-surface); cursor:pointer;}
+.yop-video a{font-size:14px; font-weight:600; color:var(--y-ink); margin-left:14px;}
+.yop-video-marco{display:flex; justify-content:center; min-height:120px;}
+.yop-video-marco iframe{width:100%; aspect-ratio:16/9; border:0; border-radius:14px;}
 .yop-datos{margin:34px 0 10px; padding:24px 26px 12px; border-radius:28px; background:var(--y-auto-bg);}
 .yop-datos header{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:14px;}
 .yop-datos h2{font-size:22px; letter-spacing:-.02em; margin:0; color:var(--y-auto-head);}
@@ -49,6 +60,49 @@ const CSS = `
 export const rutaOpinion = (a) => `/opinion/${a.slug}`;
 const parrafos = (t) => t.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
 const firmaDe = (a) => (a.firma_tipo === "seudonimo" ? `${a.firma} (seudónimo)` : a.firma);
+
+const LADILLO = /^[IVXL]+\.\s+\S[^\n]{0,90}$/;
+const esLadillo = (p) => LADILLO.test(p) && !/[.:;]$/.test(p);
+
+// Vídeo citado por el autor. Nada se pide a X ni a YouTube hasta que el lector pulsa.
+function Video({ url }) {
+  const [ver, setVer] = useState(false);
+  const [fallo, setFallo] = useState(false);
+  const marco = useRef(null);
+  const x = /^https:\/\/(?:x|twitter)\.com\/\w+\/status\/(\d+)/.exec(url);
+  const yt = /(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/.exec(url);
+  const origen = x ? "X" : "YouTube";
+  useEffect(() => {
+    if (!ver || !x || !marco.current) return;
+    const pintar = () => window.twttr.widgets.createTweet(x[1], marco.current, { dnt: true, lang: "es", align: "center", conversation: "none" })
+      .then((el) => { if (!el) setFallo(true); }, () => setFallo(true));
+    if (window.twttr?.widgets) { pintar(); return; }
+    const s = document.createElement("script");
+    s.src = "https://platform.twitter.com/widgets.js"; s.async = true;
+    s.onload = () => (window.twttr?.widgets ? pintar() : setFallo(true));
+    s.onerror = () => setFallo(true);
+    document.body.appendChild(s);
+  }, [ver]); // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <figure className="yop-video">
+      <span className="y-eyebrow">Vídeo citado por el autor</span>
+      {!ver ? (
+        <>
+          <p>Se carga desde {origen} al pulsar; hasta entonces {origen} no recibe nada de tu visita.</p>
+          <button type="button" onClick={() => setVer(true)}>Ver el vídeo</button>
+          <a href={url} target="_blank" rel="noopener noreferrer">Abrir en {origen} ↗</a>
+        </>
+      ) : fallo ? (
+        <p>No se ha podido cargar. <a href={url} target="_blank" rel="noopener noreferrer" style={{ marginLeft: 0 }}>Ábrelo en {origen} ↗</a></p>
+      ) : (
+        <div className="yop-video-marco" ref={marco}>
+          {yt && <iframe src={`https://www.youtube-nocookie.com/embed/${yt[1]}?autoplay=1`} title="Vídeo citado por el autor"
+            allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />}
+        </div>
+      )}
+    </figure>
+  );
+}
 
 function Citas({ citas }) {
   return (citas || []).map((c) => <sup key={c}><a href={`#od-f-${c}`} aria-label={`Fuente ${c}`}>[{c}]</a></sup>);
@@ -101,7 +155,12 @@ export function Articulo() {
           son suyas. Aparte, en «Los datos», la redacción añade contexto con fuentes verificables.</p>
 
         <div className="yop-texto">
-          {parrafos(a.texto).map((p, i) => <Parrafo key={i} texto={p} notas={notas} />)}
+          {parrafos(a.texto).map((p, i) => (
+            <Fragment key={i}>
+              {esLadillo(p) ? <h2>{p}</h2> : <Parrafo texto={p} notas={notas} />}
+              {a.video?.tras === i + 1 && <Video url={a.video.url} />}
+            </Fragment>
+          ))}
         </div>
 
         {(d.contexto?.length || d.grafico || notas.length) ? (
@@ -163,7 +222,7 @@ export default function Opinion() {
                 <span className="y-meta">{fechaLarga(a.publicado)}</span>
                 <h3>{a.titulo}</h3>
                 <p style={{ color: "var(--y-ink)", fontWeight: 700, marginBottom: 8 }}>{firmaDe(a)}</p>
-                <p>{recorta(parrafos(a.texto)[0], 180)}</p>
+                <p>{recorta(parrafos(a.texto).find((p) => !esLadillo(p)) || "", 180)}</p>
               </Link>
             ))}
           </div>
