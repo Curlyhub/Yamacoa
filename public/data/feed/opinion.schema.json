@@ -26,6 +26,23 @@
         "publicado": { "type": "string", "format": "date-time" },
         "texto": { "type": "string", "minLength": 400, "description": "Texto del autor, tal cual. Párrafos separados por una línea en blanco." },
         "texto_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "contenido": {
+          "type": "array",
+          "description": "El documento original del autor reproducido sobre su texto confirmado: mismas palabras que `texto`, con ladillos, negrita, cursiva, enlaces y figuras del original. Si falta, se pinta `texto`.",
+          "items": {
+            "oneOf": [
+              { "type": "object", "required": ["tipo", "runs"], "additionalProperties": false,
+                "properties": { "tipo": { "enum": ["parrafo", "ladillo"] },
+                  "runs": { "type": "array", "minItems": 1, "items": { "type": "object", "required": ["t"], "additionalProperties": false,
+                    "properties": { "t": { "type": "string" }, "b": { "const": true }, "i": { "const": true },
+                      "href": { "type": "string", "format": "uri", "pattern": "^https?://" } } } } } },
+              { "type": "object", "required": ["tipo", "src", "ancho", "alto"], "additionalProperties": false,
+                "properties": { "tipo": { "const": "figura" }, "src": { "type": "string", "pattern": "^data/opinion/[a-z0-9-]+/figura-\\d+\\.webp(\\?v=[a-f0-9]+)?$" },
+                  "ancho": { "type": "integer", "minimum": 1 }, "alto": { "type": "integer", "minimum": 1 }, "pie": { "type": "string", "maxLength": 300 } } }
+            ]
+          }
+        },
+        "original_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$", "description": "Huella del documento original (PDF o Word) tal como lo envió el autor." },
         "video": {
           "type": "object",
           "required": ["url", "tras"],

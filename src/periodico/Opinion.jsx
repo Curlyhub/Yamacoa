@@ -15,7 +15,10 @@ import Compartir from "../components/Compartir";
    - Firma con nombre o seudónimo; la sección no aparece en el menú si no hay artículos.
    - (2026-10-21) Un párrafo corto que empieza por número romano («II. …») se pinta como
      ladillo: es el del autor, solo cambia el tamaño. El vídeo que cita el autor (X o YouTube)
-     va tras el párrafo que indica `video.tras` y no se carga hasta que se pulsa. */
+     va tras el párrafo que indica `video.tras` y no se carga hasta que se pulsa.
+   - (2026-10-21) Si el feed trae `contenido`, se pinta el documento original del autor
+     reproducido: mismas palabras que `texto` (las garantiza el exportador), con sus ladillos,
+     negritas, cursivas, enlaces y figuras. Va también la huella del original. */
 
 const CSS = `
 .yop{max-width:760px; margin:0 auto; padding-top:34px;}
@@ -25,6 +28,11 @@ const CSS = `
 .yop-pres{font-size:14.5px; color:var(--y-muted); margin:4px 0 0;}
 .yop-tal{margin:22px 0 26px; padding:12px 16px; border-left:3px solid var(--y-rule); font-size:14px; line-height:1.5; color:var(--y-muted);}
 .yop-texto p{font-size:18.5px; line-height:1.7; color:var(--y-ink); margin:0 0 20px; white-space:pre-line;}
+.yop-texto a{color:inherit; text-decoration:underline; text-decoration-color:var(--y-rule); text-underline-offset:3px;}
+.yop-texto a:hover{text-decoration-color:var(--y-ink);}
+.yop-fig{margin:8px 0 28px;}
+.yop-fig img{display:block; width:100%; height:auto; border-radius:14px; background:#fff;}
+.yop-fig figcaption{font-size:14px; font-style:italic; color:var(--y-muted); margin-top:8px;}
 .yop-texto mark{background:none; color:inherit; text-decoration:underline dotted var(--y-auto-ink) 2px; text-underline-offset:4px;}
 .yop-texto sup a{font:600 10px var(--y-mono); color:var(--y-auto-ink); text-decoration:none; margin-left:2px;}
 .yop-texto h2{font-size:22px; line-height:1.25; letter-spacing:-.02em; color:var(--y-ink); margin:34px 0 14px;}
@@ -110,24 +118,59 @@ function Citas({ citas }) {
 
 // Marca en un párrafo las palabras que tienen nota de datos. Busca el fragmento literal
 // (tolerante a espacios); si no lo encuentra, el párrafo sale sin marca y la nota sigue abajo.
-function Parrafo({ texto, notas }) {
+// `runs` es la forma del original (negrita, cursiva, enlace); las marcas se cruzan con ella.
+function Parrafo({ texto, runs, notas }) {
+  const tramos = runs || [{ t: texto }];
+  const llano = tramos.map((r) => r.t).join("");
   const marcas = [];
   notas.forEach((n, i) => {
     const re = new RegExp(n.fragmento.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/\s+/g, "\\s+"), "i");
-    const m = re.exec(texto);
+    const m = re.exec(llano);
     if (m && !marcas.some((x) => m.index < x.fin && m.index + m[0].length > x.ini)) marcas.push({ ini: m.index, fin: m.index + m[0].length, i });
   });
-  if (!marcas.length) return <p>{texto}</p>;
-  marcas.sort((a, b) => a.ini - b.ini);
-  const out = []; let k = 0;
-  marcas.forEach((x) => {
-    out.push(texto.slice(k, x.ini));
-    out.push(<mark key={x.i}>{texto.slice(x.ini, x.fin)}</mark>,
-      <sup key={`s${x.i}`}><a href={`#od-n-${x.i + 1}`} aria-label={`Nota de datos ${x.i + 1}`}>d{x.i + 1}</a></sup>);
-    k = x.fin;
-  });
-  out.push(texto.slice(k));
+  if (!marcas.length && !runs) return <p>{texto}</p>;
+  const cortes = new Set([0, llano.length]);
+  marcas.forEach((x) => { cortes.add(x.ini); cortes.add(x.fin); });
+  const inicios = []; let pos = 0;
+  tramos.forEach((r) => { inicios.push(pos); cortes.add(pos); pos += r.t.length; });
+  const orden = [...cortes].sort((a, b) => a - b);
+  const out = [];
+  for (let k = 0; k < orden.length - 1; k++) {
+    const ini = orden[k], fin = orden[k + 1];
+    let r = 0; while (r + 1 < inicios.length && inicios[r + 1] <= ini) r++;
+    const run = tramos[r], m = marcas.find((x) => ini >= x.ini && fin <= x.fin);
+    let el = llano.slice(ini, fin);
+    if (run.b) el = <strong>{el}</strong>;
+    if (run.i) el = <em>{el}</em>;
+    if (run.href) el = <a href={run.href} target="_blank" rel="noopener noreferrer nofollow">{el}</a>;
+    if (m) el = <mark>{el}</mark>;
+    out.push(<Fragment key={k}>{el}</Fragment>);
+    if (m && fin === m.fin) out.push(<sup key={`s${m.i}`}><a href={`#od-n-${m.i + 1}`} aria-label={`Nota de datos ${m.i + 1}`}>d{m.i + 1}</a></sup>);
+  }
   return <p>{out}</p>;
+}
+
+// El cuerpo: el original reproducido (`contenido`) si lo hay; si no, el texto llano.
+// El vídeo va tras el párrafo de texto número `video.tras` (las figuras no cuentan).
+function Cuerpo({ a, notas }) {
+  const bloques = a.contenido || parrafos(a.texto).map((p) => (esLadillo(p) ? { tipo: "ladillo", runs: [{ t: p }] } : { tipo: "parrafo", texto: p }));
+  let n = 0;
+  return bloques.map((b, k) => {
+    if (b.tipo === "figura") return (
+      <figure key={k} className="yop-fig">
+        <img src={`${process.env.PUBLIC_URL}/${b.src}`} width={b.ancho} height={b.alto} loading="lazy" alt={b.pie || "Figura del autor"} />
+        {b.pie && <figcaption>{b.pie}</figcaption>}
+      </figure>
+    );
+    n++;
+    return (
+      <Fragment key={k}>
+        {b.tipo === "ladillo" || esLadillo(b.texto ?? b.runs.map((r) => r.t).join(""))
+          ? <h2>{b.texto ?? b.runs.map((r) => r.t).join("")}</h2> : <Parrafo texto={b.texto} runs={b.runs} notas={notas} />}
+        {a.video?.tras === n && <Video url={a.video.url} />}
+      </Fragment>
+    );
+  });
 }
 
 export function Articulo() {
@@ -155,12 +198,7 @@ export function Articulo() {
           son suyas. Aparte, en «Los datos», la redacción añade contexto con fuentes verificables.</p>
 
         <div className="yop-texto">
-          {parrafos(a.texto).map((p, i) => (
-            <Fragment key={i}>
-              {esLadillo(p) ? <h2>{p}</h2> : <Parrafo texto={p} notas={notas} />}
-              {a.video?.tras === i + 1 && <Video url={a.video.url} />}
-            </Fragment>
-          ))}
+          <Cuerpo a={a} notas={notas} />
         </div>
 
         {(d.contexto?.length || d.grafico || notas.length) ? (
@@ -197,7 +235,8 @@ export function Articulo() {
           </Link>
         )}
 
-        <p className="yop-huella">Texto íntegro del autor · sha256 {a.texto_sha256}</p>
+        <p className="yop-huella">Texto íntegro del autor · sha256 {a.texto_sha256}
+          {a.original_sha256 && <><br />Documento original · sha256 {a.original_sha256}</>}</p>
       </article>
     </div>
   );

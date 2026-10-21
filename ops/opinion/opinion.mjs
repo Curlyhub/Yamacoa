@@ -17,6 +17,10 @@
 //              con puede_opinar; titulo, firma, firma_tipo, presentacion?, video?, grafico?).
 //              El gráfico del editor pasa la misma verja (cada valor en su `fuente_url`) y
 //              sustituye al del analista; vídeo y gráfico sobreviven al análisis.
+//
+// Al exportar, el original (PDF o Word) se descarga del bucket y se REPRODUCE sobre el texto
+// confirmado (lib/documento.mjs): ladillos, negrita, cursiva, enlaces y figuras del autor.
+// Las palabras siguen siendo las confirmadas; si no casan, sale el texto llano.
 //   prueba <fichero.txt> --titulo "…"   análisis de un texto local, sin BD, con vista previa
 //
 // Requiere SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY (noticias.env) salvo en --prueba.
@@ -31,6 +35,7 @@ import { abrir } from "../noticias/lib/db.mjs";
 import { cargarSeries, paraMotor, graficoDeSerie, numeroEnTexto, ordenados } from "../noticias/lib/series.mjs";
 import { descargar, texto as textoHtml } from "../noticias/lib/rss.mjs";
 import { cifras } from "../podcast/auto/lib/oral.mjs";
+import { reproducir } from "./lib/documento.mjs";
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(AQUI, "../..");
@@ -65,7 +70,7 @@ function bd() {
     const t = await r.text(); return t ? JSON.parse(t) : null;
   };
 }
-const CAMPOS = "id,titulo,firma,firma_tipo,presentacion,texto,texto_sha256,original_tipo,estado,slug,analisis,motivo,creado,publicado";
+const CAMPOS = "id,titulo,firma,firma_tipo,presentacion,texto,texto_sha256,original_path,original_tipo,estado,slug,analisis,motivo,creado,publicado";
 
 /* ---------- analizar ---------- */
 async function series() {
@@ -204,6 +209,41 @@ async function importar(q, carpeta) {
   log(`importado «${a.titulo}» -> ${a.id} (enviado). Analizar: node ops/opinion/opinion.mjs`);
 }
 
+/* ---------- el original del autor, reproducido ---------- */
+async function original(a) {
+  const f = path.join(TRABAJO, a.id, `original.${a.original_tipo}`);   // caché: el original no cambia
+  if (!fs.existsSync(f)) {
+    const base = (process.env.SUPABASE_URL || "").replace(/\/+$/, "").replace(/\/rest\/v1$/, ""), key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const r = await fetch(`${base}/storage/v1/object/opinion-originales/${a.original_path}`,
+      { headers: { apikey: key, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(60000) });
+    if (!r.ok) throw new Error(`no se puede descargar el original: ${r.status}`);
+    fs.mkdirSync(path.dirname(f), { recursive: true });
+    fs.writeFileSync(f, Buffer.from(await r.arrayBuffer()));
+  }
+  return fs.readFileSync(f);
+}
+async function conForma(a, destino) {
+  if (!a.original_path || !["pdf", "docx"].includes(a.original_tipo)) return a;
+  try {
+    const buf = await original(a);
+    const { bloques, avisos } = await reproducir(buf, a.original_tipo, a.texto);
+    for (const x of avisos) log(`«${a.titulo}»: ${x}`);
+    let n = 0;
+    const contenido = bloques.map((b) => {
+      if (b.tipo !== "figura") return b;
+      const rel = `data/opinion/${a.slug}/figura-${++n}.webp`;
+      fs.mkdirSync(path.dirname(path.join(destino, rel)), { recursive: true });
+      fs.writeFileSync(path.join(destino, rel), b.webp);
+      const huella = crypto.createHash("sha256").update(b.webp).digest("hex").slice(0, 10);
+      return { tipo: "figura", src: `${rel}?v=${huella}`, ancho: b.ancho, alto: b.alto, ...(b.pie ? { pie: b.pie } : {}) };
+    });
+    return { ...a, contenido, original_sha256: crypto.createHash("sha256").update(buf).digest("hex") };
+  } catch (e) {
+    log(`«${a.titulo}»: sin la forma del original (${e.message}); sale el texto llano`);
+    return a;
+  }
+}
+
 /* ---------- feed ---------- */
 function validador() {
   const Ajv = createRequire(import.meta.url)("ajv");
@@ -220,10 +260,14 @@ function item(a) {
     publicado: new Date(a.publicado || Date.now()).toISOString(), texto: a.texto, texto_sha256: a.texto_sha256,
     ...(datos && Object.keys(datos).length ? { datos } : {}),
     ...(a.analisis?.video ? { video: a.analisis.video } : {}),
+    ...(a.contenido ? { contenido: a.contenido, original_sha256: a.original_sha256 } : {}),
   };
 }
-function exportarLista(destino, lista) {
-  const feed = { version: "1", actualizado: new Date().toISOString(), items: lista.map(item) };
+async function exportarLista(destino, lista) {
+  fs.rmSync(path.join(destino, "data/opinion"), { recursive: true, force: true });   // figuras: solo las vigentes
+  const conTodo = [];
+  for (const a of lista) conTodo.push(await conForma(a, destino));
+  const feed = { version: "1", actualizado: new Date().toISOString(), items: conTodo.map(item) };
   const v = validador();
   if (!v(feed)) throw new Error(`el feed de opinión no valida: ${v.errors.map((e) => `${e.dataPath} ${e.message}`).join("; ")}`);
   escribir(path.join(destino, "data/feed/opinion.json"), feed);
@@ -241,7 +285,7 @@ async function main() {
       firma: valor("--firma") || "Firma de prueba", firma_tipo: "seudonimo", texto, texto_sha256: sha256(texto) };
     const r = await analizar(a);
     console.log(JSON.stringify({ alertas: r.alertas, descartes: r.descartes }, null, 2));
-    exportarLista(destino, [{ ...a, slug: slugify(a.titulo), publicado: new Date().toISOString(), analisis: r }]);
+    await exportarLista(destino, [{ ...a, slug: slugify(a.titulo), publicado: new Date().toISOString(), analisis: r }]);
     log(`vista previa: http://localhost:3123/opinion/${slugify(a.titulo)}`);
     return;
   }
@@ -271,7 +315,7 @@ async function main() {
   if (valor("--ensayo")) {
     const a = await uno(valor("--ensayo"));
     const pub = await q(`opinion_articulos?select=${CAMPOS}&estado=eq.publicado&order=publicado.desc`);
-    exportarLista(destino, [{ ...a, slug: a.slug || slugify(a.titulo), publicado: new Date().toISOString() }, ...pub.filter((x) => x.id !== a.id)]);
+    await exportarLista(destino, [{ ...a, slug: a.slug || slugify(a.titulo), publicado: new Date().toISOString() }, ...pub.filter((x) => x.id !== a.id)]);
     log(`vista previa: http://localhost:3123/opinion/${a.slug || slugify(a.titulo)}`);
     return;
   }

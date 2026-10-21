@@ -33,8 +33,17 @@ editor:
   ops/publicar.sh                                    sale al sitio (exporta opinion.json)
 ```
 
+## El original, reproducido (2026-10-21)
+El texto confirmado (`texto`, sha256) solo lleva palabras. Al exportar (`--solo-exportar`, `--ensayo`),
+`lib/documento.mjs` descarga el original del bucket (caché en `trabajo/<id>/`) y lo reproduce sobre
+ese texto: ladillos, negrita, cursiva, enlaces y figuras (a `data/opinion/<slug>/figura-N.webp`, en
+el build, fuera de git). Cada párrafo se busca LITERAL en el documento: lo que no casa sale llano y se
+avisa en el log; lo que el documento tiene fuera del texto (título, firma, fecha) no se publica, salvo
+las figuras con su pie (la cursiva que las sigue). La página muestra también el sha256 del original.
+PDF con pdf.js y Word con mammoth, las mismas versiones que el portal.
+
 ## Envío desde el repo (editor, en nombre de un colaborador invitado)
-Cuando el extractor del portal estropea el texto (párrafos fundidos, texto oculto del PDF),
+Cuando el texto que llega del portal viene mal (párrafos fundidos, material pegado que no es del artículo),
 el editor deja el material en `ops/opinion/contenido/<carpeta>/` (fuera de git):
 - el original (`.pdf` o `.docx`), que se sube al bucket privado como lo haría el portal;
 - `texto.txt`: el texto CONFIRMADO, párrafos separados por una línea en blanco. Los ladillos
