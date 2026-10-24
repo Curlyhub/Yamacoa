@@ -47,7 +47,7 @@ entra en git.
    Register-ScheduledTask -TaskName "Yamacoa noticias" -Action $a -Trigger $t1,$t2 -Settings $s
    ```
    Alternativa dentro de WSL: `service cron start` (hay que repetirlo en cada arranque) y
-   `crontab -e` con `0 0,18 * * * /home/<usuario>/bohio/yamacoa/ops/noticias/ciclo.sh`.
+   `crontab -e` con `0 0,18 * * * $HOME/bohio/yamacoa/ops/noticias/ciclo.sh`.
    Si el PC está apagado a esa hora no hay ciclo (`StartWhenAvailable` lo lanza al encender).
 
 ## Operación

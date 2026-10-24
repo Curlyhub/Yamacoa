@@ -38,9 +38,9 @@ const EPISODIOS = path.join(AQUI, "episodios");
 // YAMACOA_MEDIA=https://media.yamacoa.com (la web solo ve la URL).
 const MEDIA = (process.env.YAMACOA_MEDIA || "https://tts.yamacoa.com").replace(/\/+$/, "");
 // La clave solo puede escribir .mp3 en /var/www/yamacoa-media/podcast (orden forzada en el servidor).
-const DESTINO = process.env.YAMACOA_MEDIA_DESTINO ?? "<usuario>@<servidor>:";
+const DESTINO = process.env.YAMACOA_MEDIA_DESTINO ?? process.env.YAMACOA_SERVIDOR ?? ""; // usuario@host: (noticias.env)
 const CLAVE = process.env.YAMACOA_MEDIA_CLAVE || `${process.env.HOME}/.ssh/yamacoa_media`;
-const PY = process.env.YAMACOA_TTS_PY || "/home/<usuario>/bohio/yamacoa-tts/.venv/bin/python";
+const PY = process.env.YAMACOA_TTS_PY || path.resolve(REPO, "../yamacoa-tts/.venv/bin/python");
 const BUCKET = process.env.YAMACOA_R2_BUCKET || ""; // alternativa: R2
 const MINUTOS = { "al-dia": Number(process.env.YAMACOA_PODCAST_MIN || 6), conversacion: 12 };
 

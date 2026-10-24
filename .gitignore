@@ -69,3 +69,6 @@ ops/boletin/vista.html
 
 # compilación de Rust del orquestador
 /orquestador/target
+
+# Procedencia de cada tema con la cuenta de quien lo envió: solo en local (datos personales)
+/ops/registro_creaciones.json

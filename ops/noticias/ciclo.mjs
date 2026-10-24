@@ -55,7 +55,7 @@ const log = (...m) => console.log(new Date().toISOString().slice(11, 19), ...m);
 const db = abrir({ estadoDir: ESTADO });
 const AUDIO = AUDIO_DE(db.tipo);
 const IMAGEN = path.join(ESTADO, db.tipo === "local" ? "imagen-ensayo" : "imagen");
-const PY = process.env.YAMACOA_TTS_PY || "/home/<usuario>/bohio/yamacoa-tts/.venv/bin/python";
+const PY = process.env.YAMACOA_TTS_PY || path.resolve(REPO, "../yamacoa-tts/.venv/bin/python");
 // Identidad visual común (paleta de Yamacoa) y límites de §11.4: ilustración, nunca foto; sin
 // personas reconocibles, sin texto, sin banderas ni símbolos políticos.
 // La escena va DELANTE: CLIP solo lee 77 tokens (T5 lee todo).

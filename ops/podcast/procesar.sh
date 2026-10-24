@@ -18,14 +18,14 @@
 # Requisitos: ffmpeg (con arnndn), rsync, jq, curl, modelo RNNoise .rnnn y faster-whisper (o
 #   whisper.cpp con WHISPER_MODEL); opcional: deep-filter.
 # Entorno: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY (noticias.env). Por defecto:
-#   ORIGEN=<usuario>@<servidor>: (la clave ~/.ssh/yamacoa_grabaciones solo puede hacer rsync
+#   ORIGEN=$YAMACOA_SERVIDOR (usuario@host:, en noticias.env; la clave ~/.ssh/yamacoa_grabaciones solo puede hacer rsync
 #   dentro de /var/lib/yamacoa-grabaciones), RNNOISE_MODEL=~/bohio/yamacoa-tts/modelos/sh.rnnn
 set -euo pipefail
 
 : "${SUPABASE_URL:?}" "${SUPABASE_SERVICE_ROLE_KEY:?}"
 SUPABASE_URL="${SUPABASE_URL%/}"; SUPABASE_URL="${SUPABASE_URL%/rest/v1}"
 RNNOISE_MODEL="${RNNOISE_MODEL:-$HOME/bohio/yamacoa-tts/modelos/sh.rnnn}"
-ORIGEN="${ORIGEN:-<usuario>@<servidor>:}"
+ORIGEN="${ORIGEN:-${YAMACOA_SERVIDOR:?falta YAMACOA_SERVIDOR (usuario@host:, noticias.env)}}"
 SSH_GRAB="ssh -i ${CLAVE_GRABACIONES:-$HOME/.ssh/yamacoa_grabaciones} -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20"
 PY="${YAMACOA_TTS_PY:-$HOME/bohio/yamacoa-tts/.venv/bin/python}"
 AQUI="$(cd "$(dirname "$0")" && pwd)"

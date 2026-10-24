@@ -23,7 +23,7 @@ if (!args.length) { console.error("uso: node scripts/og-tarjeta.mjs <slug> [<slu
 
 function chromium() {
   if (process.env.CHROME) return process.env.CHROME;
-  for (const base of [join(homedir(), ".cache/ms-playwright"), "/root/.cache/ms-playwright", "/home/<usuario>/.cache/ms-playwright"]) {
+  for (const base of [join(homedir(), ".cache/ms-playwright"), "/root/.cache/ms-playwright", ...(existsSync("/home") ? readdirSync("/home").map((u) => join("/home", u, ".cache/ms-playwright")) : [])]) {
     if (!existsSync(base)) continue;
     for (const d of readdirSync(base).filter((x) => x.startsWith("chromium-")).sort().reverse()) {
       const bin = join(base, d, "chrome-linux/chrome");

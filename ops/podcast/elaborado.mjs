@@ -24,7 +24,7 @@ const BORRADORES = path.join(AQUI, "borradores");
 const HOME = process.env.HOME;
 const MEDIA = (process.env.YAMACOA_MEDIA || "https://tts.yamacoa.com").replace(/\/+$/, "");
 const SSH = (clave) => `ssh -i ${HOME}/.ssh/${clave} -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20`;
-const SERVIDOR = "<usuario>@<servidor>:";
+const SERVIDOR = process.env.YAMACOA_SERVIDOR || ""; // usuario@host: del servidor propio (noticias.env)
 const args = process.argv.slice(2);
 const valor = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : null; };
 const leerJson = (f) => JSON.parse(fs.readFileSync(f, "utf8"));
@@ -38,6 +38,7 @@ function bd() {
   const base = (process.env.SUPABASE_URL || "").replace(/\/+$/, "").replace(/\/rest\/v1$/, "");
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!base || !key) throw new Error("faltan SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY (noticias.env)");
+  if (!SERVIDOR) throw new Error("falta YAMACOA_SERVIDOR (usuario@host:, noticias.env)");
   return async (ruta, { method = "GET", body, prefer } = {}) => {
     const r = await fetch(`${base}/rest/v1/${ruta}`, { method, body: body ? JSON.stringify(body) : undefined,
       headers: { apikey: key, ...(key.startsWith("eyJ") ? { Authorization: `Bearer ${key}` } : {}), "Content-Type": "application/json",

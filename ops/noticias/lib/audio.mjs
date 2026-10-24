@@ -4,11 +4,12 @@
 // cabeceras a los 300 s. WAV de 24 kHz -> MP3 mono 64 kb/s con ffmpeg.
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
 const TTS = process.env.YAMACOA_TTS || "https://tts.yamacoa.com/api/tts";
-const HOME = process.env.HOME || "/home/<usuario>";
+const HOME = process.env.HOME || os.homedir();
 const PY_LOCAL = process.env.YAMACOA_KOKORO_PY || `${HOME}/bohio/yamacoa-tts/kokoro-venv/bin/python`;
 const LOCAL = path.join(path.dirname(new URL(import.meta.url).pathname), "..", "kokoro_local.py");
 

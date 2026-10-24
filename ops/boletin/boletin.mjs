@@ -14,6 +14,7 @@
 // Una semana ISO se envía una sola vez (tabla boletin_envios).
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -155,7 +156,7 @@ function asunto(c) {
 
 /* ---------- envío ---------- */
 function entorno(fichero) {
-  const f = path.join(process.env.HOME || "/home/<usuario>", ".config/yamacoa", fichero);
+  const f = path.join(process.env.HOME || os.homedir(), ".config/yamacoa", fichero);
   if (!fs.existsSync(f)) return;
   for (const linea of fs.readFileSync(f, "utf8").split("\n")) {
     const m = linea.match(/^\s*(?:export\s+)?([A-Z_]+)=(.*)$/);
