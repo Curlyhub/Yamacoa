@@ -66,3 +66,6 @@ ops/boletin/vista.html
 
 # generado en prebuild (scripts/gen-sitemap.mjs)
 /public/sitemap.xml
+
+# compilación de Rust del orquestador
+/orquestador/target
