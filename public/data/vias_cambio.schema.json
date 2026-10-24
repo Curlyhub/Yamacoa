@@ -3,69 +3,196 @@
   "$id": "https://yamacoa.com/schema/vias_cambio.schema.json",
   "title": "vias_cambio",
   "type": "object",
-  "required": ["meta", "hero", "marco_legal", "evidencia_chenoweth", "cochinos", "vias_frecuencia", "erosion_economica", "exodo", "matriz", "sintesis", "footer"],
+  "required": [
+    "meta",
+    "hero",
+    "marco_legal",
+    "evidencia_chenoweth",
+    "cochinos",
+    "vias_frecuencia",
+    "erosion_economica",
+    "exodo",
+    "matriz",
+    "sintesis",
+    "footer"
+  ],
   "additionalProperties": false,
   "definitions": {
-    "tipoVia": { "type": "string", "enum": ["novional", "armada", "mixta", "patron"] },
-    "grpVia": { "type": "string", "enum": ["no-violenta", "armada"] },
-    "icon": { "type": "string", "enum": ["gavel", "shield", "scale", "landmark", "ship", "users", "flame", "megaphone", "handshake", "trend_down", "radio", "info"] },
+    "tipoVia": {
+      "type": "string",
+      "enum": [
+        "novional",
+        "armada",
+        "mixta",
+        "patron"
+      ]
+    },
+    "grpVia": {
+      "type": "string",
+      "enum": [
+        "no-violenta",
+        "armada"
+      ]
+    },
+    "icon": {
+      "type": "string",
+      "enum": [
+        "gavel",
+        "shield",
+        "scale",
+        "landmark",
+        "ship",
+        "users",
+        "flame",
+        "megaphone",
+        "handshake",
+        "trend_down",
+        "radio",
+        "info"
+      ]
+    },
     "serieBarra": {
       "type": "object",
-      "required": ["k", "v", "tipo"],
+      "required": [
+        "k",
+        "v",
+        "tipo"
+      ],
       "additionalProperties": false,
       "properties": {
-        "k": { "type": "string" },
-        "v": { "type": "number" },
-        "tipo": { "$ref": "#/definitions/tipoVia" }
+        "k": {
+          "type": "string"
+        },
+        "v": {
+          "type": "number"
+        },
+        "tipo": {
+          "$ref": "#/definitions/tipoVia"
+        }
       }
     },
     "modoChenoweth": {
       "type": "object",
-      "required": ["titulo", "unidad", "nota", "data"],
+      "required": [
+        "titulo",
+        "unidad",
+        "nota",
+        "data"
+      ],
       "additionalProperties": false,
       "properties": {
-        "titulo": { "type": "string" },
-        "unidad": { "type": "string" },
-        "nota": { "type": "string" },
-        "data": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/serieBarra" } }
+        "titulo": {
+          "type": "string"
+        },
+        "unidad": {
+          "type": "string"
+        },
+        "nota": {
+          "type": "string"
+        },
+        "data": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/definitions/serieBarra"
+          }
+        }
       }
     }
   },
   "properties": {
     "meta": {
       "type": "object",
-      "required": ["slug", "titulo", "actualizado", "fuentes"],
+      "required": [
+        "slug",
+        "titulo",
+        "actualizado",
+        "fuentes"
+      ],
       "additionalProperties": false,
       "properties": {
-        "slug": { "type": "string", "pattern": "^[a-z0-9_]+$" },
-        "titulo": { "type": "string" },
-        "actualizado": { "type": "string", "format": "date" },
-        "fuentes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-        "descripcion": { "type": "string", "minLength": 400 },
-        "narracion": { "type": "string", "minLength": 300, "maxLength": 1450 },
-        "narracion_en": { "type": "string", "minLength": 200 }
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "titulo": {
+          "type": "string"
+        },
+        "actualizado": {
+          "type": "string",
+          "format": "date"
+        },
+        "fuentes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "descripcion": {
+          "type": "string",
+          "minLength": 400
+        },
+        "narracion": {
+          "type": "string",
+          "minLength": 300,
+          "maxLength": 1450
+        },
+        "narracion_en": {
+          "type": "string",
+          "minLength": 200
+        }
       }
     },
     "hero": {
       "type": "object",
-      "required": ["eyebrow", "titulo_pre", "titulo_em", "titulo_post", "subtitulo", "stats"],
+      "required": [
+        "eyebrow",
+        "titulo_pre",
+        "titulo_em",
+        "titulo_post",
+        "subtitulo",
+        "stats"
+      ],
       "additionalProperties": false,
       "properties": {
-        "eyebrow": { "type": "string" },
-        "titulo_pre": { "type": "string" },
-        "titulo_em": { "type": "string" },
-        "titulo_post": { "type": "string" },
-        "subtitulo": { "type": "string" },
+        "eyebrow": {
+          "type": "string"
+        },
+        "titulo_pre": {
+          "type": "string"
+        },
+        "titulo_em": {
+          "type": "string"
+        },
+        "titulo_post": {
+          "type": "string"
+        },
+        "subtitulo": {
+          "type": "string"
+        },
         "stats": {
-          "type": "array", "minItems": 1, "maxItems": 4,
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
           "items": {
             "type": "object",
-            "required": ["n", "unit", "label"],
+            "required": [
+              "n",
+              "unit",
+              "label"
+            ],
             "additionalProperties": false,
             "properties": {
-              "n": { "type": "string" },
-              "unit": { "type": "string" },
-              "label": { "type": "string" }
+              "n": {
+                "type": "string"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
             }
           }
         }
@@ -73,32 +200,57 @@
     },
     "marco_legal": {
       "type": "object",
-      "required": ["lede", "items", "flujo"],
+      "required": [
+        "lede",
+        "items",
+        "flujo"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
         "items": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["icon", "titulo", "texto"],
+            "required": [
+              "icon",
+              "titulo",
+              "texto"
+            ],
             "additionalProperties": false,
             "properties": {
-              "icon": { "$ref": "#/definitions/icon" },
-              "titulo": { "type": "string" },
-              "texto": { "type": "string" }
+              "icon": {
+                "$ref": "#/definitions/icon"
+              },
+              "titulo": {
+                "type": "string"
+              },
+              "texto": {
+                "type": "string"
+              }
             }
           }
         },
         "flujo": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["clave", "texto"],
+            "required": [
+              "clave",
+              "texto"
+            ],
             "additionalProperties": false,
             "properties": {
-              "clave": { "type": "string" },
-              "texto": { "type": "string" }
+              "clave": {
+                "type": "string"
+              },
+              "texto": {
+                "type": "string"
+              }
             }
           }
         }
@@ -106,50 +258,173 @@
     },
     "evidencia_chenoweth": {
       "type": "object",
-      "required": ["lede", "fuente_nota", "modos", "mini"],
+      "required": [
+        "lede",
+        "fuente_nota",
+        "modos",
+        "mini"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
-        "fuente_nota": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
+        "fuente_nota": {
+          "type": "string"
+        },
         "modos": {
           "type": "object",
-          "required": ["exito", "participacion", "democracia"],
+          "required": [
+            "exito",
+            "participacion",
+            "democracia"
+          ],
           "additionalProperties": false,
           "properties": {
-            "exito": { "$ref": "#/definitions/modoChenoweth" },
-            "participacion": { "$ref": "#/definitions/modoChenoweth" },
-            "democracia": { "$ref": "#/definitions/modoChenoweth" }
+            "exito": {
+              "$ref": "#/definitions/modoChenoweth"
+            },
+            "participacion": {
+              "$ref": "#/definitions/modoChenoweth"
+            },
+            "democracia": {
+              "$ref": "#/definitions/modoChenoweth"
+            }
           }
         },
         "mini": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["n", "t"],
+            "required": [
+              "n",
+              "t"
+            ],
             "additionalProperties": false,
-            "properties": { "n": { "type": "string" }, "t": { "type": "string" } }
+            "properties": {
+              "n": {
+                "type": "string"
+              },
+              "t": {
+                "type": "string"
+              }
+            }
           }
         }
       }
     },
     "cochinos": {
       "type": "object",
-      "required": ["lede", "why_titulo", "why_items", "stats"],
+      "required": [
+        "lede",
+        "why_titulo",
+        "why_items",
+        "stats"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
-        "why_titulo": { "type": "string" },
-        "why_items": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "lede": {
+          "type": "string"
+        },
+        "why_titulo": {
+          "type": "string"
+        },
+        "why_items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
         "stats": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["n", "t", "icon"],
+            "required": [
+              "n",
+              "t",
+              "icon"
+            ],
             "additionalProperties": false,
             "properties": {
-              "n": { "type": "string" },
-              "t": { "type": "string" },
-              "icon": { "$ref": "#/definitions/icon" }
+              "n": {
+                "type": "string"
+              },
+              "t": {
+                "type": "string"
+              },
+              "icon": {
+                "$ref": "#/definitions/icon"
+              }
+            }
+          }
+        }
+      }
+    },
+    "intervenciones": {
+      "type": "object",
+      "required": [
+        "lede",
+        "fuente_nota",
+        "casos",
+        "leccion"
+      ],
+      "additionalProperties": false,
+      "description": "Intervenciones militares directas de una potencia (añadido 2026-10-24). Opcional: el renderer omite la sección si falta.",
+      "properties": {
+        "lede": {
+          "type": "string"
+        },
+        "fuente_nota": {
+          "type": "string"
+        },
+        "leccion": {
+          "type": "string"
+        },
+        "casos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "caso",
+              "icon",
+              "veredicto",
+              "resultado",
+              "fuerza",
+              "despues",
+              "coste"
+            ],
+            "properties": {
+              "caso": {
+                "type": "string"
+              },
+              "icon": {
+                "$ref": "#/definitions/icon"
+              },
+              "veredicto": {
+                "type": "string"
+              },
+              "resultado": {
+                "type": "string",
+                "enum": [
+                  "democracia",
+                  "fragil",
+                  "continuidad"
+                ]
+              },
+              "fuerza": {
+                "type": "string"
+              },
+              "despues": {
+                "type": "string"
+              },
+              "coste": {
+                "type": "string"
+              }
             }
           }
         }
@@ -157,22 +432,46 @@
     },
     "vias_frecuencia": {
       "type": "object",
-      "required": ["lede", "fuente_nota", "data"],
+      "required": [
+        "lede",
+        "fuente_nota",
+        "data"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
-        "fuente_nota": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
+        "fuente_nota": {
+          "type": "string"
+        },
         "data": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["k", "v", "ej", "tipo"],
+            "required": [
+              "k",
+              "v",
+              "ej",
+              "tipo"
+            ],
             "additionalProperties": false,
             "properties": {
-              "k": { "type": "string" },
-              "v": { "type": "number", "minimum": 0, "maximum": 100 },
-              "ej": { "type": "string" },
-              "tipo": { "$ref": "#/definitions/tipoVia" }
+              "k": {
+                "type": "string"
+              },
+              "v": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "ej": {
+                "type": "string"
+              },
+              "tipo": {
+                "$ref": "#/definitions/tipoVia"
+              }
             }
           }
         }
@@ -180,33 +479,67 @@
     },
     "erosion_economica": {
       "type": "object",
-      "required": ["lede", "modos", "mini"],
+      "required": [
+        "lede",
+        "modos",
+        "mini"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
         "modos": {
           "type": "object",
-          "required": ["pib", "inflacion", "azucar", "turismo", "cambio"],
+          "required": [
+            "pib",
+            "inflacion",
+            "azucar",
+            "turismo",
+            "cambio"
+          ],
           "additionalProperties": false,
           "properties": {
             "pib": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "v", "proj"],
+                    "required": [
+                      "year",
+                      "v",
+                      "proj"
+                    ],
                     "additionalProperties": false,
                     "properties": {
-                      "year": { "type": "string" },
-                      "v": { "type": "number" },
-                      "proj": { "type": "boolean" }
+                      "year": {
+                        "type": "string"
+                      },
+                      "v": {
+                        "type": "number"
+                      },
+                      "proj": {
+                        "type": "boolean"
+                      }
                     }
                   }
                 }
@@ -214,79 +547,172 @@
             },
             "inflacion": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "v"],
+                    "required": [
+                      "year",
+                      "v"
+                    ],
                     "additionalProperties": false,
-                    "properties": { "year": { "type": "string" }, "v": { "type": "number", "minimum": 0 } }
+                    "properties": {
+                      "year": {
+                        "type": "string"
+                      },
+                      "v": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    }
                   }
                 }
               }
             },
             "azucar": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "t"],
+                    "required": [
+                      "year",
+                      "t"
+                    ],
                     "additionalProperties": false,
-                    "properties": { "year": { "type": "string" }, "t": { "type": "number", "minimum": 0 } }
+                    "properties": {
+                      "year": {
+                        "type": "string"
+                      },
+                      "t": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    }
                   }
                 }
               }
             },
             "turismo": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "v"],
+                    "required": [
+                      "year",
+                      "v"
+                    ],
                     "additionalProperties": false,
-                    "properties": { "year": { "type": "string" }, "v": { "type": "number", "minimum": 0 } }
+                    "properties": {
+                      "year": {
+                        "type": "string"
+                      },
+                      "v": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    }
                   }
                 }
               }
             },
             "cambio": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "oficial", "informal"],
+                    "required": [
+                      "year",
+                      "oficial",
+                      "informal"
+                    ],
                     "additionalProperties": false,
                     "properties": {
-                      "year": { "type": "string" },
-                      "oficial": { "type": "number", "minimum": 0 },
-                      "informal": { "type": "number", "minimum": 0 }
+                      "year": {
+                        "type": "string"
+                      },
+                      "oficial": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "informal": {
+                        "type": "number",
+                        "minimum": 0
+                      }
                     }
                   }
                 }
@@ -295,46 +721,94 @@
           }
         },
         "mini": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["n", "t"],
+            "required": [
+              "n",
+              "t"
+            ],
             "additionalProperties": false,
-            "properties": { "n": { "type": "string" }, "t": { "type": "string" } }
+            "properties": {
+              "n": {
+                "type": "string"
+              },
+              "t": {
+                "type": "string"
+              }
+            }
           }
         }
       }
     },
     "exodo": {
       "type": "object",
-      "required": ["lede", "modos", "j11_texto"],
+      "required": [
+        "lede",
+        "modos",
+        "j11_texto"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
-        "j11_texto": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
+        "j11_texto": {
+          "type": "string"
+        },
         "modos": {
           "type": "object",
-          "required": ["poblacion", "emigracion"],
+          "required": [
+            "poblacion",
+            "emigracion"
+          ],
           "additionalProperties": false,
           "properties": {
             "poblacion": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "onei", "ind"],
+                    "required": [
+                      "year",
+                      "onei",
+                      "ind"
+                    ],
                     "additionalProperties": false,
                     "properties": {
-                      "year": { "type": "string" },
-                      "onei": { "type": "number", "minimum": 0 },
-                      "ind": { "type": ["number", "null"] }
+                      "year": {
+                        "type": "string"
+                      },
+                      "onei": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "ind": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
                     }
                   }
                 }
@@ -342,19 +816,42 @@
             },
             "emigracion": {
               "type": "object",
-              "required": ["titulo", "fuente_nota", "tooltip_nota", "data"],
+              "required": [
+                "titulo",
+                "fuente_nota",
+                "tooltip_nota",
+                "data"
+              ],
               "additionalProperties": false,
               "properties": {
-                "titulo": { "type": "string" },
-                "fuente_nota": { "type": "string" },
-                "tooltip_nota": { "type": "string" },
+                "titulo": {
+                  "type": "string"
+                },
+                "fuente_nota": {
+                  "type": "string"
+                },
+                "tooltip_nota": {
+                  "type": "string"
+                },
                 "data": {
-                  "type": "array", "minItems": 2,
+                  "type": "array",
+                  "minItems": 2,
                   "items": {
                     "type": "object",
-                    "required": ["year", "v"],
+                    "required": [
+                      "year",
+                      "v"
+                    ],
                     "additionalProperties": false,
-                    "properties": { "year": { "type": "string" }, "v": { "type": "number", "minimum": 0 } }
+                    "properties": {
+                      "year": {
+                        "type": "string"
+                      },
+                      "v": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    }
                   }
                 }
               }
@@ -365,24 +862,58 @@
     },
     "matriz": {
       "type": "object",
-      "required": ["lede", "data", "nota_armada", "nota_novional"],
+      "required": [
+        "lede",
+        "data",
+        "nota_armada",
+        "nota_novional"
+      ],
       "additionalProperties": false,
       "properties": {
-        "lede": { "type": "string" },
-        "nota_armada": { "type": "string" },
-        "nota_novional": { "type": "string" },
+        "lede": {
+          "type": "string"
+        },
+        "nota_armada": {
+          "type": "string"
+        },
+        "nota_novional": {
+          "type": "string"
+        },
         "data": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["name", "x", "y", "r", "grp"],
+            "required": [
+              "name",
+              "x",
+              "y",
+              "r",
+              "grp"
+            ],
             "additionalProperties": false,
             "properties": {
-              "name": { "type": "string" },
-              "x": { "type": "number", "minimum": 0, "maximum": 100 },
-              "y": { "type": "number", "minimum": 0, "maximum": 100 },
-              "r": { "type": "number", "minimum": 0, "maximum": 100 },
-              "grp": { "$ref": "#/definitions/grpVia" }
+              "name": {
+                "type": "string"
+              },
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "r": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "grp": {
+                "$ref": "#/definitions/grpVia"
+              }
             }
           }
         }
@@ -390,19 +921,36 @@
     },
     "sintesis": {
       "type": "object",
-      "required": ["parrafos", "tags"],
+      "required": [
+        "parrafos",
+        "tags"
+      ],
       "additionalProperties": false,
       "properties": {
-        "parrafos": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "parrafos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
         "tags": {
-          "type": "array", "minItems": 1,
+          "type": "array",
+          "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["icon", "texto"],
+            "required": [
+              "icon",
+              "texto"
+            ],
             "additionalProperties": false,
             "properties": {
-              "icon": { "$ref": "#/definitions/icon" },
-              "texto": { "type": "string" }
+              "icon": {
+                "$ref": "#/definitions/icon"
+              },
+              "texto": {
+                "type": "string"
+              }
             }
           }
         }
@@ -410,11 +958,18 @@
     },
     "footer": {
       "type": "object",
-      "required": ["nota", "fuentes_texto"],
+      "required": [
+        "nota",
+        "fuentes_texto"
+      ],
       "additionalProperties": false,
       "properties": {
-        "nota": { "type": "string" },
-        "fuentes_texto": { "type": "string" }
+        "nota": {
+          "type": "string"
+        },
+        "fuentes_texto": {
+          "type": "string"
+        }
       }
     }
   }

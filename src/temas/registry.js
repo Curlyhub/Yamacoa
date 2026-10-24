@@ -205,10 +205,10 @@ const temas = [
     slug: "vias-cambio",
     path: "/vias-cambio",
     titulo: "Vías de cambio: invasión, ley y evidencia",
-    subtitulo: "Qué dice la evidencia sobre cómo caen los regímenes: resistencia civil frente a intervención armada",
+    subtitulo: "Qué dice la evidencia sobre cómo caen los regímenes: resistencia civil, invasión de exiliados e intervención directa de una potencia",
     etiqueta: "VÍAS DE CAMBIO · EVIDENCIA",
     accent: "#157A72", // teal "voltaje" de la paleta congelada del renderer
-    fuentes: "Chenoweth & Stephan (NAVCO) · CEPAL · Carta ONU · Horizonte Cubano (Columbia Law)", // ⚠ CONFIRMAR
+    fuentes: "Chenoweth & Stephan (NAVCO) · Downes & Monten · Carta ONU y AGNU · CEPAL · Horizonte Cubano (Columbia Law)",
     dataSlug: "vias_cambio", // el dataset es /data/vias_cambio.json (guion bajo), no /data/vias-cambio.json
     publicado: "2026-07-05",
     load: () => import("./vias_cambio.jsx"),

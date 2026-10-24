@@ -42,72 +42,116 @@ const EMBEDDED_DATA =
   "meta": {
     "slug": "vias_cambio",
     "titulo": "Vías de cambio: invasión, ley y evidencia",
-    "actualizado": "2026-07-04",
+    "actualizado": "2026-10-24",
     "fuentes": [
       "Chenoweth & Stephan, \"Why Civil Resistance Works\" (NAVCO, 1900-2006)",
-      "Carta de la ONU, art. 2(4) y 51",
-      "Res. AGNU 3314 (1974), definicion de agresion",
+      "Chenoweth, \"The Future of Nonviolent Resistance\", Journal of Democracy 31(3), 2020",
+      "Downes & Monten, \"Forced to Be Free?\", International Security 37(4), 2013",
+      "O'Rourke, \"Covert Regime Change\" (Cornell University Press, 2018)",
+      "Carta de la ONU, art. 2(4) y 51; Res. AGNU 3314 (1974), 38/7 (1983) y 44/240 (1989); Res. CSNU 940 (1994)",
       "CEPAL, Estudio Economico de America Latina y el Caribe 2025",
       "ONEI (Cuba)",
       "US Customs and Border Protection (CBP)",
       "Horizonte Cubano, Columbia Law School",
+      "AP, Al Jazeera, CSIS, House of Commons Library (Venezuela 2026)",
       "CNN, AS/COA, Havana Times, Cato Institute"
-    ]
+    ],
+    "descripcion": "Este expediente es un dossier analítico sobre derecho internacional y transiciones políticas que responde a una pregunta con matices: qué vías han derribado dictaduras y cuáles no, y qué significa eso para Cuba. Distingue lo que la evidencia distingue. La invasión organizada por exiliados con apoyo encubierto, como Bahía de Cochinos en 1961, es ilegal para quien la organiza —la Carta de la ONU, la Resolución 3314 sobre agresión y las leyes penales del país de residencia, como la Neutrality Act en Estados Unidos— y casi siempre fracasa: la Brigada 2506, unos 1.400 hombres, colapsó en unas 72 horas porque no hubo levantamiento interno, el aparato de seguridad estaba alertado y Washington mantuvo la operación negable. La intervención directa y abierta de una potencia es otra cosa. En Granada, en 1983, unos 7.300 soldados estadounidenses derribaron en días al Consejo Militar que había fusilado a Maurice Bishop, y hubo elecciones en diciembre de 1984. En Panamá, en 1989, unos 27.000 soldados derrocaron a Manuel Noriega, que se entregó a los 14 días; juró Guillermo Endara, ganador de las elecciones que Noriega había anulado, el ejército se abolió y la democracia no se ha interrumpido. Ambas fueron condenadas por la Asamblea General de la ONU (resoluciones 38/7 y 44/240) y en Panamá murieron entre 202 y unos 500 civiles según las fuentes. En Haití, en 1994, una fuerza con mandato del Consejo de Seguridad hizo salir a la junta sin combate, pero la democracia no se consolidó. En Venezuela, en enero de 2026, Estados Unidos capturó a Nicolás Maduro, pero la estructura chavista sigue gobernando con Delcy Rodríguez y, nueve meses después, sin fecha electoral. La literatura comparada (Downes y Monten, 2013) concluye que la imposición externa produce democracia solo cuando hay un relevo legítimo y un interventor que construye instituciones; y la vía encubierta tiene peor historial, según O'Rourke (2018), con casos como Guatemala en 1954, donde se derribó a un gobierno electo. En cuanto a la resistencia civil, Chenoweth y Stephan hallaron en 323 campañas (1900-2006) un éxito del 53 % frente al 26 % de las insurgencias armadas, pero su base de datos no mide intervenciones de otro Estado y, desde 2010, el éxito ha caído a menos del 34 % para la vía no violenta y al 8 % para la armada. Aplicado a Cuba, el expediente documenta una erosión económica sostenida —el PIB real cae más del 11 % entre 2019 y 2024, la zafra 2024-25 fue la peor en más de un siglo, el turismo cayó de 4,7 a 1,6 millones de llegadas y el peso informal llegó a 440 por dólar— y el mayor éxodo de su historia, con más de un millón de personas salidas desde 2021. Las protestas del 11 de julio de 2021 mostraron la magnitud del descontento y también el límite de la protesta frente a un aparato represivo intacto. Una matriz sitúa cada estrategia según su legalidad y su eficacia histórica para derribar a un gobernante. La conclusión es que las vías no son excluyentes: la intervención directa no puede descartarse, pero Cuba es mayor y está más armada que Granada o Panamá y no tiene un gobierno electo en espera, de modo que lo que ocurra al día siguiente importa tanto como lo que ocurra el primero.",
+    "narracion": "¿Qué derriba de verdad una dictadura? Este expediente separa lo que la evidencia separa. La invasión de exiliados con apoyo encubierto, como Bahía de Cochinos, es ilegal para quien la organiza y casi siempre fracasa: mil cuatrocientos hombres, colapso en setenta y dos horas. La intervención directa de una potencia es otra historia: en Granada, en 1983, y en Panamá, en 1989, Estados Unidos derribó a los gobernantes en días, y ambos países son democracias desde entonces, aunque la ONU condenó las dos operaciones y en Panamá murieron cientos de civiles. Pero quitar al gobernante no es cambiar el régimen: en Venezuela, la captura de Maduro en enero de 2026 dejó en el poder a la estructura chavista, que aún no ha fijado elecciones. La resistencia civil sigue teniendo el mejor historial y da legitimidad propia, pero su éxito ha caído desde 2010, y el 11J mostró su límite frente a la represión. Para Cuba, la crisis económica y el éxodo debilitan al régimen; una intervención no puede descartarse, pero la isla es mayor y está más armada que Granada o Panamá, y no hay un gobierno electo esperando. Lo que ocurra el día después importa tanto como el primero.",
+    "narracion_en": "What actually brings down a dictatorship? This file separates what the evidence separates. An invasion by exiles with covert backing, like the Bay of Pigs, is illegal for those who organize it and almost always fails: about one thousand four hundred men, collapse within seventy-two hours. Direct intervention by a major power is a different story. In Grenada in nineteen eighty-three and in Panama in nineteen eighty-nine, the United States removed the rulers within days, and both countries have been democracies ever since, although the United Nations General Assembly condemned both operations and hundreds of civilians died in Panama. Removing a ruler, however, is not the same as changing a regime. In Haiti in nineteen ninety-four, restored democracy did not take root. In Venezuela, the capture of Nicolás Maduro in January twenty twenty-six left the chavista power structure in place, and nine months later no election date has been set. Comparative research finds that imposed regime change leads to democracy only when a legitimate successor is ready and the intervening power builds institutions. Civil resistance still has the best overall record and gives a transition its own legitimacy, but its success rate has fallen since twenty ten, and the July eleventh, twenty twenty-one protests showed its limits against an intact security apparatus. Applied to Cuba, economic collapse and the largest exodus in the island's history are weakening the regime. A direct intervention cannot be ruled out, but Cuba is far larger and better armed than Grenada or Panama, and there is no elected government waiting to take over. What happens the day after matters as much as what happens on the first day."
   },
   "hero": {
-    "eyebrow": "Dossier analitico - Derecho internacional y transiciones politicas",
-    "titulo_pre": "Por que una invasion organizada desde el exterior",
-    "titulo_em": "casi nunca derriba",
-    "titulo_post": "una dictadura consolidada.",
-    "subtitulo": "El obstaculo no es solo juridico (el marco de agresion y terrorismo lo vuelve inviable y penalmente arriesgado): historicamente, las insurrecciones armadas montadas fuera del pais rara vez desplazan a regimenes con aparato de seguridad intacto. Los cambios reales llegan por presion interna, colapso economico, fractura de elites o transicion negociada. El caso cubano lo ilustra con datos.",
+    "eyebrow": "Dossier analítico · Derecho internacional y transiciones políticas",
+    "titulo_pre": "Los exiliados casi nunca han derribado una dictadura. Una potencia que interviene",
+    "titulo_em": "sí ha podido",
+    "titulo_post": "— lo difícil es el día después.",
+    "subtitulo": "Bahía de Cochinos fracasó; Granada (1983) y Panamá (1989) acabaron en democracias que duran hasta hoy; la captura de Maduro en 2026 quitó al gobernante pero no al régimen. Este expediente separa lo que la evidencia distingue: quién interviene, cómo, contra qué Estado y con qué plan para el día siguiente. Y lo aplica a Cuba sin descartar ninguna vía ni darla por segura.",
     "stats": [
-      { "n": "53", "unit": "%", "label": "exito de campanas no violentas" },
-      { "n": "26", "unit": "%", "label": "exito de insurgencias armadas" },
-      { "n": "72", "unit": "h", "label": "duracion de Bahia de Cochinos" },
-      { "n": ">1", "unit": "M", "label": "emigrantes cubanos desde 2021" }
+      {
+        "n": "72",
+        "unit": "h",
+        "label": "duró Bahía de Cochinos: exiliados con apoyo encubierto"
+      },
+      {
+        "n": "14",
+        "unit": "días",
+        "label": "tardó Noriega en entregarse tras la invasión de Panamá"
+      },
+      {
+        "n": "9",
+        "unit": "meses",
+        "label": "después de capturar a Maduro, Venezuela sigue sin fecha electoral"
+      },
+      {
+        "n": "<34",
+        "unit": "%",
+        "label": "de éxito de la resistencia no violenta desde 2010"
+      }
     ]
   },
   "marco_legal": {
-    "lede": "La distincion entre agresion y terrorismo no es retorica: define quien queda del lado equivocado de la ley. Preparar, financiar o dirigir una accion armada contra la soberania de un Estado activa un regimen normativo muy restrictivo, tanto internacional como interno.",
+    "lede": "El derecho internacional prohíbe el uso de la fuerza, pero no pesa igual sobre todos. Sobre un exiliado o un particular cae con todo su peso penal; sobre una gran potencia se traduce, casi siempre, en una condena sin consecuencias prácticas. Esa asimetría explica por qué la vía armada organizada desde el exilio es inviable y la intervención de un Estado, no.",
     "items": [
       {
         "icon": "gavel",
         "titulo": "Art. 2(4), Carta de la ONU",
-        "texto": "Prohibe a los Estados recurrir a la amenaza o al uso de la fuerza contra la integridad territorial o la independencia politica de otro Estado."
+        "texto": "Prohíbe a los Estados recurrir a la amenaza o al uso de la fuerza contra la integridad territorial o la independencia política de otro Estado."
       },
       {
         "icon": "shield",
-        "titulo": "Res. 3314 (1974), definicion de agresion",
-        "texto": "El envio de bandas armadas, grupos irregulares o mercenarios que realicen actos de fuerza contra otro Estado se equipara a un acto de agresion (art. 3g)."
+        "titulo": "Res. 3314 (1974), definición de agresión",
+        "texto": "El envío de bandas armadas, grupos irregulares o mercenarios que realicen actos de fuerza contra otro Estado se equipara a un acto de agresión (art. 3g)."
       },
       {
         "icon": "scale",
         "titulo": "Excepciones tasadas",
-        "texto": "Solo dos: legitima defensa ante un ataque armado (art. 51) y autorizacion expresa del Consejo de Seguridad (Cap. VII). Nada mas habilita el uso de la fuerza."
+        "texto": "Legítima defensa ante un ataque armado (art. 51) y autorización del Consejo de Seguridad. La de Haití en 1994 la tuvo (Res. 940); las de Granada y Panamá, no."
       },
       {
         "icon": "landmark",
-        "titulo": "Leyes nacionales del pais de residencia",
-        "texto": "Organizar o financiar acciones armadas desde el exilio choca con normas antiterroristas internas (por ejemplo, en EE.UU., el Neutrality Act y la prohibicion de apoyo material a grupos armados)."
+        "titulo": "Leyes del país de residencia",
+        "texto": "Organizar o financiar acciones armadas desde el exilio choca con normas penales internas (en EE UU, la Neutrality Act y la prohibición de apoyo material a grupos armados). Es la parte del marco que de verdad se aplica."
+      },
+      {
+        "icon": "info",
+        "titulo": "Condenadas, pero no revertidas",
+        "texto": "La Asamblea General deploró la invasión de Granada (Res. 38/7, 108 votos a 9) y la de Panamá (Res. 44/240, 75 a 20) como violaciones flagrantes del derecho internacional. Ninguna se deshizo. La ONU y juristas calificaron igual la operación de 2026 en Venezuela."
       }
     ],
     "flujo": [
-      { "clave": "Accion", "texto": "Invasion o insurreccion armada desde el exterior" },
-      { "clave": "Calificacion", "texto": "Acto de agresion; mercenarismo; terrorismo" },
-      { "clave": "Consecuencia", "texto": "Persecucion penal, extradicion, sancion, aislamiento" }
+      {
+        "clave": "Exiliado o particular",
+        "texto": "Organizar o financiar una acción armada: delito perseguible en su país de residencia"
+      },
+      {
+        "clave": "Estado",
+        "texto": "Uso de la fuerza sin mandato: condena en la ONU, rara vez sanción efectiva"
+      },
+      {
+        "clave": "Resultado",
+        "texto": "El riesgo penal recae sobre individuos; el coste político, sobre el Estado que interviene"
+      }
     ]
   },
   "evidencia_chenoweth": {
-    "lede": "Erica Chenoweth y Maria Stephan revisaron 323 campanas de cambio de regimen entre 1900 y 2006 (base de datos NAVCO). El hallazgo es contraintuitivo pero robusto: la resistencia civil no violenta supera a la via armada en casi todas las metricas que importan.",
-    "fuente_nota": "Chenoweth & Stephan, \"Why Civil Resistance Works\" (NAVCO, 1900-2006).",
+    "lede": "Erica Chenoweth y Maria Stephan revisaron 323 campañas de cambio de régimen entre 1900 y 2006 (NAVCO): la resistencia civil triunfó el 53 % de las veces y la insurgencia armada el 26 %. Dos límites que importan para Cuba: NAVCO mide campañas nacidas dentro del país, no la intervención militar de otro Estado; y desde 2010 el éxito ha caído para ambas vías, a menos del 34 % la no violenta y al 8 % la armada, según la propia Chenoweth.",
+    "fuente_nota": "Chenoweth & Stephan, \"Why Civil Resistance Works\" (NAVCO, 1900-2006); Chenoweth, Journal of Democracy (2020) para el periodo posterior a 2010.",
     "modos": {
       "exito": {
         "titulo": "Tasa de exito de las campanas",
         "unidad": "%",
-        "nota": "Exito = objetivo logrado en el ano siguiente al pico de movilizacion.",
+        "nota": "Éxito = objetivo logrado en el año siguiente al pico de movilización. Datos 1900-2006; desde 2010: <34 % y 8 %.",
         "data": [
-          { "k": "Campana no violenta", "v": 53, "tipo": "novional" },
-          { "k": "Insurgencia armada", "v": 26, "tipo": "armada" }
+          {
+            "k": "Campana no violenta",
+            "v": 53,
+            "tipo": "novional"
+          },
+          {
+            "k": "Insurgencia armada",
+            "v": 26,
+            "tipo": "armada"
+          }
         ]
       },
       "participacion": {
@@ -115,8 +159,16 @@ const EMBEDDED_DATA =
         "unidad": "x",
         "nota": "Las campanas no violentas movilizan, en promedio, cuatro veces mas participantes.",
         "data": [
-          { "k": "No violenta", "v": 4, "tipo": "novional" },
-          { "k": "Armada", "v": 1, "tipo": "armada" }
+          {
+            "k": "No violenta",
+            "v": 4,
+            "tipo": "novional"
+          },
+          {
+            "k": "Armada",
+            "v": 1,
+            "tipo": "armada"
+          }
         ]
       },
       "democracia": {
@@ -124,62 +176,210 @@ const EMBEDDED_DATA =
         "unidad": "x",
         "nota": "Diez veces mas probable que emerja una democracia tras una campana no violenta.",
         "data": [
-          { "k": "No violenta", "v": 10, "tipo": "novional" },
-          { "k": "Armada", "v": 1, "tipo": "armada" }
+          {
+            "k": "No violenta",
+            "v": 10,
+            "tipo": "novional"
+          },
+          {
+            "k": "Armada",
+            "v": 1,
+            "tipo": "armada"
+          }
         ]
       }
     },
     "mini": [
-      { "n": "4x", "t": "mas participantes moviliza, en promedio, una campana no violenta" },
-      { "n": "20 / 25", "t": "de los mayores movimientos del siglo XX fueron no violentos" },
-      { "n": "3,5 %", "t": "de participacion activa: umbral tras el cual ninguna campana del conjunto fracaso" }
+      {
+        "n": "<34 %",
+        "t": "de las campañas no violentas triunfaron desde 2010 (8 % de las armadas): los regímenes han aprendido a resistir ambas"
+      },
+      {
+        "n": "20 / 25",
+        "t": "de los mayores movimientos del siglo XX fueron no violentos"
+      },
+      {
+        "n": "NAVCO",
+        "t": "mide campañas surgidas dentro del país; no evalúa la intervención militar abierta de otro Estado"
+      }
     ]
   },
   "cochinos": {
-    "lede": "La Brigada 2506, unos 1.400 exiliados entrenados y financiados por la CIA, desembarco el 17 de abril de 1961. Sin apoyo interno masivo, con logistica deficiente y frente a una respuesta rapida del regimen, la operacion colapso en unas 72 horas. Es el arquetipo del fracaso: una fuerza externa no sustituye a la movilizacion interna que nunca llego.",
+    "lede": "La Brigada 2506, unos 1.400 exiliados entrenados y financiados por la CIA, desembarcó el 17 de abril de 1961 y la operación colapsó en unas 72 horas. Lo que fracasó fue un modelo concreto: una fuerza de exiliados con apoyo encubierto y negable, que contaba con un levantamiento interno que no llegó y con un respaldo de Washington que nunca se hizo abierto. No es el mismo modelo que una intervención directa de EE UU.",
     "why_titulo": "Por que fracaso",
     "why_items": [
-      "Ausencia de un levantamiento popular que acompanara el desembarco.",
+      "Ausencia de un levantamiento popular que acompañara el desembarco.",
       "Aparato de seguridad e inteligencia infiltrado y ya alertado.",
-      "Superioridad logistica y de mando del Estado en su propio terreno.",
-      "Apoyo exterior limitado y deliberadamente negable."
+      "Superioridad logística y de mando del Estado en su propio terreno.",
+      "Washington mantuvo la operación negable: recortó los ataques aéreos y no dio cobertura abierta."
     ],
     "stats": [
-      { "n": "17-19 abr 1961", "t": "tres dias de operacion", "icon": "ship" },
-      { "n": "~1.400", "t": "brigadistas desembarcados", "icon": "users" },
-      { "n": "~114", "t": "muertos en combate", "icon": "flame" },
-      { "n": "~1.189", "t": "capturados por el regimen", "icon": "shield" }
+      {
+        "n": "17-19 abr 1961",
+        "t": "tres dias de operacion",
+        "icon": "ship"
+      },
+      {
+        "n": "~1.400",
+        "t": "brigadistas desembarcados",
+        "icon": "users"
+      },
+      {
+        "n": "~114",
+        "t": "muertos en combate",
+        "icon": "flame"
+      },
+      {
+        "n": "~1.189",
+        "t": "capturados por el regimen",
+        "icon": "shield"
+      }
     ]
   },
+  "intervenciones": {
+    "lede": "Cuando quien interviene es la propia potencia, con su ejército y a cara descubierta, el historial en el Caribe es otro: el gobernante suele caer en días. Lo que decide el resultado final es lo que hay después: un gobierno legítimo esperando, instituciones que reconstruir y un plan. Downes y Monten (2013) lo resumen así: la imposición externa produce democracia solo cuando el interventor la construye activamente y el país tiene condiciones previas favorables.",
+    "fuente_nota": "Cifras de cada operación según fuentes militares y de la ONU; las víctimas civiles de Panamá siguen en disputa. Venezuela: estado a octubre de 2026.",
+    "casos": [
+      {
+        "caso": "Granada, 1983",
+        "icon": "ship",
+        "veredicto": "Cayó el gobierno · llegó la democracia",
+        "resultado": "democracia",
+        "fuerza": "~7.300 soldados de EE UU y 353 del Caribe frente a ~1.500 del ejército revolucionario y 784 cubanos, en su mayoría trabajadores de la construcción.",
+        "despues": "El Consejo Militar que había fusilado a Maurice Bishop cayó en unos ocho días. Elecciones en diciembre de 1984; democracia parlamentaria estable desde entonces.",
+        "coste": "19 militares de EE UU, 24 cubanos, entre 21 y 45 militares granadinos y al menos 24 civiles muertos. La AGNU la deploró (Res. 38/7)."
+      },
+      {
+        "caso": "Panamá, 1989",
+        "icon": "shield",
+        "veredicto": "Cayó el dictador · llegó la democracia",
+        "resultado": "democracia",
+        "fuerza": "~27.000 soldados de EE UU frente a ~16.000 de las Fuerzas de Defensa de Panamá.",
+        "despues": "Noriega se entregó a los 14 días. Juró Guillermo Endara, ganador de las elecciones de mayo de 1989 que Noriega había anulado. El ejército se abolió (1990; en la Constitución, 1994) y la alternancia democrática no se ha interrumpido.",
+        "coste": "23 militares de EE UU y 314 panameños; civiles: 202 según el Pentágono, unos 500 según la ONU, más según otras fuentes. La AGNU la deploró (Res. 44/240)."
+      },
+      {
+        "caso": "Haití, 1994",
+        "icon": "scale",
+        "veredicto": "Cayó la junta sin combate · democracia frágil",
+        "resultado": "fragil",
+        "fuerza": "~20.000 soldados de EE UU y de unos 15 países, con mandato del Consejo de Seguridad (Res. 940).",
+        "despues": "Con los paracaidistas ya en el aire, la junta de Cédras aceptó irse. Aristide volvió el 15 de octubre de 1994. Las instituciones no se consolidaron: Aristide salió de nuevo en 2004 en plena revuelta armada.",
+        "coste": "1 militar de EE UU y unos 10 haitianos muertos."
+      },
+      {
+        "caso": "Venezuela, 2026",
+        "icon": "flame",
+        "veredicto": "Cayó el gobernante · el régimen sigue",
+        "resultado": "continuidad",
+        "fuerza": "Operación de unas dos horas y media en Caracas (3 de enero) con fuerzas especiales y apoyo de la CIA.",
+        "despues": "Maduro y Cilia Flores, capturados y juzgados en Nueva York. Gobierna Delcy Rodríguez con la estructura chavista y el reconocimiento de Washington; cientos de presos políticos liberados, pero sin fecha electoral y con detenidos en las protestas del 22 de octubre.",
+        "coste": "Unas 80 muertes, entre ellas 32 militares y agentes cubanos según La Habana. La ONU y juristas la consideraron contraria a la Carta."
+      }
+    ],
+    "leccion": "La pregunta útil no es si la fuerza externa «funciona», sino para qué. Para quitar a un gobernante de un Estado pequeño, la intervención directa de EE UU ha sido eficaz casi siempre. Para que nazca una democracia, solo cuando había un relevo legítimo listo y un plan: Panamá tenía un presidente electo esperando; Venezuela en 2026, no. Cuba no se parece del todo a ninguno: es mucho mayor (unos 9,7 millones de habitantes según la ONEI frente a 2,4 en Panamá en 1989), sus Fuerzas Armadas son mayores y no hay un gobierno electo en espera. Y la vía encubierta tiene peor historial: según O'Rourke (2018), la mayoría de las operaciones encubiertas de cambio de régimen de EE UU en la Guerra Fría no lograron su objetivo, y en Guatemala (1954) la que sí lo logró derribó a un gobierno electo y abrió décadas de dictadura militar."
+  },
   "vias_frecuencia": {
-    "lede": "En la experiencia latinoamericana y global reciente, las salidas autoritarias suelen combinar presion social sostenida, quiebra economica y fractura de las elites; muy rara vez, una invasion externa. El siguiente ordenamiento es una sintesis ilustrativa de esa frecuencia relativa.",
+    "lede": "Las salidas autoritarias suelen combinar presión social sostenida, quiebra económica y fractura de las élites. La intervención militar directa de una potencia es poco frecuente, pero cuando ocurre suele derribar al gobernante; la invasión de exiliados es a la vez rara e ineficaz. El ordenamiento es una síntesis ilustrativa de esa frecuencia relativa.",
     "fuente_nota": "Sintesis cualitativa a partir de la evidencia comparada citada. No es una serie estadistica.",
     "data": [
-      { "k": "Presion interna masiva + defeccion de elites", "v": 82, "ej": "Chile 1988-90", "tipo": "novional" },
-      { "k": "Transicion negociada / apertura pactada", "v": 74, "ej": "Brasil 1985; Espana 1975-78", "tipo": "novional" },
-      { "k": "Colapso economico o derrota militar", "v": 61, "ej": "Argentina 1983 (tras Malvinas)", "tipo": "mixta" },
-      { "k": "Fin del apoyo de la potencia patrona", "v": 58, "ej": "Europa del Este 1989", "tipo": "patron" },
-      { "k": "Insurreccion armada interna", "v": 28, "ej": "casos aislados", "tipo": "armada" },
-      { "k": "Invasion organizada por exiliados", "v": 9, "ej": "Bahia de Cochinos 1961", "tipo": "armada" }
+      {
+        "k": "Presión interna masiva + defección de élites",
+        "v": 82,
+        "ej": "Chile 1988-90",
+        "tipo": "novional"
+      },
+      {
+        "k": "Transición negociada / apertura pactada",
+        "v": 74,
+        "ej": "Brasil 1985; España 1975-78",
+        "tipo": "novional"
+      },
+      {
+        "k": "Colapso económico o derrota militar",
+        "v": 61,
+        "ej": "Argentina 1983 (tras Malvinas)",
+        "tipo": "mixta"
+      },
+      {
+        "k": "Fin del apoyo de la potencia patrona",
+        "v": 58,
+        "ej": "Europa del Este 1989",
+        "tipo": "patron"
+      },
+      {
+        "k": "Insurrección armada interna",
+        "v": 28,
+        "ej": "Nicaragua 1979",
+        "tipo": "armada"
+      },
+      {
+        "k": "Intervención militar directa de una potencia",
+        "v": 20,
+        "ej": "Granada 1983; Panamá 1989; Haití 1994",
+        "tipo": "armada"
+      },
+      {
+        "k": "Invasión organizada por exiliados",
+        "v": 9,
+        "ej": "Bahía de Cochinos 1961",
+        "tipo": "armada"
+      }
     ]
   },
   "erosion_economica": {
-    "lede": "El regimen cubano ya enfrenta la peor crisis desde 1959: contraccion sostenida del PIB, inflacion cronica, colapso del azucar y del turismo, y un peso en caida libre. Los colapsos internos son hoy mucho mas plausibles que cualquier accion militar externa.",
+    "lede": "El régimen cubano enfrenta la peor crisis desde 1959: contracción sostenida del PIB, inflación crónica, colapso del azúcar y del turismo y un peso en caída libre. Esta erosión es el telón de fondo de cualquier vía de cambio, interna o externa: reduce la capacidad del Estado para premiar lealtades y vuelve más costosa su defensa.",
     "modos": {
       "pib": {
         "titulo": "Variacion anual del PIB real (%)",
         "fuente_nota": "CEPAL y cifras oficiales. Acumulado 2019-2024: caida superior al 11 %. Barras claras = proyeccion.",
         "tooltip_nota": "2025-2026: proyeccion CEPAL.",
         "data": [
-          { "year": "2015", "v": 4.4, "proj": false },
-          { "year": "2019", "v": -0.2, "proj": false },
-          { "year": "2020", "v": -10.9, "proj": false },
-          { "year": "2021", "v": 1.3, "proj": false },
-          { "year": "2022", "v": 1.8, "proj": false },
-          { "year": "2023", "v": -1.9, "proj": false },
-          { "year": "2024", "v": -1.1, "proj": false },
-          { "year": "2025", "v": -1.5, "proj": true },
-          { "year": "2026", "v": 0.1, "proj": true }
+          {
+            "year": "2015",
+            "v": 4.4,
+            "proj": false
+          },
+          {
+            "year": "2019",
+            "v": -0.2,
+            "proj": false
+          },
+          {
+            "year": "2020",
+            "v": -10.9,
+            "proj": false
+          },
+          {
+            "year": "2021",
+            "v": 1.3,
+            "proj": false
+          },
+          {
+            "year": "2022",
+            "v": 1.8,
+            "proj": false
+          },
+          {
+            "year": "2023",
+            "v": -1.9,
+            "proj": false
+          },
+          {
+            "year": "2024",
+            "v": -1.1,
+            "proj": false
+          },
+          {
+            "year": "2025",
+            "v": -1.5,
+            "proj": true
+          },
+          {
+            "year": "2026",
+            "v": 0.1,
+            "proj": true
+          }
         ]
       },
       "inflacion": {
@@ -187,11 +387,26 @@ const EMBEDDED_DATA =
         "fuente_nota": "CEPAL / ONEI. En 2025, estimaciones privadas apuntan a niveles cercanos al 70 %.",
         "tooltip_nota": "2025 parcial (oficial). Estimaciones privadas la situan mucho mas alta.",
         "data": [
-          { "year": "2021", "v": 77.3 },
-          { "year": "2022", "v": 39.1 },
-          { "year": "2023", "v": 31.0 },
-          { "year": "2024", "v": 25.0 },
-          { "year": "2025*", "v": 18.0 }
+          {
+            "year": "2021",
+            "v": 77.3
+          },
+          {
+            "year": "2022",
+            "v": 39.1
+          },
+          {
+            "year": "2023",
+            "v": 31
+          },
+          {
+            "year": "2024",
+            "v": 25
+          },
+          {
+            "year": "2025*",
+            "v": 18
+          }
         ]
       },
       "azucar": {
@@ -199,11 +414,26 @@ const EMBEDDED_DATA =
         "fuente_nota": "De ~8 millones de t (1989) a ~165.000 t (2024/25). Tramos intermedios aproximados.",
         "tooltip_nota": "Zafra 24/25: la peor en mas de un siglo.",
         "data": [
-          { "year": "1989", "t": 8000 },
-          { "year": "2000", "t": 4057 },
-          { "year": "2010", "t": 1150 },
-          { "year": "2020", "t": 816 },
-          { "year": "24/25", "t": 165 }
+          {
+            "year": "1989",
+            "t": 8000
+          },
+          {
+            "year": "2000",
+            "t": 4057
+          },
+          {
+            "year": "2010",
+            "t": 1150
+          },
+          {
+            "year": "2020",
+            "t": 816
+          },
+          {
+            "year": "24/25",
+            "t": 165
+          }
         ]
       },
       "turismo": {
@@ -211,14 +441,38 @@ const EMBEDDED_DATA =
         "fuente_nota": "Cifras aproximadas. 2025 (*) parcial: caida interanual de ~25 %.",
         "tooltip_nota": "Ocupacion hotelera en torno al 24 % en 2025.",
         "data": [
-          { "year": "2018", "v": 4.7 },
-          { "year": "2019", "v": 4.3 },
-          { "year": "2020", "v": 1.1 },
-          { "year": "2021", "v": 0.6 },
-          { "year": "2022", "v": 1.6 },
-          { "year": "2023", "v": 2.4 },
-          { "year": "2024", "v": 2.2 },
-          { "year": "2025*", "v": 1.6 }
+          {
+            "year": "2018",
+            "v": 4.7
+          },
+          {
+            "year": "2019",
+            "v": 4.3
+          },
+          {
+            "year": "2020",
+            "v": 1.1
+          },
+          {
+            "year": "2021",
+            "v": 0.6
+          },
+          {
+            "year": "2022",
+            "v": 1.6
+          },
+          {
+            "year": "2023",
+            "v": 2.4
+          },
+          {
+            "year": "2024",
+            "v": 2.2
+          },
+          {
+            "year": "2025*",
+            "v": 1.6
+          }
         ]
       },
       "cambio": {
@@ -226,18 +480,47 @@ const EMBEDDED_DATA =
         "fuente_nota": "Observatorios cambiarios independientes. La brecha oficial/informal supera 18x.",
         "tooltip_nota": "La tasa oficial (24) es una ficcion frente al mercado real.",
         "data": [
-          { "year": "2021", "oficial": 24, "informal": 70 },
-          { "year": "2022", "oficial": 24, "informal": 170 },
-          { "year": "2023", "oficial": 24, "informal": 265 },
-          { "year": "2024", "oficial": 24, "informal": 395 },
-          { "year": "2025", "oficial": 24, "informal": 440 }
+          {
+            "year": "2021",
+            "oficial": 24,
+            "informal": 70
+          },
+          {
+            "year": "2022",
+            "oficial": 24,
+            "informal": 170
+          },
+          {
+            "year": "2023",
+            "oficial": 24,
+            "informal": 265
+          },
+          {
+            "year": "2024",
+            "oficial": 24,
+            "informal": 395
+          },
+          {
+            "year": "2025",
+            "oficial": 24,
+            "informal": 440
+          }
         ]
       }
     },
     "mini": [
-      { "n": "20 h", "t": "de apagon diario en algunas provincias durante 2025" },
-      { "n": "oct 2024", "t": "primer apagon nacional total: dias sin electricidad" },
-      { "n": "~10 %", "t": "de la poblacion con problemas diarios de agua potable" }
+      {
+        "n": "20 h",
+        "t": "de apagon diario en algunas provincias durante 2025"
+      },
+      {
+        "n": "oct 2024",
+        "t": "primer apagon nacional total: dias sin electricidad"
+      },
+      {
+        "n": "~10 %",
+        "t": "de la poblacion con problemas diarios de agua potable"
+      }
     ]
   },
   "exodo": {
@@ -248,11 +531,31 @@ const EMBEDDED_DATA =
         "fuente_nota": "ONEI vs. estimacion de Albizu-Campos. De ~11,3 M (2020) a ~8,6 M segun calculos independientes.",
         "tooltip_nota": "ONEI arrastra un rezago estadistico; las estimaciones independientes son menores.",
         "data": [
-          { "year": "2020", "onei": 11186, "ind": null },
-          { "year": "2021", "onei": 11113, "ind": null },
-          { "year": "2022", "onei": 11089, "ind": null },
-          { "year": "2023", "onei": 10056, "ind": 8620 },
-          { "year": "2024", "onei": 9748, "ind": 8300 }
+          {
+            "year": "2020",
+            "onei": 11186,
+            "ind": null
+          },
+          {
+            "year": "2021",
+            "onei": 11113,
+            "ind": null
+          },
+          {
+            "year": "2022",
+            "onei": 11089,
+            "ind": null
+          },
+          {
+            "year": "2023",
+            "onei": 10056,
+            "ind": 8620
+          },
+          {
+            "year": "2024",
+            "onei": 9748,
+            "ind": 8300
+          }
         ]
       },
       "emigracion": {
@@ -260,47 +563,141 @@ const EMBEDDED_DATA =
         "fuente_nota": "CBP (EE.UU.). Solo EE.UU.; el saldo migratorio total hacia todos los destinos es mayor.",
         "tooltip_nota": "Pico 2022-24; caida en 2025 por cambios de politica migratoria.",
         "data": [
-          { "year": "2020", "v": 14 },
-          { "year": "2021", "v": 39 },
-          { "year": "2022", "v": 225 },
-          { "year": "2023", "v": 200 },
-          { "year": "2024", "v": 218 },
-          { "year": "2025", "v": 33 }
+          {
+            "year": "2020",
+            "v": 14
+          },
+          {
+            "year": "2021",
+            "v": 39
+          },
+          {
+            "year": "2022",
+            "v": 225
+          },
+          {
+            "year": "2023",
+            "v": 200
+          },
+          {
+            "year": "2024",
+            "v": 218
+          },
+          {
+            "year": "2025",
+            "v": 33
+          }
         ]
       }
     },
-    "j11_texto": "Las protestas del 11 de julio de 2021, las mayores en decadas, mostraron el vector realmente decisivo: presion interna, desobediencia civil y sociedad civil organizada. Ninguna accion externa tiene ese alcance ni esa legitimidad."
+    "j11_texto": "Las protestas del 11 de julio de 2021, las mayores en décadas, mostraron la magnitud del descontento, y también el límite de la protesta sola frente a un aparato represivo intacto: más de un millar de detenidos y condenas de hasta 25 años. La presión interna sigue siendo la base de cualquier transición legítima, pero no basta por sí misma."
   },
   "matriz": {
-    "lede": "Cada estrategia se situa segun su legalidad y bajo riesgo penal (eje horizontal) y su eficacia historica (eje vertical). El tamano del punto marca el riesgo para quien participa. Las opciones armadas caen en el cuadrante inferior izquierdo: ilegales, poco eficaces y peligrosas. Toca un punto para ver el detalle.",
+    "lede": "Cada estrategia se sitúa según su legalidad y bajo riesgo penal (eje horizontal) y su eficacia histórica para derribar a un gobernante (eje vertical). El tamaño del punto marca el riesgo para quien participa. Las posiciones son una síntesis ilustrativa de la evidencia citada, no una medición. Toca un punto para ver el detalle.",
     "data": [
-      { "name": "Resistencia civil masiva no violenta", "x": 90, "y": 76, "r": 30, "grp": "no-violenta" },
-      { "name": "Transicion negociada con elites", "x": 80, "y": 71, "r": 26, "grp": "no-violenta" },
-      { "name": "Desobediencia civil y huelgas", "x": 82, "y": 60, "r": 42, "grp": "no-violenta" },
-      { "name": "Medios independientes e informacion", "x": 88, "y": 55, "r": 34, "grp": "no-violenta" },
-      { "name": "Presion diplomatica y sanciones dirigidas", "x": 85, "y": 46, "r": 24, "grp": "no-violenta" },
-      { "name": "Insurreccion armada interna", "x": 25, "y": 29, "r": 78, "grp": "armada" },
-      { "name": "Invasion organizada por exiliados", "x": 9, "y": 12, "r": 92, "grp": "armada" },
-      { "name": "Financiar grupos armados desde el exterior", "x": 7, "y": 15, "r": 88, "grp": "armada" }
+      {
+        "name": "Resistencia civil masiva no violenta",
+        "x": 90,
+        "y": 64,
+        "r": 30,
+        "grp": "no-violenta"
+      },
+      {
+        "name": "Transición negociada con élites",
+        "x": 80,
+        "y": 68,
+        "r": 26,
+        "grp": "no-violenta"
+      },
+      {
+        "name": "Desobediencia civil y huelgas",
+        "x": 82,
+        "y": 55,
+        "r": 42,
+        "grp": "no-violenta"
+      },
+      {
+        "name": "Medios independientes e información",
+        "x": 88,
+        "y": 48,
+        "r": 34,
+        "grp": "no-violenta"
+      },
+      {
+        "name": "Presión diplomática, sanciones y coerción económica",
+        "x": 70,
+        "y": 46,
+        "r": 20,
+        "grp": "no-violenta"
+      },
+      {
+        "name": "Intervención militar directa de una potencia",
+        "x": 18,
+        "y": 78,
+        "r": 70,
+        "grp": "armada"
+      },
+      {
+        "name": "Captura del gobernante sin transición (Venezuela 2026)",
+        "x": 15,
+        "y": 38,
+        "r": 55,
+        "grp": "armada"
+      },
+      {
+        "name": "Insurrección armada interna",
+        "x": 25,
+        "y": 26,
+        "r": 78,
+        "grp": "armada"
+      },
+      {
+        "name": "Invasión organizada por exiliados",
+        "x": 9,
+        "y": 12,
+        "r": 92,
+        "grp": "armada"
+      },
+      {
+        "name": "Financiar grupos armados desde el exterior",
+        "x": 7,
+        "y": 15,
+        "r": 88,
+        "grp": "armada"
+      }
     ],
-    "nota_armada": "Via ilegal bajo el derecho internacional e interno, de baja eficacia historica y alto riesgo personal. Su calificacion como agresion o terrorismo la vuelve ademas inviable estrategicamente.",
-    "nota_novional": "Via legal o de bajo riesgo penal, con respaldo empirico como motor de transicion. Combinada con otras del mismo cuadrante, maximiza el efecto sobre un regimen consolidado."
+    "nota_armada": "Vía armada. Para exiliados y particulares es delito y su historial es de fracaso (Bahía de Cochinos). Para una potencia, la ONU la condena, pero en el Caribe ha derribado gobernantes en días; que llegue una democracia depende del relevo y del plan posteriores (Panamá sí; Venezuela 2026, todavía no). Tiene costes en vidas civiles.",
+    "nota_novional": "Vía legal o de bajo riesgo penal, base de toda transición con legitimidad propia. Su eficacia ha caído desde 2010 frente a regímenes que han aprendido a reprimir y dividir; combinada con presión externa sostenida, maximiza el efecto."
   },
   "sintesis": {
     "parrafos": [
-      "La dificultad de derribar una dictadura consolidada desde fuera es doble. Es juridica: el marco de agresion y terrorismo convierte cualquier invasion o insurreccion organizada en el exilio en un acto perseguible, con exposicion penal real para sus organizadores. Y es empirica: las fuerzas externas rara vez sustituyen a la movilizacion interna que necesitan y casi nunca encuentran.",
-      "El camino que la evidencia respalda combina resistencia pacifica interna con presion externa sostenida: protesta masiva y desobediencia civil (como el 11J), medios independientes y sociedad civil, presion diplomatica y sanciones dirigidas, y el aprovechamiento de una erosion economica que ya esta en marcha. En el caso cubano, el colapso interno (crisis economica, apagones, exodo demografico) es hoy mucho mas determinante que cualquier escenario militar externo."
+      "No hay una sola respuesta a cómo cae una dictadura, y la evidencia distingue más de lo que suele decirse. La invasión organizada por exiliados con apoyo encubierto es a la vez ilegal para quien la organiza y casi siempre fallida: Bahía de Cochinos es su arquetipo. La intervención directa y abierta de una potencia es otra cosa: Granada (1983) y Panamá (1989) derribaron a sus gobernantes en días y desembocaron en democracias que siguen vigentes, aunque la ONU condenó ambas y en Panamá murieron cientos de civiles.",
+      "Derribar al gobernante no es lo mismo que cambiar el régimen. En Haití (1994) la democracia restaurada no se consolidó; en Venezuela (2026) la captura de Maduro dejó en el poder a la estructura chavista, que nueve meses después no ha fijado elecciones. La literatura comparada (Downes y Monten, 2013) indica que la imposición externa produce democracia cuando había un relevo legítimo, instituciones que rescatar y un interventor dispuesto a construirlas.",
+      "La resistencia civil sigue teniendo el mejor historial general y es la única vía que da legitimidad propia a una transición, pero su eficacia ha caído desde 2010 y el 11J mostró su límite frente a un aparato represivo intacto. Las vías no son excluyentes: la mayoría de las transiciones combinan presión interna, quiebra económica, fractura de élites y presión externa.",
+      "Para Cuba, hoy, la erosión económica y el éxodo debilitan al régimen y Washington ha elevado la presión (orden de emergencia nacional, cargos contra Raúl Castro, amenazas navales, el llamamiento de Rubio a colaborar con la CIA). Una intervención directa no puede descartarse, pero Cuba es mayor y está más armada que Granada o Panamá, y no tiene un gobierno electo en espera. Lo que ocurra al día siguiente importará tanto como lo que ocurra el primero."
     ],
     "tags": [
-      { "icon": "users", "texto": "Presion interna" },
-      { "icon": "trend_down", "texto": "Erosion economica" },
-      { "icon": "radio", "texto": "Informacion y sociedad civil" },
-      { "icon": "handshake", "texto": "Transicion negociada" }
+      {
+        "icon": "users",
+        "texto": "Presión interna"
+      },
+      {
+        "icon": "trend_down",
+        "texto": "Erosión económica"
+      },
+      {
+        "icon": "shield",
+        "texto": "Intervención externa: quién, cómo y para qué"
+      },
+      {
+        "icon": "handshake",
+        "texto": "Transición negociada"
+      }
     ]
   },
   "footer": {
-    "nota": "Documento analitico e historico. Expone el marco juridico y la evidencia comparada sobre transiciones de regimen; no promueve ni facilita acciones ilegales. Las cifras marcadas como proyeccion, aproximadas o ilustrativas se identifican en cada grafica.",
-    "fuentes_texto": "Chenoweth & Stephan (NAVCO) - Carta de la ONU y Res. AGNU 3314 - CEPAL - ONEI - CBP (EE.UU.) - Horizonte Cubano (Columbia Law) - CNN, AS/COA, Havana Times, Cato."
+    "nota": "Documento analítico e histórico. Expone el marco jurídico y la evidencia comparada sobre transiciones de régimen, incluidas las intervenciones militares extranjeras, sin promover ni facilitar la violencia ni acciones ilegales. Las cifras marcadas como proyección, aproximadas o ilustrativas se identifican en cada gráfica. Revisado el 24 de octubre de 2026 para incorporar las intervenciones directas (Granada, Panamá, Haití, Venezuela) y la caída del éxito de la resistencia civil desde 2010.",
+    "fuentes_texto": "Chenoweth & Stephan (NAVCO) - Chenoweth (Journal of Democracy, 2020) - Downes & Monten (International Security, 2013) - O'Rourke (Covert Regime Change, 2018) - Carta de la ONU; Res. AGNU 3314, 38/7, 44/240; Res. CSNU 940 - CEPAL - ONEI - CBP (EE.UU.) - Horizonte Cubano (Columbia Law) - AP, Al Jazeera, CSIS, House of Commons Library - CNN, AS/COA, Havana Times, Cato."
   }
 }
 ;
@@ -479,7 +876,7 @@ export default function App() {
 
         {/* II — EVIDENCIA COMPARADA */}
         <section id="evidencia" className="sec">
-          <Reveal><Eyebrow n="II">La evidencia comparada: la violencia rinde menos</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="II">La evidencia comparada: qué mide y qué no</Eyebrow></Reveal>
           <Reveal delay={60}><p className="lede">{D.evidencia_chenoweth.lede}</p></Reveal>
           <Reveal delay={90}>
             <div className="panel">
@@ -538,9 +935,33 @@ export default function App() {
           </div>
         </section>
 
+        {/* IV — INTERVENCIONES DIRECTAS (opcional en el dataset) */}
+        {D.intervenciones && (
+        <section id="intervenciones" className="sec">
+          <Reveal><Eyebrow n="IV">Cuando interviene una potencia: el Caribe</Eyebrow></Reveal>
+          <Reveal delay={60}><p className="lede">{D.intervenciones.lede}</p></Reveal>
+          <div className="cards">
+            {D.intervenciones.casos.map((c, i) => (
+              <Reveal key={i} delay={i * 70} className="card-w">
+                <div className="card">
+                  <Icon name={c.icon} size={20} strokeWidth={1.6} color={c.resultado === "democracia" ? C.teal : c.resultado === "fragil" ? C.sand : C.brick} />
+                  <h3>{c.caso}</h3>
+                  <div className="iv-ver" style={{ color: c.resultado === "democracia" ? C.tealDeep : c.resultado === "fragil" ? C.sand : C.brick }}>{c.veredicto}</div>
+                  <p><span className="iv-k">Fuerza</span>{c.fuerza}</p>
+                  <p><span className="iv-k">Después</span>{c.despues}</p>
+                  <p><span className="iv-k">Coste</span>{c.coste}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal delay={120}><div className="j11"><Info size={18} color={C.teal} strokeWidth={1.7} /><div>{D.intervenciones.leccion}</div></div></Reveal>
+          <Src>{D.intervenciones.fuente_nota}</Src>
+        </section>
+        )}
+
         {/* IV — VÍAS DE CAMBIO */}
         <section id="vias" className="sec">
-          <Reveal><Eyebrow n="IV">Cómo caen realmente las dictaduras</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="V">Cómo han caído las dictaduras</Eyebrow></Reveal>
           <Reveal delay={60}><p className="lede">{D.vias_frecuencia.lede}</p></Reveal>
           <Reveal delay={90}>
             <div className="panel">
@@ -569,7 +990,7 @@ export default function App() {
 
         {/* V — EROSIÓN ECONÓMICA */}
         <section id="erosion" className="sec">
-          <Reveal><Eyebrow n="V">La vía más probable: erosión económica</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="VI">El telón de fondo: erosión económica</Eyebrow></Reveal>
           <Reveal delay={60}><p className="lede">{D.erosion_economica.lede}</p></Reveal>
           <Reveal delay={90}>
             <div className="panel">
@@ -665,7 +1086,7 @@ export default function App() {
 
         {/* VI — ÉXODO */}
         <section id="exodo" className="sec">
-          <Reveal><Eyebrow n="VI">El éxodo: presión interna hecha demografía</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="VII">El éxodo: presión interna hecha demografía</Eyebrow></Reveal>
           <Reveal delay={60}><p className="lede">{D.exodo.lede}</p></Reveal>
           <Reveal delay={90}>
             <div className="panel">
@@ -712,7 +1133,7 @@ export default function App() {
 
         {/* VII — MATRIZ (SIGNATURE) */}
         <section id="matriz" className="sec">
-          <Reveal><Eyebrow n="VII">La matriz de vías: legalidad frente a eficacia</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="VIII">La matriz de vías: legalidad frente a eficacia</Eyebrow></Reveal>
           <Reveal delay={60}><p className="lede">{D.matriz.lede}</p></Reveal>
           <div className="matrix-wrap">
             <Reveal delay={90} className="matrix-chart">
@@ -782,7 +1203,7 @@ export default function App() {
 
         {/* VIII — SÍNTESIS */}
         <section id="sintesis" className="sec">
-          <Reveal><Eyebrow n="VIII">Síntesis</Eyebrow></Reveal>
+          <Reveal><Eyebrow n="IX">Síntesis</Eyebrow></Reveal>
           <Reveal delay={60}>
             <div className="synth">
               {D.sintesis.parrafos.map((p, i) => <p key={i}>{p}</p>)}
@@ -854,6 +1275,9 @@ const CSS = `
 .card:hover{ transform:translateY(-2px); border-color:var(--teal); }
 .card h3{ font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:12px 0 8px; }
 .card p{ font-size:14px; color:var(--ink2); margin:0; }
+.card p + p{ margin-top:10px; }
+.iv-ver{ font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase; margin:0 0 12px; }
+.iv-k{ display:block; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); margin-bottom:2px; }
 
 /* FLOW */
 .flow{ display:flex; align-items:stretch; gap:10px; flex-wrap:wrap; }
