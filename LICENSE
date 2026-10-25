@@ -1,0 +1,406 @@
+YAMACOA: LICENCIA DE CÓDIGO VISIBLE SOLO PARA AUDITORÍA (v1.1)
+YAMACOA: SOURCE-AVAILABLE, AUDIT-ONLY LICENSE (v1.1)
+
+Copyright (c) 2026 Yovani Torres Favier. Todos los derechos reservados.
+Copyright (c) 2026 Yovani Torres Favier. All rights reserved.
+
+Este NO es un software libre ni de código abierto. El código es visible
+únicamente para que pueda ser auditado.
+
+This is NOT free or open source software. The code is visible solely so
+that it can be audited.
+
+======================================================================
+ESPAÑOL (versión de referencia y única vinculante)
+======================================================================
+
+1. DEFINICIONES
+
+   1.1 "El Autor": Yovani Torres Favier, titular de todos los derechos.
+
+   1.2 "El Software": la totalidad de este repositorio y de cualquier
+       versión anterior o posterior, incluidos, sin carácter limitativo:
+       a) el código fuente y el código compilado, empaquetado o minificado;
+       b) la arquitectura, la estructura de carpetas, los flujos de datos,
+          el orquestador, los workers, las funciones y los scripts;
+       c) los archivos de configuración, despliegue y operaciones;
+       d) los prompts, instrucciones para agentes de IA, habilidades y
+          plantillas (incluidos CLAUDE.md, AGENTS.md, SKILLS.md y
+          ENCUESTAS.md);
+       e) los diseños de encuestas, cuestionarios y modelos de datos;
+       f) la interfaz, el diseño visual, los estilos, iconos e imágenes;
+       g) la documentación, comentarios y mensajes de commit;
+       h) el historial completo del repositorio.
+
+   1.3 "Los Contenidos": los artículos, textos, audios, podcasts,
+       vídeos, imágenes, encuestas, resultados y cualquier otro material
+       generado, publicado o servido por el Software o por yamacoa.com,
+       tanto si los creó el Autor directamente como si se generaron de
+       forma automatizada.
+
+   1.4 "La Marca": el nombre "Yamacoa", el dominio yamacoa.com, sus
+       logotipos, identidad visual y cualquier signo distintivo asociado.
+
+   1.5 "Obra Derivada": cualquier obra basada total o parcialmente en el
+       Software o los Contenidos, incluidas modificaciones, adaptaciones,
+       traducciones, portes a otro lenguaje o framework, refactorizaciones,
+       reimplementaciones que reproduzcan su estructura o lógica
+       expresiva, y combinaciones con otro software.
+
+   1.6 "Uso": cualquier forma de copia, ejecución, despliegue,
+       distribución, comunicación pública, transformación o explotación,
+       por cualquier medio o tecnología existente o futura.
+
+2. TITULARIDAD
+
+   2.1 El Software, los Contenidos y la Marca son propiedad exclusiva del
+       Autor, que conserva todos los derechos morales y de explotación
+       reconocidos por el Texto Refundido de la Ley de Propiedad
+       Intelectual (Real Decreto Legislativo 1/1996) y por los tratados
+       internacionales aplicables.
+
+   2.2 La publicación del Software en un repositorio público NO
+       constituye cesión, licencia, renuncia ni puesta en dominio público
+       de ningún derecho. Todo lo que no esté expresamente permitido en
+       la cláusula 4 queda prohibido.
+
+3. FINALIDAD DE LA PUBLICACIÓN
+
+   El Software se publica con un único propósito: permitir que cualquier
+   persona verifique de forma independiente cómo funciona, y en
+   particular qué datos recoge, almacena o transmite, o no, sobre sus
+   usuarios. Esta licencia debe interpretarse siempre de forma
+   restrictiva y al servicio de esa finalidad.
+
+4. LO QUE SE PERMITE
+
+   Siempre que se cumplan todas las condiciones de esta licencia,
+   cualquier persona puede, de forma gratuita, no exclusiva, revocable e
+   intransferible:
+
+   a) Ver y leer el Software en este repositorio.
+
+   b) Descargarlo o clonarlo localmente, y ejecutarlo en un entorno
+      privado y aislado, con el único fin de auditar su seguridad, su
+      privacidad o su funcionamiento. Esa ejecución no podrá ser
+      accesible por terceros ni durar más de lo razonablemente necesario
+      para la auditoría. Las copias deberán eliminarse al terminar.
+
+   c) Publicar los resultados de una auditoría, incluyendo citas breves
+      del código estrictamente necesarias para ilustrar un hallazgo,
+      siempre que:
+      - se identifique claramente la fuente (este repositorio) y la
+        autoría de Yovani Torres Favier;
+      - las citas no permitan reconstruir partes sustanciales del
+        Software;
+      - el resultado no se presente de forma engañosa ni descontextualizada.
+
+   d) Comunicar al Autor errores o vulnerabilidades. Se ruega hacerlo de
+      forma privada antes de divulgarlos públicamente, con un plazo
+      razonable para corregirlos.
+
+   e) Enlazar a este repositorio o a yamacoa.com.
+
+5. LO QUE NO SE PERMITE
+
+   Sin autorización previa, expresa y por escrito del Autor, queda
+   prohibido, total o parcialmente, directa o indirectamente:
+
+   5.1 Copia y distribución
+       a) Copiar, reproducir, almacenar o redistribuir el Software fuera
+          de los supuestos de la cláusula 4.
+       b) Crear espejos ("mirrors"), archivos públicos, paquetes o
+          réplicas del repositorio o de yamacoa.com.
+       c) Publicar fragmentos del Software en otros repositorios, foros,
+          redes sociales, cursos o materiales formativos, salvo citas
+          breves amparadas por la cláusula 4.c.
+       d) Vender, alquilar, sublicenciar, ceder o transferir el Software.
+
+   5.2 Modificación y obras derivadas
+       a) Modificar, adaptar, traducir o crear Obras Derivadas.
+       b) Portar el Software a otro lenguaje, framework o plataforma.
+       c) Reimplementar su arquitectura, sus flujos o su lógica a partir
+          de la lectura del código con el fin de obtener un producto
+          sustancialmente similar.
+       d) Eliminar, ocultar o alterar avisos de autoría, de copyright o
+          esta licencia.
+
+   5.3 Despliegue y explotación
+       a) Desplegar, alojar, ejecutar o poner a disposición del público el
+          Software o una Obra Derivada como sitio web, aplicación,
+          servicio, API, bot o agente, con o sin ánimo de lucro.
+       b) Usarlo en entornos de producción, preproducción accesibles a
+          terceros, demostraciones públicas o pruebas con usuarios reales.
+       c) Usarlo con fines comerciales, de consultoría, formación,
+          financiación, captación de donaciones o subvenciones.
+
+   5.4 Autoría y apropiación
+       a) Presentar el Software, los Contenidos o cualquier parte de ellos
+          como obra propia, o atribuir su autoría, coautoría, idea o
+          desarrollo a cualquier otra persona, colectivo u organización.
+       b) Usarlo en portafolios, currículos, candidaturas, convocatorias,
+          concursos, premios, becas o solicitudes de financiación como
+          mérito propio.
+       c) Afirmar o insinuar haber participado en su creación sin que
+          conste por escrito del Autor.
+
+   5.5 Marca, nombre e imagen
+       a) Usar la Marca o el nombre del Autor en otros proyectos,
+          dominios, perfiles en redes sociales, campañas, eventos o
+          publicaciones.
+       b) Registrar dominios, marcas, cuentas o perfiles idénticos o
+          confusamente similares a "Yamacoa".
+       c) Sugerir aval, patrocinio, alianza o afinidad del Autor o de
+          Yamacoa con cualquier persona, organización, partido,
+          movimiento, gobierno o causa.
+       d) Suplantar a Yamacoa o al Autor, o crear sitios que puedan
+          confundirse con yamacoa.com.
+
+   5.6 Contenidos
+       a) Extraer, raspar ("scraping"), descargar masivamente,
+          republicar, sindicar o reagrupar los Contenidos.
+       b) Republicar artículos, audios o podcasts íntegros o en partes
+          sustanciales, aunque se cite la fuente.
+       c) Usar los Contenidos para alimentar otros medios, agregadores,
+          boletines o plataformas.
+       d) Alterar, recortar o descontextualizar los Contenidos para
+          atribuir al Autor o a Yamacoa opiniones que no ha expresado.
+
+   5.7 Inteligencia artificial y tratamiento automatizado
+       a) Usar el Software o los Contenidos para entrenar, ajustar
+          ("fine-tuning"), destilar o evaluar modelos de inteligencia
+          artificial.
+       b) Incorporarlos a bases de conocimiento, índices vectoriales o
+          sistemas de recuperación (RAG).
+       c) Proporcionarlos como contexto a un sistema de IA con el fin de
+          generar código, textos o productos sustancialmente similares.
+       d) Realizar minería de textos y datos sobre ellos. A efectos del
+          artículo 67 del Real Decreto-ley 24/2021 y del artículo 4 de la
+          Directiva (UE) 2019/790, el Autor se reserva expresamente este
+          derecho.
+
+   5.8 Usos dañinos
+       a) Usar el Software, los Contenidos o los conocimientos obtenidos
+          de su auditoría para vigilar, identificar, perfilar o perseguir
+          a personas, ni para recoger datos de usuarios sin su
+          consentimiento.
+       b) Usar el Software para difundir desinformación, propaganda o
+          contenidos ilícitos.
+       c) Atacar, saturar, explotar vulnerabilidades o intentar acceder
+          sin autorización a yamacoa.com o a su infraestructura.
+
+   5.9 Forks en GitHub
+       Las Condiciones de Servicio de GitHub permiten a sus usuarios ver
+       y bifurcar ("fork") repositorios públicos dentro de la plataforma.
+       Ese fork técnico NO otorga ninguno de los derechos prohibidos en
+       esta cláusula. Quien mantenga un fork deberá conservar esta
+       licencia íntegra y no podrá modificarlo, desplegarlo ni promoverlo.
+
+6. COMPONENTES DE TERCEROS
+
+   Las bibliotecas y dependencias de terceros incluidas o referenciadas
+   (por ejemplo, las listadas en package.json) se rigen por sus propias
+   licencias. Esta licencia no les afecta, pero sí cubre la selección,
+   combinación, configuración e integración que el Autor ha hecho de
+   ellas.
+
+7. CONTRIBUCIONES
+
+   El repositorio no acepta contribuciones sin acuerdo escrito previo.
+   Cualquier propuesta, issue, sugerencia o pull request que se envíe
+   pese a ello se entiende hecha a título gratuito, y el Autor podrá
+   usarla, modificarla o descartarla libremente sin obligación alguna.
+   Enviar una contribución no otorga derechos sobre el Software ni
+   coautoría.
+
+8. DURACIÓN, REVOCACIÓN Y TERMINACIÓN
+
+   8.1 Los permisos de la cláusula 4 son revocables. El Autor puede
+       retirarlos, en general o para una persona concreta, en cualquier
+       momento.
+   8.2 Cualquier incumplimiento extingue automáticamente y de inmediato
+       todos los permisos de quien lo cometa, sin necesidad de aviso.
+       Esa persona deberá cesar todo Uso y destruir todas las copias.
+   8.3 El Autor puede publicar nuevas versiones de esta licencia. La
+       versión vigente es la que figure en la rama principal del
+       repositorio en cada momento.
+
+9. SIN GARANTÍA Y LIMITACIÓN DE RESPONSABILIDAD
+
+   El Software se proporciona "tal cual", sin garantía de ningún tipo,
+   expresa o implícita, incluidas las de comerciabilidad, idoneidad para
+   un fin determinado o ausencia de errores. En la máxima medida que
+   permita la ley, el Autor no será responsable de ningún daño directo,
+   indirecto, incidental o consecuente derivado del Uso, de la auditoría
+   o de la imposibilidad de usar el Software.
+
+10. INCUMPLIMIENTO
+
+   Cualquier Uso no autorizado constituye una infracción de los derechos
+   de propiedad intelectual e industrial del Autor. El Autor se reserva
+   todas las acciones civiles y penales que le correspondan, incluidas
+   las de cesación, retirada, indemnización de daños y perjuicios y
+   notificaciones de retirada (DMCA u otras) ante plataformas y
+   proveedores.
+
+11. CLÁUSULAS GENERALES
+
+   11.1 Ley aplicable: esta licencia se rige por la legislación española.
+   11.2 Jurisdicción: para cualquier controversia, las partes se someten
+        a los Juzgados y Tribunales de Barcelona, salvo que una norma
+        imperativa disponga otra cosa.
+   11.3 Divisibilidad: si alguna cláusula fuera declarada nula o
+        inaplicable, el resto seguirá en vigor, y esa cláusula se
+        interpretará en el sentido más próximo a su finalidad que sea
+        válido.
+   11.4 No renuncia: que el Autor no ejerza un derecho en un momento
+        dado no supone renunciar a él.
+   11.5 Idioma: en caso de discrepancia entre versiones, prevalece la
+        versión en español.
+
+12. PERMISOS Y CONTACTO
+
+   Para solicitar cualquier uso no contemplado en la cláusula 4, o para
+   comunicar una vulnerabilidad, contacte con el Autor a través de
+   yamacoa.com. Ningún permiso será válido si no consta por escrito y
+   firmado por el Autor.
+
+======================================================================
+ENGLISH (convenience translation; the Spanish version prevails)
+======================================================================
+
+1. DEFINITIONS
+   1.1 "Author": Yovani Torres Favier, owner of all rights.
+   1.2 "Software": this entire repository and any prior or later
+       version, including source and built code; architecture, folder
+       structure, data flows, orchestrator, workers, functions and
+       scripts; configuration, deployment and operations files; prompts,
+       AI-agent instructions, skills and templates (including CLAUDE.md,
+       AGENTS.md, SKILLS.md and ENCUESTAS.md); survey designs and data
+       models; interface, visual design, styles, icons and images;
+       documentation, comments and commit messages; and the full history.
+   1.3 "Content": articles, text, audio, podcasts, video, images,
+       surveys, results and any other material generated, published or
+       served by the Software or yamacoa.com, whether authored directly
+       or generated automatically.
+   1.4 "Brand": the name "Yamacoa", the domain yamacoa.com, its logos,
+       visual identity and any associated distinctive sign.
+   1.5 "Derivative Work": any work based in whole or in part on the
+       Software or Content, including modifications, adaptations,
+       translations, ports to another language or framework,
+       refactorings, reimplementations reproducing its structure or
+       expressive logic, and combinations with other software.
+   1.6 "Use": any copying, execution, deployment, distribution, public
+       communication, transformation or exploitation, by any means.
+
+2. OWNERSHIP
+   The Software, Content and Brand belong exclusively to the Author,
+   who retains all moral and economic rights under Spanish law
+   (Royal Legislative Decree 1/1996) and applicable treaties.
+   Publishing in a public repository is NOT a grant, license, waiver or
+   dedication to the public domain. Anything not expressly permitted in
+   section 4 is prohibited.
+
+3. PURPOSE
+   The Software is published solely so anyone can independently verify
+   how it works, in particular what user data it does or does not
+   collect, store or transmit. This license shall be construed
+   restrictively in service of that purpose.
+
+4. PERMITTED
+   Subject to full compliance, anyone may, free of charge, on a
+   non-exclusive, revocable and non-transferable basis:
+   a) view and read the Software in this repository;
+   b) download or clone it and run it in a private, isolated
+      environment solely to audit its security, privacy or behavior,
+      not accessible to third parties, for no longer than reasonably
+      necessary, deleting copies afterwards;
+   c) publish audit results with brief code quotations strictly needed
+      to illustrate a finding, crediting this repository and Yovani
+      Torres Favier, without enabling reconstruction of substantial
+      parts and without misleading presentation;
+   d) report bugs or vulnerabilities to the Author, preferably
+      privately and with reasonable time to fix them;
+   e) link to this repository or yamacoa.com.
+
+5. PROHIBITED without the Author's prior express written consent,
+   in whole or in part, directly or indirectly:
+   5.1 Copying and distribution: copying or redistributing outside
+       section 4; mirrors, public archives, packages or replicas;
+       posting excerpts elsewhere beyond 4.c; selling, renting,
+       sublicensing or transferring.
+   5.2 Modification: modifying, adapting, translating or creating
+       Derivative Works; porting; reimplementing its architecture or
+       logic from the code to obtain a substantially similar product;
+       removing or altering authorship notices or this license.
+   5.3 Deployment and exploitation: deploying, hosting or making
+       available the Software or any Derivative Work as a website, app,
+       service, API, bot or agent, commercial or not; use in production,
+       third-party-accessible staging, public demos or tests with real
+       users; any commercial, consulting, training, fundraising, donation
+       or grant purpose.
+   5.4 Authorship: presenting any part as one's own or attributing its
+       authorship, co-authorship, idea or development to anyone else;
+       using it as one's own merit in portfolios, CVs, applications,
+       contests, awards, grants or funding requests; claiming
+       participation without the Author's written confirmation.
+   5.5 Brand: using the Brand or the Author's name elsewhere;
+       registering identical or confusingly similar domains, marks or
+       accounts; suggesting endorsement or affiliation with any person,
+       organization, party, movement, government or cause; impersonating
+       Yamacoa or the Author.
+   5.6 Content: scraping, bulk downloading, republishing, syndicating
+       or aggregating Content; republishing whole or substantial parts
+       even with credit; feeding other media or platforms; altering or
+       decontextualizing Content to attribute views not expressed.
+   5.7 Artificial intelligence: training, fine-tuning, distilling or
+       evaluating AI models; inclusion in knowledge bases, vector
+       indexes or RAG systems; providing it as context to an AI system
+       to generate substantially similar code, text or products; text
+       and data mining, which the Author expressly reserves under
+       Article 4 of Directive (EU) 2019/790.
+   5.8 Harmful use: surveillance, identification, profiling or
+       persecution of people, or collecting user data without consent;
+       disinformation, propaganda or unlawful content; attacking,
+       overloading, exploiting or accessing yamacoa.com or its
+       infrastructure without authorization.
+   5.9 GitHub forks: a technical fork permitted by GitHub's Terms of
+       Service grants none of the rights above; forks must keep this
+       license intact and may not be modified, deployed or promoted.
+
+6. THIRD-PARTY COMPONENTS
+   Third-party libraries keep their own licenses. This license covers
+   the Author's selection, combination, configuration and integration.
+
+7. CONTRIBUTIONS
+   No contributions are accepted without prior written agreement.
+   Anything submitted anyway is given free of charge, may be used or
+   discarded freely by the Author, and grants no rights or co-authorship.
+
+8. TERM AND TERMINATION
+   Permissions are revocable at any time, generally or individually.
+   Any breach automatically and immediately terminates all permissions
+   of the infringer, who must cease all Use and destroy all copies.
+   The Author may publish new versions; the version on the main branch
+   applies.
+
+9. NO WARRANTY
+   Provided "as is", without warranty of any kind. To the maximum
+   extent permitted by law, the Author is not liable for any damages
+   arising from Use, audit or inability to use the Software.
+
+10. BREACH
+   Unauthorized Use infringes the Author's rights. The Author reserves
+   all civil and criminal remedies, including injunctions, takedowns,
+   damages and DMCA or similar notices.
+
+11. GENERAL
+   Governed by Spanish law; courts of Barcelona have jurisdiction unless
+   mandatory law provides otherwise. Invalid clauses are severed and
+   read as closely as validly possible to their purpose. No waiver by
+   non-enforcement. The Spanish version prevails.
+
+12. PERMISSIONS AND CONTACT
+   Requests for any use not covered by section 4, and vulnerability
+   reports, go to the Author through yamacoa.com. No permission is valid
+   unless in writing and signed by the Author.
