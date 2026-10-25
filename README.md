@@ -1,3 +1,45 @@
+# Yamacoa
+
+Data journalism about Cuba · [yamacoa.com](https://yamacoa.com)
+
+> **Audit snapshot as of October 24, 2026.** This repository is not updated. It is published
+> so anyone can check for themselves how Yamacoa works and what data it does, and does not,
+> collect about its readers.
+
+## License: source-available, audit-only
+
+This is **not** free or open-source software. The [LICENSE](LICENSE) lets you read the code,
+clone it and run it in a private environment **for the sole purpose of auditing it**, and
+publish the results of that audit with credit to the source. It does not allow copying,
+modifying, deploying or reusing the code, or using it to train AI models. If you find a bug or
+a vulnerability, please contact us through [yamacoa.com](https://yamacoa.com) before
+disclosing it publicly. The license is bilingual; the Spanish version is the binding one.
+
+## What you can verify
+
+- **No analytics or trackers.** No Google Analytics, no social media pixels, no browser
+  fingerprinting. The site's code sets no cookies of its own. Fonts are served from the site
+  itself, not from Google Fonts.
+- **Anonymous polls.** A vote only adds 1 to an aggregate counter (question, option, total).
+  Nothing is stored about who voted: no IP address, no device. Your browser remembers locally
+  (`localStorage`) that you already voted, and that never leaves your device.
+  See `ops/*/poll_supabase.sql`.
+- **Newsletter, only if you subscribe.** We store your email address and how you signed up
+  (email or Google) to send you the newsletter. You can unsubscribe at any time.
+  See `ops/suscriptores/` and `src/periodico/Privacidad.jsx`.
+- **Videos** are embedded through `youtube-nocookie.com`.
+- **Automated news** is built from public press sources, cited paragraph by paragraph.
+  No personal data is collected. See `ops/noticias/fuentes.json` and `ops/noticias/motor.md`.
+- **Contributors and voices** (opinion, podcast): access is by invitation only, and consent
+  is recorded before any recording. See `ops/portal/` and `ops/podcast/NOTAS.md`.
+- **What is not here:** credentials and private keys (kept outside the repository), working
+  material from third parties, and personal account data. The Supabase key in the code is the
+  *publishable* one, which is public by design. Each table's access rules (RLS) are in the
+  `.sql` files.
+
+Like any website, the hosting provider (Cloudflare) and the database (Supabase) keep their own
+technical service logs. Yamacoa does not use them to identify anyone.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
